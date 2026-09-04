@@ -921,3 +921,84 @@ footer{
     drop-shadow(0 0 6px rgba(255,253,245,.86))
     drop-shadow(0 0 17px rgba(245,241,229,.58));
 }
+
+
+
+/* Unified soft backdrops for all seven sigils */
+.sin-envy{
+  background:
+    radial-gradient(circle at center, rgba(92,157,104,.17) 0%, rgba(62,108,71,.12) 42%, rgba(10,10,14,.98) 69%, #020307 72%);
+}
+.sin-lust{
+  background:
+    radial-gradient(circle at center, rgba(200,50,106,.17) 0%, rgba(132,35,73,.12) 42%, rgba(10,10,14,.98) 69%, #020307 72%);
+}
+.sin-wrath{
+  background:
+    radial-gradient(circle at center, rgba(240,155,49,.17) 0%, rgba(147,91,26,.12) 42%, rgba(10,10,14,.98) 69%, #020307 72%);
+}
+.sin-greed{
+  background:
+    radial-gradient(circle at center, rgba(201,154,46,.18) 0%, rgba(139,101,24,.12) 42%, rgba(10,10,14,.98) 69%, #020307 72%);
+}
+.sin-gluttony{
+  background:
+    radial-gradient(circle at center, rgba(168,55,39,.18) 0%, rgba(111,35,27,.13) 42%, rgba(10,10,14,.98) 69%, #020307 72%);
+}
+.sin-sloth{
+  background:
+    radial-gradient(circle at center, rgba(141,112,168,.19) 0%, rgba(93,72,114,.15) 42%, rgba(10,10,14,.98) 69%, #020307 72%);
+}
+.sin-pride{
+  background:
+    radial-gradient(circle at center, rgba(242,239,228,.15) 0%, rgba(219,214,201,.10) 42%, rgba(10,10,13,.98) 69%, #020307 72%);
+}
+
+/* Slightly enlarge Sloth's artwork so it visually matches the others */
+.sin-sloth img{
+  width:84%;
+  height:84%;
+  object-fit:contain;
+}
+
+/* Preserve Sloth/Pride visibility boosts */
+.sin-sloth img{
+  filter:
+    drop-shadow(0 0 4px rgba(154,126,182,.34))
+    drop-shadow(0 3px 7px rgba(0,0,0,.55));
+}
+.sin-pride img{
+  filter:
+    brightness(1.12)
+    drop-shadow(0 0 4px rgba(245,241,229,.24))
+    drop-shadow(0 3px 7px rgba(0,0,0,.55));
+}
+
+/* Make the center label truly centered even for long names like Gluttony */
+.center-name{
+  width:92%;
+  text-align:center;
+  white-space:nowrap;
+  line-height:1;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) scale(.94);
+}
+.sin-selector.has-hover .center-name{
+  transform:translate(-50%,-50%) scale(1);
+}
+
+/* Slight size correction for especially long name */
+.sin-selector[data-active="gluttony"] .center-name{
+  font-size:clamp(1.65rem,3.45vw,3rem);
+  letter-spacing:.035em;
+}
+
+/* Hover glow consistency */
+.sin-envy:hover,.sin-envy:focus-visible{background:radial-gradient(circle at center, rgba(115,191,128,.30) 0%, rgba(70,128,82,.18) 45%, rgba(10,10,14,.98) 70%)}
+.sin-lust:hover,.sin-lust:focus-visible{background:radial-gradient(circle at center, rgba(222,82,133,.30) 0%, rgba(145,42,83,.18) 45%, rgba(10,10,14,.98) 70%)}
+.sin-wrath:hover,.sin-wrath:focus-visible{background:radial-gradient(circle at center, rgba(255,181,80,.30) 0%, rgba(158,96,30,.18) 45%, rgba(10,10,14,.98) 70%)}
+.sin-greed:hover,.sin-greed:focus-visible{background:radial-gradient(circle at center, rgba(229,187,78,.30) 0%, rgba(148,111,31,.18) 45%, rgba(10,10,14,.98) 70%)}
+.sin-gluttony:hover,.sin-gluttony:focus-visible{background:radial-gradient(circle at center, rgba(209,83,62,.31) 0%, rgba(122,42,31,.19) 45%, rgba(10,10,14,.98) 70%)}
+.sin-sloth:hover,.sin-sloth:focus-visible{background:radial-gradient(circle at center, rgba(177,145,207,.34) 0%, rgba(109,83,136,.21) 45%, rgba(10,10,14,.98) 70%)}
+.sin-pride:hover,.sin-pride:focus-visible{background:radial-gradient(circle at center, rgba(255,253,244,.28) 0%, rgba(229,224,211,.16) 45%, rgba(10,10,13,.98) 70%)}
