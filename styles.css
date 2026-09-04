@@ -547,3 +547,296 @@ footer{
   .odin-reveal{width:40vw}
   .odin-reveal p{display:none}
 }
+
+
+
+/* =========================================================
+   THE SEVEN SINS — SIGIL SELECTOR
+   ========================================================= */
+
+.sins-body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(108,36,20,.11),transparent 34rem),
+    #02050a;
+}
+
+.sins-intro{
+  text-align:center;
+  padding:2.4rem 1rem 1rem;
+}
+.sins-intro .kicker{color:#a87858}
+.sins-intro h1{
+  color:#bd3d29;
+  font-size:clamp(2.8rem,6vw,5.6rem);
+  margin:.1rem 0 .35rem;
+  text-shadow:0 0 24px rgba(130,34,22,.18);
+}
+.sins-intro p{
+  max-width:680px;
+  margin:0 auto;
+  color:#a99b88;
+}
+
+.sin-selector-wrap{
+  max-width:1050px;
+  margin:0 auto;
+  padding:1rem 1rem 4rem;
+}
+
+.sin-selector{
+  --selector-size:min(78vw,780px);
+  position:relative;
+  width:var(--selector-size);
+  height:var(--selector-size);
+  margin:0 auto;
+  border-radius:50%;
+}
+
+/* decorative outer rings */
+.sin-selector::before,
+.sin-selector::after{
+  content:"";
+  position:absolute;
+  pointer-events:none;
+  border-radius:50%;
+  inset:7.5%;
+}
+.sin-selector::before{
+  border:1px solid rgba(194,121,68,.35);
+  box-shadow:
+    0 0 30px rgba(129,42,22,.12),
+    inset 0 0 38px rgba(129,42,22,.07);
+}
+.sin-selector::after{
+  inset:13%;
+  border:1px solid rgba(203,158,93,.14);
+}
+
+/* subtle ornament spokes */
+.selector-ornament{
+  position:absolute;
+  inset:17%;
+  border-radius:50%;
+  border:1px dashed rgba(165,111,69,.16);
+  pointer-events:none;
+}
+.selector-ornament::before,
+.selector-ornament::after{
+  content:"";
+  position:absolute;
+  left:50%;top:50%;
+  width:92%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(189,132,76,.22),transparent);
+  transform:translate(-50%,-50%) rotate(25deg);
+}
+.selector-ornament::after{
+  transform:translate(-50%,-50%) rotate(-25deg);
+}
+
+/* center */
+.sin-selector-center{
+  position:absolute;
+  z-index:5;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:31%;
+  aspect-ratio:1;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:1.2rem;
+  background:
+    radial-gradient(circle,rgba(36,15,12,.95),rgba(5,6,10,.96) 68%);
+  border:1px solid rgba(193,132,74,.42);
+  box-shadow:
+    0 0 35px rgba(0,0,0,.58),
+    inset 0 0 35px rgba(117,50,26,.13);
+  transition:border-color .3s ease,box-shadow .3s ease;
+}
+.center-default,
+.center-name{
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:82%;
+  transition:opacity .22s ease,transform .25s ease,color .25s ease,text-shadow .25s ease;
+}
+.center-default{
+  color:#bda783;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-size:clamp(.72rem,1.35vw,1rem);
+}
+.center-default strong{
+  display:block;
+  color:#e2c292;
+  font-size:clamp(1rem,2vw,1.5rem);
+  letter-spacing:.15em;
+  margin-bottom:.25rem;
+}
+.center-name{
+  opacity:0;
+  transform:translate(-50%,-46%) scale(.94);
+  font-size:clamp(1.8rem,4vw,3.5rem);
+  font-weight:700;
+  letter-spacing:.06em;
+}
+.sin-selector.has-hover .center-default{
+  opacity:0;
+  transform:translate(-50%,-55%) scale(.94);
+}
+.sin-selector.has-hover .center-name{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1);
+}
+
+/* medallions */
+.sin-choice{
+  --x:50%;
+  --y:10%;
+  --glow:#d59a54;
+  position:absolute;
+  z-index:8;
+  left:var(--x);
+  top:var(--y);
+  width:23%;
+  aspect-ratio:1;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:
+    radial-gradient(circle,#07080c 58%,rgba(27,16,12,.98) 70%,#020307 72%);
+  border:1px solid rgba(187,125,72,.38);
+  box-shadow:
+    0 0 0 5px rgba(6,6,8,.75),
+    0 0 0 6px rgba(170,104,54,.32),
+    0 8px 26px rgba(0,0,0,.5);
+  transition:
+    transform .28s cubic-bezier(.2,.8,.2,1),
+    box-shadow .28s ease,
+    border-color .28s ease,
+    filter .28s ease;
+}
+.sin-choice::before{
+  content:"";
+  position:absolute;
+  inset:-12%;
+  border-radius:50%;
+  border:1px solid rgba(191,126,65,.16);
+  opacity:.75;
+  transition:opacity .28s ease,transform .28s ease,border-color .28s ease;
+}
+.sin-choice::after{
+  content:"";
+  position:absolute;
+  inset:-5%;
+  border-radius:50%;
+  background:radial-gradient(circle,transparent 55%,color-mix(in srgb,var(--glow) 35%,transparent) 72%,transparent 76%);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .28s ease;
+}
+.sin-choice img{
+  width:77%;
+  height:77%;
+  object-fit:contain;
+  filter:drop-shadow(0 3px 7px rgba(0,0,0,.55));
+  transition:transform .28s cubic-bezier(.2,.8,.2,1),filter .28s ease;
+  pointer-events:none;
+}
+.sin-choice:hover,
+.sin-choice:focus-visible{
+  transform:translate(-50%,-50%) scale(1.105);
+  z-index:12;
+  border-color:var(--glow);
+  box-shadow:
+    0 0 0 5px rgba(4,5,8,.9),
+    0 0 0 6px var(--glow),
+    0 0 24px var(--glow),
+    0 0 54px color-mix(in srgb,var(--glow) 62%,transparent);
+  outline:none;
+}
+.sin-choice:hover::before,
+.sin-choice:focus-visible::before{
+  opacity:1;
+  transform:scale(1.07);
+  border-color:var(--glow);
+}
+.sin-choice:hover::after,
+.sin-choice:focus-visible::after{opacity:1}
+.sin-choice:hover img,
+.sin-choice:focus-visible img{
+  transform:scale(1.055);
+  filter:
+    drop-shadow(0 0 5px var(--glow))
+    drop-shadow(0 0 13px color-mix(in srgb,var(--glow) 70%,transparent));
+}
+
+/* positions around circle */
+.sin-envy{--x:50%;--y:12%;--glow:#5c9d68}
+.sin-wrath{--x:81%;--y:29%;--glow:#f09b31}
+.sin-pride{--x:88%;--y:62%;--glow:#f2eee3}
+.sin-sloth{--x:69%;--y:88%;--glow:#6d587b}
+.sin-greed{--x:31%;--y:88%;--glow:#c99a2e}
+.sin-gluttony{--x:12%;--y:62%;--glow:#a83727}
+.sin-lust{--x:19%;--y:29%;--glow:#c8326a}
+
+/* center name colors, controlled by JS class */
+.sin-selector[data-active="envy"] .center-name{color:#72b47d;text-shadow:0 0 20px rgba(92,157,104,.55)}
+.sin-selector[data-active="wrath"] .center-name{color:#f5ad52;text-shadow:0 0 20px rgba(240,155,49,.55)}
+.sin-selector[data-active="pride"] .center-name{color:#f6f0e2;text-shadow:0 0 22px rgba(245,240,225,.42)}
+.sin-selector[data-active="sloth"] .center-name{color:#9b86ae;text-shadow:0 0 20px rgba(109,88,123,.62)}
+.sin-selector[data-active="greed"] .center-name{color:#e0b64f;text-shadow:0 0 20px rgba(201,154,46,.55)}
+.sin-selector[data-active="gluttony"] .center-name{color:#d65a43;text-shadow:0 0 20px rgba(168,55,39,.62)}
+.sin-selector[data-active="lust"] .center-name{color:#df5b8c;text-shadow:0 0 20px rgba(200,50,106,.58)}
+
+/* small instructions */
+.sin-selector-note{
+  text-align:center;
+  margin-top:1.2rem;
+  color:#756b60;
+  font-size:.9rem;
+  letter-spacing:.06em;
+}
+
+/* mobile/tablet: turn it into a clean grid instead of crushing the circle */
+@media (max-width:760px){
+  .sin-selector{
+    width:100%;
+    height:auto;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:1rem;
+    padding-top:1rem;
+  }
+  .sin-selector::before,
+  .sin-selector::after,
+  .selector-ornament{display:none}
+  .sin-selector-center{
+    position:relative;
+    left:auto;top:auto;
+    transform:none;
+    width:100%;
+    min-height:150px;
+    aspect-ratio:auto;
+    grid-column:1/-1;
+    border-radius:12px;
+    order:-1;
+  }
+  .sin-choice{
+    position:relative;
+    left:auto;top:auto;
+    transform:none;
+    width:100%;
+    max-width:230px;
+    justify-self:center;
+  }
+  .sin-choice:hover,
+  .sin-choice:focus-visible{
+    transform:scale(1.06);
+  }
+}

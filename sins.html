@@ -1,4 +1,103 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Seven Sins · Sinners</title><link rel="stylesheet" href="/styles.css"></head><body>
-<header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods & Religion</a><a href="/history.html">History</a><a href="/people.html">People & Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header>
-<main class="page"><div class="kicker">Gods & Religion</div><h1 style="font-size:clamp(2.5rem,7vw,5rem);color:var(--gold2)">The Seven Sins</h1><p class="section-intro">The seven divine powers whose names shaped the continent—and whose meanings changed with it.</p><section class="lore-section"><h2>Coming Next</h2><p>This page is connected and ready. We can build the full section next.</p></section></main>
-<footer>Sinners World Archive · Built as a player-facing lore guide</footer><script src="/script.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Seven Sins · Sinners</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body class="sins-body">
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="/">SINNERS</a>
+    <button class="nav-toggle" type="button">Menu</button>
+    <nav class="main-nav">
+      <a href="/world.html">The World</a>
+      <a href="/gods.html">Gods & Religion</a>
+      <a href="/history.html">History</a>
+      <a href="/people.html">People & Legends</a>
+      <a href="/factions.html">Factions</a>
+      <a href="/creatures.html">Creatures</a>
+      <a href="/tales.html">Tales</a>
+    </nav>
+  </div>
+</header>
+
+<section class="sins-intro">
+  <div class="kicker">Gods & Religion</div>
+  <h1>The Seven Sins</h1>
+  <p>Seven gods. Seven names older than their modern meanings. Choose one to enter their archive.</p>
+</section>
+
+<main class="sin-selector-wrap">
+  <div class="sin-selector" id="sinSelector" data-active="">
+    <div class="selector-ornament"></div>
+
+    <div class="sin-selector-center">
+      <div class="center-default">
+        <strong>Choose a Sin</strong>
+        Hover over a sigil
+      </div>
+      <div class="center-name" id="sinName">Wrath</div>
+    </div>
+
+    <a class="sin-choice sin-envy" href="/envy.html" data-name="Envy" data-sin="envy" aria-label="Envy">
+      <img src="/sigil-envy.png" alt="Sigil of Envy">
+    </a>
+
+    <a class="sin-choice sin-wrath" href="/wrath.html" data-name="Wrath" data-sin="wrath" aria-label="Wrath">
+      <img src="/sigil-wrath.png" alt="Sigil of Wrath">
+    </a>
+
+    <a class="sin-choice sin-pride" href="/pride.html" data-name="Pride" data-sin="pride" aria-label="Pride">
+      <img src="/sigil-pride.png" alt="Sigil of Pride">
+    </a>
+
+    <a class="sin-choice sin-sloth" href="/sloth.html" data-name="Sloth" data-sin="sloth" aria-label="Sloth">
+      <img src="/sigil-sloth.png" alt="Sigil of Sloth">
+    </a>
+
+    <a class="sin-choice sin-greed" href="/greed.html" data-name="Greed" data-sin="greed" aria-label="Greed">
+      <img src="/sigil-greed.png" alt="Sigil of Greed">
+    </a>
+
+    <a class="sin-choice sin-gluttony" href="/gluttony.html" data-name="Gluttony" data-sin="gluttony" aria-label="Gluttony">
+      <img src="/sigil-gluttony.png" alt="Sigil of Gluttony">
+    </a>
+
+    <a class="sin-choice sin-lust" href="/lust.html" data-name="Lust" data-sin="lust" aria-label="Lust">
+      <img src="/sigil-lust.png" alt="Sigil of Lust">
+    </a>
+  </div>
+
+  <p class="sin-selector-note">Each sigil leads to that god's archive.</p>
+</main>
+
+<footer>Sinners World Archive · Built as a player-facing lore guide</footer>
+
+<script src="/script.js"></script>
+<script>
+const selector = document.getElementById('sinSelector');
+const nameBox = document.getElementById('sinName');
+const choices = [...document.querySelectorAll('.sin-choice')];
+
+function activate(choice){
+  selector.classList.add('has-hover');
+  selector.dataset.active = choice.dataset.sin;
+  nameBox.textContent = choice.dataset.name;
+}
+function clear(){
+  selector.classList.remove('has-hover');
+  selector.dataset.active = '';
+}
+
+choices.forEach(choice => {
+  choice.addEventListener('mouseenter', () => activate(choice));
+  choice.addEventListener('focus', () => activate(choice));
+  choice.addEventListener('mouseleave', clear);
+  choice.addEventListener('blur', clear);
+});
+</script>
+</body>
+</html>
