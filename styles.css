@@ -15,9 +15,7 @@
 html{scroll-behavior:smooth}
 body{
   margin:0;
-  background:
-    radial-gradient(circle at top, rgba(112,38,24,.18), transparent 32rem),
-    var(--bg);
+  background:var(--bg);
   color:var(--text);
   font-family:Georgia,"Times New Roman",serif;
   line-height:1.7;
@@ -26,7 +24,7 @@ a{color:var(--gold2);text-decoration:none}
 a:hover{color:#ffd0a0}
 .site-header{
   position:sticky;top:0;z-index:50;
-  background:rgba(3,8,18,.94);
+  background:rgba(3,8,18,.96);
   border-bottom:1px solid var(--line);
   backdrop-filter:blur(8px);
 }
@@ -105,26 +103,16 @@ footer{
 .next-card strong{display:block;color:var(--gold2);font-size:1.1rem;margin-bottom:.25rem}
 .next-card span{color:#c5b8a4}
 
-/* GODS & RELIGION — PICK A SIDE */
-.divine-body{
-  background:#02050a;
-  min-height:100vh;
-}
+/* GODS & RELIGION */
+.divine-body{background:#02050a;min-height:100vh}
 .divine-header{
-  position:relative;
-  z-index:20;
-  text-align:center;
-  padding:2rem 1rem 1rem;
-  background:
-    radial-gradient(circle at 50% 25%,rgba(149,84,50,.12),transparent 28rem),
-    #02050a;
+  text-align:center;padding:2rem 1rem 1rem;background:#02050a;
+  position:relative;z-index:20;
 }
 .divine-header .kicker{color:#b38867}
 .divine-header h1{
-  color:#efe2c8;
-  font-size:clamp(2.6rem,6vw,5.2rem);
-  margin:.1rem 0 .3rem;
-  text-shadow:0 4px 28px #000;
+  color:#efe2c8;font-size:clamp(2.6rem,6vw,5.2rem);
+  margin:.1rem 0 .3rem;text-shadow:0 4px 28px #000;
 }
 .divine-header p{margin:0 auto;color:#a99b88;max-width:720px;font-size:1rem}
 
@@ -133,284 +121,268 @@ footer{
   min-height:690px;
   overflow:hidden;
   isolation:isolate;
+  background:#02050a;
   border-top:1px solid #3a241b;
   border-bottom:1px solid #3a241b;
 }
 
-/* Balanced diagonal: crack now truly runs through the center */
+/*
+  The two backgrounds meet EXACTLY at the same jagged path:
+  top = 54%, bottom = 46%, so the fracture's visual center is 50%.
+  There is no overlap between the Sins and Virtues color fields.
+*/
 .divine-side{
   position:absolute;
   inset:0;
   display:flex;
   align-items:center;
-  transition:filter .45s ease;
 }
 .sin-side{
   z-index:2;
-  clip-path:polygon(0 0, 57% 0, 43% 100%, 0 100%);
+  clip-path:polygon(0 0,54% 0,46% 100%,0 100%);
   justify-content:flex-start;
   background:
-    radial-gradient(circle at 25% 42%,rgba(135,27,18,.35),transparent 27%),
-    linear-gradient(120deg,#180603 0%,#0a0809 52%,#020409 100%);
+    radial-gradient(circle at 23% 44%,rgba(128,25,17,.34),transparent 28%),
+    linear-gradient(120deg,#180603 0%,#0b0708 58%,#050507 100%);
 }
 .virtue-side{
   z-index:2;
-  clip-path:polygon(57% 0,100% 0,100% 100%,43% 100%);
+  clip-path:polygon(54% 0,100% 0,100% 100%,46% 100%);
   justify-content:flex-end;
   background:
-    radial-gradient(circle at 78% 55%,rgba(202,208,220,.16),transparent 27%),
-    linear-gradient(245deg,#191b24 0%,#0a0a0e 52%,#020409 100%);
+    radial-gradient(circle at 78% 52%,rgba(210,216,229,.14),transparent 28%),
+    linear-gradient(245deg,#1d2029 0%,#13151c 58%,#090a0f 100%);
 }
+
 .side-content{
-  width:min(42vw,560px);
-  padding:2rem clamp(2rem,4vw,4rem);
   position:relative;
   z-index:4;
+  width:min(41vw,540px);
+  padding:2rem clamp(2rem,4vw,4rem);
 }
 .sin-side .side-content{text-align:left}
-.virtue-side .side-content{text-align:right;padding-right:clamp(3.2rem,6vw,6rem)}
+.virtue-side .side-content{
+  text-align:right;
+  margin-right:3.5vw;
+  padding-right:2rem;
+}
 .side-label{
-  font-size:.75rem;
-  letter-spacing:.34em;
-  color:#8f8271;
-  text-transform:uppercase;
+  font-size:.75rem;letter-spacing:.34em;color:#8f8271;text-transform:uppercase;
 }
 .side-title{
-  font-size:clamp(3.6rem,7vw,6.7rem);
+  font-size:clamp(3.5rem,6.25vw,5.95rem);
   line-height:.95;
   margin:.2rem 0 .7rem;
   color:#cfa57b;
-  transition:color .4s ease,text-shadow .4s ease,transform .4s ease;
   white-space:nowrap;
+  transition:color .35s ease,text-shadow .35s ease,transform .35s ease;
 }
 .side-copy{
-  color:#b7a995;
-  font-size:1.05rem;
-  max-width:430px;
-  margin:.5rem 0 1.2rem;
+  color:#b7a995;font-size:1.05rem;max-width:430px;margin:.5rem 0 1.2rem;
 }
 .virtue-side .side-copy{margin-left:auto}
 .side-enter{
-  display:inline-block;
-  border:1px solid #69422e;
-  padding:.7rem 1rem;
-  color:#dcc2a0;
-  background:rgba(0,0,0,.22);
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  font-size:.8rem;
-  font-weight:700;
-  transition:.35s ease;
+  display:inline-block;border:1px solid #69422e;padding:.7rem 1rem;
+  color:#dcc2a0;background:rgba(0,0,0,.22);
+  text-transform:uppercase;letter-spacing:.1em;font-size:.8rem;font-weight:700;
+  transition:.3s ease;
 }
 
-/* Sins become angelic */
+/* Sins hover angelic — clipped so it never crosses the fracture */
 .sin-side::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  opacity:0;
+  content:"";position:absolute;inset:0;opacity:0;
   background:
-    radial-gradient(circle at 28% 43%,rgba(255,250,210,.50),transparent 14%),
-    radial-gradient(circle at 28% 43%,rgba(255,222,123,.25),transparent 30%),
-    linear-gradient(120deg,rgba(255,247,207,.12),rgba(221,180,84,.07),transparent 70%);
-  filter:blur(2px);
-  transition:opacity .45s ease,filter .45s ease;
+    radial-gradient(circle at 27% 44%,rgba(255,250,210,.48),transparent 14%),
+    radial-gradient(circle at 27% 44%,rgba(255,222,123,.22),transparent 31%);
+  transition:opacity .35s ease;
 }
-.sin-side:hover::after{opacity:1;filter:blur(0)}
+.sin-side:hover::after{opacity:1}
 .sin-side:hover .side-title{
   color:#fff2b9;
-  text-shadow:0 0 10px rgba(255,247,202,.9),0 0 32px rgba(245,213,119,.65),0 0 75px rgba(245,213,119,.32);
-  transform:scale(1.025);
+  text-shadow:0 0 10px rgba(255,247,202,.9),0 0 30px rgba(245,213,119,.58);
+  transform:scale(1.02);
 }
-.sin-side:hover .side-enter{color:#fff4c0;border-color:#e2c66f;box-shadow:0 0 20px rgba(244,217,122,.18)}
+.sin-side:hover .side-enter{
+  color:#fff4c0;border-color:#e2c66f;box-shadow:0 0 18px rgba(244,217,122,.16);
+}
 
-/* Virtues become demonic */
+/* Virtues hover demonic — also fully clipped to its own side */
 .virtue-side::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  opacity:0;
+  content:"";position:absolute;inset:0;opacity:0;
   background:
-    radial-gradient(circle at 76% 55%,rgba(147,0,0,.48),transparent 16%),
-    radial-gradient(circle at 76% 55%,rgba(90,0,0,.30),transparent 32%),
-    linear-gradient(245deg,rgba(99,0,0,.22),rgba(39,0,0,.08),transparent 72%);
-  transition:opacity .45s ease;
+    radial-gradient(circle at 77% 53%,rgba(147,0,0,.45),transparent 16%),
+    radial-gradient(circle at 77% 53%,rgba(90,0,0,.28),transparent 32%);
+  transition:opacity .35s ease;
 }
 .virtue-side:hover::after{opacity:1}
 .virtue-side:hover .side-title{
   color:#ef3027;
-  text-shadow:0 0 10px rgba(255,48,35,.8),0 0 30px rgba(143,0,0,.75),0 0 72px rgba(79,0,0,.58);
-  transform:scale(1.025);
+  text-shadow:0 0 10px rgba(255,48,35,.8),0 0 28px rgba(143,0,0,.7);
+  transform:scale(1.02);
 }
-.virtue-side:hover .side-enter{color:#ff695d;border-color:#8b1712;box-shadow:0 0 20px rgba(141,0,0,.24)}
+.virtue-side:hover .side-enter{
+  color:#ff695d;border-color:#8b1712;box-shadow:0 0 18px rgba(141,0,0,.2);
+}
 
-/* Central crack hitbox - deliberately wider than the visible crack */
+/* Easy centered hover zone */
 .crack-hitbox{
   position:absolute;
-  z-index:18;
-  top:0;
-  bottom:0;
-  left:44%;
-  width:14%;
+  z-index:30;
+  top:0;bottom:0;
+  left:43.25%;
+  width:13.5%;
   cursor:pointer;
   clip-path:polygon(
-    76% 0,58% 13%,72% 18%,47% 31%,64% 37%,36% 50%,53% 57%,27% 70%,44% 77%,8% 100%,
-    43% 100%,67% 78%,50% 70%,75% 57%,58% 50%,85% 37%,68% 31%,91% 18%,75% 13%,92% 0
+    74% 0,60% 12%,72% 18%,48% 31%,62% 38%,36% 50%,54% 57%,31% 70%,44% 77%,11% 100%,
+    37% 100%,64% 78%,51% 70%,75% 57%,59% 50%,82% 38%,69% 31%,91% 18%,78% 12%,91% 0
   );
 }
 
-/* Thin closed fracture */
-.crack-visual{
+/* Closed crack - thin, centered, and neutral */
+.crack-line{
   position:absolute;
-  z-index:12;
+  z-index:14;
   inset:0;
   pointer-events:none;
 }
-.crack-visual::before{
+.crack-line::before{
   content:"";
-  position:absolute;
-  inset:0;
+  position:absolute;inset:0;
   clip-path:polygon(
-    50.5% 0,49.7% 11%,51.3% 15%,48.5% 28%,50.3% 33%,47.2% 47%,49.1% 53%,45.8% 66%,47.2% 72%,42.7% 100%,
-    43.5% 100%,48.1% 72%,46.7% 66%,50% 53%,48.1% 47%,51.2% 33%,49.4% 28%,52.2% 15%,50.6% 11%,51.4% 0
+    54.25% 0,53.55% 11%,54.8% 16%,52.3% 29%,53.9% 34%,50.8% 48%,52.4% 54%,49.1% 67%,50.4% 73%,45.75% 100%,
+    46.55% 100%,51.25% 73%,49.95% 67%,53.25% 54%,51.7% 48%,54.75% 34%,53.15% 29%,55.7% 16%,54.45% 11%,55.05% 0
   );
-  background:linear-gradient(180deg,#e0b86e,#6d351e 48%,#d6ad67);
-  filter:drop-shadow(0 0 7px rgba(198,124,63,.28));
-  opacity:.9;
+  background:linear-gradient(180deg,#d8b46f,#86502f 50%,#d4aa63);
 }
 
-/* Closed void is barely there */
-.odin-void{
-  position:absolute;
-  z-index:8;
-  inset:-2%;
-  clip-path:polygon(
-    50.7% 0,49.4% 11%,51.8% 15%,48% 28%,50.7% 33%,46.6% 47%,49.5% 53%,45% 66%,47.7% 72%,42% 100%,
-    44% 100%,49% 72%,46.3% 66%,50.5% 53%,47.7% 47%,51.9% 33%,49.1% 28%,52.9% 15%,50.4% 11%,51.8% 0
-  );
-  background:
-    radial-gradient(circle at 50% 48%,rgba(144,92,255,.18),transparent 20%),
-    linear-gradient(180deg,#020006,#05000d 50%,#010004);
-  box-shadow:inset 0 0 60px #000;
-  transition:
-    clip-path .7s cubic-bezier(.18,.85,.18,1),
-    filter .5s ease;
-}
-
-/* Rift energy layers */
-.rift-energy,
-.rift-stars{
-  position:absolute;
-  z-index:9;
-  inset:0;
-  pointer-events:none;
-  opacity:0;
-  transition:opacity .4s ease .08s, transform .6s ease;
-}
-.rift-energy{
-  background:
-    radial-gradient(ellipse at 50% 50%,rgba(245,208,110,.28) 0 3%,transparent 23%),
-    radial-gradient(ellipse at 50% 50%,rgba(132,66,255,.24) 0 8%,transparent 35%),
-    radial-gradient(ellipse at 50% 50%,rgba(53,129,255,.16) 0 11%,transparent 43%);
-  filter:blur(4px);
-  animation:riftPulse 2.2s ease-in-out infinite;
-}
-.rift-stars{
-  background-image:
-    radial-gradient(circle at 47% 18%,#fff 0 1px,transparent 1.7px),
-    radial-gradient(circle at 53% 29%,#d9c4ff 0 1px,transparent 1.7px),
-    radial-gradient(circle at 49% 44%,#ffe5a6 0 1px,transparent 1.7px),
-    radial-gradient(circle at 54% 57%,#fff 0 1px,transparent 1.7px),
-    radial-gradient(circle at 46% 72%,#bcd0ff 0 1px,transparent 1.7px),
-    radial-gradient(circle at 52% 86%,#fff 0 1px,transparent 1.7px);
-  background-size:100% 100%;
-  filter:drop-shadow(0 0 4px rgba(255,255,255,.55));
-  transform:scale(.94);
-}
-@keyframes riftPulse{
-  0%,100%{filter:blur(4px) brightness(.9)}
-  50%{filter:blur(6px) brightness(1.25)}
-}
-
-/* Something pressing outward from behind */
-.rift-pressure{
+/*
+  Rift is pre-shaped but collapsed with scaleX.
+  This is much cheaper than animating a giant full-page clip-path.
+*/
+.odin-rift{
   position:absolute;
   z-index:10;
-  top:50%;
-  left:50%;
-  width:8%;
-  height:48%;
-  transform:translate(-50%,-50%) scaleX(.15);
-  opacity:0;
-  pointer-events:none;
-  border-radius:50%;
+  top:-2%;bottom:-2%;
+  left:35%;
+  width:30%;
+  transform:scaleX(.035);
+  transform-origin:50% 50%;
+  opacity:.05;
+  will-change:transform,opacity;
+  transition:
+    transform .58s cubic-bezier(.18,.85,.18,1),
+    opacity .25s ease;
+  clip-path:polygon(
+    63% 0,47% 10%,60% 17%,39% 29%,54% 37%,31% 49%,47% 58%,26% 70%,42% 79%,14% 100%,
+    78% 100%,91% 81%,73% 70%,94% 58%,78% 49%,96% 37%,79% 29%,95% 17%,79% 10%,91% 0
+  );
   background:
-    radial-gradient(ellipse at 50% 50%,rgba(0,0,0,.92) 0 20%,rgba(57,16,92,.7) 38%,transparent 68%);
+    radial-gradient(circle at 48% 42%,rgba(255,223,139,.27) 0 1.5%,transparent 12%),
+    radial-gradient(circle at 57% 57%,rgba(124,70,255,.30) 0 4%,transparent 28%),
+    radial-gradient(circle at 42% 63%,rgba(49,112,255,.20) 0 3%,transparent 27%),
+    linear-gradient(135deg,#010006 0%,#090018 46%,#020107 100%);
   box-shadow:
-    0 0 40px rgba(135,63,255,.24),
-    0 0 90px rgba(62,101,255,.13);
-  transition:opacity .4s ease .15s,transform .75s cubic-bezier(.18,.85,.18,1);
+    inset 0 0 45px #000,
+    0 0 28px rgba(106,66,219,.22);
+}
+.odin-rift::before{
+  content:"";
+  position:absolute;inset:0;
+  opacity:.9;
+  background:
+    radial-gradient(circle at 23% 19%,#fff 0 1px,transparent 1.6px),
+    radial-gradient(circle at 67% 24%,#cfc3ff 0 1px,transparent 1.6px),
+    radial-gradient(circle at 42% 37%,#ffe0a0 0 1px,transparent 1.6px),
+    radial-gradient(circle at 75% 46%,#fff 0 1px,transparent 1.6px),
+    radial-gradient(circle at 31% 57%,#bdd0ff 0 1px,transparent 1.6px),
+    radial-gradient(circle at 59% 68%,#fff 0 1px,transparent 1.6px),
+    radial-gradient(circle at 38% 83%,#d9c8ff 0 1px,transparent 1.6px),
+    radial-gradient(circle at 81% 86%,#ffe0a0 0 1px,transparent 1.6px);
+}
+.odin-rift::after{
+  content:"";
+  position:absolute;
+  width:23%;
+  height:58%;
+  top:21%;
+  left:39%;
+  border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.96) 0 22%,rgba(57,15,95,.64) 43%,transparent 72%);
+  box-shadow:
+    0 0 24px rgba(126,65,255,.22),
+    0 0 52px rgba(46,91,208,.13);
+}
+
+/* Extra edge light, no filters */
+.rift-edge{
+  position:absolute;
+  z-index:11;
+  top:-2%;bottom:-2%;
+  left:35%;
+  width:30%;
+  transform:scaleX(.035);
+  transform-origin:50% 50%;
+  opacity:0;
+  will-change:transform,opacity;
+  transition:
+    transform .58s cubic-bezier(.18,.85,.18,1),
+    opacity .22s ease;
+  clip-path:polygon(
+    62.5% 0,46% 10%,59.5% 17%,38% 29%,53.5% 37%,30% 49%,46.5% 58%,25% 70%,41.5% 79%,13% 100%,
+    15% 100%,43% 79%,27% 70%,48% 58%,32% 49%,55% 37%,40% 29%,61% 17%,48% 10%,64% 0,
+    89% 0,77% 10%,93% 17%,77% 29%,94% 37%,76% 49%,92% 58%,71% 70%,89% 81%,76% 100%,
+    79% 100%,92% 81%,74% 70%,95% 58%,79% 49%,97% 37%,80% 29%,96% 17%,80% 10%,92% 0
+  );
+  background:
+    linear-gradient(90deg,rgba(116,75,255,.55),rgba(232,183,94,.75),rgba(116,75,255,.52));
 }
 
 .odin-reveal{
   position:absolute;
-  z-index:15;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%) scale(.88);
-  width:min(390px,27vw);
+  z-index:16;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) scale(.9);
+  width:min(370px,25vw);
   text-align:center;
   opacity:0;
   pointer-events:none;
-  transition:opacity .35s ease .18s,transform .55s ease .12s;
+  will-change:transform,opacity;
+  transition:opacity .25s ease .14s,transform .4s ease .12s;
 }
 .odin-reveal .odin-kicker{
-  color:#b8a995;
-  text-transform:uppercase;
-  letter-spacing:.28em;
-  font-size:.68rem;
+  color:#b8a995;text-transform:uppercase;letter-spacing:.28em;font-size:.68rem;
 }
 .odin-reveal h2{
-  margin:.35rem 0 .45rem;
-  color:#e8c47d;
-  font-size:clamp(1.8rem,3.2vw,3.2rem);
-  text-shadow:
-    0 0 16px rgba(221,169,78,.30),
-    0 0 36px rgba(111,70,214,.22);
+  margin:.35rem 0 .45rem;color:#e8c47d;
+  font-size:clamp(1.8rem,3vw,3rem);
+  text-shadow:0 0 18px rgba(221,169,78,.25);
 }
 .odin-reveal p{color:#a99d91;margin:0 0 1rem;font-size:.9rem}
 .odin-reveal a{
-  display:inline-block;
-  padding:.55rem .8rem;
-  border:1px solid #755537;
-  color:#d7b579;
-  background:rgba(2,0,8,.58);
-  text-transform:uppercase;
-  font-size:.72rem;
-  letter-spacing:.1em;
+  display:inline-block;padding:.55rem .8rem;border:1px solid #755537;
+  color:#d7b579;background:rgba(2,0,8,.7);
+  text-transform:uppercase;font-size:.72rem;letter-spacing:.1em;
 }
 
-/* Open rift */
-.crack-hitbox:hover ~ .odin-void,
-.crack-hitbox.open ~ .odin-void{
-  clip-path:polygon(
-    43% 0,37% 10%,45% 18%,34% 30%,43% 38%,29% 49%,39% 58%,26% 70%,35% 79%,20% 100%,
-    65% 100%,74% 80%,64% 70%,78% 58%,68% 49%,81% 38%,70% 30%,84% 18%,74% 10%,79% 0
-  );
-  filter:drop-shadow(0 0 24px rgba(112,72,255,.28)) drop-shadow(0 0 45px rgba(221,163,71,.14));
+.vs-mark{
+  position:absolute;z-index:18;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-16deg);
+  color:#ad8d65;font-size:clamp(1rem,2vw,1.5rem);
+  letter-spacing:.18em;font-weight:700;text-shadow:0 2px 8px #000;
+  pointer-events:none;transition:opacity .2s ease;
 }
-.crack-hitbox:hover ~ .rift-energy,
-.crack-hitbox.open ~ .rift-energy,
-.crack-hitbox:hover ~ .rift-stars,
-.crack-hitbox.open ~ .rift-stars{
+
+/* Reveal states */
+.crack-hitbox:hover ~ .odin-rift,
+.crack-hitbox.open ~ .odin-rift{
+  transform:scaleX(1);
   opacity:1;
 }
-.crack-hitbox:hover ~ .rift-stars,
-.crack-hitbox.open ~ .rift-stars{transform:scale(1)}
-.crack-hitbox:hover ~ .rift-pressure,
-.crack-hitbox.open ~ .rift-pressure{
-  opacity:.9;
-  transform:translate(-50%,-50%) scaleX(1);
+.crack-hitbox:hover ~ .rift-edge,
+.crack-hitbox.open ~ .rift-edge{
+  transform:scaleX(1);
+  opacity:.75;
 }
 .crack-hitbox:hover ~ .odin-reveal,
 .crack-hitbox.open ~ .odin-reveal{
@@ -418,26 +390,10 @@ footer{
   transform:translate(-50%,-50%) scale(1);
   pointer-events:auto;
 }
-.crack-hitbox:hover ~ .crack-visual::before,
-.crack-hitbox.open ~ .crack-visual::before{
-  opacity:.25;
-}
-.vs-mark{
-  position:absolute;
-  z-index:16;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%) rotate(-17deg);
-  color:#ad8d65;
-  font-size:clamp(1rem,2vw,1.5rem);
-  letter-spacing:.18em;
-  font-weight:700;
-  text-shadow:0 2px 8px #000;
-  pointer-events:none;
-  transition:opacity .25s ease;
-}
 .crack-hitbox:hover ~ .vs-mark,
 .crack-hitbox.open ~ .vs-mark{opacity:0}
+.crack-hitbox:hover ~ .crack-line::before,
+.crack-hitbox.open ~ .crack-line::before{opacity:.18}
 
 @media (max-width:850px){
   .nav-toggle{display:block}
@@ -447,13 +403,14 @@ footer{
   .guide-grid,.city-list,.next-grid{grid-template-columns:1fr}
 
   .divine-stage{min-height:760px}
-  .side-content{width:46vw;padding:1.2rem}
-  .virtue-side .side-content{padding-right:1.5rem}
-  .side-title{font-size:clamp(2.2rem,10vw,4rem)}
-  .side-copy{font-size:.84rem}
-  .sin-side{clip-path:polygon(0 0,60% 0,40% 100%,0 100%)}
-  .virtue-side{clip-path:polygon(60% 0,100% 0,100% 100%,40% 100%)}
-  .crack-hitbox{left:39%;width:22%}
-  .odin-reveal{width:43vw;left:50%}
+  .side-content{width:44vw;padding:1rem}
+  .virtue-side .side-content{margin-right:1rem;padding-right:.5rem}
+  .side-title{font-size:clamp(2rem,9vw,3.6rem)}
+  .side-copy{font-size:.82rem}
+  .sin-side{clip-path:polygon(0 0,56% 0,44% 100%,0 100%)}
+  .virtue-side{clip-path:polygon(56% 0,100% 0,100% 100%,44% 100%)}
+  .crack-hitbox{left:40%;width:20%}
+  .odin-rift,.rift-edge{left:27%;width:46%}
+  .odin-reveal{width:40vw}
   .odin-reveal p{display:none}
 }

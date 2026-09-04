@@ -30,8 +30,8 @@
   <p>The names are familiar. The meanings are not.</p>
 </section>
 
-<main class="divine-stage" aria-label="Choose between the Sins and the Virtues">
-  <a class="divine-side sin-side" href="/sins.html" aria-label="Explore the Seven Sins">
+<main class="divine-stage">
+  <a class="divine-side sin-side" href="/sins.html">
     <div class="side-content">
       <div class="side-label">The Seven</div>
       <h2 class="side-title">SINS</h2>
@@ -40,7 +40,7 @@
     </div>
   </a>
 
-  <a class="divine-side virtue-side" href="/virtues.html" aria-label="Explore the Seven Virtues">
+  <a class="divine-side virtue-side" href="/virtues.html">
     <div class="side-content">
       <div class="side-label">The Seven</div>
       <h2 class="side-title">VIRTUES</h2>
@@ -50,44 +50,38 @@
   </a>
 
   <div class="crack-hitbox" id="odinCrack" tabindex="0" aria-label="Something is hidden in the fracture"></div>
-  <div class="odin-void"></div>
-  <div class="rift-energy"></div>
-  <div class="rift-stars"></div>
-  <div class="rift-pressure"></div>
+  <div class="odin-rift"></div>
+  <div class="rift-edge"></div>
 
-  <div class="odin-reveal" id="odinReveal">
+  <div class="odin-reveal">
     <div class="odin-kicker">There is something else here.</div>
     <h2>Odin's Children</h2>
     <p>Most remain unknown. Even the number ten is only a belief.</p>
     <a href="/odins-children.html">Look Deeper</a>
   </div>
 
-  <div class="crack-visual"></div>
+  <div class="crack-line"></div>
   <div class="vs-mark">VS</div>
 </main>
 
 <footer>Sinners World Archive · Built as a player-facing lore guide</footer>
 <script src="/script.js"></script>
 <script>
-  const crack = document.getElementById('odinCrack');
+const crack = document.getElementById('odinCrack');
 
-  function toggleOdin(){
+crack.addEventListener('click', (e) => {
+  if (window.matchMedia('(hover: none)').matches) {
+    e.preventDefault();
     crack.classList.toggle('open');
   }
+});
 
-  crack.addEventListener('click', (e) => {
-    if (window.matchMedia('(hover: none)').matches) {
-      e.preventDefault();
-      toggleOdin();
-    }
-  });
-
-  crack.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleOdin();
-    }
-  });
+crack.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    crack.classList.toggle('open');
+  }
+});
 </script>
 </body>
 </html>
