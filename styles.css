@@ -114,7 +114,7 @@ footer{
   position:relative;
   z-index:20;
   text-align:center;
-  padding:2.2rem 1rem 1rem;
+  padding:2rem 1rem 1rem;
   background:
     radial-gradient(circle at 50% 25%,rgba(149,84,50,.12),transparent 28rem),
     #02050a;
@@ -126,12 +126,8 @@ footer{
   margin:.1rem 0 .3rem;
   text-shadow:0 4px 28px #000;
 }
-.divine-header p{
-  margin:0 auto;
-  color:#a99b88;
-  max-width:720px;
-  font-size:1rem;
-}
+.divine-header p{margin:0 auto;color:#a99b88;max-width:720px;font-size:1rem}
+
 .divine-stage{
   position:relative;
   min-height:690px;
@@ -140,6 +136,8 @@ footer{
   border-top:1px solid #3a241b;
   border-bottom:1px solid #3a241b;
 }
+
+/* Balanced diagonal: crack now truly runs through the center */
 .divine-side{
   position:absolute;
   inset:0;
@@ -149,7 +147,7 @@ footer{
 }
 .sin-side{
   z-index:2;
-  clip-path:polygon(0 0, 66% 0, 43% 100%, 0 100%);
+  clip-path:polygon(0 0, 57% 0, 43% 100%, 0 100%);
   justify-content:flex-start;
   background:
     radial-gradient(circle at 25% 42%,rgba(135,27,18,.35),transparent 27%),
@@ -157,20 +155,20 @@ footer{
 }
 .virtue-side{
   z-index:2;
-  clip-path:polygon(66% 0,100% 0,100% 100%,43% 100%);
+  clip-path:polygon(57% 0,100% 0,100% 100%,43% 100%);
   justify-content:flex-end;
   background:
     radial-gradient(circle at 78% 55%,rgba(202,208,220,.16),transparent 27%),
     linear-gradient(245deg,#191b24 0%,#0a0a0e 52%,#020409 100%);
 }
 .side-content{
-  width:min(43vw,560px);
-  padding:2rem clamp(1.3rem,4vw,4rem);
+  width:min(42vw,560px);
+  padding:2rem clamp(2rem,4vw,4rem);
   position:relative;
   z-index:4;
 }
 .sin-side .side-content{text-align:left}
-.virtue-side .side-content{text-align:right}
+.virtue-side .side-content{text-align:right;padding-right:clamp(3.2rem,6vw,6rem)}
 .side-label{
   font-size:.75rem;
   letter-spacing:.34em;
@@ -178,11 +176,12 @@ footer{
   text-transform:uppercase;
 }
 .side-title{
-  font-size:clamp(3.8rem,8vw,7.5rem);
+  font-size:clamp(3.6rem,7vw,6.7rem);
   line-height:.95;
   margin:.2rem 0 .7rem;
   color:#cfa57b;
   transition:color .4s ease,text-shadow .4s ease,transform .4s ease;
+  white-space:nowrap;
 }
 .side-copy{
   color:#b7a995;
@@ -220,17 +219,10 @@ footer{
 .sin-side:hover::after{opacity:1;filter:blur(0)}
 .sin-side:hover .side-title{
   color:#fff2b9;
-  text-shadow:
-    0 0 10px rgba(255,247,202,.9),
-    0 0 32px rgba(245,213,119,.65),
-    0 0 75px rgba(245,213,119,.32);
+  text-shadow:0 0 10px rgba(255,247,202,.9),0 0 32px rgba(245,213,119,.65),0 0 75px rgba(245,213,119,.32);
   transform:scale(1.025);
 }
-.sin-side:hover .side-enter{
-  color:#fff4c0;
-  border-color:#e2c66f;
-  box-shadow:0 0 20px rgba(244,217,122,.18);
-}
+.sin-side:hover .side-enter{color:#fff4c0;border-color:#e2c66f;box-shadow:0 0 20px rgba(244,217,122,.18)}
 
 /* Virtues become demonic */
 .virtue-side::after{
@@ -247,52 +239,30 @@ footer{
 .virtue-side:hover::after{opacity:1}
 .virtue-side:hover .side-title{
   color:#ef3027;
-  text-shadow:
-    0 0 10px rgba(255,48,35,.8),
-    0 0 30px rgba(143,0,0,.75),
-    0 0 72px rgba(79,0,0,.58);
+  text-shadow:0 0 10px rgba(255,48,35,.8),0 0 30px rgba(143,0,0,.75),0 0 72px rgba(79,0,0,.58);
   transform:scale(1.025);
 }
-.virtue-side:hover .side-enter{
-  color:#ff695d;
-  border-color:#8b1712;
-  box-shadow:0 0 20px rgba(141,0,0,.24);
-}
+.virtue-side:hover .side-enter{color:#ff695d;border-color:#8b1712;box-shadow:0 0 20px rgba(141,0,0,.24)}
 
-/* Crack / Odin reveal */
+/* Central crack hitbox - deliberately wider than the visible crack */
 .crack-hitbox{
   position:absolute;
-  z-index:12;
+  z-index:18;
   top:0;
   bottom:0;
-  left:43%;
-  width:23%;
+  left:44%;
+  width:14%;
   cursor:pointer;
   clip-path:polygon(
-    92% 0,
-    74% 14%,
-    88% 18%,
-    67% 31%,
-    78% 36%,
-    57% 50%,
-    68% 56%,
-    45% 70%,
-    54% 76%,
-    18% 100%,
-    0 100%,
-    41% 72%,
-    33% 66%,
-    57% 53%,
-    46% 47%,
-    68% 34%,
-    57% 28%,
-    78% 16%,
-    65% 11%
+    76% 0,58% 13%,72% 18%,47% 31%,64% 37%,36% 50%,53% 57%,27% 70%,44% 77%,8% 100%,
+    43% 100%,67% 78%,50% 70%,75% 57%,58% 50%,85% 37%,68% 31%,91% 18%,75% 13%,92% 0
   );
 }
+
+/* Thin closed fracture */
 .crack-visual{
   position:absolute;
-  z-index:10;
+  z-index:12;
   inset:0;
   pointer-events:none;
 }
@@ -301,147 +271,162 @@ footer{
   position:absolute;
   inset:0;
   clip-path:polygon(
-    65% 0,
-    64.2% 11%,
-    66% 15%,
-    62.3% 28%,
-    64.2% 33%,
-    59.8% 47%,
-    61.8% 53%,
-    56.7% 66%,
-    58.2% 72%,
-    43.2% 100%,
-    42.5% 100%,
-    57.2% 71.8%,
-    55.8% 65.8%,
-    60.8% 52.8%,
-    58.8% 46.8%,
-    63.2% 32.8%,
-    61.3% 27.8%,
-    65% 14.8%,
-    63.2% 10.8%,
-    64.3% 0
+    50.5% 0,49.7% 11%,51.3% 15%,48.5% 28%,50.3% 33%,47.2% 47%,49.1% 53%,45.8% 66%,47.2% 72%,42.7% 100%,
+    43.5% 100%,48.1% 72%,46.7% 66%,50% 53%,48.1% 47%,51.2% 33%,49.4% 28%,52.2% 15%,50.6% 11%,51.4% 0
   );
-  background:
-    linear-gradient(180deg,#e7c07a 0%,#6a351f 48%,#d9b26d 100%);
+  background:linear-gradient(180deg,#e0b86e,#6d351e 48%,#d6ad67);
   filter:drop-shadow(0 0 7px rgba(198,124,63,.28));
-  opacity:.82;
+  opacity:.9;
 }
+
+/* Closed void is barely there */
 .odin-void{
   position:absolute;
   z-index:8;
   inset:-2%;
   clip-path:polygon(
-    64.8% 0,
-    64% 10%,
-    66.4% 15%,
-    61.8% 28%,
-    64.7% 33%,
-    59.2% 47%,
-    62.4% 53%,
-    56.1% 66%,
-    58.8% 72%,
-    42.5% 100%,
-    43.8% 100%,
-    59.8% 73%,
-    57.2% 66%,
-    63.5% 53%,
-    60.5% 47%,
-    65.8% 33%,
-    63% 28%,
-    67.2% 15%,
-    65% 10%,
-    66% 0
+    50.7% 0,49.4% 11%,51.8% 15%,48% 28%,50.7% 33%,46.6% 47%,49.5% 53%,45% 66%,47.7% 72%,42% 100%,
+    44% 100%,49% 72%,46.3% 66%,50.5% 53%,47.7% 47%,51.9% 33%,49.1% 28%,52.9% 15%,50.4% 11%,51.8% 0
   );
   background:
-    radial-gradient(circle at 54% 43%,rgba(198,150,75,.15),transparent 17%),
-    radial-gradient(circle at 47% 61%,rgba(80,98,145,.14),transparent 20%),
-    linear-gradient(180deg,#010106,#05030b 50%,#020105);
-  box-shadow:inset 0 0 65px #000;
+    radial-gradient(circle at 50% 48%,rgba(144,92,255,.18),transparent 20%),
+    linear-gradient(180deg,#020006,#05000d 50%,#010004);
+  box-shadow:inset 0 0 60px #000;
   transition:
-    clip-path .65s cubic-bezier(.2,.8,.2,1),
+    clip-path .7s cubic-bezier(.18,.85,.18,1),
     filter .5s ease;
 }
-.odin-reveal{
+
+/* Rift energy layers */
+.rift-energy,
+.rift-stars{
   position:absolute;
   z-index:9;
+  inset:0;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .4s ease .08s, transform .6s ease;
+}
+.rift-energy{
+  background:
+    radial-gradient(ellipse at 50% 50%,rgba(245,208,110,.28) 0 3%,transparent 23%),
+    radial-gradient(ellipse at 50% 50%,rgba(132,66,255,.24) 0 8%,transparent 35%),
+    radial-gradient(ellipse at 50% 50%,rgba(53,129,255,.16) 0 11%,transparent 43%);
+  filter:blur(4px);
+  animation:riftPulse 2.2s ease-in-out infinite;
+}
+.rift-stars{
+  background-image:
+    radial-gradient(circle at 47% 18%,#fff 0 1px,transparent 1.7px),
+    radial-gradient(circle at 53% 29%,#d9c4ff 0 1px,transparent 1.7px),
+    radial-gradient(circle at 49% 44%,#ffe5a6 0 1px,transparent 1.7px),
+    radial-gradient(circle at 54% 57%,#fff 0 1px,transparent 1.7px),
+    radial-gradient(circle at 46% 72%,#bcd0ff 0 1px,transparent 1.7px),
+    radial-gradient(circle at 52% 86%,#fff 0 1px,transparent 1.7px);
+  background-size:100% 100%;
+  filter:drop-shadow(0 0 4px rgba(255,255,255,.55));
+  transform:scale(.94);
+}
+@keyframes riftPulse{
+  0%,100%{filter:blur(4px) brightness(.9)}
+  50%{filter:blur(6px) brightness(1.25)}
+}
+
+/* Something pressing outward from behind */
+.rift-pressure{
+  position:absolute;
+  z-index:10;
   top:50%;
-  left:55%;
-  transform:translate(-50%,-50%) scale(.92);
-  width:min(360px,28vw);
+  left:50%;
+  width:8%;
+  height:48%;
+  transform:translate(-50%,-50%) scaleX(.15);
+  opacity:0;
+  pointer-events:none;
+  border-radius:50%;
+  background:
+    radial-gradient(ellipse at 50% 50%,rgba(0,0,0,.92) 0 20%,rgba(57,16,92,.7) 38%,transparent 68%);
+  box-shadow:
+    0 0 40px rgba(135,63,255,.24),
+    0 0 90px rgba(62,101,255,.13);
+  transition:opacity .4s ease .15s,transform .75s cubic-bezier(.18,.85,.18,1);
+}
+
+.odin-reveal{
+  position:absolute;
+  z-index:15;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(.88);
+  width:min(390px,27vw);
   text-align:center;
   opacity:0;
   pointer-events:none;
-  transition:opacity .35s ease .08s,transform .5s ease .08s;
+  transition:opacity .35s ease .18s,transform .55s ease .12s;
 }
 .odin-reveal .odin-kicker{
-  color:#9b8a78;
+  color:#b8a995;
   text-transform:uppercase;
   letter-spacing:.28em;
   font-size:.68rem;
 }
 .odin-reveal h2{
   margin:.35rem 0 .45rem;
-  color:#e0bc79;
+  color:#e8c47d;
   font-size:clamp(1.8rem,3.2vw,3.2rem);
-  text-shadow:0 0 20px rgba(200,146,66,.25);
+  text-shadow:
+    0 0 16px rgba(221,169,78,.30),
+    0 0 36px rgba(111,70,214,.22);
 }
-.odin-reveal p{
-  color:#9f9485;
-  margin:0 0 1rem;
-  font-size:.9rem;
-}
+.odin-reveal p{color:#a99d91;margin:0 0 1rem;font-size:.9rem}
 .odin-reveal a{
   display:inline-block;
   padding:.55rem .8rem;
   border:1px solid #755537;
   color:#d7b579;
+  background:rgba(2,0,8,.58);
   text-transform:uppercase;
   font-size:.72rem;
   letter-spacing:.1em;
 }
+
+/* Open rift */
 .crack-hitbox:hover ~ .odin-void,
-.crack-hitbox:focus-within ~ .odin-void{
+.crack-hitbox.open ~ .odin-void{
   clip-path:polygon(
-    58% 0,
-    53% 11%,
-    61% 18%,
-    49% 31%,
-    57% 38%,
-    44% 50%,
-    53% 58%,
-    40% 70%,
-    48% 78%,
-    30% 100%,
-    55% 100%,
-    69% 78%,
-    62% 70%,
-    73% 58%,
-    65% 50%,
-    76% 38%,
-    69% 31%,
-    78% 18%,
-    70% 11%,
-    72% 0
+    43% 0,37% 10%,45% 18%,34% 30%,43% 38%,29% 49%,39% 58%,26% 70%,35% 79%,20% 100%,
+    65% 100%,74% 80%,64% 70%,78% 58%,68% 49%,81% 38%,70% 30%,84% 18%,74% 10%,79% 0
   );
-  filter:drop-shadow(0 0 26px rgba(170,116,58,.22));
+  filter:drop-shadow(0 0 24px rgba(112,72,255,.28)) drop-shadow(0 0 45px rgba(221,163,71,.14));
+}
+.crack-hitbox:hover ~ .rift-energy,
+.crack-hitbox.open ~ .rift-energy,
+.crack-hitbox:hover ~ .rift-stars,
+.crack-hitbox.open ~ .rift-stars{
+  opacity:1;
+}
+.crack-hitbox:hover ~ .rift-stars,
+.crack-hitbox.open ~ .rift-stars{transform:scale(1)}
+.crack-hitbox:hover ~ .rift-pressure,
+.crack-hitbox.open ~ .rift-pressure{
+  opacity:.9;
+  transform:translate(-50%,-50%) scaleX(1);
 }
 .crack-hitbox:hover ~ .odin-reveal,
-.crack-hitbox:focus-within ~ .odin-reveal{
+.crack-hitbox.open ~ .odin-reveal{
   opacity:1;
   transform:translate(-50%,-50%) scale(1);
   pointer-events:auto;
 }
-.crack-hitbox:hover ~ .crack-visual::before{
-  opacity:.32;
+.crack-hitbox:hover ~ .crack-visual::before,
+.crack-hitbox.open ~ .crack-visual::before{
+  opacity:.25;
 }
-
-/* Decorative VS */
 .vs-mark{
   position:absolute;
-  z-index:14;
-  top:49%;
-  left:57.5%;
+  z-index:16;
+  top:50%;
+  left:50%;
   transform:translate(-50%,-50%) rotate(-17deg);
   color:#ad8d65;
   font-size:clamp(1rem,2vw,1.5rem);
@@ -451,9 +436,9 @@ footer{
   pointer-events:none;
   transition:opacity .25s ease;
 }
-.crack-hitbox:hover ~ .vs-mark{opacity:0}
+.crack-hitbox:hover ~ .vs-mark,
+.crack-hitbox.open ~ .vs-mark{opacity:0}
 
-/* Mobile: no hover, so tapping crack toggles via JS */
 @media (max-width:850px){
   .nav-toggle{display:block}
   .main-nav{display:none;width:100%;margin-left:0;flex-direction:column}
@@ -462,28 +447,13 @@ footer{
   .guide-grid,.city-list,.next-grid{grid-template-columns:1fr}
 
   .divine-stage{min-height:760px}
-  .side-content{width:48vw;padding:1.2rem}
-  .side-title{font-size:clamp(2.3rem,11vw,4.3rem)}
-  .side-copy{font-size:.88rem}
-  .sin-side{clip-path:polygon(0 0,73% 0,39% 100%,0 100%)}
-  .virtue-side{clip-path:polygon(73% 0,100% 0,100% 100%,39% 100%)}
-  .odin-reveal{width:44vw;left:56%}
+  .side-content{width:46vw;padding:1.2rem}
+  .virtue-side .side-content{padding-right:1.5rem}
+  .side-title{font-size:clamp(2.2rem,10vw,4rem)}
+  .side-copy{font-size:.84rem}
+  .sin-side{clip-path:polygon(0 0,60% 0,40% 100%,0 100%)}
+  .virtue-side{clip-path:polygon(60% 0,100% 0,100% 100%,40% 100%)}
+  .crack-hitbox{left:39%;width:22%}
+  .odin-reveal{width:43vw;left:50%}
   .odin-reveal p{display:none}
-  .crack-hitbox{left:36%;width:42%}
-}
-
-
-@media (hover:none){
-  .crack-hitbox.open ~ .odin-void{
-    clip-path:polygon(
-      58% 0,53% 11%,61% 18%,49% 31%,57% 38%,44% 50%,53% 58%,40% 70%,48% 78%,30% 100%,
-      55% 100%,69% 78%,62% 70%,73% 58%,65% 50%,76% 38%,69% 31%,78% 18%,70% 11%,72% 0
-    );
-  }
-  .crack-hitbox.open ~ .odin-reveal{
-    opacity:1;
-    transform:translate(-50%,-50%) scale(1);
-    pointer-events:auto;
-  }
-  .crack-hitbox.open ~ .vs-mark{opacity:0}
 }

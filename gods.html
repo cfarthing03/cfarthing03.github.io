@@ -50,8 +50,10 @@
   </a>
 
   <div class="crack-hitbox" id="odinCrack" tabindex="0" aria-label="Something is hidden in the fracture"></div>
-
   <div class="odin-void"></div>
+  <div class="rift-energy"></div>
+  <div class="rift-stars"></div>
+  <div class="rift-pressure"></div>
 
   <div class="odin-reveal" id="odinReveal">
     <div class="odin-kicker">There is something else here.</div>
@@ -68,11 +70,9 @@
 <script src="/script.js"></script>
 <script>
   const crack = document.getElementById('odinCrack');
-  const reveal = document.getElementById('odinReveal');
 
   function toggleOdin(){
     crack.classList.toggle('open');
-    reveal.classList.toggle('open');
   }
 
   crack.addEventListener('click', (e) => {
