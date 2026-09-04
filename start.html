@@ -1,7 +1,13 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Start Here · Sinners</title><link rel="stylesheet" href="/styles.css"></head>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Start Here · Sinners</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
 <body>
+
 <header class="site-header">
   <div class="nav-wrap">
     <a class="brand" href="/">SINNERS</a>
@@ -18,19 +24,120 @@
   </div>
 </header>
 
-<main class="article-shell">
-  <div class="breadcrumbs"><a href="/">Home</a> / Start Here</div>
-  <h1 class="article-title">Start Here</h1>
-  <p class="article-subtitle">A short orientation for new players before they dive into the deeper archive.</p>
-  <section class="article">
-    <h2>Coming Next</h2>
-    <p>This is the starter landing page for <strong>Start Here</strong>. We can replace this with cards and proper sub-sections as we migrate your lore from World Anvil.</p>
-    <p class="small-note">The navigation and page structure are already in place, so adding new sections now is just normal HTML instead of fighting nested folder menus.</p>
+<section class="start-hero">
+  <div class="start-hero-inner">
+    <div class="kicker">New to Sinners?</div>
+    <h1>Start Here</h1>
+    <p>Sinners is a world shaped by gods, old disasters, strange powers, and people who keep accidentally becoming part of history. You do not need to know everything before playing. This page is the short version: what the world is, what people generally know, and where to look when you want more.</p>
+  </div>
+</section>
+
+<main class="page">
+  <h2 class="section-title">The Four Things to Read First</h2>
+  <p class="section-intro">If you are completely new, read these in order. They are written as player-facing knowledge and avoid the deeper secrets of the setting.</p>
+
+  <div class="guide-grid">
+    <article class="guide-card">
+      <div class="num">01 · The Premise</div>
+      <h2>A Player's Guide to Sinners</h2>
+      <p>What kind of world this is, what matters when making a character, and why you do not need a theology degree to survive session one.</p>
+      <a href="#player-guide">Read the guide →</a>
+    </article>
+
+    <article class="guide-card">
+      <div class="num">02 · The Setting</div>
+      <h2>The World at a Glance</h2>
+      <p>A quick introduction to the major cities and the cultures shaped by the Seven Sins.</p>
+      <a href="#world-glance">See the world →</a>
+    </article>
+
+    <article class="guide-card">
+      <div class="num">03 · The Divine</div>
+      <h2>Gods & Divinity</h2>
+      <p>The Sins, the Virtues, other gods, and the mortals who sometimes get pulled directly into divine business.</p>
+      <a href="#gods-divinity">Meet the gods →</a>
+    </article>
+
+    <article class="guide-card">
+      <div class="num">04 · Common Knowledge</div>
+      <h2>What Everyone Knows</h2>
+      <p>The things your character can usually be assumed to know without rolling a history check every five minutes.</p>
+      <a href="#everyone-knows">Learn the basics →</a>
+    </article>
+  </div>
+
+  <section class="lore-section" id="player-guide">
+    <h2>A Player's Guide to Sinners</h2>
+    <p>Sinners is a world where the gods are real, powerful, and close enough to mortal life that entire cities have developed around their influence. The Seven Sins are not distant symbols hidden in scripture. Their beliefs, histories, and personalities have shaped cultures for generations, and the modern meanings of their names are not always the same as the old ones. Wrath can mean justice and courage. Lust can mean love, desire, and connection. Pride can mean confidence, identity, and achievement.</p>
+
+    <p>You are not expected to pick a side between the Sins and the Virtues, worship a god, or build your entire character around religion. Plenty of people care more about family, work, survival, adventure, money, art, food, or whatever disaster happens to be unfolding nearby. Religion is part of the world, not a character-creation requirement.</p>
+
+    <h3>Marks and Powers</h3>
+    <p>Supernatural abilities are common. Around sixty-five percent of the population carries a Vile Mark, which grants one unique supernatural power. A Vile Mark might allow someone to create plants, ignite their body, summon creatures, manipulate strange forces, or turn into slime. The power usually develops as the person grows older, revealing new ways to use the same underlying ability. Having a strange power is not, by itself, strange.</p>
+
+    <p>Sinner's Marks are something else entirely. They are extraordinarily rare gifts granted directly by one of the Seven Sins. Only one Mark from each Sin can exist at a time, and there is no guarantee every Sin currently has a bearer. Those chosen tend to become historically significant, although receiving a Mark does not automatically mean obeying the god who gave it.</p>
+
+    <h3>Your Character Does Not Need to Know Everything</h3>
+    <p>History in Sinners is enormous, complicated, and occasionally the reason an entire period needs its own chapter. Your character can know as much or as little of it as makes sense for them. The purpose of this archive is to make information easy to find when you actually need it, not to hand you homework before you are allowed to play.</p>
+  </section>
+
+  <section class="lore-section" id="world-glance">
+    <h2>The World at a Glance</h2>
+    <p>Many of the continent's most important cities developed under the influence of one of the Seven Sins. That does not mean every citizen worships the city's patron god, but their influence is difficult to miss. Each city has built its culture around a different interpretation of what that Sin represents.</p>
+
+    <div class="city-list">
+      <div class="city-item"><strong>Hus · Gluttony</strong><br>The largest population on the continent, famous for food, feasts, hospitality, and community. It is also the continent's crime capital. More people means more everything, including thieves, gangs, smugglers, and organized crime.</div>
+      <div class="city-item"><strong>Hilnem · Greed</strong><br>A city built around Contract Magic. Agreements can be magically enforced, businesses specialize in creating contracts, and even entering a building may place you under rules with automatic consequences. It is one of the safest places to live, provided you read what you agree to.</div>
+      <div class="city-item"><strong>Etro · Envy</strong><br>A center of entertainment, performance, celebrity, music, and comparison. The Radio Tower broadcasts entertainment across society through special pins, and everyone entering Etro must wear one.</div>
+      <div class="city-item"><strong>Palin · Wrath</strong><br>A desert culture where combat is worship, tradition, and literal sustenance. Those who fight in Wrath's name while within the city are sustained by his blessing and do not need food or water.</div>
+      <div class="city-item"><strong>Rushinghan · Lust</strong><br>A city of connection, love, friendship, passion, creativity, and desire. Lust carries no automatic shame here. Rushinghan is known for art, culture, relationships, and the strength people find in caring deeply about something.</div>
+      <div class="city-item"><strong>Sol · Sloth</strong><br>The Sleeping City rests during the day and comes alive at night through festivals and celebration. Its culture is built around rest, recovery, rhythm, and the idea that tomorrow will still be there. Probably.</div>
+      <div class="city-item"><strong>Oro · Pride</strong><br>A city of craft, invention, achievement, and creation built around the shattered forge where the Relics of Sin were first made. Pride here is about recognizing what you have built without needing someone else to be lesser.</div>
+    </div>
+
+    <p>These cities are major cultural centers, not the entire world. Other nations, settlements, gods, religions, factions, creatures, and histories exist far beyond them.</p>
+  </section>
+
+  <section class="lore-section" id="gods-divinity">
+    <h2>Gods & Divinity</h2>
+    <p>The Seven Sins are among the most influential divine powers in the world: Wrath, Greed, Lust, Envy, Sloth, Gluttony, and Pride. Their names are ancient, but modern cultures have spent generations redefining what those concepts mean. None of them are simple embodiments of a dictionary definition, and none are automatically good merely because a city likes them.</p>
+
+    <p>The Seven Virtues—Patience, Diligence, Humility, Chastity, Charity, Temperance, and Kindness—exist as a second major pantheon and stand in opposition to the Sins in complicated ways. Their conflict is not a clean war between good and evil. Both pantheons have histories, followers, agendas, and very real consequences for the mortal world.</p>
+
+    <p>They are also not the only gods. Other divine powers and smaller pantheons exist, including the mysterious group often called Odin's Children. Mortals have also, under extraordinary circumstances, crossed the line into divinity themselves. Sinners has learned the hard way that "god" is not always a permanent job title.</p>
+
+    <h3>Chosen, Champions, and Disciples</h3>
+    <p>Gods sometimes empower individual mortals directly. The exact title varies—Chosen, Champion, Disciple, and others—but the basic idea is the same: a mortal has become unusually connected to a divine power and has been given abilities or responsibilities beyond ordinary worship. These people tend to attract attention quickly, whether they want it or not.</p>
+
+    <div class="knowledge-box"><strong>Player-facing note:</strong> this archive intentionally separates common knowledge from deeper setting secrets. If something is not explained here, that does not necessarily mean the answer does not exist.</div>
+  </section>
+
+  <section class="lore-section" id="everyone-knows">
+    <h2>What Everyone Knows</h2>
+    <p>Most people grow up knowing that the gods are real, that the Seven Sins and Seven Virtues are major divine powers, and that gods can directly affect the mortal world. Religion varies wildly from person to person, but divine existence itself is not usually a matter of faith in the same way it would be in a world where the gods never appear.</p>
+
+    <p>People also know that history matters. Major events, legends, wars, divine conflicts, and the deeds of important figures are preserved with unusual care. Schools, historians, churches, and governments all place heavy importance on maintaining accurate records. Most people would tell you this is about learning from the past, protecting the truth, preserving cultural identity, or honoring those who came before. A small number of people seem to take historical accuracy far more seriously than those explanations alone would justify.</p>
+
+    <p>Vile Marks are normal. Sinner's Marks are not. Magic exists openly enough that supernatural abilities are part of everyday life, although power level, rarity, training, and social importance vary enormously. Someone producing fire from their hands might be interesting. Someone carrying a direct mark from Wrath is the sort of thing people write books about.</p>
+
+    <p>The world is also much larger than the Seven Sins. Other gods, religions, strange creatures, ancient powers, supernatural diseases, forgotten places, and civilizations exist. The Sins dominate a great deal of history because they have a habit of getting involved in things, not because nothing else matters.</p>
+
+    <p>Finally, adventurers have an uncomfortable tendency to become history. Some become heroes. Some become villains. Some become gods. Some create new pantheons entirely by accident. If your group survives long enough, somebody is probably going to have to update this website.</p>
+  </section>
+
+  <section class="lore-section">
+    <h2>Where to Go Next</h2>
+    <p>You now know enough to start exploring without accidentally opening an article that assumes you already understand three dead gods, a magical contract economy, and why a pig-shaped deity can eat concepts.</p>
+
+    <div class="next-grid">
+      <a class="next-card" href="/world.html"><strong>The World</strong><span>Explore cities, regions, nations, and important locations.</span></a>
+      <a class="next-card" href="/gods.html"><strong>Gods & Religion</strong><span>Dig into the Sins, Virtues, churches, cults, and divine figures.</span></a>
+      <a class="next-card" href="/tales.html"><strong>Tales of Sinners</strong><span>See the campaigns and adventurers whose choices became history.</span></a>
+    </div>
   </section>
 </main>
 
-<footer>
-  Sinners World Archive · Built as a player-facing lore guide
-</footer>
+<footer>Sinners World Archive · Built as a player-facing lore guide</footer>
 <script src="/script.js"></script>
-</body></html>
+</body>
+</html>
