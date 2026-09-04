@@ -1382,3 +1382,31 @@ footer{
   .deity-sigil{width:105px}
   .sloth-withheld-card{width:82%;min-height:250px}
 }
+
+
+
+/* ---------------------------------------------------------
+   Sloth article — improve sigil visibility
+   --------------------------------------------------------- */
+.deity-sloth .deity-sigil{
+  background:
+    radial-gradient(circle at center,
+      rgba(146,121,168,.22) 0%,
+      rgba(78,61,92,.18) 44%,
+      rgba(3,7,13,.94) 72%);
+  border-color:rgba(178,151,201,.72);
+  box-shadow:
+    0 0 0 6px rgba(3,7,13,.76),
+    0 0 24px rgba(146,121,168,.34),
+    0 0 52px rgba(146,121,168,.16);
+}
+
+.deity-sloth .deity-sigil img{
+  width:82%;
+  height:82%;
+  filter:
+    brightness(1.5)
+    contrast(1.08)
+    drop-shadow(0 0 5px rgba(203,184,218,.52))
+    drop-shadow(0 0 12px rgba(146,121,168,.36));
+}
