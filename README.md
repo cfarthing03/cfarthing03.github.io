@@ -1,36 +1,19 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>People & Legends · Sinners</title><link rel="stylesheet" href="/styles.css"></head>
-<body>
-<header class="site-header">
-  <div class="nav-wrap">
-    <a class="brand" href="/">SINNERS</a>
-    <button class="nav-toggle" type="button">Menu</button>
-    <nav class="main-nav">
-      <a href="/world/">The World</a>
-      <a href="/gods/">Gods & Religion</a>
-      <a href="/history/">History</a>
-      <a href="/people/">People & Legends</a>
-      <a href="/factions/">Factions</a>
-      <a href="/creatures/">Creatures</a>
-      <a href="/tales/">Tales</a>
-    </nav>
-  </div>
-</header>
+# Sinners Site — Flat Upload Version
 
-<main class="article-shell">
-  <div class="breadcrumbs"><a href="/">Home</a> / People & Legends</div>
-  <h1 class="article-title">People & Legends</h1>
-  <p class="article-subtitle">Heroes, villains, rulers, champions, and the people history refuses to forget.</p>
-  <section class="article">
-    <h2>Coming Next</h2>
-    <p>This is the starter landing page for <strong>People & Legends</strong>. We can replace this with cards and proper sub-sections as we migrate your lore from World Anvil.</p>
-    <p class="small-note">The navigation and page structure are already in place, so adding new sections now is just normal HTML instead of fighting nested folder menus.</p>
-  </section>
-</main>
+This version is intentionally flat so GitHub's web uploader cannot collapse folders or rename multiple `index.html` files.
 
-<footer>
-  Sinners World Archive · Built as a player-facing lore guide
-</footer>
-<script src="/script.js"></script>
-</body></html>
+Upload these files directly into the root of `cfarthing03.github.io`:
+
+- index.html
+- styles.css
+- script.js
+- world.html
+- gods.html
+- history.html
+- people.html
+- factions.html
+- creatures.html
+- tales.html
+- start.html
+
+Do NOT upload the ZIP itself. Extract it first, then select all the files above and upload them together.
