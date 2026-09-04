@@ -1002,3 +1002,104 @@ footer{
 .sin-gluttony:hover,.sin-gluttony:focus-visible{background:radial-gradient(circle at center, rgba(209,83,62,.31) 0%, rgba(122,42,31,.19) 45%, rgba(10,10,14,.98) 70%)}
 .sin-sloth:hover,.sin-sloth:focus-visible{background:radial-gradient(circle at center, rgba(177,145,207,.34) 0%, rgba(109,83,136,.21) 45%, rgba(10,10,14,.98) 70%)}
 .sin-pride:hover,.sin-pride:focus-visible{background:radial-gradient(circle at center, rgba(255,253,244,.28) 0%, rgba(229,224,211,.16) 45%, rgba(10,10,13,.98) 70%)}
+
+
+
+/* ---------------------------------------------------------
+   Softer hover treatment for the five brighter sigils.
+   This removes the late "snap" into an overexposed glow and
+   makes them behave more like Sloth and Pride.
+   --------------------------------------------------------- */
+
+.sin-envy:hover,
+.sin-envy:focus-visible{
+  box-shadow:
+    0 0 0 5px rgba(4,5,8,.9),
+    0 0 0 6px rgba(92,157,104,.72),
+    0 0 22px rgba(92,157,104,.46),
+    0 0 46px rgba(92,157,104,.20);
+}
+.sin-envy:hover img,
+.sin-envy:focus-visible img{
+  filter:
+    drop-shadow(0 0 5px rgba(132,197,143,.62))
+    drop-shadow(0 0 13px rgba(92,157,104,.38));
+}
+
+.sin-lust:hover,
+.sin-lust:focus-visible{
+  box-shadow:
+    0 0 0 5px rgba(4,5,8,.9),
+    0 0 0 6px rgba(200,50,106,.72),
+    0 0 22px rgba(200,50,106,.46),
+    0 0 46px rgba(200,50,106,.20);
+}
+.sin-lust:hover img,
+.sin-lust:focus-visible img{
+  filter:
+    drop-shadow(0 0 5px rgba(226,101,145,.62))
+    drop-shadow(0 0 13px rgba(200,50,106,.38));
+}
+
+.sin-wrath:hover,
+.sin-wrath:focus-visible{
+  box-shadow:
+    0 0 0 5px rgba(4,5,8,.9),
+    0 0 0 6px rgba(240,155,49,.72),
+    0 0 22px rgba(240,155,49,.46),
+    0 0 46px rgba(240,155,49,.20);
+}
+.sin-wrath:hover img,
+.sin-wrath:focus-visible img{
+  filter:
+    drop-shadow(0 0 5px rgba(255,190,99,.62))
+    drop-shadow(0 0 13px rgba(240,155,49,.38));
+}
+
+.sin-greed:hover,
+.sin-greed:focus-visible{
+  box-shadow:
+    0 0 0 5px rgba(4,5,8,.9),
+    0 0 0 6px rgba(201,154,46,.72),
+    0 0 22px rgba(201,154,46,.46),
+    0 0 46px rgba(201,154,46,.20);
+}
+.sin-greed:hover img,
+.sin-greed:focus-visible img{
+  filter:
+    drop-shadow(0 0 5px rgba(231,192,91,.62))
+    drop-shadow(0 0 13px rgba(201,154,46,.38));
+}
+
+.sin-gluttony:hover,
+.sin-gluttony:focus-visible{
+  box-shadow:
+    0 0 0 5px rgba(4,5,8,.9),
+    0 0 0 6px rgba(168,55,39,.72),
+    0 0 22px rgba(168,55,39,.46),
+    0 0 46px rgba(168,55,39,.20);
+}
+.sin-gluttony:hover img,
+.sin-gluttony:focus-visible img{
+  filter:
+    drop-shadow(0 0 5px rgba(213,94,73,.62))
+    drop-shadow(0 0 13px rgba(168,55,39,.38));
+}
+
+/* The old radial flare was what made the glow suddenly jump brighter.
+   Keep it very subtle on every sigil. */
+.sin-choice::after{
+  opacity:0 !important;
+}
+.sin-choice:hover::after,
+.sin-choice:focus-visible::after{
+  opacity:.18 !important;
+}
+
+/* Slightly gentler outer ring expansion so the whole hover feels continuous. */
+.sin-choice::before{
+  transition:
+    opacity .28s ease,
+    transform .28s cubic-bezier(.2,.8,.2,1),
+    border-color .28s ease;
+}
