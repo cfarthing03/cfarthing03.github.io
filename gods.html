@@ -1,7 +1,13 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gods & Religion · Sinners</title><link rel="stylesheet" href="/styles.css"></head>
-<body>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gods & Religion · Sinners</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body class="divine-body">
+
 <header class="site-header">
   <div class="nav-wrap">
     <a class="brand" href="/">SINNERS</a>
@@ -18,19 +24,70 @@
   </div>
 </header>
 
-<main class="article-shell">
-  <div class="breadcrumbs"><a href="/">Home</a> / Gods & Religion</div>
-  <h1 class="article-title">Gods & Religion</h1>
-  <p class="article-subtitle">The Seven Sins, the Virtues, churches, cults, Chosen, Champions, and other divine powers.</p>
-  <section class="article">
-    <h2>Coming Next</h2>
-    <p>This is the starter landing page for <strong>Gods & Religion</strong>. We can replace this with cards and proper sub-sections as we migrate your lore from World Anvil.</p>
-    <p class="small-note">The navigation and page structure are already in place, so adding new sections now is just normal HTML instead of fighting nested folder menus.</p>
-  </section>
+<section class="divine-header">
+  <div class="kicker">Gods & Religion</div>
+  <h1>Pick a Side</h1>
+  <p>The names are familiar. The meanings are not.</p>
+</section>
+
+<main class="divine-stage" aria-label="Choose between the Sins and the Virtues">
+  <a class="divine-side sin-side" href="/sins.html" aria-label="Explore the Seven Sins">
+    <div class="side-content">
+      <div class="side-label">The Seven</div>
+      <h2 class="side-title">SINS</h2>
+      <p class="side-copy">Wrath. Greed. Lust. Envy. Sloth. Gluttony. Pride.</p>
+      <span class="side-enter">Choose the Sins</span>
+    </div>
+  </a>
+
+  <a class="divine-side virtue-side" href="/virtues.html" aria-label="Explore the Seven Virtues">
+    <div class="side-content">
+      <div class="side-label">The Seven</div>
+      <h2 class="side-title">VIRTUES</h2>
+      <p class="side-copy">Patience. Diligence. Humility. Chastity. Charity. Temperance. Kindness.</p>
+      <span class="side-enter">Choose the Virtues</span>
+    </div>
+  </a>
+
+  <div class="crack-hitbox" id="odinCrack" tabindex="0" aria-label="Something is hidden in the fracture"></div>
+
+  <div class="odin-void"></div>
+
+  <div class="odin-reveal" id="odinReveal">
+    <div class="odin-kicker">There is something else here.</div>
+    <h2>Odin's Children</h2>
+    <p>Most remain unknown. Even the number ten is only a belief.</p>
+    <a href="/odins-children.html">Look Deeper</a>
+  </div>
+
+  <div class="crack-visual"></div>
+  <div class="vs-mark">VS</div>
 </main>
 
-<footer>
-  Sinners World Archive · Built as a player-facing lore guide
-</footer>
+<footer>Sinners World Archive · Built as a player-facing lore guide</footer>
 <script src="/script.js"></script>
-</body></html>
+<script>
+  const crack = document.getElementById('odinCrack');
+  const reveal = document.getElementById('odinReveal');
+
+  function toggleOdin(){
+    crack.classList.toggle('open');
+    reveal.classList.toggle('open');
+  }
+
+  crack.addEventListener('click', (e) => {
+    if (window.matchMedia('(hover: none)').matches) {
+      e.preventDefault();
+      toggleOdin();
+    }
+  });
+
+  crack.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleOdin();
+    }
+  });
+</script>
+</body>
+</html>
