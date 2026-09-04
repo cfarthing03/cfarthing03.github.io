@@ -126,7 +126,11 @@ footer{
   border-bottom:1px solid #3a241b;
 }
 
-/* Slightly nudged right so the jagged fracture reads visually centered */
+/*
+  ONE shared jagged boundary for both factions.
+  The exact same points are used by both clip-paths.
+  This keeps red entirely on the left and blue-gray entirely on the right.
+*/
 .divine-side{
   position:absolute;
   inset:0;
@@ -135,19 +139,45 @@ footer{
 }
 .sin-side{
   z-index:2;
-  clip-path:polygon(0 0,55% 0,47% 100%,0 100%);
+  clip-path:polygon(
+    0 0,
+    53% 0,
+    52% 12%,
+    54% 18%,
+    51% 31%,
+    53% 38%,
+    50% 50%,
+    52% 57%,
+    49.5% 70%,
+    51% 77%,
+    48.5% 100%,
+    0 100%
+  );
   justify-content:flex-start;
   background:
     radial-gradient(circle at 23% 44%,rgba(128,25,17,.34),transparent 28%),
-    linear-gradient(120deg,#180603 0%,#0b0708 58%,#050507 100%);
+    linear-gradient(120deg,#180603 0%,#0b0708 62%,#050507 100%);
 }
 .virtue-side{
   z-index:2;
-  clip-path:polygon(55% 0,100% 0,100% 100%,47% 100%);
+  clip-path:polygon(
+    53% 0,
+    100% 0,
+    100% 100%,
+    48.5% 100%,
+    51% 77%,
+    49.5% 70%,
+    52% 57%,
+    50% 50%,
+    53% 38%,
+    51% 31%,
+    54% 18%,
+    52% 12%
+  );
   justify-content:flex-end;
   background:
     radial-gradient(circle at 78% 52%,rgba(210,216,229,.14),transparent 28%),
-    linear-gradient(245deg,#1d2029 0%,#13151c 58%,#090a0f 100%);
+    linear-gradient(245deg,#1d2029 0%,#13151c 62%,#090a0f 100%);
 }
 .side-content{
   position:relative;
@@ -158,8 +188,8 @@ footer{
 .sin-side .side-content{text-align:left}
 .virtue-side .side-content{
   text-align:right;
-  margin-right:4.8vw;
-  padding-right:1.5rem;
+  margin-right:4vw;
+  padding-right:1.4rem;
 }
 .side-label{
   font-size:.75rem;letter-spacing:.34em;color:#8f8271;text-transform:uppercase;
@@ -197,9 +227,7 @@ footer{
   text-shadow:0 0 10px rgba(255,247,202,.9),0 0 30px rgba(245,213,119,.58);
   transform:scale(1.02);
 }
-.sin-side:hover .side-enter{
-  color:#fff4c0;border-color:#e2c66f;box-shadow:0 0 18px rgba(244,217,122,.16);
-}
+.sin-side:hover .side-enter{color:#fff4c0;border-color:#e2c66f;box-shadow:0 0 18px rgba(244,217,122,.16)}
 
 /* Virtues hover demonic */
 .virtue-side::after{
@@ -215,42 +243,56 @@ footer{
   text-shadow:0 0 10px rgba(255,48,35,.8),0 0 28px rgba(143,0,0,.7);
   transform:scale(1.02);
 }
-.virtue-side:hover .side-enter{
-  color:#ff695d;border-color:#8b1712;box-shadow:0 0 18px rgba(141,0,0,.2);
-}
+.virtue-side:hover .side-enter{color:#ff695d;border-color:#8b1712;box-shadow:0 0 18px rgba(141,0,0,.2)}
 
-/* Easier centered hover zone */
+/* Wider hover zone centered directly over the jagged separator */
 .crack-hitbox{
   position:absolute;
   z-index:30;
   top:0;bottom:0;
-  left:44.25%;
-  width:13.5%;
+  left:44%;
+  width:14%;
   cursor:pointer;
   clip-path:polygon(
-    74% 0,60% 12%,72% 18%,48% 31%,62% 38%,36% 50%,54% 57%,31% 70%,44% 77%,11% 100%,
-    37% 100%,64% 78%,51% 70%,75% 57%,59% 50%,82% 38%,69% 31%,91% 18%,78% 12%,91% 0
+    70% 0,55% 12%,72% 18%,46% 31%,63% 38%,38% 50%,58% 57%,35% 70%,52% 77%,17% 100%,
+    43% 100%,65% 78%,49% 70%,74% 57%,57% 50%,82% 38%,65% 31%,90% 18%,74% 12%,91% 0
   );
 }
 
-/* Closed crack */
-.crack-line{
+/*
+  SVG separator sits exactly on the faction boundary.
+  It has a red inner edge on the left, blue-gray on the right,
+  and a warm neutral center seam.
+*/
+.divine-separator{
   position:absolute;
-  z-index:14;
+  z-index:15;
   inset:0;
+  width:100%;
+  height:100%;
   pointer-events:none;
+  overflow:visible;
 }
-.crack-line::before{
-  content:"";
-  position:absolute;inset:0;
-  clip-path:polygon(
-    55.25% 0,54.55% 11%,55.8% 16%,53.3% 29%,54.9% 34%,51.8% 48%,53.4% 54%,50.1% 67%,51.4% 73%,46.75% 100%,
-    47.55% 100%,52.25% 73%,50.95% 67%,54.25% 54%,52.7% 48%,55.75% 34%,54.15% 29%,56.7% 16%,55.45% 11%,56.05% 0
-  );
-  background:linear-gradient(180deg,#d8b46f,#86502f 50%,#d4aa63);
+.sep-left{
+  fill:none;
+  stroke:#7f241e;
+  stroke-width:1.25;
+  vector-effect:non-scaling-stroke;
+}
+.sep-right{
+  fill:none;
+  stroke:#6d7890;
+  stroke-width:1.25;
+  vector-effect:non-scaling-stroke;
+}
+.sep-center{
+  fill:none;
+  stroke:#d8af67;
+  stroke-width:1.2;
+  vector-effect:non-scaling-stroke;
 }
 
-/* Stage-wide dimming makes the secret feel like it takes over the room */
+/* Dimming overlay */
 .rift-dim{
   position:absolute;
   z-index:7;
@@ -261,136 +303,139 @@ footer{
   transition:opacity .3s ease;
 }
 
-/* Rift body - transform based for smoother animation */
+/*
+  RIFT: full-stage element using a polygon built around the exact same
+  jagged center path. It collapses toward x=51% and expands from there,
+  so the opening now lines up with the crack instead of appearing beside it.
+*/
 .odin-rift{
   position:absolute;
   z-index:10;
-  top:-2%;bottom:-2%;
-  left:36%;
-  width:30%;
+  inset:-1%;
   transform:scaleX(.035);
-  transform-origin:50% 50%;
-  opacity:.05;
+  transform-origin:51% 50%;
+  opacity:.04;
   will-change:transform,opacity;
-  transition:transform .58s cubic-bezier(.18,.85,.18,1),opacity .25s ease;
+  transition:transform .6s cubic-bezier(.18,.85,.18,1),opacity .25s ease;
   clip-path:polygon(
-    63% 0,47% 10%,60% 17%,39% 29%,54% 37%,31% 49%,47% 58%,26% 70%,42% 79%,14% 100%,
-    78% 100%,91% 81%,73% 70%,94% 58%,78% 49%,96% 37%,79% 29%,95% 17%,79% 10%,91% 0
+    46% 0,
+    45% 12%,
+    47% 18%,
+    44% 31%,
+    46% 38%,
+    43% 50%,
+    45% 57%,
+    42.5% 70%,
+    44% 77%,
+    41.5% 100%,
+
+    55.5% 100%,
+    58% 77%,
+    56.5% 70%,
+    59% 57%,
+    57% 50%,
+    60% 38%,
+    58% 31%,
+    61% 18%,
+    59% 12%,
+    60% 0
   );
   background:
-    radial-gradient(circle at 48% 42%,rgba(255,223,139,.27) 0 1.5%,transparent 12%),
-    radial-gradient(circle at 57% 57%,rgba(124,70,255,.30) 0 4%,transparent 28%),
-    radial-gradient(circle at 42% 63%,rgba(49,112,255,.20) 0 3%,transparent 27%),
+    radial-gradient(circle at 51% 43%,rgba(255,225,145,.24) 0 1.4%,transparent 11%),
+    radial-gradient(circle at 54% 57%,rgba(122,69,255,.31) 0 4%,transparent 27%),
+    radial-gradient(circle at 47% 63%,rgba(47,105,246,.18) 0 3%,transparent 26%),
     linear-gradient(135deg,#010006 0%,#090018 46%,#020107 100%);
-  box-shadow:inset 0 0 45px #000,0 0 28px rgba(106,66,219,.22);
+  box-shadow:inset 0 0 50px #000,0 0 28px rgba(106,66,219,.20);
 }
 .odin-rift::before{
   content:"";
   position:absolute;inset:0;
-  opacity:.95;
   background:
-    radial-gradient(circle at 23% 19%,#fff 0 1px,transparent 1.6px),
-    radial-gradient(circle at 67% 24%,#cfc3ff 0 1px,transparent 1.6px),
-    radial-gradient(circle at 42% 37%,#ffe0a0 0 1px,transparent 1.6px),
-    radial-gradient(circle at 75% 46%,#fff 0 1px,transparent 1.6px),
-    radial-gradient(circle at 31% 57%,#bdd0ff 0 1px,transparent 1.6px),
-    radial-gradient(circle at 59% 68%,#fff 0 1px,transparent 1.6px),
-    radial-gradient(circle at 38% 83%,#d9c8ff 0 1px,transparent 1.6px),
-    radial-gradient(circle at 81% 86%,#ffe0a0 0 1px,transparent 1.6px);
+    radial-gradient(circle at 47% 18%,#fff 0 1px,transparent 1.7px),
+    radial-gradient(circle at 54% 25%,#cfc3ff 0 1px,transparent 1.7px),
+    radial-gradient(circle at 49% 39%,#ffe0a0 0 1px,transparent 1.7px),
+    radial-gradient(circle at 55% 48%,#fff 0 1px,transparent 1.7px),
+    radial-gradient(circle at 46% 58%,#bdd0ff 0 1px,transparent 1.7px),
+    radial-gradient(circle at 53% 69%,#fff 0 1px,transparent 1.7px),
+    radial-gradient(circle at 48% 84%,#d9c8ff 0 1px,transparent 1.7px);
 }
 .odin-rift::after{
   content:"";
   position:absolute;
-  width:23%;height:58%;
-  top:21%;left:39%;
+  width:9%;
+  height:58%;
+  top:21%;
+  left:46.5%;
   border-radius:50%;
-  background:radial-gradient(ellipse at center,rgba(0,0,0,.96) 0 22%,rgba(57,15,95,.64) 43%,transparent 72%);
-  box-shadow:0 0 24px rgba(126,65,255,.22),0 0 52px rgba(46,91,208,.13);
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.97) 0 22%,rgba(57,15,95,.68) 45%,transparent 74%);
+  box-shadow:0 0 24px rgba(126,65,255,.22),0 0 52px rgba(46,91,208,.12);
 }
 
-/* Edge energy */
+/* Rift edge light follows the same center */
 .rift-edge{
   position:absolute;
   z-index:11;
-  top:-2%;bottom:-2%;
-  left:36%;
-  width:30%;
+  inset:-1%;
   transform:scaleX(.035);
-  transform-origin:50% 50%;
+  transform-origin:51% 50%;
   opacity:0;
   will-change:transform,opacity;
-  transition:transform .58s cubic-bezier(.18,.85,.18,1),opacity .22s ease;
+  transition:transform .6s cubic-bezier(.18,.85,.18,1),opacity .22s ease;
   clip-path:polygon(
-    62.5% 0,46% 10%,59.5% 17%,38% 29%,53.5% 37%,30% 49%,46.5% 58%,25% 70%,41.5% 79%,13% 100%,
-    15% 100%,43% 79%,27% 70%,48% 58%,32% 49%,55% 37%,40% 29%,61% 17%,48% 10%,64% 0,
-    89% 0,77% 10%,93% 17%,77% 29%,94% 37%,76% 49%,92% 58%,71% 70%,89% 81%,76% 100%,
-    79% 100%,92% 81%,74% 70%,95% 58%,79% 49%,97% 37%,80% 29%,96% 17%,80% 10%,92% 0
+    45.4% 0,44.5% 12%,46.4% 18%,43.4% 31%,45.4% 38%,42.4% 50%,44.4% 57%,41.9% 70%,43.4% 77%,40.9% 100%,
+    42.2% 100%,44.8% 77%,43.2% 70%,45.7% 57%,43.7% 50%,46.7% 38%,44.7% 31%,47.7% 18%,45.7% 12%,46.7% 0,
+    59.3% 0,58.3% 12%,60.3% 18%,57.3% 31%,59.3% 38%,56.3% 50%,58.3% 57%,55.8% 70%,57.3% 77%,54.8% 100%,
+    56.2% 100%,58.7% 77%,57.2% 70%,59.7% 57%,57.7% 50%,60.7% 38%,58.7% 31%,61.7% 18%,59.7% 12%,60.7% 0
   );
-  background:linear-gradient(90deg,rgba(116,75,255,.55),rgba(232,183,94,.8),rgba(116,75,255,.52));
+  background:linear-gradient(90deg,rgba(130,79,255,.60),rgba(237,189,99,.82),rgba(115,137,185,.62));
 }
 
-/* Moving "discovery" light sweeping out from the crack */
+/* Discovery lighting - originates at the crack's true center */
 .rift-light{
   position:absolute;
   z-index:12;
   top:50%;
   left:51%;
-  width:68vw;
-  height:22vh;
+  width:66vw;
+  height:20vh;
   transform-origin:0 50%;
-  transform:translateY(-50%) rotate(-7deg) scaleX(.02);
+  transform:translateY(-50%) rotate(-6deg) scaleX(.02);
   opacity:0;
   pointer-events:none;
-  will-change:transform,opacity;
-  background:linear-gradient(
-    90deg,
-    rgba(255,224,151,.42) 0%,
-    rgba(173,139,255,.18) 22%,
-    rgba(99,80,180,.07) 45%,
-    transparent 78%
-  );
-  clip-path:polygon(0 44%,100% 0,100% 100%,0 56%);
+  background:linear-gradient(90deg,rgba(255,226,154,.40),rgba(155,132,255,.18) 26%,rgba(96,101,180,.07) 50%,transparent 80%);
+  clip-path:polygon(0 45%,100% 3%,100% 97%,0 55%);
 }
-@keyframes riftSweep{
-  0%{transform:translateY(-50%) rotate(-7deg) scaleX(.08);opacity:0}
-  18%{opacity:.55}
-  55%{transform:translateY(-50%) rotate(-3deg) scaleX(.82);opacity:.26}
-  100%{transform:translateY(-50%) rotate(2deg) scaleX(1);opacity:0}
-}
-
-/* A second, subtler beam toward the left */
 .rift-light-left{
   position:absolute;
   z-index:12;
   top:54%;
-  left:50%;
+  left:51%;
   width:42vw;
-  height:15vh;
+  height:14vh;
   transform-origin:100% 50%;
-  transform:translate(-100%,-50%) rotate(7deg) scaleX(.02);
+  transform:translate(-100%,-50%) rotate(6deg) scaleX(.02);
   opacity:0;
   pointer-events:none;
-  background:linear-gradient(
-    270deg,
-    rgba(255,224,151,.24) 0%,
-    rgba(122,90,226,.10) 38%,
-    transparent 82%
-  );
-  clip-path:polygon(100% 44%,0 8%,0 92%,100% 56%);
+  background:linear-gradient(270deg,rgba(255,226,154,.22),rgba(122,95,223,.10) 42%,transparent 84%);
+  clip-path:polygon(100% 45%,0 8%,0 92%,100% 55%);
+}
+@keyframes riftSweep{
+  0%{transform:translateY(-50%) rotate(-6deg) scaleX(.06);opacity:0}
+  18%{opacity:.5}
+  56%{transform:translateY(-50%) rotate(-2deg) scaleX(.78);opacity:.23}
+  100%{transform:translateY(-50%) rotate(2deg) scaleX(1);opacity:0}
 }
 @keyframes riftSweepLeft{
-  0%{transform:translate(-100%,-50%) rotate(7deg) scaleX(.05);opacity:0}
-  22%{opacity:.32}
+  0%{transform:translate(-100%,-50%) rotate(6deg) scaleX(.04);opacity:0}
+  24%{opacity:.28}
   100%{transform:translate(-100%,-50%) rotate(1deg) scaleX(1);opacity:0}
 }
-
-/* Tiny drifting motes around the opening */
 .rift-motes{
   position:absolute;
   z-index:13;
-  left:45%;
+  left:47%;
   top:18%;
-  width:12%;
+  width:9%;
   height:64%;
   opacity:0;
   pointer-events:none;
@@ -400,12 +445,11 @@ footer{
     radial-gradient(circle at 30% 48%,rgba(255,219,139,.85) 0 1px,transparent 2px),
     radial-gradient(circle at 68% 67%,rgba(170,158,255,.8) 0 1px,transparent 2px),
     radial-gradient(circle at 42% 86%,rgba(255,236,180,.9) 0 1px,transparent 2px);
-  will-change:transform,opacity;
 }
 @keyframes moteDrift{
   0%{transform:translateY(8px);opacity:0}
-  20%{opacity:.85}
-  100%{transform:translateY(-12px);opacity:.25}
+  20%{opacity:.8}
+  100%{transform:translateY(-12px);opacity:.24}
 }
 
 .odin-reveal{
@@ -420,9 +464,7 @@ footer{
   will-change:transform,opacity;
   transition:opacity .25s ease .14s,transform .4s ease .12s;
 }
-.odin-reveal .odin-kicker{
-  color:#b8a995;text-transform:uppercase;letter-spacing:.28em;font-size:.68rem;
-}
+.odin-reveal .odin-kicker{color:#b8a995;text-transform:uppercase;letter-spacing:.28em;font-size:.68rem}
 .odin-reveal h2{
   margin:.35rem 0 .45rem;color:#e8c47d;
   font-size:clamp(1.8rem,3vw,3rem);
@@ -435,13 +477,25 @@ footer{
   text-transform:uppercase;font-size:.72rem;letter-spacing:.1em;
 }
 
+/* VS sits directly on top of the line */
 .vs-mark{
-  position:absolute;z-index:18;
-  top:50%;left:51%;
-  transform:translate(-50%,-50%) rotate(-16deg);
-  color:#ad8d65;font-size:clamp(1rem,2vw,1.5rem);
-  letter-spacing:.18em;font-weight:700;text-shadow:0 2px 8px #000;
-  pointer-events:none;transition:opacity .2s ease;
+  position:absolute;
+  z-index:22;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(-13deg);
+  color:#f0ddae;
+  font-size:clamp(1rem,2vw,1.55rem);
+  letter-spacing:.14em;
+  font-weight:700;
+  text-shadow:
+    0 0 5px #000,
+    0 0 12px rgba(226,190,118,.38);
+  pointer-events:none;
+  background:rgba(3,5,10,.58);
+  border:1px solid rgba(221,184,110,.30);
+  padding:.05rem .36rem;
+  transition:opacity .2s ease;
 }
 
 /* Reveal states */
@@ -459,18 +513,11 @@ footer{
   opacity:.82;
 }
 .crack-hitbox:hover ~ .rift-light,
-.crack-hitbox.open ~ .rift-light{
-  animation:riftSweep 2.25s ease-out infinite;
-}
+.crack-hitbox.open ~ .rift-light{animation:riftSweep 2.25s ease-out infinite}
 .crack-hitbox:hover ~ .rift-light-left,
-.crack-hitbox.open ~ .rift-light-left{
-  animation:riftSweepLeft 2.7s ease-out .35s infinite;
-}
+.crack-hitbox.open ~ .rift-light-left{animation:riftSweepLeft 2.7s ease-out .35s infinite}
 .crack-hitbox:hover ~ .rift-motes,
-.crack-hitbox.open ~ .rift-motes{
-  opacity:1;
-  animation:moteDrift 2.8s ease-in-out infinite alternate;
-}
+.crack-hitbox.open ~ .rift-motes{opacity:1;animation:moteDrift 2.8s ease-in-out infinite alternate}
 .crack-hitbox:hover ~ .odin-reveal,
 .crack-hitbox.open ~ .odin-reveal{
   opacity:1;
@@ -479,42 +526,24 @@ footer{
 }
 .crack-hitbox:hover ~ .vs-mark,
 .crack-hitbox.open ~ .vs-mark{opacity:0}
-.crack-hitbox:hover ~ .crack-line::before,
-.crack-hitbox.open ~ .crack-line::before{opacity:.14}
+.crack-hitbox:hover ~ .divine-separator,
+.crack-hitbox.open ~ .divine-separator{opacity:.28}
 
 @media (prefers-reduced-motion:reduce){
   .rift-light,.rift-light-left,.rift-motes{animation:none!important}
-  .crack-hitbox:hover ~ .rift-light,
-  .crack-hitbox.open ~ .rift-light{
-    opacity:.18;
-    transform:translateY(-50%) rotate(-4deg) scaleX(.8);
-  }
-  .crack-hitbox:hover ~ .rift-light-left,
-  .crack-hitbox.open ~ .rift-light-left{
-    opacity:.12;
-    transform:translate(-100%,-50%) rotate(4deg) scaleX(.7);
-  }
-  .crack-hitbox:hover ~ .rift-motes,
-  .crack-hitbox.open ~ .rift-motes{opacity:.7}
 }
-
 @media (max-width:850px){
   .nav-toggle{display:block}
   .main-nav{display:none;width:100%;margin-left:0;flex-direction:column}
   .main-nav.open{display:flex}
   .nav-wrap{flex-wrap:wrap}
   .guide-grid,.city-list,.next-grid{grid-template-columns:1fr}
-
   .divine-stage{min-height:760px}
   .side-content{width:43vw;padding:1rem}
   .virtue-side .side-content{margin-right:.6rem;padding-right:.2rem}
   .side-title{font-size:clamp(2rem,8.5vw,3.4rem)}
   .side-copy{font-size:.82rem}
-  .sin-side{clip-path:polygon(0 0,57% 0,45% 100%,0 100%)}
-  .virtue-side{clip-path:polygon(57% 0,100% 0,100% 100%,45% 100%)}
-  .crack-hitbox{left:41%;width:20%}
-  .odin-rift,.rift-edge{left:28%;width:46%}
-  .odin-reveal{width:40vw;left:51%}
+  .crack-hitbox{left:40%;width:22%}
+  .odin-reveal{width:40vw}
   .odin-reveal p{display:none}
-  .rift-light{width:85vw;height:18vh}
 }
