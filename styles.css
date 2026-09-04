@@ -1103,3 +1103,282 @@ footer{
     transform .28s cubic-bezier(.2,.8,.2,1),
     border-color .28s ease;
 }
+
+
+
+/* =========================================================
+   INDIVIDUAL SIN ARTICLES
+   ========================================================= */
+
+.deity-body{
+  --deity:#d99556;
+  --deity-rgb:217,149,86;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 82% 12%,rgba(var(--deity-rgb),.10),transparent 28rem),
+    #030812;
+}
+.deity-wrath{--deity:#ef9231;--deity-rgb:239,146,49}
+.deity-greed{--deity:#c99a2e;--deity-rgb:201,154,46}
+.deity-lust{--deity:#d34d82;--deity-rgb:211,77,130}
+.deity-envy{--deity:#5d9e68;--deity-rgb:93,158,104}
+.deity-sloth{--deity:#9279a8;--deity-rgb:146,121,168}
+.deity-gluttony{--deity:#b44b39;--deity-rgb:180,75,57}
+.deity-pride{--deity:#eee9dc;--deity-rgb:238,233,220}
+
+.deity-hero{
+  position:relative;
+  min-height:610px;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+  background:#050a12;
+}
+.deity-hero-copy{
+  position:relative;
+  z-index:5;
+  width:min(58%,790px);
+  min-height:610px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:4rem clamp(1.5rem,5vw,6rem);
+  background:linear-gradient(90deg,#050a12 0%,rgba(5,10,18,.96) 70%,rgba(5,10,18,.35) 100%);
+}
+.deity-back{
+  display:inline-block;
+  width:max-content;
+  margin-bottom:1.25rem;
+  color:#8e8272;
+  font-size:.82rem;
+  letter-spacing:.08em;
+}
+.deity-kicker{
+  text-transform:uppercase;
+  letter-spacing:.27em;
+  color:var(--deity);
+  font-size:.76rem;
+}
+.deity-hero h1{
+  margin:.1rem 0 .55rem;
+  font-size:clamp(4rem,8vw,7.5rem);
+  color:var(--deity);
+  text-shadow:0 0 28px rgba(var(--deity-rgb),.18);
+}
+.deity-tagline{
+  margin:0 0 1rem;
+  color:#e5d7bf;
+  font-size:clamp(1.12rem,2vw,1.4rem);
+  max-width:690px;
+}
+.deity-summary{
+  color:#b8ab97;
+  font-size:1.04rem;
+  max-width:700px;
+}
+.deity-portrait{
+  position:absolute;
+  z-index:1;
+  inset:0 0 0 47%;
+}
+.deity-portrait img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center 28%;
+}
+.deity-portrait::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,#050a12 0%,rgba(5,10,18,.82) 12%,rgba(5,10,18,.16) 44%,rgba(5,10,18,.04) 100%),
+    linear-gradient(0deg,rgba(3,8,18,.70),transparent 34%);
+}
+.deity-sigil{
+  position:absolute;
+  z-index:7;
+  right:clamp(1.2rem,4vw,4rem);
+  bottom:2rem;
+  width:clamp(104px,11vw,165px);
+  aspect-ratio:1;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(3,7,13,.88);
+  border:1px solid rgba(var(--deity-rgb),.52);
+  box-shadow:
+    0 0 0 6px rgba(3,7,13,.75),
+    0 0 26px rgba(var(--deity-rgb),.18);
+}
+.deity-sigil img{
+  width:76%;
+  height:76%;
+  object-fit:contain;
+  filter:drop-shadow(0 0 7px rgba(var(--deity-rgb),.28));
+}
+
+.deity-layout{
+  max-width:1200px;
+  margin:auto;
+  padding:3rem 1rem 5rem;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 290px;
+  gap:2rem;
+}
+.deity-article section{
+  background:#07131f;
+  border:1px solid #3c2b24;
+  padding:clamp(1.35rem,3vw,2.25rem);
+  margin-bottom:1rem;
+}
+.deity-article h2{
+  color:var(--deity);
+  font-size:clamp(1.7rem,3vw,2.3rem);
+  margin:0 0 .8rem;
+}
+.deity-article h3{
+  color:#d9b98b;
+  margin:1.5rem 0 .5rem;
+  font-size:1.18rem;
+}
+.deity-article p{
+  color:#eadfc8;
+  font-size:1.08rem;
+  line-height:1.78;
+  margin:.72rem 0;
+}
+.deity-aside{
+  align-self:start;
+  position:sticky;
+  top:88px;
+  display:grid;
+  gap:1rem;
+}
+.deity-facts,
+.deity-related{
+  background:#08131e;
+  border:1px solid #3c2b24;
+  padding:1.2rem;
+}
+.deity-facts h2,
+.deity-related h2{
+  color:var(--deity);
+  font-size:1.12rem;
+  margin:0 0 .7rem;
+}
+.fact{
+  padding:.68rem 0;
+  border-top:1px solid rgba(143,88,57,.25);
+}
+.fact:first-of-type{border-top:0}
+.fact-label{
+  display:block;
+  color:#887c6d;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:.69rem;
+}
+.fact-value{
+  display:block;
+  color:#ded0ba;
+  margin-top:.15rem;
+}
+.deity-related a{
+  display:block;
+  padding:.55rem 0;
+  border-top:1px solid rgba(143,88,57,.22);
+}
+.deity-related a:first-of-type{border-top:0}
+
+/* Sloth's intentionally withheld archive image */
+.sloth-withheld{
+  position:absolute;
+  z-index:2;
+  inset:0 0 0 47%;
+  display:grid;
+  place-items:center;
+  background:
+    radial-gradient(circle at 52% 42%,rgba(146,121,168,.10),transparent 34%),
+    repeating-linear-gradient(135deg,rgba(255,255,255,.014) 0 1px,transparent 1px 9px),
+    #05070b;
+}
+.sloth-withheld-card{
+  width:min(72%,560px);
+  min-height:310px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:2rem;
+  border:1px solid rgba(146,121,168,.38);
+  background:
+    radial-gradient(circle at center,rgba(146,121,168,.10),transparent 62%),
+    rgba(0,0,0,.72);
+  box-shadow:
+    0 0 0 8px rgba(0,0,0,.30),
+    0 0 42px rgba(146,121,168,.11);
+}
+.sloth-withheld-card::before{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  opacity:.07;
+  background:url('/sigil-sloth.png') center/contain no-repeat;
+}
+.withheld-inner{
+  position:relative;
+  z-index:2;
+}
+.withheld-label{
+  color:#cbbcdc;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-size:.74rem;
+}
+.withheld-title{
+  color:#f1eaf6;
+  font-weight:800;
+  font-size:clamp(1.7rem,3vw,2.7rem);
+  line-height:1.12;
+  margin:.7rem 0;
+}
+.withheld-copy{
+  color:#8f8497;
+  max-width:380px;
+  margin:auto;
+}
+
+/* Portrait positioning corrections */
+.deity-gluttony .deity-portrait img{object-position:center 30%}
+.deity-greed .deity-portrait img{object-position:center 26%}
+.deity-pride .deity-portrait img{object-position:center 18%}
+.deity-envy .deity-portrait img{object-position:center 20%}
+.deity-lust .deity-portrait img{object-position:center 20%}
+.deity-wrath .deity-portrait img{object-position:center 22%}
+
+@media (max-width:900px){
+  .deity-hero{min-height:730px}
+  .deity-hero-copy{
+    width:100%;
+    min-height:730px;
+    justify-content:flex-end;
+    padding:4rem 1.25rem 8.5rem;
+    background:linear-gradient(0deg,#050a12 5%,rgba(5,10,18,.78) 52%,rgba(5,10,18,.30) 100%);
+  }
+  .deity-portrait,
+  .sloth-withheld{inset:0}
+  .deity-portrait{opacity:.50}
+  .deity-layout{grid-template-columns:1fr}
+  .deity-aside{
+    position:static;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media (max-width:600px){
+  .deity-hero{min-height:650px}
+  .deity-hero-copy{min-height:650px}
+  .deity-aside{grid-template-columns:1fr}
+  .deity-sigil{width:105px}
+  .sloth-withheld-card{width:82%;min-height:250px}
+}
