@@ -1410,3 +1410,128 @@ footer{
     drop-shadow(0 0 5px rgba(203,184,218,.52))
     drop-shadow(0 0 12px rgba(146,121,168,.36));
 }
+
+
+
+/* =========================================================
+   HOMEPAGE / ARCHIVE LANDING PAGE
+   Restored after later section updates
+   ========================================================= */
+
+.cta-row{
+  display:flex;
+  gap:.8rem;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:1.7rem;
+}
+
+.button{
+  display:inline-block;
+  padding:.8rem 1.1rem;
+  border:1px solid #b86c47;
+  background:#743622;
+  color:#fff3df;
+  font-weight:700;
+}
+
+.button.secondary{
+  background:transparent;
+  border-color:var(--line);
+  color:var(--gold2);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1rem;
+}
+
+.card{
+  display:block;
+  background:linear-gradient(180deg,var(--panel),#09131d);
+  border:1px solid var(--line);
+  padding:1.4rem;
+  min-height:180px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  border-color:#b96e48;
+  background:var(--panel2);
+}
+
+.card h3{
+  margin:.1rem 0 .5rem;
+  color:var(--gold);
+  font-size:1.35rem;
+}
+
+.card p{
+  color:#cfc2ae;
+  margin:.35rem 0 1rem;
+}
+
+.card .arrow{
+  font-weight:700;
+  letter-spacing:.06em;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:1rem;
+  margin-top:1rem;
+}
+
+.feature{
+  background:#08131e;
+  border:1px solid var(--line);
+  padding:1.6rem;
+}
+
+.map-placeholder{
+  min-height:280px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  border:1px dashed #7d4931;
+  background:
+    radial-gradient(circle at 25% 30%,#725f42 0 8%,transparent 9%),
+    radial-gradient(circle at 67% 42%,#6c4b39 0 12%,transparent 13%),
+    radial-gradient(circle at 48% 65%,#4b5c42 0 16%,transparent 17%),
+    #0d1821;
+  color:#c7bda8;
+  padding:1rem;
+}
+
+.search-wrap{
+  margin:1.5rem 0 2rem;
+}
+
+.search-wrap input{
+  width:100%;
+  padding:.85rem 1rem;
+  background:#09131d;
+  border:1px solid var(--line);
+  color:var(--text);
+  font:inherit;
+}
+
+.small-note{
+  color:#948979;
+  font-size:.92rem;
+}
+
+/* Homepage mobile layout */
+@media (max-width:850px){
+  .grid,
+  .feature-grid{
+    grid-template-columns:1fr;
+  }
+  .hero{
+    min-height:50vh;
+  }
+}
