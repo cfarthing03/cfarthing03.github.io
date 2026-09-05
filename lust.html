@@ -8,7 +8,7 @@
 
 <style>
 /* =========================================================
-   LUST — PAGE-SPECIFIC VISUAL MOTIFS (V2)
+   LUST — PAGE-SPECIFIC VISUAL MOTIFS (V3)
    Clean bonds + a section-contained Rixel treatment.
    No page-spanning ribbons.
    ========================================================= */
@@ -235,10 +235,116 @@ body.deity-body.deity-lust>*{
   .rixel-infection{opacity:.42;width:68px;}
   .deity-lust .lust-rixel-section > p{padding-right:16px;}
 }
+
+
+/* ---------------------------------------------------------
+   Decorative side ribbon banners
+   Pure CSS, anchored to the viewport edges so they never
+   interfere with the article layout.
+   --------------------------------------------------------- */
+.lust-side-banner{
+  position:fixed;
+  top:78px;
+  bottom:28px;
+  width:48px;
+  z-index:0;
+  pointer-events:none;
+  opacity:.34;
+  filter:drop-shadow(0 0 12px rgba(236,82,164,.08));
+}
+.lust-side-banner.left{left:28px;}
+.lust-side-banner.right{right:28px;}
+
+.lust-side-banner .ribbon-stem{
+  position:absolute;
+  top:0;
+  left:50%;
+  width:10px;
+  height:calc(100% - 56px);
+  transform:translateX(-50%);
+  border-radius:999px 999px 5px 5px;
+  background:
+    linear-gradient(90deg,
+      rgba(255,184,221,.70) 0 18%,
+      rgba(238,84,165,.90) 38% 62%,
+      rgba(186,42,126,.74) 82% 100%);
+  box-shadow:
+    inset 2px 0 0 rgba(255,214,235,.16),
+    inset -2px 0 0 rgba(84,12,61,.20);
+}
+
+/* little folds so the banner reads as cloth, not a neon line */
+.lust-side-banner .ribbon-stem::before,
+.lust-side-banner .ribbon-stem::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%) rotate(2deg);
+  width:14px;
+  height:22%;
+  border-radius:50%;
+  border-left:2px solid rgba(255,206,232,.10);
+  border-right:2px solid rgba(88,12,64,.12);
+  opacity:.75;
+}
+.lust-side-banner .ribbon-stem::before{top:18%;}
+.lust-side-banner .ribbon-stem::after{top:56%;transform:translateX(-50%) rotate(-2deg);}
+
+/* V-tail at the bottom */
+.lust-side-banner .ribbon-tail{
+  position:absolute;
+  left:50%;
+  bottom:0;
+  width:38px;
+  height:64px;
+  transform:translateX(-50%);
+  background:linear-gradient(180deg,rgba(222,66,151,.84),rgba(179,36,117,.76));
+  clip-path:polygon(36% 0,64% 0,64% 58%,100% 100%,50% 72%,0 100%,36% 58%);
+  box-shadow:inset 2px 0 0 rgba(255,198,227,.12);
+}
+
+/* subtle top cap */
+.lust-side-banner .ribbon-cap{
+  position:absolute;
+  top:-2px;
+  left:50%;
+  width:18px;
+  height:18px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,194,225,.82) 0 28%,rgba(227,76,159,.84) 30% 63%,rgba(94,15,68,.35) 65% 100%);
+  box-shadow:0 0 8px rgba(236,82,164,.10);
+}
+
+/* mirror a slight cloth lean so the pair feels intentional */
+.lust-side-banner.left .ribbon-stem{transform:translateX(-50%) rotate(-1.2deg);transform-origin:top center;}
+.lust-side-banner.right .ribbon-stem{transform:translateX(-50%) rotate(1.2deg);transform-origin:top center;}
+
+@media(max-width:1180px){
+  .lust-side-banner.left{left:10px;}
+  .lust-side-banner.right{right:10px;}
+  .lust-side-banner{opacity:.25;transform:scale(.88);transform-origin:center top;}
+}
+@media(max-width:980px){
+  .lust-side-banner{display:none;}
+}
+
 </style>
 
 </head>
 <body class="deity-body deity-lust">
+
+
+<div class="lust-side-banner left" aria-hidden="true">
+  <span class="ribbon-cap"></span>
+  <span class="ribbon-stem"></span>
+  <span class="ribbon-tail"></span>
+</div>
+<div class="lust-side-banner right" aria-hidden="true">
+  <span class="ribbon-cap"></span>
+  <span class="ribbon-stem"></span>
+  <span class="ribbon-tail"></span>
+</div>
 
 <div class="lust-page-decor" aria-hidden="true">
   <span class="lust-ring r1"></span>
