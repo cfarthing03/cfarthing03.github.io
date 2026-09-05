@@ -335,18 +335,26 @@ body.deity-body.deity-sloth::after {
   position:relative;
 }
 
+.deity-sloth .sloth-withheld.deity-portrait{
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-end;
+}
+
 .deity-sloth .sloth-withheld-card{
   position:relative;
   z-index:2;
   overflow:visible;
+  width:min(100%, 34rem);
+  margin:0 0 0 auto;
 }
 
 .sloth-archive-leak{
   position:absolute;
-  left:9%;
-  width:73%;
-  top:calc(100% - 16px);
-  height:92px;
+  left:14%;
+  width:76%;
+  bottom:-20px;
+  height:76px;
   z-index:1;
   pointer-events:none;
   opacity:.94;
@@ -385,10 +393,10 @@ body.deity-body.deity-sloth::after {
 
 .sloth-panel-goop{
   position:absolute;
-  left:11%;
-  width:46%;
-  bottom:-32px;
-  height:56px;
+  left:9%;
+  width:48%;
+  bottom:-16px;
+  height:48px;
   pointer-events:none;
   z-index:3;
   opacity:.88;
@@ -396,16 +404,16 @@ body.deity-body.deity-sloth::after {
 
 @media (max-width:700px){
   .sloth-archive-leak{
-    left:7%;
-    width:80%;
-    top:calc(100% - 12px);
-    height:78px;
+    left:10%;
+    width:82%;
+    bottom:-18px;
+    height:68px;
   }
   .sloth-panel-goop{
     left:8%;
-    width:60%;
-    bottom:-28px;
-    height:48px;
+    width:58%;
+    bottom:-14px;
+    height:42px;
   }
 }
 
@@ -456,7 +464,7 @@ body.deity-body.deity-sloth::after {
 
 <section class="deity-hero">
   
-        <div class="sloth-withheld">
+        <div class="sloth-withheld deity-portrait">
           <div class="sloth-archive-leak" aria-hidden="true">
             <svg viewBox="0 0 430 96" preserveAspectRatio="none" role="presentation">
               <g class="goop-shadow">
