@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="/styles.css">
 <style>
 /* =========================================================
-   GLUTTONY — PAGE-SPECIFIC VISUAL MOTIFS (V6 ACTUAL HTML)
+   GLUTTONY — PAGE-SPECIFIC VISUAL MOTIFS (V8)
    Direction: visible bite marks, clear bread icon, matching
    tusk ornaments, and large background tusks.
    ========================================================= */
@@ -72,12 +72,16 @@ body.deity-body.deity-gluttony::after {
 .gluttony-page-decor .haze.two { width: 26vw; height: 140px; bottom: 120px; left: -4vw; opacity: .18; }
 .gluttony-backtusk-art {
   position: absolute;
-  top: 520px;
+  top: -34px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(78vw, 980px);
-  opacity: .20;
-  filter: drop-shadow(0 0 22px rgba(123, 68, 28, .10));
+  width: min(122%, 1480px);
+  max-width: none;
+  height: auto;
+  opacity: .38;
+  pointer-events: none;
+  z-index: 0;
+  filter: drop-shadow(0 0 22px rgba(123, 68, 28, .12));
 }
 
 /* Hero */
@@ -146,7 +150,7 @@ body.deity-body.deity-gluttony::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 18px;
 }
 .deity-gluttony .deity-swoop-ornament {
   width: min(320px, 86%);
@@ -173,8 +177,8 @@ body.deity-body.deity-gluttony::after {
   flex: 0 0 auto;
   filter: drop-shadow(0 0 10px rgba(171, 110, 45, .10));
 }
-.deity-gluttony .deity-swoop-ornament img { width: 56px; }
-.gluttony-crest img { width: 34px; }
+.deity-gluttony .deity-swoop-ornament img { width: 92px; }
+.gluttony-crest img { width: 68px; }
 .gluttony-crest {
   width: min(340px, 88%);
   margin: -1.25rem auto 1rem;
@@ -186,6 +190,7 @@ body.deity-body.deity-gluttony::after {
 .deity-gluttony .deity-layout {
   position: relative;
   z-index: 1;
+  isolation: isolate;
 }
 .deity-gluttony .deity-article,
 .deity-gluttony .deity-aside {
@@ -257,11 +262,16 @@ body.deity-body.deity-gluttony::after {
 .gluttony-bite-left::after,
 .gluttony-bite-right::after,
 .gluttony-bite-small-right::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  background: var(--glut-bg);
-  z-index: 3;
+  right: -1px;
+  top: 52px;
+  transform: translate(54%, 0);
+  width: 28px;
+  height: 54px;
+  background:
+    radial-gradient(circle at 25px 14px, var(--glut-bg) 0 9px, transparent 10px),
+    radial-gradient(circle at 21px 29px, var(--glut-bg) 0 7px, transparent 8px),
+    radial-gradient(circle at 25px 43px, var(--glut-bg) 0 9px, transparent 10px);
+  filter: drop-shadow(1px 0 0 rgba(224, 166, 92, .30));
 }
 .gluttony-bite-left::after {
   left: -1px;
@@ -270,9 +280,9 @@ body.deity-body.deity-gluttony::after {
   width: 38px;
   height: 84px;
   background:
-    radial-gradient(circle at 34px 18px, var(--glut-bg) 0 13px, transparent 14px),
-    radial-gradient(circle at 30px 42px, var(--glut-bg) 0 10px, transparent 11px),
-    radial-gradient(circle at 34px 66px, var(--glut-bg) 0 13px, transparent 14px);
+    radial-gradient(circle at 4px 18px, var(--glut-bg) 0 13px, transparent 14px),
+    radial-gradient(circle at 8px 42px, var(--glut-bg) 0 10px, transparent 11px),
+    radial-gradient(circle at 4px 66px, var(--glut-bg) 0 13px, transparent 14px);
   filter: drop-shadow(-1px 0 0 rgba(224, 166, 92, .34));
 }
 .gluttony-bite-right::after {
@@ -282,9 +292,9 @@ body.deity-body.deity-gluttony::after {
   width: 38px;
   height: 84px;
   background:
-    radial-gradient(circle at 4px 18px, var(--glut-bg) 0 13px, transparent 14px),
-    radial-gradient(circle at 8px 42px, var(--glut-bg) 0 10px, transparent 11px),
-    radial-gradient(circle at 4px 66px, var(--glut-bg) 0 13px, transparent 14px);
+    radial-gradient(circle at 34px 18px, var(--glut-bg) 0 13px, transparent 14px),
+    radial-gradient(circle at 30px 42px, var(--glut-bg) 0 10px, transparent 11px),
+    radial-gradient(circle at 34px 66px, var(--glut-bg) 0 13px, transparent 14px);
   filter: drop-shadow(1px 0 0 rgba(224, 166, 92, .34));
 }
 .gluttony-bite-small-right::after {
@@ -313,7 +323,7 @@ body.deity-body.deity-gluttony::after {
 @media (max-width: 1100px) {
   .deity-gluttony .deity-hero-copy { width: min(60%, 760px); }
   .deity-gluttony .deity-portrait { inset: 0 0 0 36%; }
-  .gluttony-backtusk-art { width: min(84vw, 820px); opacity: .16; top: 560px; }
+  .gluttony-backtusk-art { width: min(132%, 1180px); opacity: .28; top: 0; }
 }
 @media (max-width: 900px) {
   .deity-gluttony .deity-hero {
@@ -339,10 +349,10 @@ body.deity-body.deity-gluttony::after {
     height: 95%;
     object-position: center bottom;
   }
-  .gluttony-backtusk-art { display: none; }
 }
 @media (max-width: 650px) {
   .gluttony-page-decor { display: none; }
+  .gluttony-backtusk-art { display: none; }
   .gluttony-bite-left::after,
   .gluttony-bite-right::after,
   .gluttony-bite-small-right::after { display: none; }
@@ -354,7 +364,6 @@ body.deity-body.deity-gluttony::after {
 <div class="gluttony-page-decor" aria-hidden="true">
   <span class="haze one"></span>
   <span class="haze two"></span>
-  <img class="gluttony-backtusk-art" src="./gluttony-background-tusks.png" alt="">
 </div>
 
 <header class="site-header">
@@ -377,7 +386,7 @@ body.deity-body.deity-gluttony::after {
   <div class="deity-portrait"><img src="/god-gluttony.jpg" alt="Artistic depiction of Gluttony"></div>
   <div class="deity-hero-copy">
     <a class="deity-back" href="/sins.html">← The Seven Sins</a>
-    <div class="deity-swoop-ornament" aria-hidden="true"><img src="./gluttony-small-tusk-crest.png" alt=""></div>
+    <div class="deity-swoop-ornament" aria-hidden="true"><img src="/gluttony-small-tusk-crest.png" alt=""></div>
     <div class="deity-kicker">The Seven Sins</div>
     <h1>Gluttony</h1>
     <p class="deity-tagline">Nourishment, fulfillment, abundance—and the difference between being full and being satisfied.</p>
@@ -387,30 +396,31 @@ body.deity-body.deity-gluttony::after {
 </section>
 
 <main class="deity-layout">
+  <img class="gluttony-backtusk-art" src="/gluttony-background-tusks.png" alt="" aria-hidden="true">
   <article class="deity-article">
     <section class="gluttony-bite-right">
-      <div class="gluttony-crest tight" aria-hidden="true"><img src="./gluttony-small-tusk-crest.png" alt=""></div>
+      <div class="gluttony-crest tight" aria-hidden="true"><img src="/gluttony-small-tusk-crest.png" alt=""></div>
       <h2>The Hunger That Can Eat Anything</h2>
       <p>Gluttony can consume almost anything. Food and physical matter are the obvious examples, but his appetite can extend to living creatures, energy, knowledge, and even things that are difficult to describe as physical objects at all. When he consumes something, he can gain qualities, abilities, or attributes from it.</p>
       <p>That makes his power frighteningly open-ended. It also makes him difficult to understand. Gluttony's hunger is not merely a need for calories. It is a mechanism through which he experiences, acquires, and becomes.</p>
     </section>
 
     <section class="gluttony-bite-left">
-      <div class="gluttony-crest tight" aria-hidden="true"><img src="./gluttony-small-tusk-crest.png" alt=""></div>
+      <div class="gluttony-crest tight" aria-hidden="true"><img src="/gluttony-small-tusk-crest.png" alt=""></div>
       <h2>What Gluttony Represents</h2>
       <p>Modern Gluttony is associated with nourishment, fulfillment, abundance, and experiencing life fully. Hunger is treated as a signal that something is missing. The important question is what you use to fill that absence.</p>
       <p>A person can eat until they cannot move and still feel empty. Someone else can share a modest meal with people they love and leave completely satisfied. Gluttony's faith lives in the difference.</p>
     </section>
 
     <section class="gluttony-bite-right">
-      <div class="gluttony-crest tight" aria-hidden="true"><img src="./gluttony-small-tusk-crest.png" alt=""></div>
+      <div class="gluttony-crest tight" aria-hidden="true"><img src="/gluttony-small-tusk-crest.png" alt=""></div>
       <h2>Hus</h2>
       <p>Hus is the largest city on the continent by population. Its public identity is warm, communal, and heavily centered on food. Feasts, restaurants, public meals, hospitality, and culinary tradition make the city one of the easiest places to associate with Gluttony's more generous aspects.</p>
       <p>It is also the crime capital of the continent. That is less contradiction than mathematics. Hus has the most people, so it also has the most thieves, gangs, smugglers, criminal networks, and opportunities for someone to decide they are hungry for something that belongs to somebody else.</p>
     </section>
 
     <section class="gluttony-bite-left">
-      <div class="gluttony-crest tight" aria-hidden="true"><img src="./gluttony-small-tusk-crest.png" alt=""></div>
+      <div class="gluttony-crest tight" aria-hidden="true"><img src="/gluttony-small-tusk-crest.png" alt=""></div>
       <h2>The Church of Gluttony</h2>
       <p>Gluttony's organized church has historically treated cooking as craft, worship, memory, and hospitality. Ingredients are scrutinized, recipes preserved, public meals organized, and feeding another person can be treated as a genuine religious act.</p>
       <p>The church lost much of its prominence after its former leader was killed by Pride. What remains is smaller and still rebuilding, currently led by a humble gnome with the help of a resourceful goblin who manages the finances. For a faith built around abundance, rebuilding from scarcity has become its own lesson.</p>
@@ -419,7 +429,7 @@ body.deity-body.deity-gluttony::after {
 
   <aside class="deity-aside">
     <section class="deity-facts gluttony-bite-small-right">
-      <div class="gluttony-crest centered" aria-hidden="true"><img src="./gluttony-small-tusk-crest.png" alt=""></div>
+      <div class="gluttony-crest centered" aria-hidden="true"><img src="/gluttony-small-tusk-crest.png" alt=""></div>
       <h2>At a Glance</h2>
       <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Nourishment, fulfillment, abundance</span></div>
       <div class="fact"><span class="fact-label">Major City</span><span class="fact-value">Hus</span></div>
