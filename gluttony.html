@@ -7,17 +7,21 @@
 <link rel="stylesheet" href="/styles.css">
 <style>
 /* =========================================================
-   GLUTTONY — PAGE-SPECIFIC VISUAL MOTIFS (V2 CLEAN RESTART)
-   No greed coins. No sloth goop.
-   Theme direction: bites taken from the page + tusk motifs.
+   GLUTTONY — PAGE-SPECIFIC VISUAL MOTIFS (V6 ACTUAL HTML)
+   Direction: visible bite marks, clear bread icon, matching
+   tusk ornaments, and large background tusks.
    ========================================================= */
 
 :root {
-  --glut-amber: rgba(210, 148, 63, .88);
-  --glut-amber-soft: rgba(210, 148, 63, .22);
-  --glut-deep: rgba(92, 49, 20, .42);
-  --glut-bone: rgba(236, 216, 187, .72);
   --glut-bg: #050a12;
+  --glut-panel: rgba(40, 18, 8, .14);
+  --glut-accent: rgba(219, 111, 82, .96);
+  --glut-accent-soft: rgba(214, 150, 77, .28);
+  --glut-line: rgba(146, 86, 35, .34);
+  --glut-warm: rgba(229, 186, 112, .78);
+  --glut-warm-soft: rgba(229, 186, 112, .18);
+  --glut-tusk: rgba(183, 131, 77, .18);
+  --glut-tusk-strong: rgba(196, 141, 84, .24);
 }
 
 body.deity-body.deity-gluttony {
@@ -35,9 +39,9 @@ body.deity-body.deity-gluttony::before {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(circle at 82% 16%, rgba(165, 93, 34, .16), transparent 23rem),
-    radial-gradient(circle at 16% 78%, rgba(122, 66, 24, .12), transparent 20rem),
-    radial-gradient(circle at 65% 58%, rgba(86, 41, 15, .10), transparent 24rem);
+    radial-gradient(circle at 86% 14%, rgba(144, 76, 31, .14), transparent 24rem),
+    radial-gradient(circle at 10% 78%, rgba(120, 62, 25, .10), transparent 22rem),
+    radial-gradient(circle at 60% 56%, rgba(86, 40, 15, .09), transparent 28rem);
 }
 body.deity-body.deity-gluttony::after {
   content: "";
@@ -47,77 +51,88 @@ body.deity-body.deity-gluttony::after {
   z-index: 0;
   opacity: .14;
   background:
-    repeating-linear-gradient(180deg, transparent 0 152px, rgba(184, 122, 49, .09) 152px 153px, transparent 153px 306px),
-    linear-gradient(115deg, transparent 0%, rgba(215, 153, 69, .05) 48%, transparent 100%);
+    repeating-linear-gradient(180deg, transparent 0 150px, rgba(176, 98, 35, .05) 150px 151px, transparent 151px 300px),
+    linear-gradient(115deg, transparent 0%, rgba(211, 151, 75, .045) 47%, transparent 100%);
 }
 
 .gluttony-page-decor {
   position: fixed;
   inset: 0;
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  z-index: 0;
 }
-.gluttony-haze,
-.gluttony-orbit,
-.gluttony-tusk-mark {
+.gluttony-page-decor .haze {
   position: absolute;
-}
-.gluttony-haze {
   border-radius: 999px;
-  filter: blur(42px);
-  background: radial-gradient(circle, rgba(155, 87, 31, .24), rgba(88, 41, 15, .10) 44%, transparent 72%);
+  filter: blur(48px);
+  background: radial-gradient(circle, rgba(150, 83, 32, .20), rgba(74, 25, 11, .08) 45%, transparent 72%);
 }
-.gluttony-haze.one { width: 24vw; height: 200px; top: 180px; right: -4vw; opacity: .24; }
-.gluttony-haze.two { width: 18vw; height: 140px; bottom: 180px; left: -3vw; opacity: .18; }
-.gluttony-orbit {
-  border: 1px solid rgba(196, 135, 58, .16);
-  border-radius: 999px;
-  box-shadow: inset 0 0 30px rgba(118, 58, 22, .05), 0 0 28px rgba(118, 58, 22, .04);
+.gluttony-page-decor .haze.one { width: 32vw; height: 180px; top: 180px; right: -6vw; opacity: .26; }
+.gluttony-page-decor .haze.two { width: 26vw; height: 140px; bottom: 120px; left: -4vw; opacity: .18; }
+.gluttony-backtusk {
+  position: absolute;
+  top: 120px;
+  width: 220px;
+  height: min(70vh, 680px);
+  opacity: .62;
+  filter: drop-shadow(0 0 26px rgba(111, 64, 28, .08));
 }
-.gluttony-orbit.one { width: 160px; height: 160px; top: 120px; right: 10%; opacity: .18; }
-.gluttony-orbit.two { width: 88px; height: 88px; bottom: 160px; left: 7%; opacity: .14; }
-
-.gluttony-tusk-mark {
-  width: 110px;
-  height: 64px;
-  opacity: .42;
-  filter: drop-shadow(0 0 12px rgba(165, 95, 31, .12));
+.gluttony-backtusk.left { left: 1.5%; }
+.gluttony-backtusk.right { right: 1.5%; transform: scaleX(-1); }
+.gluttony-backtusk path.outer {
+  stroke: var(--glut-tusk);
+  stroke-width: 1.4;
+  fill: rgba(146, 98, 56, .05);
 }
-.gluttony-tusk-mark::before,
-.gluttony-tusk-mark::after {
+.gluttony-backtusk path.inner {
+  stroke: rgba(199, 148, 91, .15);
+  stroke-width: 1;
+  fill: none;
+}
+.gluttony-star-chain {
+  position: absolute;
+  top: 240px;
+  width: 24px;
+  height: 260px;
+  opacity: .55;
+}
+.gluttony-star-chain.left { left: calc(1.5% + 170px); }
+.gluttony-star-chain.right { right: calc(1.5% + 170px); }
+.gluttony-star-chain::before,
+.gluttony-star-chain::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  width: 34px;
-  height: 48px;
-  border: 2px solid rgba(233, 190, 122, .58);
-  border-top: none;
-  border-left: none;
-  border-radius: 0 0 28px 0;
-  box-shadow: 0 0 10px rgba(175, 114, 40, .10);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 90px;
+  background: repeating-linear-gradient(180deg, rgba(196, 141, 84, .48) 0 3px, transparent 3px 10px);
 }
-.gluttony-tusk-mark::before {
-  left: 13px;
-  transform: rotate(24deg);
+.gluttony-star-chain::before { top: 0; }
+.gluttony-star-chain::after { bottom: 0; }
+.gluttony-star-chain span,
+.gluttony-star-chain em {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(196, 141, 84, .52);
+  background: rgba(196, 141, 84, .05);
+  box-shadow: 0 0 10px rgba(196, 141, 84, .08);
 }
-.gluttony-tusk-mark::after {
-  right: 13px;
-  transform: scaleX(-1) rotate(24deg);
-}
-.gluttony-tusk-mark.a { top: 232px; left: 5%; }
-.gluttony-tusk-mark.b { top: 560px; right: 7%; }
-.gluttony-tusk-mark.c { bottom: 208px; left: 9%; }
-.gluttony-tusk-mark.d { bottom: 105px; right: 9%; }
+.gluttony-star-chain span { top: 92px; }
+.gluttony-star-chain em { bottom: 92px; }
 
-/* --- Hero: fix image scale/crop and keep the full figure readable --- */
+/* Hero */
 .deity-gluttony .deity-hero {
   position: relative;
   min-height: 620px;
   overflow: hidden;
   isolation: isolate;
-  border-bottom: 1px solid var(--line);
-  background: #050a12;
+  border-bottom: 1px solid var(--glut-line);
+  background: var(--glut-bg);
 }
 .deity-gluttony .deity-hero-copy {
   position: relative;
@@ -169,91 +184,73 @@ body.deity-body.deity-gluttony::after {
 .deity-gluttony .deity-sigil {
   box-shadow: 0 0 28px rgba(121, 65, 26, .11);
 }
-.deity-gluttony .deity-swoop-ornament {
+
+/* Matching tusk ornament */
+.deity-gluttony .deity-swoop-ornament,
+.gluttony-crest {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 14px;
+}
+.deity-gluttony .deity-swoop-ornament {
   width: min(320px, 86%);
-  margin: .5rem 0 1rem;
-  opacity: .92;
+  margin: .45rem 0 1rem;
+  opacity: .94;
 }
-.deity-gluttony .deity-swoop-ornament.centered {
-  margin: 0 auto 1rem;
-}
+.deity-gluttony .deity-swoop-ornament.centered,
+.gluttony-crest.centered { margin: 0 auto 1rem; }
 .deity-gluttony .deity-swoop-ornament::before,
-.deity-gluttony .deity-swoop-ornament::after {
+.deity-gluttony .deity-swoop-ornament::after,
+.gluttony-crest::before,
+.gluttony-crest::after {
   content: "";
   height: 1px;
   flex: 1;
-  background: linear-gradient(90deg, transparent, rgba(212, 152, 73, .40));
+  background: linear-gradient(90deg, transparent, rgba(212, 152, 73, .36));
 }
-.deity-gluttony .deity-swoop-ornament::after { transform: scaleX(-1); }
-.deity-gluttony .swoop-glyph {
-  width: 40px;
-  height: 18px;
+.deity-gluttony .deity-swoop-ornament::after,
+.gluttony-crest::after { transform: scaleX(-1); }
+.deity-gluttony .swoop-glyph,
+.gluttony-crest .tusk-glyph {
   position: relative;
+  width: 42px;
+  height: 18px;
+  flex: 0 0 auto;
 }
 .deity-gluttony .swoop-glyph::before,
-.deity-gluttony .swoop-glyph::after {
+.deity-gluttony .swoop-glyph::after,
+.gluttony-crest .tusk-glyph::before,
+.gluttony-crest .tusk-glyph::after {
   content: "";
   position: absolute;
-  top: 2px;
-  width: 12px;
-  height: 12px;
+  bottom: 2px;
+  width: 13px;
+  height: 14px;
+  border-bottom: 2px solid rgba(232, 182, 105, .9);
+  border-left: 2px solid rgba(232, 182, 105, .9);
+  border-radius: 0 0 0 16px;
   box-sizing: border-box;
+  filter: drop-shadow(0 0 6px rgba(171, 110, 45, .12));
 }
-.deity-gluttony .swoop-glyph::before {
-  left: 7px;
-  border-left: 1.8px solid rgba(232, 182, 105, .78);
-  border-bottom: 1.8px solid rgba(232, 182, 105, .78);
-  border-radius: 0 0 0 14px;
-  transform: rotate(-18deg);
+.deity-gluttony .swoop-glyph::before,
+.gluttony-crest .tusk-glyph::before {
+  left: 8px;
+  transform: rotate(-26deg);
 }
-.deity-gluttony .swoop-glyph::after {
-  right: 7px;
-  border-right: 1.8px solid rgba(232, 182, 105, .78);
-  border-bottom: 1.8px solid rgba(232, 182, 105, .78);
-  border-radius: 0 0 14px 0;
-  transform: rotate(18deg);
+.deity-gluttony .swoop-glyph::after,
+.gluttony-crest .tusk-glyph::after {
+  right: 8px;
+  transform: scaleX(-1) rotate(-26deg);
 }
-.deity-gluttony .swoop-glyph {
-  background: radial-gradient(circle at 50% 62%, rgba(232, 182, 105, .7) 0 1.4px, transparent 1.6px);
+.gluttony-crest {
+  width: min(340px, 88%);
+  margin: -1.25rem auto 1rem;
+  opacity: .96;
 }
+.gluttony-crest.tight { margin-bottom: .75rem; }
 
-
-/* matching swoops + bread icon */
-.gluttony-bread-icon {
-  display: inline-block;
-  width: 22px;
-  height: 16px;
-  margin: 0 .55rem .04rem 0;
-  vertical-align: baseline;
-  position: relative;
-}
-.gluttony-bread-icon::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(245, 206, 134, .96) 0 72%, rgba(179, 113, 45, .96) 72% 100%);
-  border-radius: 9px 9px 5px 5px / 10px 10px 4px 4px;
-  box-shadow: inset 0 -1px 0 rgba(103, 59, 22, .28), 0 0 0 1px rgba(223, 176, 104, .20);
-}
-.gluttony-bread-icon::after {
-  content: "";
-  position: absolute;
-  left: 5px;
-  top: 4px;
-  width: 12px;
-  height: 5px;
-  background:
-    linear-gradient(120deg, transparent 0 20%, rgba(126, 71, 27, .55) 20% 28%, transparent 28% 46%, rgba(126, 71, 27, .55) 46% 54%, transparent 54% 72%, rgba(126, 71, 27, .55) 72% 80%, transparent 80% 100%);
-  border-radius: 999px;
-  opacity: .92;
-}
-
-/* Panels */
+/* Content layout */
 .deity-gluttony .deity-layout {
   position: relative;
   z-index: 1;
@@ -270,35 +267,48 @@ body.deity-body.deity-gluttony::after {
   overflow: visible;
 }
 .deity-gluttony .deity-article section {
-  border-color: rgba(146, 86, 35, .28);
-  background: linear-gradient(180deg, rgba(39, 19, 9, .14), rgba(6, 11, 18, .05));
+  border-color: var(--glut-line);
+  background: linear-gradient(180deg, rgba(39, 19, 9, .16), rgba(6, 11, 18, .05));
+  box-shadow: inset 0 0 0 1px rgba(179, 113, 45, .04);
 }
 .deity-gluttony .deity-article section::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: .11;
+  opacity: .12;
   background: repeating-linear-gradient(180deg, rgba(214, 156, 80, .22) 0 1px, transparent 1px 15px);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+}
+.deity-gluttony .deity-article h2,
+.deity-gluttony .deity-facts h2,
+.deity-gluttony .deity-related h2 {
+  color: var(--glut-accent);
 }
 .deity-gluttony .deity-article h2 {
   position: relative;
   padding-bottom: .65rem;
 }
+
+/* Better bread icon */
 .deity-gluttony .deity-article h2::before {
   content: "";
   display: inline-block;
   width: 22px;
   height: 16px;
-  margin: 0 .55rem .04rem 0;
+  margin: 0 .62rem .06rem 0;
   vertical-align: baseline;
-  position: relative;
-  background: linear-gradient(180deg, rgba(245, 206, 134, .96) 0 72%, rgba(179, 113, 45, .96) 72% 100%);
-  border-radius: 9px 9px 5px 5px / 10px 10px 4px 4px;
-  box-shadow: inset 0 -1px 0 rgba(103, 59, 22, .28), 0 0 0 1px rgba(223, 176, 104, .20);
+  background:
+    radial-gradient(circle at 6px 6px, rgba(155, 96, 35, .65) 0 1.1px, transparent 1.2px),
+    radial-gradient(circle at 11px 4px, rgba(155, 96, 35, .65) 0 1.1px, transparent 1.2px),
+    radial-gradient(circle at 16px 6px, rgba(155, 96, 35, .65) 0 1.1px, transparent 1.2px),
+    linear-gradient(180deg, rgba(245, 212, 140, .98) 0 66%, rgba(214, 150, 77, .95) 66% 100%);
+  border-radius: 9px 9px 4px 4px / 11px 11px 4px 4px;
+  box-shadow:
+    inset 0 -1px 0 rgba(115, 68, 26, .35),
+    0 0 0 1px rgba(223, 176, 104, .22),
+    0 0 10px rgba(173, 98, 36, .10);
 }
-
 .deity-gluttony .deity-article h2::after {
   content: "";
   position: absolute;
@@ -311,56 +321,54 @@ body.deity-body.deity-gluttony::after {
     linear-gradient(90deg, rgba(191, 130, 57, .24), transparent) bottom/100% 1px no-repeat;
 }
 
-/* bite marks in the page/cards */
-.gluttony-bite-top::after,
-.gluttony-bite-bottom::after {
-  bottom: -11px;
-  left: 10%;
-  width: 198px;
-  height: 70px;
+/* Clear bite marks */
+.gluttony-bite-left::after,
+.gluttony-bite-right::after,
+.gluttony-bite-small-right::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  background: var(--glut-bg);
+  z-index: 3;
+}
+.gluttony-bite-left::after {
+  left: -1px;
+  top: 50%;
+  transform: translate(-56%, -50%);
+  width: 38px;
+  height: 84px;
   background:
-    radial-gradient(circle at 28px 22px, var(--glut-bg) 0 19px, transparent 20px),
-    radial-gradient(circle at 63px 10px, var(--glut-bg) 0 8px, transparent 9px),
-    radial-gradient(circle at 98px 38px, var(--glut-bg) 0 16px, transparent 17px),
-    radial-gradient(circle at 130px 16px, var(--glut-bg) 0 9px, transparent 10px),
-    radial-gradient(circle at 164px 22px, var(--glut-bg) 0 19px, transparent 20px);
-  border-bottom: 2px solid rgba(231, 180, 102, .38);
-  border-radius: 32px 32px 0 0;
-  filter: drop-shadow(0 -1px 0 rgba(235, 186, 112, .22));
+    radial-gradient(circle at 34px 18px, var(--glut-bg) 0 13px, transparent 14px),
+    radial-gradient(circle at 30px 42px, var(--glut-bg) 0 10px, transparent 11px),
+    radial-gradient(circle at 34px 66px, var(--glut-bg) 0 13px, transparent 14px);
+  filter: drop-shadow(-1px 0 0 rgba(224, 166, 92, .34));
+}
+.gluttony-bite-right::after {
+  right: -1px;
+  top: 16px;
+  transform: translate(56%, 0);
+  width: 38px;
+  height: 84px;
+  background:
+    radial-gradient(circle at 4px 18px, var(--glut-bg) 0 13px, transparent 14px),
+    radial-gradient(circle at 8px 42px, var(--glut-bg) 0 10px, transparent 11px),
+    radial-gradient(circle at 4px 66px, var(--glut-bg) 0 13px, transparent 14px);
+  filter: drop-shadow(1px 0 0 rgba(224, 166, 92, .34));
+}
+.gluttony-bite-small-right::after {
+  right: -1px;
+  top: 52px;
+  transform: translate(54%, 0);
+  width: 28px;
+  height: 54px;
+  background:
+    radial-gradient(circle at 3px 14px, var(--glut-bg) 0 9px, transparent 10px),
+    radial-gradient(circle at 7px 29px, var(--glut-bg) 0 7px, transparent 8px),
+    radial-gradient(circle at 3px 43px, var(--glut-bg) 0 9px, transparent 10px);
+  filter: drop-shadow(1px 0 0 rgba(224, 166, 92, .30));
 }
 
-.gluttony-bite-top::after {
-  top: -11px;
-  right: 7%;
-  width: 186px;
-  height: 64px;
-  background:
-    radial-gradient(circle at 26px 20px, var(--glut-bg) 0 18px, transparent 19px),
-    radial-gradient(circle at 57px 32px, var(--glut-bg) 0 8px, transparent 9px),
-    radial-gradient(circle at 92px 13px, var(--glut-bg) 0 15px, transparent 16px),
-    radial-gradient(circle at 121px 27px, var(--glut-bg) 0 10px, transparent 11px),
-    radial-gradient(circle at 154px 21px, var(--glut-bg) 0 18px, transparent 19px);
-  border-top: 2px solid rgba(231, 180, 102, .38);
-  border-radius: 0 0 32px 32px;
-  filter: drop-shadow(0 1px 0 rgba(235, 186, 112, .22));
-}
-
-.gluttony-bite-bottom::after {
-  bottom: -10px;
-  left: 10%;
-  width: 190px;
-  height: 66px;
-  background:
-    radial-gradient(circle at 30px 22px, var(--glut-bg) 0 20px, transparent 21px),
-    radial-gradient(circle at 94px 38px, var(--glut-bg) 0 17px, transparent 18px),
-    radial-gradient(circle at 154px 22px, var(--glut-bg) 0 20px, transparent 21px);
-  border-bottom: 2px solid rgba(231, 180, 102, .34);
-  border-top: 0;
-  border-radius: 28px 28px 0 0;
-  filter: drop-shadow(0 -1px 0 rgba(235, 186, 112, .20));
-}
-
-/* sidebar */
+/* Sidebar */
 .deity-gluttony .deity-facts {
   border-color: rgba(146, 86, 35, .30);
   background: linear-gradient(180deg, rgba(38, 18, 8, .13), rgba(7, 11, 18, .06));
@@ -368,37 +376,16 @@ body.deity-body.deity-gluttony::after {
 .deity-gluttony .deity-related {
   border-color: rgba(146, 86, 35, .26);
 }
-.deity-gluttony .deity-facts::before,
-.deity-gluttony .deity-facts::after {
-  content: "";
-  position: absolute;
-  width: 46px;
-  height: 26px;
-  bottom: -12px;
-  opacity: .14;
-  pointer-events: none;
-}
-.deity-gluttony .deity-facts::before {
-  left: -8px;
-  border-left: 2px solid rgba(226, 202, 166, .22);
-  border-bottom: 2px solid rgba(226, 202, 166, .22);
-  border-radius: 0 0 0 26px;
-  transform: rotate(-12deg);
-}
-.deity-gluttony .deity-facts::after {
-  right: -8px;
-  border-right: 2px solid rgba(226, 202, 166, .22);
-  border-bottom: 2px solid rgba(226, 202, 166, .22);
-  border-radius: 0 0 26px 0;
-  transform: rotate(12deg);
-}
+.deity-gluttony .deity-related h2 { color: var(--glut-accent); }
 
 @media (max-width: 1100px) {
   .deity-gluttony .deity-hero-copy { width: min(60%, 760px); }
   .deity-gluttony .deity-portrait { inset: 0 0 0 36%; }
+  .gluttony-backtusk { opacity: .42; width: 170px; }
+  .gluttony-star-chain.left { left: calc(1.5% + 128px); }
+  .gluttony-star-chain.right { right: calc(1.5% + 128px); }
 }
 @media (max-width: 900px) {
-  .gluttony-tusk-mark.d, .gluttony-orbit.two { display: none; }
   .deity-gluttony .deity-hero {
     min-height: auto;
     display: flex;
@@ -422,27 +409,34 @@ body.deity-body.deity-gluttony::after {
     height: 95%;
     object-position: center bottom;
   }
+  .gluttony-backtusk,
+  .gluttony-star-chain { display: none; }
 }
 @media (max-width: 650px) {
   .gluttony-page-decor { display: none; }
-  .gluttony-bite-top::after,
-  .gluttony-bite-bottom::after {
-    display: none;
-  }
+  .gluttony-bite-left::after,
+  .gluttony-bite-right::after,
+  .gluttony-bite-small-right::after { display: none; }
 }
 </style>
 </head>
 <body class="deity-body deity-gluttony">
 
 <div class="gluttony-page-decor" aria-hidden="true">
-  <span class="gluttony-haze one"></span>
-  <span class="gluttony-haze two"></span>
-  <span class="gluttony-orbit one"></span>
-  <span class="gluttony-orbit two"></span>
-  <span class="gluttony-tusk-mark a"></span>
-  <span class="gluttony-tusk-mark b"></span>
-  <span class="gluttony-tusk-mark c"></span>
-  <span class="gluttony-tusk-mark d"></span>
+  <span class="haze one"></span>
+  <span class="haze two"></span>
+
+  <svg class="gluttony-backtusk left" viewBox="0 0 240 720" aria-hidden="true">
+    <path class="outer" d="M198 18C108 116 68 252 62 418c-5 137 20 219 72 282-79-57-123-149-123-307C11 205 86 83 198 18Z"/>
+    <path class="inner" d="M191 61C127 138 99 249 96 391c-2 100 16 173 54 236"/>
+  </svg>
+  <svg class="gluttony-backtusk right" viewBox="0 0 240 720" aria-hidden="true">
+    <path class="outer" d="M198 18C108 116 68 252 62 418c-5 137 20 219 72 282-79-57-123-149-123-307C11 205 86 83 198 18Z"/>
+    <path class="inner" d="M191 61C127 138 99 249 96 391c-2 100 16 173 54 236"/>
+  </svg>
+
+  <div class="gluttony-star-chain left"><span></span><em></em></div>
+  <div class="gluttony-star-chain right"><span></span><em></em></div>
 </div>
 
 <header class="site-header">
@@ -476,14 +470,38 @@ body.deity-body.deity-gluttony::after {
 
 <main class="deity-layout">
   <article class="deity-article">
-    <section class="gluttony-bite-top"><h2>The Hunger That Can Eat Anything</h2><p>Gluttony can consume almost anything. Food and physical matter are the obvious examples, but his appetite can extend to living creatures, energy, knowledge, and even things that are difficult to describe as physical objects at all. When he consumes something, he can gain qualities, abilities, or attributes from it.</p><p>That makes his power frighteningly open-ended. It also makes him difficult to understand. Gluttony's hunger is not merely a need for calories. It is a mechanism through which he experiences, acquires, and becomes.</p></section>
-    <section><h2>What Gluttony Represents</h2><p>Modern Gluttony is associated with nourishment, fulfillment, abundance, and experiencing life fully. Hunger is treated as a signal that something is missing. The important question is what you use to fill that absence.</p><p>A person can eat until they cannot move and still feel empty. Someone else can share a modest meal with people they love and leave completely satisfied. Gluttony's faith lives in the difference.</p></section>
-    <section class="gluttony-bite-bottom"><h2>Hus</h2><p>Hus is the largest city on the continent by population. Its public identity is warm, communal, and heavily centered on food. Feasts, restaurants, public meals, hospitality, and culinary tradition make the city one of the easiest places to associate with Gluttony's more generous aspects.</p><p>It is also the crime capital of the continent. That is less contradiction than mathematics. Hus has the most people, so it also has the most thieves, gangs, smugglers, criminal networks, and opportunities for someone to decide they are hungry for something that belongs to somebody else.</p></section>
-    <section><h2>The Church of Gluttony</h2><p>Gluttony's organized church has historically treated cooking as craft, worship, memory, and hospitality. Ingredients are scrutinized, recipes preserved, public meals organized, and feeding another person can be treated as a genuine religious act.</p><p>The church lost much of its prominence after its former leader was killed by Pride. What remains is smaller and still rebuilding, currently led by a humble gnome with the help of a resourceful goblin who manages the finances. For a faith built around abundance, rebuilding from scarcity has become its own lesson.</p></section>
+    <section class="gluttony-bite-right">
+      <div class="gluttony-crest tight" aria-hidden="true"><span class="tusk-glyph"></span></div>
+      <h2>The Hunger That Can Eat Anything</h2>
+      <p>Gluttony can consume almost anything. Food and physical matter are the obvious examples, but his appetite can extend to living creatures, energy, knowledge, and even things that are difficult to describe as physical objects at all. When he consumes something, he can gain qualities, abilities, or attributes from it.</p>
+      <p>That makes his power frighteningly open-ended. It also makes him difficult to understand. Gluttony's hunger is not merely a need for calories. It is a mechanism through which he experiences, acquires, and becomes.</p>
+    </section>
+
+    <section class="gluttony-bite-left">
+      <div class="gluttony-crest tight" aria-hidden="true"><span class="tusk-glyph"></span></div>
+      <h2>What Gluttony Represents</h2>
+      <p>Modern Gluttony is associated with nourishment, fulfillment, abundance, and experiencing life fully. Hunger is treated as a signal that something is missing. The important question is what you use to fill that absence.</p>
+      <p>A person can eat until they cannot move and still feel empty. Someone else can share a modest meal with people they love and leave completely satisfied. Gluttony's faith lives in the difference.</p>
+    </section>
+
+    <section class="gluttony-bite-right">
+      <div class="gluttony-crest tight" aria-hidden="true"><span class="tusk-glyph"></span></div>
+      <h2>Hus</h2>
+      <p>Hus is the largest city on the continent by population. Its public identity is warm, communal, and heavily centered on food. Feasts, restaurants, public meals, hospitality, and culinary tradition make the city one of the easiest places to associate with Gluttony's more generous aspects.</p>
+      <p>It is also the crime capital of the continent. That is less contradiction than mathematics. Hus has the most people, so it also has the most thieves, gangs, smugglers, criminal networks, and opportunities for someone to decide they are hungry for something that belongs to somebody else.</p>
+    </section>
+
+    <section class="gluttony-bite-left">
+      <div class="gluttony-crest tight" aria-hidden="true"><span class="tusk-glyph"></span></div>
+      <h2>The Church of Gluttony</h2>
+      <p>Gluttony's organized church has historically treated cooking as craft, worship, memory, and hospitality. Ingredients are scrutinized, recipes preserved, public meals organized, and feeding another person can be treated as a genuine religious act.</p>
+      <p>The church lost much of its prominence after its former leader was killed by Pride. What remains is smaller and still rebuilding, currently led by a humble gnome with the help of a resourceful goblin who manages the finances. For a faith built around abundance, rebuilding from scarcity has become its own lesson.</p>
+    </section>
   </article>
+
   <aside class="deity-aside">
-    <section class="deity-facts">
-      <div class="deity-swoop-ornament centered" aria-hidden="true"><span class="swoop-glyph"></span></div>
+    <section class="deity-facts gluttony-bite-small-right">
+      <div class="gluttony-crest centered" aria-hidden="true"><span class="tusk-glyph"></span></div>
       <h2>At a Glance</h2>
       <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Nourishment, fulfillment, abundance</span></div>
       <div class="fact"><span class="fact-label">Major City</span><span class="fact-value">Hus</span></div>
@@ -491,6 +509,7 @@ body.deity-body.deity-gluttony::after {
       <div class="fact"><span class="fact-label">Known Ability</span><span class="fact-value">Consumption and assimilation</span></div>
       <div class="fact"><span class="fact-label">Common Form</span><span class="fact-value">Massive humanoid with boar-like traits</span></div>
     </section>
+
     <section class="deity-related">
       <h2>Keep Exploring</h2>
       <a href="/sins.html">The Seven Sins</a>
