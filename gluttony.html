@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="/styles.css">
 <style>
 /* =========================================================
-   GLUTTONY — PAGE-SPECIFIC VISUAL MOTIFS (V9)
+   GLUTTONY — PAGE-SPECIFIC VISUAL MOTIFS (V10)
    Direction: visible bite marks, clear bread icon, matching
    tusk ornaments, and large background tusks.
    ========================================================= */
@@ -72,13 +72,13 @@ body.deity-body.deity-gluttony::after {
 .gluttony-page-decor .haze.two { width: 26vw; height: 140px; bottom: 120px; left: -4vw; opacity: .18; }
 .gluttony-backtusk-art {
   position: absolute;
-  top: 138px;
+  top: 182px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(138%, 1720px);
+  width: min(146%, 1820px);
   max-width: none;
   height: auto;
-  opacity: .42;
+  opacity: .44;
   pointer-events: none;
   z-index: 0;
   filter: drop-shadow(0 0 22px rgba(123, 68, 28, .12));
@@ -258,7 +258,7 @@ body.deity-body.deity-gluttony::after {
     linear-gradient(90deg, rgba(191, 130, 57, .24), transparent) bottom/100% 1px no-repeat;
 }
 
-/* Clear bite marks */
+/* Clear bite marks — flipped inward so the gold trim sits inside the boxes */
 .gluttony-bite-left::after,
 .gluttony-bite-right::after,
 .gluttony-bite-small-right::after {
@@ -266,52 +266,48 @@ body.deity-body.deity-gluttony::after {
   position: absolute;
   pointer-events: none;
   z-index: 4;
-  right: -1px;
-  top: 52px;
-  transform: translate(54%, 0);
-  width: 28px;
-  height: 54px;
-  background:
-    radial-gradient(circle at 25px 14px, var(--glut-bg) 0 9px, transparent 10px),
-    radial-gradient(circle at 21px 29px, var(--glut-bg) 0 7px, transparent 8px),
-    radial-gradient(circle at 25px 43px, var(--glut-bg) 0 9px, transparent 10px);
-  filter: drop-shadow(1px 0 0 rgba(224, 166, 92, .34));
 }
+
+/* Left-side bite: bite opens inward from the left edge */
 .gluttony-bite-left::after {
-  left: -1px;
+  left: 0;
   top: 50%;
-  transform: translate(-58%, -50%);
-  width: 42px;
-  height: 90px;
+  transform: translate(-50%, -50%);
+  width: 38px;
+  height: 86px;
   background:
-    radial-gradient(circle at 4px 18px, var(--glut-bg) 0 13px, transparent 14px),
-    radial-gradient(circle at 8px 42px, var(--glut-bg) 0 10px, transparent 11px),
-    radial-gradient(circle at 4px 66px, var(--glut-bg) 0 13px, transparent 14px);
-  filter: drop-shadow(-1px 0 0 rgba(224, 166, 92, .34));
+    radial-gradient(circle at 31px 17px, var(--glut-bg) 0 13px, transparent 14px),
+    radial-gradient(circle at 28px 42px, var(--glut-bg) 0 10px, transparent 11px),
+    radial-gradient(circle at 31px 69px, var(--glut-bg) 0 13px, transparent 14px);
+  filter: drop-shadow(1px 0 0 rgba(224, 166, 92, .36));
 }
+
+/* Right-side bite: bite opens inward from the right edge */
 .gluttony-bite-right::after {
-  right: -1px;
-  top: 18px;
-  transform: translate(58%, 0);
-  width: 42px;
-  height: 90px;
+  right: 0;
+  top: 20px;
+  transform: translate(50%, 0);
+  width: 38px;
+  height: 86px;
   background:
-    radial-gradient(circle at 34px 18px, var(--glut-bg) 0 13px, transparent 14px),
-    radial-gradient(circle at 30px 42px, var(--glut-bg) 0 10px, transparent 11px),
-    radial-gradient(circle at 34px 66px, var(--glut-bg) 0 13px, transparent 14px);
-  filter: drop-shadow(1px 0 0 rgba(224, 166, 92, .34));
+    radial-gradient(circle at 7px 17px, var(--glut-bg) 0 13px, transparent 14px),
+    radial-gradient(circle at 10px 42px, var(--glut-bg) 0 10px, transparent 11px),
+    radial-gradient(circle at 7px 69px, var(--glut-bg) 0 13px, transparent 14px);
+  filter: drop-shadow(-1px 0 0 rgba(224, 166, 92, .36));
 }
+
+/* Smaller right-side bite for sidebar cards */
 .gluttony-bite-small-right::after {
-  right: -1px;
-  top: 58px;
-  transform: translate(56%, 0);
-  width: 30px;
+  right: 0;
+  top: 62px;
+  transform: translate(50%, 0);
+  width: 28px;
   height: 58px;
   background:
-    radial-gradient(circle at 3px 14px, var(--glut-bg) 0 9px, transparent 10px),
-    radial-gradient(circle at 7px 29px, var(--glut-bg) 0 7px, transparent 8px),
-    radial-gradient(circle at 3px 43px, var(--glut-bg) 0 9px, transparent 10px);
-  filter: drop-shadow(1px 0 0 rgba(224, 166, 92, .30));
+    radial-gradient(circle at 5px 14px, var(--glut-bg) 0 9px, transparent 10px),
+    radial-gradient(circle at 8px 29px, var(--glut-bg) 0 7px, transparent 8px),
+    radial-gradient(circle at 5px 44px, var(--glut-bg) 0 9px, transparent 10px);
+  filter: drop-shadow(-1px 0 0 rgba(224, 166, 92, .32));
 }
 
 /* Sidebar */
@@ -327,7 +323,7 @@ body.deity-body.deity-gluttony::after {
 @media (max-width: 1100px) {
   .deity-gluttony .deity-hero-copy { width: min(60%, 760px); }
   .deity-gluttony .deity-portrait { inset: 0 0 0 36%; }
-  .gluttony-backtusk-art { width: min(150%, 1320px); opacity: .34; top: 108px; }
+  .gluttony-backtusk-art { width: min(160%, 1420px); opacity: .36; top: 136px; }
 }
 @media (max-width: 900px) {
   .deity-gluttony .deity-hero {
