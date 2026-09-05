@@ -8,7 +8,7 @@
 
 <style>
 /* =========================================================
-   LUST — PAGE-SPECIFIC VISUAL MOTIFS (V6)
+   LUST — PAGE-SPECIFIC VISUAL MOTIFS (V7)
    Clean bonds + a section-contained Rixel treatment.
    No page-spanning ribbons.
    ========================================================= */
@@ -247,7 +247,7 @@ body.deity-body.deity-lust>*{
   top:74px;
   width:clamp(92px,7vw,132px);
   height:auto;
-  z-index:0;
+  z-index:5 !important;
   pointer-events:none;
   opacity:.46;
   filter:drop-shadow(0 0 10px rgba(236,82,164,.08));
@@ -259,12 +259,17 @@ body.deity-body.deity-lust>*{
 .deity-lust .deity-hero,
 .deity-lust .site-header{
   position:relative;
-  z-index:3;
+  z-index:6;
 }
 .deity-lust .deity-layout,
 .deity-lust footer{
   position:relative;
-  z-index:2;
+  z-index:3;
+}
+/* Override the general direct-child stacking rule so the ribbons sit above
+   the page/background, while the hero/name card remains above the ribbons. */
+body.deity-body.deity-lust > .lust-side-ribbon-img{
+  z-index:5 !important;
 }
 
 @media(max-width:1250px){
