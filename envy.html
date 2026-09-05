@@ -8,8 +8,8 @@
 
 <style>
 /* =========================================================
-   ENVY — PAGE-SPECIFIC VISUAL MOTIFS (V1)
-   Green eyes, woven souls, subtle broadcast/watcher lines.
+   ENVY — PAGE-SPECIFIC VISUAL MOTIFS (V2)
+   Green eyes, mystical watcher backdrop, woven souls.
    ========================================================= */
 :root{
   --envy-green:#6bd08a;
@@ -30,16 +30,19 @@ body.deity-body.deity-envy::before{
   z-index:0;
   pointer-events:none;
   background:
-    radial-gradient(circle at 9% 24%,rgba(73,145,91,.10),transparent 24rem),
-    radial-gradient(circle at 92% 68%,rgba(52,116,72,.10),transparent 27rem),
-    linear-gradient(120deg,transparent,rgba(95,179,115,.018),transparent);
+    radial-gradient(circle at 9% 24%,rgba(73,145,91,.07),transparent 24rem),
+    radial-gradient(circle at 92% 68%,rgba(52,116,72,.07),transparent 27rem),
+    linear-gradient(120deg,transparent,rgba(95,179,115,.012),transparent),
+    url("./envy-eyes-backdrop.png") center top / cover no-repeat;
+  opacity:.18;
+  filter:saturate(.9) brightness(.82);
 }
 body.deity-body.deity-envy>*{
   position:relative;
   z-index:1;
 }
 
-/* page-wide watcher / soul backdrop */
+/* page-wide watcher / soul accents */
 .envy-page-decor{
   position:fixed;
   inset:0;
@@ -119,7 +122,7 @@ body.deity-body.deity-envy>*{
 .envy-soul-thread.s2{height:650px;right:13%;top:560px;transform:rotate(7deg);}
 .envy-soul-thread.s3{height:430px;left:7%;top:1120px;transform:rotate(12deg);opacity:.11;}
 
-/* subtle broadcast / observation lines in cards */
+/* mystical panel treatment */
 .deity-envy .deity-article section,
 .deity-envy .deity-facts,
 .deity-envy .deity-related{
@@ -127,21 +130,6 @@ body.deity-body.deity-envy>*{
   overflow:visible;
   border-color:rgba(77,151,97,.25);
   background:linear-gradient(180deg,rgba(7,20,13,.28),rgba(5,10,14,.05));
-}
-.deity-envy .deity-article section::before,
-.deity-envy .deity-facts::before{
-  content:"";
-  position:absolute;
-  inset:10px;
-  pointer-events:none;
-  opacity:.16;
-  background:
-    linear-gradient(90deg,rgba(102,210,132,.50),rgba(102,210,132,.50)) 0 18% / 42px 1px no-repeat,
-    linear-gradient(180deg,rgba(102,210,132,.50),rgba(102,210,132,.50)) 42px 18% / 1px 21px no-repeat,
-    radial-gradient(circle at 42px calc(18% + 21px),rgba(117,229,149,.90) 0 1.6px,transparent 2.2px),
-    linear-gradient(90deg,rgba(102,210,132,.34),rgba(102,210,132,.34)) 100% 76% / 36px 1px no-repeat,
-    linear-gradient(180deg,rgba(102,210,132,.34),rgba(102,210,132,.34)) calc(100% - 36px) 76% / 1px 20px no-repeat,
-    radial-gradient(circle at calc(100% - 36px) calc(76% + 20px),rgba(117,229,149,.76) 0 1.6px,transparent 2.2px);
 }
 
 /* Eye icon beside article headings */
@@ -266,8 +254,6 @@ body.deity-body.deity-envy>*{
 }
 @media (max-width:650px){
   .envy-page-decor{display:none;}
-  .deity-envy .deity-article section::before,
-  .deity-envy .deity-facts::before{opacity:.08;}
 }
 </style>
 
