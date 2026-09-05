@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="/styles.css">
 <style>
 /* =========================================================
-   GREED — PAGE-SPECIFIC VISUAL MOTIFS (V6)
-   Canon corrected + responsive serpent motif + hero crop fix
+   GREED — PAGE-SPECIFIC VISUAL MOTIFS (V8)
+   Canon corrected + responsive serpent motif + hero crop fix + burrow endpoints
    ========================================================= */
 
 body.deity-body.deity-greed {
@@ -323,6 +323,26 @@ body.deity-body.deity-greed::after {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+.greed-serpent-overlay .burrow-shadow {
+  fill: rgba(0,0,0,.22);
+  filter: blur(3px);
+}
+.greed-serpent-overlay .burrow-hole {
+  fill: #02050b;
+  stroke: rgba(15,10,4,.58);
+  stroke-width: 1;
+}
+.greed-serpent-overlay .burrow-rim {
+  fill: none;
+  stroke: rgba(211,165,58,.42);
+  stroke-width: 2.2;
+}
+.greed-serpent-overlay .burrow-crack {
+  fill: none;
+  stroke: rgba(180,135,42,.34);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
 @media (max-width: 650px) {
   .deity-greed .deity-hero { min-height: auto; }
   .deity-greed .deity-hero-copy { width: 100%; min-height: auto; padding: 3rem 1.2rem 2rem; }
@@ -384,6 +404,58 @@ body.deity-body.deity-greed::after {
           <stop offset="100%" stop-color="#efc860"/>
         </linearGradient>
       </defs>
+
+      <g class="burrow" id="burrow-top-start">
+        <ellipse class="burrow-shadow" cx="0" cy="2" rx="19" ry="15"></ellipse>
+        <ellipse class="burrow-hole" cx="0" cy="0" rx="16" ry="13"></ellipse>
+        <ellipse class="burrow-rim" cx="0" cy="0" rx="15" ry="12"></ellipse>
+        <path class="burrow-crack" d="M -11 -8 L -18 -15"></path>
+        <path class="burrow-crack" d="M 12 -5 L 20 -11"></path>
+        <path class="burrow-crack" d="M -10 8 L -18 13"></path>
+      </g>
+      <g class="burrow" id="burrow-top-end">
+        <ellipse class="burrow-shadow" cx="0" cy="2" rx="19" ry="15"></ellipse>
+        <ellipse class="burrow-hole" cx="0" cy="0" rx="16" ry="13"></ellipse>
+        <ellipse class="burrow-rim" cx="0" cy="0" rx="15" ry="12"></ellipse>
+        <path class="burrow-crack" d="M 11 -8 L 18 -15"></path>
+        <path class="burrow-crack" d="M -12 -5 L -20 -11"></path>
+        <path class="burrow-crack" d="M 10 8 L 18 13"></path>
+      </g>
+      <g class="burrow" id="burrow-top-right-end">
+        <ellipse class="burrow-shadow" cx="0" cy="2" rx="18" ry="14"></ellipse>
+        <ellipse class="burrow-hole" cx="0" cy="0" rx="15" ry="12"></ellipse>
+        <ellipse class="burrow-rim" cx="0" cy="0" rx="14" ry="11"></ellipse>
+        <path class="burrow-crack" d="M -8 -9 L -15 -16"></path>
+        <path class="burrow-crack" d="M 10 -4 L 18 -10"></path>
+      </g>
+      <g class="burrow" id="burrow-top-right-start">
+        <ellipse class="burrow-shadow" cx="0" cy="2" rx="18" ry="14"></ellipse>
+        <ellipse class="burrow-hole" cx="0" cy="0" rx="15" ry="12"></ellipse>
+        <ellipse class="burrow-rim" cx="0" cy="0" rx="14" ry="11"></ellipse>
+        <path class="burrow-crack" d="M 8 -9 L 15 -16"></path>
+        <path class="burrow-crack" d="M -10 -4 L -18 -10"></path>
+      </g>
+      <g class="burrow" id="burrow-left-start">
+        <ellipse class="burrow-shadow" cx="0" cy="2" rx="20" ry="16"></ellipse>
+        <ellipse class="burrow-hole" cx="0" cy="0" rx="17" ry="14"></ellipse>
+        <ellipse class="burrow-rim" cx="0" cy="0" rx="16" ry="13"></ellipse>
+        <path class="burrow-crack" d="M 12 -7 L 20 -13"></path>
+        <path class="burrow-crack" d="M 11 8 L 19 15"></path>
+      </g>
+      <g class="burrow" id="burrow-left-end">
+        <ellipse class="burrow-shadow" cx="0" cy="2" rx="20" ry="16"></ellipse>
+        <ellipse class="burrow-hole" cx="0" cy="0" rx="17" ry="14"></ellipse>
+        <ellipse class="burrow-rim" cx="0" cy="0" rx="16" ry="13"></ellipse>
+        <path class="burrow-crack" d="M 12 -7 L 20 -13"></path>
+        <path class="burrow-crack" d="M 11 8 L 19 15"></path>
+      </g>
+      <g class="burrow" id="burrow-bottom-start">
+        <ellipse class="burrow-shadow" cx="0" cy="2" rx="17" ry="13"></ellipse>
+        <ellipse class="burrow-hole" cx="0" cy="0" rx="14" ry="11"></ellipse>
+        <ellipse class="burrow-rim" cx="0" cy="0" rx="13" ry="10"></ellipse>
+        <path class="burrow-crack" d="M -10 -6 L -18 -12"></path>
+        <path class="burrow-crack" d="M -10 7 L -18 13"></path>
+      </g>
       <path class="soft-shadow" id="greed-shadow-top"></path>
       <path class="body" id="greed-path-top"></path>
       <path class="inner" id="greed-path-top-inner"></path>
@@ -460,6 +532,15 @@ body.deity-body.deity-greed::after {
     'greed-shadow-bottom','greed-path-bottom','greed-path-bottom-inner'
   ];
   const el = Object.fromEntries(ids.map(id => [id, svg.querySelector('#' + id)]));
+  const burrows = {
+    topStart: svg.querySelector('#burrow-top-start'),
+    topEnd: svg.querySelector('#burrow-top-end'),
+    topRightStart: svg.querySelector('#burrow-top-right-start'),
+    topRightEnd: svg.querySelector('#burrow-top-right-end'),
+    leftStart: svg.querySelector('#burrow-left-start'),
+    leftEnd: svg.querySelector('#burrow-left-end'),
+    bottomStart: svg.querySelector('#burrow-bottom-start')
+  };
 
   function pathLine(points) {
     const [p0, c1, c2, p3] = points;
@@ -470,6 +551,30 @@ body.deity-body.deity-greed::after {
     el['greed-shadow-' + baseId].setAttribute('d', d);
     el['greed-path-' + baseId].setAttribute('d', d);
     el['greed-path-' + baseId + '-inner'].setAttribute('d', d);
+  }
+
+  function bezPoint(p0, c1, c2, p3, t) {
+    const mt = 1 - t;
+    return {
+      x: mt*mt*mt*p0.x + 3*mt*mt*t*c1.x + 3*mt*t*t*c2.x + t*t*t*p3.x,
+      y: mt*mt*mt*p0.y + 3*mt*mt*t*c1.y + 3*mt*t*t*c2.y + t*t*t*p3.y
+    };
+  }
+
+  function bezDerivative(p0, c1, c2, p3, t) {
+    const mt = 1 - t;
+    return {
+      x: 3*mt*mt*(c1.x-p0.x) + 6*mt*t*(c2.x-c1.x) + 3*t*t*(p3.x-c2.x),
+      y: 3*mt*mt*(c1.y-p0.y) + 6*mt*t*(c2.y-c1.y) + 3*t*t*(p3.y-c2.y)
+    };
+  }
+
+  function placeBurrow(node, point, angleDeg, offset = 0, scale = 1) {
+    if (!node || !point) return;
+    const rad = angleDeg * Math.PI / 180;
+    const x = point.x + Math.cos(rad) * offset;
+    const y = point.y + Math.sin(rad) * offset;
+    node.setAttribute('transform', `translate(${x.toFixed(1)}, ${y.toFixed(1)}) rotate(${angleDeg.toFixed(1)}) scale(${scale})`);
   }
 
   function render() {
@@ -498,30 +603,33 @@ body.deity-body.deity-greed::after {
 
     // 1) Upper-left bridge: peeks out from behind the section above and then
     // disappears behind the "An Immortality of His Own" card.
-    const topPath = pathLine([
+    const topPoints = [
       { x: r2.left + 95, y: topY },
       { x: r2.left + 235, y: topY - 32 },
       { x: r2.left + r2.width * 0.42, y: topY - 28 },
       { x: r2.left + r2.width * 0.63, y: topY + 3 }
-    ]);
+    ];
+    const topPath = pathLine(topPoints);
 
     // 2) Upper-right hook: comes out near the right edge of the upper card,
     // curves up into the gutter, and ends hidden beneath that card edge.
-    const topRightPath = pathLine([
+    const topRightPoints = [
       { x: r2.right - 30, y: r2.top - 8 },
       { x: r2.right + 56, y: r2.top - 58 },
       { x: r2.right + 75, y: r2.top - 116 },
       { x: r2.right + 18, y: r2.top - 156 }
-    ]);
+    ];
+    const topRightPath = pathLine(topRightPoints);
 
     // 3) Big left-side coil: runs entirely in the outer-left gutter,
     // embracing the second panel without crossing its text.
-    const leftPath = pathLine([
+    const leftPoints = [
       { x: r2.left + 14, y: r2.top + 54 },
       { x: r2.left - 112, y: r2.top + 118 },
       { x: r2.left - 126, y: r2.top + r2.height * 0.72 },
       { x: r2.left + 10, y: r2.bottom - 18 }
-    ]);
+    ];
+    const leftPath = pathLine(leftPoints);
 
     // 4) Lower sweeping arc: travels through the gap between section 2 and 3,
     // then curls toward the sidebar. The snake head sits at the end of this path.
@@ -540,6 +648,22 @@ body.deity-body.deity-greed::after {
     setPair('top-right', topRightPath);
     setPair('left', leftPath);
     setPair('bottom', bottomPath);
+
+    const topStartAngle = Math.atan2(topPoints[1].y - topPoints[0].y, topPoints[1].x - topPoints[0].x) * 180 / Math.PI + 180;
+    const topEndAngle = Math.atan2(topPoints[3].y - topPoints[2].y, topPoints[3].x - topPoints[2].x) * 180 / Math.PI;
+    const topRightStartAngle = Math.atan2(topRightPoints[1].y - topRightPoints[0].y, topRightPoints[1].x - topRightPoints[0].x) * 180 / Math.PI + 180;
+    const topRightEndAngle = Math.atan2(topRightPoints[3].y - topRightPoints[2].y, topRightPoints[3].x - topRightPoints[2].x) * 180 / Math.PI;
+    const leftStartAngle = Math.atan2(leftPoints[1].y - leftPoints[0].y, leftPoints[1].x - leftPoints[0].x) * 180 / Math.PI + 180;
+    const leftEndAngle = Math.atan2(leftPoints[3].y - leftPoints[2].y, leftPoints[3].x - leftPoints[2].x) * 180 / Math.PI;
+    const bottomStartAngle = Math.atan2(bottomPoints[1].y - bottomPoints[0].y, bottomPoints[1].x - bottomPoints[0].x) * 180 / Math.PI + 180;
+
+    placeBurrow(burrows.topStart, topPoints[0], topStartAngle, -2, 1);
+    placeBurrow(burrows.topEnd, topPoints[3], topEndAngle, 2, 1);
+    placeBurrow(burrows.topRightStart, topRightPoints[0], topRightStartAngle, -2, .94);
+    placeBurrow(burrows.topRightEnd, topRightPoints[3], topRightEndAngle, 2, .94);
+    placeBurrow(burrows.leftStart, leftPoints[0], leftStartAngle, -1, 1);
+    placeBurrow(burrows.leftEnd, leftPoints[3], leftEndAngle, 1, 1);
+    placeBurrow(burrows.bottomStart, bottomPoints[0], bottomStartAngle, -1, .92);
 
     const c2 = bottomPoints[2];
     const end = bottomPoints[3];
