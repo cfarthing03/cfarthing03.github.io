@@ -8,7 +8,7 @@
 
 <style>
 /* =========================================================
-   PRIDE — PAGE-SPECIFIC VISUAL MOTIFS (V1)
+   PRIDE — PAGE-SPECIFIC VISUAL MOTIFS (V2)
    Gears + Automaton crystal-conduit lines.
    ========================================================= */
 :root {
@@ -58,24 +58,26 @@ body.deity-body.deity-pride > * { position: relative; z-index: 1; }
 .pride-gear.g2 { width: 220px; height: 220px; top: 640px; right: -80px; transform: rotate(22deg); opacity: .10; }
 .pride-gear.g3 { width: 130px; height: 130px; bottom: 130px; left: 6%; transform: rotate(-12deg); opacity: .09; }
 .pride-gear.g4 { width: 110px; height: 110px; top: 380px; right: 8%; transform: rotate(14deg); opacity: .08; }
+.pride-gear.g5 { width: 165px; height: 165px; top: 980px; right: 14%; transform: rotate(-10deg); opacity: .075; }
+.pride-gear.g6 { width: 92px; height: 92px; top: 760px; left: 10%; transform: rotate(30deg); opacity: .09; }
 
 /* Hero: no crop override — preserve existing image behavior */
 .deity-pride .deity-hero { isolation: isolate; }
 .deity-pride .deity-hero-copy::before {
   content: "";
   position: absolute;
-  left: clamp(1.5rem, 5vw, 6rem);
+  left: clamp(.45rem, 2.5vw, 2.6rem);
   top: 19%;
   width: 2px;
   height: 62%;
-  background: linear-gradient(180deg, transparent, rgba(227,216,190,.18) 15%, rgba(227,216,190,.38) 50%, rgba(227,216,190,.18) 85%, transparent);
-  box-shadow: 0 0 12px rgba(218,197,150,.10);
+  background: linear-gradient(180deg, transparent, rgba(227,216,190,.22) 10%, rgba(227,216,190,.48) 50%, rgba(227,216,190,.22) 90%, transparent);
+  box-shadow: 0 0 14px rgba(218,197,150,.14);
   opacity: .5;
 }
 .deity-pride .deity-hero-copy::after {
   content: "";
   position: absolute;
-  left: calc(clamp(1.5rem, 5vw, 6rem) - 4px);
+  left: calc(clamp(.45rem, 2.5vw, 2.6rem) - 4px);
   top: 38%;
   width: 10px;
   height: 10px;
@@ -105,14 +107,20 @@ body.deity-body.deity-pride > * { position: relative; z-index: 1; }
   position: absolute;
   inset: 10px;
   pointer-events: none;
-  opacity: .14;
+  opacity: .2;
   background:
-    linear-gradient(90deg, rgba(143,198,255,.50), rgba(143,198,255,.50)) 0 12% / 52px 1px no-repeat,
-    linear-gradient(180deg, rgba(143,198,255,.50), rgba(143,198,255,.50)) 52px 12% / 1px 30px no-repeat,
-    radial-gradient(circle at 52px calc(12% + 30px), rgba(143,198,255,.95) 0 2px, transparent 2.5px),
-    linear-gradient(90deg, rgba(211,151,255,.42), rgba(211,151,255,.42)) 100% 72% / 44px 1px no-repeat,
-    linear-gradient(180deg, rgba(211,151,255,.42), rgba(211,151,255,.42)) calc(100% - 44px) 72% / 1px 26px no-repeat,
-    radial-gradient(circle at calc(100% - 44px) calc(72% + 26px), rgba(211,151,255,.9) 0 2px, transparent 2.5px);
+    linear-gradient(90deg, rgba(143,198,255,.58), rgba(143,198,255,.58)) 0 12% / 52px 1px no-repeat,
+    linear-gradient(180deg, rgba(143,198,255,.58), rgba(143,198,255,.58)) 52px 12% / 1px 30px no-repeat,
+    radial-gradient(circle at 52px calc(12% + 30px), rgba(143,198,255,.98) 0 2px, transparent 2.5px),
+    linear-gradient(90deg, rgba(143,198,255,.42), rgba(143,198,255,.42)) 26% 86% / 34px 1px no-repeat,
+    linear-gradient(180deg, rgba(143,198,255,.42), rgba(143,198,255,.42)) calc(26% + 34px) 86% / 1px 16px no-repeat,
+    radial-gradient(circle at calc(26% + 34px) calc(86% + 16px), rgba(143,198,255,.88) 0 1.8px, transparent 2.3px),
+    linear-gradient(90deg, rgba(211,151,255,.50), rgba(211,151,255,.50)) 100% 72% / 44px 1px no-repeat,
+    linear-gradient(180deg, rgba(211,151,255,.50), rgba(211,151,255,.50)) calc(100% - 44px) 72% / 1px 26px no-repeat,
+    radial-gradient(circle at calc(100% - 44px) calc(72% + 26px), rgba(211,151,255,.95) 0 2px, transparent 2.5px),
+    linear-gradient(90deg, rgba(226,198,111,.38), rgba(226,198,111,.38)) 62% 8% / 28px 1px no-repeat,
+    linear-gradient(180deg, rgba(226,198,111,.38), rgba(226,198,111,.38)) calc(62% + 28px) 8% / 1px 18px no-repeat,
+    radial-gradient(circle at calc(62% + 28px) calc(8% + 18px), rgba(226,198,111,.82) 0 1.8px, transparent 2.3px);
 }
 
 /* Gear heading icon */
@@ -181,6 +189,30 @@ body.deity-body.deity-pride > * { position: relative; z-index: 1; }
   box-shadow: 0 0 10px color-mix(in srgb, var(--core) 42%, transparent);
   opacity: .52;
 }
+.deity-pride .deity-article section .pride-corner-gear,
+.deity-pride .deity-facts .pride-corner-gear {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  right: 16px;
+  bottom: 14px;
+  opacity: .16;
+  background:
+    radial-gradient(circle, transparent 0 25%, rgba(220,203,164,.42) 26% 31%, transparent 32% 46%, rgba(220,203,164,.32) 47% 50%, transparent 51%),
+    repeating-conic-gradient(from 0deg, rgba(220,203,164,.35) 0 7deg, transparent 7deg 22deg);
+  -webkit-mask: radial-gradient(circle, transparent 0 18%, #000 19% 72%, transparent 73%);
+  mask: radial-gradient(circle, transparent 0 18%, #000 19% 72%, transparent 73%);
+  filter: drop-shadow(0 0 10px rgba(220,203,164,.08));
+}
+.deity-pride .deity-article section:nth-child(even) .pride-corner-gear {
+  right: auto;
+  left: 16px;
+  bottom: 16px;
+  width: 22px;
+  height: 22px;
+  opacity: .13;
+}
 
 @keyframes pride-core-pulse {
   0%,100% { opacity:.42; }
@@ -198,6 +230,8 @@ body.deity-body.deity-pride > * { position: relative; z-index: 1; }
 @media (max-width: 900px) {
   .pride-gear.g1 { left:-180px; opacity:.08; }
   .pride-gear.g2 { right:-145px; opacity:.07; }
+  .pride-gear.g5 { right:-120px; opacity:.06; }
+  .pride-gear.g6 { left:-30px; opacity:.07; }
   .deity-pride .deity-hero-copy::before,
   .deity-pride .deity-hero-copy::after { display:none; }
 }
@@ -216,6 +250,8 @@ body.deity-body.deity-pride > * { position: relative; z-index: 1; }
   <span class="pride-gear g2"></span>
   <span class="pride-gear g3"></span>
   <span class="pride-gear g4"></span>
+  <span class="pride-gear g5"></span>
+  <span class="pride-gear g6"></span>
 </div>
 
 <header class="site-header">
@@ -251,10 +287,10 @@ body.deity-body.deity-pride > * { position: relative; z-index: 1; }
 
 <main class="deity-layout">
   <article class="deity-article">
-    <section><h2>The Current God of Pride</h2><p>The modern God of Pride represents self-worth, confidence, achievement, identity, and personal excellence. Pride does not require believing yourself superior to everyone else. It can be as simple as recognizing that you did something difficult, that your work matters, or that part of who you are deserves to be celebrated rather than hidden.</p><p>That interpretation has made Pride especially important to people and communities whose identities have historically been treated as something to diminish. Pride in culture, heritage, identity, craft, and personal growth all fall comfortably within the god's modern domain.</p></section>
-<section><h2>The Lion</h2><p>The lion is Pride's primary symbol. It represents confidence, strength, leadership, and presence, but also grace. The image is meant to communicate someone who does not need to make everyone around them smaller in order to stand tall.</p><p>That distinction separates the current god from the being that once carried the same title.</p></section>
-<section><h2>The Previous Pride</h2><p>The former Pride was an immortal and malevolent spirit, not simply an earlier version of the current deity. Long ago, the Old Six imprisoned him. He eventually returned by manipulating 922, a grief-stricken warforged who had once been part of the very group responsible for his imprisonment.</p><p>922 had spent a lifetime trying to restore a lost companion. After losing her, his grief curdled into the belief that mortality was humanity's greatest weakness and that human beings only destroyed what they touched. Pride exploited that belief and pursued the extermination of humanity in favor of supposedly flawless Clockwork beings.</p><p>That old ideology treated improvement as replacement: if something was flawed, discard it and build something better. The current God of Pride rejects that premise. Improvement can mean growth, recognition, confidence, and creation without requiring anyone else to disappear.</p></section>
-<section><h2>Oro</h2><p>Oro is a city of craftsmanship, invention, achievement, and creation. It grew around the shattered forge where the original Relics of Sin were first made, tying the city to some of the oldest history surrounding the pantheon.</p><p>People in Oro are encouraged to take pride in what they create and what they become. Achievement is meant to be celebrated without turning someone else's success into a threat. The modern city's understanding of Pride is not about standing above everyone else. It is about standing firmly enough that you no longer need to.</p></section>
+    <section><h2>The Current God of Pride</h2><p>The modern God of Pride represents self-worth, confidence, achievement, identity, and personal excellence. Pride does not require believing yourself superior to everyone else. It can be as simple as recognizing that you did something difficult, that your work matters, or that part of who you are deserves to be celebrated rather than hidden.</p><p>That interpretation has made Pride especially important to people and communities whose identities have historically been treated as something to diminish. Pride in culture, heritage, identity, craft, and personal growth all fall comfortably within the god's modern domain.</p><span class="pride-corner-gear" aria-hidden="true"></span></section>
+<section><h2>The Lion</h2><p>The lion is Pride's primary symbol. It represents confidence, strength, leadership, and presence, but also grace. The image is meant to communicate someone who does not need to make everyone around them smaller in order to stand tall.</p><p>That distinction separates the current god from the being that once carried the same title.</p><span class="pride-corner-gear" aria-hidden="true"></span></section>
+<section><h2>The Previous Pride</h2><p>The former Pride was an immortal and malevolent spirit, not simply an earlier version of the current deity. Long ago, the Old Six imprisoned him. He eventually returned by manipulating 922, a grief-stricken warforged who had once been part of the very group responsible for his imprisonment.</p><p>922 had spent a lifetime trying to restore a lost companion. After losing her, his grief curdled into the belief that mortality was humanity's greatest weakness and that human beings only destroyed what they touched. Pride exploited that belief and pursued the extermination of humanity in favor of supposedly flawless Clockwork beings.</p><p>That old ideology treated improvement as replacement: if something was flawed, discard it and build something better. The current God of Pride rejects that premise. Improvement can mean growth, recognition, confidence, and creation without requiring anyone else to disappear.</p><span class="pride-corner-gear" aria-hidden="true"></span></section>
+<section><h2>Oro</h2><p>Oro is a city of craftsmanship, invention, achievement, and creation. It grew around the shattered forge where the original Relics of Sin were first made, tying the city to some of the oldest history surrounding the pantheon.</p><p>People in Oro are encouraged to take pride in what they create and what they become. Achievement is meant to be celebrated without turning someone else's success into a threat. The modern city's understanding of Pride is not about standing above everyone else. It is about standing firmly enough that you no longer need to.</p><span class="pride-corner-gear" aria-hidden="true"></span></section>
 
   </article>
   <aside class="deity-aside">
@@ -269,6 +305,7 @@ body.deity-body.deity-pride > * { position: relative; z-index: 1; }
 <div class="fact"><span class="fact-label">Symbol</span><span class="fact-value">The Lion</span></div>
 <div class="fact"><span class="fact-label">Important Distinction</span><span class="fact-value">Current Pride is not the previous malevolent Pride</span></div>
 <div class="fact"><span class="fact-label">Cultural Focus</span><span class="fact-value">Creation and craftsmanship</span></div>
+      <span class="pride-corner-gear" aria-hidden="true"></span>
     </section>
     <section class="deity-related">
       <h2>Keep Exploring</h2>
