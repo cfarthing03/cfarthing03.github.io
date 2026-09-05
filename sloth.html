@@ -249,7 +249,49 @@ body.deity-body.deity-sloth::after {
 }
 
 .deity-sloth .deity-hero {
-  overflow: hidden;
+  display:grid;
+  grid-template-columns:minmax(0,1.06fr) minmax(320px,34rem);
+  grid-template-areas:
+    "copy portrait"
+    "copy sigil";
+  align-items:start;
+  column-gap:clamp(2rem,4vw,4rem);
+  row-gap:clamp(1.25rem,2vw,2rem);
+  overflow:visible;
+}
+.deity-sloth .deity-hero-copy{
+  grid-area:copy;
+  align-self:center;
+}
+.deity-sloth .sloth-withheld{
+  grid-area:portrait;
+  width:min(100%,34rem);
+  margin:0 0 0 auto;
+  justify-self:end;
+}
+.deity-sloth .deity-sigil{
+  grid-area:sigil;
+  position:relative;
+  right:auto;
+  bottom:auto;
+  margin:0 0 0 auto;
+  justify-self:end;
+  align-self:end;
+}
+@media (max-width:960px){
+  .deity-sloth .deity-hero{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "portrait"
+      "copy"
+      "sigil";
+  }
+  .deity-sloth .sloth-withheld,
+  .deity-sloth .deity-sigil{
+    margin-left:auto;
+    margin-right:auto;
+    justify-self:center;
+  }
 }
 .deity-sloth .deity-hero-copy h1 {
   text-shadow: 0 0 24px rgba(170, 138, 255, 0.18);
@@ -335,26 +377,23 @@ body.deity-body.deity-sloth::after {
   position:relative;
 }
 
-.deity-sloth .sloth-withheld.deity-portrait{
-  display:flex;
-  align-items:flex-start;
-  justify-content:flex-end;
-}
-
 .deity-sloth .sloth-withheld-card{
   position:relative;
   z-index:2;
   overflow:visible;
-  width:min(100%, 34rem);
-  margin:0 0 0 auto;
+}
+
+.deity-sloth .withheld-inner{
+  position:relative;
+  z-index:2;
 }
 
 .sloth-archive-leak{
   position:absolute;
-  left:14%;
-  width:76%;
-  bottom:-20px;
-  height:76px;
+  left:8%;
+  width:82%;
+  top:calc(100% - 10px);
+  height:84px;
   z-index:1;
   pointer-events:none;
   opacity:.94;
@@ -393,10 +432,10 @@ body.deity-body.deity-sloth::after {
 
 .sloth-panel-goop{
   position:absolute;
-  left:9%;
-  width:48%;
-  bottom:-16px;
-  height:48px;
+  left:10%;
+  width:45%;
+  bottom:-31px;
+  height:54px;
   pointer-events:none;
   z-index:3;
   opacity:.88;
@@ -404,16 +443,16 @@ body.deity-body.deity-sloth::after {
 
 @media (max-width:700px){
   .sloth-archive-leak{
-    left:10%;
-    width:82%;
-    bottom:-18px;
-    height:68px;
+    left:6%;
+    width:86%;
+    top:calc(100% - 8px);
+    height:70px;
   }
   .sloth-panel-goop{
     left:8%;
     width:58%;
-    bottom:-14px;
-    height:42px;
+    bottom:-26px;
+    height:46px;
   }
 }
 
@@ -464,48 +503,48 @@ body.deity-body.deity-sloth::after {
 
 <section class="deity-hero">
   
-        <div class="sloth-withheld deity-portrait">
-          <div class="sloth-archive-leak" aria-hidden="true">
-            <svg viewBox="0 0 430 96" preserveAspectRatio="none" role="presentation">
-              <g class="goop-shadow">
-                <path class="goop-fill" d="M18 20
-                  C44 16, 68 18, 92 19
-                  C116 20, 142 16, 162 18
-                  C182 20, 202 24, 221 23
-                  C242 22, 265 16, 292 19
-                  C320 22, 345 20, 372 21
-                  C392 22, 407 20, 417 18
-                  L417 30
-                  C404 30, 398 39, 399 50
-                  C400 65, 391 77, 380 77
-                  C369 77, 360 67, 360 53
-                  C360 40, 356 31, 343 31
-                  C327 31, 322 43, 323 56
-                  C324 74, 313 90, 299 90
-                  C286 90, 277 78, 277 61
-                  C277 44, 274 31, 259 31
-                  C244 31, 239 40, 239 49
-                  C239 59, 232 67, 223 67
-                  C214 67, 208 58, 208 47
-                  C208 38, 203 31, 190 31
-                  C173 31, 168 41, 169 58
-                  C170 74, 160 86, 147 86
-                  C135 86, 126 76, 126 61
-                  C126 45, 122 31, 107 31
-                  C91 31, 87 43, 87 56
-                  C87 72, 76 85, 62 85
-                  C49 85, 41 74, 41 60
-                  C41 44, 37 31, 24 31
-                  C18 31, 14 28, 18 20 Z"/>
-                <path class="goop-highlight" d="M40 23 C93 18, 137 18, 180 22 C238 28, 305 16, 377 22"/>
-              </g>
-            </svg>
-          </div>
+        <div class="sloth-withheld">
           <div class="sloth-withheld-card">
             <div class="withheld-inner">
               <div class="withheld-label">Public Archive Notice</div>
               <div class="withheld-title">IMAGE WITHHELD</div>
               <div class="withheld-copy">Visual record deemed unsuitable for public archive. Refer to approved sigil documentation.</div>
+            </div>
+            <div class="sloth-archive-leak" aria-hidden="true">
+              <svg viewBox="0 0 430 96" preserveAspectRatio="none" role="presentation">
+                <g class="goop-shadow">
+                  <path class="goop-fill" d="M18 20
+                    C44 16, 68 18, 92 19
+                    C116 20, 142 16, 162 18
+                    C182 20, 202 24, 221 23
+                    C242 22, 265 16, 292 19
+                    C320 22, 345 20, 372 21
+                    C392 22, 407 20, 417 18
+                    L417 30
+                    C404 30, 398 39, 399 50
+                    C400 65, 391 77, 380 77
+                    C369 77, 360 67, 360 53
+                    C360 40, 356 31, 343 31
+                    C327 31, 322 43, 323 56
+                    C324 74, 313 90, 299 90
+                    C286 90, 277 78, 277 61
+                    C277 44, 274 31, 259 31
+                    C244 31, 239 40, 239 49
+                    C239 59, 232 67, 223 67
+                    C214 67, 208 58, 208 47
+                    C208 38, 203 31, 190 31
+                    C173 31, 168 41, 169 58
+                    C170 74, 160 86, 147 86
+                    C135 86, 126 76, 126 61
+                    C126 45, 122 31, 107 31
+                    C91 31, 87 43, 87 56
+                    C87 72, 76 85, 62 85
+                    C49 85, 41 74, 41 60
+                    C41 44, 37 31, 24 31
+                    C18 31, 14 28, 18 20 Z"/>
+                  <path class="goop-highlight" d="M40 23 C93 18, 137 18, 180 22 C238 28, 305 16, 377 22"/>
+                </g>
+              </svg>
             </div>
           </div>
         </div>
