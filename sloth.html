@@ -330,19 +330,24 @@ body.deity-body.deity-sloth::after {
 
 /* Leak escaping from behind the archive censorship card */
 .sloth-withheld{
-  position:relative;
   isolation:isolate;
+  overflow:visible;
+}
+
+.deity-sloth .sloth-withheld-card{
+  position:relative;
+  z-index:2;
 }
 
 .sloth-archive-leak{
   position:absolute;
-  left:18%;
+  left:17%;
   right:12%;
-  bottom:-42px;
-  height:76px;
-  z-index:-1;
+  bottom:-54px;
+  height:86px;
+  z-index:1;
   pointer-events:none;
-  filter:drop-shadow(0 8px 14px rgba(107,76,169,.16));
+  filter:drop-shadow(0 9px 14px rgba(80,48,119,.28));
 }
 
 .sloth-archive-leak::before{
@@ -351,103 +356,132 @@ body.deity-body.deity-sloth::after {
   left:0;
   right:0;
   top:0;
-  height:18px;
-  border-radius:0 0 55% 55%;
+  height:20px;
+  border-radius:5px 5px 18px 18px;
   background:
     linear-gradient(
       90deg,
       transparent 0%,
-      rgba(69,48,98,.25) 8%,
-      rgba(92,61,128,.48) 34%,
-      rgba(57,42,81,.38) 58%,
-      rgba(105,70,142,.43) 82%,
+      rgba(80,48,116,.38) 6%,
+      rgba(111,67,154,.82) 28%,
+      rgba(79,48,113,.72) 55%,
+      rgba(113,69,156,.78) 82%,
       transparent 100%
     );
-  box-shadow:0 4px 12px rgba(93,62,132,.12);
+  box-shadow:
+    0 6px 16px rgba(81,48,119,.20),
+    inset 0 2px 0 rgba(194,155,255,.10);
 }
 
 .sloth-archive-leak span{
   position:absolute;
-  top:8px;
-  width:10px;
+  top:10px;
   border-radius:0 0 999px 999px;
   background:
     linear-gradient(
       180deg,
-      rgba(106,72,145,.62),
-      rgba(65,46,91,.52) 58%,
-      rgba(35,28,51,.12)
+      rgba(115,70,158,.90),
+      rgba(86,51,123,.86) 58%,
+      rgba(59,38,82,.78)
     );
+  box-shadow:
+    inset 2px 0 0 rgba(194,155,255,.06),
+    0 6px 12px rgba(58,35,86,.22);
 }
 
-.sloth-archive-leak .d1{left:13%;height:38px;width:9px}
-.sloth-archive-leak .d2{left:28%;height:58px;width:13px}
-.sloth-archive-leak .d3{left:52%;height:31px;width:8px}
-.sloth-archive-leak .d4{left:72%;height:66px;width:14px}
-.sloth-archive-leak .d5{left:88%;height:42px;width:9px}
+.sloth-archive-leak span::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-5px;
+  transform:translateX(-50%);
+  width:115%;
+  aspect-ratio:1/1;
+  border-radius:50%;
+  background:rgba(73,43,106,.92);
+  box-shadow:0 4px 8px rgba(45,28,66,.22);
+}
 
-/* One restrained melt seam lower in the article */
+.sloth-archive-leak .d1{left:12%;height:42px;width:12px}
+.sloth-archive-leak .d2{left:29%;height:67px;width:17px}
+.sloth-archive-leak .d3{left:50%;height:34px;width:11px}
+.sloth-archive-leak .d4{left:70%;height:74px;width:18px}
+.sloth-archive-leak .d5{left:88%;height:48px;width:13px}
+
+/* One restrained goop seam lower in the article */
 .deity-sloth .deity-article section:nth-of-type(3){
   overflow:visible;
 }
 
-.deity-sloth .deity-article section:nth-of-type(3)::after{
+.sloth-panel-goop{
+  position:absolute;
+  left:10%;
+  bottom:-43px;
+  width:48%;
+  height:50px;
+  pointer-events:none;
+  z-index:3;
+  filter:drop-shadow(0 7px 10px rgba(65,39,94,.20));
+}
+
+.sloth-panel-goop::before{
   content:"";
   position:absolute;
-  left:8%;
-  width:46%;
-  bottom:-26px;
-  height:30px;
-  pointer-events:none;
+  left:0;
+  right:0;
+  top:0;
+  height:14px;
+  border-radius:0 0 18px 18px;
   background:
-    linear-gradient(90deg,
+    linear-gradient(
+      90deg,
       transparent 0%,
-      rgba(70,50,98,.24) 9%,
-      rgba(96,67,132,.33) 30%,
-      rgba(70,50,98,.25) 67%,
-      transparent 100%);
-  clip-path:polygon(
-    0 0,
-    100% 0,
-    100% 18%,
-    92% 18%,
-    92% 44%,
-    88% 44%,
-    88% 83%,
-    84% 83%,
-    84% 27%,
-    71% 27%,
-    71% 58%,
-    67% 58%,
-    67% 100%,
-    63% 100%,
-    63% 34%,
-    48% 34%,
-    48% 67%,
-    44% 67%,
-    44% 89%,
-    40% 89%,
-    40% 29%,
-    24% 29%,
-    24% 54%,
-    20% 54%,
-    20% 76%,
-    16% 76%,
-    16% 21%,
-    0 21%
-  );
-  opacity:.72;
-  filter:drop-shadow(0 5px 8px rgba(87,58,124,.12));
+      rgba(77,47,109,.34) 8%,
+      rgba(108,67,148,.68) 24%,
+      rgba(86,53,121,.62) 58%,
+      rgba(104,64,144,.58) 84%,
+      transparent 100%
+    );
 }
+
+.sloth-panel-goop span{
+  position:absolute;
+  top:7px;
+  border-radius:0 0 999px 999px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(106,65,148,.76),
+      rgba(74,46,104,.76)
+    );
+}
+
+.sloth-panel-goop span::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-4px;
+  transform:translateX(-50%);
+  width:120%;
+  aspect-ratio:1/1;
+  border-radius:50%;
+  background:rgba(72,44,101,.82);
+}
+
+.sloth-panel-goop .g1{left:14%;height:24px;width:9px}
+.sloth-panel-goop .g2{left:36%;height:38px;width:13px}
+.sloth-panel-goop .g3{left:63%;height:20px;width:8px}
+.sloth-panel-goop .g4{left:82%;height:32px;width:11px}
 
 @media (max-width:700px){
   .sloth-archive-leak{
-    left:14%;
-    right:10%;
-    bottom:-34px;
-    height:60px;
+    left:12%;
+    right:9%;
+    bottom:-46px;
+    height:74px;
   }
-  .deity-sloth .deity-article section:nth-of-type(3)::after{
+  .sloth-panel-goop{
+    left:8%;
     width:62%;
   }
 }
@@ -526,7 +560,14 @@ body.deity-body.deity-sloth::after {
   <article class="deity-article">
     <section><h2>The God of Rest</h2><p>Sloth represents sleep, recovery, death, rebirth, and natural cycles. Rest is not treated as weakness in his worship. It is the thing that allows effort to continue. Death is not always framed as failure either; sometimes an ending is part of the process that makes another beginning possible.</p><p>That understanding did not come from comfort. Of all the Sins, Sloth's divine identity may have been shaped most directly by suffering.</p></section>
 <section><h2>Seventy-Five Years</h2><p>Sloth was one of the first Sins to awaken and one of the first to defy Pride. For that defiance, he was subjected to seventy-five years of torment. His body was disassembled, experimented on, and repeatedly pushed beyond what should have killed him. Sleep, recovery, and even death were denied to him.</p><p>Two substances emerged from that suffering. The first was Life's Blood, a bright red material associated with vitality, new beginnings, and rebirth. The second was a dark, viscous liquid formed from the remnants and weight of what had been done to him. Sloth's deteriorating body still leaks the black substance.</p></section>
-<section><h2>A Body Held Together</h2><p>Much of Sloth's power is spent simply keeping his own body intact. He survived what was done to him, but survival did not mean returning to the person he had been beforehand. That distinction matters deeply to his followers.</p><p>Recovery is not the same thing as erasing the wound. A person can heal and still be changed. Sloth's existence is proof of both sides of that truth.</p></section>
+<section><h2>A Body Held Together</h2><p>Much of Sloth's power is spent simply keeping his own body intact. He survived what was done to him, but survival did not mean returning to the person he had been beforehand. That distinction matters deeply to his followers.</p><p>Recovery is not the same thing as erasing the wound. A person can heal and still be changed. Sloth's existence is proof of both sides of that truth.</p>
+<div class="sloth-panel-goop" aria-hidden="true">
+  <span class="g1"></span>
+  <span class="g2"></span>
+  <span class="g3"></span>
+  <span class="g4"></span>
+</div>
+</section>
 <section><h2>Sol, the Sleeping City</h2><p>Sol built its culture around the rhythms associated with Sloth. The city sleeps through much of the day and wakes at night, filling the darkness with festivals, celebrations, and communal life. Rest is scheduled into the culture rather than treated as something people earn only after exhausting themselves.</p><p>The result is a city with a remarkably simple philosophy: tomorrow will still be there. Probably.</p></section>
 
   </article>
