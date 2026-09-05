@@ -116,21 +116,87 @@ body.deity-body.deity-sloth::after {
   box-shadow:0 0 8px rgba(165,133,246,.14);
 }
 
-/* Full moon */
-.sloth-phase.full{
-  background:radial-gradient(circle at 38% 35%,#e9e1ff 0%,#cdbbff 55%,#9c7fda 100%);
+/* Lunar procession ornament */
+.sloth-phase-strip{
+  position:relative;
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+  gap:12px;
+  width:max-content;
+  padding:0 8px;
+  margin:.35rem 0 1rem;
+  opacity:.94;
 }
 
-/* New moon */
+.sloth-phase-strip::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:50%;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(191,166,255,.22) 14%,
+    rgba(191,166,255,.42) 50%,
+    rgba(191,166,255,.22) 86%,
+    transparent
+  );
+  z-index:0;
+}
+
+.sloth-phase-strip::after{
+  content:"✦";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  font-size:.45rem;
+  color:rgba(218,203,255,.72);
+  text-shadow:0 0 8px rgba(170,138,255,.35);
+  z-index:2;
+}
+
+.sloth-phase{
+  width:13px;
+  height:13px;
+  border-radius:50%;
+  position:relative;
+  overflow:hidden;
+  flex:0 0 auto;
+  z-index:1;
+  border:1px solid rgba(211,194,255,.56);
+  background:#070912;
+  box-shadow:
+    0 0 0 4px rgba(7,9,18,.82),
+    0 0 9px rgba(165,133,246,.14);
+}
+
+.sloth-phase.full{
+  width:18px;
+  height:18px;
+  background:
+    radial-gradient(circle at 37% 33%,#f0eaff 0%,#d3c3ff 48%,#9478d0 100%);
+  box-shadow:
+    0 0 0 5px rgba(7,9,18,.84),
+    0 0 16px rgba(174,145,247,.32);
+}
+
 .sloth-phase.new{
   background:#070912;
-  box-shadow:inset 0 0 0 1px rgba(196,176,244,.18),0 0 7px rgba(165,133,246,.10);
+  box-shadow:
+    inset 0 0 0 1px rgba(196,176,244,.18),
+    0 0 0 4px rgba(7,9,18,.82),
+    0 0 7px rgba(165,133,246,.10);
 }
 
-/* Waxing crescent */
-.sloth-phase.wax-crescent{
+.sloth-phase.wax-crescent,
+.sloth-phase.wane-crescent{
   background:#cdbbff;
 }
+
 .sloth-phase.wax-crescent::after{
   content:"";
   position:absolute;
@@ -138,19 +204,10 @@ body.deity-body.deity-sloth::after {
   height:14px;
   border-radius:50%;
   left:-4px;
-  top:0;
+  top:-1px;
   background:#070912;
 }
 
-/* Half / first quarter */
-.sloth-phase.half{
-  background:linear-gradient(90deg,#070912 0 50%,#cdbbff 50% 100%);
-}
-
-/* Waning crescent */
-.sloth-phase.wane-crescent{
-  background:#cdbbff;
-}
 .sloth-phase.wane-crescent::after{
   content:"";
   position:absolute;
@@ -158,19 +215,37 @@ body.deity-body.deity-sloth::after {
   height:14px;
   border-radius:50%;
   right:-4px;
-  top:0;
+  top:-1px;
   background:#070912;
 }
 
-/* Small decorative version used in the At a Glance card */
+.sloth-phase.half{
+  background:linear-gradient(90deg,#070912 0 50%,#cdbbff 50% 100%);
+}
+
+/* Smaller symmetrical ornament for the sidebar */
 .sloth-phase-strip.compact{
   justify-content:center;
-  gap:8px;
-  margin:0 0 .9rem;
+  margin:0 auto .95rem;
+  gap:10px;
+  padding:0 6px;
 }
 .sloth-phase-strip.compact .sloth-phase{
-  width:12px;
-  height:12px;
+  width:11px;
+  height:11px;
+  box-shadow:
+    0 0 0 3px rgba(7,9,18,.84),
+    0 0 7px rgba(165,133,246,.12);
+}
+.sloth-phase-strip.compact .sloth-phase.full{
+  width:15px;
+  height:15px;
+  box-shadow:
+    0 0 0 4px rgba(7,9,18,.84),
+    0 0 12px rgba(174,145,247,.28);
+}
+.sloth-phase-strip.compact::after{
+  font-size:.38rem;
 }
 
 .deity-sloth .deity-hero {
@@ -247,6 +322,136 @@ body.deity-body.deity-sloth::after {
   0%, 100% { opacity: 0.15; transform: rotate(-8deg) translateX(0); }
   50% { opacity: 0.42; transform: rotate(-8deg) translateX(14px); }
 }
+
+/* ---------------------------------------------------------
+   Sloth melting / leaking accents
+   Intentionally limited to two areas.
+   --------------------------------------------------------- */
+
+/* Leak escaping from behind the archive censorship card */
+.sloth-withheld{
+  position:relative;
+  isolation:isolate;
+}
+
+.sloth-archive-leak{
+  position:absolute;
+  left:18%;
+  right:12%;
+  bottom:-42px;
+  height:76px;
+  z-index:-1;
+  pointer-events:none;
+  filter:drop-shadow(0 8px 14px rgba(107,76,169,.16));
+}
+
+.sloth-archive-leak::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:18px;
+  border-radius:0 0 55% 55%;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(69,48,98,.25) 8%,
+      rgba(92,61,128,.48) 34%,
+      rgba(57,42,81,.38) 58%,
+      rgba(105,70,142,.43) 82%,
+      transparent 100%
+    );
+  box-shadow:0 4px 12px rgba(93,62,132,.12);
+}
+
+.sloth-archive-leak span{
+  position:absolute;
+  top:8px;
+  width:10px;
+  border-radius:0 0 999px 999px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(106,72,145,.62),
+      rgba(65,46,91,.52) 58%,
+      rgba(35,28,51,.12)
+    );
+}
+
+.sloth-archive-leak .d1{left:13%;height:38px;width:9px}
+.sloth-archive-leak .d2{left:28%;height:58px;width:13px}
+.sloth-archive-leak .d3{left:52%;height:31px;width:8px}
+.sloth-archive-leak .d4{left:72%;height:66px;width:14px}
+.sloth-archive-leak .d5{left:88%;height:42px;width:9px}
+
+/* One restrained melt seam lower in the article */
+.deity-sloth .deity-article section:nth-of-type(3){
+  overflow:visible;
+}
+
+.deity-sloth .deity-article section:nth-of-type(3)::after{
+  content:"";
+  position:absolute;
+  left:8%;
+  width:46%;
+  bottom:-26px;
+  height:30px;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,
+      transparent 0%,
+      rgba(70,50,98,.24) 9%,
+      rgba(96,67,132,.33) 30%,
+      rgba(70,50,98,.25) 67%,
+      transparent 100%);
+  clip-path:polygon(
+    0 0,
+    100% 0,
+    100% 18%,
+    92% 18%,
+    92% 44%,
+    88% 44%,
+    88% 83%,
+    84% 83%,
+    84% 27%,
+    71% 27%,
+    71% 58%,
+    67% 58%,
+    67% 100%,
+    63% 100%,
+    63% 34%,
+    48% 34%,
+    48% 67%,
+    44% 67%,
+    44% 89%,
+    40% 89%,
+    40% 29%,
+    24% 29%,
+    24% 54%,
+    20% 54%,
+    20% 76%,
+    16% 76%,
+    16% 21%,
+    0 21%
+  );
+  opacity:.72;
+  filter:drop-shadow(0 5px 8px rgba(87,58,124,.12));
+}
+
+@media (max-width:700px){
+  .sloth-archive-leak{
+    left:14%;
+    right:10%;
+    bottom:-34px;
+    height:60px;
+  }
+  .deity-sloth .deity-article section:nth-of-type(3)::after{
+    width:62%;
+  }
+}
+
 </style>
 
 </head>
@@ -284,6 +489,13 @@ body.deity-body.deity-sloth::after {
 <section class="deity-hero">
   
         <div class="sloth-withheld">
+          <div class="sloth-archive-leak" aria-hidden="true">
+            <span class="d1"></span>
+            <span class="d2"></span>
+            <span class="d3"></span>
+            <span class="d4"></span>
+            <span class="d5"></span>
+          </div>
           <div class="sloth-withheld-card">
             <div class="withheld-inner">
               <div class="withheld-label">Public Archive Notice</div>
@@ -296,10 +508,10 @@ body.deity-body.deity-sloth::after {
   <div class="deity-hero-copy">
     <a class="deity-back" href="/sins.html">← The Seven Sins</a>
     <div class="sloth-phase-strip" aria-hidden="true">
-      <span class="sloth-phase new"></span>
       <span class="sloth-phase wax-crescent"></span>
       <span class="sloth-phase half"></span>
       <span class="sloth-phase full"></span>
+      <span class="sloth-phase half" style="transform:scaleX(-1)"></span>
       <span class="sloth-phase wane-crescent"></span>
     </div>
     <div class="deity-kicker">The Seven Sins</div>
@@ -322,7 +534,6 @@ body.deity-body.deity-sloth::after {
     <section class="deity-facts">
       <div class="sloth-phase-strip compact" aria-hidden="true">
         <span class="sloth-phase wax-crescent"></span>
-        <span class="sloth-phase half"></span>
         <span class="sloth-phase full"></span>
         <span class="sloth-phase wane-crescent"></span>
       </div>
