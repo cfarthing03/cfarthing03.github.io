@@ -8,7 +8,7 @@
 
 <style>
 /* =========================================================
-   WRATH — PAGE-SPECIFIC VISUAL MOTIFS (V2)
+   WRATH — PAGE-SPECIFIC VISUAL MOTIFS (V3)
    The Sun + Time: solar discs, clock rings, hour marks, heat.
    ========================================================= */
 :root{
@@ -35,6 +35,28 @@ body.deity-body.deity-wrath::before{
     linear-gradient(120deg,transparent,rgba(255,173,72,.016),transparent);
 }
 body.deity-body.deity-wrath>*{position:relative;z-index:1;}
+
+/* Clearly visible page backdrop: giant sun + time rings */
+body.deity-body.deity-wrath::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.34;
+  background:
+    /* left clock face */
+    repeating-conic-gradient(from -6deg at 4% 38%, rgba(224,142,56,.20) 0 1.2deg, transparent 1.2deg 15deg),
+    radial-gradient(circle at 4% 38%, transparent 0 116px, rgba(224,142,56,.16) 117px 119px, transparent 120px 158px, rgba(224,142,56,.10) 159px 161px, transparent 162px),
+    /* right solar disc */
+    repeating-conic-gradient(from 0deg at 96% 30%, rgba(238,157,64,.18) 0 1.4deg, transparent 1.4deg 10deg),
+    radial-gradient(circle at 96% 30%, rgba(231,126,43,.12) 0 32px, transparent 33px 92px, rgba(231,126,43,.15) 93px 95px, transparent 96px 145px),
+    /* lower time arc */
+    repeating-conic-gradient(from 8deg at 50% 112%, rgba(224,142,56,.10) 0 1deg, transparent 1deg 7.5deg),
+    radial-gradient(circle at 50% 112%, transparent 0 300px, rgba(224,142,56,.10) 301px 303px, transparent 304px);
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,black 7%,black 94%,transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0,black 7%,black 94%,transparent 100%);
+}
 
 /* page-wide solar/time backdrop */
 .wrath-page-decor{
@@ -67,8 +89,8 @@ body.deity-body.deity-wrath>*{position:relative;z-index:1;}
   -webkit-mask:radial-gradient(circle,transparent 0 78%,#000 79% 82%,transparent 83%);
   mask:radial-gradient(circle,transparent 0 78%,#000 79% 82%,transparent 83%);
 }
-.wrath-time-ring.r1{width:430px;height:430px;top:160px;left:-235px;transform:rotate(-8deg);}
-.wrath-time-ring.r2{width:350px;height:350px;top:650px;right:-185px;transform:rotate(11deg);opacity:.60;}
+.wrath-time-ring.r1{width:430px;height:430px;top:210px;left:-145px;transform:rotate(-8deg);opacity:.82;}
+.wrath-time-ring.r2{width:350px;height:350px;top:700px;right:-105px;transform:rotate(11deg);opacity:.72;}
 .wrath-time-ring.r3{width:260px;height:260px;top:1220px;left:-95px;transform:rotate(5deg);opacity:.48;}
 
 .wrath-sun-disc{
@@ -109,8 +131,8 @@ body.deity-body.deity-wrath>*{position:relative;z-index:1;}
   mask:radial-gradient(circle, #000 0 16%, transparent 17% 52%, #000 53% 61%, transparent 62%);
   filter:drop-shadow(0 0 26px rgba(221,108,35,.05));
 }
-.wrath-sun-halo.h1{width:520px;height:520px;top:300px;right:-210px;transform:rotate(6deg);}
-.wrath-sun-halo.h2{width:410px;height:410px;top:1050px;left:-165px;transform:rotate(-9deg);opacity:.14;}
+.wrath-sun-halo.h1{width:520px;height:520px;top:340px;right:-130px;transform:rotate(6deg);opacity:.24;}
+.wrath-sun-halo.h2{width:410px;height:410px;top:1080px;left:-95px;transform:rotate(-9deg);opacity:.20;}
 
 .wrath-clock-arc{
   position:absolute;
@@ -348,7 +370,7 @@ body.deity-body.deity-wrath>*{position:relative;z-index:1;}
       <h2>At a Glance</h2>
       <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Justice, punishment, strength, courage</span></div>
 <div class="fact"><span class="fact-label">Major City</span><span class="fact-value">Palin</span></div>
-<div class="fact"><span class="fact-label">Associated Faith</span><span class="fact-value"><a href="/gladiators.html">The Gladiators</a></span></div>
+<div class="fact"><span class="fact-label">Associated Faiths</span><span class="fact-value"><a href="/gladiators.html">The Gladiators</a><br><a href="/church-of-rebirth.html">Church of Rebirth</a></span></div>
 <div class="fact"><span class="fact-label">Symbol</span><span class="fact-value">The Sun</span></div>
 <div class="fact"><span class="fact-label">Known Title</span><span class="fact-value">The Ultimate Warrior</span></div>
     </section>
