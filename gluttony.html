@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="/styles.css">
 <style>
 /* =========================================================
-   GLUTTONY — PAGE-SPECIFIC VISUAL MOTIFS (V11)
+   GLUTTONY — PAGE-SPECIFIC VISUAL MOTIFS (V12)
    Direction: visible bite marks, clear bread icon, matching
    tusk ornaments, and large background tusks.
    ========================================================= */
@@ -258,7 +258,7 @@ body.deity-body.deity-gluttony::after {
     linear-gradient(90deg, rgba(191, 130, 57, .24), transparent) bottom/100% 1px no-repeat;
 }
 
-/* Clear bite marks — circular inward bites attached cleanly to the box edges */
+/* Clear bite marks — clustered circular bites with a larger center bite */
 .gluttony-bite-left::after,
 .gluttony-bite-right::after,
 .gluttony-bite-small-right::after {
@@ -266,46 +266,46 @@ body.deity-body.deity-gluttony::after {
   position: absolute;
   pointer-events: none;
   z-index: 4;
-  border-radius: 999px;
+  background-repeat: no-repeat;
 }
 
-/* Left-side bite: three circular bites eating inward from the left edge */
+/* Left-side bite: circles tucked together, eating inward from the left edge */
 .gluttony-bite-left::after {
-  left: -12px;
+  left: -13px;
   top: 50%;
   transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  background: var(--glut-bg);
-  box-shadow:
-    0 -30px 0 0 var(--glut-bg),
-    0 30px 0 0 var(--glut-bg);
+  width: 26px;
+  height: 50px;
+  background-image:
+    radial-gradient(circle at 50% 8px, var(--glut-bg) 0 7px, transparent 7.5px),
+    radial-gradient(circle at 50% 25px, var(--glut-bg) 0 9px, transparent 9.5px),
+    radial-gradient(circle at 50% 42px, var(--glut-bg) 0 7px, transparent 7.5px);
   filter: drop-shadow(1px 0 0 rgba(224, 166, 92, .42));
 }
 
-/* Right-side bite: three circular bites eating inward from the right edge */
+/* Right-side bite: circles tucked together, eating inward from the right edge */
 .gluttony-bite-right::after {
-  right: -12px;
-  top: 20px;
-  width: 24px;
-  height: 24px;
-  background: var(--glut-bg);
-  box-shadow:
-    0 30px 0 0 var(--glut-bg),
-    0 60px 0 0 var(--glut-bg);
+  right: -13px;
+  top: 24px;
+  width: 26px;
+  height: 50px;
+  background-image:
+    radial-gradient(circle at 50% 8px, var(--glut-bg) 0 7px, transparent 7.5px),
+    radial-gradient(circle at 50% 25px, var(--glut-bg) 0 9px, transparent 9.5px),
+    radial-gradient(circle at 50% 42px, var(--glut-bg) 0 7px, transparent 7.5px);
   filter: drop-shadow(-1px 0 0 rgba(224, 166, 92, .42));
 }
 
 /* Smaller right-side bite for sidebar cards */
 .gluttony-bite-small-right::after {
-  right: -10px;
-  top: 66px;
-  width: 20px;
-  height: 20px;
-  background: var(--glut-bg);
-  box-shadow:
-    0 22px 0 0 var(--glut-bg),
-    0 44px 0 0 var(--glut-bg);
+  right: -11px;
+  top: 68px;
+  width: 22px;
+  height: 42px;
+  background-image:
+    radial-gradient(circle at 50% 7px, var(--glut-bg) 0 6px, transparent 6.5px),
+    radial-gradient(circle at 50% 21px, var(--glut-bg) 0 8px, transparent 8.5px),
+    radial-gradient(circle at 50% 35px, var(--glut-bg) 0 6px, transparent 6.5px);
   filter: drop-shadow(-1px 0 0 rgba(224, 166, 92, .36));
 }
 
