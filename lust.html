@@ -8,7 +8,7 @@
 
 <style>
 /* =========================================================
-   LUST — PAGE-SPECIFIC VISUAL MOTIFS (V4)
+   LUST — PAGE-SPECIFIC VISUAL MOTIFS (V5)
    Clean bonds + a section-contained Rixel treatment.
    No page-spanning ribbons.
    ========================================================= */
@@ -250,8 +250,13 @@ body.deity-body.deity-lust>*{
   width:54px;
   z-index:6;
   pointer-events:none;
-  opacity:.46;
+  opacity:.56;
   filter:drop-shadow(0 0 12px rgba(236,82,164,.08));
+}
+/* direct-child rule above has higher specificity, so explicitly override it */
+body.deity-body.deity-lust > .lust-side-banner{
+  position:fixed;
+  z-index:8;
 }
 .lust-side-banner.left{left:38px;}
 .lust-side-banner.right{right:38px;}
@@ -260,7 +265,7 @@ body.deity-body.deity-lust>*{
   position:absolute;
   top:0;
   left:50%;
-  width:12px;
+  width:15px;
   height:calc(100% - 56px);
   transform:translateX(-50%);
   border-radius:999px 999px 5px 5px;
@@ -296,8 +301,8 @@ body.deity-body.deity-lust>*{
   position:absolute;
   left:50%;
   bottom:0;
-  width:44px;
-  height:70px;
+  width:50px;
+  height:74px;
   transform:translateX(-50%);
   background:linear-gradient(180deg,rgba(222,66,151,.84),rgba(179,36,117,.76));
   clip-path:polygon(36% 0,64% 0,64% 58%,100% 100%,50% 72%,0 100%,36% 58%);
