@@ -8,7 +8,7 @@
 
 <style>
 /* =========================================================
-   WRATH — PAGE-SPECIFIC VISUAL MOTIFS (V1)
+   WRATH — PAGE-SPECIFIC VISUAL MOTIFS (V2)
    The Sun + Time: solar discs, clock rings, hour marks, heat.
    ========================================================= */
 :root{
@@ -97,6 +97,51 @@ body.deity-body.deity-wrath>*{position:relative;z-index:1;}
 .wrath-sun-disc.s2{top:980px;left:7%;transform:scale(.74);opacity:.38;}
 .wrath-sun-disc.s3{top:1500px;right:12%;transform:scale(.62);opacity:.30;}
 
+/* Larger page-backdrop elements: sun halos + clock arcs */
+.wrath-sun-halo{
+  position:absolute;
+  border-radius:50%;
+  opacity:.18;
+  background:
+    radial-gradient(circle, rgba(231,137,48,.10) 0 12%, transparent 13% 36%, rgba(231,137,48,.06) 37% 39%, transparent 40%),
+    repeating-conic-gradient(from 0deg, rgba(235,153,61,.24) 0 1.4deg, transparent 1.4deg 9deg);
+  -webkit-mask:radial-gradient(circle, #000 0 16%, transparent 17% 52%, #000 53% 61%, transparent 62%);
+  mask:radial-gradient(circle, #000 0 16%, transparent 17% 52%, #000 53% 61%, transparent 62%);
+  filter:drop-shadow(0 0 26px rgba(221,108,35,.05));
+}
+.wrath-sun-halo.h1{width:520px;height:520px;top:300px;right:-210px;transform:rotate(6deg);}
+.wrath-sun-halo.h2{width:410px;height:410px;top:1050px;left:-165px;transform:rotate(-9deg);opacity:.14;}
+
+.wrath-clock-arc{
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(220,141,58,.12);
+  opacity:.20;
+}
+.wrath-clock-arc::before{
+  content:"";
+  position:absolute;
+  inset:-16px;
+  border-radius:50%;
+  background:repeating-conic-gradient(from -4deg,rgba(235,157,66,.30) 0 1deg,transparent 1deg 7.5deg);
+  -webkit-mask:radial-gradient(circle,transparent 0 83%,#000 84% 87%,transparent 88%);
+  mask:radial-gradient(circle,transparent 0 83%,#000 84% 87%,transparent 88%);
+}
+.wrath-clock-arc.a1{width:760px;height:760px;top:700px;left:50%;transform:translateX(-50%) rotate(10deg);opacity:.08;}
+.wrath-clock-arc.a2{width:560px;height:560px;top:1450px;right:-250px;transform:rotate(-14deg);opacity:.10;}
+
+.wrath-hour-mark{
+  position:absolute;
+  font-family:Georgia,serif;
+  font-size:clamp(2.2rem,4vw,4.8rem);
+  color:rgba(218,139,57,.08);
+  letter-spacing:.08em;
+  text-shadow:0 0 18px rgba(218,105,38,.03);
+}
+.wrath-hour-mark.m1{top:590px;left:4%;transform:rotate(-7deg);}
+.wrath-hour-mark.m2{top:910px;right:5%;transform:rotate(8deg);}
+.wrath-hour-mark.m3{top:1320px;left:8%;transform:rotate(4deg);}
+
 /* Hero solar accent */
 .deity-wrath .deity-hero{isolation:isolate;}
 .deity-wrath .deity-hero-copy::before{
@@ -110,23 +155,7 @@ body.deity-body.deity-wrath>*{position:relative;z-index:1;}
   box-shadow:0 0 14px rgba(230,120,40,.10);
   opacity:.56;
 }
-.deity-wrath .deity-hero-copy::after{
-  content:"";
-  position:absolute;
-  left:calc(clamp(.6rem,3vw,3rem) - 5px);
-  top:35%;
-  width:12px;
-  height:12px;
-  border-radius:50%;
-  background:#e2933b;
-  box-shadow:
-    0 0 12px rgba(226,130,52,.24),
-    0 110px 0 -3px #b95633,
-    0 110px 12px -2px rgba(185,86,51,.20),
-    0 220px 0 -3px #e3af55,
-    0 220px 12px -2px rgba(227,175,85,.18);
-  opacity:.76;
-}
+/* Pride-style hero dots intentionally omitted on Wrath. */
 
 /* Panels */
 .deity-wrath .deity-article section,
@@ -249,8 +278,7 @@ body.deity-body.deity-wrath>*{position:relative;z-index:1;}
   .wrath-time-ring.r1{left:-300px;opacity:.40;}
   .wrath-time-ring.r2{right:-250px;opacity:.38;}
   .wrath-sun-disc.s1{right:2%;opacity:.34;}
-  .deity-wrath .deity-hero-copy::before,
-  .deity-wrath .deity-hero-copy::after{display:none;}
+  .deity-wrath .deity-hero-copy::before{display:none;}
 }
 @media (max-width:650px){
   .wrath-page-decor{display:none;}
@@ -268,6 +296,13 @@ body.deity-body.deity-wrath>*{position:relative;z-index:1;}
   <span class="wrath-sun-disc s1"></span>
   <span class="wrath-sun-disc s2"></span>
   <span class="wrath-sun-disc s3"></span>
+  <span class="wrath-sun-halo h1"></span>
+  <span class="wrath-sun-halo h2"></span>
+  <span class="wrath-clock-arc a1"></span>
+  <span class="wrath-clock-arc a2"></span>
+  <span class="wrath-hour-mark m1">III</span>
+  <span class="wrath-hour-mark m2">VI</span>
+  <span class="wrath-hour-mark m3">IX</span>
 </div>
 
 <header class="site-header">
