@@ -8,14 +8,14 @@
 
 <style>
 /* =========================================================
-   LUST — PAGE-SPECIFIC VISUAL MOTIFS (V1)
-   Modular ribbons, soft halo, chosen bonds.
-   No page-spanning snake/path logic.
+   LUST — PAGE-SPECIFIC VISUAL MOTIFS (V2)
+   Clean bonds + a section-contained Rixel treatment.
+   No page-spanning ribbons.
    ========================================================= */
 :root{
   --lust-pink:#f05aa8;
   --lust-magenta:#d93691;
-  --lust-soft:rgba(240,90,168,.20);
+  --lust-soft:rgba(240,90,168,.18);
   --lust-line:rgba(226,76,156,.28);
   --lust-deep:rgba(92,12,58,.24);
 }
@@ -31,17 +31,17 @@ body.deity-body.deity-lust::before{
   z-index:0;
   pointer-events:none;
   background:
-    radial-gradient(circle at 12% 24%,rgba(230,65,151,.10),transparent 25rem),
-    radial-gradient(circle at 88% 64%,rgba(255,116,190,.08),transparent 26rem),
-    radial-gradient(circle at 50% 42%,transparent 0 18rem,rgba(217,54,145,.035) 18.2rem 18.35rem,transparent 18.55rem),
-    radial-gradient(circle at 50% 42%,transparent 0 24rem,rgba(240,90,168,.025) 24.2rem 24.35rem,transparent 24.55rem);
+    radial-gradient(circle at 12% 24%,rgba(230,65,151,.08),transparent 25rem),
+    radial-gradient(circle at 88% 64%,rgba(255,116,190,.06),transparent 26rem),
+    radial-gradient(circle at 50% 42%,transparent 0 18rem,rgba(217,54,145,.028) 18.2rem 18.35rem,transparent 18.55rem),
+    radial-gradient(circle at 50% 42%,transparent 0 24rem,rgba(240,90,168,.020) 24.2rem 24.35rem,transparent 24.55rem);
 }
 body.deity-body.deity-lust>*{
   position:relative;
   z-index:1;
 }
 
-/* subtle floating bond rings in page background */
+/* soft mystical halo backdrop */
 .lust-page-decor{
   position:fixed;
   inset:0;
@@ -51,37 +51,15 @@ body.deity-body.deity-lust>*{
 }
 .lust-ring{
   position:absolute;
-  border:1px solid rgba(240,90,168,.10);
+  border:1px solid rgba(240,90,168,.08);
   border-radius:50%;
-  box-shadow:0 0 28px rgba(231,71,156,.04);
+  box-shadow:0 0 24px rgba(231,71,156,.03);
 }
 .lust-ring.r1{width:420px;height:420px;top:180px;left:-210px;}
-.lust-ring.r2{width:300px;height:300px;top:760px;right:-150px;opacity:.7;}
-.lust-ring.r3{width:210px;height:210px;top:1320px;left:4%;opacity:.55;}
+.lust-ring.r2{width:300px;height:300px;top:760px;right:-150px;opacity:.58;}
+.lust-ring.r3{width:210px;height:210px;top:1320px;left:4%;opacity:.42;}
 
-/* Hero flourish */
-.deity-lust .deity-hero{
-  position:relative;
-  overflow:hidden;
-}
-.deity-lust .deity-hero::after{
-  content:"";
-  position:absolute;
-  width:520px;
-  height:180px;
-  left:42%;
-  bottom:-50px;
-  z-index:2;
-  pointer-events:none;
-  border:14px solid rgba(236,70,159,.16);
-  border-left-color:transparent;
-  border-bottom-color:transparent;
-  border-radius:50%;
-  transform:rotate(-8deg);
-  filter:drop-shadow(0 0 14px rgba(236,70,159,.08));
-}
-
-/* soft bond divider */
+/* wedding-ring / bond divider — KEEP */
 .lust-bond-divider{
   display:flex;
   align-items:center;
@@ -116,12 +94,12 @@ body.deity-body.deity-lust>*{
 .lust-bond-glyph::before{left:2px;transform:rotate(-18deg);}
 .lust-bond-glyph::after{right:2px;transform:rotate(18deg);}
 
-/* Cards */
+/* cards */
 .deity-lust .deity-article section,
 .deity-lust .deity-facts,
 .deity-lust .deity-related{
   position:relative;
-  overflow:visible;
+  overflow:hidden;
   border-color:rgba(174,49,119,.28);
   background:linear-gradient(180deg,rgba(43,8,31,.18),rgba(5,9,16,.06));
 }
@@ -153,127 +131,109 @@ body.deity-body.deity-lust>*{
   background:linear-gradient(90deg,rgba(226,76,156,.50),transparent);
 }
 
-/* Modular ribbon pieces. Anchored to individual sections only. */
-.lust-ribbon{
+/* ---------------------------------------------------------
+   RIXEL VIRUS
+   Everything is contained INSIDE this section.
+   Black "breaks" in the panel edges with actual ribbon-like
+   pink tendons emerging from them.
+   --------------------------------------------------------- */
+.deity-lust .lust-rixel-section{
+  border-color:rgba(230,68,151,.48);
+  background:
+    radial-gradient(circle at 91% 24%,rgba(219,54,145,.08),transparent 11rem),
+    radial-gradient(circle at 9% 74%,rgba(219,54,145,.055),transparent 9rem),
+    linear-gradient(180deg,rgba(52,7,36,.25),rgba(6,9,16,.08));
+  box-shadow:
+    inset 0 0 28px rgba(193,38,124,.035),
+    0 0 0 1px rgba(216,52,142,.035);
+}
+.deity-lust .lust-rixel-section h2{
+  text-shadow:0 0 14px rgba(239,78,163,.09);
+}
+.rixel-infection{
   position:absolute;
-  pointer-events:none;
+  top:0;
+  bottom:0;
+  width:112px;
   z-index:0;
+  pointer-events:none;
+  opacity:.82;
+}
+.rixel-infection.right{right:0;}
+.rixel-infection.left{
+  left:0;
+  transform:scaleX(-1);
   opacity:.52;
 }
-.lust-ribbon::before,
-.lust-ribbon::after{
-  content:"";
-  position:absolute;
-  border-style:solid;
-  border-color:rgba(231,62,151,.42);
-  filter:drop-shadow(0 0 9px rgba(238,76,164,.11));
+.rixel-infection svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+.rixel-infection .crack{
+  fill:none;
+  stroke:rgba(1,1,3,.95);
+  stroke-width:4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.rixel-infection .ribbon-shadow{
+  fill:none;
+  stroke:rgba(80,10,51,.94);
+  stroke-width:9;
+  stroke-linecap:round;
+}
+.rixel-infection .ribbon{
+  fill:none;
+  stroke:rgba(224,49,145,.82);
+  stroke-width:5.5;
+  stroke-linecap:round;
+}
+.rixel-infection .ribbon-highlight{
+  fill:none;
+  stroke:rgba(255,136,202,.52);
+  stroke-width:1.2;
+  stroke-linecap:round;
+}
+.deity-lust .lust-rixel-section > h2,
+.deity-lust .lust-rixel-section > p{
+  position:relative;
+  z-index:1;
+}
+.deity-lust .lust-rixel-section > p{
+  padding-right:34px;
 }
 
-/* soft arc tucked behind the lower edge */
-.lust-ribbon.soft-right{
-  width:300px;
-  height:90px;
-  right:-38px;
-  bottom:-26px;
-}
-.lust-ribbon.soft-right::before{
-  inset:0;
-  border-width:10px 0 0 10px;
-  border-radius:70% 0 0 0;
-  transform:rotate(-5deg);
-}
-.lust-ribbon.soft-right::after{
-  width:170px;
-  height:55px;
-  right:10px;
-  bottom:12px;
-  border-width:7px 0 0 7px;
-  border-radius:70% 0 0 0;
-  opacity:.65;
-}
-
-/* mirrored version */
-.lust-ribbon.soft-left{
-  width:280px;
-  height:86px;
-  left:-36px;
-  bottom:-22px;
-  transform:scaleX(-1);
-}
-.lust-ribbon.soft-left::before{
-  inset:0;
-  border-width:10px 0 0 10px;
-  border-radius:70% 0 0 0;
-  transform:rotate(-5deg);
-}
-.lust-ribbon.soft-left::after{
-  width:150px;
-  height:50px;
-  right:12px;
-  bottom:12px;
-  border-width:7px 0 0 7px;
-  border-radius:70% 0 0 0;
-  opacity:.62;
-}
-
-/* Rixel section: tighter, sharper ribbon tension */
-.lust-ribbon.rixel{
-  width:250px;
-  height:120px;
-  right:-30px;
-  top:24px;
-  opacity:.64;
-}
-.lust-ribbon.rixel::before{
-  width:220px;
-  height:72px;
-  right:0;
-  top:8px;
-  border-width:8px 0 0 8px;
-  border-radius:60% 0 0 0;
-  transform:rotate(18deg);
-}
-.lust-ribbon.rixel::after{
-  width:190px;
-  height:60px;
-  right:16px;
-  top:38px;
-  border-width:6px 0 0 6px;
-  border-radius:55% 0 0 0;
-  transform:rotate(-12deg);
-  opacity:.78;
-}
-
-/* little ribbon knot in corner */
-.lust-knot{
+/* small restrained bond accent for ordinary sections */
+.lust-bond-corner{
   position:absolute;
   right:18px;
-  bottom:14px;
-  width:34px;
-  height:18px;
-  opacity:.26;
+  bottom:15px;
+  width:30px;
+  height:14px;
+  opacity:.18;
 }
-.lust-knot::before,
-.lust-knot::after{
+.lust-bond-corner::before,
+.lust-bond-corner::after{
   content:"";
   position:absolute;
-  top:3px;
-  width:16px;
-  height:11px;
+  width:13px;
+  height:8px;
+  top:2px;
   border:1px solid rgba(239,98,173,.58);
-  border-radius:50% 50% 45% 55%;
+  border-radius:50%;
 }
-.lust-knot::before{left:1px;transform:rotate(-18deg);}
-.lust-knot::after{right:1px;transform:rotate(18deg);}
+.lust-bond-corner::before{left:2px;transform:rotate(-16deg);}
+.lust-bond-corner::after{right:2px;transform:rotate(16deg);}
 
 @media(max-width:900px){
-  .lust-ribbon.soft-right{right:-80px;opacity:.34;}
-  .lust-ribbon.soft-left{left:-80px;opacity:.34;}
-  .lust-ribbon.rixel{right:-95px;opacity:.42;}
+  .rixel-infection{width:92px;opacity:.64;}
+  .deity-lust .lust-rixel-section > p{padding-right:26px;}
 }
 @media(max-width:650px){
   .lust-page-decor{display:none;}
-  .lust-ribbon{display:none;}
+  .rixel-infection{opacity:.42;width:68px;}
+  .deity-lust .lust-rixel-section > p{padding-right:16px;}
 }
 </style>
 
@@ -317,10 +277,30 @@ body.deity-body.deity-lust>*{
 
 <main class="deity-layout">
   <article class="deity-article">
-    <section><span class="lust-ribbon soft-right" aria-hidden="true"></span><h2>The Goddess of Connection</h2><p>Lust represents desire, love, passion, and the connections people choose to form with one another. In Rushinghan, her name does not carry the automatic shame that it once did. Desire can be romantic, sexual, artistic, familial, social, creative, or deeply personal. Wanting something is not itself a moral failure.</p><p>The central question in Lust's modern worship is choice. A connection only has meaning if the people involved are allowed to choose it. That belief is especially important because Lust's own history contains one of the clearest examples of what happens when desire is stripped of consent.</p><span class="lust-knot" aria-hidden="true"></span></section>
-<section><span class="lust-ribbon rixel" aria-hidden="true"></span><h2>The Rixel Virus</h2><p>Before her godhood, Lust was assigned by Pride to develop what would become the Rixel Virus. Its purpose was to identify a person's deepest desires and use those desires to influence behavior. What began as psychological manipulation eventually became something far more horrifying.</p><p>In its developed form, pink ribbons emerged from gaps and breaks in the victim's skin, threading through the body like additional tendons. The ribbons could physically force the host to move. Resistance only increased the pressure, breaking bones while the victim remained conscious inside a body that no longer obeyed them.</p><p>When the true danger of the virus became impossible to ignore, Lust abandoned Pride alongside the other Sins. The experience left a permanent mark on her divine identity. The goddess of desire is now defined just as much by the right to say no as by the freedom to say yes.</p><span class="lust-knot" aria-hidden="true"></span></section>
-<section><span class="lust-ribbon soft-left" aria-hidden="true"></span><h2>Ribbons, Reclaimed</h2><p>Ribbons remain common in Lust's imagery, but their meaning has changed. Where the Rixel Virus used ribbons as restraints, modern depictions often use them as symbols of voluntary bonds: relationships, promises, communities, and the invisible connections between people who choose one another.</p><p>That contrast is one of the clearest summaries of Lust herself. Desire can connect people or control them. The difference is choice.</p><span class="lust-knot" aria-hidden="true"></span></section>
-<section><span class="lust-ribbon soft-right" aria-hidden="true"></span><h2>Rushinghan</h2><p>Rushinghan is one of the continent's great centers of art, music, relationships, and creative expression. Lust's influence encourages people to care loudly and openly. Friendships, romances, passions, and personal expression are treated as things worth celebrating rather than hiding.</p><p>The Rebellion also began here, not because its people rejected the Sins, but because they loved them. In Rushinghan, caring about something enough to fight for it makes perfect sense.</p><span class="lust-knot" aria-hidden="true"></span></section>
+    <section><h2>The Goddess of Connection</h2><p>Lust represents desire, love, passion, and the connections people choose to form with one another. In Rushinghan, her name does not carry the automatic shame that it once did. Desire can be romantic, sexual, artistic, familial, social, creative, or deeply personal. Wanting something is not itself a moral failure.</p><p>The central question in Lust's modern worship is choice. A connection only has meaning if the people involved are allowed to choose it. That belief is especially important because Lust's own history contains one of the clearest examples of what happens when desire is stripped of consent.</p><span class="lust-bond-corner" aria-hidden="true"></span></section>
+<section class="lust-rixel-section">
+<span class="rixel-infection right" aria-hidden="true">
+<svg viewBox="0 0 112 360" preserveAspectRatio="none">
+  <path class="crack" d="M109 28 L91 48 L101 66 L82 91 L94 112 L73 137 L85 159 L66 184 L79 207 L59 235 L69 259 L50 286 L60 320"/>
+  <path class="crack" d="M104 76 L88 84 L76 102 M88 160 L73 166 L63 180 M69 259 L54 267 L45 279"/>
+  <path class="ribbon-shadow" d="M103 47 C80 55 81 82 99 95 C112 105 101 125 83 139 C66 153 65 180 91 193 C110 203 101 225 78 240 C57 254 59 284 86 294"/>
+  <path class="ribbon" d="M103 47 C80 55 81 82 99 95 C112 105 101 125 83 139 C66 153 65 180 91 193 C110 203 101 225 78 240 C57 254 59 284 86 294"/>
+  <path class="ribbon-highlight" d="M101 46 C82 58 84 80 99 93 C108 103 99 121 84 136 C68 151 68 177 91 190 C106 199 98 220 79 237 C61 251 62 279 86 291"/>
+  <path class="ribbon-shadow" d="M111 132 C91 133 77 147 78 165 C78 187 99 195 105 213 C111 231 93 248 79 253"/>
+  <path class="ribbon" d="M111 132 C91 133 77 147 78 165 C78 187 99 195 105 213 C111 231 93 248 79 253"/>
+</svg>
+</span>
+<span class="rixel-infection left" aria-hidden="true">
+<svg viewBox="0 0 112 360" preserveAspectRatio="none">
+  <path class="crack" d="M109 50 L93 71 L102 91 L84 116 L95 137 L76 162 L86 184 L68 209 L80 232 L62 257"/>
+  <path class="crack" d="M98 96 L83 102 L72 116 M80 232 L66 239 L57 250"/>
+  <path class="ribbon-shadow" d="M106 70 C84 80 85 106 102 118 C111 126 103 146 86 158 C68 171 69 196 92 208"/>
+  <path class="ribbon" d="M106 70 C84 80 85 106 102 118 C111 126 103 146 86 158 C68 171 69 196 92 208"/>
+  <path class="ribbon-highlight" d="M104 70 C87 82 88 103 102 116 C109 124 100 143 86 155 C71 169 71 192 92 205"/>
+</svg>
+</span><h2>The Rixel Virus</h2><p>Before her godhood, Lust was assigned by Pride to develop what would become the Rixel Virus. Its purpose was to identify a person's deepest desires and use those desires to influence behavior. What began as psychological manipulation eventually became something far more horrifying.</p><p>In its developed form, pink ribbons emerged from gaps and breaks in the victim's skin, threading through the body like additional tendons. The ribbons could physically force the host to move. Resistance only increased the pressure, breaking bones while the victim remained conscious inside a body that no longer obeyed them.</p><p>When the true danger of the virus became impossible to ignore, Lust abandoned Pride alongside the other Sins. The experience left a permanent mark on her divine identity. The goddess of desire is now defined just as much by the right to say no as by the freedom to say yes.</p></section>
+<section><h2>Ribbons, Reclaimed</h2><p>Ribbons remain common in Lust's imagery, but their meaning has changed. Where the Rixel Virus used ribbons as restraints, modern depictions often use them as symbols of voluntary bonds: relationships, promises, communities, and the invisible connections between people who choose one another.</p><p>That contrast is one of the clearest summaries of Lust herself. Desire can connect people or control them. The difference is choice.</p><span class="lust-bond-corner" aria-hidden="true"></span></section>
+<section><h2>Rushinghan</h2><p>Rushinghan is one of the continent's great centers of art, music, relationships, and creative expression. Lust's influence encourages people to care loudly and openly. Friendships, romances, passions, and personal expression are treated as things worth celebrating rather than hiding.</p><p>The Rebellion also began here, not because its people rejected the Sins, but because they loved them. In Rushinghan, caring about something enough to fight for it makes perfect sense.</p><span class="lust-bond-corner" aria-hidden="true"></span></section>
 
   </article>
   <aside class="deity-aside">
