@@ -332,81 +332,51 @@ body.deity-body.deity-sloth::after {
 .sloth-withheld{
   isolation:isolate;
   overflow:visible;
+  position:relative;
 }
 
 .deity-sloth .sloth-withheld-card{
   position:relative;
   z-index:2;
+  overflow:visible;
 }
 
 .sloth-archive-leak{
   position:absolute;
-  left:17%;
-  right:12%;
-  bottom:-54px;
-  height:86px;
+  left:9%;
+  width:73%;
+  top:calc(100% - 16px);
+  height:92px;
   z-index:1;
   pointer-events:none;
-  filter:drop-shadow(0 9px 14px rgba(80,48,119,.28));
+  opacity:.94;
 }
 
-.sloth-archive-leak::before{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  top:0;
-  height:20px;
-  border-radius:5px 5px 18px 18px;
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(80,48,116,.38) 6%,
-      rgba(111,67,154,.82) 28%,
-      rgba(79,48,113,.72) 55%,
-      rgba(113,69,156,.78) 82%,
-      transparent 100%
-    );
-  box-shadow:
-    0 6px 16px rgba(81,48,119,.20),
-    inset 0 2px 0 rgba(194,155,255,.10);
+.sloth-archive-leak svg,
+.sloth-panel-goop svg{
+  display:block;
+  width:100%;
+  height:100%;
+  overflow:visible;
 }
 
-.sloth-archive-leak span{
-  position:absolute;
-  top:10px;
-  border-radius:0 0 999px 999px;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(115,70,158,.90),
-      rgba(86,51,123,.86) 58%,
-      rgba(59,38,82,.78)
-    );
-  box-shadow:
-    inset 2px 0 0 rgba(194,155,255,.06),
-    0 6px 12px rgba(58,35,86,.22);
+.sloth-archive-leak .goop-fill,
+.sloth-panel-goop .goop-fill{
+  fill:url(#slothGoopGradient);
 }
 
-.sloth-archive-leak span::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  bottom:-5px;
-  transform:translateX(-50%);
-  width:115%;
-  aspect-ratio:1/1;
-  border-radius:50%;
-  background:rgba(73,43,106,.92);
-  box-shadow:0 4px 8px rgba(45,28,66,.22);
+.sloth-archive-leak .goop-highlight,
+.sloth-panel-goop .goop-highlight{
+  fill:none;
+  stroke:rgba(202,182,255,.18);
+  stroke-width:3;
+  stroke-linecap:round;
 }
 
-.sloth-archive-leak .d1{left:12%;height:42px;width:12px}
-.sloth-archive-leak .d2{left:29%;height:67px;width:17px}
-.sloth-archive-leak .d3{left:50%;height:34px;width:11px}
-.sloth-archive-leak .d4{left:70%;height:74px;width:18px}
-.sloth-archive-leak .d5{left:88%;height:48px;width:13px}
+.sloth-archive-leak .goop-shadow,
+.sloth-panel-goop .goop-shadow{
+  filter:drop-shadow(0 8px 10px rgba(40,24,61,.34));
+}
 
 /* One restrained goop seam lower in the article */
 .deity-sloth .deity-article section:nth-of-type(3){
@@ -415,74 +385,27 @@ body.deity-body.deity-sloth::after {
 
 .sloth-panel-goop{
   position:absolute;
-  left:10%;
-  bottom:-43px;
-  width:48%;
-  height:50px;
+  left:11%;
+  width:46%;
+  bottom:-32px;
+  height:56px;
   pointer-events:none;
   z-index:3;
-  filter:drop-shadow(0 7px 10px rgba(65,39,94,.20));
+  opacity:.88;
 }
-
-.sloth-panel-goop::before{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  top:0;
-  height:14px;
-  border-radius:0 0 18px 18px;
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(77,47,109,.34) 8%,
-      rgba(108,67,148,.68) 24%,
-      rgba(86,53,121,.62) 58%,
-      rgba(104,64,144,.58) 84%,
-      transparent 100%
-    );
-}
-
-.sloth-panel-goop span{
-  position:absolute;
-  top:7px;
-  border-radius:0 0 999px 999px;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(106,65,148,.76),
-      rgba(74,46,104,.76)
-    );
-}
-
-.sloth-panel-goop span::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  bottom:-4px;
-  transform:translateX(-50%);
-  width:120%;
-  aspect-ratio:1/1;
-  border-radius:50%;
-  background:rgba(72,44,101,.82);
-}
-
-.sloth-panel-goop .g1{left:14%;height:24px;width:9px}
-.sloth-panel-goop .g2{left:36%;height:38px;width:13px}
-.sloth-panel-goop .g3{left:63%;height:20px;width:8px}
-.sloth-panel-goop .g4{left:82%;height:32px;width:11px}
 
 @media (max-width:700px){
   .sloth-archive-leak{
-    left:12%;
-    right:9%;
-    bottom:-46px;
-    height:74px;
+    left:7%;
+    width:80%;
+    top:calc(100% - 12px);
+    height:78px;
   }
   .sloth-panel-goop{
     left:8%;
-    width:62%;
+    width:60%;
+    bottom:-28px;
+    height:48px;
   }
 }
 
@@ -490,6 +413,17 @@ body.deity-body.deity-sloth::after {
 
 </head>
 <body class="deity-body deity-sloth">
+
+
+<svg aria-hidden="true" width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="slothGoopGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8a5ece" stop-opacity="0.92"/>
+      <stop offset="46%" stop-color="#663f98" stop-opacity="0.90"/>
+      <stop offset="100%" stop-color="#382252" stop-opacity="0.94"/>
+    </linearGradient>
+  </defs>
+</svg>
 
 <div class="sloth-page-decor" aria-hidden="true">
   <div class="sloth-moon one"></div>
@@ -524,11 +458,40 @@ body.deity-body.deity-sloth::after {
   
         <div class="sloth-withheld">
           <div class="sloth-archive-leak" aria-hidden="true">
-            <span class="d1"></span>
-            <span class="d2"></span>
-            <span class="d3"></span>
-            <span class="d4"></span>
-            <span class="d5"></span>
+            <svg viewBox="0 0 430 96" preserveAspectRatio="none" role="presentation">
+              <g class="goop-shadow">
+                <path class="goop-fill" d="M18 20
+                  C44 16, 68 18, 92 19
+                  C116 20, 142 16, 162 18
+                  C182 20, 202 24, 221 23
+                  C242 22, 265 16, 292 19
+                  C320 22, 345 20, 372 21
+                  C392 22, 407 20, 417 18
+                  L417 30
+                  C404 30, 398 39, 399 50
+                  C400 65, 391 77, 380 77
+                  C369 77, 360 67, 360 53
+                  C360 40, 356 31, 343 31
+                  C327 31, 322 43, 323 56
+                  C324 74, 313 90, 299 90
+                  C286 90, 277 78, 277 61
+                  C277 44, 274 31, 259 31
+                  C244 31, 239 40, 239 49
+                  C239 59, 232 67, 223 67
+                  C214 67, 208 58, 208 47
+                  C208 38, 203 31, 190 31
+                  C173 31, 168 41, 169 58
+                  C170 74, 160 86, 147 86
+                  C135 86, 126 76, 126 61
+                  C126 45, 122 31, 107 31
+                  C91 31, 87 43, 87 56
+                  C87 72, 76 85, 62 85
+                  C49 85, 41 74, 41 60
+                  C41 44, 37 31, 24 31
+                  C18 31, 14 28, 18 20 Z"/>
+                <path class="goop-highlight" d="M40 23 C93 18, 137 18, 180 22 C238 28, 305 16, 377 22"/>
+              </g>
+            </svg>
           </div>
           <div class="sloth-withheld-card">
             <div class="withheld-inner">
@@ -562,10 +525,34 @@ body.deity-body.deity-sloth::after {
 <section><h2>Seventy-Five Years</h2><p>Sloth was one of the first Sins to awaken and one of the first to defy Pride. For that defiance, he was subjected to seventy-five years of torment. His body was disassembled, experimented on, and repeatedly pushed beyond what should have killed him. Sleep, recovery, and even death were denied to him.</p><p>Two substances emerged from that suffering. The first was Life's Blood, a bright red material associated with vitality, new beginnings, and rebirth. The second was a dark, viscous liquid formed from the remnants and weight of what had been done to him. Sloth's deteriorating body still leaks the black substance.</p></section>
 <section><h2>A Body Held Together</h2><p>Much of Sloth's power is spent simply keeping his own body intact. He survived what was done to him, but survival did not mean returning to the person he had been beforehand. That distinction matters deeply to his followers.</p><p>Recovery is not the same thing as erasing the wound. A person can heal and still be changed. Sloth's existence is proof of both sides of that truth.</p>
 <div class="sloth-panel-goop" aria-hidden="true">
-  <span class="g1"></span>
-  <span class="g2"></span>
-  <span class="g3"></span>
-  <span class="g4"></span>
+  <svg viewBox="0 0 300 62" preserveAspectRatio="none" role="presentation">
+    <g class="goop-shadow">
+      <path class="goop-fill" d="M8 12
+        C32 10, 55 13, 80 12
+        C102 11, 124 8, 146 10
+        C170 12, 191 14, 214 13
+        C236 12, 258 9, 292 12
+        L292 18
+        C281 18, 277 26, 277 35
+        C277 48, 270 57, 261 57
+        C251 57, 245 49, 245 38
+        C245 28, 241 18, 228 18
+        C215 18, 211 27, 211 35
+        C211 47, 205 54, 196 54
+        C187 54, 181 46, 181 36
+        C181 27, 178 18, 166 18
+        C152 18, 148 30, 149 44
+        C150 56, 144 62, 136 62
+        C127 62, 121 54, 121 42
+        C121 28, 117 18, 104 18
+        C92 18, 88 26, 88 34
+        C88 46, 81 53, 72 53
+        C63 53, 57 46, 57 35
+        C57 25, 53 18, 42 18
+        C26 18, 17 17, 8 12 Z"/>
+      <path class="goop-highlight" d="M34 13 C81 11, 124 10, 177 13 C219 15, 246 11, 275 12"/>
+    </g>
+  </svg>
 </div>
 </section>
 <section><h2>Sol, the Sleeping City</h2><p>Sol built its culture around the rhythms associated with Sloth. The city sleeps through much of the day and wakes at night, filling the darkness with festivals, celebrations, and communal life. Rest is scheduled into the culture rather than treated as something people earn only after exhausting themselves.</p><p>The result is a city with a remarkably simple philosophy: tomorrow will still be there. Probably.</p></section>
