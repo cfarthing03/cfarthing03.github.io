@@ -8,7 +8,7 @@
 
 <style>
 /* =========================================================
-   LUST — PAGE-SPECIFIC VISUAL MOTIFS (V3)
+   LUST — PAGE-SPECIFIC VISUAL MOTIFS (V4)
    Clean bonds + a section-contained Rixel treatment.
    No page-spanning ribbons.
    ========================================================= */
@@ -23,6 +23,7 @@
 body.deity-body.deity-lust{
   position:relative;
   overflow-x:hidden;
+  isolation:isolate;
 }
 body.deity-body.deity-lust::before{
   content:"";
@@ -246,20 +247,20 @@ body.deity-body.deity-lust>*{
   position:fixed;
   top:78px;
   bottom:28px;
-  width:48px;
-  z-index:0;
+  width:54px;
+  z-index:6;
   pointer-events:none;
-  opacity:.34;
+  opacity:.46;
   filter:drop-shadow(0 0 12px rgba(236,82,164,.08));
 }
-.lust-side-banner.left{left:28px;}
-.lust-side-banner.right{right:28px;}
+.lust-side-banner.left{left:38px;}
+.lust-side-banner.right{right:38px;}
 
 .lust-side-banner .ribbon-stem{
   position:absolute;
   top:0;
   left:50%;
-  width:10px;
+  width:12px;
   height:calc(100% - 56px);
   transform:translateX(-50%);
   border-radius:999px 999px 5px 5px;
@@ -295,8 +296,8 @@ body.deity-body.deity-lust>*{
   position:absolute;
   left:50%;
   bottom:0;
-  width:38px;
-  height:64px;
+  width:44px;
+  height:70px;
   transform:translateX(-50%);
   background:linear-gradient(180deg,rgba(222,66,151,.84),rgba(179,36,117,.76));
   clip-path:polygon(36% 0,64% 0,64% 58%,100% 100%,50% 72%,0 100%,36% 58%);
@@ -323,9 +324,9 @@ body.deity-body.deity-lust>*{
 @media(max-width:1180px){
   .lust-side-banner.left{left:10px;}
   .lust-side-banner.right{right:10px;}
-  .lust-side-banner{opacity:.25;transform:scale(.88);transform-origin:center top;}
+  .lust-side-banner{opacity:.38;transform:scale(.90);transform-origin:center top;}
 }
-@media(max-width:980px){
+@media(max-width:760px){
   .lust-side-banner{display:none;}
 }
 
