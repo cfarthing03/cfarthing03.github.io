@@ -1535,3 +1535,249 @@ footer{
     min-height:50vh;
   }
 }
+
+
+
+/* =========================================================
+   RELIGION / FAITH ARTICLES
+   ========================================================= */
+
+.faith-body{
+  --faith:#d99556;
+  --faith-rgb:217,149,86;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 78% 8%,rgba(var(--faith-rgb),.09),transparent 28rem),
+    #030812;
+}
+
+.faith-gladiators{--faith:#ef9231;--faith-rgb:239,146,49}
+.faith-keepers{--faith:#c99a2e;--faith-rgb:201,154,46}
+.faith-passions{--faith:#d34d82;--faith-rgb:211,77,130}
+.faith-green-circus{--faith:#5d9e68;--faith-rgb:93,158,104}
+.faith-spirits{--faith:#9279a8;--faith-rgb:146,121,168}
+.faith-gluttony{--faith:#b44b39;--faith-rgb:180,75,57}
+.faith-machinists{--faith:#eee9dc;--faith-rgb:238,233,220}
+
+.faith-hero{
+  padding:4.2rem 1rem 3.2rem;
+  text-align:center;
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(circle at 50% 20%,rgba(var(--faith-rgb),.13),transparent 28rem),
+    #050a12;
+}
+
+.faith-hero .kicker{color:var(--faith)}
+.faith-hero h1{
+  color:var(--faith);
+  font-size:clamp(3rem,7vw,6rem);
+  margin:.1rem 0 .5rem;
+  text-shadow:0 0 25px rgba(var(--faith-rgb),.18);
+}
+.faith-hero p{
+  max-width:760px;
+  margin:0 auto;
+  color:#c8baa6;
+  font-size:1.08rem;
+}
+
+.faith-layout{
+  max-width:1150px;
+  margin:auto;
+  padding:3rem 1rem 5rem;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 280px;
+  gap:2rem;
+}
+
+.faith-article section{
+  background:#07131f;
+  border:1px solid #3c2b24;
+  padding:clamp(1.35rem,3vw,2.2rem);
+  margin-bottom:1rem;
+}
+
+.faith-article h2{
+  color:var(--faith);
+  font-size:clamp(1.7rem,3vw,2.25rem);
+  margin:0 0 .75rem;
+}
+
+.faith-article p{
+  color:#eadfc8;
+  font-size:1.08rem;
+  line-height:1.78;
+  margin:.7rem 0;
+}
+
+.faith-aside{
+  position:sticky;
+  top:88px;
+  align-self:start;
+  display:grid;
+  gap:1rem;
+}
+
+.faith-card{
+  background:#08131e;
+  border:1px solid #3c2b24;
+  padding:1.2rem;
+}
+
+.faith-card h2{
+  color:var(--faith);
+  font-size:1.12rem;
+  margin:0 0 .7rem;
+}
+
+.faith-card a{
+  display:block;
+  padding:.55rem 0;
+  border-top:1px solid rgba(143,88,57,.22);
+}
+.faith-card a:first-of-type{border-top:0}
+
+.faith-fact{
+  padding:.65rem 0;
+  border-top:1px solid rgba(143,88,57,.24);
+}
+.faith-fact:first-of-type{border-top:0}
+.faith-fact-label{
+  display:block;
+  color:#887c6d;
+  text-transform:uppercase;
+  letter-spacing:.11em;
+  font-size:.69rem;
+}
+.faith-fact-value{
+  display:block;
+  color:#ded0ba;
+  margin-top:.12rem;
+}
+
+.faith-index-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1rem;
+  margin-top:1.5rem;
+}
+
+.faith-index-card{
+  display:block;
+  background:#08131e;
+  border:1px solid #3c2b24;
+  padding:1.3rem;
+}
+.faith-index-card h2{
+  color:var(--gold2);
+  margin:.1rem 0 .45rem;
+}
+.faith-index-card p{
+  color:#c8baa6;
+  margin:.2rem 0 0;
+}
+
+.deity-facts .fact-value a{
+  color:var(--deity);
+  font-weight:700;
+  text-decoration:none;
+}
+.deity-facts .fact-value a:hover{
+  text-decoration:underline;
+}
+
+@media (max-width:850px){
+  .faith-layout{grid-template-columns:1fr}
+  .faith-aside{position:static}
+  .faith-index-grid{grid-template-columns:1fr}
+}
+
+
+/* =========================================================
+   FAITH PAGE SIGIL PRESENTATION
+   ========================================================= */
+.faith-hero{
+  position:relative;
+  overflow:hidden;
+}
+
+.faith-hero-inner{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 180px;
+  align-items:center;
+  gap:2rem;
+  text-align:left;
+}
+
+.faith-hero-copy p{
+  margin-left:0;
+  margin-right:0;
+}
+
+.faith-sigil{
+  width:160px;
+  aspect-ratio:1/1;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  justify-self:end;
+  background:
+    radial-gradient(circle at center,
+      rgba(var(--faith-rgb),.10) 0%,
+      rgba(3,8,18,.70) 68%);
+  border:1px solid rgba(var(--faith-rgb),.46);
+  box-shadow:
+    0 0 0 6px rgba(3,8,18,.70),
+    0 0 24px rgba(var(--faith-rgb),.16);
+}
+
+.faith-sigil img{
+  width:78%;
+  height:78%;
+  object-fit:contain;
+  filter:
+    brightness(1.08)
+    contrast(1.04)
+    drop-shadow(0 0 8px rgba(var(--faith-rgb),.18));
+}
+
+/* Sloth / Spirits: keep the dark sigil visible without making it loud */
+.faith-spirits .faith-sigil{
+  background:
+    radial-gradient(circle at center,
+      rgba(146,121,168,.24) 0%,
+      rgba(78,61,92,.18) 42%,
+      rgba(3,8,18,.90) 72%);
+  border-color:rgba(178,151,201,.64);
+  box-shadow:
+    0 0 0 6px rgba(3,8,18,.72),
+    0 0 26px rgba(146,121,168,.28);
+}
+
+.faith-spirits .faith-sigil img{
+  width:82%;
+  height:82%;
+  filter:
+    brightness(1.45)
+    contrast(1.08)
+    drop-shadow(0 0 5px rgba(203,184,218,.44))
+    drop-shadow(0 0 12px rgba(146,121,168,.30));
+}
+
+@media (max-width:700px){
+  .faith-hero-inner{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  .faith-hero-copy p{
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .faith-sigil{
+    justify-self:center;
+    width:135px;
+  }
+}
