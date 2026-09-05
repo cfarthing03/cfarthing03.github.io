@@ -10,109 +10,80 @@
   --virtue-gold:#d7b36a;
   --virtue-gold-bright:#f2d99c;
   --virtue-ivory:#e8dfcc;
-  --virtue-blue:#0b1620;
   --virtue-panel:#0a1119;
   --virtue-line:rgba(215,179,106,.52);
+  --virtue-red:#b31b20;
+  --virtue-red-bright:#ff3b3f;
+  --virtue-red-soft:rgba(255,48,54,.28);
 }
 
 body.virtues-selector-page{
   min-height:100vh;
   overflow-x:hidden;
   background:
-    radial-gradient(circle at 50% 27%,rgba(214,180,113,.055),transparent 26rem),
-    radial-gradient(circle at 15% 76%,rgba(90,118,138,.05),transparent 28rem),
+    radial-gradient(circle at 50% 25%,rgba(214,180,113,.055),transparent 25rem),
+    radial-gradient(circle at 50% 72%,rgba(110,15,19,.03),transparent 30rem),
     #050a10;
 }
 
 .virtues-stage{
-  width:min(1500px,calc(100% - 28px));
+  width:min(1500px,calc(100% - 24px));
   margin:0 auto;
-  padding:18px 0 26px;
+  padding:12px 0 22px;
 }
-
-.virtues-heading{
-  text-align:center;
-  margin:0 auto 4px;
-}
-.virtues-heading .kicker{
-  color:var(--virtue-gold);
-  letter-spacing:.28em;
-}
-.virtues-heading h1{
-  margin:.1rem 0 0;
-  color:var(--virtue-ivory);
-  font-size:clamp(2rem,4vw,3.65rem);
-  line-height:1;
-}
-.virtues-heading p{
-  margin:.5rem auto 0;
-  max-width:650px;
-  color:rgba(232,223,204,.7);
-  font-size:.95rem;
-}
+.virtues-heading{text-align:center;margin:0 auto 2px;}
+.virtues-heading .kicker{color:var(--virtue-gold);letter-spacing:.28em;}
+.virtues-heading h1{margin:.08rem 0 0;color:var(--virtue-ivory);font-size:clamp(2rem,4vw,3.55rem);line-height:1;}
+.virtues-heading p{margin:.45rem auto 0;max-width:690px;color:rgba(232,223,204,.7);font-size:.95rem;}
 
 .scale-selector{
   --tip:0deg;
-  --left-pan-y:0px;
-  --right-pan-y:0px;
+  --scale-metal:url(#virtueMetal);
   position:relative;
   width:100%;
-  height:min(700px,calc(100vh - 205px));
-  min-height:530px;
-  max-height:700px;
-  margin:8px auto 0;
+  height:min(710px,calc(100vh - 195px));
+  min-height:560px;
+  max-height:710px;
+  margin:4px auto 0;
   isolation:isolate;
 }
 
-.scale-art{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  overflow:visible;
-  pointer-events:none;
-  z-index:1;
-}
-.scale-art .metal{
-  fill:none;
-  stroke:url(#virtueMetal);
-  stroke-width:10;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  filter:drop-shadow(0 4px 7px rgba(0,0,0,.58));
-}
-.scale-art .metal-thin{
-  fill:none;
-  stroke:url(#virtueMetal);
-  stroke-width:5;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-.scale-art .detail{
-  fill:none;
-  stroke:rgba(242,217,156,.34);
-  stroke-width:2;
-}
-.scale-art .beam-group{
+.scale-art{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:1;}
+.scale-art .scale-moving{
   transform-box:fill-box;
-  transform-origin:center center;
+  transform-origin:50% 24.5%;
   transform:rotate(var(--tip));
-  transition:transform .34s cubic-bezier(.22,.8,.24,1);
+  transition:transform .34s cubic-bezier(.22,.8,.24,1),filter .25s ease;
 }
-.scale-art .left-pan{
-  transform:translateY(var(--left-pan-y));
-  transition:transform .34s cubic-bezier(.22,.8,.24,1);
+.scale-art .metal,
+.scale-art .metal-thin,
+.scale-art .detail,
+.scale-art .fulcrum-ring,
+.scale-art .column-fill{
+  transition:stroke .24s ease,fill .24s ease,filter .24s ease;
 }
-.scale-art .right-pan{
-  transform:translateY(var(--right-pan-y));
-  transition:transform .34s cubic-bezier(.22,.8,.24,1);
+.scale-art .metal{fill:none;stroke:url(#virtueMetal);stroke-width:10;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 4px 7px rgba(0,0,0,.58));}
+.scale-art .metal-thin{fill:none;stroke:url(#virtueMetal);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;}
+.scale-art .detail{fill:none;stroke:rgba(242,217,156,.34);stroke-width:2;}
+.scale-art .column-fill{fill:rgba(10,17,25,.96);stroke:url(#virtueMetal);stroke-width:7;}
+.scale-art .fulcrum-ring{fill:#09121b;stroke:url(#virtueMetal);stroke-width:8;}
+
+/* Patience corrupts the entire scale red. */
+.scale-selector.is-patience .scale-art .metal,
+.scale-selector.is-patience .scale-art .metal-thin,
+.scale-selector.is-patience .scale-art .column-fill,
+.scale-selector.is-patience .scale-art .fulcrum-ring{
+  stroke:var(--virtue-red-bright);
+  filter:drop-shadow(0 0 10px rgba(255,38,44,.42));
 }
+.scale-selector.is-patience .scale-art .detail{stroke:rgba(255,76,80,.72);}
+.scale-selector.is-patience .scale-art .column-fill{fill:rgba(33,4,7,.92);}
 
 .virtue-choice{
   position:absolute;
   z-index:4;
   display:block;
-  width:clamp(98px,8.7vw,142px);
+  width:clamp(92px,8vw,132px);
   aspect-ratio:1;
   border-radius:50%;
   text-decoration:none;
@@ -126,158 +97,76 @@ body.virtues-selector-page{
   inset:-6px;
   border-radius:50%;
   border:1px solid rgba(215,179,106,.40);
-  background:radial-gradient(circle,rgba(14,22,30,.92) 0 63%,rgba(184,151,81,.11) 64% 72%,rgba(4,8,13,.2) 73%);
-  box-shadow:0 0 0 1px rgba(0,0,0,.65),0 6px 16px rgba(0,0,0,.42),inset 0 0 18px rgba(215,179,106,.045);
+  background:radial-gradient(circle,rgba(14,22,30,.94) 0 63%,rgba(184,151,81,.10) 64% 72%,rgba(4,8,13,.18) 73%);
+  box-shadow:0 0 0 1px rgba(0,0,0,.65),0 6px 16px rgba(0,0,0,.42),inset 0 0 18px rgba(215,179,106,.04);
+  transition:border-color .22s ease,box-shadow .22s ease,background .22s ease;
 }
-.virtue-choice img{
-  position:absolute;
-  inset:10%;
-  width:80%;
-  height:80%;
-  object-fit:contain;
-  filter:drop-shadow(0 0 4px rgba(255,229,177,.10));
-  transition:filter .22s ease;
+.virtue-choice img{position:absolute;inset:10%;width:80%;height:80%;object-fit:contain;filter:drop-shadow(0 0 3px rgba(255,229,177,.08));transition:filter .22s ease;}
+.virtue-choice:hover,.virtue-choice:focus-visible,.virtue-choice.is-active{transform:translate(-50%,-50%) scale(1.2);z-index:8;filter:drop-shadow(0 0 18px rgba(255,45,51,.36));}
+.virtue-choice:hover::before,.virtue-choice:focus-visible::before,.virtue-choice.is-active::before{
+  border-color:rgba(255,67,72,.92);
+  background:radial-gradient(circle,rgba(24,10,14,.96) 0 61%,rgba(132,14,20,.24) 63% 72%,rgba(5,7,10,.25) 73%);
+  box-shadow:0 0 0 1px rgba(0,0,0,.72),0 0 30px rgba(255,36,42,.32),inset 0 0 28px rgba(180,15,22,.18);
 }
-.virtue-choice:hover,
-.virtue-choice:focus-visible,
-.virtue-choice.is-active{
-  transform:translate(-50%,-50%) scale(1.18);
-  z-index:8;
-  filter:drop-shadow(0 0 15px rgba(232,202,137,.24));
-}
-.virtue-choice:hover::before,
-.virtue-choice:focus-visible::before,
-.virtue-choice.is-active::before{
-  border-color:rgba(242,217,156,.78);
-  box-shadow:0 0 0 1px rgba(0,0,0,.7),0 0 24px rgba(215,179,106,.16),inset 0 0 22px rgba(215,179,106,.08);
-}
-.virtue-choice:focus-visible{outline:2px solid var(--virtue-gold-bright);outline-offset:8px;}
+.virtue-choice:hover img,.virtue-choice:focus-visible img,.virtue-choice.is-active img{filter:drop-shadow(0 0 9px rgba(255,46,51,.70));}
+.virtue-choice:focus-visible{outline:2px solid var(--virtue-red-bright);outline-offset:8px;}
 
-/* Fixed selection positions — these DO NOT move when the scale tips. */
-.virtue-diligence{left:21%;top:58%;}
-.virtue-charity{left:31%;top:58%;}
-.virtue-kindness{left:41%;top:58%;}
-.virtue-temperance{left:59%;top:58%;}
-.virtue-humility{left:69%;top:58%;}
-.virtue-chastity{left:79%;top:58%;}
-.virtue-patience{
-  left:50%;
-  top:16%;
-  width:clamp(106px,9.3vw,150px);
-}
-.virtue-patience::after{
-  content:"PATIENCE";
-  position:absolute;
-  left:50%;
-  top:calc(100% + 11px);
-  transform:translateX(-50%);
-  color:rgba(232,223,204,.72);
-  letter-spacing:.18em;
-  font-size:.7rem;
-  white-space:nowrap;
-}
+/* Fixed selection positions — the scale tips, the Virtues do not. */
+/* Left pan: two low, one high. */
+.virtue-diligence{left:20.8%;top:61.5%;}
+.virtue-charity{left:31.2%;top:61.5%;}
+.virtue-kindness{left:26%;top:48.8%;}
+/* Right pan: two low, one high. */
+.virtue-temperance{left:68.8%;top:61.5%;}
+.virtue-humility{left:79.2%;top:61.5%;}
+.virtue-chastity{left:74%;top:48.8%;}
+.virtue-patience{left:50%;top:15.5%;width:clamp(104px,9vw,146px);}
+.virtue-patience::after{content:"PATIENCE";position:absolute;left:50%;top:calc(100% + 10px);transform:translateX(-50%);color:rgba(232,223,204,.72);letter-spacing:.18em;font-size:.7rem;white-space:nowrap;transition:color .2s ease,text-shadow .2s ease;}
+.scale-selector.is-patience .virtue-patience::after{color:var(--virtue-red-bright);text-shadow:0 0 10px rgba(255,48,54,.6);}
 
-.virtue-side-label{
-  position:absolute;
-  z-index:2;
-  top:72%;
-  width:38%;
-  color:rgba(232,223,204,.38);
-  font-size:.69rem;
-  letter-spacing:.2em;
-  text-align:center;
-  text-transform:uppercase;
-  pointer-events:none;
-}
-.virtue-side-label.left{left:10%;}
-.virtue-side-label.right{right:10%;}
+.virtue-side-label{position:absolute;z-index:2;top:72.5%;width:36%;color:rgba(232,223,204,.34);font-size:.68rem;letter-spacing:.2em;text-align:center;text-transform:uppercase;pointer-events:none;}
+.virtue-side-label.left{left:7%;}.virtue-side-label.right{right:7%;}
 
 .virtue-name-plaque{
-  position:absolute;
-  z-index:5;
-  left:50%;
-  bottom:3.6%;
-  transform:translateX(-50%);
-  width:min(470px,62%);
-  min-height:82px;
-  display:grid;
-  place-items:center;
-  padding:15px 34px;
-  border:1px solid rgba(215,179,106,.48);
-  border-radius:50% 50% 17px 17px / 24% 24% 17px 17px;
-  background:
-    linear-gradient(180deg,rgba(18,27,36,.96),rgba(7,13,20,.98)),
-    #081019;
+  position:absolute;z-index:5;left:50%;bottom:2.4%;transform:translateX(-50%);width:min(500px,64%);min-height:86px;display:grid;place-items:center;padding:16px 34px;
+  border:1px solid rgba(215,179,106,.48);border-radius:50% 50% 17px 17px / 24% 24% 17px 17px;
+  background:linear-gradient(180deg,rgba(18,27,36,.97),rgba(7,13,20,.98)),#081019;
   box-shadow:inset 0 0 0 3px rgba(215,179,106,.035),0 10px 22px rgba(0,0,0,.42);
+  transition:border-color .2s ease,box-shadow .2s ease;
 }
-.virtue-name-plaque::before,
-.virtue-name-plaque::after{
-  content:"✦";
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  color:rgba(215,179,106,.5);
-  font-size:.72rem;
-}
-.virtue-name-plaque::before{left:22px;}
-.virtue-name-plaque::after{right:22px;}
-#virtue-name{
-  color:var(--virtue-ivory);
-  font-size:clamp(1.45rem,2.7vw,2.4rem);
-  line-height:1;
-  text-align:center;
-  text-shadow:0 2px 8px rgba(0,0,0,.8);
-}
-.virtue-name-plaque .hint{
-  position:absolute;
-  top:calc(100% + 6px);
-  color:rgba(232,223,204,.38);
-  letter-spacing:.14em;
-  font-size:.62rem;
-  text-transform:uppercase;
-}
+.virtue-name-plaque::before,.virtue-name-plaque::after{content:"✦";position:absolute;top:50%;transform:translateY(-50%);color:rgba(215,179,106,.5);font-size:.72rem;transition:color .2s ease,text-shadow .2s ease;}
+.virtue-name-plaque::before{left:22px}.virtue-name-plaque::after{right:22px}
+#virtue-name{color:var(--virtue-ivory);font-size:clamp(1.45rem,2.7vw,2.4rem);line-height:1;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.8);transition:color .18s ease,text-shadow .18s ease;}
+.virtue-name-plaque .hint{position:absolute;top:calc(100% + 6px);color:rgba(232,223,204,.38);letter-spacing:.14em;font-size:.62rem;text-transform:uppercase;}
+.scale-selector.has-choice .virtue-name-plaque{border-color:rgba(255,65,71,.70);box-shadow:inset 0 0 0 3px rgba(146,12,18,.055),0 0 24px rgba(255,37,43,.14),0 10px 22px rgba(0,0,0,.42);}
+.scale-selector.has-choice #virtue-name{color:#ff4a4f;text-shadow:0 0 8px rgba(255,39,45,.66),0 0 18px rgba(170,13,19,.35);}
+.scale-selector.has-choice .virtue-name-plaque::before,.scale-selector.has-choice .virtue-name-plaque::after{color:#ff4a4f;text-shadow:0 0 8px rgba(255,39,45,.5);}
 
-.scale-selector[data-side="left"]{--tip:-4deg;--left-pan-y:18px;--right-pan-y:-18px;}
-.scale-selector[data-side="right"]{--tip:4deg;--left-pan-y:-18px;--right-pan-y:18px;}
-.scale-selector[data-side="center"]{--tip:0deg;--left-pan-y:0px;--right-pan-y:0px;}
-
-/* subtle pan emphasis without moving buttons */
-.scale-selector[data-side="left"] .left-pan .pan-bowl,
-.scale-selector[data-side="right"] .right-pan .pan-bowl{stroke-width:12;}
+.scale-selector[data-side="left"]{--tip:-4deg;}
+.scale-selector[data-side="right"]{--tip:4deg;}
+.scale-selector[data-side="center"]{--tip:0deg;}
 
 @media(max-width:980px){
-  .scale-selector{height:min(620px,calc(100vh - 190px));min-height:500px;}
-  .virtue-choice{width:clamp(82px,10vw,112px);}
-  .virtue-patience{width:clamp(92px,11vw,122px);}
-  .virtue-diligence{left:18%;}.virtue-charity{left:29%;}.virtue-kindness{left:40%;}
-  .virtue-temperance{left:60%;}.virtue-humility{left:71%;}.virtue-chastity{left:82%;}
+  .scale-selector{height:min(630px,calc(100vh - 185px));min-height:520px;}
+  .virtue-choice{width:clamp(78px,9.4vw,108px)}
+  .virtue-patience{width:clamp(88px,10.4vw,120px)}
+  .virtue-diligence{left:19%;}.virtue-charity{left:31%;}.virtue-kindness{left:25%;}
+  .virtue-temperance{left:69%;}.virtue-humility{left:81%;}.virtue-chastity{left:75%;}
 }
-
 @media(max-width:700px){
-  .virtues-stage{width:min(100% - 12px,720px);padding-top:10px;}
-  .virtues-heading p{display:none;}
-  .scale-selector{height:540px;min-height:540px;margin-top:0;}
-  .virtue-choice{width:72px;}
-  .virtue-patience{width:84px;top:15%;}
-  .virtue-diligence{left:15%;top:56%;}.virtue-charity{left:28%;top:56%;}.virtue-kindness{left:41%;top:56%;}
-  .virtue-temperance{left:59%;top:56%;}.virtue-humility{left:72%;top:56%;}.virtue-chastity{left:85%;top:56%;}
-  .virtue-name-plaque{width:68%;min-height:70px;bottom:4.5%;}
-  #virtue-name{font-size:1.45rem;}
+  .virtues-stage{width:min(100% - 10px,720px);padding-top:8px}.virtues-heading p{display:none}.scale-selector{height:545px;min-height:545px;margin-top:0}
+  .virtue-choice{width:68px}.virtue-patience{width:80px;top:14.5%}
+  .virtue-diligence{left:17%;top:60%}.virtue-charity{left:31%;top:60%}.virtue-kindness{left:24%;top:49%}
+  .virtue-temperance{left:69%;top:60%}.virtue-humility{left:83%;top:60%}.virtue-chastity{left:76%;top:49%}
+  .virtue-name-plaque{width:70%;min-height:70px;bottom:4%}#virtue-name{font-size:1.45rem}
 }
-
 @media(max-width:520px){
-  .scale-selector{height:470px;min-height:470px;}
-  .virtue-choice{width:58px;}
-  .virtue-patience{width:68px;top:14%;}
-  .virtue-diligence{left:13%;}.virtue-charity{left:27%;}.virtue-kindness{left:41%;}
-  .virtue-temperance{left:59%;}.virtue-humility{left:73%;}.virtue-chastity{left:87%;}
-  .virtue-name-plaque{width:76%;min-height:62px;padding:10px 26px;}
-  .virtue-side-label{display:none;}
+  .scale-selector{height:485px;min-height:485px}.virtue-choice{width:56px}.virtue-patience{width:66px;top:14%}
+  .virtue-diligence{left:15%}.virtue-charity{left:30%}.virtue-kindness{left:22.5%}
+  .virtue-temperance{left:70%}.virtue-humility{left:85%}.virtue-chastity{left:77.5%}
+  .virtue-name-plaque{width:78%;min-height:62px;padding:10px 26px}.virtue-side-label{display:none}
 }
-
-@media(prefers-reduced-motion:reduce){
-  .scale-art .beam-group,.scale-art .left-pan,.scale-art .right-pan,.virtue-choice{transition:none;}
-}
+@media(prefers-reduced-motion:reduce){.scale-art .scale-moving,.virtue-choice{transition:none}}
 </style>
 </head>
 <body class="virtues-selector-page">
@@ -316,31 +205,28 @@ body.virtues-selector-page{
         </linearGradient>
       </defs>
 
-      <!-- base / pillar -->
-      <path class="metal-thin" d="M750 174 L750 565"/>
-      <path class="detail" d="M728 202 L772 202 M725 548 L775 548"/>
-      <path class="metal" d="M699 574 Q750 552 801 574 L849 634 Q750 660 651 634 Z"/>
-      <path class="metal-thin" d="M632 647 Q750 679 868 647"/>
-      <circle cx="750" cy="176" r="28" fill="#09121b" stroke="url(#virtueMetal)" stroke-width="8"/>
+      <!-- substantial central pillar / fulcrum -->
+      <path class="column-fill" d="M725 178 L775 178 L790 552 Q750 570 710 552 Z"/>
+      <path class="detail" d="M737 203 L737 520 M763 203 L763 520"/>
+      <path class="metal" d="M681 566 Q750 538 819 566 L874 636 Q750 668 626 636 Z"/>
+      <path class="metal-thin" d="M604 650 Q750 688 896 650"/>
+      <circle class="fulcrum-ring" cx="750" cy="178" r="30"/>
+      <circle cx="750" cy="178" r="11" fill="#d7b36a" opacity=".74"/>
 
-      <!-- moving decorative beam -->
-      <g class="beam-group">
-        <path class="metal" d="M266 252 Q520 211 750 180 Q980 211 1234 252"/>
-        <path class="detail" d="M299 258 Q522 227 750 197 Q978 227 1201 258"/>
-      </g>
+      <!-- one connected moving scale: beam + chains + both bowls -->
+      <g class="scale-moving">
+        <path class="metal" d="M245 255 Q500 215 750 180 Q1000 215 1255 255"/>
+        <path class="detail" d="M280 263 Q510 229 750 198 Q990 229 1220 263"/>
 
-      <!-- left pan; decoration tips, choices stay fixed -->
-      <g class="left-pan">
-        <path class="metal-thin" d="M267 255 L181 430 M267 255 L351 430 M267 255 L267 430"/>
-        <path class="metal pan-bowl" d="M153 435 Q267 486 381 435 Q362 520 267 528 Q172 520 153 435 Z"/>
-        <path class="detail" d="M169 448 Q267 478 365 448"/>
-      </g>
+        <!-- left large pan -->
+        <path class="metal-thin" d="M245 255 L116 435 M245 255 L374 435 M245 255 L245 435"/>
+        <path class="metal pan-bowl" d="M90 430 Q245 500 400 430 Q378 548 245 558 Q112 548 90 430 Z"/>
+        <path class="detail" d="M112 450 Q245 490 378 450"/>
 
-      <!-- right pan -->
-      <g class="right-pan">
-        <path class="metal-thin" d="M1233 255 L1149 430 M1233 255 L1319 430 M1233 255 L1233 430"/>
-        <path class="metal pan-bowl" d="M1119 435 Q1233 486 1347 435 Q1328 520 1233 528 Q1138 520 1119 435 Z"/>
-        <path class="detail" d="M1135 448 Q1233 478 1331 448"/>
+        <!-- right large pan -->
+        <path class="metal-thin" d="M1255 255 L1126 435 M1255 255 L1384 435 M1255 255 L1255 435"/>
+        <path class="metal pan-bowl" d="M1100 430 Q1255 500 1410 430 Q1388 548 1255 558 Q1122 548 1100 430 Z"/>
+        <path class="detail" d="M1122 450 Q1255 490 1388 450"/>
       </g>
     </svg>
 
@@ -391,6 +277,8 @@ body.virtues-selector-page{
     if (!choice) return;
     choices.forEach(c => c.classList.toggle('is-active', persist && c === choice));
     scale.dataset.side = choice.dataset.side || 'center';
+    scale.classList.add('has-choice');
+    scale.classList.toggle('is-patience', choice.dataset.name === 'Patience');
     name.textContent = choice.dataset.name || 'Choose a Virtue';
     if (persist) selected = choice;
   }
@@ -399,6 +287,7 @@ body.virtues-selector-page{
     if (selected) show(selected, true);
     else {
       scale.dataset.side = 'center';
+      scale.classList.remove('has-choice','is-patience');
       name.textContent = 'Choose a Virtue';
       choices.forEach(c => c.classList.remove('is-active'));
     }
