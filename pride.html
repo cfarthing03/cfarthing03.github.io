@@ -8,7 +8,7 @@
 
 <style>
 /* =========================================================
-   PRIDE — PAGE-SPECIFIC VISUAL MOTIFS (V2)
+   PRIDE — PAGE-SPECIFIC VISUAL MOTIFS (V3)
    Gears + Automaton crystal-conduit lines.
    ========================================================= */
 :root {
@@ -31,6 +31,8 @@ body.deity-body.deity-pride::before {
   background:
     radial-gradient(circle at 12% 20%, rgba(215,190,125,.08), transparent 22rem),
     radial-gradient(circle at 90% 72%, rgba(106,155,214,.06), transparent 24rem),
+    radial-gradient(circle at 7% 42%, rgba(226,210,162,.08) 0 0.65rem, rgba(226,210,162,.04) 0.7rem 4.1rem, transparent 4.2rem),
+    radial-gradient(circle at 92% 18%, rgba(226,210,162,.07) 0 0.55rem, rgba(226,210,162,.035) 0.6rem 3.4rem, transparent 3.5rem),
     linear-gradient(120deg, transparent 0%, rgba(255,255,255,.018) 48%, transparent 100%);
 }
 body.deity-body.deity-pride > * { position: relative; z-index: 1; }
@@ -46,20 +48,31 @@ body.deity-body.deity-pride > * { position: relative; z-index: 1; }
 .pride-gear {
   position: absolute;
   border-radius: 50%;
-  opacity: .12;
+  opacity: .18;
   background:
     radial-gradient(circle, transparent 0 28%, rgba(219,205,171,.23) 29% 33%, transparent 34% 48%, rgba(219,205,171,.16) 49% 52%, transparent 53%),
     repeating-conic-gradient(from 0deg, rgba(219,205,171,.22) 0 5deg, transparent 5deg 18deg);
   -webkit-mask: radial-gradient(circle, transparent 0 22%, #000 23% 70%, transparent 71%);
   mask: radial-gradient(circle, transparent 0 22%, #000 23% 70%, transparent 71%);
-  filter: drop-shadow(0 0 18px rgba(225,209,169,.06));
+  filter: drop-shadow(0 0 24px rgba(225,209,169,.08));
 }
-.pride-gear.g1 { width: 300px; height: 300px; top: 180px; left: -110px; transform: rotate(8deg); }
-.pride-gear.g2 { width: 220px; height: 220px; top: 640px; right: -80px; transform: rotate(22deg); opacity: .10; }
-.pride-gear.g3 { width: 130px; height: 130px; bottom: 130px; left: 6%; transform: rotate(-12deg); opacity: .09; }
-.pride-gear.g4 { width: 110px; height: 110px; top: 380px; right: 8%; transform: rotate(14deg); opacity: .08; }
-.pride-gear.g5 { width: 165px; height: 165px; top: 980px; right: 14%; transform: rotate(-10deg); opacity: .075; }
-.pride-gear.g6 { width: 92px; height: 92px; top: 760px; left: 10%; transform: rotate(30deg); opacity: .09; }
+.pride-gear.g1 { width: 380px; height: 380px; top: 160px; left: -150px; transform: rotate(8deg); opacity: .14; }
+.pride-gear.g2 { width: 290px; height: 290px; top: 620px; right: -110px; transform: rotate(22deg); opacity: .12; }
+.pride-gear.g3 { width: 170px; height: 170px; bottom: 150px; left: 8%; transform: rotate(-12deg); opacity: .10; }
+.pride-gear.g4 { width: 145px; height: 145px; top: 400px; right: 10%; transform: rotate(14deg); opacity: .10; }
+.pride-gear.g5 { width: 230px; height: 230px; top: 980px; right: 16%; transform: rotate(-10deg); opacity: .09; }
+.pride-gear.g6 { width: 125px; height: 125px; top: 780px; left: 12%; transform: rotate(30deg); opacity: .10; }
+.pride-gear.g7 { width: 260px; height: 260px; top: 1220px; left: -90px; transform: rotate(-18deg); opacity: .11; }
+.pride-gear.g8 { width: 180px; height: 180px; top: 1460px; right: 6%; transform: rotate(18deg); opacity: .09; }
+.pride-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(221,204,163,.09);
+  box-shadow: 0 0 18px rgba(221,204,163,.03);
+  opacity: .7;
+}
+.pride-ring.r1 { width: 420px; height: 420px; top: 110px; right: -230px; }
+.pride-ring.r2 { width: 300px; height: 300px; top: 980px; left: -160px; opacity: .45; }
 
 /* Hero: no crop override — preserve existing image behavior */
 .deity-pride .deity-hero { isolation: isolate; }
@@ -232,11 +245,14 @@ body.deity-body.deity-pride > * { position: relative; z-index: 1; }
   .pride-gear.g2 { right:-145px; opacity:.07; }
   .pride-gear.g5 { right:-120px; opacity:.06; }
   .pride-gear.g6 { left:-30px; opacity:.07; }
+  .pride-gear.g7 { left:-140px; opacity:.06; }
+  .pride-gear.g8 { right:-70px; opacity:.06; }
+  .pride-ring.r1, .pride-ring.r2 { opacity:.35; }
   .deity-pride .deity-hero-copy::before,
   .deity-pride .deity-hero-copy::after { display:none; }
 }
 @media (max-width: 650px) {
-  .pride-page-decor { display:none; }
+  .pride-page-decor, .pride-ring { display:none; }
   .deity-pride .deity-article section::before,
   .deity-pride .deity-facts::before { opacity:.08; }
 }
@@ -252,6 +268,10 @@ body.deity-body.deity-pride > * { position: relative; z-index: 1; }
   <span class="pride-gear g4"></span>
   <span class="pride-gear g5"></span>
   <span class="pride-gear g6"></span>
+  <span class="pride-gear g7"></span>
+  <span class="pride-gear g8"></span>
+  <span class="pride-ring r1"></span>
+  <span class="pride-ring r2"></span>
 </div>
 
 <header class="site-header">
