@@ -5,8 +5,369 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Greed · The Seven Sins · Sinners</title>
 <link rel="stylesheet" href="/styles.css">
+
+<style>
+/* =========================================================
+   GREED — PAGE-SPECIFIC VISUAL MOTIFS
+   ========================================================= */
+
+body.deity-body.deity-greed{
+  position:relative;
+  overflow-x:hidden;
+}
+
+body.deity-body.deity-greed > *:not(.greed-page-decor){
+  position:relative;
+  z-index:1;
+}
+
+body.deity-body.deity-greed::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(circle at 88% 18%,rgba(210,163,54,.075),transparent 25rem),
+    radial-gradient(circle at 12% 72%,rgba(151,105,25,.055),transparent 24rem);
+}
+
+/* Faint scale texture at the extreme edges */
+body.deity-body.deity-greed::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.12;
+  background:
+    radial-gradient(circle at 0 100%,transparent 67%,rgba(209,163,62,.16) 68% 70%,transparent 71%) 0 0/30px 20px,
+    radial-gradient(circle at 100% 100%,transparent 67%,rgba(209,163,62,.13) 68% 70%,transparent 71%) 15px 10px/30px 20px;
+  mask-image:linear-gradient(90deg,#000 0%,transparent 18%,transparent 82%,#000 100%);
+}
+
+.greed-page-decor{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+/* The long serpent winding along the outer-right edge */
+.greed-serpent{
+  position:absolute;
+  top:90px;
+  right:-48px;
+  width:235px;
+  height:78vh;
+  max-height:850px;
+  opacity:.56;
+  filter:drop-shadow(0 0 14px rgba(201,153,47,.13));
+}
+
+.greed-serpent .body{
+  fill:none;
+  stroke:url(#greedSerpentGold);
+  stroke-width:18;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.greed-serpent .inner{
+  fill:none;
+  stroke:rgba(255,224,137,.17);
+  stroke-width:4;
+  stroke-linecap:round;
+}
+
+.greed-serpent .scale{
+  fill:none;
+  stroke:rgba(255,226,144,.22);
+  stroke-width:2;
+}
+
+.greed-serpent .head{
+  fill:#8d6517;
+  stroke:#d4a536;
+  stroke-width:2;
+}
+.greed-serpent .eye{
+  fill:#ffe174;
+  filter:drop-shadow(0 0 4px rgba(255,221,104,.8));
+}
+
+/* A small coil tucked behind the lower-left of the article */
+.greed-coil{
+  position:fixed;
+  left:-54px;
+  bottom:70px;
+  width:210px;
+  height:210px;
+  border:2px solid rgba(202,153,46,.17);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 16px rgba(202,153,46,.035),
+    0 0 0 32px rgba(202,153,46,.018);
+  opacity:.44;
+}
+.greed-coil::before,
+.greed-coil::after{
+  content:"";
+  position:absolute;
+  border:2px solid rgba(202,153,46,.15);
+  border-radius:50%;
+}
+.greed-coil::before{inset:23px}
+.greed-coil::after{inset:48px}
+
+/* Hero details */
+.deity-greed .deity-portrait{
+  position:relative;
+}
+.deity-greed .deity-portrait::before,
+.deity-greed .deity-portrait::after{
+  content:"";
+  position:absolute;
+  width:56px;
+  height:56px;
+  z-index:3;
+  pointer-events:none;
+}
+.deity-greed .deity-portrait::before{
+  top:14px;
+  left:14px;
+  border-top:2px solid rgba(218,170,56,.68);
+  border-left:2px solid rgba(218,170,56,.68);
+  box-shadow:-9px -9px 0 -7px rgba(218,170,56,.34);
+}
+.deity-greed .deity-portrait::after{
+  right:14px;
+  bottom:14px;
+  border-right:2px solid rgba(218,170,56,.68);
+  border-bottom:2px solid rgba(218,170,56,.68);
+  box-shadow:9px 9px 0 -7px rgba(218,170,56,.34);
+}
+
+.deity-greed .deity-hero-copy h1{
+  text-shadow:
+    0 4px 24px #000,
+    0 0 24px rgba(201,154,46,.14);
+}
+
+/* Ornamental contract flourish */
+.greed-contract-flourish{
+  display:flex;
+  align-items:center;
+  width:min(290px,72%);
+  gap:8px;
+  margin:.35rem 0 1rem;
+  color:rgba(228,190,87,.78);
+}
+.greed-contract-flourish::before,
+.greed-contract-flourish::after{
+  content:"";
+  height:1px;
+  flex:1;
+  background:linear-gradient(90deg,transparent,rgba(215,168,62,.45));
+}
+.greed-contract-flourish::after{
+  transform:scaleX(-1);
+}
+.greed-contract-flourish span{
+  width:9px;
+  height:9px;
+  border:1px solid rgba(232,195,92,.72);
+  transform:rotate(45deg);
+  box-shadow:0 0 8px rgba(212,164,56,.12);
+}
+
+/* Coin ornament for sidebar */
+.greed-coins{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:0 0 1rem;
+}
+.greed-coins::before,
+.greed-coins::after{
+  content:"";
+  width:32px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(210,164,56,.35));
+}
+.greed-coins::after{transform:scaleX(-1)}
+
+.greed-coin{
+  position:relative;
+  width:19px;
+  height:19px;
+  border-radius:50%;
+  border:1px solid rgba(231,192,83,.64);
+  background:
+    radial-gradient(circle at 36% 30%,rgba(255,231,148,.35),transparent 30%),
+    radial-gradient(circle,#9d731f 0 42%,#49300b 43% 47%,#bc8e2d 48% 54%,#171108 55%);
+  box-shadow:
+    inset 0 0 0 2px rgba(240,207,112,.08),
+    0 0 10px rgba(204,156,45,.12);
+}
+.greed-coin.small{
+  width:14px;
+  height:14px;
+  opacity:.76;
+}
+.greed-coin::after{
+  content:"G";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font-size:.58rem;
+  line-height:1;
+  color:rgba(255,226,130,.76);
+  font-weight:700;
+}
+
+/* Article panels: subtle contract paper/linework */
+.deity-greed .deity-article section,
+.deity-greed .deity-facts,
+.deity-greed .deity-related{
+  position:relative;
+  overflow:hidden;
+}
+
+.deity-greed .deity-article section{
+  border-color:rgba(170,124,37,.26);
+  background:
+    linear-gradient(180deg,rgba(31,24,10,.13),rgba(6,11,18,.05));
+}
+
+.deity-greed .deity-article section::before{
+  content:"";
+  position:absolute;
+  right:-3%;
+  top:12%;
+  width:36%;
+  height:72%;
+  pointer-events:none;
+  opacity:.12;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(225,194,108,.32) 0 1px,
+      transparent 1px 15px
+    );
+  mask-image:linear-gradient(90deg,transparent,#000 35%,#000);
+}
+
+/* Gold double-rule under article section headings */
+.deity-greed .deity-article h2{
+  position:relative;
+  padding-bottom:.65rem;
+}
+.deity-greed .deity-article h2::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:min(245px,55%);
+  height:5px;
+  background:
+    linear-gradient(rgba(205,158,55,.42),rgba(205,158,55,.42)) top/100% 1px no-repeat,
+    linear-gradient(90deg,rgba(205,158,55,.22),transparent) bottom/100% 1px no-repeat;
+}
+
+/* Tiny coin before each section heading */
+.deity-greed .deity-article h2::before{
+  content:"";
+  display:inline-block;
+  width:11px;
+  height:11px;
+  margin:0 .55rem .08rem 0;
+  border-radius:50%;
+  border:1px solid rgba(223,181,77,.62);
+  background:radial-gradient(circle,#b38628 0 42%,#332207 45% 54%,#d0a33c 57%);
+  box-shadow:0 0 8px rgba(208,159,48,.12);
+}
+
+/* Sidebar gets a faint serpent-scale watermark */
+.deity-greed .deity-facts::after{
+  content:"";
+  position:absolute;
+  width:140px;
+  height:140px;
+  right:-54px;
+  bottom:-50px;
+  border-radius:50%;
+  opacity:.12;
+  background:
+    radial-gradient(circle at 0 100%,transparent 64%,#c69a39 65% 68%,transparent 69%) 0 0/25px 18px,
+    radial-gradient(circle at 100% 100%,transparent 64%,#c69a39 65% 68%,transparent 69%) 12px 9px/25px 18px;
+}
+
+/* Fine gold chain running between a few panels */
+.deity-greed .deity-article section:nth-of-type(2)::after{
+  content:"◇  ◇  ◇  ◇  ◇";
+  position:absolute;
+  right:18px;
+  bottom:12px;
+  color:rgba(218,171,67,.22);
+  font-size:.72rem;
+  letter-spacing:.42em;
+  white-space:nowrap;
+}
+
+@media (max-width:900px){
+  .greed-serpent{
+    right:-88px;
+    opacity:.32;
+  }
+}
+
+@media (max-width:650px){
+  .greed-serpent{
+    width:160px;
+    right:-78px;
+    opacity:.24;
+  }
+  .greed-coil{display:none}
+  .deity-greed .deity-article section::before{opacity:.07}
+}
+</style>
+
 </head>
 <body class="deity-body deity-greed">
+
+<div class="greed-page-decor" aria-hidden="true">
+  <svg class="greed-serpent" viewBox="0 0 230 760" role="presentation">
+    <defs>
+      <linearGradient id="greedSerpentGold" x1="0" x2="1">
+        <stop offset="0%" stop-color="#6d4810"/>
+        <stop offset="45%" stop-color="#c9972b"/>
+        <stop offset="70%" stop-color="#e3b84d"/>
+        <stop offset="100%" stop-color="#785215"/>
+      </linearGradient>
+    </defs>
+    <path class="body" d="M145 20
+      C80 72, 174 122, 112 181
+      C55 236, 171 295, 112 350
+      C54 404, 172 467, 111 522
+      C63 565, 132 618, 102 685
+      C92 709, 93 730, 111 746"/>
+    <path class="inner" d="M145 20
+      C80 72, 174 122, 112 181
+      C55 236, 171 295, 112 350
+      C54 404, 172 467, 111 522
+      C63 565, 132 618, 102 685
+      C92 709, 93 730, 111 746"/>
+    <path class="scale" d="M116 103 l18 -10 M104 198 l18 -10 M121 290 l18 -10 M102 388 l18 -10 M121 482 l18 -10 M98 576 l18 -10"/>
+    <path class="head" d="M124 14 C139 -5,171 -3,183 17 C168 25,150 34,137 47 C127 37,122 26,124 14 Z"/>
+    <circle class="eye" cx="160" cy="14" r="3.5"/>
+  </svg>
+  <div class="greed-coil"></div>
+</div>
+
 
 <header class="site-header">
   <div class="nav-wrap">
@@ -28,30 +389,38 @@
   <div class="deity-portrait"><img src="/god-greed.png" alt="Artistic depiction of Greed"></div>
   <div class="deity-hero-copy">
     <a class="deity-back" href="/sins.html">← The Seven Sins</a>
+    <div class="greed-contract-flourish" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
     <div class="deity-kicker">The Seven Sins</div>
     <h1>Greed</h1>
-    <p class="deity-tagline">Ambition, ownership, prosperity, exchange—and the promise that even death can be negotiated with.</p>
-    <p class="deity-summary">Greed is one of the rare Sins whose story begins completely mortal. His divinity grew out of contracts, ambition, and an absolute refusal to surrender what he had built.</p>
+    <p class="deity-tagline">Ambition, ownership, prosperity, exchange—and the refusal to let impermanence decide what must be lost.</p>
+    <p class="deity-summary">Greed was the last of the relic-born Sins to awaken. Because his awakening came so late, his immortality was never complete. Rather than accept that weakness, Greed created his own answer to it.</p>
   </div>
   <div class="deity-sigil"><img src="/sigil-greed.png" alt="Sigil of Greed"></div>
 </section>
 
 <main class="deity-layout">
   <article class="deity-article">
-    <section><h2>The Mortal Who Became Greed</h2><p>Greed began as a mortal man with an extraordinary talent for contracts. He used that talent to build a kingdom from nothing, turning agreements, obligations, and carefully chosen words into an empire powerful enough to outlive most of the people who helped create it.</p><p>Eventually he found the one problem wealth could not solve: death. Greed was terrified not simply of dying, but of losing everything he had made. His kingdom, his influence, his power, and his identity were all things he considered his. Giving them up because his body stopped working was, to him, an unacceptable clause in the contract.</p></section>
-<section><h2>Greed's Everlasting Contract</h2><p>Rather than accept mortality, Greed divided himself into five fragments. Each fragment carried a portion of his power and one of the abilities he had possessed while whole. Through a contract with Sloth, Greed arranged to be reborn every thousand years. Each new incarnation is naturally drawn toward those fragments, and recovering them gradually restores the being that Greed once was.</p><p>It is perhaps the most Greed solution imaginable: a man wanted to keep what was his so badly that he made even death negotiate.</p></section>
-<section><h2>Contract Magic</h2><p>Greed is the source of Contract Magic, one of the defining forces of Hilnem. A magical contract can enforce the terms willingly accepted by its participants and apply whatever consequences were written into the agreement. Some people possess a natural affinity for creating these contracts; others rely on specialists, businesses, and families such as the Vales.</p><p>The magic enforces an agreement. It does not make that agreement fair. A badly written contract can be harsh, exploitative, full of loopholes, or simply disastrous for someone who did not bother to read it. In Hilnem, precision is not just professionalism. It can be self-preservation.</p></section>
+    <section><h2>The Last to Awaken</h2><p>Greed was the last of the relic-born Sins to awaken. Unlike Pride, whose earliest history began as a mortal, Greed did not begin life as a man and did not ascend through some exceptional mortal talent. He emerged from the same ancient relic-born lineage as the other Sins, simply later than the rest.</p><p>That delay mattered. By the time Greed fully awakened, he never received the same complete immortality enjoyed by the others. His body could endure for ages, but eventually it would fail. Greed responded exactly as Greed would: he refused to accept the limitation.</p></section>
+<section><h2>An Immortality of His Own</h2><p>Greed created his own form of immortality. Every few thousand years, his body reaches the end of its cycle and separates into its component pieces. For a time, Greed is no longer whole. Eventually those pieces are drawn back together, reconnecting until Greed reforms and continues on.</p><p>This cycle is the source of Greed's strange relationship with mortality. He can fall apart. He can disappear. He can spend ages divided. But the separation is not the same as a permanent death. Greed made sure that, eventually, what belonged together would return to itself.</p></section>
+<section><h2>Contract Magic</h2><p>Contract Magic is one of the powers most closely associated with Greed and one of the defining forces of Hilnem. A magical contract can enforce terms willingly accepted by its participants and apply whatever consequences were written into the agreement. Some people possess a natural affinity for creating these contracts; others rely on specialists, businesses, and families such as the Vales.</p><p>The magic enforces an agreement. It does not decide whether that agreement is fair. A badly written contract can be harsh, exploitative, full of loopholes, or simply disastrous for someone who did not bother to read it. In Hilnem, precision is not just professionalism. It can be self-preservation.</p></section>
 <section><h2>What Greed Means Now</h2><p>Modern worship does not treat wealth or desire as inherently shameful. Greed represents ambition, the right to own what you have earned, the value of exchange, and the responsibility created when one person promises something to another. Wanting more can build a business, improve a family, or create an entire city. The question is what you are willing to trade to get it.</p><p>Hilnem reflects that philosophy. Its contracts make it one of the safest places on the continent, sometimes to absurd degrees. There are buildings where simply walking through the door means agreeing not to commit a crime inside. Greed's city trusts rules because, unlike people, the rules can be made impossible to ignore.</p></section>
 
   </article>
   <aside class="deity-aside">
     <section class="deity-facts">
+      <div class="greed-coins" aria-hidden="true">
+        <span class="greed-coin small"></span>
+        <span class="greed-coin"></span>
+        <span class="greed-coin small"></span>
+      </div>
       <h2>At a Glance</h2>
       <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Ambition, ownership, prosperity, exchange</span></div>
 <div class="fact"><span class="fact-label">Major City</span><span class="fact-value">Hilnem</span></div>
 <div class="fact"><span class="fact-label">Associated Faith</span><span class="fact-value"><a href="/keepers.html">The Keepers</a></span></div>
 <div class="fact"><span class="fact-label">Divine Gift</span><span class="fact-value">Contract Magic</span></div>
-<div class="fact"><span class="fact-label">Notable Legacy</span><span class="fact-value">Greed's Everlasting Contract</span></div>
+<div class="fact"><span class="fact-label">Immortality</span><span class="fact-value">Cyclical self-reconstruction</span></div>
     </section>
     <section class="deity-related">
       <h2>Keep Exploring</h2>
