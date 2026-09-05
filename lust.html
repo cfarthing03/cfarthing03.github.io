@@ -253,14 +253,16 @@ body.deity-body.deity-lust>*{
 }
 .lust-ribbon-layer img{
   position:absolute;
-  top:220px;
-  width:clamp(118px,7.2vw,156px);
-  height:auto;
-  opacity:.72;
-  filter:drop-shadow(0 0 10px rgba(236,82,164,.10));
+  top:84px;
+  width:clamp(74px,5.4vw,104px);
+  height:calc(100vh - 116px);
+  max-height:none;
+  object-fit:fill;
+  opacity:.84;
+  filter:drop-shadow(0 0 12px rgba(236,82,164,.12));
 }
-.lust-ribbon-layer .left{left:28px;}
-.lust-ribbon-layer .right{right:28px;transform:scaleX(-1);}
+.lust-ribbon-layer .left{left:18px;}
+.lust-ribbon-layer .right{right:18px;transform:scaleX(-1);}
 
 /* Explicitly override the generic direct-child stacking rule. */
 body.deity-body.deity-lust > .lust-ribbon-layer{
@@ -284,9 +286,14 @@ body.deity-body.deity-lust > .lust-ribbon-layer{
 }
 
 @media(max-width:1250px){
-  .lust-ribbon-layer img{width:clamp(96px,6.5vw,132px);opacity:.70;top:210px;}
-  .lust-ribbon-layer .left{left:12px;}
-  .lust-ribbon-layer .right{right:12px;}
+  .lust-ribbon-layer img{
+    top:88px;
+    width:clamp(64px,5vw,88px);
+    height:calc(100vh - 120px);
+    opacity:.80;
+  }
+  .lust-ribbon-layer .left{left:10px;}
+  .lust-ribbon-layer .right{right:10px;}
 }
 @media(max-width:900px){
   .lust-ribbon-layer{display:none;}
