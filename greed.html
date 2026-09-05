@@ -280,7 +280,7 @@ body.deity-body.deity-greed::after {
 .greed-serpent-overlay .body {
   fill: none;
   stroke: url(#goldBody);
-  stroke-width: 16;
+  stroke-width: 14;
   stroke-linecap: round;
   stroke-linejoin: round;
   filter: drop-shadow(0 0 8px rgba(214,166,55,.10));
@@ -288,7 +288,7 @@ body.deity-body.deity-greed::after {
 .greed-serpent-overlay .inner {
   fill: none;
   stroke: rgba(255,235,176,.18);
-  stroke-width: 3.2;
+  stroke-width: 2.8;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -319,7 +319,7 @@ body.deity-body.deity-greed::after {
 .greed-serpent-overlay .soft-shadow {
   fill: none;
   stroke: rgba(102,69,16,.18);
-  stroke-width: 22;
+  stroke-width: 19;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -388,6 +388,10 @@ body.deity-body.deity-greed::after {
       <path class="body" id="greed-path-top"></path>
       <path class="inner" id="greed-path-top-inner"></path>
 
+      <path class="soft-shadow" id="greed-shadow-top-right"></path>
+      <path class="body" id="greed-path-top-right"></path>
+      <path class="inner" id="greed-path-top-right-inner"></path>
+
       <path class="soft-shadow" id="greed-shadow-left"></path>
       <path class="body" id="greed-path-left"></path>
       <path class="inner" id="greed-path-left-inner"></path>
@@ -451,6 +455,7 @@ body.deity-body.deity-greed::after {
 
   const ids = [
     'greed-shadow-top','greed-path-top','greed-path-top-inner',
+    'greed-shadow-top-right','greed-path-top-right','greed-path-top-right-inner',
     'greed-shadow-left','greed-path-left','greed-path-left-inner',
     'greed-shadow-bottom','greed-path-bottom','greed-path-bottom-inner'
   ];
@@ -489,32 +494,50 @@ body.deity-body.deity-greed::after {
     const asideLeft = asideRect.left - layoutRect.left;
     const gutterRight = Math.min(articleRight + 24, asideLeft - 18);
 
-    const topY = r2.top - 4;
+    const topY = r2.top - 5;
+
+    // 1) Upper-left bridge: peeks out from behind the section above and then
+    // disappears behind the "An Immortality of His Own" card.
     const topPath = pathLine([
-      { x: r2.left + 120, y: topY },
-      { x: r2.left + 240, y: topY - 28 },
-      { x: r2.left + r2.width * 0.44, y: topY - 26 },
-      { x: r2.left + r2.width * 0.67, y: topY + 6 }
+      { x: r2.left + 95, y: topY },
+      { x: r2.left + 235, y: topY - 32 },
+      { x: r2.left + r2.width * 0.42, y: topY - 28 },
+      { x: r2.left + r2.width * 0.63, y: topY + 3 }
     ]);
 
+    // 2) Upper-right hook: comes out near the right edge of the upper card,
+    // curves up into the gutter, and ends hidden beneath that card edge.
+    const topRightPath = pathLine([
+      { x: r2.right - 30, y: r2.top - 8 },
+      { x: r2.right + 56, y: r2.top - 58 },
+      { x: r2.right + 75, y: r2.top - 116 },
+      { x: r2.right + 18, y: r2.top - 156 }
+    ]);
+
+    // 3) Big left-side coil: runs entirely in the outer-left gutter,
+    // embracing the second panel without crossing its text.
     const leftPath = pathLine([
-      { x: r2.left + 18, y: r2.top + 74 },
-      { x: r2.left - 86, y: r2.top + 106 },
-      { x: r2.left - 84, y: r2.top + r2.height * 0.63 },
-      { x: r2.left + 22, y: r2.top + r2.height * 0.82 }
+      { x: r2.left + 14, y: r2.top + 54 },
+      { x: r2.left - 112, y: r2.top + 118 },
+      { x: r2.left - 126, y: r2.top + r2.height * 0.72 },
+      { x: r2.left + 10, y: r2.bottom - 18 }
     ]);
 
-    const gapY = r2.bottom + ((r3.top - r2.bottom) * 0.55);
-    const endY = r3.top + 92;
+    // 4) Lower sweeping arc: travels through the gap between section 2 and 3,
+    // then curls toward the sidebar. The snake head sits at the end of this path.
+    const gapY = r2.bottom + Math.max(16, (r3.top - r2.bottom) * 0.48);
+    const headX = Math.min(asideLeft - 20, articleRight + 32);
+    const headY = r3.top + 118;
     const bottomPoints = [
-      { x: r2.left + 150, y: gapY },
-      { x: r2.left + r2.width * 0.42, y: gapY - 18 },
-      { x: gutterRight - 118, y: gapY + 10 },
-      { x: gutterRight - 34, y: endY }
+      { x: r2.left + 140, y: gapY },
+      { x: r2.left + r2.width * 0.43, y: gapY - 18 },
+      { x: r2.left + r2.width * 0.72, y: gapY + 8 },
+      { x: headX, y: headY }
     ];
     const bottomPath = pathLine(bottomPoints);
 
     setPair('top', topPath);
+    setPair('top-right', topRightPath);
     setPair('left', leftPath);
     setPair('bottom', bottomPath);
 
