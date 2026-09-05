@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="/styles.css">
 <style>
 /* =========================================================
-   GREED — PAGE-SPECIFIC VISUAL MOTIFS (V4)
-   Canon corrected + refined serpent motif + hero crop fix
+   GREED — PAGE-SPECIFIC VISUAL MOTIFS (V6)
+   Canon corrected + responsive serpent motif + hero crop fix
    ========================================================= */
 
 body.deity-body.deity-greed {
@@ -65,7 +65,7 @@ body.deity-body.deity-greed::after {
 .deity-greed .deity-portrait {
   position: absolute;
   z-index: 1;
-  inset: 0 0 0 45%;
+  inset: 0 0 0 43%;
   overflow: hidden;
 }
 .deity-greed .deity-portrait img {
@@ -75,7 +75,7 @@ body.deity-body.deity-greed::after {
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: 64% 12%;
+  object-position: 60% 8%;
 }
 .deity-greed .deity-portrait::after {
   content: "";
@@ -262,85 +262,66 @@ body.deity-body.deity-greed::after {
   white-space:nowrap;
 }
 
-/* --- Refined serpent motif --- */
-.greed-serpent-back,
-.greed-serpent-front {
-  position:absolute;
-  left:0;
-  width: calc(100% - 320px);
-  pointer-events:none;
-  overflow:visible;
-}
-.greed-serpent-back {
-  top: 395px;
-  height: 860px;
+/* --- Responsive serpent motif --- */
+.greed-serpent-overlay {
+  position: absolute;
+  inset: 0 0 0 0;
+  pointer-events: none;
   z-index: 1;
+  overflow: visible;
 }
-.greed-serpent-front {
-  top: 395px;
-  height: 860px;
-  z-index: 3;
+.greed-serpent-overlay svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }
-.greed-serpent-back svg,
-.greed-serpent-front svg {
-  width:100%;
-  height:100%;
-  overflow:visible;
-}
-.greed-serpent-back .body,
-.greed-serpent-front .body {
-  fill:none;
+.greed-serpent-overlay .body {
+  fill: none;
   stroke: url(#goldBody);
   stroke-width: 16;
   stroke-linecap: round;
   stroke-linejoin: round;
-  filter: drop-shadow(0 0 6px rgba(214,166,55,.08));
+  filter: drop-shadow(0 0 8px rgba(214,166,55,.10));
 }
-.greed-serpent-back .inner,
-.greed-serpent-front .inner {
-  fill:none;
-  stroke: rgba(255,235,168,.20);
-  stroke-width: 3.5;
+.greed-serpent-overlay .inner {
+  fill: none;
+  stroke: rgba(255,235,176,.18);
+  stroke-width: 3.2;
   stroke-linecap: round;
+  stroke-linejoin: round;
 }
-.greed-serpent-back .scale,
-.greed-serpent-front .scale {
-  fill:none;
-  stroke: rgba(255,226,145,.14);
-  stroke-width: 1.6;
-  stroke-linecap: round;
-}
-.greed-serpent-front .head {
+.greed-serpent-overlay .head {
   fill: url(#goldHead);
   stroke: rgba(84,52,9,.55);
   stroke-width: 1.2;
-  filter: drop-shadow(0 0 6px rgba(214,166,55,.12));
+  filter: drop-shadow(0 0 6px rgba(214,166,55,.14));
 }
-.greed-serpent-front .head-line {
+.greed-serpent-overlay .head-line {
   fill:none;
   stroke: rgba(255,235,176,.22);
   stroke-width: 1.1;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.greed-serpent-front .eye {
+.greed-serpent-overlay .eye {
   fill: #1a1207;
   stroke: rgba(255,224,122,.55);
   stroke-width: .7;
 }
-.greed-serpent-front .tongue {
+.greed-serpent-overlay .tongue {
   fill:none;
   stroke: rgba(244,200,90,.68);
   stroke-width: 1.1;
   stroke-linecap: round;
 }
-.greed-serpent-front .crossing { opacity:.9; }
-@media (max-width: 900px) {
-  .deity-greed .deity-hero-copy { width: min(62%, 790px); }
-  .deity-greed .deity-portrait { inset: 0 0 0 40%; }
-  .deity-greed .deity-portrait img { object-position: 66% 14%; }
-  .greed-serpent-back,
-  .greed-serpent-front { width: 100%; }
+.greed-serpent-overlay .soft-shadow {
+  fill: none;
+  stroke: rgba(102,69,16,.18);
+  stroke-width: 22;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 @media (max-width: 650px) {
   .deity-greed .deity-hero { min-height: auto; }
@@ -348,8 +329,7 @@ body.deity-body.deity-greed::after {
   .deity-greed .deity-portrait { position: relative; inset: auto; height: 320px; }
   .deity-greed .deity-portrait img { position: absolute; object-position: center 18%; }
   .deity-greed .deity-sigil { right: 1rem; bottom: 1rem; }
-  .greed-serpent-back,
-  .greed-serpent-front { display:none; }
+  .greed-serpent-overlay { display:none; }
   .deity-greed .deity-article section::before { opacity: .07; }
 }
 </style>
@@ -388,8 +368,8 @@ body.deity-body.deity-greed::after {
 </section>
 
 <main class="deity-layout">
-  <div class="greed-serpent-back" aria-hidden="true">
-    <svg viewBox="0 0 900 860" role="presentation" preserveAspectRatio="none">
+  <div class="greed-serpent-overlay" aria-hidden="true">
+    <svg class="greed-serpent-svg" role="presentation" preserveAspectRatio="none">
       <defs>
         <linearGradient id="goldBody" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stop-color="#6d4911"/>
@@ -398,36 +378,25 @@ body.deity-body.deity-greed::after {
           <stop offset="75%" stop-color="#bb892b"/>
           <stop offset="100%" stop-color="#6a4411"/>
         </linearGradient>
-      </defs>
-      <!-- bridge peeking from behind the top edge of section 2 -->
-      <path class="body" d="M246 88 C 348 68, 472 70, 595 112"/>
-      <path class="inner" d="M246 88 C 348 68, 472 70, 595 112"/>
-      <path class="scale" d="M315 77 l13 -7 M382 72 l14 -7 M450 73 l14 -7 M519 82 l14 -7"/>
-      <!-- bridge tucked between section 2 and section 3 -->
-      <path class="body" d="M255 430 C 386 420, 520 436, 644 478 C 698 497, 738 520, 784 552"/>
-      <path class="inner" d="M255 430 C 386 420, 520 436, 644 478 C 698 497, 738 520, 784 552"/>
-      <path class="scale" d="M334 423 l13 -6 M408 424 l13 -6 M484 431 l13 -6 M561 445 l13 -6 M637 468 l13 -6 M712 500 l13 -6"/>
-    </svg>
-  </div>
-
-  <div class="greed-serpent-front" aria-hidden="true">
-    <svg viewBox="0 0 900 860" role="presentation" preserveAspectRatio="none">
-      <defs>
         <linearGradient id="goldHead" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stop-color="#6f4a12"/>
           <stop offset="40%" stop-color="#c89734"/>
           <stop offset="100%" stop-color="#efc860"/>
         </linearGradient>
       </defs>
-      <!-- left coil hugging the outside of section 2 -->
-      <path class="body crossing" style="stroke:url(#goldBody)" d="M96 188 C 58 220, 48 286, 80 340 C 112 388, 164 397, 214 370"/>
-      <path class="inner crossing" d="M96 188 C 58 220, 48 286, 80 340 C 112 388, 164 397, 214 370"/>
-      <path class="scale crossing" d="M67 233 l12 -6 M61 270 l12 -6 M73 308 l12 -6 M101 343 l12 -6 M140 366 l12 -6"/>
-      <!-- only the final visible section of the snake before the head -->
-      <path class="body crossing" style="stroke:url(#goldBody)" d="M748 526 C 792 550, 828 581, 852 611"/>
-      <path class="inner crossing" d="M748 526 C 792 550, 828 581, 852 611"/>
-      <path class="scale crossing" d="M782 545 l12 -6 M814 568 l12 -6 M839 592 l12 -6"/>
-      <g transform="translate(854,613) rotate(38)">
+      <path class="soft-shadow" id="greed-shadow-top"></path>
+      <path class="body" id="greed-path-top"></path>
+      <path class="inner" id="greed-path-top-inner"></path>
+
+      <path class="soft-shadow" id="greed-shadow-left"></path>
+      <path class="body" id="greed-path-left"></path>
+      <path class="inner" id="greed-path-left-inner"></path>
+
+      <path class="soft-shadow" id="greed-shadow-bottom"></path>
+      <path class="body" id="greed-path-bottom"></path>
+      <path class="inner" id="greed-path-bottom-inner"></path>
+
+      <g id="greed-head-group">
         <path class="head" d="M0 0 C 10 -8, 28 -13, 48 -6 C 62 -1, 66 6, 66 14 C 65 23, 56 29, 45 29 C 26 30, 8 22, 0 11 C -3 6, -3 3, 0 0 Z"/>
         <path class="head-line" d="M9 10 C 23 8, 38 10, 52 15"/>
         <path class="head-line" d="M20 4 C 28 9, 34 16, 39 23"/>
@@ -467,6 +436,107 @@ body.deity-body.deity-greed::after {
 </main>
 
 <footer>Sinners World Archive · Built as a player-facing lore guide</footer>
+<script>
+(function () {
+  const body = document.body;
+  if (!body.classList.contains('deity-greed')) return;
+
+  const layout = document.querySelector('.deity-layout');
+  const article = layout?.querySelector('.deity-article');
+  const aside = layout?.querySelector('.deity-aside');
+  const overlay = layout?.querySelector('.greed-serpent-overlay');
+  const svg = overlay?.querySelector('.greed-serpent-svg');
+  const head = overlay?.querySelector('#greed-head-group');
+  if (!layout || !article || !aside || !overlay || !svg || !head) return;
+
+  const ids = [
+    'greed-shadow-top','greed-path-top','greed-path-top-inner',
+    'greed-shadow-left','greed-path-left','greed-path-left-inner',
+    'greed-shadow-bottom','greed-path-bottom','greed-path-bottom-inner'
+  ];
+  const el = Object.fromEntries(ids.map(id => [id, svg.querySelector('#' + id)]));
+
+  function pathLine(points) {
+    const [p0, c1, c2, p3] = points;
+    return `M ${p0.x.toFixed(1)} ${p0.y.toFixed(1)} C ${c1.x.toFixed(1)} ${c1.y.toFixed(1)}, ${c2.x.toFixed(1)} ${c2.y.toFixed(1)}, ${p3.x.toFixed(1)} ${p3.y.toFixed(1)}`;
+  }
+
+  function setPair(baseId, d) {
+    el['greed-shadow-' + baseId].setAttribute('d', d);
+    el['greed-path-' + baseId].setAttribute('d', d);
+    el['greed-path-' + baseId + '-inner'].setAttribute('d', d);
+  }
+
+  function render() {
+    if (window.innerWidth <= 650) return;
+    const layoutRect = layout.getBoundingClientRect();
+    const articleRect = article.getBoundingClientRect();
+    const asideRect = aside.getBoundingClientRect();
+    const sections = Array.from(article.querySelectorAll('section'));
+    if (sections.length < 3) return;
+    const s2 = sections[1].getBoundingClientRect();
+    const s3 = sections[2].getBoundingClientRect();
+
+    const width = Math.max(layoutRect.width, 1000);
+    const height = Math.max(articleRect.bottom, asideRect.bottom) - layoutRect.top + 32;
+    overlay.style.height = height + 'px';
+    svg.setAttribute('viewBox', `0 0 ${width.toFixed(1)} ${height.toFixed(1)}`);
+
+    const rel = r => ({ left: r.left - layoutRect.left, right: r.right - layoutRect.left, top: r.top - layoutRect.top, bottom: r.bottom - layoutRect.top, width: r.width, height: r.height });
+    const r2 = rel(s2);
+    const r3 = rel(s3);
+    const articleRight = articleRect.right - layoutRect.left;
+    const asideLeft = asideRect.left - layoutRect.left;
+    const gutterRight = Math.min(articleRight + 24, asideLeft - 18);
+
+    const topY = r2.top - 4;
+    const topPath = pathLine([
+      { x: r2.left + 120, y: topY },
+      { x: r2.left + 240, y: topY - 28 },
+      { x: r2.left + r2.width * 0.44, y: topY - 26 },
+      { x: r2.left + r2.width * 0.67, y: topY + 6 }
+    ]);
+
+    const leftPath = pathLine([
+      { x: r2.left + 18, y: r2.top + 74 },
+      { x: r2.left - 86, y: r2.top + 106 },
+      { x: r2.left - 84, y: r2.top + r2.height * 0.63 },
+      { x: r2.left + 22, y: r2.top + r2.height * 0.82 }
+    ]);
+
+    const gapY = r2.bottom + ((r3.top - r2.bottom) * 0.55);
+    const endY = r3.top + 92;
+    const bottomPoints = [
+      { x: r2.left + 150, y: gapY },
+      { x: r2.left + r2.width * 0.42, y: gapY - 18 },
+      { x: gutterRight - 118, y: gapY + 10 },
+      { x: gutterRight - 34, y: endY }
+    ];
+    const bottomPath = pathLine(bottomPoints);
+
+    setPair('top', topPath);
+    setPair('left', leftPath);
+    setPair('bottom', bottomPath);
+
+    const c2 = bottomPoints[2];
+    const end = bottomPoints[3];
+    const angle = Math.atan2(end.y - c2.y, end.x - c2.x) * 180 / Math.PI;
+    head.setAttribute('transform', `translate(${end.x.toFixed(1)}, ${end.y.toFixed(1)}) rotate(${angle.toFixed(1)})`);
+  }
+
+  const rerender = () => requestAnimationFrame(render);
+  window.addEventListener('load', rerender, { once: true });
+  window.addEventListener('resize', rerender);
+  if ('ResizeObserver' in window) {
+    const ro = new ResizeObserver(rerender);
+    ro.observe(layout);
+    ro.observe(article);
+    ro.observe(aside);
+    article.querySelectorAll('section').forEach(sec => ro.observe(sec));
+  }
+  rerender();
+})();
+</script>
 <script src="/script.js"></script>
 </body>
 </html>
