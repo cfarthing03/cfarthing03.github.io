@@ -5,8 +5,285 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Envy · The Seven Sins · Sinners</title>
 <link rel="stylesheet" href="/styles.css">
+
+<style>
+/* =========================================================
+   ENVY — PAGE-SPECIFIC VISUAL MOTIFS (V1)
+   Green eyes, woven souls, subtle broadcast/watcher lines.
+   ========================================================= */
+:root{
+  --envy-green:#6bd08a;
+  --envy-green-soft:rgba(107,208,138,.28);
+  --envy-green-faint:rgba(107,208,138,.10);
+  --envy-line:rgba(83,167,108,.25);
+  --envy-panel:rgba(8,18,14,.30);
+}
+
+body.deity-body.deity-envy{
+  position:relative;
+  overflow-x:hidden;
+}
+body.deity-body.deity-envy::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 9% 24%,rgba(73,145,91,.10),transparent 24rem),
+    radial-gradient(circle at 92% 68%,rgba(52,116,72,.10),transparent 27rem),
+    linear-gradient(120deg,transparent,rgba(95,179,115,.018),transparent);
+}
+body.deity-body.deity-envy>*{
+  position:relative;
+  z-index:1;
+}
+
+/* page-wide watcher / soul backdrop */
+.envy-page-decor{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+.envy-eye{
+  position:absolute;
+  width:120px;
+  height:54px;
+  border:1px solid rgba(93,185,119,.20);
+  border-radius:50% / 60%;
+  transform:rotate(var(--rot,0deg));
+  opacity:.32;
+  filter:drop-shadow(0 0 16px rgba(76,173,105,.08));
+}
+.envy-eye::before{
+  content:"";
+  position:absolute;
+  width:28px;
+  height:28px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  border:1px solid rgba(106,211,137,.24);
+  box-shadow:inset 0 0 14px rgba(95,196,124,.08);
+}
+.envy-eye::after{
+  content:"";
+  position:absolute;
+  width:8px;
+  height:8px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:rgba(113,224,147,.34);
+  box-shadow:0 0 12px rgba(113,224,147,.18);
+}
+.envy-eye.e1{top:220px;left:-34px;--rot:-7deg;}
+.envy-eye.e2{top:690px;right:-24px;--rot:8deg;transform:rotate(var(--rot)) scale(.78);}
+.envy-eye.e3{top:1160px;left:6%;--rot:4deg;transform:rotate(var(--rot)) scale(.56);opacity:.22;}
+.envy-eye.e4{top:1460px;right:8%;--rot:-5deg;transform:rotate(var(--rot)) scale(.50);opacity:.20;}
+
+.envy-soul-thread{
+  position:absolute;
+  width:2px;
+  border-radius:999px;
+  opacity:.16;
+  background:linear-gradient(
+    180deg,
+    transparent,
+    rgba(101,215,135,.22) 14%,
+    rgba(101,215,135,.48) 48%,
+    rgba(101,215,135,.16) 83%,
+    transparent
+  );
+  box-shadow:0 0 18px rgba(89,195,120,.11);
+}
+.envy-soul-thread::before,
+.envy-soul-thread::after{
+  content:"";
+  position:absolute;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(123,225,153,.38);
+  box-shadow:0 0 10px rgba(123,225,153,.18);
+}
+.envy-soul-thread::before{top:23%;}
+.envy-soul-thread::after{top:67%;}
+.envy-soul-thread.s1{height:520px;left:14%;top:360px;transform:rotate(-9deg);}
+.envy-soul-thread.s2{height:650px;right:13%;top:560px;transform:rotate(7deg);}
+.envy-soul-thread.s3{height:430px;left:7%;top:1120px;transform:rotate(12deg);opacity:.11;}
+
+/* subtle broadcast / observation lines in cards */
+.deity-envy .deity-article section,
+.deity-envy .deity-facts,
+.deity-envy .deity-related{
+  position:relative;
+  overflow:visible;
+  border-color:rgba(77,151,97,.25);
+  background:linear-gradient(180deg,rgba(7,20,13,.28),rgba(5,10,14,.05));
+}
+.deity-envy .deity-article section::before,
+.deity-envy .deity-facts::before{
+  content:"";
+  position:absolute;
+  inset:10px;
+  pointer-events:none;
+  opacity:.16;
+  background:
+    linear-gradient(90deg,rgba(102,210,132,.50),rgba(102,210,132,.50)) 0 18% / 42px 1px no-repeat,
+    linear-gradient(180deg,rgba(102,210,132,.50),rgba(102,210,132,.50)) 42px 18% / 1px 21px no-repeat,
+    radial-gradient(circle at 42px calc(18% + 21px),rgba(117,229,149,.90) 0 1.6px,transparent 2.2px),
+    linear-gradient(90deg,rgba(102,210,132,.34),rgba(102,210,132,.34)) 100% 76% / 36px 1px no-repeat,
+    linear-gradient(180deg,rgba(102,210,132,.34),rgba(102,210,132,.34)) calc(100% - 36px) 76% / 1px 20px no-repeat,
+    radial-gradient(circle at calc(100% - 36px) calc(76% + 20px),rgba(117,229,149,.76) 0 1.6px,transparent 2.2px);
+}
+
+/* Eye icon beside article headings */
+.deity-envy .deity-article h2{
+  position:relative;
+  padding-bottom:.65rem;
+}
+.deity-envy .deity-article h2::before{
+  content:"";
+  display:inline-block;
+  width:22px;
+  height:11px;
+  margin:0 .58rem .06rem 0;
+  vertical-align:baseline;
+  border:1.6px solid rgba(117,218,144,.88);
+  border-radius:50% / 65%;
+  box-shadow:0 0 9px rgba(107,208,138,.12);
+  background:
+    radial-gradient(circle at center,rgba(125,231,154,.88) 0 2px,transparent 2.6px);
+}
+.deity-envy .deity-article h2::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:min(255px,60%);
+  height:1px;
+  background:linear-gradient(90deg,rgba(82,181,109,.48),transparent);
+}
+
+/* matching eye divider */
+.envy-eye-divider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  width:min(300px,84%);
+  margin:.4rem 0 1rem;
+}
+.envy-eye-divider.centered{margin:0 auto 1rem;}
+.envy-eye-divider::before,
+.envy-eye-divider::after{
+  content:"";
+  height:1px;
+  flex:1;
+  background:linear-gradient(90deg,transparent,rgba(91,183,116,.34));
+}
+.envy-eye-divider::after{transform:scaleX(-1);}
+.envy-eye-divider .eye-glyph{
+  position:relative;
+  width:34px;
+  height:17px;
+  border:1.5px solid rgba(119,224,148,.84);
+  border-radius:50% / 65%;
+  box-shadow:0 0 9px rgba(105,204,133,.10);
+}
+.envy-eye-divider .eye-glyph::before{
+  content:"";
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:rgba(126,234,156,.84);
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 9px rgba(126,234,156,.20);
+}
+
+/* small soul clusters tucked into corners */
+.envy-soul-cluster{
+  position:absolute;
+  right:16px;
+  bottom:13px;
+  width:48px;
+  height:34px;
+  opacity:.18;
+}
+.envy-soul-cluster::before,
+.envy-soul-cluster::after{
+  content:"";
+  position:absolute;
+  border-radius:50% 50% 46% 54%;
+  border:1px solid rgba(110,216,139,.46);
+}
+.envy-soul-cluster::before{
+  width:18px;
+  height:28px;
+  left:5px;
+  top:2px;
+  transform:rotate(-12deg);
+}
+.envy-soul-cluster::after{
+  width:16px;
+  height:25px;
+  right:4px;
+  top:6px;
+  transform:rotate(14deg);
+}
+.deity-envy .deity-article section:nth-child(even) .envy-soul-cluster{
+  right:auto;
+  left:16px;
+  transform:scaleX(-1);
+}
+
+@keyframes envy-watch-pulse{
+  0%,100%{opacity:.22;}
+  50%{opacity:.38;}
+}
+.envy-eye.e1,
+.envy-eye.e2{
+  animation:envy-watch-pulse 6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion:reduce){
+  .envy-eye.e1,.envy-eye.e2{animation:none;}
+}
+@media (max-width:900px){
+  .envy-eye.e1{left:-75px;}
+  .envy-eye.e2{right:-65px;}
+  .envy-soul-thread.s1{left:4%;}
+  .envy-soul-thread.s2{right:4%;}
+}
+@media (max-width:650px){
+  .envy-page-decor{display:none;}
+  .deity-envy .deity-article section::before,
+  .deity-envy .deity-facts::before{opacity:.08;}
+}
+</style>
+
 </head>
 <body class="deity-body deity-envy">
+
+
+<div class="envy-page-decor" aria-hidden="true">
+  <span class="envy-eye e1"></span>
+  <span class="envy-eye e2"></span>
+  <span class="envy-eye e3"></span>
+  <span class="envy-eye e4"></span>
+  <span class="envy-soul-thread s1"></span>
+  <span class="envy-soul-thread s2"></span>
+  <span class="envy-soul-thread s3"></span>
+</div>
 
 <header class="site-header">
   <div class="nav-wrap">
@@ -28,6 +305,7 @@
   <div class="deity-portrait"><img src="/god-envy.png" alt="Artistic depiction of Envy"></div>
   <div class="deity-hero-copy">
     <a class="deity-back" href="/sins.html">← The Seven Sins</a>
+    <div class="envy-eye-divider" aria-hidden="true"><span class="eye-glyph"></span></div>
     <div class="deity-kicker">The Seven Sins</div>
     <h1>Envy</h1>
     <p class="deity-tagline">Longing, comparison, aspiration—and noticing what everyone else missed.</p>
@@ -38,14 +316,15 @@
 
 <main class="deity-layout">
   <article class="deity-article">
-    <section><h2>The God Who Watches</h2><p>Envy appears as hundreds of thousands of souls intertwined into the faint green outline of a man. The form is fitting. Envy is a god of attention, comparison, longing, and the uncomfortable awareness that someone else possesses something you do not.</p><p>That does not make him a god of simple resentment. Modern interpretations of Envy focus on what comparison can produce. Seeing someone accomplish something extraordinary can inspire bitterness, but it can also produce the thought, I want to be able to do that too. Envy lives in that moment.</p></section>
-<section><h2>The Architect</h2><p>Envy was among the quickest of the Sins to recognize what Pride was doing. His interference played a major role in the Sins' ascension and later helped orchestrate Pride's second demise. He is rarely remembered as the loudest person in a conflict. More often, Envy is the one who noticed the detail everyone else ignored and moved the right piece before anyone understood there was a game being played.</p><p>His most enduring divine innovation is the Sinner's Mark. Envy devised the means through which each of the Seven Sins could grant a mortal a direct portion of divine power. The individual gods still decide who receives their own Mark, but the system itself exists because Envy built it.</p></section>
-<section><h2>The Sinner's Marks</h2><p>Only one Sinner's Mark from each Sin can exist at a time. A Wrath Mark and an Envy Mark can coexist, but there cannot be two living bearers of Wrath's Mark at once. There is also no requirement that all seven Marks be active. A god may go years or generations without choosing anyone.</p><p>The reason a person is selected is rarely obvious to outsiders. Bearers and the gods who chose them generally understand more than everyone else, while the public is left with theories that never quite explain every case.</p></section>
-<section><h2>Etro and the Radio Tower</h2><p>Etro expresses Envy through entertainment. Music, celebrity, theater, spectacle, competition, and performance dominate the city, while the Radio Tower broadcasts entertainment throughout society through specialized pins. Anyone entering Etro is required to wear one without exception.</p><p>The city is built around watching and being watched, listening and being heard, seeing what others can do and deciding what that makes you want to become. The Green Circus carries the same idea across the continent: admiration and jealousy do not have to end in resentment. Sometimes they are simply the beginning of practice.</p></section>
+    <section><h2>The God Who Watches</h2><p>Envy appears as hundreds of thousands of souls intertwined into the faint green outline of a man. The form is fitting. Envy is a god of attention, comparison, longing, and the uncomfortable awareness that someone else possesses something you do not.</p><p>That does not make him a god of simple resentment. Modern interpretations of Envy focus on what comparison can produce. Seeing someone accomplish something extraordinary can inspire bitterness, but it can also produce the thought, I want to be able to do that too. Envy lives in that moment.</p><span class="envy-soul-cluster" aria-hidden="true"></span></section>
+<section><h2>The Architect</h2><p>Envy was among the quickest of the Sins to recognize what Pride was doing. His interference played a major role in the Sins' ascension and later helped orchestrate Pride's second demise. He is rarely remembered as the loudest person in a conflict. More often, Envy is the one who noticed the detail everyone else ignored and moved the right piece before anyone understood there was a game being played.</p><p>His most enduring divine innovation is the Sinner's Mark. Envy devised the means through which each of the Seven Sins could grant a mortal a direct portion of divine power. The individual gods still decide who receives their own Mark, but the system itself exists because Envy built it.</p><span class="envy-soul-cluster" aria-hidden="true"></span></section>
+<section><h2>The Sinner's Marks</h2><p>Only one Sinner's Mark from each Sin can exist at a time. A Wrath Mark and an Envy Mark can coexist, but there cannot be two living bearers of Wrath's Mark at once. There is also no requirement that all seven Marks be active. A god may go years or generations without choosing anyone.</p><p>The reason a person is selected is rarely obvious to outsiders. Bearers and the gods who chose them generally understand more than everyone else, while the public is left with theories that never quite explain every case.</p><span class="envy-soul-cluster" aria-hidden="true"></span></section>
+<section><h2>Etro and the Radio Tower</h2><p>Etro expresses Envy through entertainment. Music, celebrity, theater, spectacle, competition, and performance dominate the city, while the Radio Tower broadcasts entertainment throughout society through specialized pins. Anyone entering Etro is required to wear one without exception.</p><p>The city is built around watching and being watched, listening and being heard, seeing what others can do and deciding what that makes you want to become. The Green Circus carries the same idea across the continent: admiration and jealousy do not have to end in resentment. Sometimes they are simply the beginning of practice.</p><span class="envy-soul-cluster" aria-hidden="true"></span></section>
 
   </article>
   <aside class="deity-aside">
     <section class="deity-facts">
+      <div class="envy-eye-divider centered" aria-hidden="true"><span class="eye-glyph"></span></div>
       <h2>At a Glance</h2>
       <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Longing, comparison, aspiration, attention</span></div>
 <div class="fact"><span class="fact-label">Major City</span><span class="fact-value">Etro</span></div>
