@@ -5,158 +5,126 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Greed · The Seven Sins · Sinners</title>
 <link rel="stylesheet" href="/styles.css">
-
 <style>
 /* =========================================================
-   GREED — PAGE-SPECIFIC VISUAL MOTIFS
+   GREED — PAGE-SPECIFIC VISUAL MOTIFS (V3)
+   Canon corrected + hero image fix + serpent-coil motif
    ========================================================= */
 
-body.deity-body.deity-greed{
-  position:relative;
-  overflow-x:hidden;
+body.deity-body.deity-greed {
+  position: relative;
+  overflow-x: hidden;
 }
 
-body.deity-body.deity-greed > *:not(.greed-page-decor){
-  position:relative;
-  z-index:1;
+body.deity-body.deity-greed > *:not(.greed-page-decor) {
+  position: relative;
+  z-index: 1;
 }
 
-body.deity-body.deity-greed::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
+body.deity-body.deity-greed::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
   background:
-    radial-gradient(circle at 88% 18%,rgba(210,163,54,.075),transparent 25rem),
-    radial-gradient(circle at 12% 72%,rgba(151,105,25,.055),transparent 24rem);
+    radial-gradient(circle at 84% 18%, rgba(210,163,54,.08), transparent 26rem),
+    radial-gradient(circle at 12% 75%, rgba(151,105,25,.05), transparent 24rem);
 }
 
-/* Faint scale texture at the extreme edges */
-body.deity-body.deity-greed::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-  opacity:.12;
+body.deity-body.deity-greed::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .11;
   background:
-    radial-gradient(circle at 0 100%,transparent 67%,rgba(209,163,62,.16) 68% 70%,transparent 71%) 0 0/30px 20px,
-    radial-gradient(circle at 100% 100%,transparent 67%,rgba(209,163,62,.13) 68% 70%,transparent 71%) 15px 10px/30px 20px;
-  mask-image:linear-gradient(90deg,#000 0%,transparent 18%,transparent 82%,#000 100%);
+    radial-gradient(circle at 0 100%, transparent 67%, rgba(209,163,62,.16) 68% 70%, transparent 71%) 0 0/30px 20px,
+    radial-gradient(circle at 100% 100%, transparent 67%, rgba(209,163,62,.13) 68% 70%, transparent 71%) 15px 10px/30px 20px;
+  mask-image: linear-gradient(90deg, #000 0%, transparent 17%, transparent 83%, #000 100%);
 }
 
-.greed-page-decor{
-  position:fixed;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-  overflow:hidden;
+.greed-page-decor {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-/* The long serpent winding along the outer-right edge */
-.greed-serpent{
-  position:absolute;
-  top:90px;
-  right:-48px;
-  width:235px;
-  height:78vh;
-  max-height:850px;
-  opacity:.56;
-  filter:drop-shadow(0 0 14px rgba(201,153,47,.13));
+/* --- Force the hero image back into the correct layout --- */
+.deity-greed .deity-hero {
+  position: relative;
+  min-height: 610px;
+  overflow: hidden;
+  isolation: isolate;
+  border-bottom: 1px solid var(--line);
+  background: #050a12;
+}
+.deity-greed .deity-hero-copy {
+  position: relative;
+  z-index: 5;
+  width: min(58%, 790px);
+  min-height: 610px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem clamp(1.5rem, 5vw, 6rem);
+  background: linear-gradient(90deg, #050a12 0%, rgba(5,10,18,.97) 70%, rgba(5,10,18,.36) 100%);
+}
+.deity-greed .deity-portrait {
+  position: absolute;
+  z-index: 1;
+  inset: 0 0 0 46%;
+  overflow: hidden;
+}
+.deity-greed .deity-portrait img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 34%;
+}
+.deity-greed .deity-portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, #050a12 0%, rgba(5,10,18,.84) 12%, rgba(5,10,18,.18) 44%, rgba(5,10,18,.04) 100%),
+    linear-gradient(0deg, rgba(3,8,18,.70), transparent 36%);
+}
+.deity-greed .deity-portrait::before {
+  content: "";
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  top: 14px;
+  left: 14px;
+  z-index: 3;
+  border-top: 2px solid rgba(218,170,56,.68);
+  border-left: 2px solid rgba(218,170,56,.68);
+  box-shadow: -9px -9px 0 -7px rgba(218,170,56,.34);
+}
+.deity-greed .deity-portrait .corner-br {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 56px;
+  height: 56px;
+  z-index: 3;
+  border-right: 2px solid rgba(218,170,56,.68);
+  border-bottom: 2px solid rgba(218,170,56,.68);
+  box-shadow: 9px 9px 0 -7px rgba(218,170,56,.34);
+}
+.deity-greed .deity-hero-copy h1 {
+  text-shadow: 0 4px 24px #000, 0 0 24px rgba(201,154,46,.14);
 }
 
-.greed-serpent .body{
-  fill:none;
-  stroke:url(#greedSerpentGold);
-  stroke-width:18;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-
-.greed-serpent .inner{
-  fill:none;
-  stroke:rgba(255,224,137,.17);
-  stroke-width:4;
-  stroke-linecap:round;
-}
-
-.greed-serpent .scale{
-  fill:none;
-  stroke:rgba(255,226,144,.22);
-  stroke-width:2;
-}
-
-.greed-serpent .head{
-  fill:#8d6517;
-  stroke:#d4a536;
-  stroke-width:2;
-}
-.greed-serpent .eye{
-  fill:#ffe174;
-  filter:drop-shadow(0 0 4px rgba(255,221,104,.8));
-}
-
-/* A small coil tucked behind the lower-left of the article */
-.greed-coil{
-  position:fixed;
-  left:-54px;
-  bottom:70px;
-  width:210px;
-  height:210px;
-  border:2px solid rgba(202,153,46,.17);
-  border-radius:50%;
-  box-shadow:
-    0 0 0 16px rgba(202,153,46,.035),
-    0 0 0 32px rgba(202,153,46,.018);
-  opacity:.44;
-}
-.greed-coil::before,
-.greed-coil::after{
-  content:"";
-  position:absolute;
-  border:2px solid rgba(202,153,46,.15);
-  border-radius:50%;
-}
-.greed-coil::before{inset:23px}
-.greed-coil::after{inset:48px}
-
-/* Hero details */
-.deity-greed .deity-portrait{
-  position:relative;
-}
-.deity-greed .deity-portrait::before,
-.deity-greed .deity-portrait::after{
-  content:"";
-  position:absolute;
-  width:56px;
-  height:56px;
-  z-index:3;
-  pointer-events:none;
-}
-.deity-greed .deity-portrait::before{
-  top:14px;
-  left:14px;
-  border-top:2px solid rgba(218,170,56,.68);
-  border-left:2px solid rgba(218,170,56,.68);
-  box-shadow:-9px -9px 0 -7px rgba(218,170,56,.34);
-}
-.deity-greed .deity-portrait::after{
-  right:14px;
-  bottom:14px;
-  border-right:2px solid rgba(218,170,56,.68);
-  border-bottom:2px solid rgba(218,170,56,.68);
-  box-shadow:9px 9px 0 -7px rgba(218,170,56,.34);
-}
-
-.deity-greed .deity-hero-copy h1{
-  text-shadow:
-    0 4px 24px #000,
-    0 0 24px rgba(201,154,46,.14);
-}
-
-/* Ornamental contract flourish */
-.greed-contract-flourish{
+/* contract flourish */
+.greed-contract-flourish {
   display:flex;
   align-items:center;
   width:min(290px,72%);
@@ -165,16 +133,14 @@ body.deity-body.deity-greed::after{
   color:rgba(228,190,87,.78);
 }
 .greed-contract-flourish::before,
-.greed-contract-flourish::after{
+.greed-contract-flourish::after {
   content:"";
   height:1px;
   flex:1;
   background:linear-gradient(90deg,transparent,rgba(215,168,62,.45));
 }
-.greed-contract-flourish::after{
-  transform:scaleX(-1);
-}
-.greed-contract-flourish span{
+.greed-contract-flourish::after { transform: scaleX(-1); }
+.greed-contract-flourish span {
   width:9px;
   height:9px;
   border:1px solid rgba(232,195,92,.72);
@@ -183,7 +149,7 @@ body.deity-body.deity-greed::after{
 }
 
 /* Coin ornament for sidebar */
-.greed-coins{
+.greed-coins {
   display:flex;
   align-items:center;
   justify-content:center;
@@ -191,33 +157,26 @@ body.deity-body.deity-greed::after{
   margin:0 0 1rem;
 }
 .greed-coins::before,
-.greed-coins::after{
+.greed-coins::after {
   content:"";
   width:32px;
   height:1px;
   background:linear-gradient(90deg,transparent,rgba(210,164,56,.35));
 }
-.greed-coins::after{transform:scaleX(-1)}
-
-.greed-coin{
+.greed-coins::after { transform: scaleX(-1); }
+.greed-coin {
   position:relative;
   width:19px;
   height:19px;
   border-radius:50%;
   border:1px solid rgba(231,192,83,.64);
   background:
-    radial-gradient(circle at 36% 30%,rgba(255,231,148,.35),transparent 30%),
+    radial-gradient(circle at 36% 30%, rgba(255,231,148,.35), transparent 30%),
     radial-gradient(circle,#9d731f 0 42%,#49300b 43% 47%,#bc8e2d 48% 54%,#171108 55%);
-  box-shadow:
-    inset 0 0 0 2px rgba(240,207,112,.08),
-    0 0 10px rgba(204,156,45,.12);
+  box-shadow: inset 0 0 0 2px rgba(240,207,112,.08), 0 0 10px rgba(204,156,45,.12);
 }
-.greed-coin.small{
-  width:14px;
-  height:14px;
-  opacity:.76;
-}
-.greed-coin::after{
+.greed-coin.small { width:14px; height:14px; opacity:.76; }
+.greed-coin::after {
   content:"G";
   position:absolute;
   inset:0;
@@ -229,21 +188,30 @@ body.deity-body.deity-greed::after{
   font-weight:700;
 }
 
-/* Article panels: subtle contract paper/linework */
+/* layout and panels */
+.deity-greed .deity-layout {
+  position: relative;
+  z-index: 1;
+}
+.deity-greed .deity-article {
+  position: relative;
+  z-index: 2;
+}
+.deity-greed .deity-aside {
+  position: sticky;
+  z-index: 2;
+}
 .deity-greed .deity-article section,
 .deity-greed .deity-facts,
-.deity-greed .deity-related{
-  position:relative;
-  overflow:hidden;
+.deity-greed .deity-related {
+  position: relative;
+  overflow: visible;
 }
-
-.deity-greed .deity-article section{
-  border-color:rgba(170,124,37,.26);
-  background:
-    linear-gradient(180deg,rgba(31,24,10,.13),rgba(6,11,18,.05));
+.deity-greed .deity-article section {
+  border-color: rgba(170,124,37,.26);
+  background: linear-gradient(180deg, rgba(31,24,10,.13), rgba(6,11,18,.05));
 }
-
-.deity-greed .deity-article section::before{
+.deity-greed .deity-article section::before {
   content:"";
   position:absolute;
   right:-3%;
@@ -252,21 +220,14 @@ body.deity-body.deity-greed::after{
   height:72%;
   pointer-events:none;
   opacity:.12;
-  background:
-    repeating-linear-gradient(
-      180deg,
-      rgba(225,194,108,.32) 0 1px,
-      transparent 1px 15px
-    );
-  mask-image:linear-gradient(90deg,transparent,#000 35%,#000);
+  background: repeating-linear-gradient(180deg, rgba(225,194,108,.32) 0 1px, transparent 1px 15px);
+  mask-image: linear-gradient(90deg, transparent, #000 35%, #000);
 }
-
-/* Gold double-rule under article section headings */
-.deity-greed .deity-article h2{
+.deity-greed .deity-article h2 {
   position:relative;
   padding-bottom:.65rem;
 }
-.deity-greed .deity-article h2::after{
+.deity-greed .deity-article h2::after {
   content:"";
   position:absolute;
   left:0;
@@ -274,12 +235,10 @@ body.deity-body.deity-greed::after{
   width:min(245px,55%);
   height:5px;
   background:
-    linear-gradient(rgba(205,158,55,.42),rgba(205,158,55,.42)) top/100% 1px no-repeat,
-    linear-gradient(90deg,rgba(205,158,55,.22),transparent) bottom/100% 1px no-repeat;
+    linear-gradient(rgba(205,158,55,.42), rgba(205,158,55,.42)) top/100% 1px no-repeat,
+    linear-gradient(90deg, rgba(205,158,55,.22), transparent) bottom/100% 1px no-repeat;
 }
-
-/* Tiny coin before each section heading */
-.deity-greed .deity-article h2::before{
+.deity-greed .deity-article h2::before {
   content:"";
   display:inline-block;
   width:11px;
@@ -290,9 +249,7 @@ body.deity-body.deity-greed::after{
   background:radial-gradient(circle,#b38628 0 42%,#332207 45% 54%,#d0a33c 57%);
   box-shadow:0 0 8px rgba(208,159,48,.12);
 }
-
-/* Sidebar gets a faint serpent-scale watermark */
-.deity-greed .deity-facts::after{
+.deity-greed .deity-facts::after {
   content:"";
   position:absolute;
   width:140px;
@@ -305,9 +262,7 @@ body.deity-body.deity-greed::after{
     radial-gradient(circle at 0 100%,transparent 64%,#c69a39 65% 68%,transparent 69%) 0 0/25px 18px,
     radial-gradient(circle at 100% 100%,transparent 64%,#c69a39 65% 68%,transparent 69%) 12px 9px/25px 18px;
 }
-
-/* Fine gold chain running between a few panels */
-.deity-greed .deity-article section:nth-of-type(2)::after{
+.deity-greed .deity-article section:nth-of-type(2)::after {
   content:"◇  ◇  ◇  ◇  ◇";
   position:absolute;
   right:18px;
@@ -318,56 +273,97 @@ body.deity-body.deity-greed::after{
   white-space:nowrap;
 }
 
-@media (max-width:900px){
-  .greed-serpent{
-    right:-88px;
-    opacity:.32;
-  }
+/* --- Serpent motif: slithering around the article panels --- */
+.greed-serpent-ribbon,
+.greed-serpent-ribbon-front {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+.greed-serpent-ribbon { z-index: 1; }
+.greed-serpent-ribbon-front { z-index: 3; }
+.greed-serpent-ribbon svg,
+.greed-serpent-ribbon-front svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.greed-serpent-ribbon .snake-body,
+.greed-serpent-ribbon-front .snake-body {
+  fill: none;
+  stroke: url(#goldSnakeGrad);
+  stroke-width: 26;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 8px rgba(214,166,55,.10));
+}
+.greed-serpent-ribbon .snake-inner,
+.greed-serpent-ribbon-front .snake-inner {
+  fill: none;
+  stroke: rgba(255,234,164,.28);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.greed-serpent-ribbon .snake-scale,
+.greed-serpent-ribbon-front .snake-scale {
+  fill: none;
+  stroke: rgba(255,228,149,.18);
+  stroke-width: 2;
+  stroke-linecap: round;
 }
 
-@media (max-width:650px){
-  .greed-serpent{
-    width:160px;
-    right:-78px;
-    opacity:.24;
-  }
-  .greed-coil{display:none}
-  .deity-greed .deity-article section::before{opacity:.07}
+/* Place the back parts behind the panels */
+.greed-serpent-ribbon {
+  top: 330px;
+  left: 0;
+  width: calc(100% - 320px);
+  height: 620px;
+}
+/* Small overpasses in front so it feels like the snake is weaving */
+.greed-serpent-ribbon-front {
+  top: 330px;
+  left: 0;
+  width: calc(100% - 320px);
+  height: 620px;
+}
+
+/* hero / aside subtle scale accent instead of the old corner snake */
+.greed-corner-accent {
+  position: absolute;
+  top: 100px;
+  right: 28px;
+  width: 130px;
+  height: 130px;
+  opacity: .18;
+  border-radius: 50%;
+  border: 1px solid rgba(209,162,56,.22);
+  box-shadow:
+    0 0 0 14px rgba(209,162,56,.03),
+    0 0 0 28px rgba(209,162,56,.015);
+}
+
+@media (max-width: 900px) {
+  .deity-greed .deity-hero-copy { width: min(62%, 790px); }
+  .deity-greed .deity-portrait { inset: 0 0 0 38%; }
+  .greed-serpent-ribbon,
+  .greed-serpent-ribbon-front { width: 100%; height: 500px; top: 360px; }
+}
+
+@media (max-width: 650px) {
+  .deity-greed .deity-hero { min-height: auto; }
+  .deity-greed .deity-hero-copy { width: 100%; min-height: auto; padding: 3rem 1.2rem 2rem; }
+  .deity-greed .deity-portrait { position: relative; inset: auto; height: 320px; }
+  .deity-greed .deity-portrait img { position: absolute; }
+  .deity-greed .deity-sigil { right: 1rem; bottom: 1rem; }
+  .greed-serpent-ribbon,
+  .greed-serpent-ribbon-front,
+  .greed-corner-accent { display: none; }
+  .deity-greed .deity-article section::before { opacity: .07; }
 }
 </style>
-
 </head>
 <body class="deity-body deity-greed">
-
-<div class="greed-page-decor" aria-hidden="true">
-  <svg class="greed-serpent" viewBox="0 0 230 760" role="presentation">
-    <defs>
-      <linearGradient id="greedSerpentGold" x1="0" x2="1">
-        <stop offset="0%" stop-color="#6d4810"/>
-        <stop offset="45%" stop-color="#c9972b"/>
-        <stop offset="70%" stop-color="#e3b84d"/>
-        <stop offset="100%" stop-color="#785215"/>
-      </linearGradient>
-    </defs>
-    <path class="body" d="M145 20
-      C80 72, 174 122, 112 181
-      C55 236, 171 295, 112 350
-      C54 404, 172 467, 111 522
-      C63 565, 132 618, 102 685
-      C92 709, 93 730, 111 746"/>
-    <path class="inner" d="M145 20
-      C80 72, 174 122, 112 181
-      C55 236, 171 295, 112 350
-      C54 404, 172 467, 111 522
-      C63 565, 132 618, 102 685
-      C92 709, 93 730, 111 746"/>
-    <path class="scale" d="M116 103 l18 -10 M104 198 l18 -10 M121 290 l18 -10 M102 388 l18 -10 M121 482 l18 -10 M98 576 l18 -10"/>
-    <path class="head" d="M124 14 C139 -5,171 -3,183 17 C168 25,150 34,137 47 C127 37,122 26,124 14 Z"/>
-    <circle class="eye" cx="160" cy="14" r="3.5"/>
-  </svg>
-  <div class="greed-coil"></div>
-</div>
-
 
 <header class="site-header">
   <div class="nav-wrap">
@@ -386,12 +382,13 @@ body.deity-body.deity-greed::after{
 </header>
 
 <section class="deity-hero">
-  <div class="deity-portrait"><img src="/god-greed.png" alt="Artistic depiction of Greed"></div>
+  <div class="deity-portrait">
+    <img src="/god-greed.png" alt="Artistic depiction of Greed">
+    <span class="corner-br" aria-hidden="true"></span>
+  </div>
   <div class="deity-hero-copy">
     <a class="deity-back" href="/sins.html">← The Seven Sins</a>
-    <div class="greed-contract-flourish" aria-hidden="true">
-      <span></span><span></span><span></span>
-    </div>
+    <div class="greed-contract-flourish" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="deity-kicker">The Seven Sins</div>
     <h1>Greed</h1>
     <p class="deity-tagline">Ambition, ownership, prosperity, exchange—and the refusal to let impermanence decide what must be lost.</p>
@@ -401,12 +398,55 @@ body.deity-body.deity-greed::after{
 </section>
 
 <main class="deity-layout">
+  <div class="greed-serpent-ribbon" aria-hidden="true">
+    <svg viewBox="0 0 900 620" role="presentation" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="goldSnakeGrad" x1="0" x2="1">
+          <stop offset="0%" stop-color="#6e4a12"/>
+          <stop offset="22%" stop-color="#ba892b"/>
+          <stop offset="50%" stop-color="#efc45d"/>
+          <stop offset="76%" stop-color="#be8c2d"/>
+          <stop offset="100%" stop-color="#714a13"/>
+        </linearGradient>
+      </defs>
+      <!-- behind the Contract Magic panel top -->
+      <path class="snake-body" d="M160 78 C 300 36, 470 38, 630 90"/>
+      <path class="snake-inner" d="M160 78 C 300 36, 470 38, 630 90"/>
+      <path class="snake-scale" d="M260 60 l18 -12 M330 50 l18 -12 M405 49 l18 -12 M482 55 l18 -12 M555 70 l18 -12"/>
+      <!-- behind next panel from right side -->
+      <path class="snake-body" d="M675 490 C 735 445, 805 442, 874 480"/>
+      <path class="snake-inner" d="M675 490 C 735 445, 805 442, 874 480"/>
+      <path class="snake-scale" d="M720 468 l18 -10 M788 463 l18 -10 M846 478 l18 -10"/>
+    </svg>
+  </div>
+
+  <div class="greed-serpent-ribbon-front" aria-hidden="true">
+    <svg viewBox="0 0 900 620" role="presentation" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="goldSnakeGradFront" x1="0" x2="1">
+          <stop offset="0%" stop-color="#6e4a12"/>
+          <stop offset="22%" stop-color="#ba892b"/>
+          <stop offset="50%" stop-color="#efc45d"/>
+          <stop offset="76%" stop-color="#be8c2d"/>
+          <stop offset="100%" stop-color="#714a13"/>
+        </linearGradient>
+      </defs>
+      <!-- front curve at the left of Contract Magic -->
+      <path class="snake-body" style="stroke:url(#goldSnakeGradFront)" d="M96 160 C 48 188, 44 260, 90 302 C 124 332, 165 336, 210 313"/>
+      <path class="snake-inner" d="M96 160 C 48 188, 44 260, 90 302 C 124 332, 165 336, 210 313"/>
+      <path class="snake-scale" d="M68 214 l18 -8 M63 248 l18 -8 M73 282 l18 -8 M104 308 l18 -8 M146 317 l18 -8"/>
+      <!-- front curve dropping in from the lower-right of the next panel -->
+      <path class="snake-body" style="stroke:url(#goldSnakeGradFront)" d="M690 446 C 770 490, 846 494, 890 548 C 906 567, 907 590, 890 610"/>
+      <path class="snake-inner" d="M690 446 C 770 490, 846 494, 890 548 C 906 567, 907 590, 890 610"/>
+      <path class="snake-scale" d="M743 473 l18 -8 M794 486 l18 -8 M842 502 l18 -8 M875 531 l16 -9"/>
+    </svg>
+  </div>
+
   <article class="deity-article">
-    <section><h2>The Last to Awaken</h2><p>Greed was the last of the relic-born Sins to awaken. Unlike Pride, whose earliest history began as a mortal, Greed did not begin life as a man and did not ascend through some exceptional mortal talent. He emerged from the same ancient relic-born lineage as the other Sins, simply later than the rest.</p><p>That delay mattered. By the time Greed fully awakened, he never received the same complete immortality enjoyed by the others. His body could endure for ages, but eventually it would fail. Greed responded exactly as Greed would: he refused to accept the limitation.</p></section>
+<section><h2>The Last to Awaken</h2><p>Greed was the last of the relic-born Sins to awaken. Unlike Pride, whose earliest history began as a mortal, Greed did not begin life as a man and did not ascend through some exceptional mortal talent. He emerged from the same ancient relic-born lineage as the other Sins, simply later than the rest.</p><p>That delay mattered. By the time Greed fully awakened, he never received the same complete immortality enjoyed by the others. His body could endure for ages, but eventually it would fail. Greed responded exactly as Greed would: he refused to accept the limitation.</p></section>
 <section><h2>An Immortality of His Own</h2><p>Greed created his own form of immortality. Every few thousand years, his body reaches the end of its cycle and separates into its component pieces. For a time, Greed is no longer whole. Eventually those pieces are drawn back together, reconnecting until Greed reforms and continues on.</p><p>This cycle is the source of Greed's strange relationship with mortality. He can fall apart. He can disappear. He can spend ages divided. But the separation is not the same as a permanent death. Greed made sure that, eventually, what belonged together would return to itself.</p></section>
 <section><h2>Contract Magic</h2><p>Contract Magic is one of the powers most closely associated with Greed and one of the defining forces of Hilnem. A magical contract can enforce terms willingly accepted by its participants and apply whatever consequences were written into the agreement. Some people possess a natural affinity for creating these contracts; others rely on specialists, businesses, and families such as the Vales.</p><p>The magic enforces an agreement. It does not decide whether that agreement is fair. A badly written contract can be harsh, exploitative, full of loopholes, or simply disastrous for someone who did not bother to read it. In Hilnem, precision is not just professionalism. It can be self-preservation.</p></section>
 <section><h2>What Greed Means Now</h2><p>Modern worship does not treat wealth or desire as inherently shameful. Greed represents ambition, the right to own what you have earned, the value of exchange, and the responsibility created when one person promises something to another. Wanting more can build a business, improve a family, or create an entire city. The question is what you are willing to trade to get it.</p><p>Hilnem reflects that philosophy. Its contracts make it one of the safest places on the continent, sometimes to absurd degrees. There are buildings where simply walking through the door means agreeing not to commit a crime inside. Greed's city trusts rules because, unlike people, the rules can be made impossible to ignore.</p></section>
-
   </article>
   <aside class="deity-aside">
     <section class="deity-facts">
@@ -433,6 +473,5 @@ body.deity-body.deity-greed::after{
 
 <footer>Sinners World Archive · Built as a player-facing lore guide</footer>
 <script src="/script.js"></script>
-
 </body>
 </html>
