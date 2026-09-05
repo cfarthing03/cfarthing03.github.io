@@ -7,20 +7,18 @@
 <link rel="stylesheet" href="/styles.css">
 <style>
 /* =========================================================
-   GREED — PAGE-SPECIFIC VISUAL MOTIFS (V3)
-   Canon corrected + hero image fix + serpent-coil motif
+   GREED — PAGE-SPECIFIC VISUAL MOTIFS (V4)
+   Canon corrected + refined serpent motif + hero crop fix
    ========================================================= */
 
 body.deity-body.deity-greed {
   position: relative;
   overflow-x: hidden;
 }
-
-body.deity-body.deity-greed > *:not(.greed-page-decor) {
+body.deity-body.deity-greed > * {
   position: relative;
   z-index: 1;
 }
-
 body.deity-body.deity-greed::before {
   content: "";
   position: fixed;
@@ -31,7 +29,6 @@ body.deity-body.deity-greed::before {
     radial-gradient(circle at 84% 18%, rgba(210,163,54,.08), transparent 26rem),
     radial-gradient(circle at 12% 75%, rgba(151,105,25,.05), transparent 24rem);
 }
-
 body.deity-body.deity-greed::after {
   content: "";
   position: fixed;
@@ -45,15 +42,7 @@ body.deity-body.deity-greed::after {
   mask-image: linear-gradient(90deg, #000 0%, transparent 17%, transparent 83%, #000 100%);
 }
 
-.greed-page-decor {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-/* --- Force the hero image back into the correct layout --- */
+/* --- Hero image: keep the full composition readable --- */
 .deity-greed .deity-hero {
   position: relative;
   min-height: 610px;
@@ -71,12 +60,12 @@ body.deity-body.deity-greed::after {
   flex-direction: column;
   justify-content: center;
   padding: 4rem clamp(1.5rem, 5vw, 6rem);
-  background: linear-gradient(90deg, #050a12 0%, rgba(5,10,18,.97) 70%, rgba(5,10,18,.36) 100%);
+  background: linear-gradient(90deg, #050a12 0%, rgba(5,10,18,.97) 70%, rgba(5,10,18,.30) 100%);
 }
 .deity-greed .deity-portrait {
   position: absolute;
   z-index: 1;
-  inset: 0 0 0 46%;
+  inset: 0 0 0 45%;
   overflow: hidden;
 }
 .deity-greed .deity-portrait img {
@@ -86,7 +75,7 @@ body.deity-body.deity-greed::after {
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: center 34%;
+  object-position: 64% 16%;
 }
 .deity-greed .deity-portrait::after {
   content: "";
@@ -273,98 +262,101 @@ body.deity-body.deity-greed::after {
   white-space:nowrap;
 }
 
-/* --- Serpent motif: slithering around the article panels --- */
-.greed-serpent-ribbon,
-.greed-serpent-ribbon-front {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: visible;
+/* --- Refined serpent motif --- */
+.greed-serpent-back,
+.greed-serpent-front {
+  position:absolute;
+  left:0;
+  width: calc(100% - 320px);
+  pointer-events:none;
+  overflow:visible;
 }
-.greed-serpent-ribbon { z-index: 1; }
-.greed-serpent-ribbon-front { z-index: 3; }
-.greed-serpent-ribbon svg,
-.greed-serpent-ribbon-front svg {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
+.greed-serpent-back {
+  top: 360px;
+  height: 760px;
+  z-index: 1;
 }
-.greed-serpent-ribbon .snake-body,
-.greed-serpent-ribbon-front .snake-body {
-  fill: none;
-  stroke: url(#goldSnakeGrad);
-  stroke-width: 26;
+.greed-serpent-front {
+  top: 360px;
+  height: 760px;
+  z-index: 3;
+}
+.greed-serpent-back svg,
+.greed-serpent-front svg {
+  width:100%;
+  height:100%;
+  overflow:visible;
+}
+.greed-serpent-back .body,
+.greed-serpent-front .body {
+  fill:none;
+  stroke: url(#goldBody);
+  stroke-width: 20;
   stroke-linecap: round;
   stroke-linejoin: round;
-  filter: drop-shadow(0 0 8px rgba(214,166,55,.10));
+  filter: drop-shadow(0 0 7px rgba(214,166,55,.09));
 }
-.greed-serpent-ribbon .snake-inner,
-.greed-serpent-ribbon-front .snake-inner {
-  fill: none;
-  stroke: rgba(255,234,164,.28);
-  stroke-width: 5;
+.greed-serpent-back .inner,
+.greed-serpent-front .inner {
+  fill:none;
+  stroke: rgba(255,235,168,.24);
+  stroke-width: 4;
   stroke-linecap: round;
 }
-.greed-serpent-ribbon .snake-scale,
-.greed-serpent-ribbon-front .snake-scale {
-  fill: none;
-  stroke: rgba(255,228,149,.18);
-  stroke-width: 2;
+.greed-serpent-back .scale,
+.greed-serpent-front .scale {
+  fill:none;
+  stroke: rgba(255,226,145,.15);
+  stroke-width: 1.8;
   stroke-linecap: round;
 }
-
-/* Place the back parts behind the panels */
-.greed-serpent-ribbon {
-  top: 330px;
-  left: 0;
-  width: calc(100% - 320px);
-  height: 620px;
+.greed-serpent-front .head {
+  fill: url(#goldHead);
+  stroke: rgba(84,52,9,.55);
+  stroke-width: 1.4;
+  filter: drop-shadow(0 0 6px rgba(214,166,55,.14));
 }
-/* Small overpasses in front so it feels like the snake is weaving */
-.greed-serpent-ribbon-front {
-  top: 330px;
-  left: 0;
-  width: calc(100% - 320px);
-  height: 620px;
+.greed-serpent-front .head-line {
+  fill:none;
+  stroke: rgba(255,235,176,.24);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
-
-/* hero / aside subtle scale accent instead of the old corner snake */
-.greed-corner-accent {
-  position: absolute;
-  top: 100px;
-  right: 28px;
-  width: 130px;
-  height: 130px;
-  opacity: .18;
-  border-radius: 50%;
-  border: 1px solid rgba(209,162,56,.22);
-  box-shadow:
-    0 0 0 14px rgba(209,162,56,.03),
-    0 0 0 28px rgba(209,162,56,.015);
+.greed-serpent-front .eye {
+  fill: #1a1207;
+  stroke: rgba(255,224,122,.60);
+  stroke-width: .8;
 }
+.greed-serpent-front .tongue {
+  fill:none;
+  stroke: rgba(244,200,90,.75);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+/* subtle front crossings only */
+.greed-serpent-front .crossing { opacity:.95; }
 
 @media (max-width: 900px) {
   .deity-greed .deity-hero-copy { width: min(62%, 790px); }
-  .deity-greed .deity-portrait { inset: 0 0 0 38%; }
-  .greed-serpent-ribbon,
-  .greed-serpent-ribbon-front { width: 100%; height: 500px; top: 360px; }
+  .deity-greed .deity-portrait { inset: 0 0 0 40%; }
+  .deity-greed .deity-portrait img { object-position: 66% 18%; }
+  .greed-serpent-back,
+  .greed-serpent-front { width: 100%; }
 }
-
 @media (max-width: 650px) {
   .deity-greed .deity-hero { min-height: auto; }
   .deity-greed .deity-hero-copy { width: 100%; min-height: auto; padding: 3rem 1.2rem 2rem; }
   .deity-greed .deity-portrait { position: relative; inset: auto; height: 320px; }
-  .deity-greed .deity-portrait img { position: absolute; }
+  .deity-greed .deity-portrait img { position: absolute; object-position: center 18%; }
   .deity-greed .deity-sigil { right: 1rem; bottom: 1rem; }
-  .greed-serpent-ribbon,
-  .greed-serpent-ribbon-front,
-  .greed-corner-accent { display: none; }
+  .greed-serpent-back,
+  .greed-serpent-front { display:none; }
   .deity-greed .deity-article section::before { opacity: .07; }
 }
 </style>
 </head>
 <body class="deity-body deity-greed">
-
 <header class="site-header">
   <div class="nav-wrap">
     <a class="brand" href="/">SINNERS</a>
@@ -398,47 +390,52 @@ body.deity-body.deity-greed::after {
 </section>
 
 <main class="deity-layout">
-  <div class="greed-serpent-ribbon" aria-hidden="true">
-    <svg viewBox="0 0 900 620" role="presentation" preserveAspectRatio="none">
+  <div class="greed-serpent-back" aria-hidden="true">
+    <svg viewBox="0 0 900 760" role="presentation" preserveAspectRatio="none">
       <defs>
-        <linearGradient id="goldSnakeGrad" x1="0" x2="1">
-          <stop offset="0%" stop-color="#6e4a12"/>
-          <stop offset="22%" stop-color="#ba892b"/>
-          <stop offset="50%" stop-color="#efc45d"/>
-          <stop offset="76%" stop-color="#be8c2d"/>
-          <stop offset="100%" stop-color="#714a13"/>
+        <linearGradient id="goldBody" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#6d4911"/>
+          <stop offset="24%" stop-color="#b68527"/>
+          <stop offset="50%" stop-color="#ebc15c"/>
+          <stop offset="75%" stop-color="#bb892b"/>
+          <stop offset="100%" stop-color="#6a4411"/>
         </linearGradient>
       </defs>
-      <!-- behind the Contract Magic panel top -->
-      <path class="snake-body" d="M160 78 C 300 36, 470 38, 630 90"/>
-      <path class="snake-inner" d="M160 78 C 300 36, 470 38, 630 90"/>
-      <path class="snake-scale" d="M260 60 l18 -12 M330 50 l18 -12 M405 49 l18 -12 M482 55 l18 -12 M555 70 l18 -12"/>
-      <!-- behind next panel from right side -->
-      <path class="snake-body" d="M675 490 C 735 445, 805 442, 874 480"/>
-      <path class="snake-inner" d="M675 490 C 735 445, 805 442, 874 480"/>
-      <path class="snake-scale" d="M720 468 l18 -10 M788 463 l18 -10 M846 478 l18 -10"/>
+      <!-- hidden-start bridge above the second section -->
+      <path class="body" d="M180 124 C 300 84, 468 84, 612 136"/>
+      <path class="inner" d="M180 124 C 300 84, 468 84, 612 136"/>
+      <path class="scale" d="M255 106 l16 -9 M324 95 l17 -9 M396 93 l17 -9 M472 97 l17 -9 M547 111 l17 -9"/>
+      <!-- under-curve connecting toward the lower-right section -->
+      <path class="body" d="M208 466 C 312 456, 430 460, 546 488 C 638 511, 708 550, 776 612"/>
+      <path class="inner" d="M208 466 C 312 456, 430 460, 546 488 C 638 511, 708 550, 776 612"/>
+      <path class="scale" d="M284 460 l16 -8 M356 460 l16 -8 M430 468 l16 -8 M509 482 l16 -8 M588 505 l16 -8 M664 540 l16 -8"/>
     </svg>
   </div>
 
-  <div class="greed-serpent-ribbon-front" aria-hidden="true">
-    <svg viewBox="0 0 900 620" role="presentation" preserveAspectRatio="none">
+  <div class="greed-serpent-front" aria-hidden="true">
+    <svg viewBox="0 0 900 760" role="presentation" preserveAspectRatio="none">
       <defs>
-        <linearGradient id="goldSnakeGradFront" x1="0" x2="1">
-          <stop offset="0%" stop-color="#6e4a12"/>
-          <stop offset="22%" stop-color="#ba892b"/>
-          <stop offset="50%" stop-color="#efc45d"/>
-          <stop offset="76%" stop-color="#be8c2d"/>
-          <stop offset="100%" stop-color="#714a13"/>
+        <linearGradient id="goldHead" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#6f4a12"/>
+          <stop offset="40%" stop-color="#c89734"/>
+          <stop offset="100%" stop-color="#efc860"/>
         </linearGradient>
       </defs>
-      <!-- front curve at the left of Contract Magic -->
-      <path class="snake-body" style="stroke:url(#goldSnakeGradFront)" d="M96 160 C 48 188, 44 260, 90 302 C 124 332, 165 336, 210 313"/>
-      <path class="snake-inner" d="M96 160 C 48 188, 44 260, 90 302 C 124 332, 165 336, 210 313"/>
-      <path class="snake-scale" d="M68 214 l18 -8 M63 248 l18 -8 M73 282 l18 -8 M104 308 l18 -8 M146 317 l18 -8"/>
-      <!-- front curve dropping in from the lower-right of the next panel -->
-      <path class="snake-body" style="stroke:url(#goldSnakeGradFront)" d="M690 446 C 770 490, 846 494, 890 548 C 906 567, 907 590, 890 610"/>
-      <path class="snake-inner" d="M690 446 C 770 490, 846 494, 890 548 C 906 567, 907 590, 890 610"/>
-      <path class="snake-scale" d="M743 473 l18 -8 M794 486 l18 -8 M842 502 l18 -8 M875 531 l16 -9"/>
+      <!-- crossover around the left side of 'An Immortality of His Own' -->
+      <path class="body crossing" style="stroke:url(#goldBody)" d="M116 203 C 72 234, 62 291, 92 336 C 122 382, 173 390, 224 365"/>
+      <path class="inner crossing" d="M116 203 C 72 234, 62 291, 92 336 C 122 382, 173 390, 224 365"/>
+      <path class="scale crossing" d="M84 247 l15 -8 M79 282 l16 -8 M90 318 l16 -8 M120 350 l16 -8 M159 368 l16 -8"/>
+      <!-- visible exit into the lower-right with one clear head -->
+      <path class="body crossing" style="stroke:url(#goldBody)" d="M688 520 C 754 545, 816 580, 855 616"/>
+      <path class="inner crossing" d="M688 520 C 754 545, 816 580, 855 616"/>
+      <path class="scale crossing" d="M733 538 l16 -7 M781 560 l16 -7 M825 588 l16 -7"/>
+      <g transform="translate(857,618) rotate(35)">
+        <path class="head" d="M0 0 C 11 -9, 31 -14, 53 -6 C 68 -1, 73 7, 72 16 C 71 25, 61 30, 49 30 C 28 31, 9 22, 0 11 C -3 7, -3 4, 0 0 Z"/>
+        <path class="head-line" d="M10 10 C 26 8, 42 10, 57 15"/>
+        <path class="head-line" d="M23 4 C 32 9, 38 16, 43 24"/>
+        <ellipse class="eye" cx="51" cy="12" rx="2.7" ry="2.1"/>
+        <path class="tongue" d="M71 15 C 78 14, 84 15, 90 19 M90 19 L95 15 M90 19 L95 23"/>
+      </g>
     </svg>
   </div>
 
