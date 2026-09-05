@@ -5,8 +5,218 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Pride · The Seven Sins · Sinners</title>
 <link rel="stylesheet" href="/styles.css">
+
+<style>
+/* =========================================================
+   PRIDE — PAGE-SPECIFIC VISUAL MOTIFS (V1)
+   Gears + Automaton crystal-conduit lines.
+   ========================================================= */
+:root {
+  --pride-ivory: rgba(236,232,220,.92);
+  --pride-gold: rgba(206,164,76,.82);
+  --pride-line: rgba(190,157,92,.28);
+  --pride-panel: rgba(20,22,28,.52);
+}
+
+body.deity-body.deity-pride {
+  position: relative;
+  overflow-x: hidden;
+}
+body.deity-body.deity-pride::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(215,190,125,.08), transparent 22rem),
+    radial-gradient(circle at 90% 72%, rgba(106,155,214,.06), transparent 24rem),
+    linear-gradient(120deg, transparent 0%, rgba(255,255,255,.018) 48%, transparent 100%);
+}
+body.deity-body.deity-pride > * { position: relative; z-index: 1; }
+
+/* Large background gears */
+.pride-page-decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.pride-gear {
+  position: absolute;
+  border-radius: 50%;
+  opacity: .12;
+  background:
+    radial-gradient(circle, transparent 0 28%, rgba(219,205,171,.23) 29% 33%, transparent 34% 48%, rgba(219,205,171,.16) 49% 52%, transparent 53%),
+    repeating-conic-gradient(from 0deg, rgba(219,205,171,.22) 0 5deg, transparent 5deg 18deg);
+  -webkit-mask: radial-gradient(circle, transparent 0 22%, #000 23% 70%, transparent 71%);
+  mask: radial-gradient(circle, transparent 0 22%, #000 23% 70%, transparent 71%);
+  filter: drop-shadow(0 0 18px rgba(225,209,169,.06));
+}
+.pride-gear.g1 { width: 300px; height: 300px; top: 180px; left: -110px; transform: rotate(8deg); }
+.pride-gear.g2 { width: 220px; height: 220px; top: 640px; right: -80px; transform: rotate(22deg); opacity: .10; }
+.pride-gear.g3 { width: 130px; height: 130px; bottom: 130px; left: 6%; transform: rotate(-12deg); opacity: .09; }
+.pride-gear.g4 { width: 110px; height: 110px; top: 380px; right: 8%; transform: rotate(14deg); opacity: .08; }
+
+/* Hero: no crop override — preserve existing image behavior */
+.deity-pride .deity-hero { isolation: isolate; }
+.deity-pride .deity-hero-copy::before {
+  content: "";
+  position: absolute;
+  left: clamp(1.5rem, 5vw, 6rem);
+  top: 19%;
+  width: 2px;
+  height: 62%;
+  background: linear-gradient(180deg, transparent, rgba(227,216,190,.18) 15%, rgba(227,216,190,.38) 50%, rgba(227,216,190,.18) 85%, transparent);
+  box-shadow: 0 0 12px rgba(218,197,150,.10);
+  opacity: .5;
+}
+.deity-pride .deity-hero-copy::after {
+  content: "";
+  position: absolute;
+  left: calc(clamp(1.5rem, 5vw, 6rem) - 4px);
+  top: 38%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #e4d29e;
+  box-shadow:
+    0 0 12px rgba(228,210,158,.36),
+    0 95px 0 -2px #8fc6ff,
+    0 95px 14px -1px rgba(143,198,255,.28),
+    0 190px 0 -2px #d397ff,
+    0 190px 14px -1px rgba(211,151,255,.24);
+  opacity: .78;
+}
+
+/* Panel styling */
+.deity-pride .deity-article section,
+.deity-pride .deity-facts,
+.deity-pride .deity-related {
+  position: relative;
+  overflow: visible;
+  border-color: rgba(190,157,92,.26);
+  background: linear-gradient(180deg, rgba(21,22,28,.45), rgba(6,10,16,.06));
+}
+.deity-pride .deity-article section::before,
+.deity-pride .deity-facts::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
+  opacity: .14;
+  background:
+    linear-gradient(90deg, rgba(143,198,255,.50), rgba(143,198,255,.50)) 0 12% / 52px 1px no-repeat,
+    linear-gradient(180deg, rgba(143,198,255,.50), rgba(143,198,255,.50)) 52px 12% / 1px 30px no-repeat,
+    radial-gradient(circle at 52px calc(12% + 30px), rgba(143,198,255,.95) 0 2px, transparent 2.5px),
+    linear-gradient(90deg, rgba(211,151,255,.42), rgba(211,151,255,.42)) 100% 72% / 44px 1px no-repeat,
+    linear-gradient(180deg, rgba(211,151,255,.42), rgba(211,151,255,.42)) calc(100% - 44px) 72% / 1px 26px no-repeat,
+    radial-gradient(circle at calc(100% - 44px) calc(72% + 26px), rgba(211,151,255,.9) 0 2px, transparent 2.5px);
+}
+
+/* Gear heading icon */
+.deity-pride .deity-article h2 {
+  position: relative;
+  padding-bottom: .65rem;
+}
+.deity-pride .deity-article h2::before {
+  content: "⚙";
+  display: inline-block;
+  margin-right: .55rem;
+  font-size: .72em;
+  color: rgba(222,198,139,.92);
+  text-shadow: 0 0 9px rgba(222,198,139,.16);
+  vertical-align: .08em;
+}
+.deity-pride .deity-article h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: min(260px, 60%);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(208,168,83,.48), transparent);
+}
+
+/* Matching gear divider */
+.pride-gear-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: min(300px, 84%);
+  margin: .35rem 0 1rem;
+}
+.pride-gear-divider.centered { margin: 0 auto 1rem; }
+.pride-gear-divider::before,
+.pride-gear-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, rgba(212,176,96,.36));
+}
+.pride-gear-divider::after { transform: scaleX(-1); }
+.pride-gear-divider .mini-gear {
+  font-size: 15px;
+  line-height: 1;
+  color: rgba(227,207,162,.92);
+  text-shadow: 0 0 9px rgba(227,207,162,.14);
+}
+.pride-gear-divider .mini-gear:nth-child(2) { font-size: 20px; }
+
+/* Crystal-conduit accents, each a different possible core color */
+.deity-pride .deity-article section:nth-child(1) { --core:#8fc6ff; }
+.deity-pride .deity-article section:nth-child(2) { --core:#e2c66f; }
+.deity-pride .deity-article section:nth-child(3) { --core:#d397ff; }
+.deity-pride .deity-article section:nth-child(4) { --core:#75d6b2; }
+.deity-pride .deity-article section::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: -1px;
+  width: 95px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--core), transparent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--core) 42%, transparent);
+  opacity: .52;
+}
+
+@keyframes pride-core-pulse {
+  0%,100% { opacity:.42; }
+  50% { opacity:.72; }
+}
+.deity-pride .deity-article section::after,
+.deity-pride .deity-hero-copy::after {
+  animation: pride-core-pulse 4.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deity-pride .deity-article section::after,
+  .deity-pride .deity-hero-copy::after { animation: none; }
+}
+@media (max-width: 900px) {
+  .pride-gear.g1 { left:-180px; opacity:.08; }
+  .pride-gear.g2 { right:-145px; opacity:.07; }
+  .deity-pride .deity-hero-copy::before,
+  .deity-pride .deity-hero-copy::after { display:none; }
+}
+@media (max-width: 650px) {
+  .pride-page-decor { display:none; }
+  .deity-pride .deity-article section::before,
+  .deity-pride .deity-facts::before { opacity:.08; }
+}
+</style>
+
 </head>
 <body class="deity-body deity-pride">
+
+<div class="pride-page-decor" aria-hidden="true">
+  <span class="pride-gear g1"></span>
+  <span class="pride-gear g2"></span>
+  <span class="pride-gear g3"></span>
+  <span class="pride-gear g4"></span>
+</div>
 
 <header class="site-header">
   <div class="nav-wrap">
@@ -28,6 +238,9 @@
   <div class="deity-portrait"><img src="/god-pride.png" alt="Artistic depiction of Pride"></div>
   <div class="deity-hero-copy">
     <a class="deity-back" href="/sins.html">← The Seven Sins</a>
+    <div class="pride-gear-divider" aria-hidden="true">
+      <span class="mini-gear">⚙</span><span class="mini-gear">⚙</span><span class="mini-gear">⚙</span>
+    </div>
     <div class="deity-kicker">The Seven Sins</div>
     <h1>Pride</h1>
     <p class="deity-tagline">Self-worth, identity, achievement, creation, and the confidence to recognize what you have become.</p>
@@ -46,6 +259,9 @@
   </article>
   <aside class="deity-aside">
     <section class="deity-facts">
+      <div class="pride-gear-divider centered" aria-hidden="true">
+        <span class="mini-gear">⚙</span><span class="mini-gear">⚙</span><span class="mini-gear">⚙</span>
+      </div>
       <h2>At a Glance</h2>
       <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Self-worth, confidence, achievement, identity</span></div>
 <div class="fact"><span class="fact-label">Major City</span><span class="fact-value">Oro</span></div>
