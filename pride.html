@@ -8,7 +8,7 @@
 
 <style>
 /* =========================================================
-   PRIDE — PAGE-SPECIFIC VISUAL MOTIFS (V4)
+   PRIDE — PAGE-SPECIFIC VISUAL MOTIFS (V5)
    Gears + Automaton crystal-conduit lines.
    ========================================================= */
 :root {
@@ -29,21 +29,17 @@ body.deity-body.deity-pride::before {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(circle at 12% 20%, rgba(215,190,125,.08), transparent 22rem),
-    radial-gradient(circle at 90% 72%, rgba(106,155,214,.06), transparent 24rem),
-    radial-gradient(circle at 7% 42%, rgba(226,210,162,.08) 0 0.65rem, rgba(226,210,162,.04) 0.7rem 4.1rem, transparent 4.2rem),
-    radial-gradient(circle at 92% 18%, rgba(226,210,162,.07) 0 0.55rem, rgba(226,210,162,.035) 0.6rem 3.4rem, transparent 3.5rem),
-    linear-gradient(120deg, transparent 0%, rgba(255,255,255,.018) 48%, transparent 100%);
+    radial-gradient(circle at 12% 20%, rgba(215,190,125,.05), transparent 22rem),
+    radial-gradient(circle at 90% 72%, rgba(106,155,214,.04), transparent 24rem),
+    linear-gradient(120deg, transparent 0%, rgba(255,255,255,.014) 48%, transparent 100%);
 }
-body.deity-body.deity-pride > * { position: relative; z-index: 1; }
-
-/* Large background gears */
-.pride-page-decor {
+body.deity-body.deity-pride > * { position: relative; z-index: 2; }
+body.deity-body.deity-pride > .pride-page-decor {
   position: fixed;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
-  z-index: 0;
+  z-index: 1;
 }
 .pride-gear-backdrop {
   position: absolute;
@@ -52,8 +48,8 @@ body.deity-body.deity-pride > * { position: relative; z-index: 1; }
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: .18;
-  filter: saturate(.78) brightness(.72);
+  opacity: .16;
+  filter: brightness(.74) saturate(.86);
   pointer-events: none;
 }
 .pride-gear {
@@ -354,3 +350,6 @@ body.deity-body.deity-pride > * { position: relative; z-index: 1; }
 
 </body>
 </html>
+<style>
+.pride-page-decor .pride-gear, .pride-page-decor .pride-ring { display:none !important; }
+</style>
