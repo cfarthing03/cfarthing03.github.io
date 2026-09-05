@@ -5,8 +5,270 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Wrath · The Seven Sins · Sinners</title>
 <link rel="stylesheet" href="/styles.css">
+
+<style>
+/* =========================================================
+   WRATH — PAGE-SPECIFIC VISUAL MOTIFS (V1)
+   The Sun + Time: solar discs, clock rings, hour marks, heat.
+   ========================================================= */
+:root{
+  --wrath-orange:#e77f2f;
+  --wrath-gold:#d9a247;
+  --wrath-red:#a84428;
+  --wrath-line:rgba(205,121,48,.26);
+  --wrath-panel:rgba(30,13,8,.28);
+}
+
+body.deity-body.deity-wrath{
+  position:relative;
+  overflow-x:hidden;
+}
+body.deity-body.deity-wrath::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(circle at 8% 26%,rgba(232,120,43,.10),transparent 22rem),
+    radial-gradient(circle at 91% 70%,rgba(184,64,31,.08),transparent 25rem),
+    linear-gradient(120deg,transparent,rgba(255,173,72,.016),transparent);
+}
+body.deity-body.deity-wrath>*{position:relative;z-index:1;}
+
+/* page-wide solar/time backdrop */
+.wrath-page-decor{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+.wrath-time-ring{
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(221,143,63,.14);
+  box-shadow:
+    0 0 0 18px rgba(221,143,63,.018),
+    0 0 0 42px rgba(221,143,63,.012),
+    0 0 22px rgba(221,116,47,.04);
+  opacity:.72;
+}
+.wrath-time-ring::before{
+  content:"";
+  position:absolute;
+  inset:-12px;
+  border-radius:50%;
+  background:repeating-conic-gradient(
+    from 0deg,
+    rgba(236,166,83,.32) 0 1deg,
+    transparent 1deg 29deg
+  );
+  -webkit-mask:radial-gradient(circle,transparent 0 78%,#000 79% 82%,transparent 83%);
+  mask:radial-gradient(circle,transparent 0 78%,#000 79% 82%,transparent 83%);
+}
+.wrath-time-ring.r1{width:430px;height:430px;top:160px;left:-235px;transform:rotate(-8deg);}
+.wrath-time-ring.r2{width:350px;height:350px;top:650px;right:-185px;transform:rotate(11deg);opacity:.60;}
+.wrath-time-ring.r3{width:260px;height:260px;top:1220px;left:-95px;transform:rotate(5deg);opacity:.48;}
+
+.wrath-sun-disc{
+  position:absolute;
+  width:92px;
+  height:92px;
+  border-radius:50%;
+  border:1px solid rgba(231,137,48,.18);
+  background:
+    radial-gradient(circle,rgba(229,137,48,.16) 0 14%,transparent 15% 47%,rgba(221,129,44,.10) 48% 50%,transparent 51%);
+  box-shadow:0 0 30px rgba(225,108,35,.06);
+  opacity:.58;
+}
+.wrath-sun-disc::before{
+  content:"";
+  position:absolute;
+  inset:-24px;
+  background:repeating-conic-gradient(
+    rgba(235,153,61,.24) 0 2deg,
+    transparent 2deg 15deg
+  );
+  -webkit-mask:radial-gradient(circle,transparent 0 58%,#000 59% 67%,transparent 68%);
+  mask:radial-gradient(circle,transparent 0 58%,#000 59% 67%,transparent 68%);
+}
+.wrath-sun-disc.s1{top:410px;right:9%;}
+.wrath-sun-disc.s2{top:980px;left:7%;transform:scale(.74);opacity:.38;}
+.wrath-sun-disc.s3{top:1500px;right:12%;transform:scale(.62);opacity:.30;}
+
+/* Hero solar accent */
+.deity-wrath .deity-hero{isolation:isolate;}
+.deity-wrath .deity-hero-copy::before{
+  content:"";
+  position:absolute;
+  left:clamp(.6rem,3vw,3rem);
+  top:16%;
+  width:2px;
+  height:64%;
+  background:linear-gradient(180deg,transparent,rgba(229,137,48,.26) 12%,rgba(240,168,71,.50) 50%,rgba(229,137,48,.26) 88%,transparent);
+  box-shadow:0 0 14px rgba(230,120,40,.10);
+  opacity:.56;
+}
+.deity-wrath .deity-hero-copy::after{
+  content:"";
+  position:absolute;
+  left:calc(clamp(.6rem,3vw,3rem) - 5px);
+  top:35%;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#e2933b;
+  box-shadow:
+    0 0 12px rgba(226,130,52,.24),
+    0 110px 0 -3px #b95633,
+    0 110px 12px -2px rgba(185,86,51,.20),
+    0 220px 0 -3px #e3af55,
+    0 220px 12px -2px rgba(227,175,85,.18);
+  opacity:.76;
+}
+
+/* Panels */
+.deity-wrath .deity-article section,
+.deity-wrath .deity-facts,
+.deity-wrath .deity-related{
+  position:relative;
+  overflow:visible;
+  border-color:rgba(179,91,35,.30);
+  background:linear-gradient(180deg,rgba(34,14,8,.34),rgba(7,10,15,.05));
+}
+
+/* Solar section heading icon */
+.deity-wrath .deity-article h2{
+  position:relative;
+  padding-bottom:.65rem;
+}
+.deity-wrath .deity-article h2::before{
+  content:"☀";
+  display:inline-block;
+  margin-right:.56rem;
+  font-size:.72em;
+  color:rgba(233,148,58,.94);
+  text-shadow:0 0 10px rgba(226,115,37,.20);
+  vertical-align:.05em;
+}
+.deity-wrath .deity-article h2::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:min(260px,60%);
+  height:1px;
+  background:linear-gradient(90deg,rgba(216,124,45,.52),transparent);
+}
+
+/* Sun / clock divider */
+.wrath-time-divider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  width:min(315px,86%);
+  margin:.4rem 0 1rem;
+}
+.wrath-time-divider.centered{margin:0 auto 1rem;}
+.wrath-time-divider::before,
+.wrath-time-divider::after{
+  content:"";
+  height:1px;
+  flex:1;
+  background:linear-gradient(90deg,transparent,rgba(219,141,56,.38));
+}
+.wrath-time-divider::after{transform:scaleX(-1);}
+.wrath-clock-glyph{
+  position:relative;
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  border:1.5px solid rgba(233,158,67,.88);
+  box-shadow:0 0 9px rgba(225,121,39,.10);
+}
+.wrath-clock-glyph::before,
+.wrath-clock-glyph::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform-origin:left center;
+  height:1.5px;
+  background:rgba(236,169,79,.92);
+}
+.wrath-clock-glyph::before{width:8px;transform:rotate(-90deg);}
+.wrath-clock-glyph::after{width:7px;transform:rotate(28deg);}
+.wrath-clock-glyph span{
+  position:absolute;
+  inset:-8px;
+  border-radius:50%;
+  background:repeating-conic-gradient(rgba(234,154,62,.78) 0 2deg,transparent 2deg 30deg);
+  -webkit-mask:radial-gradient(circle,transparent 0 76%,#000 77% 82%,transparent 83%);
+  mask:radial-gradient(circle,transparent 0 76%,#000 77% 82%,transparent 83%);
+}
+
+/* Small clock marks in card corners */
+.wrath-corner-clock{
+  position:absolute;
+  right:16px;
+  bottom:13px;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  border:1px solid rgba(228,142,52,.20);
+  opacity:.24;
+}
+.wrath-corner-clock::before{
+  content:"";
+  position:absolute;
+  inset:-5px;
+  border-radius:50%;
+  background:repeating-conic-gradient(rgba(228,142,52,.44) 0 2deg,transparent 2deg 30deg);
+  -webkit-mask:radial-gradient(circle,transparent 0 72%,#000 73% 80%,transparent 81%);
+  mask:radial-gradient(circle,transparent 0 72%,#000 73% 80%,transparent 81%);
+}
+.wrath-corner-clock::after{
+  content:"";
+  position:absolute;
+  width:11px;
+  height:1px;
+  left:50%;
+  top:50%;
+  transform:rotate(-38deg);
+  transform-origin:left center;
+  background:rgba(234,155,61,.72);
+}
+.deity-wrath .deity-article section:nth-child(even) .wrath-corner-clock{
+  right:auto;
+  left:16px;
+}
+
+@media (max-width:900px){
+  .wrath-time-ring.r1{left:-300px;opacity:.40;}
+  .wrath-time-ring.r2{right:-250px;opacity:.38;}
+  .wrath-sun-disc.s1{right:2%;opacity:.34;}
+  .deity-wrath .deity-hero-copy::before,
+  .deity-wrath .deity-hero-copy::after{display:none;}
+}
+@media (max-width:650px){
+  .wrath-page-decor{display:none;}
+}
+</style>
+
 </head>
 <body class="deity-body deity-wrath">
+
+
+<div class="wrath-page-decor" aria-hidden="true">
+  <span class="wrath-time-ring r1"></span>
+  <span class="wrath-time-ring r2"></span>
+  <span class="wrath-time-ring r3"></span>
+  <span class="wrath-sun-disc s1"></span>
+  <span class="wrath-sun-disc s2"></span>
+  <span class="wrath-sun-disc s3"></span>
+</div>
 
 <header class="site-header">
   <div class="nav-wrap">
@@ -28,6 +290,7 @@
   <div class="deity-portrait"><img src="/god-wrath.png" alt="Artistic depiction of Wrath"></div>
   <div class="deity-hero-copy">
     <a class="deity-back" href="/sins.html">← The Seven Sins</a>
+    <div class="wrath-time-divider" aria-hidden="true"><span class="wrath-clock-glyph"><span></span></span></div>
     <div class="deity-kicker">The Seven Sins</div>
     <h1>Wrath</h1>
     <p class="deity-tagline">Punishment. Justice. Strength. Courage. Fury with a purpose.</p>
@@ -38,14 +301,15 @@
 
 <main class="deity-layout">
   <article class="deity-article">
-    <section><h2>The God of Wrath</h2><p>Wrath is the god of punishment, justice, strength, courage, and controlled fury. In the modern world, his name does not mean throwing yourself into every fight you can find. Wrath is the anger that has a reason behind it: the refusal to accept cruelty, the courage to confront someone stronger than you, and the willingness to punish those who knowingly cause harm.</p><p>His most common divine image is a massive white beast with six enormous palms holding the Sun. The image is less about savagery than power under control. Wrath is terrifying because he can destroy, but his followers care far more about whether that destruction has a purpose.</p></section>
-<section><h2>Before Godhood</h2><p>Wrath did not begin as a person. His earliest known form was a simple obsidian blade. When the weapon bonded with a worthy host, it became frighteningly effective at finding and exploiting even the smallest weakness in an opponent. As the bond deepened, the host gained greater control over the weapon and the transformations it could produce.</p><p>That power had a cost. A host who pushed the bond too far could lose control entirely, allowing the weapon's power to erupt through the body until it tore them limb from limb. Wrath's history has always carried that same warning: strength without control eventually turns on the person wielding it.</p></section>
-<section><h2>The Ultimate Warrior</h2><p>Wrath's ascension into divinity was tied to an agreement with Greed, but one of the events that defined him afterward was his battle with Pride. Wrath's command over time made him nearly impossible to defeat. Wounds could be undone, attacks avoided before they landed, and mistakes erased almost as soon as they were made.</p><p>The confrontation cemented the title The Ultimate Warrior. It also shaped the way many people understand Wrath today. The point is not that he always wins because he is the strongest creature in the room. The point is that preparation, discipline, and complete commitment can turn strength into something far more dangerous.</p></section>
-<section><h2>Palin and the Blessing of Wrath</h2><p>Palin is the city most strongly shaped by Wrath. Combat there is religion, tradition, competition, conflict resolution, and, unusually, a source of literal sustenance. Those who fight in Wrath's name while within the city receive his blessing and no longer require food or water. Leave Palin and the blessing disappears; return, and it can be restored.</p><p>That has made fighting inseparable from everyday life. Brawls, duels, arenas, and training are not signs that Palin is collapsing into violence. They are part of how the culture functions. What matters is whether the fight has purpose, whether the opponent is worthy, and whether the person throwing the punch can still remember why they started.</p></section>
+    <section><h2>The God of Wrath</h2><p>Wrath is the god of punishment, justice, strength, courage, and controlled fury. In the modern world, his name does not mean throwing yourself into every fight you can find. Wrath is the anger that has a reason behind it: the refusal to accept cruelty, the courage to confront someone stronger than you, and the willingness to punish those who knowingly cause harm.</p><p>His most common divine image is a massive white beast with six enormous palms holding the Sun. The image is less about savagery than power under control. Wrath is terrifying because he can destroy, but his followers care far more about whether that destruction has a purpose.</p><span class="wrath-corner-clock" aria-hidden="true"></span></section>
+<section><h2>Before Godhood</h2><p>Wrath did not begin as a person. His earliest known form was a simple obsidian blade. When the weapon bonded with a worthy host, it became frighteningly effective at finding and exploiting even the smallest weakness in an opponent. As the bond deepened, the host gained greater control over the weapon and the transformations it could produce.</p><p>That power had a cost. A host who pushed the bond too far could lose control entirely, allowing the weapon's power to erupt through the body until it tore them limb from limb. Wrath's history has always carried that same warning: strength without control eventually turns on the person wielding it.</p><span class="wrath-corner-clock" aria-hidden="true"></span></section>
+<section><h2>The Ultimate Warrior</h2><p>Wrath's ascension into divinity was tied to an agreement with Greed, but one of the events that defined him afterward was his battle with Pride. Wrath's command over time made him nearly impossible to defeat. Wounds could be undone, attacks avoided before they landed, and mistakes erased almost as soon as they were made.</p><p>The confrontation cemented the title The Ultimate Warrior. It also shaped the way many people understand Wrath today. The point is not that he always wins because he is the strongest creature in the room. The point is that preparation, discipline, and complete commitment can turn strength into something far more dangerous.</p><span class="wrath-corner-clock" aria-hidden="true"></span></section>
+<section><h2>Palin and the Blessing of Wrath</h2><p>Palin is the city most strongly shaped by Wrath. Combat there is religion, tradition, competition, conflict resolution, and, unusually, a source of literal sustenance. Those who fight in Wrath's name while within the city receive his blessing and no longer require food or water. Leave Palin and the blessing disappears; return, and it can be restored.</p><p>That has made fighting inseparable from everyday life. Brawls, duels, arenas, and training are not signs that Palin is collapsing into violence. They are part of how the culture functions. What matters is whether the fight has purpose, whether the opponent is worthy, and whether the person throwing the punch can still remember why they started.</p><span class="wrath-corner-clock" aria-hidden="true"></span></section>
 
   </article>
   <aside class="deity-aside">
     <section class="deity-facts">
+      <div class="wrath-time-divider centered" aria-hidden="true"><span class="wrath-clock-glyph"><span></span></span></div>
       <h2>At a Glance</h2>
       <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Justice, punishment, strength, courage</span></div>
 <div class="fact"><span class="fact-label">Major City</span><span class="fact-value">Palin</span></div>
