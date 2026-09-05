@@ -5,8 +5,329 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gluttony · The Seven Sins · Sinners</title>
 <link rel="stylesheet" href="/styles.css">
+<style>
+/* =========================================================
+   GLUTTONY — PAGE-SPECIFIC VISUAL MOTIFS (V1)
+   Feast / consumption / abundance flavor pass
+   ========================================================= */
+body.deity-body.deity-gluttony {
+  position: relative;
+  overflow-x: hidden;
+}
+body.deity-body.deity-gluttony > *:not(.gluttony-page-decor) {
+  position: relative;
+  z-index: 1;
+}
+body.deity-body.deity-gluttony::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 84% 18%, rgba(143, 52, 22, 0.14), transparent 28%),
+    radial-gradient(circle at 12% 82%, rgba(164, 100, 34, 0.10), transparent 22%),
+    radial-gradient(circle at 65% 66%, rgba(100, 33, 16, 0.08), transparent 20%);
+}
+body.deity-body.deity-gluttony::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.22;
+  background:
+    linear-gradient(115deg, transparent 0%, rgba(211, 151, 75, 0.035) 47%, transparent 100%),
+    repeating-linear-gradient(180deg, transparent 0 140px, rgba(176, 98, 35, 0.04) 140px 141px, transparent 141px 280px);
+}
+.gluttony-page-decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.gluttony-haze,
+.gluttony-ring {
+  position: absolute;
+}
+.gluttony-haze {
+  filter: blur(44px);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(150, 83, 32, 0.20), rgba(74, 25, 11, 0.10) 45%, transparent 72%);
+}
+.gluttony-haze.one { width: 30vw; height: 180px; top: 180px; right: -6vw; opacity: .28; }
+.gluttony-haze.two { width: 28vw; height: 150px; bottom: 140px; left: -5vw; opacity: .20; }
+.gluttony-ring {
+  border-radius: 50%;
+  border: 1px solid rgba(203, 141, 60, 0.10);
+  box-shadow: inset 0 0 42px rgba(122, 62, 24, 0.06), 0 0 40px rgba(122, 62, 24, 0.05);
+}
+.gluttony-ring.one { width: 170px; height: 170px; top: 120px; right: 11%; opacity: .22; }
+.gluttony-ring.two { width: 96px; height: 96px; bottom: 180px; left: 7%; opacity: .16; }
+
+/* hero */
+.deity-gluttony .deity-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.deity-gluttony .deity-portrait {
+  position: relative;
+}
+.deity-gluttony .deity-portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5,10,18,.18) 0%, rgba(5,10,18,.10) 42%, rgba(5,10,18,.48) 100%),
+    linear-gradient(0deg, rgba(6,8,14,.24), transparent 40%);
+  pointer-events: none;
+}
+.deity-gluttony .deity-portrait img {
+  object-position: center 22%;
+}
+.deity-gluttony .deity-hero-copy h1 {
+  text-shadow: 0 0 26px rgba(123, 65, 27, 0.20);
+}
+
+/* feast divider */
+.gluttony-feast-divider {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: min(325px, 82%);
+  margin: .35rem 0 1rem;
+}
+.gluttony-feast-divider::before,
+.gluttony-feast-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, rgba(205, 146, 68, 0.42));
+}
+.gluttony-feast-divider::after { transform: scaleX(-1); }
+.gluttony-plate {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgba(221, 167, 92, 0.66);
+  background:
+    radial-gradient(circle at 36% 33%, rgba(255, 225, 176, 0.26), transparent 28%),
+    radial-gradient(circle, rgba(137, 66, 28, 0.92) 0 37%, rgba(68, 29, 11, 0.95) 38% 50%, rgba(186, 127, 53, 0.92) 51% 57%, rgba(18, 12, 7, 0.95) 58%);
+  box-shadow: 0 0 9px rgba(166, 100, 39, 0.13);
+}
+.gluttony-plate.small {
+  width: 12px;
+  height: 12px;
+  opacity: .82;
+}
+.gluttony-feast-divider.compact {
+  justify-content: center;
+  margin: 0 auto .95rem;
+  gap: 10px;
+}
+.gluttony-feast-divider.compact .gluttony-plate {
+  width: 14px;
+  height: 14px;
+}
+.gluttony-feast-divider.compact .gluttony-plate.small {
+  width: 11px;
+  height: 11px;
+}
+
+/* article panels */
+.deity-gluttony .deity-article section,
+.deity-gluttony .deity-facts,
+.deity-gluttony .deity-related {
+  position: relative;
+  overflow: visible;
+}
+.deity-gluttony .deity-article section {
+  border-color: rgba(138, 77, 28, 0.28);
+  background: linear-gradient(180deg, rgba(44, 18, 8, 0.14), rgba(6, 11, 18, 0.05));
+}
+.deity-gluttony .deity-article section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .11;
+  background:
+    repeating-linear-gradient(180deg, rgba(201, 147, 77, 0.20) 0 1px, transparent 1px 15px);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
+}
+.deity-gluttony .deity-article h2 {
+  position: relative;
+  padding-bottom: .65rem;
+}
+.deity-gluttony .deity-article h2::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 .55rem .08rem 0;
+  border-radius: 50%;
+  border: 1px solid rgba(217, 161, 88, 0.64);
+  background: radial-gradient(circle, #9d5a25 0 40%, #3f1d0a 42% 53%, #d09a50 56%);
+  box-shadow: 0 0 8px rgba(173, 98, 36, 0.16);
+}
+.deity-gluttony .deity-article h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: min(250px, 58%);
+  height: 5px;
+  background:
+    linear-gradient(rgba(191, 130, 57, 0.42), rgba(191, 130, 57, 0.42)) top/100% 1px no-repeat,
+    linear-gradient(90deg, rgba(191, 130, 57, 0.24), transparent) bottom/100% 1px no-repeat;
+}
+
+/* bites */
+.gluttony-bite-right::after,
+.gluttony-bite-left::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+.gluttony-bite-right::after {
+  top: -2px;
+  right: -2px;
+  width: 122px;
+  height: 62px;
+  background:
+    radial-gradient(circle at 18px 18px, #050a12 0 16px, transparent 17px),
+    radial-gradient(circle at 58px 8px, #050a12 0 12px, transparent 13px),
+    radial-gradient(circle at 98px 18px, #050a12 0 15px, transparent 16px);
+}
+.gluttony-bite-left::after {
+  bottom: -2px;
+  left: -2px;
+  width: 116px;
+  height: 58px;
+  background:
+    radial-gradient(circle at 16px 40px, #050a12 0 15px, transparent 16px),
+    radial-gradient(circle at 48px 56px, #050a12 0 12px, transparent 13px),
+    radial-gradient(circle at 82px 40px, #050a12 0 16px, transparent 17px);
+}
+
+/* drips / glaze */
+.gluttony-drip {
+  position: absolute;
+  left: 8%;
+  bottom: -20px;
+  height: 22px;
+  border-radius: 999px;
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 0 16px rgba(0,0,0,.12);
+}
+.gluttony-drip::before,
+.gluttony-drip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.gluttony-drip.amber {
+  width: 200px;
+  background: linear-gradient(180deg, #cf8e45 0%, #8b4e23 100%);
+}
+.gluttony-drip.amber::before {
+  background:
+    radial-gradient(circle at 24px 21px, #8b4e23 0 18px, transparent 19px),
+    radial-gradient(circle at 86px 23px, #8b4e23 0 13px, transparent 14px),
+    radial-gradient(circle at 142px 24px, #8b4e23 0 17px, transparent 18px);
+  transform: translateY(15px);
+}
+.gluttony-drip.amber::after {
+  inset: 2px 4px auto 4px;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,221,169,.35), rgba(255,221,169,.08));
+}
+.gluttony-drip.wine {
+  width: 158px;
+  left: auto;
+  right: 11%;
+  bottom: -18px;
+  background: linear-gradient(180deg, #7c2c24 0%, #47130f 100%);
+}
+.gluttony-drip.wine::before {
+  background:
+    radial-gradient(circle at 20px 18px, #47130f 0 14px, transparent 15px),
+    radial-gradient(circle at 68px 20px, #47130f 0 11px, transparent 12px),
+    radial-gradient(circle at 116px 19px, #47130f 0 15px, transparent 16px);
+  transform: translateY(12px);
+}
+.gluttony-drip.wine::after {
+  inset: 2px 5px auto 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(235,164,151,.18), rgba(235,164,151,0));
+}
+
+/* aside */
+.deity-gluttony .deity-facts::before,
+.deity-gluttony .deity-facts::after {
+  content: "";
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  bottom: -18px;
+  opacity: .16;
+  pointer-events: none;
+  border-bottom: 2px solid rgba(220, 212, 191, 0.26);
+  border-right: 2px solid rgba(220, 212, 191, 0.26);
+  border-radius: 0 0 100% 0;
+}
+.deity-gluttony .deity-facts::before {
+  left: -14px;
+  transform: scaleX(-1) rotate(8deg);
+}
+.deity-gluttony .deity-facts::after {
+  right: -14px;
+  transform: rotate(-8deg);
+}
+.deity-gluttony .deity-facts {
+  border-color: rgba(138, 77, 28, 0.30);
+  background: linear-gradient(180deg, rgba(44, 18, 8, 0.12), rgba(7, 11, 18, 0.06));
+}
+.deity-gluttony .deity-related {
+  border-color: rgba(138, 77, 28, 0.26);
+}
+.deity-gluttony .deity-sigil {
+  box-shadow: 0 0 28px rgba(129, 64, 28, 0.10);
+}
+
+@media (max-width: 900px) {
+  .gluttony-ring.one { right: 4%; }
+  .gluttony-drip.amber { width: 170px; left: 10%; }
+  .gluttony-drip.wine { width: 132px; right: 8%; }
+}
+@media (max-width: 650px) {
+  .gluttony-page-decor { display: none; }
+  .gluttony-drip { display: none; }
+  .gluttony-bite-right::after,
+  .gluttony-bite-left::after {
+    display: none;
+  }
+  .deity-gluttony .deity-portrait img {
+    object-position: center 20%;
+  }
+}
+</style>
 </head>
 <body class="deity-body deity-gluttony">
+
+<div class="gluttony-page-decor" aria-hidden="true">
+  <span class="gluttony-haze one"></span>
+  <span class="gluttony-haze two"></span>
+  <span class="gluttony-ring one"></span>
+  <span class="gluttony-ring two"></span>
+</div>
 
 <header class="site-header">
   <div class="nav-wrap">
@@ -28,6 +349,11 @@
   <div class="deity-portrait"><img src="/god-gluttony.jpg" alt="Artistic depiction of Gluttony"></div>
   <div class="deity-hero-copy">
     <a class="deity-back" href="/sins.html">← The Seven Sins</a>
+    <div class="gluttony-feast-divider" aria-hidden="true">
+      <span class="gluttony-plate small"></span>
+      <span class="gluttony-plate"></span>
+      <span class="gluttony-plate small"></span>
+    </div>
     <div class="deity-kicker">The Seven Sins</div>
     <h1>Gluttony</h1>
     <p class="deity-tagline">Nourishment, fulfillment, abundance—and the difference between being full and being satisfied.</p>
@@ -38,20 +364,25 @@
 
 <main class="deity-layout">
   <article class="deity-article">
-    <section><h2>The Hunger That Can Eat Anything</h2><p>Gluttony can consume almost anything. Food and physical matter are the obvious examples, but his appetite can extend to living creatures, energy, knowledge, and even things that are difficult to describe as physical objects at all. When he consumes something, he can gain qualities, abilities, or attributes from it.</p><p>That makes his power frighteningly open-ended. It also makes him difficult to understand. Gluttony's hunger is not merely a need for calories. It is a mechanism through which he experiences, acquires, and becomes.</p></section>
-<section><h2>What Gluttony Represents</h2><p>Modern Gluttony is associated with nourishment, fulfillment, abundance, and experiencing life fully. Hunger is treated as a signal that something is missing. The important question is what you use to fill that absence.</p><p>A person can eat until they cannot move and still feel empty. Someone else can share a modest meal with people they love and leave completely satisfied. Gluttony's faith lives in the difference.</p></section>
-<section><h2>Hus</h2><p>Hus is the largest city on the continent by population. Its public identity is warm, communal, and heavily centered on food. Feasts, restaurants, public meals, hospitality, and culinary tradition make the city one of the easiest places to associate with Gluttony's more generous aspects.</p><p>It is also the crime capital of the continent. That is less contradiction than mathematics. Hus has the most people, so it also has the most thieves, gangs, smugglers, criminal networks, and opportunities for someone to decide they are hungry for something that belongs to somebody else.</p></section>
-<section><h2>The Church of Gluttony</h2><p>Gluttony's organized church has historically treated cooking as craft, worship, memory, and hospitality. Ingredients are scrutinized, recipes preserved, public meals organized, and feeding another person can be treated as a genuine religious act.</p><p>The church lost much of its prominence after its former leader was killed by Pride. What remains is smaller and still rebuilding, currently led by a humble gnome with the help of a resourceful goblin who manages the finances. For a faith built around abundance, rebuilding from scarcity has become its own lesson.</p></section>
-
+    <section class="gluttony-bite-right"><h2>The Hunger That Can Eat Anything</h2><p>Gluttony can consume almost anything. Food and physical matter are the obvious examples, but his appetite can extend to living creatures, energy, knowledge, and even things that are difficult to describe as physical objects at all. When he consumes something, he can gain qualities, abilities, or attributes from it.</p><p>That makes his power frighteningly open-ended. It also makes him difficult to understand. Gluttony's hunger is not merely a need for calories. It is a mechanism through which he experiences, acquires, and becomes.</p></section>
+    <section><h2>What Gluttony Represents</h2><p>Modern Gluttony is associated with nourishment, fulfillment, abundance, and experiencing life fully. Hunger is treated as a signal that something is missing. The important question is what you use to fill that absence.</p><p>A person can eat until they cannot move and still feel empty. Someone else can share a modest meal with people they love and leave completely satisfied. Gluttony's faith lives in the difference.</p><div class="gluttony-drip amber" aria-hidden="true"></div></section>
+    <section class="gluttony-bite-left"><h2>Hus</h2><p>Hus is the largest city on the continent by population. Its public identity is warm, communal, and heavily centered on food. Feasts, restaurants, public meals, hospitality, and culinary tradition make the city one of the easiest places to associate with Gluttony's more generous aspects.</p><p>It is also the crime capital of the continent. That is less contradiction than mathematics. Hus has the most people, so it also has the most thieves, gangs, smugglers, criminal networks, and opportunities for someone to decide they are hungry for something that belongs to somebody else.</p></section>
+    <section><h2>The Church of Gluttony</h2><p>Gluttony's organized church has historically treated cooking as craft, worship, memory, and hospitality. Ingredients are scrutinized, recipes preserved, public meals organized, and feeding another person can be treated as a genuine religious act.</p><p>The church lost much of its prominence after its former leader was killed by Pride. What remains is smaller and still rebuilding, currently led by a humble gnome with the help of a resourceful goblin who manages the finances. For a faith built around abundance, rebuilding from scarcity has become its own lesson.</p></section>
   </article>
   <aside class="deity-aside">
     <section class="deity-facts">
+      <div class="gluttony-feast-divider compact" aria-hidden="true">
+        <span class="gluttony-plate small"></span>
+        <span class="gluttony-plate"></span>
+        <span class="gluttony-plate small"></span>
+      </div>
       <h2>At a Glance</h2>
       <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Nourishment, fulfillment, abundance</span></div>
-<div class="fact"><span class="fact-label">Major City</span><span class="fact-value">Hus</span></div>
-<div class="fact"><span class="fact-label">Associated Faith</span><span class="fact-value"><a href="/church-of-gluttony.html">Church of Gluttony</a></span></div>
-<div class="fact"><span class="fact-label">Known Ability</span><span class="fact-value">Consumption and assimilation</span></div>
-<div class="fact"><span class="fact-label">Common Form</span><span class="fact-value">Massive humanoid with boar-like traits</span></div>
+      <div class="fact"><span class="fact-label">Major City</span><span class="fact-value">Hus</span></div>
+      <div class="fact"><span class="fact-label">Associated Faith</span><span class="fact-value"><a href="/church-of-gluttony.html">Church of Gluttony</a></span></div>
+      <div class="fact"><span class="fact-label">Known Ability</span><span class="fact-value">Consumption and assimilation</span></div>
+      <div class="fact"><span class="fact-label">Common Form</span><span class="fact-value">Massive humanoid with boar-like traits</span></div>
+      <div class="gluttony-drip wine" aria-hidden="true"></div>
     </section>
     <section class="deity-related">
       <h2>Keep Exploring</h2>
