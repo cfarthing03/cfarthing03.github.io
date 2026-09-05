@@ -5,8 +5,235 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Sloth · The Seven Sins · Sinners</title>
 <link rel="stylesheet" href="/styles.css">
+
+<style>
+/* Sloth-specific visual flavor */
+body.deity-body.deity-sloth {
+  position: relative;
+  overflow-x: hidden;
+}
+body.deity-body.deity-sloth > *:not(.sloth-page-decor) {
+  position: relative;
+  z-index: 1;
+}
+body.deity-body.deity-sloth::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(160, 128, 255, 0.10), transparent 28%),
+    radial-gradient(circle at 82% 24%, rgba(145, 118, 236, 0.08), transparent 22%),
+    radial-gradient(circle at 50% 78%, rgba(119, 92, 190, 0.08), transparent 26%),
+    linear-gradient(180deg, rgba(3, 6, 14, 0.00), rgba(3, 6, 14, 0.28));
+}
+body.deity-body.deity-sloth::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    linear-gradient(115deg, transparent 0%, rgba(186, 158, 255, 0.025) 45%, transparent 100%),
+    repeating-linear-gradient(180deg, transparent 0 120px, rgba(186, 158, 255, 0.025) 120px 121px, transparent 121px 240px);
+  opacity: 0.55;
+}
+.sloth-page-decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.sloth-moon, .sloth-mist, .sloth-drift {
+  position: absolute;
+}
+.sloth-moon {
+  border-radius: 50%;
+  border: 1px solid rgba(205, 183, 255, 0.16);
+  box-shadow: 0 0 40px rgba(144, 111, 238, 0.12), inset 0 0 50px rgba(144, 111, 238, 0.08);
+}
+.sloth-moon::before {
+  content: "";
+  position: absolute;
+  inset: 11%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 36% 35%, rgba(231, 222, 255, 0.10), rgba(154, 129, 230, 0.06) 40%, transparent 72%);
+}
+.sloth-moon::after {
+  content: "";
+  position: absolute;
+  width: 78%;
+  height: 78%;
+  right: -3%;
+  top: 11%;
+  border-radius: 50%;
+  background: rgba(3, 6, 14, 0.96);
+  box-shadow: -18px 0 24px rgba(138, 111, 224, 0.12);
+}
+.sloth-moon.one { width: 230px; height: 230px; top: 130px; right: 8%; opacity: 0.55; }
+.sloth-moon.two { width: 140px; height: 140px; bottom: 180px; left: 4%; opacity: 0.34; }
+.sloth-moon.three { width: 84px; height: 84px; top: 58%; right: 18%; opacity: 0.22; }
+.sloth-mist {
+  filter: blur(42px);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(159, 131, 245, 0.18), rgba(106, 83, 180, 0.08) 46%, transparent 74%);
+  animation: slothDrift 26s ease-in-out infinite alternate;
+}
+.sloth-mist.one { width: 42vw; height: 180px; top: 220px; left: -8vw; opacity: 0.32; }
+.sloth-mist.two { width: 34vw; height: 140px; bottom: 160px; right: -3vw; opacity: 0.24; animation-duration: 32s; }
+.sloth-mist.three { width: 22vw; height: 120px; top: 58%; left: 30%; opacity: 0.16; animation-duration: 29s; }
+.sloth-drift {
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(220, 209, 255, 0.34), transparent);
+  opacity: 0.35;
+  transform: rotate(-8deg);
+  animation: slothFade 12s ease-in-out infinite;
+}
+.sloth-drift.one { top: 22%; left: 64%; }
+.sloth-drift.two { top: 47%; left: 12%; width: 180px; animation-delay: -3s; }
+.sloth-drift.three { top: 72%; left: 73%; width: 150px; animation-delay: -7s; }
+.sloth-phase-strip {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  color: rgba(212, 192, 255, 0.68);
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+.deity-sloth .deity-hero {
+  overflow: hidden;
+}
+.deity-sloth .deity-hero-copy h1 {
+  text-shadow: 0 0 24px rgba(170, 138, 255, 0.18);
+}
+.deity-sloth .deity-tagline,
+.deity-sloth .deity-summary {
+  max-width: 40rem;
+}
+.deity-sloth .sloth-withheld-card {
+  position: relative;
+  overflow: hidden;
+}
+.deity-sloth .sloth-withheld-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(153, 122, 242, 0.07), transparent 58%);
+  pointer-events: none;
+}
+.deity-sloth .sloth-withheld-card::after {
+  content: "";
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: -1px;
+  height: 18px;
+  background:
+    radial-gradient(circle at 8% 0, rgba(154, 126, 240, 0.25) 0 8px, transparent 9px),
+    radial-gradient(circle at 22% 0, rgba(154, 126, 240, 0.22) 0 10px, transparent 11px),
+    radial-gradient(circle at 41% 0, rgba(154, 126, 240, 0.20) 0 7px, transparent 8px),
+    radial-gradient(circle at 63% 0, rgba(154, 126, 240, 0.25) 0 11px, transparent 12px),
+    radial-gradient(circle at 82% 0, rgba(154, 126, 240, 0.18) 0 9px, transparent 10px);
+  opacity: 0.9;
+}
+.deity-sloth .deity-sigil {
+  background: radial-gradient(circle at 50% 50%, rgba(146, 112, 236, 0.24), rgba(146, 112, 236, 0.07) 42%, transparent 72%);
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(173, 145, 247, 0.30), 0 0 32px rgba(146, 112, 236, 0.18);
+}
+.deity-sloth .deity-sigil img {
+  filter: brightness(1.15) contrast(1.08) drop-shadow(0 0 16px rgba(173, 145, 247, 0.26));
+}
+.deity-sloth .deity-article section,
+.deity-sloth .deity-facts,
+.deity-sloth .deity-related {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(160, 128, 255, 0.11);
+  box-shadow: inset 0 1px 0 rgba(214, 200, 255, 0.04);
+}
+.deity-sloth .deity-article section {
+  background: linear-gradient(180deg, rgba(20, 18, 35, 0.24), rgba(7, 8, 18, 0.08));
+}
+.deity-sloth .deity-facts,
+.deity-sloth .deity-related {
+  background: linear-gradient(180deg, rgba(19, 15, 34, 0.24), rgba(7, 8, 18, 0.12));
+}
+.deity-sloth .deity-article section::after,
+.deity-sloth .deity-facts::after,
+.deity-sloth .deity-related::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 14px;
+  background:
+    radial-gradient(circle at 7% 0, rgba(163, 132, 245, 0.16) 0 7px, transparent 8px),
+    radial-gradient(circle at 24% 0, rgba(163, 132, 245, 0.13) 0 8px, transparent 9px),
+    radial-gradient(circle at 43% 0, rgba(163, 132, 245, 0.11) 0 6px, transparent 7px),
+    radial-gradient(circle at 62% 0, rgba(163, 132, 245, 0.16) 0 9px, transparent 10px),
+    radial-gradient(circle at 79% 0, rgba(163, 132, 245, 0.12) 0 7px, transparent 8px),
+    radial-gradient(circle at 93% 0, rgba(163, 132, 245, 0.10) 0 5px, transparent 6px);
+}
+.deity-sloth .deity-article h2::before,
+.deity-sloth .deity-facts h2::before,
+.deity-sloth .deity-related h2::before {
+  content: "☾ ";
+  color: rgba(202, 183, 255, 0.78);
+}
+.deity-sloth .deity-facts::before {
+  content: "◐  ◑  ◒  ◓";
+  display: block;
+  text-align: center;
+  letter-spacing: 0.35em;
+  color: rgba(208, 190, 255, 0.66);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.deity-sloth .fact {
+  position: relative;
+}
+.deity-sloth .fact:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(174, 147, 248, 0.18), transparent);
+}
+@keyframes slothDrift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(20px, -10px, 0) scale(1.03); }
+  100% { transform: translate3d(-18px, 14px, 0) scale(0.98); }
+}
+@keyframes slothFade {
+  0%, 100% { opacity: 0.15; transform: rotate(-8deg) translateX(0); }
+  50% { opacity: 0.42; transform: rotate(-8deg) translateX(14px); }
+}
+</style>
+
 </head>
 <body class="deity-body deity-sloth">
+
+<div class="sloth-page-decor" aria-hidden="true">
+  <div class="sloth-moon one"></div>
+  <div class="sloth-moon two"></div>
+  <div class="sloth-moon three"></div>
+  <div class="sloth-mist one"></div>
+  <div class="sloth-mist two"></div>
+  <div class="sloth-mist three"></div>
+  <div class="sloth-drift one"></div>
+  <div class="sloth-drift two"></div>
+  <div class="sloth-drift three"></div>
+</div>
+
 
 <header class="site-header">
   <div class="nav-wrap">
@@ -38,6 +265,7 @@
         
   <div class="deity-hero-copy">
     <a class="deity-back" href="/sins.html">← The Seven Sins</a>
+    <div class="sloth-phase-strip" aria-hidden="true"><span>◐</span><span>◑</span><span>◒</span><span>◓</span></div>
     <div class="deity-kicker">The Seven Sins</div>
     <h1>Sloth</h1>
     <p class="deity-tagline">Rest, recovery, death, rebirth, and the patience to survive what cannot be rushed.</p>
