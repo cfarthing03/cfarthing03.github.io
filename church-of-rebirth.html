@@ -21,7 +21,17 @@ body.faith-body.faith-rebirth{
 .faith-rebirth .faith-card,
 .faith-rebirth .faith-article section{border-color:rgba(205,121,48,.25);}
 .faith-rebirth .faith-card a{color:var(--rebirth-gold);}
-.faith-rebirth .faith-sigil{border-color:rgba(217,162,71,.30);}
+.faith-rebirth .faith-sigil{
+  border-color:rgba(217,162,71,.30);
+  width:clamp(125px,10vw,165px);
+  height:clamp(125px,10vw,165px);
+  flex:0 0 auto;
+}
+.faith-rebirth .faith-sigil img{
+  width:74%;
+  height:74%;
+  object-fit:contain;
+}
 </style>
 </head>
 <body class="faith-body faith-rebirth">

@@ -155,6 +155,10 @@ body.odins-library-page{
   margin-top:38px;
 }
 
+.shelf-row:first-child{
+  padding-left:150px;
+}
+
 .shelf-row::after{
   content:"";
   position:absolute;
@@ -273,10 +277,13 @@ body.odins-library-page{
 
 /* Amnestis: forgotten even among the unknown */
 .god-book.amnestis{
-  /* Lean into Auralithos instead of floating by itself. */
-  transform-origin:bottom right;
-  transform:rotate(9deg) translate(9px,-5px);
-  margin-right:-3px;
+  /* Forgotten even among forgotten gods: abandoned against the left bookcase wall. */
+  position:absolute;
+  left:38px;
+  bottom:30px;
+  transform-origin:bottom center;
+  transform:rotate(-22deg);
+  margin:0;
   --book:#262327;
 }
 .god-book.amnestis .book-name{
@@ -285,7 +292,7 @@ body.odins-library-page{
 .god-book.amnestis:hover,
 .god-book.amnestis:focus-visible,
 .god-book.amnestis.is-selected{
-  transform:rotate(5deg) translate(8px,-13px) scale(1.08);
+  transform:rotate(-18deg) translateY(-5px) scale(1.08);
 }
 .god-book.amnestis:hover .book-name,
 .god-book.amnestis:focus-visible .book-name,
@@ -367,6 +374,7 @@ body.odins-library-page{
 
 @media(max-width:900px){
   .abandoned-library{min-height:auto;}
+  .shelf-row:first-child{padding-left:90px;}
   .bookcase{
     width:94%;
     padding:22px 12px 24px;
@@ -388,6 +396,7 @@ body.odins-library-page{
 
 @media(max-width:560px){
   .library-shell{padding-inline:8px;}
+  .shelf-row:first-child{padding-left:4px;}
   .bookcase{width:100%;}
   .shelf-row{
     flex-wrap:wrap;
@@ -400,7 +409,13 @@ body.odins-library-page{
     width:62px;
     height:145px;
   }
-  .god-book.amnestis{transform:rotate(7deg) translate(5px,-3px);}
+  .god-book.amnestis{
+    position:relative;
+    left:auto;
+    bottom:auto;
+    transform:rotate(-10deg) translateY(-2px);
+    margin-right:-8px;
+  }
 }
 </style>
 </head>
