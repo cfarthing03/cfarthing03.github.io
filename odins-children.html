@@ -1,4 +1,582 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Odin's Children · Sinners</title><link rel="stylesheet" href="/styles.css"></head><body>
-<header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods & Religion</a><a href="/history.html">History</a><a href="/people.html">People & Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header>
-<main class="page"><div class="kicker">Gods & Religion</div><h1 style="font-size:clamp(2.5rem,7vw,5rem);color:var(--gold2)">Odin's Children</h1><p class="section-intro">A pantheon most people do not even know enough about to ask the right questions.</p><section class="lore-section"><h2>Coming Next</h2><p>This page is connected and ready. We can build the full section next.</p></section></main>
-<footer>Sinners World Archive · Built as a player-facing lore guide</footer><script src="/script.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Odin's Children · Sinners</title>
+<link rel="stylesheet" href="/styles.css">
+
+<style>
+/* =========================================================
+   ODIN'S CHILDREN — ABANDONED LIBRARY SELECTOR
+   ========================================================= */
+
+body.odins-library-page{
+  min-height:100vh;
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 50% 17%,rgba(95,75,120,.06),transparent 30rem),
+    linear-gradient(180deg,#05070b 0%,#07090d 55%,#030406 100%);
+}
+
+.odins-library-page .library-shell{
+  width:min(1500px,96vw);
+  margin:0 auto;
+  padding:clamp(28px,4vw,58px) 20px 70px;
+}
+
+.library-heading{
+  text-align:center;
+  margin-bottom:clamp(18px,2.5vw,34px);
+}
+
+.library-heading .kicker{
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  font-size:.78rem;
+  color:#8f7c67;
+}
+
+.library-heading h1{
+  margin:.45rem 0 .55rem;
+  font-size:clamp(2.5rem,5vw,4.9rem);
+  color:#d7c6a7;
+  text-shadow:0 0 22px rgba(123,94,131,.08);
+}
+
+.library-heading p{
+  max-width:760px;
+  margin:0 auto;
+  color:#a99f91;
+  font-size:clamp(.98rem,1.3vw,1.13rem);
+  line-height:1.7;
+}
+
+/* ---------- room ---------- */
+.abandoned-library{
+  position:relative;
+  min-height:700px;
+  border:1px solid rgba(117,92,63,.22);
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.34),transparent 13%,transparent 87%,rgba(0,0,0,.34)),
+    radial-gradient(ellipse at center top,rgba(126,104,74,.08),transparent 45%),
+    linear-gradient(180deg,#0a0b0f 0%,#090a0d 72%,#050609 100%);
+  box-shadow:inset 0 0 80px rgba(0,0,0,.68);
+}
+
+.abandoned-library::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-3;
+  opacity:.34;
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0 7.6%,
+      rgba(125,100,70,.08) 7.7% 7.9%,
+      transparent 8% 15.4%
+    ),
+    linear-gradient(180deg,transparent 0 83%,rgba(95,73,49,.12) 83% 84%,transparent 84%);
+}
+
+.abandoned-library::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:8;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 13% 28%,rgba(145,130,112,.04) 0 1px,transparent 2px),
+    radial-gradient(circle at 73% 39%,rgba(145,130,112,.04) 0 1px,transparent 2px),
+    radial-gradient(circle at 46% 62%,rgba(145,130,112,.035) 0 1px,transparent 2px),
+    radial-gradient(circle at 87% 74%,rgba(145,130,112,.035) 0 1px,transparent 2px);
+  background-size:85px 85px,120px 120px,105px 105px,140px 140px;
+  mix-blend-mode:screen;
+}
+
+/* cracked plaster / hanging shadows */
+.library-crack{
+  position:absolute;
+  width:1px;
+  height:170px;
+  background:linear-gradient(180deg,rgba(110,91,74,.24),transparent);
+  transform-origin:top;
+  opacity:.4;
+  z-index:-1;
+}
+.library-crack.c1{left:9%;top:0;transform:rotate(12deg);}
+.library-crack.c2{right:12%;top:0;transform:rotate(-9deg);height:210px;}
+.library-crack.c3{left:57%;top:0;transform:rotate(5deg);height:120px;}
+
+/* ---------- bookcase ---------- */
+.bookcase{
+  position:relative;
+  width:min(1240px,94%);
+  margin:64px auto 0;
+  padding:38px 34px 34px;
+  border-left:18px solid #20170f;
+  border-right:18px solid #20170f;
+  border-top:18px solid #24190f;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.015),transparent 10%,transparent 90%,rgba(255,255,255,.012)),
+    linear-gradient(180deg,rgba(23,16,11,.85),rgba(8,7,7,.92));
+  box-shadow:
+    0 0 0 1px rgba(123,84,50,.24),
+    inset 0 0 48px rgba(0,0,0,.72),
+    0 22px 50px rgba(0,0,0,.45);
+}
+
+.bookcase::before,
+.bookcase::after{
+  content:"";
+  position:absolute;
+  top:-30px;
+  width:22px;
+  height:calc(100% + 54px);
+  background:linear-gradient(90deg,#0d0b09,#2a1d12 48%,#0d0a08);
+  border:1px solid rgba(109,75,45,.24);
+}
+.bookcase::before{left:-32px;}
+.bookcase::after{right:-32px;}
+
+.shelf-row{
+  position:relative;
+  min-height:215px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  gap:clamp(14px,2.15vw,34px);
+  padding:22px 24px 30px;
+}
+
+.shelf-row + .shelf-row{
+  margin-top:38px;
+}
+
+.shelf-row::after{
+  content:"";
+  position:absolute;
+  left:-24px;
+  right:-24px;
+  bottom:9px;
+  height:18px;
+  background:
+    linear-gradient(180deg,#49321e 0%,#25180f 48%,#130e0b 100%);
+  border-top:1px solid rgba(172,119,65,.34);
+  border-bottom:1px solid rgba(0,0,0,.7);
+  box-shadow:
+    0 10px 20px rgba(0,0,0,.56),
+    inset 0 1px rgba(255,225,174,.05);
+}
+
+/* ---------- books ---------- */
+.god-book{
+  --book:#332e2b;
+  --edge:#6a5945;
+  --glow:#6d173c;
+
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:clamp(66px,6.3vw,94px);
+  height:clamp(148px,15vw,205px);
+  padding:14px 8px;
+  text-decoration:none;
+  color:#c6b9a6;
+  background:
+    linear-gradient(90deg,
+      rgba(255,255,255,.025),
+      transparent 13% 83%,
+      rgba(0,0,0,.28)
+    ),
+    linear-gradient(180deg,var(--book),#171516);
+  border:1px solid rgba(110,89,70,.36);
+  border-radius:4px 7px 5px 3px;
+  box-shadow:
+    inset 4px 0 rgba(255,255,255,.018),
+    inset -5px 0 rgba(0,0,0,.25),
+    0 9px 12px rgba(0,0,0,.45);
+  transform-origin:bottom center;
+  transition:
+    transform .28s ease,
+    box-shadow .28s ease,
+    border-color .28s ease,
+    filter .28s ease;
+}
+
+.god-book::before{
+  content:"";
+  position:absolute;
+  left:8px;
+  right:8px;
+  top:12px;
+  height:1px;
+  background:rgba(172,146,112,.24);
+  box-shadow:0 calc(100% + 167px) rgba(172,146,112,.12);
+}
+
+.god-book::after{
+  content:"";
+  position:absolute;
+  inset:7px;
+  border:1px solid rgba(163,132,95,.10);
+  border-radius:2px;
+  pointer-events:none;
+}
+
+.book-name{
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font-family:Georgia,serif;
+  font-size:clamp(.76rem,1.05vw,.96rem);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#b5a58f;
+  text-shadow:0 1px 2px #000;
+  transition:color .25s ease,text-shadow .25s ease,opacity .25s ease;
+}
+
+/* each child gets a slightly different old binding */
+.god-book:nth-child(1){--book:#30262a;--edge:#6c454f;}
+.god-book:nth-child(2){--book:#242b2e;--edge:#455c5d;}
+.god-book:nth-child(3){--book:#2b2922;--edge:#6b6042;}
+.god-book:nth-child(4){--book:#28222e;--edge:#55456b;}
+.god-book:nth-child(5){--book:#302727;--edge:#624647;}
+
+.god-book:hover,
+.god-book:focus-visible,
+.god-book.is-selected{
+  z-index:5;
+  transform:translateY(-8px) scale(1.08);
+  border-color:rgba(133,28,69,.72);
+  filter:saturate(1.2);
+  box-shadow:
+    inset 0 0 22px rgba(101,15,54,.15),
+    0 0 0 1px rgba(123,18,58,.18),
+    0 0 24px rgba(108,14,58,.38),
+    0 0 60px rgba(49,3,28,.20),
+    0 13px 18px rgba(0,0,0,.52);
+}
+
+.god-book:hover .book-name,
+.god-book:focus-visible .book-name,
+.god-book.is-selected .book-name{
+  color:#d64b7d;
+  text-shadow:
+    0 0 8px rgba(167,23,78,.75),
+    0 0 18px rgba(87,4,44,.65);
+}
+
+/* Amnestis: forgotten even among the unknown */
+.god-book.amnestis{
+  transform:rotate(-11deg) translateY(6px);
+  margin-right:7px;
+  --book:#262327;
+}
+.god-book.amnestis .book-name{
+  opacity:0;
+}
+.god-book.amnestis:hover,
+.god-book.amnestis:focus-visible,
+.god-book.amnestis.is-selected{
+  transform:rotate(-6deg) translateY(-5px) scale(1.08);
+}
+.god-book.amnestis:hover .book-name,
+.god-book.amnestis:focus-visible .book-name,
+.god-book.amnestis.is-selected .book-name{
+  opacity:1;
+}
+
+/* aged scraps / gaps */
+.empty-slot{
+  width:clamp(30px,3.8vw,62px);
+  height:150px;
+  border-bottom:1px solid rgba(91,67,46,.22);
+  opacity:.4;
+}
+
+/* ---------- title plaque ---------- */
+.library-title-plaque{
+  position:relative;
+  width:min(700px,84%);
+  margin:24px auto 0;
+  padding:18px 28px 20px;
+  text-align:center;
+  border:1px solid rgba(112,76,48,.34);
+  background:
+    linear-gradient(180deg,rgba(20,16,18,.94),rgba(9,9,11,.98));
+  box-shadow:
+    0 12px 25px rgba(0,0,0,.42),
+    inset 0 0 24px rgba(85,42,64,.04);
+}
+
+.library-title-plaque::before,
+.library-title-plaque::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  width:54px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#604830);
+}
+.library-title-plaque::before{left:18px;}
+.library-title-plaque::after{right:18px;transform:scaleX(-1);}
+
+.plaque-name{
+  min-height:1.3em;
+  font-family:Georgia,serif;
+  font-size:clamp(1.65rem,3vw,2.8rem);
+  color:#c6b8a4;
+  letter-spacing:.02em;
+  transition:color .25s ease,text-shadow .25s ease;
+}
+
+.plaque-name.active{
+  color:#d44878;
+  text-shadow:
+    0 0 9px rgba(185,29,86,.60),
+    0 0 24px rgba(76,3,38,.65);
+}
+
+.plaque-hint{
+  margin-top:5px;
+  font-size:.66rem;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:#76695f;
+}
+
+/* candle-like low pools without literal candles */
+.floor-glow{
+  position:absolute;
+  left:50%;
+  bottom:-28px;
+  width:70%;
+  height:90px;
+  transform:translateX(-50%);
+  z-index:-2;
+  background:radial-gradient(ellipse,rgba(118,72,43,.09),transparent 68%);
+  filter:blur(6px);
+}
+
+@media(max-width:900px){
+  .abandoned-library{min-height:auto;}
+  .bookcase{
+    width:94%;
+    padding:22px 12px 24px;
+    border-left-width:10px;
+    border-right-width:10px;
+  }
+  .shelf-row{
+    min-height:180px;
+    gap:9px;
+    padding-inline:4px;
+  }
+  .god-book{
+    width:clamp(48px,10vw,68px);
+    height:clamp(128px,24vw,165px);
+  }
+  .book-name{font-size:.66rem;letter-spacing:.06em;}
+  .empty-slot{display:none;}
+}
+
+@media(max-width:560px){
+  .library-shell{padding-inline:8px;}
+  .bookcase{width:100%;}
+  .shelf-row{
+    flex-wrap:wrap;
+    min-height:0;
+    align-items:flex-end;
+    padding-bottom:34px;
+  }
+  .shelf-row::after{bottom:14px;}
+  .god-book{
+    width:62px;
+    height:145px;
+  }
+  .god-book.amnestis{transform:rotate(-7deg) translateY(4px);}
+}
+</style>
+</head>
+
+<body class="odins-library-page">
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="/">SINNERS</a>
+    <button class="nav-toggle" type="button">Menu</button>
+    <nav class="main-nav">
+      <a href="/world.html">The World</a>
+      <a href="/gods.html">Gods & Religion</a>
+      <a href="/history.html">History</a>
+      <a href="/people.html">People & Legends</a>
+      <a href="/factions.html">Factions</a>
+      <a href="/creatures.html">Creatures</a>
+      <a href="/tales.html">Tales</a>
+    </nav>
+  </div>
+</header>
+
+<main class="library-shell">
+  <div class="library-heading">
+    <div class="kicker">A Pantheon Half Remembered</div>
+    <h1>Odin's Children</h1>
+    <p>Most records of Odin's Children are incomplete, contradictory, or missing entirely. What remains is collected here. Odin himself is conspicuously absent from the shelf.</p>
+  </div>
+
+  <section class="abandoned-library" aria-label="Selector for Odin's Children">
+    <span class="library-crack c1" aria-hidden="true"></span>
+    <span class="library-crack c2" aria-hidden="true"></span>
+    <span class="library-crack c3" aria-hidden="true"></span>
+
+    <div class="bookcase">
+
+      <div class="shelf-row">
+        <a class="god-book amnestis"
+           href="/amnestis.html"
+           data-name="Amnestis"
+           data-title="God of the Forgotten"
+           aria-label="Amnestis, God of the Forgotten">
+          <span class="book-name">Amnestis</span>
+        </a>
+
+        <a class="god-book"
+           href="/auralithos.html"
+           data-name="Auralithos"
+           data-title="God of Echoes"
+           aria-label="Auralithos, God of Echoes">
+          <span class="book-name">Auralithos</span>
+        </a>
+
+        <a class="god-book"
+           href="/klastion.html"
+           data-name="Klastion"
+           data-title="God of the Shattered"
+           aria-label="Klastion, God of the Shattered">
+          <span class="book-name">Klastion</span>
+        </a>
+
+        <span class="empty-slot" aria-hidden="true"></span>
+
+        <a class="god-book"
+           href="/tetrasmos.html"
+           data-name="Tetrasmos"
+           data-title="God of Chaos"
+           aria-label="Tetrasmos, God of Chaos">
+          <span class="book-name">Tetrasmos</span>
+        </a>
+
+        <a class="god-book"
+           href="/kenos.html"
+           data-name="Kenos"
+           data-title="God of the Void"
+           aria-label="Kenos, God of the Void">
+          <span class="book-name">Kenos</span>
+        </a>
+      </div>
+
+      <div class="shelf-row">
+        <a class="god-book"
+           href="/eklipsis.html"
+           data-name="Eklipsis"
+           data-title="God of the Veil, Magic"
+           aria-label="Eklipsis, God of the Veil and Magic">
+          <span class="book-name">Eklipsis</span>
+        </a>
+
+        <a class="god-book"
+           href="/phonaxis.html"
+           data-name="Phonaxis"
+           data-title="God of Eternity"
+           aria-label="Phonaxis, God of Eternity">
+          <span class="book-name">Phonaxis</span>
+        </a>
+
+        <span class="empty-slot" aria-hidden="true"></span>
+
+        <a class="god-book"
+           href="/lethe.html"
+           data-name="Lethe"
+           data-title="God of Oblivion"
+           aria-label="Lethe, God of Oblivion">
+          <span class="book-name">Lethe</span>
+        </a>
+
+        <a class="god-book"
+           href="/chasm.html"
+           data-name="Chasm"
+           data-title="God of the Abyss"
+           aria-label="Chasm, God of the Abyss">
+          <span class="book-name">Chasm</span>
+        </a>
+
+        <a class="god-book"
+           href="/katalaxis.html"
+           data-name="Katalaxis"
+           data-title="God of the Nexus"
+           aria-label="Katalaxis, God of the Nexus">
+          <span class="book-name">Katalaxis</span>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="library-title-plaque" aria-live="polite">
+      <div class="plaque-name" id="child-title">Choose a Book</div>
+      <div class="plaque-hint">Hover or tap a volume</div>
+    </div>
+
+    <div class="floor-glow" aria-hidden="true"></div>
+  </section>
+</main>
+
+<footer>Sinners World Archive · Built as a player-facing lore guide</footer>
+<script src="/script.js"></script>
+
+<script>
+(() => {
+  const books = [...document.querySelectorAll('.god-book')];
+  const plaque = document.getElementById('child-title');
+  let selected = null;
+
+  function show(book) {
+    const title = book.dataset.title || '';
+    plaque.textContent = title;
+    plaque.classList.add('active');
+  }
+
+  function clear(book) {
+    if (selected) {
+      show(selected);
+      return;
+    }
+    plaque.textContent = 'Choose a Book';
+    plaque.classList.remove('active');
+  }
+
+  books.forEach(book => {
+    book.addEventListener('mouseenter', () => show(book));
+    book.addEventListener('mouseleave', () => clear(book));
+    book.addEventListener('focus', () => show(book));
+    book.addEventListener('blur', () => clear(book));
+
+    book.addEventListener('click', e => {
+      // First tap selects on touch devices; second activates the link.
+      if (matchMedia('(hover: none)').matches && selected !== book) {
+        e.preventDefault();
+        books.forEach(b => b.classList.remove('is-selected'));
+        selected = book;
+        book.classList.add('is-selected');
+        show(book);
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
