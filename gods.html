@@ -5,6 +5,23 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gods & Religion · Sinners</title>
 <link rel="stylesheet" href="/styles.css">
+
+<style>
+/* Ensure the hidden Odin's Children reveal is actually clickable once shown. */
+.odin-reveal{
+  pointer-events:auto !important;
+  z-index:20 !important;
+}
+.odin-reveal a{
+  position:relative;
+  z-index:21;
+  pointer-events:auto !important;
+}
+.crack-hitbox{
+  z-index:18;
+}
+</style>
+
 </head>
 <body class="divine-body">
 
@@ -83,7 +100,11 @@ const crack = document.getElementById('odinCrack');
 crack.addEventListener('click', (e) => {
   if (window.matchMedia('(hover: none)').matches) {
     e.preventDefault();
-    crack.classList.toggle('open');
+    if (crack.classList.contains('open')) {
+      window.location.href = '/odins-children.html';
+    } else {
+      crack.classList.add('open');
+    }
   }
 });
 

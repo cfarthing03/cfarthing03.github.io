@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Temperance · The Seven Virtues · Sinners</title>
+<link rel="stylesheet" href="/styles.css">
+<style>
+body.virtue-placeholder {
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 50% 25%,rgba(116,20,27,.09),transparent 30rem),
+    #050910;
+}
+.virtue-placeholder-shell {
+  width:min(960px,92vw);
+  margin:0 auto;
+  padding:clamp(70px,10vw,130px) 0;
+}
+.virtue-placeholder-card {
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 230px;
+  gap:44px;
+  align-items:center;
+  padding:clamp(32px,5vw,60px);
+  border:1px solid rgba(128,34,39,.35);
+  background:linear-gradient(180deg,rgba(27,8,13,.30),rgba(5,9,16,.70));
+  box-shadow:inset 0 0 70px rgba(91,8,19,.035);
+}
+.virtue-placeholder .kicker {
+  color:#a64a4a;
+  text-transform:uppercase;
+  letter-spacing:.28em;
+  font-size:.76rem;
+}
+.virtue-placeholder h1 {
+  margin:.45rem 0 1rem;
+  color:#efe4d3;
+  font-size:clamp(3rem,8vw,6rem);
+}
+.virtue-placeholder p {
+  color:#c9bdac;
+  font-size:1.08rem;
+  line-height:1.75;
+}
+.virtue-placeholder .notice {
+  color:#aa8b82;
+}
+.virtue-placeholder-sigil {
+  width:210px;
+  aspect-ratio:1;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(136,44,44,.40);
+  background:rgba(4,8,14,.80);
+  box-shadow:0 0 28px rgba(118,15,25,.10);
+}
+.virtue-placeholder-sigil img {
+  width:82%;
+  height:82%;
+  object-fit:contain;
+}
+.virtue-placeholder-links {
+  margin-top:24px;
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.virtue-placeholder-links a {
+  color:#d2a75c;
+  text-decoration:none;
+}
+.virtue-placeholder-links a:hover { text-decoration:underline; }
+@media(max-width:700px) {
+  .virtue-placeholder-card{grid-template-columns:1fr;text-align:center;}
+  .virtue-placeholder-sigil{margin:auto;width:170px;}
+  .virtue-placeholder-links{justify-content:center;}
+}
+</style>
+</head>
+<body class="virtue-placeholder">
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="/">SINNERS</a>
+    <button class="nav-toggle" type="button">Menu</button>
+    <nav class="main-nav">
+      <a href="/world.html">The World</a>
+      <a href="/gods.html">Gods & Religion</a>
+      <a href="/history.html">History</a>
+      <a href="/people.html">People & Legends</a>
+      <a href="/factions.html">Factions</a>
+      <a href="/creatures.html">Creatures</a>
+      <a href="/tales.html">Tales</a>
+    </nav>
+  </div>
+</header>
+
+<main class="virtue-placeholder-shell">
+  <section class="virtue-placeholder-card">
+    <div>
+      <div class="kicker">The Seven Virtues</div>
+      <h1>Temperance</h1>
+      <p>This archive entry has not yet been opened to the public.</p>
+      <p class="notice">A full account of Temperance will be added as the Virtues archive is completed.</p>
+      <div class="virtue-placeholder-links">
+        <a href="/virtues.html">← Return to the Virtues</a>
+        <a href="/gods.html">Gods & Religion</a>
+      </div>
+    </div>
+    <div class="virtue-placeholder-sigil">
+      <img src="/sigil-virtue-temperance.png" alt="Sigil of Temperance">
+    </div>
+  </section>
+</main>
+
+<footer>Sinners World Archive · Built as a player-facing lore guide</footer>
+<script src="/script.js"></script>
+</body>
+</html>
