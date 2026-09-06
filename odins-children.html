@@ -273,8 +273,10 @@ body.odins-library-page{
 
 /* Amnestis: forgotten even among the unknown */
 .god-book.amnestis{
-  transform:rotate(-11deg) translateY(6px);
-  margin-right:7px;
+  /* Lean into Auralithos instead of floating by itself. */
+  transform-origin:bottom right;
+  transform:rotate(9deg) translate(9px,-5px);
+  margin-right:-3px;
   --book:#262327;
 }
 .god-book.amnestis .book-name{
@@ -283,7 +285,7 @@ body.odins-library-page{
 .god-book.amnestis:hover,
 .god-book.amnestis:focus-visible,
 .god-book.amnestis.is-selected{
-  transform:rotate(-6deg) translateY(-5px) scale(1.08);
+  transform:rotate(5deg) translate(8px,-13px) scale(1.08);
 }
 .god-book.amnestis:hover .book-name,
 .god-book.amnestis:focus-visible .book-name,
@@ -398,7 +400,7 @@ body.odins-library-page{
     width:62px;
     height:145px;
   }
-  .god-book.amnestis{transform:rotate(-7deg) translateY(4px);}
+  .god-book.amnestis{transform:rotate(7deg) translate(5px,-3px);}
 }
 </style>
 </head>

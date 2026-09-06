@@ -7,18 +7,28 @@
 <link rel="stylesheet" href="/styles.css">
 
 <style>
-/* Ensure the hidden Odin's Children reveal is actually clickable once shown. */
-.odin-reveal{
+/* Odin's Children stays secret, but every visible/revealing part of the rift
+   is now a real link to the library. */
+.crack-hitbox.odin-secret-link{
+  z-index:30 !important;
   pointer-events:auto !important;
-  z-index:20 !important;
+  cursor:pointer;
+  text-decoration:none;
 }
-.odin-reveal a{
-  position:relative;
-  z-index:21;
+.odin-reveal.odin-reveal-link{
+  z-index:31 !important;
   pointer-events:auto !important;
+  cursor:pointer;
+  text-decoration:none;
+  color:inherit;
 }
-.crack-hitbox{
-  z-index:18;
+.odin-reveal.odin-reveal-link *{
+  pointer-events:none;
+}
+.odin-look-deeper{
+  display:inline-block;
+  margin-top:.7rem;
+  color:inherit;
 }
 </style>
 
@@ -66,7 +76,7 @@
     </div>
   </a>
 
-  <div class="crack-hitbox" id="odinCrack" tabindex="0" aria-label="Something is hidden in the fracture"></div>
+  <a class="crack-hitbox odin-secret-link" id="odinCrack" href="/odins-children.html" aria-label="Something is hidden in the fracture"></a>
 
   <div class="rift-dim"></div>
   <div class="odin-rift"></div>
@@ -75,12 +85,12 @@
   <div class="rift-light-left"></div>
   <div class="rift-motes"></div>
 
-  <div class="odin-reveal">
+  <a class="odin-reveal odin-reveal-link" href="/odins-children.html" aria-label="Enter Odin's Children archive">
     <div class="odin-kicker">There is something else here.</div>
     <h2>Odin's Children</h2>
     <p>Most remain unknown. Even the number ten is only a belief.</p>
-    <a href="/odins-children.html">Look Deeper</a>
-  </div>
+    <span class="odin-look-deeper">Look Deeper</span>
+  </a>
 
   <svg class="divine-separator" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
     <!-- All three strokes use the exact same jagged path. -->
@@ -98,20 +108,9 @@
 const crack = document.getElementById('odinCrack');
 
 crack.addEventListener('click', (e) => {
-  if (window.matchMedia('(hover: none)').matches) {
+  if (window.matchMedia('(hover: none)').matches && !crack.classList.contains('open')) {
     e.preventDefault();
-    if (crack.classList.contains('open')) {
-      window.location.href = '/odins-children.html';
-    } else {
-      crack.classList.add('open');
-    }
-  }
-});
-
-crack.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') {
-    e.preventDefault();
-    crack.classList.toggle('open');
+    crack.classList.add('open');
   }
 });
 </script>

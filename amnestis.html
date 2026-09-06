@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amnestis · Odin's Children · Sinners</title>
+<link rel="stylesheet" href="/styles.css">
+<style>
+body.odin-child-placeholder {
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 50% 24%,rgba(91,38,84,.08),transparent 28rem),
+    linear-gradient(180deg,#05070b,#07080c 60%,#030406);
+}
+.odin-child-shell {
+  width:min(980px,92vw);
+  margin:0 auto;
+  padding:clamp(72px,10vw,130px) 0;
+}
+.odin-child-card {
+  position:relative;
+  overflow:hidden;
+  padding:clamp(34px,5vw,62px);
+  border:1px solid rgba(105,72,53,.34);
+  background:
+    linear-gradient(180deg,rgba(27,20,20,.45),rgba(6,8,12,.78));
+  box-shadow:
+    inset 0 0 70px rgba(0,0,0,.30),
+    0 22px 45px rgba(0,0,0,.26);
+}
+.odin-child-card::before {
+  content:"ARCHIVE VOLUME";
+  display:block;
+  margin-bottom:.8rem;
+  color:#8f7661;
+  font-size:.72rem;
+  letter-spacing:.30em;
+  text-transform:uppercase;
+}
+.odin-child-card h1 {
+  margin:.2rem 0 .4rem;
+  color:#ddd0bc;
+  font-size:clamp(3rem,8vw,6rem);
+}
+.odin-child-title {
+  margin:0 0 1.7rem;
+  color:#a85170;
+  font-size:clamp(1.1rem,2.2vw,1.55rem);
+  letter-spacing:.04em;
+}
+.odin-child-card p {
+  max-width:720px;
+  color:#c6b9a7;
+  font-size:1.08rem;
+  line-height:1.78;
+}
+.odin-child-note {
+  color:#918276 !important;
+  font-style:italic;
+}
+.odin-child-links {
+  margin-top:26px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:22px;
+}
+.odin-child-links a {
+  color:#c49756;
+  text-decoration:none;
+}
+.odin-child-links a:hover {
+  text-decoration:underline;
+}
+</style>
+</head>
+<body class="odin-child-placeholder">
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="/">SINNERS</a>
+    <button class="nav-toggle" type="button">Menu</button>
+    <nav class="main-nav">
+      <a href="/world.html">The World</a>
+      <a href="/gods.html">Gods & Religion</a>
+      <a href="/history.html">History</a>
+      <a href="/people.html">People & Legends</a>
+      <a href="/factions.html">Factions</a>
+      <a href="/creatures.html">Creatures</a>
+      <a href="/tales.html">Tales</a>
+    </nav>
+  </div>
+</header>
+
+<main class="odin-child-shell">
+  <section class="odin-child-card">
+    <h1>Amnestis</h1>
+    <div class="odin-child-title">God of the Forgotten</div>
+    <p>This volume has been recovered, but its contents have not yet been fully restored to the public archive.</p>
+    <p class="odin-child-note">What survives is being catalogued. More will be added when the record is ready to be opened.</p>
+    <div class="odin-child-links">
+      <a href="/odins-children.html">← Return to the Library</a>
+      <a href="/gods.html">Gods & Religion</a>
+    </div>
+  </section>
+</main>
+
+<footer>Sinners World Archive · Built as a player-facing lore guide</footer>
+<script src="/script.js"></script>
+</body>
+</html>

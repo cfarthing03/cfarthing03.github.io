@@ -1,6 +1,31 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>People & Legends · Sinners</title><link rel="stylesheet" href="/styles.css"></head>
+<title>People & Legends · Sinners</title><link rel="stylesheet" href="/styles.css"><style>
+.archive-status{
+  position:relative;
+  overflow:hidden;
+  padding:clamp(28px,4vw,46px);
+  border:1px solid rgba(154,105,54,.34);
+  background:linear-gradient(180deg,rgba(22,17,13,.34),rgba(6,9,14,.66));
+  box-shadow:inset 0 0 48px rgba(0,0,0,.22);
+}
+.archive-status::before{
+  content:"ARCHIVE NOTICE";
+  display:block;
+  margin-bottom:.8rem;
+  color:#b78342;
+  font-size:.72rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+}
+.archive-status h2{margin-top:0;}
+.archive-status p:last-child{
+  margin-bottom:0;
+  color:rgba(231,220,201,.74);
+  font-style:italic;
+}
+</style>
+</head>
 <body>
 <header class="site-header">
   <div class="nav-wrap">
@@ -22,10 +47,10 @@
   <div class="breadcrumbs"><a href="/">Home</a> / People & Legends</div>
   <h1 class="article-title">People & Legends</h1>
   <p class="article-subtitle">Heroes, villains, rulers, champions, and the people history refuses to forget.</p>
-  <section class="article">
-    <h2>Coming Next</h2>
-    <p>This is the starter landing page for <strong>People & Legends</strong>. We can replace this with cards and proper sub-sections as we migrate your lore from World Anvil.</p>
-    <p class="small-note">The navigation and page structure are already in place, so adding new sections now is just normal HTML instead of fighting nested folder menus.</p>
+  <section class="article archive-status">
+    <h2>Biographical Archive In Progress</h2>
+    <p>The records of the people who shaped this world are currently being indexed. Heroes, monsters, rulers, champions, disasters with names, and the occasional person responsible for an entire new chapter of history will all be housed here.</p>
+    <p>For now, their files are still being pulled from the stacks.</p>
   </section>
 </main>
 
