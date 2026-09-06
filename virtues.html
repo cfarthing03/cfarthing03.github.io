@@ -113,19 +113,15 @@ body.virtues-selector-page{
 
 /* Fixed selection positions — the scale tips, the Virtues do not. */
 /* Left pan: two low, one high. */
-.virtue-diligence{left:20.8%;top:61.5%;}
-.virtue-charity{left:31.2%;top:61.5%;}
-.virtue-kindness{left:26%;top:48.8%;}
+.virtue-diligence{left:24.2%;top:61.5%;}
+.virtue-charity{left:34.2%;top:61.5%;}
+.virtue-kindness{left:29.2%;top:44.4%;}
 /* Right pan: two low, one high. */
-.virtue-temperance{left:68.8%;top:61.5%;}
-.virtue-humility{left:79.2%;top:61.5%;}
-.virtue-chastity{left:74%;top:48.8%;}
+.virtue-temperance{left:65.8%;top:61.5%;}
+.virtue-humility{left:75.8%;top:61.5%;}
+.virtue-chastity{left:70.8%;top:44.4%;}
 .virtue-patience{left:50%;top:15.5%;width:clamp(104px,9vw,146px);}
-.virtue-patience::after{content:"PATIENCE";position:absolute;left:50%;top:calc(100% + 10px);transform:translateX(-50%);color:rgba(232,223,204,.72);letter-spacing:.18em;font-size:.7rem;white-space:nowrap;transition:color .2s ease,text-shadow .2s ease;}
-.scale-selector.is-patience .virtue-patience::after{color:var(--virtue-red-bright);text-shadow:0 0 10px rgba(255,48,54,.6);}
 
-.virtue-side-label{position:absolute;z-index:2;top:72.5%;width:36%;color:rgba(232,223,204,.34);font-size:.68rem;letter-spacing:.2em;text-align:center;text-transform:uppercase;pointer-events:none;}
-.virtue-side-label.left{left:7%;}.virtue-side-label.right{right:7%;}
 
 .virtue-name-plaque{
   position:absolute;z-index:5;left:50%;bottom:2.4%;transform:translateX(-50%);width:min(500px,64%);min-height:86px;display:grid;place-items:center;padding:16px 34px;
@@ -150,20 +146,20 @@ body.virtues-selector-page{
   .scale-selector{height:min(630px,calc(100vh - 185px));min-height:520px;}
   .virtue-choice{width:clamp(78px,9.4vw,108px)}
   .virtue-patience{width:clamp(88px,10.4vw,120px)}
-  .virtue-diligence{left:19%;}.virtue-charity{left:31%;}.virtue-kindness{left:25%;}
-  .virtue-temperance{left:69%;}.virtue-humility{left:81%;}.virtue-chastity{left:75%;}
+  .virtue-diligence{left:22.5%;}.virtue-charity{left:33%;}.virtue-kindness{left:27.7%;top:45%;}
+  .virtue-temperance{left:67%;}.virtue-humility{left:77.5%;}.virtue-chastity{left:72.3%;top:45%;}
 }
 @media(max-width:700px){
   .virtues-stage{width:min(100% - 10px,720px);padding-top:8px}.virtues-heading p{display:none}.scale-selector{height:545px;min-height:545px;margin-top:0}
   .virtue-choice{width:68px}.virtue-patience{width:80px;top:14.5%}
-  .virtue-diligence{left:17%;top:60%}.virtue-charity{left:31%;top:60%}.virtue-kindness{left:24%;top:49%}
-  .virtue-temperance{left:69%;top:60%}.virtue-humility{left:83%;top:60%}.virtue-chastity{left:76%;top:49%}
+  .virtue-diligence{left:21%;top:60%}.virtue-charity{left:33%;top:60%}.virtue-kindness{left:27%;top:46%}
+  .virtue-temperance{left:67%;top:60%}.virtue-humility{left:79%;top:60%}.virtue-chastity{left:73%;top:46%}
   .virtue-name-plaque{width:70%;min-height:70px;bottom:4%}#virtue-name{font-size:1.45rem}
 }
 @media(max-width:520px){
   .scale-selector{height:485px;min-height:485px}.virtue-choice{width:56px}.virtue-patience{width:66px;top:14%}
-  .virtue-diligence{left:15%}.virtue-charity{left:30%}.virtue-kindness{left:22.5%}
-  .virtue-temperance{left:70%}.virtue-humility{left:85%}.virtue-chastity{left:77.5%}
+  .virtue-diligence{left:20%}.virtue-charity{left:32%}.virtue-kindness{left:26%;top:46%}
+  .virtue-temperance{left:68%}.virtue-humility{left:80%}.virtue-chastity{left:74%;top:46%}
   .virtue-name-plaque{width:78%;min-height:62px;padding:10px 26px}.virtue-side-label{display:none}
 }
 @media(prefers-reduced-motion:reduce){.scale-art .scale-moving,.virtue-choice{transition:none}}
@@ -215,18 +211,18 @@ body.virtues-selector-page{
 
       <!-- one connected moving scale: beam + chains + both bowls -->
       <g class="scale-moving">
-        <path class="metal" d="M245 255 Q500 215 750 180 Q1000 215 1255 255"/>
-        <path class="detail" d="M280 263 Q510 229 750 198 Q990 229 1220 263"/>
+        <path class="metal" d="M315 255 Q530 215 750 180 Q970 215 1185 255"/>
+        <path class="detail" d="M345 263 Q535 229 750 198 Q965 229 1155 263"/>
 
         <!-- left large pan -->
-        <path class="metal-thin" d="M245 255 L116 435 M245 255 L374 435 M245 255 L245 435"/>
-        <path class="metal pan-bowl" d="M90 430 Q245 500 400 430 Q378 548 245 558 Q112 548 90 430 Z"/>
-        <path class="detail" d="M112 450 Q245 490 378 450"/>
+        <path class="metal-thin" d="M315 255 L186 435 M315 255 L444 435 M315 255 L315 435"/>
+        <path class="metal pan-bowl" d="M160 430 Q315 500 470 430 Q448 548 315 558 Q182 548 160 430 Z"/>
+        <path class="detail" d="M182 450 Q315 490 448 450"/>
 
         <!-- right large pan -->
-        <path class="metal-thin" d="M1255 255 L1126 435 M1255 255 L1384 435 M1255 255 L1255 435"/>
-        <path class="metal pan-bowl" d="M1100 430 Q1255 500 1410 430 Q1388 548 1255 558 Q1122 548 1100 430 Z"/>
-        <path class="detail" d="M1122 450 Q1255 490 1388 450"/>
+        <path class="metal-thin" d="M1185 255 L1056 435 M1185 255 L1314 435 M1185 255 L1185 435"/>
+        <path class="metal pan-bowl" d="M1030 430 Q1185 500 1340 430 Q1318 548 1185 558 Q1052 548 1030 430 Z"/>
+        <path class="detail" d="M1052 450 Q1185 490 1318 450"/>
       </g>
     </svg>
 
@@ -253,9 +249,6 @@ body.virtues-selector-page{
     <a class="virtue-choice virtue-chastity" data-name="Chastity" data-side="right" href="/chastity.html" aria-label="Chastity">
       <img src="/sigil-virtue-chastity.png" alt="Sigil of Chastity">
     </a>
-
-    <div class="virtue-side-label left">Diligence · Charity · Kindness</div>
-    <div class="virtue-side-label right">Temperance · Humility · Chastity</div>
 
     <div class="virtue-name-plaque" aria-live="polite">
       <span id="virtue-name">Choose a Virtue</span>
