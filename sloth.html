@@ -418,6 +418,46 @@ body.deity-body.deity-sloth::after {
 
 </style>
 
+<style id="sin-city-link-styles">
+/* City-link polish shared by all Seven Sins pages */
+.sin-city-inline-link{
+  color:inherit;
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:.17em;
+}
+.sin-city-inline-link:hover{
+  opacity:.92;
+}
+.sin-city-heading-link{
+  color:inherit;
+  text-decoration:none;
+}
+.sin-city-heading-link:hover{
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:.15em;
+}
+.sin-city-explore-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  margin-top:.75rem;
+  padding:.36rem 0 .15rem;
+  color:inherit;
+  font-size:.88rem;
+  letter-spacing:.035em;
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  opacity:.82;
+  transition:opacity .16s ease, transform .16s ease;
+}
+.sin-city-explore-link:hover{
+  opacity:1;
+  transform:translateX(2px);
+}
+</style>
+
 </head>
 <body class="deity-body deity-sloth">
 
@@ -562,7 +602,7 @@ body.deity-body.deity-sloth::after {
   </svg>
 </div>
 </section>
-<section><h2>Sol, the Sleeping City</h2><p>Sol built its culture around the rhythms associated with Sloth. The city sleeps through much of the day and wakes at night, filling the darkness with festivals, celebrations, and communal life. Rest is scheduled into the culture rather than treated as something people earn only after exhausting themselves.</p><p>The result is a city with a remarkably simple philosophy: tomorrow will still be there. Probably.</p></section>
+<section><h2><a class="sin-city-heading-link" href="/sol.html">Sol, the Sleeping City</a></h2><p>Sol built its culture around the rhythms associated with Sloth. The city sleeps through much of the day and wakes at night, filling the darkness with festivals, celebrations, and communal life. Rest is scheduled into the culture rather than treated as something people earn only after exhausting themselves.</p><p>The result is a city with a remarkably simple philosophy: tomorrow will still be there. Probably.</p><a class="sin-city-explore-link" href="/sol.html">Explore Sol →</a></section>
 
   </article>
   <aside class="deity-aside">
@@ -574,7 +614,7 @@ body.deity-body.deity-sloth::after {
       </div>
       <h2>At a Glance</h2>
       <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Rest, recovery, death, rebirth</span></div>
-<div class="fact"><span class="fact-label">Major City</span><span class="fact-value">Sol</span></div>
+<div class="fact"><span class="fact-label">Major City</span><span class="fact-value"><a class="sin-city-inline-link" href="/sol.html">Sol</a></span></div>
 <div class="fact"><span class="fact-label">Associated Faith</span><span class="fact-value"><a href="/spirits.html">The Spirits</a></span></div>
 <div class="fact"><span class="fact-label">Symbol</span><span class="fact-value">The Moon</span></div>
 <div class="fact"><span class="fact-label">Divine Substances</span><span class="fact-value">Life's Blood and the black remnants of torment</span></div>

@@ -357,6 +357,46 @@ body.deity-body.deity-gluttony::after {
   .gluttony-bite-small-right::after { display: none; }
 }
 </style>
+<style id="sin-city-link-styles">
+/* City-link polish shared by all Seven Sins pages */
+.sin-city-inline-link{
+  color:inherit;
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:.17em;
+}
+.sin-city-inline-link:hover{
+  opacity:.92;
+}
+.sin-city-heading-link{
+  color:inherit;
+  text-decoration:none;
+}
+.sin-city-heading-link:hover{
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:.15em;
+}
+.sin-city-explore-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  margin-top:.75rem;
+  padding:.36rem 0 .15rem;
+  color:inherit;
+  font-size:.88rem;
+  letter-spacing:.035em;
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  opacity:.82;
+  transition:opacity .16s ease, transform .16s ease;
+}
+.sin-city-explore-link:hover{
+  opacity:1;
+  transform:translateX(2px);
+}
+</style>
+
 </head>
 <body class="deity-body deity-gluttony">
 
@@ -413,10 +453,10 @@ body.deity-body.deity-gluttony::after {
 
     <section class="gluttony-bite-right">
       <div class="gluttony-crest tight" aria-hidden="true"><img src="/gluttony-small-tusk-crest.png" alt=""></div>
-      <h2>Hus</h2>
+      <h2><a class="sin-city-heading-link" href="/hus.html">Hus</a></h2>
       <p>Hus is the largest city on the continent by population. Its public identity is warm, communal, and heavily centered on food. Feasts, restaurants, public meals, hospitality, and culinary tradition make the city one of the easiest places to associate with Gluttony's more generous aspects.</p>
       <p>It is also the crime capital of the continent. That is less contradiction than mathematics. Hus has the most people, so it also has the most thieves, gangs, smugglers, criminal networks, and opportunities for someone to decide they are hungry for something that belongs to somebody else.</p>
-    </section>
+    <a class="sin-city-explore-link" href="/hus.html">Explore Hus →</a></section>
 
     <section class="gluttony-bite-left">
       <div class="gluttony-crest tight" aria-hidden="true"><img src="/gluttony-small-tusk-crest.png" alt=""></div>
@@ -431,7 +471,7 @@ body.deity-body.deity-gluttony::after {
       <div class="gluttony-crest centered" aria-hidden="true"><img src="/gluttony-small-tusk-crest.png" alt=""></div>
       <h2>At a Glance</h2>
       <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Nourishment, fulfillment, abundance</span></div>
-      <div class="fact"><span class="fact-label">Major City</span><span class="fact-value">Hus</span></div>
+      <div class="fact"><span class="fact-label">Major City</span><span class="fact-value"><a class="sin-city-inline-link" href="/hus.html">Hus</a></span></div>
       <div class="fact"><span class="fact-label">Associated Faith</span><span class="fact-value"><a href="/church-of-gluttony.html">Church of Gluttony</a></span></div>
       <div class="fact"><span class="fact-label">Known Ability</span><span class="fact-value">Consumption and assimilation</span></div>
       <div class="fact"><span class="fact-label">Common Form</span><span class="fact-value">Massive humanoid with boar-like traits</span></div>
