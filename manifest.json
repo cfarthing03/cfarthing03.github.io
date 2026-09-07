@@ -1,0 +1,36 @@
+{
+  "html_pages": [
+    "charity.html",
+    "chastity.html",
+    "diligence.html",
+    "faith-charity.html",
+    "faith-chastity.html",
+    "faith-diligence.html",
+    "faith-humility.html",
+    "faith-patience.html",
+    "faith-temperance.html",
+    "humility.html",
+    "kindness.html",
+    "messengers-of-the-chosen.html",
+    "patience.html",
+    "temperance.html"
+  ],
+  "assets": [
+    "god-charity.png",
+    "god-chastity.png",
+    "god-diligence.png",
+    "god-humility.png",
+    "god-kindness.png",
+    "god-patience.png",
+    "god-temperance.png",
+    "sigil-virtue-charity.png",
+    "sigil-virtue-chastity.png",
+    "sigil-virtue-diligence.png",
+    "sigil-virtue-humility.png",
+    "sigil-virtue-kindness.png",
+    "sigil-virtue-patience.png",
+    "sigil-virtue-temperance.png"
+  ],
+  "missing_uploaded_sources": [],
+  "integrity_issues": []
+}
