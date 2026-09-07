@@ -247,6 +247,29 @@ body.deity-body.deity-patience{--pat-ring1x:0px;--pat-ring1y:0px;--pat-ring2x:0p
   transition:transform .16s ease-out !important;
 }
 
+
+
+/* V16 PATIENCE - ONLY brown iris ring + black pupil move */
+body.deity-body.deity-patience{--pat-brown-x:0px;--pat-brown-y:0px;}
+.deity-patience .watch-socket,
+.deity-patience .watch-eye,
+.deity-patience .watch-pupil-bg,
+.deity-patience .watch-glint{
+  transform:translateX(-50%) !important;
+  transition:none !important;
+}
+.deity-patience .watch-eye::after{
+  transform:translate(-50%,-50%) !important;
+  transition:none !important;
+}
+/* Brown circle surrounding the pupil. This is the only large-eye ring that moves. */
+.deity-patience .watch-pupil-bg::before{
+  transform:translate(calc(-50% + var(--pat-brown-x)),calc(-50% + var(--pat-brown-y))) !important;
+  transition:transform .15s ease-out !important;
+}
+/* Black center pupil moves slightly farther than the brown ring. */
+.deity-patience .watch-pupil-dot{transition:transform .15s ease-out !important;}
+
 </style></head><body class="deity-body deity-patience">
 <div aria-hidden="true" class="patience-page-decor">
 <span class="watch-socket"></span>
@@ -295,25 +318,25 @@ body.deity-body.deity-patience{--pat-ring1x:0px;--pat-ring1y:0px;--pat-ring2x:0p
   const pupil=document.querySelector('.deity-patience .watch-pupil-dot');
   const glyphs=[...document.querySelectorAll('.deity-patience .patience-glyph')];
   const glyphPupils=[...document.querySelectorAll('.deity-patience .patience-glyph .glyph-pupil')];
-  let tx=innerWidth/2, ty=innerHeight/2, cx=tx, cy=ty;
+  let tx=innerWidth/2,ty=innerHeight/2,cx=tx,cy=ty;
   function update(){
-    cx += (tx-cx)*0.08;
-    cy += (ty-cy)*0.08;
+    cx+=(tx-cx)*0.08;
+    cy+=(ty-cy)*0.08;
     const nx=(cx/innerWidth)-0.5;
     const ny=(cy/innerHeight)-0.5;
 
-    /* inner iris ring follows subtly */
-    root.style.setProperty('--pat-ring-x',(nx*7).toFixed(2)+'px');
-    root.style.setProperty('--pat-ring-y',(ny*4).toFixed(2)+'px');
+    /* ONLY the brown iris ring moves among the large eye rings. */
+    root.style.setProperty('--pat-brown-x',(nx*14).toFixed(2)+'px');
+    root.style.setProperty('--pat-brown-y',(ny*8).toFixed(2)+'px');
 
-    /* pupil follows farther */
+    /* ONLY the black pupil moves farther inside the large eye. */
     if(pupil){
-      pupil.style.transform=`translate(calc(-50% + ${nx*16}px), calc(-50% + ${ny*9}px))`;
+      pupil.style.transform=`translate(calc(-50% + ${nx*18}px),calc(-50% + ${ny*10}px))`;
     }
 
-    /* approved small divider eyes */
-    glyphs.forEach(g=>{g.style.transform=`translate(${nx*2.3}px, ${ny*1.4}px)`;});
-    glyphPupils.forEach(p=>{p.style.transform=`translate(calc(-50% + ${nx*2.8}px), calc(-50% + ${ny*1.8}px))`;});
+    /* Keep the already-approved small divider eyes tracking subtly. */
+    glyphs.forEach(g=>{g.style.transform=`translate(${nx*2.3}px,${ny*1.4}px)`;});
+    glyphPupils.forEach(p=>{p.style.transform=`translate(calc(-50% + ${nx*2.8}px),calc(-50% + ${ny*1.8}px))`;});
     requestAnimationFrame(update);
   }
   addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;},{passive:true});

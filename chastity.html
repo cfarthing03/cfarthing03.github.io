@@ -342,6 +342,32 @@ mask:radial-gradient(circle at 50% 28%, transparent 0 5%, #000 5.2%);}
   .deity-chastity .cw-corner.corner-b{display:none !important;}
 }
 
+
+
+/* V16 CHASTITY - same approved V7 web, same center placement, full-page coverage */
+.deity-chastity .cw-main{
+  /* Keep the web centered at the same approved point near the top. */
+  top:calc(92px - max(75vw,105vh)) !important;
+  width:max(150vw,210vh) !important;
+  height:max(150vw,210vh) !important;
+}
+/* Do not crop the web at the old 58% radius. Let the exact same pattern continue outward. */
+.deity-chastity .cw-main{
+  -webkit-mask:radial-gradient(circle at 50% 50%,transparent 0 4%,#000 6% 100%) !important;
+  mask:radial-gradient(circle at 50% 50%,transparent 0 4%,#000 6% 100%) !important;
+}
+.deity-chastity .cw-main::after{
+  -webkit-mask:radial-gradient(circle at 50% 50%,transparent 0 4%,#000 6% 100%) !important;
+  mask:radial-gradient(circle at 50% 50%,transparent 0 4%,#000 6% 100%) !important;
+}
+@media(max-width:760px){
+  .deity-chastity .cw-main{
+    top:calc(90px - max(88vw,110vh)) !important;
+    width:max(176vw,220vh) !important;
+    height:max(176vw,220vh) !important;
+  }
+}
+
 </style></head><body class="deity-body deity-chastity">
 <div aria-hidden="true" class="chastity-page-decor">
 <span class="chastity-megaweb v14-main-web"></span>
