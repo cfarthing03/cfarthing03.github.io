@@ -7,6 +7,13 @@
 
 <style>
 body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
+body.city-body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(141,55,35,.08), transparent 22rem),
+    radial-gradient(circle at 80% 78%, rgba(141,55,35,.05), transparent 24rem);
+}
+body.city-body > *{position:relative;z-index:1;}
 .city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
 .city-copy{padding:26px 0}
 .city-back{display:inline-block;margin-bottom:12px;color:#c97f5f}
@@ -54,12 +61,12 @@ body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
     <div class="city-title">City of Warriors</div>
     <p class="city-lead">Wrath's desert city, where strength is public, combat is ritual, and citizenship is something many people literally fight to earn.</p>
   </div>
-  <div class="city-map-card"><img src="/continent-of-sin-map.jpg" alt="Map of the Continent of Sin"></div>
+  <div class="city-map-card"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
 </section>
 <main class="city-layout">
-  <article class="city-article"><section><h2>The Colosseum</h2><p>Palin is organized around its enormous Colosseum. The arena is simultaneously a civic institution, religious space, training ground, entertainment venue, and place where disputes can be resolved.</p></section><section><h2>Citizenship Through Combat</h2><p>A person seeking full citizenship may be required to prove themselves in the arena. These fights are dangerous, but not usually intended to be fatal. Arena staff intervene when necessary, and surviving the test is meant to demonstrate resolve rather than suicidal recklessness.</p></section><section><h2>Wrath's Blessing</h2><p>Those who fight in Wrath's name while within Palin can be sustained without ordinary food or water. In a desert environment, that blessing shapes daily life as much as religion does.</p></section><section><h2>More Than Brutes</h2><p>Outsiders often assume Palin is populated by simple-minded fighters. In reality, the city is disciplined, structured, and politically sophisticated. Strength is respected, but so are control, judgment, and the ability to use force for a reason.</p></section><section><h2>Justice Through Strength</h2><p>Wrath's influence gives combat a moral dimension. Palin's ideal warrior is not someone who attacks the weak. It is someone strong enough to confront injustice and disciplined enough to know when force is actually necessary.</p></section></article>
+  <article class="city-article"><section><h2>The Colosseum</h2><p>Palin is organized around its enormous Colosseum. The arena is simultaneously a civic institution, religious space, training ground, and place where disputes can be resolved.</p></section><section><h2>Citizenship Through Combat</h2><p>A person seeking full citizenship may be required to prove themselves in the arena.</p></section><section><h2>Wrath's Blessing</h2><p>Those who fight in Wrath's name while within Palin can be sustained without ordinary food or water.</p></section></article>
   <aside class="city-aside">
-    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">City of Warriors</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Wrath</span></div><div class="city-fact"><span class="city-fact-label">Central Landmark</span><span class="city-fact-value">The Colosseum</span></div><div class="city-fact"><span class="city-fact-label">Citizenship</span><span class="city-fact-value">Often earned through arena combat</span></div><div class="city-fact"><span class="city-fact-label">Divine Blessing</span><span class="city-fact-value">Fighting in Wrath's name provides sustenance</span></div></section>
+    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">City of Warriors</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Wrath</span></div><div class="city-fact"><span class="city-fact-label">Central Landmark</span><span class="city-fact-value">The Colosseum</span></div></section>
     <section class="city-links">
       <h2>Keep Exploring</h2>
       <a href="/world.html">The World Map</a>

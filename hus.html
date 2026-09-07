@@ -7,6 +7,13 @@
 
 <style>
 body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
+body.city-body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(141,55,35,.08), transparent 22rem),
+    radial-gradient(circle at 80% 78%, rgba(141,55,35,.05), transparent 24rem);
+}
+body.city-body > *{position:relative;z-index:1;}
 .city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
 .city-copy{padding:26px 0}
 .city-back{display:inline-block;margin-bottom:12px;color:#c97f5f}
@@ -54,12 +61,12 @@ body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
     <div class="city-title">The One Stop Dinner</div>
     <p class="city-lead">The largest concentration of people on the continent, held together by food, appetite, trade, and more crime than anyone likes to admit.</p>
   </div>
-  <div class="city-map-card"><img src="/continent-of-sin-map.jpg" alt="Map of the Continent of Sin"></div>
+  <div class="city-map-card"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
 </section>
 <main class="city-layout">
-  <article class="city-article"><section><h2>Food as a Way of Life</h2><p>In Hus, food is not simply a necessity. It is culture, status, religion, work, celebration, and political power. The city's dense population supports enormous markets, kitchens, restaurants, and supply networks unlike anywhere else.</p></section><section><h2>The Church and the Table</h2><p>The Church of Gluttony has historically taken an unusually direct interest in the city's food supply. Ingredients, quality, access, and distribution are religious concerns because Gluttony's domain is woven directly into what the city consumes.</p></section><section><h2>A History of Shortage</h2><p>Hus has survived periods when food distribution broke down badly enough to threaten the entire city. Leadership failures inside the Church once drove shortages and prices upward until outside intervention helped stabilize the situation.</p></section><section><h2>Crime Capital</h2><p>The same density that makes Hus a culinary powerhouse also makes it the center of organized crime and drug activity. Life's Blood has circulated through the city for years, and criminal organizations thrive in neighborhoods where law enforcement, commerce, and desperation overlap.</p></section><section><h2>Present-Day Hus</h2><p>Modern Hus remains loud, crowded, delicious, dangerous, and difficult to ignore. The Church is rebuilding its position, while the city's underworld continues to treat every new opportunity as another market.</p></section></article>
+  <article class="city-article"><section><h2>Food as a Way of Life</h2><p>In Hus, food is not simply a necessity. It is culture, status, religion, work, celebration, and political power.</p></section><section><h2>The Church and the Table</h2><p>The Church of Gluttony has historically taken an unusually direct interest in the city's food supply.</p></section><section><h2>Crime Capital</h2><p>The same density that makes Hus a culinary powerhouse also makes it the center of organized crime and drug activity.</p></section></article>
   <aside class="city-aside">
-    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">The One Stop Dinner</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Gluttony</span></div><div class="city-fact"><span class="city-fact-label">Population</span><span class="city-fact-value">Largest on the continent</span></div><div class="city-fact"><span class="city-fact-label">Cultural Focus</span><span class="city-fact-value">Food and culinary excellence</span></div><div class="city-fact"><span class="city-fact-label">Reputation</span><span class="city-fact-value">Crime and drug capital</span></div></section>
+    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">The One Stop Dinner</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Gluttony</span></div><div class="city-fact"><span class="city-fact-label">Population</span><span class="city-fact-value">Largest on the continent</span></div></section>
     <section class="city-links">
       <h2>Keep Exploring</h2>
       <a href="/world.html">The World Map</a>

@@ -7,6 +7,13 @@
 
 <style>
 body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
+body.city-body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(141,55,35,.08), transparent 22rem),
+    radial-gradient(circle at 80% 78%, rgba(141,55,35,.05), transparent 24rem);
+}
+body.city-body > *{position:relative;z-index:1;}
 .city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
 .city-copy{padding:26px 0}
 .city-back{display:inline-block;margin-bottom:12px;color:#c97f5f}
@@ -54,12 +61,12 @@ body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
     <div class="city-title">City of Dreams</div>
     <p class="city-lead">A city of performance, spectacle, and carefully maintained fantasy—bright enough that its shadows are easy to miss.</p>
   </div>
-  <div class="city-map-card"><img src="/continent-of-sin-map.jpg" alt="Map of the Continent of Sin"></div>
+  <div class="city-map-card"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
 </section>
 <main class="city-layout">
-  <article class="city-article"><section><h2>A City Built on Performance</h2><p>Etro is geographically separated from most of the Continent of Sin, but culturally it has never been distant. Once associated directly with Envy, the city became one of the continent's great centers of entertainment, performance, and public spectacle.</p></section><section><h2>The Ratio Tower</h2><p>At the heart of Etro stands the Ratio Tower, an enormous radio structure that broadcasts the same twelve songs throughout the city. Residents are expected to carry their city pins, allowing the music to remain a constant part of daily life. The result is a place that can feel less like a city and more like an endless performance already in progress.</p></section><section><h2>Life on the Surface</h2><p>Public Etro is immaculate. Streets are clean, venues are active, spontaneous performances are common, and residents often seem to move through life with the practiced energy of people who know they are being watched. Visitors come for the fantasy and usually find exactly that.</p></section><section><h2>The Underworld</h2><p>Beneath the spectacle is a serious criminal history. Etro was once deeply involved in the trade of Life's Blood, and its entertainment industry created opportunities for exploitation as easily as fame. The city learned how to make danger look glamorous long before it learned how to get rid of it.</p></section><section><h2>A City of Contradictions</h2><p>Etro's identity is built on the tension between image and reality. It is joyful, theatrical, beautiful, and deeply alive. It is also a place where appearances can be manufactured so perfectly that distinguishing truth from performance takes work.</p></section></article>
+  <article class="city-article"><section><h2>A City Built on Performance</h2><p>Etro is geographically separated from most of the Continent of Sin, but culturally it has never been distant. Once associated directly with Envy, the city became one of the continent's great centers of entertainment, performance, and public spectacle.</p></section><section><h2>The Ratio Tower</h2><p>At the heart of Etro stands the Ratio Tower, an enormous radio structure that broadcasts the same twelve songs throughout the city. Residents are expected to carry their city pins, allowing the music to remain a constant part of daily life.</p></section><section><h2>The Underworld</h2><p>Beneath the spectacle is a serious criminal history. Etro was once deeply involved in the trade of Life's Blood, and its entertainment industry created opportunities for exploitation as easily as fame.</p></section></article>
   <aside class="city-aside">
-    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">City of Dreams</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Envy</span></div><div class="city-fact"><span class="city-fact-label">Landmark</span><span class="city-fact-value">Ratio Tower</span></div><div class="city-fact"><span class="city-fact-label">Cultural Focus</span><span class="city-fact-value">Music, performance, entertainment</span></div><div class="city-fact"><span class="city-fact-label">Historic Underworld</span><span class="city-fact-value">Life's Blood trade</span></div></section>
+    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">City of Dreams</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Envy</span></div><div class="city-fact"><span class="city-fact-label">Landmark</span><span class="city-fact-value">Ratio Tower</span></div></section>
     <section class="city-links">
       <h2>Keep Exploring</h2>
       <a href="/world.html">The World Map</a>

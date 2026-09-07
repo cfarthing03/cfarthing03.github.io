@@ -6,62 +6,113 @@
 <title>The World · Sinners</title>
 <link rel="stylesheet" href="/styles.css">
 <style>
+:root {
+  --map-accent:#b85638;
+  --map-accent-soft:rgba(184,86,56,.26);
+  --panel-bg:rgba(7,10,15,.90);
+  --panel-line:rgba(184,86,56,.28);
+}
 body.world-map-body {
-  background:#05080d;
+  background:
+    radial-gradient(circle at 15% 85%, rgba(120,28,24,.14), transparent 26rem),
+    radial-gradient(circle at 85% 10%, rgba(120,28,24,.08), transparent 24rem),
+    #04070b;
   overflow:hidden;
 }
 .world-map-shell {
   position:relative;
   height:calc(100vh - 72px);
-  min-height:520px;
-  background:
-    radial-gradient(circle at 50% 45%,rgba(120,58,36,.07),transparent 38rem),
-    #05080d;
+  min-height:620px;
 }
 .world-toolbar {
   position:absolute;
-  z-index:20;
-  top:18px;
-  left:18px;
+  z-index:30;
+  top:24px;
+  left:24px;
   display:flex;
-  gap:8px;
-  align-items:center;
+  gap:10px;
   flex-wrap:wrap;
 }
 .world-toolbar button {
-  width:44px;
-  height:44px;
-  border:1px solid rgba(194,87,54,.36);
-  background:rgba(7,10,15,.86);
-  color:#f1e7d6;
-  font-size:1.15rem;
+  min-width:46px;
+  height:46px;
+  padding:0 14px;
+  border:1px solid rgba(184,86,56,.38);
+  background:rgba(6,9,14,.88);
+  color:#f2e7d8;
+  font-size:1.1rem;
   cursor:pointer;
-  border-radius:8px;
+  border-radius:10px;
+  transition:.14s ease;
 }
-.world-toolbar button:hover { border-color:rgba(225,116,75,.65); }
+.world-toolbar button:hover,
+.world-toolbar button.active {
+  border-color:rgba(225,116,75,.72);
+  box-shadow:0 0 0 1px rgba(225,116,75,.18) inset;
+}
 .world-title-card {
   position:absolute;
-  z-index:20;
-  top:18px;
-  right:18px;
-  width:min(360px,calc(100% - 36px));
-  padding:16px 18px;
-  border:1px solid rgba(179,69,42,.30);
-  background:linear-gradient(180deg,rgba(16,10,12,.90),rgba(6,9,14,.88));
+  z-index:30;
+  left:24px;
+  bottom:24px;
+  width:min(360px, calc(100% - 48px));
+  padding:18px 20px;
+  border:1px solid var(--panel-line);
+  background:linear-gradient(180deg, rgba(15,10,12,.92), rgba(6,9,14,.90));
   backdrop-filter:blur(8px);
+  box-shadow:0 14px 35px rgba(0,0,0,.30);
 }
 .world-title-card .kicker {
-  color:#cf4e37;
+  color:#cf6147;
   text-transform:uppercase;
   letter-spacing:.18em;
   font-size:.72rem;
 }
 .world-title-card h1 {
   margin:.2rem 0 .35rem;
-  color:#f2eadc;
-  font-size:2rem;
+  color:#f3ebdf;
+  font-size:clamp(2.2rem, 4vw, 3.2rem);
 }
-.world-title-card p { color:#c6bcad; margin:0; line-height:1.5; }
+.world-title-card p {
+  color:#c6bcad;
+  margin:0;
+  line-height:1.55;
+}
+.world-info-stack {
+  position:absolute;
+  z-index:30;
+  top:24px;
+  right:24px;
+  width:min(350px, calc(100% - 48px));
+  display:grid;
+  gap:14px;
+}
+.world-panel {
+  border:1px solid var(--panel-line);
+  background:linear-gradient(180deg, rgba(15,10,12,.92), rgba(6,9,14,.90));
+  backdrop-filter:blur(8px);
+  box-shadow:0 14px 35px rgba(0,0,0,.24);
+  padding:16px 18px;
+}
+.world-panel h2 {
+  margin:0 0 .55rem;
+  font-size:1.25rem;
+  color:#f0e4d5;
+}
+.world-panel p {
+  margin:0;
+  color:#c4baab;
+  line-height:1.5;
+  font-size:.96rem;
+}
+.world-panel .tiny {
+  font-size:.83rem;
+  color:#a99f92;
+}
+.world-panel .value {
+  color:#f2e7d8;
+  font-weight:700;
+}
 .world-viewport {
   position:absolute;
   inset:0;
@@ -74,10 +125,40 @@ body.world-map-body {
   position:absolute;
   left:50%;
   top:50%;
-  width:min(1400px,95vw);
+  width:min(1750px, 96vw);
   aspect-ratio: 1400 / 1050;
   transform-origin:50% 50%;
   will-change:transform;
+}
+.map-frame {
+  position:absolute;
+  inset:-28px;
+  border:1px solid rgba(184,86,56,.32);
+  background:
+    linear-gradient(90deg, rgba(184,86,56,.14), transparent 12%, transparent 88%, rgba(184,86,56,.14)),
+    linear-gradient(rgba(184,86,56,.14), transparent 12%, transparent 88%, rgba(184,86,56,.14));
+  box-shadow:
+    0 0 0 1px rgba(225,116,75,.12),
+    0 0 0 12px rgba(8,10,15,.92),
+    0 0 0 13px rgba(184,86,56,.15),
+    0 0 60px rgba(0,0,0,.38);
+  pointer-events:none;
+}
+.map-frame::before,
+.map-frame::after {
+  content:"";
+  position:absolute;
+  width:34px;
+  height:34px;
+  border:1px solid rgba(212,122,84,.34);
+}
+.map-frame::before {
+  left:10px; top:10px;
+  border-right:0; border-bottom:0;
+}
+.map-frame::after {
+  right:10px; bottom:10px;
+  border-left:0; border-top:0;
 }
 .world-stage img {
   width:100%;
@@ -85,21 +166,23 @@ body.world-map-body {
   display:block;
   user-select:none;
   -webkit-user-drag:none;
-  box-shadow:0 0 0 1px rgba(185,77,45,.18),0 0 50px rgba(0,0,0,.45);
+  position:relative;
+  z-index:1;
+  box-shadow:0 0 0 1px rgba(185,77,45,.16), 0 0 24px rgba(0,0,0,.22);
 }
 .city-marker {
   position:absolute;
   transform:translate(-50%,-50%);
-  z-index:5;
-  width:26px;
-  height:26px;
+  z-index:8;
+  width:28px;
+  height:28px;
   border-radius:50%;
-  border:2px solid rgba(255,245,230,.92);
+  border:2px solid rgba(255,245,230,.95);
   background:var(--marker);
   box-shadow:
-    0 0 0 5px rgba(6,9,14,.72),
-    0 0 0 6px color-mix(in srgb,var(--marker) 45%,transparent),
-    0 0 18px color-mix(in srgb,var(--marker) 60%,transparent);
+    0 0 0 6px rgba(6,9,14,.78),
+    0 0 0 7px color-mix(in srgb,var(--marker) 42%,transparent),
+    0 0 20px color-mix(in srgb,var(--marker) 56%,transparent);
   cursor:pointer;
 }
 .city-marker::after {
@@ -108,14 +191,22 @@ body.world-map-body {
   inset:5px;
   border-radius:50%;
   background:#071016;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.15);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);
+}
+.city-marker.location::before,
+.city-marker.history::before {
+  content:"";
+  position:absolute;
+  inset:-6px;
+  border-radius:50%;
+  border:1px dashed rgba(255,255,255,.25);
 }
 .city-tooltip {
   position:absolute;
   left:50%;
   bottom:calc(100% + 14px);
-  transform:translateX(-50%) translateY(5px);
-  width:240px;
+  transform:translateX(-50%) translateY(6px);
+  width:245px;
   opacity:0;
   pointer-events:none;
   transition:.16s ease;
@@ -135,28 +226,138 @@ body.world-map-body {
   opacity:1;
   transform:translateX(-50%) translateY(0);
 }
-.world-hint {
+.secret-hotspot {
   position:absolute;
-  left:18px;
-  bottom:18px;
-  z-index:20;
+  left:57.1%;
+  top:55.0%;
+  transform:translate(-50%,-50%);
+  width:70px;
+  height:70px;
+  z-index:9;
+  background:transparent;
+  border:0;
+  cursor:pointer;
+}
+.secret-hotspot .portal {
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:14px;
+  height:14px;
+  transform:translate(-50%,-50%) scale(.4);
+  border-radius:50%;
+  opacity:0;
+  background:
+    radial-gradient(circle at 40% 40%, #f7daff 0 12%, #b048ff 28%, #421a7d 56%, rgba(0,0,0,0) 72%);
+  box-shadow:0 0 18px rgba(180,72,255,.45), 0 0 36px rgba(180,72,255,.25);
+  transition:.22s ease;
+}
+.secret-hotspot:hover .portal,
+.secret-hotspot:focus-visible .portal,
+.secret-hotspot.revealed .portal {
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1.6);
+}
+.secret-hotspot .secret-label {
+  position:absolute;
+  left:50%;
+  top:calc(100% + 6px);
+  transform:translateX(-50%);
+  opacity:0;
+  color:#e7d8ff;
+  font-size:.74rem;
+  white-space:nowrap;
+  transition:.2s ease;
+  text-shadow:0 0 12px rgba(0,0,0,.7);
+}
+.secret-hotspot:hover .secret-label,
+.secret-hotspot:focus-visible .secret-label,
+.secret-hotspot.revealed .secret-label {
+  opacity:1;
+}
+.measure-overlay {
+  position:absolute;
+  inset:0;
+  z-index:11;
+  pointer-events:none;
+}
+.measure-overlay.active { pointer-events:auto; }
+.measure-line {
+  position:absolute;
+  left:0;
+  top:0;
+  height:3px;
+  background:linear-gradient(90deg, rgba(255,220,163,.95), rgba(255,128,84,.95));
+  transform-origin:0 50%;
+  box-shadow:0 0 10px rgba(255,145,84,.4);
+  display:none;
+}
+.measure-line::before,
+.measure-line::after {
+  content:"";
+  position:absolute;
+  top:50%;
+  width:14px;
+  height:14px;
+  margin-top:-7px;
+  border-radius:50%;
+  background:#f2e6d3;
+  box-shadow:0 0 0 3px rgba(7,10,15,.76), 0 0 0 4px rgba(255,145,84,.32);
+}
+.measure-line::before { left:-7px; }
+.measure-line::after { right:-7px; }
+.measure-tag {
+  position:absolute;
+  transform:translate(-50%, -135%);
+  display:none;
+  min-width:150px;
+  text-align:center;
   padding:10px 12px;
-  border:1px solid rgba(170,75,49,.24);
-  background:rgba(6,9,14,.78);
+  border:1px solid rgba(255,132,82,.40);
+  background:rgba(8,10,14,.96);
+  color:#f3e9db;
+  box-shadow:0 10px 24px rgba(0,0,0,.28);
+}
+.measure-tag strong { display:block; font-size:.94rem; margin-bottom:.15rem; }
+.measure-tag span { display:block; color:#baafa0; font-size:.8rem; }
+.map-note {
+  position:absolute;
+  z-index:30;
+  bottom:24px;
+  right:24px;
+  padding:10px 12px;
+  border:1px solid var(--panel-line);
+  background:rgba(6,9,14,.82);
   color:#b8aea1;
   font-size:.8rem;
 }
-@media(max-width:800px) {
-  .world-title-card {
+@media (max-width: 1080px) {
+  .world-info-stack {
     top:auto;
-    bottom:18px;
-    right:18px;
-    max-width:280px;
+    right:24px;
+    bottom:170px;
+    width:min(320px, calc(100% - 48px));
   }
-  .world-title-card h1 { font-size:1.45rem; }
-  .world-title-card p { display:none; }
-  .world-hint { display:none; }
-  .city-tooltip { width:205px; }
+}
+@media (max-width: 760px) {
+  .world-title-card {
+    width:min(92vw, 320px);
+    left:16px;
+    bottom:16px;
+  }
+  .world-info-stack {
+    position:absolute;
+    top:16px;
+    right:16px;
+    left:auto;
+    width:min(92vw, 300px);
+  }
+  .world-panel.measure-panel p.tiny {
+    display:none;
+  }
+  .map-note { display:none; }
+  .world-toolbar { top:16px; left:16px; }
+  .city-tooltip { width:215px; }
 }
 </style>
 </head>
@@ -181,33 +382,58 @@ body.world-map-body {
     <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
     <button type="button" id="zoomOut" aria-label="Zoom out">−</button>
     <button type="button" id="resetMap" aria-label="Reset map">⌂</button>
+    <button type="button" id="measureToggle" aria-label="Toggle distance tool">↔</button>
   </div>
+
   <section class="world-title-card">
     <div class="kicker">The Continent of Sin</div>
     <h1>The World</h1>
-    <p>Drag to explore, scroll or use the controls to zoom, and select a city marker to open its lore page.</p>
+    <p>Drag to explore, zoom in to inspect the continent, use the markers to jump between pages, and enable the ruler to measure just how absurdly large this place really is.</p>
   </section>
+
+  <div class="world-info-stack">
+    <section class="world-panel measure-panel">
+      <h2>Distance Tool</h2>
+      <p><span class="value">22 USA-widths</span> spans from the top of Hilnem to the bottom of Palin. Turn on the ruler, then click two points or click and drag across the map.</p>
+      <p class="tiny" style="margin-top:.5rem;">The readout shows the distance in USA-widths first, followed by an approximate miles / kilometers conversion.</p>
+    </section>
+  </div>
+
   <div class="world-viewport" id="worldViewport" aria-label="Interactive map of the Continent of Sin">
     <div class="world-stage" id="worldStage">
-      <img src="/continent-of-sin-map.jpg" alt="Map of the Continent of Sin">
-      <button class="city-marker" type="button" style="left:26.0%;top:18.5%;--marker:#7fb4d6" data-href="/etro.html" aria-label="Etro, City of Dreams">
-          <span class="city-tooltip"><strong>Etro</strong><em>City of Dreams</em><span>A glittering city of performance and entertainment, where the Ratio Tower's twelve songs never truly stop.</span></span>
-        </button><button class="city-marker" type="button" style="left:61.0%;top:18.3%;--marker:#b58c5a" data-href="/hilnem.html" aria-label="Hilnem, Greed's Ever-Lasting Contract">
-          <span class="city-tooltip"><strong>Hilnem</strong><em>Greed's Ever-Lasting Contract</em><span>The continent's great commercial city, governed by contracts powerful enough to keep even treachery in check.</span></span>
-        </button><button class="city-marker" type="button" style="left:74.2%;top:31.0%;--marker:#d7c98f" data-href="/sol.html" aria-label="Sol, The Sleeping City">
-          <span class="city-tooltip"><strong>Sol</strong><em>The Sleeping City</em><span>A nocturnal city rebuilding from catastrophe, with old ruins now sharing space with advancing dwarven technology.</span></span>
-        </button><button class="city-marker" type="button" style="left:34.2%;top:39.5%;--marker:#68b791" data-href="/rushinghan.html" aria-label="Rushinghan, City of Lust">
-          <span class="city-tooltip"><strong>Rushinghan</strong><em>City of Lust</em><span>The jewel of the continent: art, love, worship, rebellion, and one of the grandest centers of culture anywhere.</span></span>
-        </button><button class="city-marker" type="button" style="left:52.4%;top:41.7%;--marker:#b49a72" data-href="/oro.html" aria-label="Oro, City of Innovation">
-          <span class="city-tooltip"><strong>Oro</strong><em>City of Innovation</em><span>Once the Dead Zone, now a technological powerhouse reached only by train or airship.</span></span>
-        </button><button class="city-marker" type="button" style="left:73.8%;top:63.0%;--marker:#8c5f48" data-href="/hus.html" aria-label="Hus, The One Stop Dinner">
-          <span class="city-tooltip"><strong>Hus</strong><em>The One Stop Dinner</em><span>The continent's densest city, where food is culture, power, religion—and crime is never far behind.</span></span>
-        </button><button class="city-marker" type="button" style="left:48.4%;top:78.0%;--marker:#cf8a4a" data-href="/palin.html" aria-label="Palin, City of Warriors">
-          <span class="city-tooltip"><strong>Palin</strong><em>City of Warriors</em><span>Wrath's desert city, built around the Colosseum, disciplined combat, justice, and earned citizenship.</span></span>
+      <div class="map-frame" aria-hidden="true"></div>
+      <img id="worldMapImage" src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin">
+      <button class="city-marker city" type="button" style="left:23.3%;top:21.0%;--marker:#83b8dd" data-href="/etro.html" aria-label="Etro, City of Dreams">
+          <span class="city-tooltip"><strong>Etro</strong><em>City of Dreams</em><span>A city of performance, spectacle, music, and a hidden underworld.</span></span>
+        </button><button class="city-marker city" type="button" style="left:69.2%;top:20.8%;--marker:#be9360" data-href="/hilnem.html" aria-label="Hilnem, Greed's Ever-Lasting Contract">
+          <span class="city-tooltip"><strong>Hilnem</strong><em>Greed's Ever-Lasting Contract</em><span>Commerce ruled by binding contracts and the direct presence of Greed.</span></span>
+        </button><button class="city-marker city" type="button" style="left:79.6%;top:35.0%;--marker:#d9c98d" data-href="/sol.html" aria-label="Sol, The Sleeping City">
+          <span class="city-tooltip"><strong>Sol</strong><em>The Sleeping City</em><span>A nocturnal city rebuilding itself among catastrophe and dwarven innovation.</span></span>
+        </button><button class="city-marker city" type="button" style="left:39.2%;top:44.8%;--marker:#6bc197" data-href="/rushinghan.html" aria-label="Rushinghan, City of Lust">
+          <span class="city-tooltip"><strong>Rushinghan</strong><em>City of Lust</em><span>The jewel of the continent, known for worship, art, rebellion, and emotional openness.</span></span>
+        </button><button class="city-marker city" type="button" style="left:55.8%;top:39.2%;--marker:#b4a07e" data-href="/oro.html" aria-label="Oro, City of Innovation">
+          <span class="city-tooltip"><strong>Oro</strong><em>City of Innovation</em><span>Once the Dead Zone, now a technological powerhouse reached by train or airship.</span></span>
+        </button><button class="city-marker city" type="button" style="left:81.0%;top:58.5%;--marker:#8c5f48" data-href="/hus.html" aria-label="Hus, The One Stop Dinner">
+          <span class="city-tooltip"><strong>Hus</strong><em>The One Stop Dinner</em><span>The continent's most crowded city, built on food, appetite, commerce, and crime.</span></span>
+        </button><button class="city-marker city" type="button" style="left:50.5%;top:70.6%;--marker:#d59153" data-href="/palin.html" aria-label="Palin, City of Warriors">
+          <span class="city-tooltip"><strong>Palin</strong><em>City of Warriors</em><span>Wrath's desert city, defined by discipline, combat, and the Colosseum.</span></span>
+        </button><button class="city-marker location" type="button" style="left:4.3%;top:41.5%;--marker:#6fa579" data-href="/the-isle.html" aria-label="The Isle, Outer Island Settlement">
+          <span class="city-tooltip"><strong>The Isle</strong><em>Outer Island Settlement</em><span>A small island off the western coast, marked separately from the major mainland cities.</span></span>
+        </button><button class="city-marker history" type="button" style="left:48.2%;top:37.2%;--marker:#7d8aa0" data-href="/the-calamity.html" aria-label="The Calamity, History Landmark">
+          <span class="city-tooltip"><strong>The Calamity</strong><em>History Landmark</em><span>The massive scar at Rushinghan's edge. Click through for the historical entry.</span></span>
         </button>
+      <button class="secret-hotspot" id="greatTreeSecret" type="button" aria-label="Hidden route to the Great Tree Village">
+        <span class="portal" aria-hidden="true"></span>
+        <span class="secret-label">The Great Tree Village</span>
+      </button>
+      <div class="measure-overlay" id="measureOverlay" aria-hidden="true">
+        <div class="measure-line" id="measureLine"></div>
+        <div class="measure-tag" id="measureTag"><strong>0 USA-widths</strong><span>0 miles · 0 km</span></div>
+      </div>
     </div>
   </div>
-  <div class="world-hint">Drag to pan · Scroll to zoom · Click a city marker to visit</div>
+
+  <div class="map-note">Drag to pan · Scroll to zoom · Use ↔ to measure · Click markers to travel</div>
 </main>
 <script src="/script.js"></script>
 <script>
@@ -215,11 +441,32 @@ body.world-map-body {
   const viewport = document.getElementById('worldViewport');
   const stage = document.getElementById('worldStage');
   const markers = [...document.querySelectorAll('.city-marker')];
+  const secret = document.getElementById('greatTreeSecret');
+  const measureToggle = document.getElementById('measureToggle');
+  const measureOverlay = document.getElementById('measureOverlay');
+  const measureLine = document.getElementById('measureLine');
+  const measureTag = document.getElementById('measureTag');
+
   let scale = 1;
   let x = 0, y = 0;
-  let dragging = false;
+  let draggingMap = false;
   let startX = 0, startY = 0, baseX = 0, baseY = 0;
-  const minScale = .72, maxScale = 3.6;
+  const minScale = .72, maxScale = 4.0;
+
+  let measureMode = false;
+  let measuring = false;
+  let measureStart = null;
+  let lastMeasured = null;
+
+  // Calibration:
+  // top of Hilnem to bottom of Palin = 22 USA-widths.
+  const calibA = { x: 64.7, y: 10.6 };
+  const calibB = { x: 50.4, y: 88.3 };
+  const usaWidthMiles = 2800;
+  const dxCal = calibB.x - calibA.x;
+  const dyCal = calibB.y - calibA.y;
+  const calibLen = Math.sqrt(dxCal * dxCal + dyCal * dyCal);
+  const usaPerPercent = 22 / calibLen;
 
   function apply() {
     stage.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(${scale})`;
@@ -234,6 +481,68 @@ body.world-map-body {
     apply();
   }
 
+  function pointToStagePercent(clientX, clientY) {
+    const rect = stage.getBoundingClientRect();
+    const px = ((clientX - rect.left) / rect.width) * 100;
+    const py = ((clientY - rect.top) / rect.height) * 100;
+    return {
+      px: Math.max(0, Math.min(100, px)),
+      py: Math.max(0, Math.min(100, py)),
+      rect
+    };
+  }
+
+  function formatDistance(a, b) {
+    const dx = b.px - a.px;
+    const dy = b.py - a.py;
+    const percentDistance = Math.sqrt(dx * dx + dy * dy);
+    const usa = percentDistance * usaPerPercent;
+    const miles = usa * usaWidthMiles;
+    const km = miles * 1.60934;
+    return {
+      usa,
+      miles,
+      km
+    };
+  }
+
+  function drawMeasure(a, b) {
+    const rect = stage.getBoundingClientRect();
+    const ax = rect.width * (a.px / 100);
+    const ay = rect.height * (a.py / 100);
+    const bx = rect.width * (b.px / 100);
+    const by = rect.height * (b.py / 100);
+    const dx = bx - ax;
+    const dy = by - ay;
+    const len = Math.sqrt(dx * dx + dy * dy);
+    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+    measureLine.style.display = 'block';
+    measureLine.style.left = `${ax}px`;
+    measureLine.style.top = `${ay}px`;
+    measureLine.style.width = `${len}px`;
+    measureLine.style.transform = `rotate(${angle}deg)`;
+
+    const midX = (ax + bx) / 2;
+    const midY = (ay + by) / 2;
+    const dist = formatDistance(a, b);
+
+    measureTag.style.display = 'block';
+    measureTag.style.left = `${midX}px`;
+    measureTag.style.top = `${midY}px`;
+    measureTag.querySelector('strong').textContent = `${dist.usa.toFixed(2)} USA-widths`;
+    measureTag.querySelector('span').textContent = `${Math.round(dist.miles).toLocaleString()} miles · ${Math.round(dist.km).toLocaleString()} km`;
+
+    lastMeasured = dist;
+  }
+
+  function clearMeasure() {
+    measureLine.style.display = 'none';
+    measureTag.style.display = 'none';
+    measuring = false;
+    measureStart = null;
+  }
+
   viewport.addEventListener('wheel', e => {
     e.preventDefault();
     const r = viewport.getBoundingClientRect();
@@ -241,51 +550,96 @@ body.world-map-body {
   }, { passive:false });
 
   viewport.addEventListener('pointerdown', e => {
-    if (e.target.closest('.city-marker')) return;
-    dragging = true;
+    if (e.target.closest('.city-marker') || e.target.closest('.secret-hotspot')) return;
+
+    if (measureMode) {
+      const p = pointToStagePercent(e.clientX, e.clientY);
+      measuring = true;
+      measureStart = p;
+      drawMeasure(p, p);
+      viewport.setPointerCapture(e.pointerId);
+      return;
+    }
+
+    draggingMap = true;
     viewport.classList.add('dragging');
     viewport.setPointerCapture(e.pointerId);
     startX = e.clientX; startY = e.clientY; baseX = x; baseY = y;
   });
 
   viewport.addEventListener('pointermove', e => {
-    if (!dragging) return;
+    if (measuring && measureMode && measureStart) {
+      const p = pointToStagePercent(e.clientX, e.clientY);
+      drawMeasure(measureStart, p);
+      return;
+    }
+    if (!draggingMap) return;
     x = baseX + (e.clientX - startX);
     y = baseY + (e.clientY - startY);
     apply();
   });
 
   viewport.addEventListener('pointerup', e => {
-    dragging = false;
+    if (measuring && measureMode && measureStart) {
+      const p = pointToStagePercent(e.clientX, e.clientY);
+      drawMeasure(measureStart, p);
+      measuring = false;
+      try { viewport.releasePointerCapture(e.pointerId); } catch(_) {}
+      return;
+    }
+    draggingMap = false;
     viewport.classList.remove('dragging');
     try { viewport.releasePointerCapture(e.pointerId); } catch(_) {}
   });
+
   viewport.addEventListener('pointercancel', () => {
-    dragging = false; viewport.classList.remove('dragging');
+    draggingMap = false;
+    viewport.classList.remove('dragging');
+    if (measureMode && measuring) measuring = false;
   });
 
   document.getElementById('zoomIn').addEventListener('click', () => zoomBy(1.18));
   document.getElementById('zoomOut').addEventListener('click', () => zoomBy(.85));
   document.getElementById('resetMap').addEventListener('click', () => {
-    scale = 1; x = 0; y = 0; apply();
+    scale = 1; x = 0; y = 0; apply(); clearMeasure();
+  });
+
+  measureToggle.addEventListener('click', () => {
+    measureMode = !measureMode;
+    measureToggle.classList.toggle('active', measureMode);
+    measureOverlay.classList.toggle('active', measureMode);
+    if (!measureMode) clearMeasure();
   });
 
   markers.forEach(m => {
     let armed = false;
     m.addEventListener('click', e => {
+      if (measureMode) return;
       if (matchMedia('(hover:hover)').matches) {
         location.href = m.dataset.href;
         return;
       }
       if (!armed) {
-        markers.forEach(o => { o.classList.remove('active'); o._armed = false; });
-        m.classList.add('active'); armed = true; m._armed = true;
+        markers.forEach(o => o.classList.remove('active'));
+        m.classList.add('active');
+        armed = true;
         e.preventDefault();
       } else {
         location.href = m.dataset.href;
       }
     });
+    m.addEventListener('mouseleave', () => { armed = false; });
   });
+
+  secret.addEventListener('mouseenter', () => secret.classList.add('revealed'));
+  secret.addEventListener('mouseleave', () => secret.classList.remove('revealed'));
+  secret.addEventListener('focus', () => secret.classList.add('revealed'));
+  secret.addEventListener('blur', () => secret.classList.remove('revealed'));
+  secret.addEventListener('click', () => {
+    if (measureMode) return;
+    location.href = '/great-tree-village.html';
+  });
+
   apply();
 })();
 </script>

@@ -7,6 +7,13 @@
 
 <style>
 body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
+body.city-body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(141,55,35,.08), transparent 22rem),
+    radial-gradient(circle at 80% 78%, rgba(141,55,35,.05), transparent 24rem);
+}
+body.city-body > *{position:relative;z-index:1;}
 .city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
 .city-copy{padding:26px 0}
 .city-back{display:inline-block;margin-bottom:12px;color:#c97f5f}
@@ -54,12 +61,12 @@ body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
     <div class="city-title">The Sleeping City</div>
     <p class="city-lead">A nocturnal city rebuilding itself from devastation while old Sloth traditions and new dwarven technology collide.</p>
   </div>
-  <div class="city-map-card"><img src="/continent-of-sin-map.jpg" alt="Map of the Continent of Sin"></div>
+  <div class="city-map-card"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
 </section>
 <main class="city-layout">
-  <article class="city-article"><section><h2>Life After Sunset</h2><p>Sol's social rhythm is reversed. The city sleeps through much of the day and becomes active after dark. Night is when shops open, communities gather, festivals begin, and the city feels most alive.</p></section><section><h2>A Culture of Rest</h2><p>Sloth's influence made rest part of civic identity rather than a private necessity. Sol historically treated sleep, recovery, affection, and nighttime community as natural parts of a healthy life.</p></section><section><h2>The Serpent</h2><p>That life was shattered when a colossal serpent erupted from the heart of the city and claimed to act in Pride's name. Its attack devastated Sol until the Pantheon defeated it and transformed the creature into stone.</p></section><section><h2>The Dwarven Presence</h2><p>In the years following the destruction, dwarves moved into parts of Sol and established some of the most advanced technology outside Oro. Their presence has changed the city's architecture, infrastructure, and political balance.</p></section><section><h2>Rebuilding</h2><p>Sol is no longer simply a ruin. The city is rebuilding slowly, district by district. Old traditions are returning alongside entirely new technology, making modern Sol one of the strangest mixtures of memory and reinvention on the continent.</p></section></article>
+  <article class="city-article"><section><h2>Life After Sunset</h2><p>Sol's social rhythm is reversed. The city sleeps through much of the day and becomes active after dark.</p></section><section><h2>The Serpent</h2><p>A colossal serpent erupted from the heart of the city and claimed to act in Pride's name, devastating Sol before being petrified.</p></section><section><h2>Rebuilding</h2><p>Modern Sol is slowly being rebuilt, with dwarven-controlled districts introducing advanced technology.</p></section></article>
   <aside class="city-aside">
-    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">The Sleeping City</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Sloth</span></div><div class="city-fact"><span class="city-fact-label">Daily Rhythm</span><span class="city-fact-value">Awake at night, asleep by day</span></div><div class="city-fact"><span class="city-fact-label">Historic Disaster</span><span class="city-fact-value">The Serpent of Pride</span></div><div class="city-fact"><span class="city-fact-label">Current Development</span><span class="city-fact-value">Rebuilding with a major dwarven presence</span></div></section>
+    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">The Sleeping City</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Sloth</span></div><div class="city-fact"><span class="city-fact-label">Current Development</span><span class="city-fact-value">Rebuilding with a dwarven presence</span></div></section>
     <section class="city-links">
       <h2>Keep Exploring</h2>
       <a href="/world.html">The World Map</a>

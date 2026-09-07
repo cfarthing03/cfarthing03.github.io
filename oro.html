@@ -7,6 +7,13 @@
 
 <style>
 body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
+body.city-body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(141,55,35,.08), transparent 22rem),
+    radial-gradient(circle at 80% 78%, rgba(141,55,35,.05), transparent 24rem);
+}
+body.city-body > *{position:relative;z-index:1;}
 .city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
 .city-copy{padding:26px 0}
 .city-back{display:inline-block;margin-bottom:12px;color:#c97f5f}
@@ -54,12 +61,12 @@ body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
     <div class="city-title">City of Innovation</div>
     <p class="city-lead">Once the Dead Zone, now one of the most technologically advanced places in the world.</p>
   </div>
-  <div class="city-map-card"><img src="/continent-of-sin-map.jpg" alt="Map of the Continent of Sin"></div>
+  <div class="city-map-card"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
 </section>
 <main class="city-layout">
-  <article class="city-article"><section><h2>From Dead Zone to Metropolis</h2><p>Oro occupies land once known as the Dead Zone. Rather than remaining a scar on the continent, the area was rebuilt into a city defined by invention, machinery, and the belief that creation can transform even the most ruined place.</p></section><section><h2>A City You Cannot Walk Into</h2><p>Oro is isolated by design and geography. The city can only be entered by train or airship, both technologies created there. Airship travel is the most common way visitors arrive.</p></section><section><h2>Machinists and Automatons</h2><p>Most residents are either Machinists or Automatons, though the city is not closed to others. Engineering, mechanical craft, automation, and experimental technology shape everything from work to architecture.</p></section><section><h2>The Most Advanced Human City</h2><p>Outside the dwarven-controlled portions of Sol, Oro is generally considered the most technologically advanced city in the world. New devices, transport systems, weapons, infrastructure, and automaton design often begin here before spreading elsewhere.</p></section><section><h2>Pride and Creation</h2><p>Modern Oro fits closely with the current understanding of Pride: achievement, innovation, craftsmanship, and the confidence to create something better without needing to erase what came before.</p></section></article>
+  <article class="city-article"><section><h2>From Dead Zone to Metropolis</h2><p>Oro occupies land once known as the Dead Zone and rebuilt itself into a city defined by invention and machinery.</p></section><section><h2>A City You Cannot Walk Into</h2><p>The city can only be entered by train or airship, both technologies created there.</p></section><section><h2>Machinists and Automatons</h2><p>Most residents are either Machinists or Automatons, though the city is not closed to others.</p></section></article>
   <aside class="city-aside">
-    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">City of Innovation</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Pride</span></div><div class="city-fact"><span class="city-fact-label">Former Name</span><span class="city-fact-value">The Dead Zone</span></div><div class="city-fact"><span class="city-fact-label">Primary Residents</span><span class="city-fact-value">Machinists and Automatons</span></div><div class="city-fact"><span class="city-fact-label">Access</span><span class="city-fact-value">Airship or train only</span></div></section>
+    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">City of Innovation</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Pride</span></div><div class="city-fact"><span class="city-fact-label">Access</span><span class="city-fact-value">Airship or train only</span></div></section>
     <section class="city-links">
       <h2>Keep Exploring</h2>
       <a href="/world.html">The World Map</a>

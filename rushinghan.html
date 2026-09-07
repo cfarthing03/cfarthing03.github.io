@@ -7,6 +7,13 @@
 
 <style>
 body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
+body.city-body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(141,55,35,.08), transparent 22rem),
+    radial-gradient(circle at 80% 78%, rgba(141,55,35,.05), transparent 24rem);
+}
+body.city-body > *{position:relative;z-index:1;}
 .city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
 .city-copy{padding:26px 0}
 .city-back{display:inline-block;margin-bottom:12px;color:#c97f5f}
@@ -54,12 +61,12 @@ body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
     <div class="city-title">City of Lust</div>
     <p class="city-lead">The jewel of the Continent of Sin: a city of temples, art, relationships, rebellion, and people who care loudly.</p>
   </div>
-  <div class="city-map-card"><img src="/continent-of-sin-map.jpg" alt="Map of the Continent of Sin"></div>
+  <div class="city-map-card"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
 </section>
 <main class="city-layout">
-  <article class="city-article"><section><h2>The Jewel of the Continent</h2><p>Rushinghan is one of the continent's great cultural centers. Art, music, relationships, worship, nightlife, and public celebration are woven into daily life.</p></section><section><h2>Temples of Every Sin</h2><p>Unlike cities dominated by a single religious tradition, Rushinghan is famous for enormous temples dedicated to many gods. Lust's temple remains the most important, but the city has long made room for faiths that would feel foreign elsewhere.</p></section><section><h2>The Passions</h2><p>Lust's followers, the Passions, are deeply embedded in the city's identity. Their theology emphasizes connection, consent, love, honesty, and the freedom to choose the bonds that matter.</p></section><section><h2>The Rebellion</h2><p>Rushinghan became one of the most important centers of resistance during the rebellion against Pride. Tess emerged as a major figure in that struggle, helping turn the city's passion for people into political action.</p></section><section><h2>A City That Cares</h2><p>Rushinghan's reputation for indulgence is only part of the story. Its defining characteristic is emotional openness. People care about art, friends, lovers, causes, faith, and identity with very little interest in pretending otherwise.</p></section></article>
+  <article class="city-article"><section><h2>The Jewel of the Continent</h2><p>Rushinghan is one of the continent's great cultural centers. Art, music, relationships, worship, nightlife, and public celebration are woven into daily life.</p></section><section><h2>Temples of Every Sin</h2><p>The city is famous for enormous temples dedicated to many gods, with Lust's temple remaining the most important.</p></section><section><h2>The Rebellion</h2><p>Rushinghan became one of the most important centers of resistance during the rebellion against Pride.</p></section></article>
   <aside class="city-aside">
-    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">City of Lust</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Lust</span></div><div class="city-fact"><span class="city-fact-label">Major Faith</span><span class="city-fact-value">The Passions</span></div><div class="city-fact"><span class="city-fact-label">Historic Role</span><span class="city-fact-value">Center of the rebellion against Pride</span></div><div class="city-fact"><span class="city-fact-label">Cultural Focus</span><span class="city-fact-value">Love, art, nightlife, connection</span></div></section>
+    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">City of Lust</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Lust</span></div><div class="city-fact"><span class="city-fact-label">Major Faith</span><span class="city-fact-value">The Passions</span></div></section>
     <section class="city-links">
       <h2>Keep Exploring</h2>
       <a href="/world.html">The World Map</a>
