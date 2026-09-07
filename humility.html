@@ -220,6 +220,25 @@ body.deity-body.deity-humility > *:not(.humility-page-decor){position:relative;z
 .deity-humility .humility-chaos .junk-ring{fill:none;stroke:rgba(213,220,236,.16);stroke-width:1.4;}
 @media(max-width:760px){.deity-humility .humility-chaos{opacity:.74;}}
 
+
+
+/* V17 HUMILITY layout-flow fix */
+body.deity-body.deity-humility > .humility-chaos{
+  position:fixed !important;
+  inset:0 !important;
+  width:100vw !important;
+  height:100vh !important;
+  margin:0 !important;
+  padding:0 !important;
+  z-index:0 !important;
+  pointer-events:none !important;
+}
+.deity-humility .humility-chaos svg{
+  width:100% !important;
+  height:100% !important;
+  display:block !important;
+}
+
 </style></head><body class="deity-body deity-humility">
 <div aria-hidden="true" class="humility-page-decor">
 <span class="hfrag sword fa"></span>
