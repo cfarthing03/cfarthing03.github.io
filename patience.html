@@ -198,6 +198,55 @@ body.deity-body.deity-patience{--pat-ring1x:0px;--pat-ring1y:0px;--pat-ring2x:0p
 .deity-patience .watch-pupil-bg{transform:translateX(-50%) !important;transition:none !important;}
 .deity-patience .watch-pupil-dot{transition:transform .16s ease-out !important;}
 
+
+
+/* V15 PATIENCE - ONLY pupil + inner iris ring track */
+.deity-patience .watch-socket{
+  transform:translateX(-50%) !important;
+  transition:none !important;
+}
+.deity-patience .watch-eye{
+  transform:translateX(-50%) !important;
+  transition:none !important;
+}
+.deity-patience .watch-eye::after{
+  transform:translate(-50%,-50%) !important;
+  transition:none !important;
+  background:radial-gradient(circle,
+    transparent 0 41%,
+    rgba(225,211,183,.06) 41.5% 42.5%,
+    transparent 43% 100%) !important;
+}
+.deity-patience .watch-pupil-bg{
+  transform:translateX(-50%) !important;
+  transition:none !important;
+  opacity:.40 !important;
+  overflow:visible !important;
+}
+.deity-patience .watch-pupil-bg::before{
+  display:block !important;
+  content:"" !important;
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  width:250px !important;
+  height:250px !important;
+  border-radius:50% !important;
+  background:radial-gradient(circle,
+    transparent 0 25%,
+    rgba(116,94,52,.86) 25.5% 46%,
+    rgba(225,211,183,.90) 46.5% 56%,
+    rgba(81,65,38,.72) 56.5% 63%,
+    rgba(255,255,255,.11) 63.5% 65%,
+    transparent 65.5% 100%) !important;
+  box-shadow:0 0 30px rgba(222,204,170,.08) !important;
+  transform:translate(calc(-50% + var(--pat-ring-x)), calc(-50% + var(--pat-ring-y))) !important;
+  transition:transform .16s ease-out !important;
+}
+.deity-patience .watch-pupil-dot{
+  transition:transform .16s ease-out !important;
+}
+
 </style></head><body class="deity-body deity-patience">
 <div aria-hidden="true" class="patience-page-decor">
 <span class="watch-socket"></span>
@@ -243,28 +292,28 @@ body.deity-body.deity-patience{--pat-ring1x:0px;--pat-ring1y:0px;--pat-ring2x:0p
 <script>
 (function(){
   const root=document.body;
-  const bigPupil=document.querySelector('.deity-patience .watch-pupil-dot');
+  const pupil=document.querySelector('.deity-patience .watch-pupil-dot');
   const glyphs=[...document.querySelectorAll('.deity-patience .patience-glyph')];
   const glyphPupils=[...document.querySelectorAll('.deity-patience .patience-glyph .glyph-pupil')];
-  let tx=window.innerWidth/2, ty=window.innerHeight/2, cx=tx, cy=ty;
+  let tx=innerWidth/2, ty=innerHeight/2, cx=tx, cy=ty;
   function update(){
     cx += (tx-cx)*0.08;
     cy += (ty-cy)*0.08;
-    const nx=(cx/window.innerWidth - 0.5);
-    const ny=(cy/window.innerHeight - 0.5);
+    const nx=(cx/innerWidth)-0.5;
+    const ny=(cy/innerHeight)-0.5;
 
-    /* subtle outer iris/ring tracking */
-    root.style.setProperty('--pat-ring1x', (nx*7).toFixed(2)+'px');
-    root.style.setProperty('--pat-ring1y', (ny*4).toFixed(2)+'px');
+    /* inner iris ring follows subtly */
+    root.style.setProperty('--pat-ring-x',(nx*7).toFixed(2)+'px');
+    root.style.setProperty('--pat-ring-y',(ny*4).toFixed(2)+'px');
 
-    /* pupil tracks a little farther */
-    if(bigPupil){
-      bigPupil.style.transform=`translate(calc(-50% + ${nx*16}px), calc(-50% + ${ny*9}px))`;
+    /* pupil follows farther */
+    if(pupil){
+      pupil.style.transform=`translate(calc(-50% + ${nx*16}px), calc(-50% + ${ny*9}px))`;
     }
 
-    /* divider eye icons remain the already-approved subtle movement */
-    glyphs.forEach((glyph)=>{ glyph.style.transform=`translate(${nx*2.3}px, ${ny*1.4}px)`; });
-    glyphPupils.forEach((pupil)=>{ pupil.style.transform=`translate(calc(-50% + ${nx*2.8}px), calc(-50% + ${ny*1.8}px))`; });
+    /* approved small divider eyes */
+    glyphs.forEach(g=>{g.style.transform=`translate(${nx*2.3}px, ${ny*1.4}px)`;});
+    glyphPupils.forEach(p=>{p.style.transform=`translate(calc(-50% + ${nx*2.8}px), calc(-50% + ${ny*1.8}px))`;});
     requestAnimationFrame(update);
   }
   addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;},{passive:true});
