@@ -157,6 +157,15 @@ body.deity-body.deity-patience{--patience-bg-x:0px;--patience-bg-y:0px;}
 .deity-patience .deity-article section:nth-child(n+2) .card-eye{display:none !important;}
 @media(max-width:760px){.deity-patience .watch-pupil-dot{width:92px;height:92px;}.deity-patience .facts-eye,.deity-patience .card-eye{display:none !important;}}
 
+
+
+/* V10 PATIENCE FIXES */
+.deity-patience .tracking-eye{display:none !important;content:none !important;}
+.deity-patience .patience-glyph{position:relative;display:inline-block;width:24px !important;height:14px !important;border-radius:50%/58% !important;box-shadow:0 0 0 1px rgba(216,199,166,.72) inset,0 0 10px rgba(216,199,166,.10) !important;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.03) 22%),linear-gradient(180deg,rgba(18,18,22,.10),rgba(6,7,10,.24)) !important;overflow:visible !important;}
+.deity-patience .patience-glyph::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:24px;height:14px;border-radius:50%/58%;border-top:1px solid rgba(216,199,166,.48);border-bottom:1px solid rgba(216,199,166,.24);opacity:.95;}
+.deity-patience .patience-glyph .glyph-pupil{position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at 36% 34%,rgba(255,255,255,.16),rgba(5,6,8,0) 26%),radial-gradient(circle,rgba(3,4,5,1) 0 54%,rgba(2,3,4,.96) 55% 100%);box-shadow:0 0 0 1px rgba(216,199,166,.30),0 0 8px rgba(0,0,0,.18);transition:transform .15s ease-out;}
+.deity-patience .watch-pupil-dot{transition:transform .12s ease-out !important;}
+
 </style></head><body class="deity-body deity-patience">
 <div aria-hidden="true" class="patience-page-decor">
 <span class="watch-socket"></span>
@@ -173,17 +182,17 @@ body.deity-body.deity-patience{--patience-bg-x:0px;--patience-bg-y:0px;}
 <section class="deity-hero">
 <div class="deity-portrait"><img alt="Artistic depiction of Patience" src="/god-patience.png"/></div>
 <div class="deity-hero-copy"><a class="deity-back" href="/virtues.html">← The Seven Virtues</a>
-<div aria-hidden="true" class="patience-divider"><span class="patience-glyph"></span></div>
-<div class="deity-kicker">The Seven Virtues</div><h1>Patience<span class="tracking-eye heading-eye"><span class="eye-iris"></span><span class="eye-pupil"></span><span class="eye-glint"></span></span></h1>
+<div aria-hidden="true" class="patience-divider"><span class="patience-glyph"><span class="glyph-pupil"></span></span></div>
+<div class="deity-kicker">The Seven Virtues</div><h1>Patience</h1>
 <p class="deity-tagline">Endurance, waiting, forgiveness, and the strength to survive what cannot be hurried.</p><p class="deity-summary">Patience is the most overtly celestial of the Virtues: a blinding, many-winged god whose presence feels less like a person entering a room and more like heaven opening above it.</p></div>
 <div class="deity-sigil"><img alt="Sigil of Patience" src="/sigil-virtue-patience.png"/></div></section>
-<main class="deity-layout"><article class="deity-article"><section><span class="tracking-eye card-eye"><span class="eye-iris"></span><span class="eye-pupil"></span><span class="eye-glint"></span></span><h2>The Virtue of Waiting</h2><p>Patience does not teach passivity. His ideal is the ability to endure pain, uncertainty, anger, and fear without letting the moment decide who you become. To wait is to refuse to be ruled by panic.</p></section>
+<main class="deity-layout"><article class="deity-article"><section><h2>The Virtue of Waiting</h2><p>Patience does not teach passivity. His ideal is the ability to endure pain, uncertainty, anger, and fear without letting the moment decide who you become. To wait is to refuse to be ruled by panic.</p></section>
 <section><h2>From Eustace to Patience</h2><p>Before his godhood, Patience was known by other names, including Eustace and Abram. He was slain in the final battle, but his soul did not simply vanish. In death he went on to rescue his comrades and raise them into divinity, creating the opposing pantheon now known as the Seven Virtues.</p></section>
 <section><h2>A God Almost Too Angelic</h2><p>Modern depictions push his divinity to excess: layered wings, impossible halos, radiant eyes, veils and masks, and enough light to make looking directly at him uncomfortable. The design is deliberate. Patience should feel holy in a way that is beautiful, severe, and slightly frightening.</p></section>
 <section><h2>When Patience Becomes Control</h2><p>The danger in Patience is easy to miss. Endurance can become obedience. Forgiveness can become pressure to accept what should not be accepted. Waiting can become an excuse for never acting at all. His faith lives in that uncomfortable space between perseverance and surrender.</p></section></article>
 <aside class="deity-aside"><section class="deity-facts">
-<div aria-hidden="true" class="patience-divider centered"><span class="patience-glyph"></span></div>
-<span class="tracking-eye facts-eye"><span class="eye-iris"></span><span class="eye-pupil"></span><span class="eye-glint"></span></span><h2>At a Glance</h2>
+<div aria-hidden="true" class="patience-divider centered"><span class="patience-glyph"><span class="glyph-pupil"></span></span></div>
+<h2>At a Glance</h2>
 <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Endurance, waiting, perseverance, forgiveness</span></div>
 <div class="fact"><span class="fact-label">Associated Faith</span><span class="fact-value"><a href="/faith-patience.html">The Faith of Patience</a></span></div>
 <div class="fact"><span class="fact-label">Divine Form</span><span class="fact-value">A many-winged, masked seraph</span></div>
@@ -202,32 +211,25 @@ body.deity-body.deity-patience{--patience-bg-x:0px;--patience-bg-y:0px;}
 <script>
 (function(){
   const root=document.body;
-  const smallEyes=[...document.querySelectorAll('.deity-patience .tracking-eye')];
   const bigPupil=document.querySelector('.deity-patience .watch-pupil-dot');
-  let tx=innerWidth/2, ty=innerHeight/2, cx=tx, cy=ty;
-  function trackSmall(eye,x,y){
-    const iris=eye.querySelector('.eye-iris');
-    const pupil=eye.querySelector('.eye-pupil');
-    if(!iris||!pupil) return;
-    const r=eye.getBoundingClientRect();
-    const dx=Math.max(-1,Math.min(1,(x-(r.left+r.width/2))/(r.width*1.9)));
-    const dy=Math.max(-1,Math.min(1,(y-(r.top+r.height/2))/(r.height*1.9)));
-    iris.style.transform=`translate(calc(-50% + ${dx*3.1}px),calc(-50% + ${dy*2}px))`;
-    pupil.style.transform=`translate(calc(-50% + ${dx*5.2}px),calc(-50% + ${dy*3.2}px))`;
-  }
-  function tick(){
-    cx+=(tx-cx)*0.075; cy+=(ty-cy)*0.075;
-    const nx=(cx/innerWidth-.5), ny=(cy/innerHeight-.5);
-    const bgx=nx*8, bgy=ny*4;
-    root.style.setProperty('--patience-bg-x',bgx.toFixed(2)+'px');
-    root.style.setProperty('--patience-bg-y',bgy.toFixed(2)+'px');
+  const glyphPupils=[...document.querySelectorAll('.deity-patience .patience-glyph .glyph-pupil')];
+  let tx=window.innerWidth/2, ty=window.innerHeight/2, cx=tx, cy=ty;
+  function update(){
+    cx += (tx-cx)*0.09;
+    cy += (ty-cy)*0.09;
+    const nx=(cx/window.innerWidth - 0.5);
+    const ny=(cy/window.innerHeight - 0.5);
+    root.style.setProperty('--patience-bg-x', (nx*8).toFixed(2)+'px');
+    root.style.setProperty('--patience-bg-y', (ny*4.5).toFixed(2)+'px');
     if(bigPupil){
-      bigPupil.style.transform=`translate(calc(-50% + ${nx*34}px),calc(-50% + ${ny*18}px))`;
+      bigPupil.style.transform=`translate(calc(-50% + ${nx*54}px), calc(-50% + ${ny*28}px))`;
     }
-    smallEyes.forEach(e=>trackSmall(e,cx,cy));
-    requestAnimationFrame(tick);
+    glyphPupils.forEach((pupil)=>{
+      pupil.style.transform=`translate(calc(-50% + ${nx*5}px), calc(-50% + ${ny*3}px))`;
+    });
+    requestAnimationFrame(update);
   }
-  addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY},{passive:true});
-  requestAnimationFrame(tick);
+  addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;},{passive:true});
+  requestAnimationFrame(update);
 })();
 </script></body></html>
