@@ -403,7 +403,7 @@ body.world-map-body{
       <div class="measure-line" id="measureLine"></div>
       <div class="measure-point" id="measureStartPoint"></div>
       <div class="measure-point" id="measureEndPoint"></div>
-      <div class="measure-tag" id="measureTag"><strong>—</strong><span>—</span></div>
+      <div class="measure-tag" id="measureTag"><strong>,</strong><span>,</span></div>
     </div>
   </div>
 
@@ -424,7 +424,7 @@ body.world-map-body{
     <div class="kicker">Ruler Active</div>
     <h2>Distance</h2>
     <p>Left-click two points to measure, or left-click and drag to draw the ruler directly. Right-click and drag moves the map. Scroll to zoom.</p>
-    <div class="measure-output"><strong id="measureMiles">—</strong><span id="measureKm">Select two points</span></div>
+    <div class="measure-output"><strong id="measureMiles">,</strong><span id="measureKm">Select two points</span></div>
   </section>
 
   <div class="map-hint">Drag to pan · Scroll to zoom · Hover markers for details</div>
@@ -613,7 +613,7 @@ body.world-map-body{
     leftMoved=false;
 
     hideMeasurementVisuals();
-    measureMiles.textContent='—';
+    measureMiles.textContent=',';
     measureKm.textContent='Select two points';
   }
 
