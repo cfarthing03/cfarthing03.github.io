@@ -190,8 +190,74 @@ mask:radial-gradient(circle at 50% 28%, transparent 0 5%, #000 5.2%);}
 .deity-chastity .web-hub{fill:rgba(214,220,255,.06);stroke:rgba(214,220,255,.24);stroke-width:1.1;}
 @media(max-width:760px){.deity-chastity .chastity-webfield{opacity:.72;}.deity-chastity .chastity-webfield .main-web{width:min(176vw,1200px);height:min(152vw,1120px);top:78px;}.deity-chastity .chastity-webfield .corner-web.b{display:none;}}
 
+
+
+/* V14 CHASTITY: restore the old web design, correct placement */
+.deity-chastity .cw-main,.deity-chastity .cw-corner,.deity-chastity .cw-node,.deity-chastity .cw-v12,.deity-chastity .chastity-webfield{display:none !important;}
+.deity-chastity .chastity-page-decor{z-index:1 !important;mix-blend-mode:screen !important;}
+.deity-chastity > *:not(.chastity-page-decor){position:relative;z-index:2;}
+.deity-chastity .v14-main-web{
+  display:block !important;
+  position:fixed !important;
+  left:50% !important;
+  top:-205px !important;
+  transform:translateX(-50%) !important;
+  width:min(128vw,1700px) !important;
+  height:min(128vw,1700px) !important;
+  border-radius:50% !important;
+  opacity:.34 !important;
+}
+.deity-chastity .v14-main-web::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  border-radius:50% !important;
+  background:
+    repeating-conic-gradient(from 0deg,rgba(218,212,255,.34) 0 1.15deg,transparent 1.15deg 30deg),
+    radial-gradient(circle,
+      transparent 0 11.5%,rgba(218,212,255,.34) 11.9% 12.5%,transparent 12.8% 23.5%,
+      rgba(218,212,255,.30) 23.9% 24.5%,transparent 24.8% 36.2%,
+      rgba(218,212,255,.25) 36.6% 37.2%,transparent 37.5% 49.4%,
+      rgba(218,212,255,.20) 49.8% 50.4%,transparent 50.7% 62.8%,
+      rgba(218,212,255,.15) 63.2% 63.8%,transparent 64.1% 100%) !important;
+  -webkit-mask:radial-gradient(circle,transparent 0 5.4%,#000 5.7%) !important;
+  mask:radial-gradient(circle,transparent 0 5.4%,#000 5.7%) !important;
+}
+.deity-chastity .v14-main-web::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:9% !important;
+  border-radius:50% !important;
+  background:
+    repeating-conic-gradient(from 15deg,rgba(218,212,255,.18) 0 .8deg,transparent .8deg 20deg),
+    radial-gradient(circle,transparent 0 18%,rgba(134,219,255,.12) 18.3% 18.8%,transparent 19% 36%,rgba(218,212,255,.13) 36.3% 36.8%,transparent 37% 56%,rgba(218,212,255,.09) 56.3% 56.8%,transparent 57% 100%) !important;
+  opacity:.72 !important;
+}
+.deity-chastity .v14-corner-a,.deity-chastity .v14-corner-b{
+  display:block !important;
+  position:fixed !important;
+  width:250px !important;
+  height:250px !important;
+  border-radius:50% !important;
+  opacity:.13 !important;
+}
+.deity-chastity .v14-corner-a{left:-54px !important;top:130px !important;}
+.deity-chastity .v14-corner-b{right:-62px !important;bottom:-44px !important;transform:scale(.86) rotate(18deg) !important;}
+.deity-chastity .v14-corner-a::before,.deity-chastity .v14-corner-b::before{
+  content:"" !important;position:absolute !important;inset:0 !important;border-radius:50% !important;
+  background:repeating-conic-gradient(from 0deg,rgba(218,212,255,.28) 0 1deg,transparent 1deg 45deg),radial-gradient(circle,transparent 0 26%,rgba(218,212,255,.24) 26.4% 27%,transparent 27.2% 44%,rgba(218,212,255,.18) 44.4% 45%,transparent 45.2% 61%,rgba(218,212,255,.14) 61.3% 62%,transparent 62.2% 100%) !important;
+  -webkit-mask:radial-gradient(circle,transparent 0 10%,#000 10%) !important;mask:radial-gradient(circle,transparent 0 10%,#000 10%) !important;
+}
+@media(max-width:760px){
+  .deity-chastity .v14-main-web{top:-80px !important;width:min(160vw,1150px) !important;height:min(160vw,1150px) !important;opacity:.28 !important;}
+  .deity-chastity .v14-corner-b{display:none !important;}
+}
+
 </style></head><body class="deity-body deity-chastity">
 <div aria-hidden="true" class="chastity-page-decor">
+<span class="chastity-megaweb v14-main-web"></span>
+<span class="chastity-web v14-corner-a"></span>
+<span class="chastity-web v14-corner-b"></span>
 <span class="cw-main"></span>
 
 <span class="cw-corner corner-a"></span>
@@ -221,45 +287,6 @@ mask:radial-gradient(circle at 50% 28%, transparent 0 5%, #000 5.2%);}
   <path class="thread-fine" d="M0 1020 L176 982"></path>
   <path class="thread-fine" d="M1404 998 L1600 972"></path>
 </svg></span>
-</div>
-<div class="chastity-webfield" aria-hidden="true">
-<svg class="main-web" viewBox="0 0 1600 1200" preserveAspectRatio="none">
-  <circle class="web-hub" cx="800" cy="90" r="36"></circle>
-  <path class="web-thread-heavy" d="M0 150 L540 150"></path>
-  <path class="web-thread-heavy" d="M1060 150 L1600 150"></path>
-  <path class="web-thread-heavy" d="M800 90 L40 160"></path>
-  <path class="web-thread-heavy" d="M800 90 L240 176"></path>
-  <path class="web-thread" d="M800 90 L430 210"></path>
-  <path class="web-thread" d="M800 90 L610 260"></path>
-  <path class="web-thread-heavy" d="M800 90 L800 1180"></path>
-  <path class="web-thread" d="M800 90 L990 260"></path>
-  <path class="web-thread" d="M800 90 L1170 210"></path>
-  <path class="web-thread-heavy" d="M800 90 L1360 176"></path>
-  <path class="web-thread-heavy" d="M800 90 L1560 160"></path>
-  <path class="web-thread" d="M800 90 L140 640"></path>
-  <path class="web-thread" d="M800 90 L1460 640"></path>
-  <path class="web-thread" d="M800 90 L240 1010"></path>
-  <path class="web-thread" d="M800 90 L1360 1010"></path>
-
-  <path class="web-thread" d="M116 168 C370 118, 1230 118, 1484 168"></path>
-  <path class="web-thread-fine" d="M188 188 C420 154, 1180 154, 1412 188"></path>
-  <path class="web-thread" d="M286 230 C486 184, 1114 184, 1314 230"></path>
-  <path class="web-thread" d="M378 290 C558 238, 1042 238, 1222 290"></path>
-  <path class="web-thread-fine" d="M446 358 C602 304, 998 304, 1154 358"></path>
-  <path class="web-thread" d="M506 440 C648 384, 952 384, 1094 440"></path>
-  <path class="web-thread-fine" d="M554 536 C678 482, 922 482, 1046 536"></path>
-  <path class="web-thread" d="M602 652 C706 606, 894 606, 998 652"></path>
-  <path class="web-thread-fine" d="M654 792 C734 756, 866 756, 946 792"></path>
-  <path class="web-thread" d="M706 946 C760 920, 840 920, 894 946"></path>
-</svg>
-<svg class="corner-web a" viewBox="0 0 260 260" preserveAspectRatio="none">
-  <path class="web-thread" d="M0 0 L260 0"></path><path class="web-thread-fine" d="M0 0 L220 68"></path><path class="web-thread-fine" d="M0 0 L178 132"></path><path class="web-thread-fine" d="M0 0 L118 208"></path><path class="web-thread-fine" d="M0 0 L44 250"></path>
-  <path class="web-thread-fine" d="M18 20 C74 4, 156 12, 236 48"></path><path class="web-thread-fine" d="M24 44 C88 24, 158 34, 224 74"></path><path class="web-thread-fine" d="M30 74 C96 56, 154 70, 208 102"></path><path class="web-thread-fine" d="M36 112 C96 98, 142 116, 180 144"></path>
-</svg>
-<svg class="corner-web b" viewBox="0 0 220 220" preserveAspectRatio="none">
-  <path class="web-thread-fine" d="M0 0 L220 0"></path><path class="web-thread-fine" d="M0 0 L194 44"></path><path class="web-thread-fine" d="M0 0 L156 104"></path><path class="web-thread-fine" d="M0 0 L102 176"></path><path class="web-thread-fine" d="M0 0 L28 220"></path>
-  <path class="web-thread-fine" d="M18 18 C62 6, 136 16, 208 44"></path><path class="web-thread-fine" d="M22 42 C76 28, 140 40, 194 72"></path><path class="web-thread-fine" d="M28 74 C78 62, 132 78, 176 108"></path>
-</svg>
 </div>
 <header class="site-header"><div class="nav-wrap">
 <a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>

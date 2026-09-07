@@ -189,6 +189,15 @@ body.deity-body.deity-patience{--pat-ring1x:0px;--pat-ring1y:0px;--pat-ring2x:0p
 .deity-patience .watch-eye::after{transform:translate(calc(-50% + var(--pat-ring1x)), calc(-50% + var(--pat-ring1y))) !important;transition:transform .16s ease-out !important;}
 .deity-patience .watch-pupil-bg::before{transform:translate(calc(-50% + var(--pat-ring2x)), calc(-50% + var(--pat-ring2y))) !important;transition:transform .16s ease-out !important;}
 
+
+
+/* V14 PATIENCE: only pupil + slight outer ring track cursor */
+.deity-patience .watch-socket{transform:translateX(-50%) !important;transition:none !important;}
+.deity-patience .watch-eye{transform:translateX(-50%) !important;transition:none !important;}
+.deity-patience .watch-eye::after{transform:translate(calc(-50% + var(--pat-ring1x)), calc(-50% + var(--pat-ring1y))) !important;transition:transform .16s ease-out !important;}
+.deity-patience .watch-pupil-bg{transform:translateX(-50%) !important;transition:none !important;}
+.deity-patience .watch-pupil-dot{transition:transform .16s ease-out !important;}
+
 </style></head><body class="deity-body deity-patience">
 <div aria-hidden="true" class="patience-page-decor">
 <span class="watch-socket"></span>
@@ -234,8 +243,6 @@ body.deity-body.deity-patience{--pat-ring1x:0px;--pat-ring1y:0px;--pat-ring2x:0p
 <script>
 (function(){
   const root=document.body;
-  const socket=document.querySelector('.deity-patience .watch-socket');
-  const eye=document.querySelector('.deity-patience .watch-eye');
   const bigPupil=document.querySelector('.deity-patience .watch-pupil-dot');
   const glyphs=[...document.querySelectorAll('.deity-patience .patience-glyph')];
   const glyphPupils=[...document.querySelectorAll('.deity-patience .patience-glyph .glyph-pupil')];
@@ -245,15 +252,17 @@ body.deity-body.deity-patience{--pat-ring1x:0px;--pat-ring1y:0px;--pat-ring2x:0p
     cy += (ty-cy)*0.08;
     const nx=(cx/window.innerWidth - 0.5);
     const ny=(cy/window.innerHeight - 0.5);
-    root.style.setProperty('--patience-bg-x', (nx*5).toFixed(2)+'px');
-    root.style.setProperty('--patience-bg-y', (ny*2.8).toFixed(2)+'px');
-    root.style.setProperty('--pat-ring1x', (nx*12).toFixed(2)+'px');
-    root.style.setProperty('--pat-ring1y', (ny*7).toFixed(2)+'px');
-    root.style.setProperty('--pat-ring2x', (nx*8).toFixed(2)+'px');
-    root.style.setProperty('--pat-ring2y', (ny*5).toFixed(2)+'px');
-    if(socket){ socket.style.transform=`translateX(calc(-50% + ${nx*3}px)) translateY(${ny*2}px)`; }
-    if(eye){ eye.style.transform=`translateX(calc(-50% + ${nx*4}px)) translateY(${ny*2.6}px)`; }
-    if(bigPupil){ bigPupil.style.transform=`translate(calc(-50% + ${nx*16}px), calc(-50% + ${ny*9}px))`; }
+
+    /* subtle outer iris/ring tracking */
+    root.style.setProperty('--pat-ring1x', (nx*7).toFixed(2)+'px');
+    root.style.setProperty('--pat-ring1y', (ny*4).toFixed(2)+'px');
+
+    /* pupil tracks a little farther */
+    if(bigPupil){
+      bigPupil.style.transform=`translate(calc(-50% + ${nx*16}px), calc(-50% + ${ny*9}px))`;
+    }
+
+    /* divider eye icons remain the already-approved subtle movement */
     glyphs.forEach((glyph)=>{ glyph.style.transform=`translate(${nx*2.3}px, ${ny*1.4}px)`; });
     glyphPupils.forEach((pupil)=>{ pupil.style.transform=`translate(calc(-50% + ${nx*2.8}px), calc(-50% + ${ny*1.8}px))`; });
     requestAnimationFrame(update);
