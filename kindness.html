@@ -221,6 +221,35 @@ body.deity-body.deity-kindness > *:not(.kindness-page-decor){position:relative;z
   50%{filter:brightness(1.24) drop-shadow(0 0 18px rgba(255,78,96,.44)) drop-shadow(0 0 60px rgba(168,18,30,.28));opacity:1;}
 }
 
+
+
+/* V13 KINDNESS smooth, lighter fade */
+.deity-kindness .kshard{will-change:opacity,filter;backface-visibility:hidden;transform-style:preserve-3d;}
+.deity-kindness .s2,.deity-kindness .s7,.deity-kindness .s8,.deity-kindness .s4{box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 0 34px rgba(190,24,36,.26),0 0 72px rgba(110,12,22,.16) !important;}
+.deity-kindness .kindness-page-decor::before{animation:kindnessAmbientFadeV13 9s ease-in-out infinite !important;will-change:opacity;}
+.deity-kindness .s2,.deity-kindness .s7{animation:kindnessFadeRedV13 5.6s ease-in-out infinite alternate !important;}
+.deity-kindness .s8{animation:kindnessFadeCoolV13 6.4s ease-in-out infinite alternate !important;box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 0 30px rgba(140,214,244,.24),0 0 64px rgba(76,144,222,.14) !important;}
+.deity-kindness .s4{animation:kindnessFadeSoftV13 8.4s ease-in-out infinite alternate !important;}
+.deity-kindness .s7{animation-delay:1.8s !important;}
+.deity-kindness .s8{animation-delay:.8s !important;}
+@keyframes kindnessAmbientFadeV13{0%,100%{opacity:.84;}50%{opacity:1;}}
+@keyframes kindnessFadeRedV13{
+  0%{opacity:.72;filter:brightness(.96) saturate(.98) drop-shadow(0 0 8px rgba(198,24,38,.28)) drop-shadow(0 0 22px rgba(110,14,22,.14));}
+  35%{opacity:.84;filter:brightness(1.08) saturate(1.05) drop-shadow(0 0 14px rgba(224,46,60,.44)) drop-shadow(0 0 34px rgba(132,16,24,.18));}
+  70%{opacity:.95;filter:brightness(1.18) saturate(1.10) drop-shadow(0 0 20px rgba(255,74,92,.66)) drop-shadow(0 0 52px rgba(170,18,30,.26));}
+  100%{opacity:1;filter:brightness(1.26) saturate(1.14) drop-shadow(0 0 24px rgba(255,88,104,.84)) drop-shadow(0 0 68px rgba(182,20,32,.32));}
+}
+@keyframes kindnessFadeCoolV13{
+  0%{opacity:.74;filter:brightness(.98) saturate(1.0) drop-shadow(0 0 8px rgba(96,164,210,.22));}
+  45%{opacity:.88;filter:brightness(1.10) saturate(1.06) drop-shadow(0 0 14px rgba(140,214,244,.40)) drop-shadow(0 0 34px rgba(76,144,222,.16));}
+  100%{opacity:1;filter:brightness(1.24) saturate(1.14) drop-shadow(0 0 20px rgba(180,236,255,.80)) drop-shadow(0 0 56px rgba(88,156,230,.24));}
+}
+@keyframes kindnessFadeSoftV13{
+  0%{opacity:.82;filter:brightness(.98) drop-shadow(0 0 8px rgba(186,24,34,.16));}
+  50%{opacity:.92;filter:brightness(1.10) drop-shadow(0 0 14px rgba(255,72,90,.28));}
+  100%{opacity:1;filter:brightness(1.18) drop-shadow(0 0 18px rgba(255,86,102,.42)) drop-shadow(0 0 48px rgba(168,18,30,.20));}
+}
+
 </style></head><body class="deity-body deity-kindness">
 <div aria-hidden="true" class="kindness-page-decor">
 <span class="kshard red s1"></span>
