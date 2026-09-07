@@ -141,6 +141,20 @@ body.deity-body.deity-kindness > *:not(.kindness-page-decor){position:relative;z
 .deity-kindness .s8{animation:kindnessPulseCool 6.6s ease-in-out infinite;}
 @keyframes kindnessPulseCool{0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.05) inset,0 0 18px rgba(96,164,210,.20),0 0 34px rgba(30,52,86,.10);}50%{box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 0 28px rgba(154,222,255,.44),0 0 60px rgba(52,92,148,.18);}}
 
+
+
+/* V9 kindness visible pulse */
+.deity-kindness .kshard.pulse{animation:kindnessPulseVisible 4.8s ease-in-out infinite !important;}
+.deity-kindness .s2{animation-delay:0s !important;}
+.deity-kindness .s7{animation-delay:1.2s !important;}
+.deity-kindness .s8{animation:kindnessPulseCoolVisible 6s ease-in-out infinite !important;}
+@keyframes kindnessPulseVisible{
+  0%,100%{opacity:.92;box-shadow:0 0 0 1px rgba(255,255,255,.05) inset,0 0 26px rgba(167,19,30,.26),0 0 40px rgba(83,10,18,.12),0 0 0 rgba(235,50,66,0);} 
+  50%{opacity:1;box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 0 46px rgba(235,50,66,.92),0 0 92px rgba(116,13,22,.42),0 0 18px rgba(255,228,231,.24);} }
+@keyframes kindnessPulseCoolVisible{
+  0%,100%{opacity:.92;box-shadow:0 0 0 1px rgba(255,255,255,.05) inset,0 0 20px rgba(96,164,210,.20),0 0 34px rgba(30,52,86,.10);} 
+  50%{opacity:1;box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 0 38px rgba(154,222,255,.64),0 0 72px rgba(52,92,148,.24),0 0 14px rgba(225,246,255,.20);} }
+
 </style></head><body class="deity-body deity-kindness">
 <div aria-hidden="true" class="kindness-page-decor">
 <span class="kshard red s1"></span>

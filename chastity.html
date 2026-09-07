@@ -120,10 +120,36 @@ mask:radial-gradient(circle at 50% 28%, transparent 0 5%, #000 5.2%);}
 .deity-chastity .node-c{opacity:.28 !important;}
 @media (max-width:760px){.deity-chastity .cw-main{width:min(122vw,960px) !important;height:min(122vw,960px) !important;top:96px !important;}}
 
+
+
+
+/* V9 chastity single-web fix */
+.deity-chastity .cw-secondary{display:none !important;}
+.deity-chastity .cw-main{
+  position:fixed !important;
+  left:50% !important;
+  right:auto !important;
+  top:52px !important;
+  bottom:auto !important;
+  transform:translateX(-50%) !important;
+  width:min(94vw,1140px) !important;
+  height:min(94vw,1140px) !important;
+  opacity:.18 !important;
+}
+.deity-chastity .cw-corner{display:block !important;opacity:.16 !important;}
+.deity-chastity .cw-corner.corner-a{left:-18px !important;top:108px !important;}
+.deity-chastity .cw-corner.corner-b{right:-18px !important;bottom:-8px !important;transform:scaleX(-1) scaleY(-1) !important;}
+.deity-chastity .node-a{right:24% !important;top:36% !important;opacity:.70 !important;}
+.deity-chastity .node-b{left:18% !important;top:64% !important;opacity:.50 !important;}
+.deity-chastity .node-c{right:12% !important;bottom:20% !important;opacity:.34 !important;}
+@media (max-width:760px){
+  .deity-chastity .cw-main{width:min(122vw,960px) !important;height:min(122vw,960px) !important;top:104px !important;}
+  .deity-chastity .cw-corner{opacity:.12 !important;}
+}
+
 </style></head><body class="deity-body deity-chastity">
 <div aria-hidden="true" class="chastity-page-decor">
 <span class="cw-main"></span>
-<span class="cw-secondary"></span>
 <span class="cw-corner corner-a"></span>
 <span class="cw-corner corner-b"></span>
 <span class="cw-node node-a"></span>

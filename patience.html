@@ -136,11 +136,19 @@ body.deity-body.deity-patience{--bgmx:0px;--bgmy:0px;}
 .deity-patience .facts-eye{right:22px;top:18px;}
 .deity-patience .deity-article section:nth-child(n+2) .card-eye{display:none !important;}
 
+
+
+/* V9 patience pupil fix */
+.deity-patience .watch-pupil-bg::before{display:none !important;content:none !important;}
+.deity-patience .watch-pupil-bg{overflow:visible !important;}
+.deity-patience .watch-pupil-dot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:118px;height:118px;border-radius:50%;background:radial-gradient(circle at 36% 34%,rgba(255,255,255,.16),rgba(5,6,8,0) 26%),radial-gradient(circle,rgba(3,4,5,1) 0 55%,rgba(2,3,4,.96) 56% 100%);box-shadow:0 0 0 1px rgba(30,23,13,.4),0 0 12px rgba(0,0,0,.16);opacity:.88;transition:transform .22s ease-out;}
+@media (max-width:760px){.deity-patience .watch-pupil-dot{width:92px;height:92px;}}
+
 </style></head><body class="deity-body deity-patience">
 <div aria-hidden="true" class="patience-page-decor">
 <span class="watch-socket"></span>
 <span class="watch-eye"></span>
-<span class="watch-pupil-bg"></span>
+<span class="watch-pupil-bg"><span class="watch-pupil-dot"></span></span>
 <span class="watch-glint"></span>
 </div>
 <header class="site-header"><div class="nav-wrap">
@@ -183,6 +191,7 @@ body.deity-body.deity-patience{--bgmx:0px;--bgmy:0px;}
 (function(){
   const root = document.body;
   const eyes = Array.from(document.querySelectorAll('.deity-patience .tracking-eye'));
+  const bigPupil = document.querySelector('.deity-patience .watch-pupil-dot');
   let tx = window.innerWidth * 0.5, ty = window.innerHeight * 0.5;
   let px = tx, py = ty;
   function moveEye(eye, x, y){
@@ -204,6 +213,9 @@ body.deity-body.deity-patience{--bgmx:0px;--bgmy:0px;}
     const bgy = ((py / window.innerHeight) - 0.5) * 5;
     root.style.setProperty('--bgmx', bgx.toFixed(2) + 'px');
     root.style.setProperty('--bgmy', bgy.toFixed(2) + 'px');
+    if(bigPupil){
+      bigPupil.style.transform = `translate(calc(-50% + ${bgx * 1.35}px), calc(-50% + ${bgy * 1.35}px))`;
+    }
     eyes.forEach(eye => moveEye(eye, px, py));
     requestAnimationFrame(frame);
   }
