@@ -50,6 +50,33 @@ body.world-map-body {
   border-color:rgba(225,116,75,.72);
   box-shadow:0 0 0 1px rgba(225,116,75,.18) inset;
 }
+.world-toolbar button {
+  position:relative;
+}
+.world-toolbar button::after {
+  content:attr(data-tip);
+  position:absolute;
+  left:50%;
+  top:calc(100% + 9px);
+  transform:translateX(-50%) translateY(-3px);
+  opacity:0;
+  pointer-events:none;
+  white-space:nowrap;
+  padding:7px 9px;
+  border:1px solid rgba(184,86,56,.34);
+  background:rgba(7,10,15,.96);
+  color:#e9dfd2;
+  font-size:.72rem;
+  line-height:1;
+  border-radius:6px;
+  box-shadow:0 8px 18px rgba(0,0,0,.25);
+  transition:.14s ease;
+}
+.world-toolbar button:hover::after,
+.world-toolbar button:focus-visible::after {
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
 .world-title-card {
   position:absolute;
   z-index:30;
@@ -113,6 +140,15 @@ body.world-map-body {
   color:#f2e7d8;
   font-weight:700;
 }
+
+.world-info-stack.measure-hidden {
+  opacity:0;
+  transform:translateY(-8px);
+  pointer-events:none;
+}
+.world-info-stack {
+  transition:opacity .18s ease, transform .18s ease;
+}
 .world-viewport {
   position:absolute;
   inset:0;
@@ -166,6 +202,8 @@ body.world-map-body {
   display:block;
   user-select:none;
   -webkit-user-drag:none;
+  user-select:none;
+  pointer-events:none;
   position:relative;
   z-index:1;
   box-shadow:0 0 0 1px rgba(185,77,45,.16), 0 0 24px rgba(0,0,0,.22);
@@ -174,24 +212,24 @@ body.world-map-body {
   position:absolute;
   transform:translate(-50%,-50%);
   z-index:8;
-  width:28px;
-  height:28px;
+  width:18px;
+  height:18px;
   border-radius:50%;
-  border:2px solid rgba(255,245,230,.95);
-  background:var(--marker);
+  border:2px solid rgba(255,246,232,.92);
+  background:#080d12;
   box-shadow:
-    0 0 0 6px rgba(6,9,14,.78),
-    0 0 0 7px color-mix(in srgb,var(--marker) 42%,transparent),
-    0 0 20px color-mix(in srgb,var(--marker) 56%,transparent);
+    0 0 0 3px rgba(6,9,14,.78),
+    0 0 0 4px color-mix(in srgb,var(--marker) 58%,transparent),
+    0 0 10px color-mix(in srgb,var(--marker) 34%,transparent);
   cursor:pointer;
 }
 .city-marker::after {
   content:"";
   position:absolute;
-  inset:5px;
+  inset:4px;
   border-radius:50%;
-  background:#071016;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);
+  background:var(--marker);
+  box-shadow:0 0 5px color-mix(in srgb,var(--marker) 46%,transparent);
 }
 .city-marker.location::before,
 .city-marker.history::before {
@@ -228,11 +266,11 @@ body.world-map-body {
 }
 .secret-hotspot {
   position:absolute;
-  left:57.1%;
-  top:55.0%;
+  left:57.0%;
+  top:55.1%;
   transform:translate(-50%,-50%);
-  width:70px;
-  height:70px;
+  width:58px;
+  height:42px;
   z-index:9;
   background:transparent;
   border:0;
@@ -241,34 +279,52 @@ body.world-map-body {
 .secret-hotspot .portal {
   position:absolute;
   left:50%;
-  top:50%;
-  width:14px;
-  height:14px;
-  transform:translate(-50%,-50%) scale(.4);
+  bottom:100%;
+  width:26px;
+  height:12px;
+  transform:translate(-50%,8px) scale(.12,.22);
   border-radius:50%;
   opacity:0;
   background:
-    radial-gradient(circle at 40% 40%, #f7daff 0 12%, #b048ff 28%, #421a7d 56%, rgba(0,0,0,0) 72%);
-  box-shadow:0 0 18px rgba(180,72,255,.45), 0 0 36px rgba(180,72,255,.25);
-  transition:.22s ease;
+    radial-gradient(ellipse at center, rgba(255,244,255,.98) 0 8%, rgba(191,96,255,.98) 20%, rgba(91,29,161,.96) 44%, rgba(24,8,52,.98) 66%, rgba(0,0,0,0) 72%);
+  box-shadow:
+    0 0 12px rgba(184,72,255,.46),
+    0 0 28px rgba(184,72,255,.28),
+    inset 0 0 12px rgba(255,255,255,.28);
+  transition:opacity .12s ease, transform .34s cubic-bezier(.2,.85,.25,1.1), width .34s ease, height .34s ease;
 }
 .secret-hotspot:hover .portal,
 .secret-hotspot:focus-visible .portal,
 .secret-hotspot.revealed .portal {
   opacity:1;
-  transform:translate(-50%,-50%) scale(1.6);
+  width:128px;
+  height:58px;
+  transform:translate(-50%,0) scale(1);
+  animation:treePortalPulse 1.8s ease-in-out infinite;
+}
+@keyframes treePortalPulse {
+  0%,100% {
+    box-shadow:0 0 14px rgba(184,72,255,.46),0 0 32px rgba(184,72,255,.26),inset 0 0 14px rgba(255,255,255,.28);
+  }
+  50% {
+    box-shadow:0 0 22px rgba(214,128,255,.66),0 0 52px rgba(184,72,255,.36),inset 0 0 20px rgba(255,255,255,.34);
+  }
 }
 .secret-hotspot .secret-label {
   position:absolute;
   left:50%;
-  top:calc(100% + 6px);
-  transform:translateX(-50%);
+  bottom:calc(100% + 68px);
+  transform:translateX(-50%) translateY(5px);
   opacity:0;
-  color:#e7d8ff;
-  font-size:.74rem;
+  color:#f0e3ff;
+  font-size:.82rem;
   white-space:nowrap;
+  letter-spacing:.05em;
+  padding:7px 10px;
+  border:1px solid rgba(184,72,255,.28);
+  background:rgba(9,6,16,.88);
+  box-shadow:0 8px 20px rgba(0,0,0,.28);
   transition:.2s ease;
-  text-shadow:0 0 12px rgba(0,0,0,.7);
 }
 .secret-hotspot:hover .secret-label,
 .secret-hotspot:focus-visible .secret-label,
@@ -379,10 +435,10 @@ body.world-map-body {
 </header>
 <main class="world-map-shell">
   <div class="world-toolbar" aria-label="Map controls">
-    <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
-    <button type="button" id="zoomOut" aria-label="Zoom out">−</button>
-    <button type="button" id="resetMap" aria-label="Reset map">⌂</button>
-    <button type="button" id="measureToggle" aria-label="Toggle distance tool">↔</button>
+    <button type="button" id="zoomIn" aria-label="Zoom in" data-tip="Zoom In">+</button>
+    <button type="button" id="zoomOut" aria-label="Zoom out" data-tip="Zoom Out">−</button>
+    <button type="button" id="resetMap" aria-label="Reset map" data-tip="Recenter Map">⌂</button>
+    <button type="button" id="measureToggle" aria-label="Toggle distance tool" data-tip="Measurement Tool">↔</button>
   </div>
 
   <section class="world-title-card">
@@ -391,18 +447,18 @@ body.world-map-body {
     <p>Drag to explore, zoom in to inspect the continent, use the markers to jump between pages, and enable the ruler to measure just how absurdly large this place really is.</p>
   </section>
 
-  <div class="world-info-stack">
+  <div class="world-info-stack measure-hidden" id="measureInfo">
     <section class="world-panel measure-panel">
       <h2>Distance Tool</h2>
-      <p><span class="value">22 USA-widths</span> spans from the top of Hilnem to the bottom of Palin. Turn on the ruler, then click two points or click and drag across the map.</p>
-      <p class="tiny" style="margin-top:.5rem;">The readout shows the distance in USA-widths first, followed by an approximate miles / kilometers conversion.</p>
+      <p>Turn on the ruler, then click two points or click and drag across the map to measure the distance between them.</p>
+      <p class="tiny" style="margin-top:.5rem;">The readout shows the approximate distance in miles and kilometers.</p>
     </section>
   </div>
 
   <div class="world-viewport" id="worldViewport" aria-label="Interactive map of the Continent of Sin">
     <div class="world-stage" id="worldStage">
       <div class="map-frame" aria-hidden="true"></div>
-      <img id="worldMapImage" src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin">
+      <img id="worldMapImage" src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin" draggable="false">
       <button class="city-marker city" type="button" style="left:23.3%;top:21.0%;--marker:#83b8dd" data-href="/etro.html" aria-label="Etro, City of Dreams">
           <span class="city-tooltip"><strong>Etro</strong><em>City of Dreams</em><span>A city of performance, spectacle, music, and a hidden underworld.</span></span>
         </button><button class="city-marker city" type="button" style="left:69.2%;top:20.8%;--marker:#be9360" data-href="/hilnem.html" aria-label="Hilnem, Greed's Ever-Lasting Contract">
@@ -417,9 +473,9 @@ body.world-map-body {
           <span class="city-tooltip"><strong>Hus</strong><em>The One Stop Dinner</em><span>The continent's most crowded city, built on food, appetite, commerce, and crime.</span></span>
         </button><button class="city-marker city" type="button" style="left:50.5%;top:70.6%;--marker:#d59153" data-href="/palin.html" aria-label="Palin, City of Warriors">
           <span class="city-tooltip"><strong>Palin</strong><em>City of Warriors</em><span>Wrath's desert city, defined by discipline, combat, and the Colosseum.</span></span>
-        </button><button class="city-marker location" type="button" style="left:4.3%;top:41.5%;--marker:#6fa579" data-href="/the-isle.html" aria-label="The Isle, Outer Island Settlement">
+        </button><button class="city-marker location" type="button" style="left:11.4%;top:40.9%;--marker: aria-label="The Isle, Outer Island Settlement">
           <span class="city-tooltip"><strong>The Isle</strong><em>Outer Island Settlement</em><span>A small island off the western coast, marked separately from the major mainland cities.</span></span>
-        </button><button class="city-marker history" type="button" style="left:48.2%;top:37.2%;--marker:#7d8aa0" data-href="/the-calamity.html" aria-label="The Calamity, History Landmark">
+        </button><button class="city-marker history" type="button" style="left:44.8%;top:55.2%;--marker: aria-label="The Calamity, History Landmark">
           <span class="city-tooltip"><strong>The Calamity</strong><em>History Landmark</em><span>The massive scar at Rushinghan's edge. Click through for the historical entry.</span></span>
         </button>
       <button class="secret-hotspot" id="greatTreeSecret" type="button" aria-label="Hidden route to the Great Tree Village">
@@ -446,6 +502,7 @@ body.world-map-body {
   const measureOverlay = document.getElementById('measureOverlay');
   const measureLine = document.getElementById('measureLine');
   const measureTag = document.getElementById('measureTag');
+  const measureInfo = document.getElementById('measureInfo');
 
   let scale = 1;
   let x = 0, y = 0;
@@ -530,8 +587,8 @@ body.world-map-body {
     measureTag.style.display = 'block';
     measureTag.style.left = `${midX}px`;
     measureTag.style.top = `${midY}px`;
-    measureTag.querySelector('strong').textContent = `${dist.usa.toFixed(2)} USA-widths`;
-    measureTag.querySelector('span').textContent = `${Math.round(dist.miles).toLocaleString()} miles · ${Math.round(dist.km).toLocaleString()} km`;
+    measureTag.querySelector('strong').textContent = `${Math.round(dist.miles).toLocaleString()} miles`;
+    measureTag.querySelector('span').textContent = `${Math.round(dist.km).toLocaleString()} km`;
 
     lastMeasured = dist;
   }
@@ -542,6 +599,9 @@ body.world-map-body {
     measuring = false;
     measureStart = null;
   }
+
+  viewport.addEventListener('dragstart', e => e.preventDefault());
+  document.getElementById('worldMapImage').addEventListener('dragstart', e => e.preventDefault());
 
   viewport.addEventListener('wheel', e => {
     e.preventDefault();
@@ -608,6 +668,7 @@ body.world-map-body {
     measureMode = !measureMode;
     measureToggle.classList.toggle('active', measureMode);
     measureOverlay.classList.toggle('active', measureMode);
+    measureInfo.classList.toggle('measure-hidden', !measureMode);
     if (!measureMode) clearMeasure();
   });
 
