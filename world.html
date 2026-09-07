@@ -423,7 +423,7 @@ body.world-map-body{
   <section class="measure-card" id="measureCard">
     <div class="kicker">Ruler Active</div>
     <h2>Distance</h2>
-    <p>Click two points to measure. Left-drag still pans the map while the ruler is active; hold Shift and drag to draw the ruler directly.</p>
+    <p>Left-click two points to measure, or left-click and drag to draw the ruler directly. Right-click and drag moves the map. Scroll to zoom.</p>
     <div class="measure-output"><strong id="measureMiles">—</strong><span id="measureKm">Select two points</span></div>
   </section>
 
@@ -450,23 +450,27 @@ body.world-map-body{
   let scale=1, panX=0, panY=0;
   let minScale=.35, maxScale=3.5;
 
-  let pointerDown=false;
-  let pointerStart=null;
+  // Right mouse drag = map pan, always.
+  let rightPanning=false;
+  let panStart=null;
   let panOrigin=null;
-  let didPan=false;
 
+  // Measurement mode.
   let measureMode=false;
 
-  // Measurement is now stored in MAP coordinates rather than screen coordinates.
-  // This keeps the ruler anchored to the same locations while panning and zooming.
+  // Measurement endpoints are stored in MAP coordinates so they stay anchored
+  // to the same world locations while the map pans and zooms.
   let measureA=null;
   let measureB=null;
   let liveMeasureB=null;
 
-  // Shift + left-drag draws a ruler while the measurement tool is active.
-  let shiftMeasuring=false;
+  // Left-click interaction when measurement mode is active.
+  let leftMeasuring=false;
+  let leftStartScreen=null;
+  let leftStartMap=null;
+  let leftMoved=false;
 
-  // Internal scale only: top of Hilnem -> bottom of Palin = 22 continental-US widths.
+  // Internal scale only.
   const CALIBRATION_MAP_PX=1210;
   const CALIBRATION_MILES=22*2800;
 
@@ -479,9 +483,9 @@ body.world-map-body{
     const vw=viewport.clientWidth, vh=viewport.clientHeight;
     const iw=img.naturalWidth, ih=img.naturalHeight;
 
-    // Fill most of the width; vertical overflow is intentional and pannable.
     scale=Math.max(vw/iw*.90, vh/ih*.92);
     scale=Math.max(minScale,Math.min(1.25,scale));
+
     panX=(vw-iw*scale)/2;
     panY=(vh-ih*scale)/2;
     apply();
@@ -537,9 +541,8 @@ body.world-map-body{
     const mapDist=Math.hypot(bMap.x-aMap.x,bMap.y-aMap.y);
     const miles=(mapDist/CALIBRATION_MAP_PX)*CALIBRATION_MILES;
     const km=miles*1.60934;
+
     return {
-      miles,
-      km,
       milesText:`${Math.round(miles).toLocaleString()} miles`,
       kmText:`${Math.round(km).toLocaleString()} km`
     };
@@ -559,7 +562,6 @@ body.world-map-body{
     }
 
     const a=mapToScreen(measureA);
-
     measureStartPoint.style.opacity='1';
     measureStartPoint.style.left=`${a.x}px`;
     measureStartPoint.style.top=`${a.y}px`;
@@ -605,7 +607,11 @@ body.world-map-body{
     measureA=null;
     measureB=null;
     liveMeasureB=null;
-    shiftMeasuring=false;
+    leftMeasuring=false;
+    leftStartScreen=null;
+    leftStartMap=null;
+    leftMoved=false;
+
     hideMeasurementVisuals();
     measureMiles.textContent='—';
     measureKm.textContent='Select two points';
@@ -616,10 +622,11 @@ body.world-map-body{
     measureToggle.classList.toggle('active',on);
     viewport.classList.toggle('measuring',on);
     measureCard.classList.toggle('visible',on);
+
     if(!on) clearMeasure();
   }
 
-  function placeMeasurePoint(mapPoint){
+  function placeMeasurementClick(mapPoint){
     if(!measureA || measureB){
       measureA=mapPoint;
       measureB=null;
@@ -646,6 +653,7 @@ body.world-map-body{
   resetMap.addEventListener('click',initialView);
   measureToggle.addEventListener('click',()=>setMeasure(!measureMode));
 
+  // Scroll wheel always zooms.
   viewport.addEventListener('wheel',e=>{
     e.preventDefault();
     zoomAt(e.clientX,e.clientY,e.deltaY<0?1.12:1/1.12);
@@ -655,94 +663,141 @@ body.world-map-body{
   img.addEventListener('dragstart',e=>e.preventDefault());
 
   viewport.addEventListener('pointerdown',e=>{
-    if(e.button!==0) return;
+    // RIGHT CLICK: pan the map, whether or not the ruler is active.
+    if(e.button===2){
+      e.preventDefault();
 
-    const interactive=e.target.closest('.marker,.great-tree-secret');
-    if(interactive && !measureMode) return;
+      rightPanning=true;
+      panStart={x:e.clientX,y:e.clientY};
+      panOrigin={x:panX,y:panY};
 
-    pointerDown=true;
-    didPan=false;
-    pointerStart={
-      clientX:e.clientX,
-      clientY:e.clientY,
-      screen:eventScreenPoint(e)
-    };
-    panOrigin={x:panX,y:panY};
-
-    // Measurement-mode behavior:
-    // - normal left drag = pan
-    // - normal left click = place a ruler point
-    // - Shift + left drag = live ruler drag
-    shiftMeasuring=measureMode && e.shiftKey;
-
-    if(shiftMeasuring){
-      const startMap=screenToMap(pointerStart.screen);
-      measureA=startMap;
-      measureB=null;
-      liveMeasureB=startMap;
-      measureMiles.textContent='Measuring…';
-      measureKm.textContent='Release to set distance';
-      redrawMeasurement();
-    }else{
       viewport.classList.add('grabbing');
-    }
-
-    viewport.setPointerCapture(e.pointerId);
-  });
-
-  viewport.addEventListener('pointermove',e=>{
-    if(!pointerDown) return;
-
-    const dx=e.clientX-pointerStart.clientX;
-    const dy=e.clientY-pointerStart.clientY;
-    const moved=Math.hypot(dx,dy);
-
-    if(shiftMeasuring){
-      liveMeasureB=screenToMap(eventScreenPoint(e));
-      redrawMeasurement();
+      viewport.setPointerCapture(e.pointerId);
       return;
     }
 
-    // Normal left-drag pans even while measurement mode is active.
-    if(moved>3){
-      didPan=true;
-      panX=panOrigin.x+dx;
-      panY=panOrigin.y+dy;
+    // LEFT CLICK: only becomes a map-measurement action when the ruler is active.
+    if(e.button===0 && measureMode){
+      // Ignore toolbar/panel interaction if the event somehow bubbles here.
+      if(e.target.closest('.map-toolbar,.measure-card,.world-card')) return;
+
+      leftMeasuring=true;
+      leftMoved=false;
+      leftStartScreen=eventScreenPoint(e);
+      leftStartMap=screenToMap(leftStartScreen);
+
+      // Begin a live ruler drag immediately. If the user simply clicks,
+      // pointerup converts it into the normal two-click placement behavior.
+      liveMeasureB=leftStartMap;
+
+      // If an old completed ruler exists, starting a new drag begins a new ruler.
+      if(measureB){
+        measureA=leftStartMap;
+        measureB=null;
+      }else if(!measureA){
+        measureA=leftStartMap;
+      }
+
+      redrawMeasurement();
+      viewport.setPointerCapture(e.pointerId);
+    }
+  });
+
+  viewport.addEventListener('pointermove',e=>{
+    if(rightPanning){
+      panX=panOrigin.x+(e.clientX-panStart.x);
+      panY=panOrigin.y+(e.clientY-panStart.y);
       clampPan();
       apply();
+      return;
+    }
+
+    if(leftMeasuring && measureMode){
+      const currentScreen=eventScreenPoint(e);
+      const moved=Math.hypot(
+        currentScreen.x-leftStartScreen.x,
+        currentScreen.y-leftStartScreen.y
+      );
+
+      if(moved>3) leftMoved=true;
+
+      if(leftMoved){
+        // For a drag, always measure from the exact left-down point.
+        measureA=leftStartMap;
+        liveMeasureB=screenToMap(currentScreen);
+        measureMiles.textContent='Measuring…';
+        measureKm.textContent='Release to set distance';
+        redrawMeasurement();
+      }
     }
   });
 
   viewport.addEventListener('pointerup',e=>{
-    if(!pointerDown) return;
-
-    const releaseScreen=eventScreenPoint(e);
-
-    if(shiftMeasuring){
-      liveMeasureB=null;
-      measureB=screenToMap(releaseScreen);
-      redrawMeasurement();
-    }else if(measureMode && !didPan){
-      // A click without dragging places a measurement point.
-      placeMeasurePoint(screenToMap(releaseScreen));
+    if(e.button===2 && rightPanning){
+      rightPanning=false;
+      viewport.classList.remove('grabbing');
+      try{ viewport.releasePointerCapture(e.pointerId); }catch(_){}
+      return;
     }
 
-    pointerDown=false;
-    shiftMeasuring=false;
-    viewport.classList.remove('grabbing');
+    if(e.button===0 && leftMeasuring && measureMode){
+      const releaseMap=screenToMap(eventScreenPoint(e));
 
-    try{ viewport.releasePointerCapture(e.pointerId); }catch(_){}
+      if(leftMoved){
+        // Left-drag finishes a direct measurement.
+        measureA=leftStartMap;
+        measureB=releaseMap;
+        liveMeasureB=null;
+        redrawMeasurement();
+      }else{
+        // Simple left click uses the original click-click ruler behavior.
+        liveMeasureB=null;
+
+        // If the click was used to start a fresh ruler, measureA is already this point.
+        // Otherwise place the second point.
+        if(measureA && !measureB){
+          const sameAsStart=
+            Math.hypot(measureA.x-leftStartMap.x,measureA.y-leftStartMap.y)<0.001;
+
+          if(sameAsStart && measureMiles.textContent!=='Start set'){
+            measureMiles.textContent='Start set';
+            measureKm.textContent='Choose the second point';
+          }else{
+            measureB=releaseMap;
+          }
+        }else{
+          placeMeasurementClick(releaseMap);
+        }
+
+        redrawMeasurement();
+      }
+
+      leftMeasuring=false;
+      leftStartScreen=null;
+      leftStartMap=null;
+      leftMoved=false;
+
+      try{ viewport.releasePointerCapture(e.pointerId); }catch(_){}
+    }
   });
 
   viewport.addEventListener('pointercancel',e=>{
-    pointerDown=false;
-    shiftMeasuring=false;
-    liveMeasureB=null;
-    viewport.classList.remove('grabbing');
-    redrawMeasurement();
+    if(rightPanning){
+      rightPanning=false;
+      viewport.classList.remove('grabbing');
+    }
+
+    if(leftMeasuring){
+      leftMeasuring=false;
+      leftStartScreen=null;
+      leftStartMap=null;
+      leftMoved=false;
+      liveMeasureB=null;
+      redrawMeasurement();
+    }
   });
 
-  // Normal map/location navigation still works when the ruler is off.
+  // Location links still use normal LEFT CLICK when measurement mode is off.
   document.querySelectorAll('.marker,.great-tree-secret').forEach(el=>{
     el.addEventListener('click',()=>{
       if(measureMode) return;
@@ -751,7 +806,7 @@ body.world-map-body{
     });
   });
 
-  // Prevent the browser context menu from interfering with map interaction.
+  // Right click is reserved entirely for map movement.
   viewport.addEventListener('contextmenu',e=>e.preventDefault());
 
   window.addEventListener('resize',()=>{
