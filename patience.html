@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en"><head><meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Patience · The Seven Virtues · Sinners</title><link href="/styles.css" rel="stylesheet"/>
@@ -138,11 +139,23 @@ body.deity-body.deity-patience{--bgmx:0px;--bgmy:0px;}
 
 
 
-/* V9 patience pupil fix */
+/* V9 PATIENCE FINAL */
+
+body.deity-body.deity-patience{--patience-bg-x:0px;--patience-bg-y:0px;}
+.deity-patience .deity-hero::before,
+.deity-patience .deity-article section::before,
+.deity-patience .deity-article section::after{display:none !important;content:none !important;}
+.deity-patience .watch-socket{opacity:.12 !important;transform:translateX(calc(-50% + var(--patience-bg-x)*.18)) translateY(calc(var(--patience-bg-y)*.12)) !important;}
+.deity-patience .watch-eye{opacity:.15 !important;transform:translateX(calc(-50% + var(--patience-bg-x)*.28)) translateY(calc(var(--patience-bg-y)*.16)) !important;}
+.deity-patience .watch-pupil-bg{opacity:.40 !important;transform:translateX(calc(-50% + var(--patience-bg-x)*.20)) translateY(calc(var(--patience-bg-y)*.10)) !important;overflow:visible !important;}
 .deity-patience .watch-pupil-bg::before{display:none !important;content:none !important;}
-.deity-patience .watch-pupil-bg{overflow:visible !important;}
-.deity-patience .watch-pupil-dot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:118px;height:118px;border-radius:50%;background:radial-gradient(circle at 36% 34%,rgba(255,255,255,.16),rgba(5,6,8,0) 26%),radial-gradient(circle,rgba(3,4,5,1) 0 55%,rgba(2,3,4,.96) 56% 100%);box-shadow:0 0 0 1px rgba(30,23,13,.4),0 0 12px rgba(0,0,0,.16);opacity:.88;transition:transform .22s ease-out;}
-@media (max-width:760px){.deity-patience .watch-pupil-dot{width:92px;height:92px;}}
+.deity-patience .watch-pupil-dot{position:absolute;left:50%;top:50%;width:118px;height:118px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at 36% 34%,rgba(255,255,255,.16),rgba(5,6,8,0) 26%),radial-gradient(circle,rgba(3,4,5,1) 0 55%,rgba(2,3,4,.96) 56% 100%);box-shadow:0 0 0 1px rgba(30,23,13,.42),0 0 14px rgba(0,0,0,.18);transition:transform .18s ease-out;}
+.deity-patience .watch-glint{opacity:.12 !important;transform:translateX(calc(-50% + var(--patience-bg-x)*.16)) translateY(calc(var(--patience-bg-y)*.08)) !important;}
+.deity-patience .tracking-eye{width:42px !important;height:24px !important;opacity:.86 !important;}
+.deity-patience .tracking-eye .eye-iris{width:12px !important;height:12px !important;}
+.deity-patience .tracking-eye .eye-pupil{width:5px !important;height:5px !important;}
+.deity-patience .deity-article section:nth-child(n+2) .card-eye{display:none !important;}
+@media(max-width:760px){.deity-patience .watch-pupil-dot{width:92px;height:92px;}.deity-patience .facts-eye,.deity-patience .card-eye{display:none !important;}}
 
 </style></head><body class="deity-body deity-patience">
 <div aria-hidden="true" class="patience-page-decor">
@@ -186,40 +199,35 @@ body.deity-body.deity-patience{--bgmx:0px;--bgmy:0px;}
 <a href="/world.html">The World</a>
 </section></aside></main>
 <footer>Sinners World Archive · Built as a player-facing lore guide</footer><script src="/script.js"></script>
-
 <script>
 (function(){
-  const root = document.body;
-  const eyes = Array.from(document.querySelectorAll('.deity-patience .tracking-eye'));
-  const bigPupil = document.querySelector('.deity-patience .watch-pupil-dot');
-  let tx = window.innerWidth * 0.5, ty = window.innerHeight * 0.5;
-  let px = tx, py = ty;
-  function moveEye(eye, x, y){
-    const pupil = eye.querySelector('.eye-pupil');
-    const iris = eye.querySelector('.eye-iris');
-    if(!pupil || !iris) return;
-    const rect = eye.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const dx = Math.max(-1, Math.min(1, (x - cx) / (rect.width * 2.35)));
-    const dy = Math.max(-1, Math.min(1, (y - cy) / (rect.height * 2.35)));
-    pupil.style.transform = `translate(calc(-50% + ${dx * 4.2}px), calc(-50% + ${dy * 2.8}px))`;
-    iris.style.transform = `translate(calc(-50% + ${dx * 2.2}px), calc(-50% + ${dy * 1.5}px))`;
+  const root=document.body;
+  const smallEyes=[...document.querySelectorAll('.deity-patience .tracking-eye')];
+  const bigPupil=document.querySelector('.deity-patience .watch-pupil-dot');
+  let tx=innerWidth/2, ty=innerHeight/2, cx=tx, cy=ty;
+  function trackSmall(eye,x,y){
+    const iris=eye.querySelector('.eye-iris');
+    const pupil=eye.querySelector('.eye-pupil');
+    if(!iris||!pupil) return;
+    const r=eye.getBoundingClientRect();
+    const dx=Math.max(-1,Math.min(1,(x-(r.left+r.width/2))/(r.width*1.9)));
+    const dy=Math.max(-1,Math.min(1,(y-(r.top+r.height/2))/(r.height*1.9)));
+    iris.style.transform=`translate(calc(-50% + ${dx*3.1}px),calc(-50% + ${dy*2}px))`;
+    pupil.style.transform=`translate(calc(-50% + ${dx*5.2}px),calc(-50% + ${dy*3.2}px))`;
   }
-  function frame(){
-    px += (tx - px) * 0.07;
-    py += (ty - py) * 0.07;
-    const bgx = ((px / window.innerWidth) - 0.5) * 9;
-    const bgy = ((py / window.innerHeight) - 0.5) * 5;
-    root.style.setProperty('--bgmx', bgx.toFixed(2) + 'px');
-    root.style.setProperty('--bgmy', bgy.toFixed(2) + 'px');
+  function tick(){
+    cx+=(tx-cx)*0.075; cy+=(ty-cy)*0.075;
+    const nx=(cx/innerWidth-.5), ny=(cy/innerHeight-.5);
+    const bgx=nx*8, bgy=ny*4;
+    root.style.setProperty('--patience-bg-x',bgx.toFixed(2)+'px');
+    root.style.setProperty('--patience-bg-y',bgy.toFixed(2)+'px');
     if(bigPupil){
-      bigPupil.style.transform = `translate(calc(-50% + ${bgx * 1.35}px), calc(-50% + ${bgy * 1.35}px))`;
+      bigPupil.style.transform=`translate(calc(-50% + ${nx*34}px),calc(-50% + ${ny*18}px))`;
     }
-    eyes.forEach(eye => moveEye(eye, px, py));
-    requestAnimationFrame(frame);
+    smallEyes.forEach(e=>trackSmall(e,cx,cy));
+    requestAnimationFrame(tick);
   }
-  window.addEventListener('mousemove', ev => { tx = ev.clientX; ty = ev.clientY; }, {passive:true});
-  requestAnimationFrame(frame);
+  addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY},{passive:true});
+  requestAnimationFrame(tick);
 })();
 </script></body></html>
