@@ -133,6 +133,14 @@ body.deity-body.deity-kindness > *:not(.kindness-page-decor){position:relative;z
 .deity-kindness .deity-article section::after{content:"";position:absolute;left:18px;bottom:16px;width:90px;height:1px;background:linear-gradient(90deg,rgba(139,224,255,.18),rgba(197,43,49,.52),transparent);} 
 @media (max-width:760px){.deity-kindness .s2,.deity-kindness .s5,.deity-kindness .s8{display:none;} .deity-kindness .s1,.deity-kindness .s4{opacity:.84;}}
 
+
+
+/* V8 feedback pass */
+
+.deity-kindness .s2,.deity-kindness .s7{animation-duration:5.8s !important;}
+.deity-kindness .s8{animation:kindnessPulseCool 6.6s ease-in-out infinite;}
+@keyframes kindnessPulseCool{0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.05) inset,0 0 18px rgba(96,164,210,.20),0 0 34px rgba(30,52,86,.10);}50%{box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 0 28px rgba(154,222,255,.44),0 0 60px rgba(52,92,148,.18);}}
+
 </style></head><body class="deity-body deity-kindness">
 <div aria-hidden="true" class="kindness-page-decor">
 <span class="kshard red s1"></span>

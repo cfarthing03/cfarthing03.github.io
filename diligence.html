@@ -126,6 +126,30 @@ body.deity-body.deity-diligence > *:not(.diligence-page-decor){position:relative
 .deity-diligence .dcard-icon.gear::after,.deity-diligence .dcard-icon.wheel::after{content:"";position:absolute;inset:26%;border-radius:50%;border:2px solid rgba(255,255,255,.72);} 
 @media (max-width:760px){.deity-diligence .dchain,.deity-diligence .dfang{display:none;} .deity-diligence .dghost.hammer,.deity-diligence .dghost.pick{opacity:.16;}}
 
+
+
+/* V8 feedback pass */
+
+.deity-diligence .dghost.hammer,.deity-diligence .dghost.pick,.deity-diligence .dghost.gear,.deity-diligence .dghost.wheel{background:none !important;opacity:.24 !important;filter:drop-shadow(0 0 10px rgba(255,255,255,.04));}
+.deity-diligence .dghost.hammer{width:150px !important;height:260px !important;left:26px !important;top:82px !important;right:auto !important;bottom:auto !important;transform:rotate(-18deg) !important;}
+.deity-diligence .dghost.hammer::before{left:62px !important;top:28px !important;width:22px !important;height:220px !important;border-radius:12px !important;background:rgba(255,255,255,.84) !important;}
+.deity-diligence .dghost.hammer::after{left:18px !important;top:0 !important;width:110px !important;height:32px !important;border-radius:8px !important;background:rgba(255,255,255,.84) !important;}
+.deity-diligence .dghost.pick{right:34px !important;top:128px !important;left:auto !important;bottom:auto !important;width:190px !important;height:270px !important;transform:rotate(14deg) !important;}
+.deity-diligence .dghost.pick::before{left:82px !important;top:24px !important;width:20px !important;height:222px !important;border-radius:12px !important;background:rgba(255,255,255,.84) !important;}
+.deity-diligence .dghost.pick::after{left:18px !important;top:0 !important;width:156px !important;height:16px !important;border-radius:12px !important;background:rgba(255,255,255,.84) !important;clip-path:none !important;box-shadow:-24px 12px 0 0 rgba(255,255,255,.84), 24px -10px 0 0 rgba(255,255,255,.84) !important;}
+.deity-diligence .dghost.gear{width:156px !important;height:156px !important;left:36px !important;bottom:120px !important;right:auto !important;top:auto !important;border-radius:50% !important;border:8px solid rgba(255,255,255,.72) !important;}
+.deity-diligence .dghost.gear::before{inset:-18px !important;border-radius:50% !important;background:repeating-conic-gradient(rgba(255,255,255,.74) 0 9deg,transparent 9deg 30deg) !important;-webkit-mask:radial-gradient(circle,transparent 0 58%,#000 58%);mask:radial-gradient(circle,transparent 0 58%,#000 58%) !important;}
+.deity-diligence .dghost.gear::after{left:50% !important;top:50% !important;transform:translate(-50%,-50%) !important;width:38px !important;height:38px !important;border-radius:50% !important;background:rgba(255,255,255,.72) !important;}
+.deity-diligence .dghost.wheel{width:164px !important;height:164px !important;right:46px !important;bottom:86px !important;left:auto !important;top:auto !important;border-radius:50% !important;border:7px solid rgba(255,255,255,.62) !important;}
+.deity-diligence .dghost.wheel::before{inset:-12px !important;border-radius:50% !important;background:repeating-conic-gradient(rgba(255,255,255,.68) 0 8deg,transparent 8deg 22deg) !important;-webkit-mask:radial-gradient(circle,transparent 0 60%,#000 60%);mask:radial-gradient(circle,transparent 0 60%,#000 60%) !important;}
+.deity-diligence .dghost.wheel::after{left:50% !important;top:50% !important;transform:translate(-50%,-50%) !important;width:54px !important;height:54px !important;border-radius:50% !important;border:6px solid rgba(255,255,255,.62) !important;background:transparent !important;}
+.deity-diligence .dcard-icon{width:48px !important;height:48px !important;opacity:.92 !important;}
+.deity-diligence .dcard-icon.hammer::before,.deity-diligence .dcard-icon.hammer::after,.deity-diligence .dcard-icon.pick::before,.deity-diligence .dcard-icon.pick::after{background:rgba(255,255,255,.94) !important;}
+.deity-diligence .dcard-icon.pick::after{background:rgba(255,255,255,.94) !important;clip-path:polygon(0 50%,14% 0,44% 30%,56% 30%,86% 0,100% 50%,86% 100%,56% 70%,44% 70%,14% 100%) !important;box-shadow:none !important;}
+.deity-diligence .dcard-icon.gear,.deity-diligence .dcard-icon.wheel{background:radial-gradient(circle,rgba(255,255,255,.82) 0 18%,rgba(255,255,255,0) 19% 50%,rgba(255,255,255,.76) 51% 58%,rgba(255,255,255,0) 59% 100%) !important;}
+.deity-diligence .dcard-icon.gear::before,.deity-diligence .dcard-icon.wheel::before{background:repeating-conic-gradient(from 0deg, rgba(255,255,255,.92) 0 12deg, transparent 12deg 32deg) !important;}
+.deity-diligence .dcard-icon.gear::after,.deity-diligence .dcard-icon.wheel::after{border-color:rgba(255,255,255,.92) !important;}
+
 </style></head><body class="deity-body deity-diligence">
 <div aria-hidden="true" class="diligence-page-decor">
 <span class="dgrid"></span>

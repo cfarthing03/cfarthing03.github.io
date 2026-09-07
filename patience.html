@@ -122,6 +122,20 @@ body.deity-body.deity-patience{--bgmx:0px;--bgmy:0px;}
 .deity-patience .deity-article section:nth-child(n+2) .card-eye{display:none !important;}
 @media (max-width:760px){.deity-patience .watch-socket,.deity-patience .watch-eye,.deity-patience .watch-pupil-bg,.deity-patience .watch-glint{display:none;} .deity-patience .facts-eye,.deity-patience .card-eye{display:none;}}
 
+
+
+/* V8 feedback pass */
+
+.deity-patience .watch-socket{opacity:.13 !important;transform:translateX(calc(-50% + var(--bgmx) * .28)) translateY(calc(var(--bgmy) * .14)) !important;}
+.deity-patience .watch-eye{opacity:.14 !important;transform:translateX(calc(-50% + var(--bgmx) * .52)) translateY(calc(var(--bgmy) * .26)) !important;}
+.deity-patience .watch-pupil-bg{opacity:.34 !important;transform:translateX(calc(-50% + var(--bgmx) * .52)) translateY(calc(var(--bgmy) * .26)) !important;}
+.deity-patience .watch-pupil-bg::before{width:118px !important;height:118px !important;transform:translate(calc(-50% + var(--bgmx) * 1.2), calc(-50% + var(--bgmy) * 1.2)) !important;}
+.deity-patience .watch-glint{opacity:.16 !important;transform:translateX(calc(-50% + var(--bgmx) * .38)) translateY(calc(var(--bgmy) * .2)) !important;}
+.deity-patience .tracking-eye{width:50px;height:28px;}
+.deity-patience .heading-eye{right:8px;}
+.deity-patience .facts-eye{right:22px;top:18px;}
+.deity-patience .deity-article section:nth-child(n+2) .card-eye{display:none !important;}
+
 </style></head><body class="deity-body deity-patience">
 <div aria-hidden="true" class="patience-page-decor">
 <span class="watch-socket"></span>
@@ -178,16 +192,16 @@ body.deity-body.deity-patience{--bgmx:0px;--bgmy:0px;}
     const rect = eye.getBoundingClientRect();
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
-    const dx = Math.max(-1, Math.min(1, (x - cx) / (rect.width * 2.8)));
-    const dy = Math.max(-1, Math.min(1, (y - cy) / (rect.height * 2.8)));
-    pupil.style.transform = `translate(calc(-50% + ${dx * 3}px), calc(-50% + ${dy * 2}px))`;
-    iris.style.transform = `translate(calc(-50% + ${dx * 1.6}px), calc(-50% + ${dy * 1.1}px))`;
+    const dx = Math.max(-1, Math.min(1, (x - cx) / (rect.width * 2.35)));
+    const dy = Math.max(-1, Math.min(1, (y - cy) / (rect.height * 2.35)));
+    pupil.style.transform = `translate(calc(-50% + ${dx * 4.2}px), calc(-50% + ${dy * 2.8}px))`;
+    iris.style.transform = `translate(calc(-50% + ${dx * 2.2}px), calc(-50% + ${dy * 1.5}px))`;
   }
   function frame(){
-    px += (tx - px) * 0.05;
-    py += (ty - py) * 0.05;
-    const bgx = ((px / window.innerWidth) - 0.5) * 6;
-    const bgy = ((py / window.innerHeight) - 0.5) * 3;
+    px += (tx - px) * 0.07;
+    py += (ty - py) * 0.07;
+    const bgx = ((px / window.innerWidth) - 0.5) * 9;
+    const bgy = ((py / window.innerHeight) - 0.5) * 5;
     root.style.setProperty('--bgmx', bgx.toFixed(2) + 'px');
     root.style.setProperty('--bgmy', bgy.toFixed(2) + 'px');
     eyes.forEach(eye => moveEye(eye, px, py));

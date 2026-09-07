@@ -117,6 +117,18 @@ body.deity-body.deity-temperance > *:not(.temperance-page-decor){position:relati
 .deity-temperance .deity-article section::before{content:"";position:absolute;right:18px;top:18px;width:76px;height:76px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(0,0,0,.72) 0 26%,rgba(236,220,182,.22) 26.6% 29%,transparent 29.2%);opacity:.46;}
 @media (max-width:760px){.deity-temperance .tbalance{width:min(96vw,740px);opacity:.26;} .deity-temperance .tbalance .beam{width:420px;} .deity-temperance .tbalance .chain.left{left:150px;} .deity-temperance .tbalance .chain.right{right:150px;} .deity-temperance .tbalance .pan.left{left:76px;} .deity-temperance .tbalance .pan.right{right:76px;} .deity-temperance .tmeasure,.deity-temperance .torbit.c{display:none;} }
 
+
+
+/* V8 feedback pass */
+
+.deity-temperance .deity-hero::before{display:none !important;content:none !important;}
+.deity-temperance .deity-portrait{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(4,6,10,.96),rgba(4,6,10,.88));}
+.deity-temperance .deity-portrait::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(4,6,10,.98) 0 14%,rgba(4,6,10,.58) 36%,rgba(4,6,10,0) 64%);}
+.deity-temperance .deity-portrait img{position:relative;z-index:2;display:block;}
+.deity-temperance .teclipse{width:500px !important;height:500px !important;top:-12px !important;opacity:.42 !important;}
+.deity-temperance .temperance-glyph{width:18px;height:20px;border:none !important;border-radius:0 !important;background:linear-gradient(90deg,transparent 8px,rgba(236,220,182,.72) 8px 10px,transparent 10px),linear-gradient(180deg,rgba(255,255,255,.18),rgba(185,155,106,.88));clip-path:polygon(0 0,100% 0,62% 50%,100% 100%,0 100%,38% 50%);box-shadow:0 0 0 1px rgba(236,220,182,.38) inset,0 0 8px rgba(236,220,182,.08);}
+.deity-temperance .temperance-glyph::before,.deity-temperance .temperance-glyph::after{content:none !important;display:none !important;}
+
 </style></head><body class="deity-body deity-temperance"><div aria-hidden="true" class="temperance-page-decor">
 <span class="taxis"></span>
 <span class="teclipse"></span>

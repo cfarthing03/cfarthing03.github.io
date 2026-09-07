@@ -96,15 +96,36 @@ radial-gradient(circle at 0 0,rgba(255,255,255,.05),transparent 40%);}
 @keyframes cpresentFloat{0%,100%{transform:translateY(0) rotate(var(--r));}50%{transform:translateY(-12px) rotate(calc(var(--r) + 2deg));}}
 .deity-charity .deity-article section,.deity-charity .deity-facts,.deity-charity .deity-related{border-color:rgba(244,175,132,.24) !important;background:linear-gradient(180deg,rgba(201,127,90,.08),rgba(5,9,16,.08)),radial-gradient(circle at 100% 0,rgba(255,255,255,.04),transparent 34%) !important;}
 
+
+
+/* V8 feedback pass */
+
+.deity-charity .cpresent{width:96px !important;height:108px !important;opacity:.34 !important;transform-origin:center;animation:cpresentFall 14s ease-in-out infinite !important;filter:drop-shadow(0 12px 18px rgba(0,0,0,.18));}
+.deity-charity .cpresent::before{content:"";position:absolute;left:16px;right:16px;top:24px;bottom:16px;background:linear-gradient(180deg,rgba(255,228,210,.16),rgba(207,132,92,.20) 34%,rgba(34,20,18,.18) 100%);border:1px solid rgba(244,175,132,.36);box-shadow:0 0 0 1px rgba(255,255,255,.04) inset;}
+.deity-charity .cpresent::after{content:"";position:absolute;left:50%;top:24px;bottom:16px;width:6px;transform:translateX(-50%);background:rgba(244,175,132,.54);box-shadow:0 32px 0 0 rgba(0,0,0,0), -32px 34px 0 -31px rgba(244,175,132,.54), 32px 34px 0 -31px rgba(244,175,132,.54);} 
+.deity-charity .cpresent .lid{position:absolute;left:10px;top:12px;width:76px;height:18px;background:linear-gradient(180deg,rgba(255,234,220,.20),rgba(207,132,92,.22));border:1px solid rgba(244,175,132,.36);box-shadow:0 0 0 1px rgba(255,255,255,.03) inset;display:block;transform-origin:center bottom;}
+.deity-charity .cpresent.closed .lid{transform:rotate(0deg);}
+.deity-charity .cpresent.ajar .lid{transform:rotate(-18deg);}
+.deity-charity .cpresent.g1 .lid{transform-origin:right bottom;}
+.deity-charity .cpresent.g2 .lid{transform-origin:left bottom;}
+.deity-charity .cpresent.g3 .lid{transform-origin:right bottom;}
+.deity-charity .cpresent.g4 .lid{transform:rotate(-22deg);transform-origin:left bottom;}
+.deity-charity .cpresent.g5 .lid{transform-origin:right bottom;}
+.deity-charity .cpresent.g6 .lid{transform-origin:left bottom;}
+.deity-charity .cpresent.g7 .lid{transform:rotate(16deg);transform-origin:left bottom;}
+.deity-charity .cpresent.g8 .lid{transform-origin:right bottom;}
+.deity-charity .cpresent.g1{left:0 !important;top:36px !important;} .deity-charity .cpresent.g2{right:44px !important;top:44px !important;} .deity-charity .cpresent.g3{left:18px !important;top:54% !important;} .deity-charity .cpresent.g4{right:28px !important;top:48% !important;} .deity-charity .cpresent.g5{left:0 !important;bottom:20px !important;} .deity-charity .cpresent.g6{right:104px !important;bottom:38px !important;} .deity-charity .cpresent.g7{left:72% !important;top:18% !important;} .deity-charity .cpresent.g8{left:12% !important;top:18% !important;}
+@keyframes cpresentFall{0%,100%{transform:translate3d(0,0,0) rotate(var(--r));}35%{transform:translate3d(4px,14px,0) rotate(calc(var(--r) + 3deg));}70%{transform:translate3d(-3px,28px,0) rotate(calc(var(--r) - 2deg));}}
+
 </style></head><body class="deity-body deity-charity"><div aria-hidden="true" class="charity-page-decor">
-<span class="cpresent g1 closed" style="--r:-16deg;"></span>
-<span class="cpresent g2 closed" style="--r:14deg;"></span>
-<span class="cpresent g3 closed" style="--r:22deg;"></span>
+<span class="cpresent g1 closed" style="--r:-16deg;"><span class="lid"></span></span>
+<span class="cpresent g2 closed" style="--r:14deg;"><span class="lid"></span></span>
+<span class="cpresent g3 closed" style="--r:22deg;"><span class="lid"></span></span>
 <span class="cpresent g4 ajar" style="--r:-16deg;"><span class="lid"></span></span>
-<span class="cpresent g5 closed" style="--r:-18deg;"></span>
-<span class="cpresent g6 closed" style="--r:18deg;"></span>
+<span class="cpresent g5 closed" style="--r:-18deg;"><span class="lid"></span></span>
+<span class="cpresent g6 closed" style="--r:18deg;"><span class="lid"></span></span>
 <span class="cpresent g7 ajar" style="--r:12deg;"><span class="lid"></span></span>
-<span class="cpresent g8 closed" style="--r:-10deg;"></span>
+<span class="cpresent g8 closed" style="--r:-10deg;"><span class="lid"></span></span>
 </div><header class="site-header"><div class="nav-wrap">
 <a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>
 <nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a>
