@@ -1,6 +1,7 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Humility · The Seven Virtues · Sinners</title><link rel="stylesheet" href="/styles.css">
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Humility · The Seven Virtues · Sinners</title><link href="/styles.css" rel="stylesheet"/>
 <style>
 
 :root{--virtue-accent:#94998f;--virtue-steel:#cfd6cc;--virtue-magic1:#6ab2ff;--virtue-magic2:#b06eff;--virtue-magic3:#ff8c6d;--virtue-magic4:#6de0bc;}
@@ -75,31 +76,59 @@ body.deity-body.deity-humility > *:not(.humility-page-decor){position:relative;z
 .deity-humility .deity-hero::before{content:"";position:absolute;left:6%;top:16px;width:220px;height:220px;background:linear-gradient(38deg,rgba(106,178,255,.16),transparent 34%),linear-gradient(-14deg,rgba(176,110,255,.16),transparent 44%),linear-gradient(70deg,rgba(255,140,109,.16),transparent 52%),linear-gradient(120deg,rgba(109,224,188,.14),transparent 60%);border:1px solid rgba(207,214,204,.18);transform:rotate(-8deg);} 
 .deity-humility .deity-article section,.deity-humility .deity-facts,.deity-humility .deity-related{background:linear-gradient(180deg,rgba(148,153,143,.08),rgba(5,9,16,.06)),linear-gradient(130deg,rgba(106,178,255,.05),transparent 24%,rgba(176,110,255,.06) 42%,transparent 54%,rgba(255,140,109,.06) 72%,transparent 82%,rgba(109,224,188,.04) 96%,transparent 100%) !important;}
 
+
+
+
+/* V7 Humility overhaul */
+.deity-humility .humility-page-decor{z-index:0 !important;pointer-events:none;overflow:hidden;}
+.deity-humility > *:not(.humility-page-decor){position:relative;z-index:2;}
+.deity-humility .hfrag{position:fixed;display:block;opacity:.30;filter:drop-shadow(0 0 8px rgba(255,255,255,.04));}
+.deity-humility .hfrag::before,.deity-humility .hfrag::after,.deity-humility .hmark::before,.deity-humility .hmark::after{content:"";position:absolute;display:block;}
+.deity-humility .fa{left:-10px;top:34%;width:90px;height:330px;transform:rotate(-20deg);} 
+.deity-humility .fa::before{left:44px;top:26px;width:8px;height:236px;background:rgba(230,230,230,.82);} 
+.deity-humility .fa::after{left:20px;top:0;width:56px;height:60px;background:rgba(230,230,230,.82);clip-path:polygon(50% 0,100% 40%,72% 100%,28% 100%,0 40%);} 
+.deity-humility .fb{right:20px;top:17%;width:180px;height:230px;transform:rotate(12deg);} 
+.deity-humility .fb::before{left:84px;top:24px;width:6px;height:188px;background:rgba(196,208,222,.72);} 
+.deity-humility .fb::after{left:10px;top:0;width:160px;height:30px;border-radius:20px;background:linear-gradient(90deg,rgba(204,187,158,.78),rgba(204,187,158,.20) 30%,rgba(163,195,222,.76) 70%,rgba(163,195,222,.26));clip-path:polygon(0 50%,10% 0,46% 36%,54% 36%,90% 0,100% 50%,90% 100%,54% 64%,46% 64%,10% 100%);} 
+.deity-humility .fc{right:-10px;bottom:16%;width:200px;height:110px;transform:rotate(-12deg);} 
+.deity-humility .fc::before{left:14px;top:34px;width:132px;height:28px;border-radius:10px;background:rgba(232,232,232,.86);} 
+.deity-humility .fc::after{left:126px;top:18px;width:48px;height:72px;background:rgba(232,232,232,.86);clip-path:polygon(0 14%,44% 0,100% 6%,100% 94%,44% 100%,0 86%);} 
+.deity-humility .fd{left:40px;bottom:18%;width:64px;height:270px;transform:rotate(18deg);} 
+.deity-humility .fd::before{left:28px;top:14px;width:6px;height:216px;background:rgba(240,225,178,.76);} 
+.deity-humility .fd::after{left:6px;top:0;width:50px;height:50px;border-radius:50%;border:2px solid rgba(173,134,255,.66);box-shadow:0 0 0 10px rgba(173,134,255,.10),0 0 16px rgba(173,134,255,.12);} 
+.deity-humility .fe{left:14%;top:14%;width:138px;height:164px;transform:rotate(-8deg);} 
+.deity-humility .fe::before{inset:0;background:rgba(178,192,203,.28);clip-path:polygon(50% 0,100% 22%,100% 74%,50% 100%,0 74%,0 22%);} 
+.deity-humility .fe::after{left:42px;top:28px;width:54px;height:96px;border:2px solid rgba(214,214,214,.52);border-radius:40px 40px 16px 16px/36px 36px 14px 14px;} 
+.deity-humility .ff{right:14%;bottom:12%;width:160px;height:160px;} 
+.deity-humility .ff::before{inset:14px;border-radius:50%;border:2px solid rgba(179,222,255,.54);box-shadow:0 0 0 16px rgba(179,222,255,.06),0 0 0 38px rgba(222,175,109,.04);} 
+.deity-humility .ff::after{left:50%;top:50%;transform:translate(-50%,-50%);width:80px;height:80px;background:repeating-conic-gradient(from 0deg, rgba(238,204,150,.64) 0 12deg, transparent 12deg 30deg);mask:radial-gradient(circle, transparent 0 34%, #000 36% 58%, transparent 60% 100%);} 
+.deity-humility .hrune{position:fixed;border-radius:50%;border:1px dashed rgba(215,215,215,.16);opacity:.22;}
+.deity-humility .ra{left:50%;top:80px;transform:translateX(-50%);width:420px;height:180px;}
+.deity-humility .rb{left:8%;bottom:12%;width:160px;height:160px;border-style:solid;}
+.deity-humility .rc{right:10%;top:40%;width:120px;height:220px;border-radius:46% 54% 42% 58%/40% 44% 56% 60%;}
+.deity-humility .hcollage .rift{position:absolute;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);opacity:.22;}
+.deity-humility .hcollage .r1{left:18%;top:32%;width:240px;height:1px;transform:rotate(8deg);} .deity-humility .hcollage .r2{right:15%;top:52%;width:180px;height:1px;transform:rotate(-14deg);} .deity-humility .hcollage .r3{left:42%;bottom:18%;width:210px;height:1px;transform:rotate(12deg);} 
+.deity-humility .deity-article section,.deity-humility .deity-facts,.deity-humility .deity-related{border-color:rgba(207,214,204,.24) !important;background:linear-gradient(180deg,rgba(96,106,122,.06),rgba(5,9,16,.08)),radial-gradient(circle at 100% 0,rgba(255,255,255,.04),transparent 34%) !important;}
+.deity-humility .hmark{position:absolute;right:18px;bottom:16px;width:56px;height:56px;opacity:.70;}
+.deity-humility .hmark.sword::before{left:26px;top:4px;width:5px;height:40px;background:rgba(255,255,255,.84);} .deity-humility .hmark.sword::after{left:14px;top:0;width:30px;height:10px;background:rgba(255,255,255,.84);} 
+.deity-humility .hmark.pike::before{left:26px;top:6px;width:4px;height:42px;background:rgba(210,232,255,.84);} .deity-humility .hmark.pike::after{left:10px;top:0;width:36px;height:12px;background:rgba(210,232,255,.84);clip-path:polygon(0 50%,12% 0,48% 36%,52% 36%,88% 0,100% 50%,88% 100%,52% 64%,48% 64%,12% 100%);} 
+.deity-humility .hmark.sigil::before{inset:10px;border-radius:50%;border:2px solid rgba(240,214,166,.80);} .deity-humility .hmark.sigil::after{left:50%;top:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;border:2px solid rgba(187,223,255,.80);} 
+.deity-humility .hmark.revolver::before{left:10px;top:20px;width:34px;height:12px;border-radius:6px;background:rgba(255,255,255,.84);} .deity-humility .hmark.revolver::after{left:34px;top:10px;width:14px;height:28px;background:rgba(255,255,255,.84);clip-path:polygon(0 10%,100% 0,100% 100%,20% 90%,0 74%);} 
+@media (max-width:760px){.deity-humility .fe,.deity-humility .ff,.deity-humility .ra{display:none;} .deity-humility .hfrag{opacity:.18;}}
+
 </style></head><body class="deity-body deity-humility">
-
-
-<div class="humility-page-decor" aria-hidden="true">
-  <span class="humility-rune rn1"></span>
-  <span class="humility-rune rn2"></span>
-  <span class="humility-rune rn3"></span>
-  <span class="humility-gunline"></span>
-  <span class="weapon-shape sword-shape"></span>
-  <span class="weapon-shape bow-shape"></span>
-  <span class="weapon-shape pike-shape"></span>
-  <span class="weapon-shape gun-shape"></span>
-  <div class="humility-collage">
-    <span class="humility-burst b1"></span>
-    <span class="humility-burst b2"></span>
-    <span class="humility-burst b3"></span>
-    <span class="humility-burst b4"></span>
-    <span class="humility-burst b5"></span>
-    <span class="humility-rift r1"></span>
-    <span class="humility-rift r2"></span>
-    <span class="humility-rift r3"></span>
-  </div>
+<div aria-hidden="true" class="humility-page-decor">
+<span class="hfrag sword fa"></span>
+<span class="hfrag pike fb"></span>
+<span class="hfrag revolver fc"></span>
+<span class="hfrag staff fd"></span>
+<span class="hfrag shield fe"></span>
+<span class="hfrag sigil ff"></span>
+<span class="hrune ra"></span>
+<span class="hrune rb"></span>
+<span class="hrune rc"></span>
+<div class="hcollage"><span class="rift r1"></span><span class="rift r2"></span><span class="rift r3"></span></div>
 </div>
-</div>
-
 
 <header class="site-header"><div class="nav-wrap">
 <a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>
@@ -108,18 +137,18 @@ body.deity-body.deity-humility > *:not(.humility-page-decor){position:relative;z
 <a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav>
 </div></header>
 <section class="deity-hero">
-<div class="deity-portrait"><img src="/god-humility.png" alt="Artistic depiction of Humility"></div>
+<div class="deity-portrait"><img alt="Artistic depiction of Humility" src="/god-humility.png"/></div>
 <div class="deity-hero-copy"><a class="deity-back" href="/virtues.html">← The Seven Virtues</a>
-<div class="humility-divider" aria-hidden="true"><span class="humility-glyph"></span></div>
+<div aria-hidden="true" class="humility-divider"><span class="humility-glyph"></span></div>
 <div class="deity-kicker">The Seven Virtues</div><h1>Humility</h1>
 <p class="deity-tagline">Service, perspective, self-knowledge, and the refusal to confuse importance with superiority.</p><p class="deity-summary">Humility keeps the silhouette of a weathered white-clad gunslinger, elevated into godhood without losing the restraint that defines him.</p></div>
-<div class="deity-sigil"><img src="/sigil-virtue-humility.png" alt="Sigil of Humility"></div></section>
-<main class="deity-layout"><article class="deity-article"><section><h2>To Stand Lower</h2><p>Humility teaches that worth does not require superiority. To admit ignorance, accept help, serve another person, or step aside so someone else can be heard are all expressions of strength rather than humiliation.</p></section>
-<section><h2>The Gunslinger Saint</h2><p>Unlike the overwhelming ornament of some Virtues, Humility's god form keeps the identity of a traveler: hat, coat, worn gear, a firearm, and a face marked by experience. Divinity adds scale and symbolism without erasing the person beneath it.</p></section>
-<section><h2>Service Without Applause</h2><p>His followers often praise work that receives no audience. Cleaning, carrying, listening, burying the dead, repairing what someone else broke, and accepting correction all fit naturally into the faith.</p></section>
-<section><h2>When Humility Becomes Erasure</h2><p>The danger comes when humility is confused with self-negation. A person can be taught to make themselves smaller forever, to never defend their needs, and to interpret abuse as proof that they still possess too much pride. A virtue about perspective can become a religion of disappearance.</p></section></article>
+<div class="deity-sigil"><img alt="Sigil of Humility" src="/sigil-virtue-humility.png"/></div></section>
+<main class="deity-layout"><article class="deity-article"><section><span class="hmark sword"></span><h2>To Stand Lower</h2><p>Humility teaches that worth does not require superiority. To admit ignorance, accept help, serve another person, or step aside so someone else can be heard are all expressions of strength rather than humiliation.</p></section>
+<section><span class="hmark pike"></span><h2>The Gunslinger Saint</h2><p>Unlike the overwhelming ornament of some Virtues, Humility's god form keeps the identity of a traveler: hat, coat, worn gear, a firearm, and a face marked by experience. Divinity adds scale and symbolism without erasing the person beneath it.</p></section>
+<section><span class="hmark sigil"></span><h2>Service Without Applause</h2><p>His followers often praise work that receives no audience. Cleaning, carrying, listening, burying the dead, repairing what someone else broke, and accepting correction all fit naturally into the faith.</p></section>
+<section><span class="hmark revolver"></span><h2>When Humility Becomes Erasure</h2><p>The danger comes when humility is confused with self-negation. A person can be taught to make themselves smaller forever, to never defend their needs, and to interpret abuse as proof that they still possess too much pride. A virtue about perspective can become a religion of disappearance.</p></section></article>
 <aside class="deity-aside"><section class="deity-facts">
-<div class="humility-divider centered" aria-hidden="true"><span class="humility-glyph"></span></div>
+<div aria-hidden="true" class="humility-divider centered"><span class="humility-glyph"></span></div>
 <h2>At a Glance</h2>
 <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Humility, service, perspective, self-knowledge</span></div>
 <div class="fact"><span class="fact-label">Associated Faith</span><span class="fact-value"><a href="/faith-humility.html">The Faith of Humility</a></span></div>

@@ -1,6 +1,7 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Patience · The Seven Virtues · Sinners</title><link rel="stylesheet" href="/styles.css">
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Patience · The Seven Virtues · Sinners</title><link href="/styles.css" rel="stylesheet"/>
 <style>
 
 :root{--virtue-accent:#d8c7a6;--virtue-iris:#c8b997;--virtue-dark:#0f121a;}
@@ -102,17 +103,32 @@ body.deity-body.deity-patience{--mx:0px;--my:0px;}
 .deity-patience .deity-article section:nth-child(4) .card-eye{right:18px;top:50%;transform:translateY(-50%);}
 @media (max-width:760px){.deity-patience .watch-socket{top:110px;width:min(150vw,1200px);height:min(72vw,500px);} .deity-patience .watch-eye,.deity-patience .watch-pupil-bg,.deity-patience .watch-glint{top:136px;width:min(132vw,1050px);height:min(62vw,420px);} .deity-patience .heading-eye{display:none;}}
 
+
+
+
+/* V7 Patience refinement */
+body.deity-body.deity-patience{--bgmx:0px;--bgmy:0px;}
+.deity-patience .patience-page-decor{z-index:0 !important;pointer-events:none;}
+.deity-patience > *:not(.patience-page-decor){position:relative;z-index:2;}
+.deity-patience .watch-socket{top:86px;width:min(128vw,1580px);height:min(58vw,720px);opacity:.16;transform:translateX(calc(-50% + var(--bgmx) * .2)) translateY(calc(var(--bgmy) * .1));transition:transform 1.6s ease-out;}
+.deity-patience .watch-eye{top:126px;width:min(112vw,1400px);height:min(50vw,620px);opacity:.16;transform:translateX(calc(-50% + var(--bgmx) * .36)) translateY(calc(var(--bgmy) * .18));transition:transform 1.8s ease-out;}
+.deity-patience .watch-pupil-bg{top:126px;width:min(112vw,1400px);height:min(50vw,620px);opacity:.42;transform:translateX(calc(-50% + var(--bgmx) * .36)) translateY(calc(var(--bgmy) * .18));transition:transform 1.8s ease-out;}
+.deity-patience .watch-pupil-bg::before{width:110px;height:110px;transform:translate(calc(-50% + var(--bgmx)), calc(-50% + var(--bgmy)));opacity:.82;box-shadow:0 0 0 1px rgba(30,23,13,.4);}
+.deity-patience .watch-glint{top:126px;width:min(112vw,1400px);height:min(50vw,620px);opacity:.14;transform:translateX(calc(-50% + var(--bgmx) * .28)) translateY(calc(var(--bgmy) * .14));transition:transform 1.5s ease-out;}
+.deity-patience .tracking-eye{width:34px;height:19px;opacity:.82;border-color:rgba(222,204,170,.18);box-shadow:0 0 0 1px rgba(255,255,255,.03) inset,0 0 10px rgba(0,0,0,.08);background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.03) 22%),linear-gradient(180deg,rgba(18,18,22,.10),rgba(6,7,10,.22));}
+.deity-patience .tracking-eye .eye-iris{width:10px;height:10px;}
+.deity-patience .tracking-eye .eye-pupil{width:4px;height:4px;}
+.deity-patience .tracking-eye .eye-glint{width:7px;height:3px;left:56%;opacity:.7;}
+.deity-patience .deity-article section:nth-child(n+2) .card-eye{display:none !important;}
+@media (max-width:760px){.deity-patience .watch-socket,.deity-patience .watch-eye,.deity-patience .watch-pupil-bg,.deity-patience .watch-glint{display:none;} .deity-patience .facts-eye,.deity-patience .card-eye{display:none;}}
+
 </style></head><body class="deity-body deity-patience">
-
-
-<div class="patience-page-decor" aria-hidden="true">
-  <span class="watch-socket"></span>
-  <span class="watch-eye"></span>
-  <span class="watch-pupil-bg"></span>
-  <span class="watch-glint"></span>
+<div aria-hidden="true" class="patience-page-decor">
+<span class="watch-socket"></span>
+<span class="watch-eye"></span>
+<span class="watch-pupil-bg"></span>
+<span class="watch-glint"></span>
 </div>
-
-
 <header class="site-header"><div class="nav-wrap">
 <a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>
 <nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a>
@@ -120,18 +136,18 @@ body.deity-body.deity-patience{--mx:0px;--my:0px;}
 <a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav>
 </div></header>
 <section class="deity-hero">
-<div class="deity-portrait"><img src="/god-patience.png" alt="Artistic depiction of Patience"></div>
+<div class="deity-portrait"><img alt="Artistic depiction of Patience" src="/god-patience.png"/></div>
 <div class="deity-hero-copy"><a class="deity-back" href="/virtues.html">← The Seven Virtues</a>
-<div class="patience-divider" aria-hidden="true"><span class="patience-glyph"></span></div>
+<div aria-hidden="true" class="patience-divider"><span class="patience-glyph"></span></div>
 <div class="deity-kicker">The Seven Virtues</div><h1>Patience<span class="tracking-eye heading-eye"><span class="eye-iris"></span><span class="eye-pupil"></span><span class="eye-glint"></span></span></h1>
 <p class="deity-tagline">Endurance, waiting, forgiveness, and the strength to survive what cannot be hurried.</p><p class="deity-summary">Patience is the most overtly celestial of the Virtues: a blinding, many-winged god whose presence feels less like a person entering a room and more like heaven opening above it.</p></div>
-<div class="deity-sigil"><img src="/sigil-virtue-patience.png" alt="Sigil of Patience"></div></section>
+<div class="deity-sigil"><img alt="Sigil of Patience" src="/sigil-virtue-patience.png"/></div></section>
 <main class="deity-layout"><article class="deity-article"><section><span class="tracking-eye card-eye"><span class="eye-iris"></span><span class="eye-pupil"></span><span class="eye-glint"></span></span><h2>The Virtue of Waiting</h2><p>Patience does not teach passivity. His ideal is the ability to endure pain, uncertainty, anger, and fear without letting the moment decide who you become. To wait is to refuse to be ruled by panic.</p></section>
-<section><span class="tracking-eye card-eye"><span class="eye-iris"></span><span class="eye-pupil"></span><span class="eye-glint"></span></span><h2>From Eustace to Patience</h2><p>Before his godhood, Patience was known by other names, including Eustace and Abram. He was slain in the final battle, but his soul did not simply vanish. In death he went on to rescue his comrades and raise them into divinity, creating the opposing pantheon now known as the Seven Virtues.</p></section>
-<section><span class="tracking-eye card-eye"><span class="eye-iris"></span><span class="eye-pupil"></span><span class="eye-glint"></span></span><h2>A God Almost Too Angelic</h2><p>Modern depictions push his divinity to excess: layered wings, impossible halos, radiant eyes, veils and masks, and enough light to make looking directly at him uncomfortable. The design is deliberate. Patience should feel holy in a way that is beautiful, severe, and slightly frightening.</p></section>
-<section><span class="tracking-eye card-eye"><span class="eye-iris"></span><span class="eye-pupil"></span><span class="eye-glint"></span></span><h2>When Patience Becomes Control</h2><p>The danger in Patience is easy to miss. Endurance can become obedience. Forgiveness can become pressure to accept what should not be accepted. Waiting can become an excuse for never acting at all. His faith lives in that uncomfortable space between perseverance and surrender.</p></section></article>
+<section><h2>From Eustace to Patience</h2><p>Before his godhood, Patience was known by other names, including Eustace and Abram. He was slain in the final battle, but his soul did not simply vanish. In death he went on to rescue his comrades and raise them into divinity, creating the opposing pantheon now known as the Seven Virtues.</p></section>
+<section><h2>A God Almost Too Angelic</h2><p>Modern depictions push his divinity to excess: layered wings, impossible halos, radiant eyes, veils and masks, and enough light to make looking directly at him uncomfortable. The design is deliberate. Patience should feel holy in a way that is beautiful, severe, and slightly frightening.</p></section>
+<section><h2>When Patience Becomes Control</h2><p>The danger in Patience is easy to miss. Endurance can become obedience. Forgiveness can become pressure to accept what should not be accepted. Waiting can become an excuse for never acting at all. His faith lives in that uncomfortable space between perseverance and surrender.</p></section></article>
 <aside class="deity-aside"><section class="deity-facts">
-<div class="patience-divider centered" aria-hidden="true"><span class="patience-glyph"></span></div>
+<div aria-hidden="true" class="patience-divider centered"><span class="patience-glyph"></span></div>
 <span class="tracking-eye facts-eye"><span class="eye-iris"></span><span class="eye-pupil"></span><span class="eye-glint"></span></span><h2>At a Glance</h2>
 <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Endurance, waiting, perseverance, forgiveness</span></div>
 <div class="fact"><span class="fact-label">Associated Faith</span><span class="fact-value"><a href="/faith-patience.html">The Faith of Patience</a></span></div>
@@ -153,27 +169,31 @@ body.deity-body.deity-patience{--mx:0px;--my:0px;}
 (function(){
   const root = document.body;
   const eyes = Array.from(document.querySelectorAll('.deity-patience .tracking-eye'));
+  let tx = window.innerWidth * 0.5, ty = window.innerHeight * 0.5;
+  let px = tx, py = ty;
   function moveEye(eye, x, y){
     const pupil = eye.querySelector('.eye-pupil');
     const iris = eye.querySelector('.eye-iris');
+    if(!pupil || !iris) return;
     const rect = eye.getBoundingClientRect();
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
-    const dx = Math.max(-1, Math.min(1, (x - cx) / (rect.width * 1.8)));
-    const dy = Math.max(-1, Math.min(1, (y - cy) / (rect.height * 1.8)));
-    pupil.style.transform = `translate(calc(-50% + ${dx * 7}px), calc(-50% + ${dy * 5}px))`;
-    iris.style.transform = `translate(calc(-50% + ${dx * 3}px), calc(-50% + ${dy * 2}px))`;
+    const dx = Math.max(-1, Math.min(1, (x - cx) / (rect.width * 2.8)));
+    const dy = Math.max(-1, Math.min(1, (y - cy) / (rect.height * 2.8)));
+    pupil.style.transform = `translate(calc(-50% + ${dx * 3}px), calc(-50% + ${dy * 2}px))`;
+    iris.style.transform = `translate(calc(-50% + ${dx * 1.6}px), calc(-50% + ${dy * 1.1}px))`;
   }
-  function onMove(ev){
-    const x = ev.clientX, y = ev.clientY;
-    const dx = ((x / window.innerWidth) - 0.5) * 42;
-    const dy = ((y / window.innerHeight) - 0.5) * 22;
-    root.style.setProperty('--mx', dx + 'px');
-    root.style.setProperty('--my', dy + 'px');
-    eyes.forEach(eye => moveEye(eye, x, y));
+  function frame(){
+    px += (tx - px) * 0.05;
+    py += (ty - py) * 0.05;
+    const bgx = ((px / window.innerWidth) - 0.5) * 6;
+    const bgy = ((py / window.innerHeight) - 0.5) * 3;
+    root.style.setProperty('--bgmx', bgx.toFixed(2) + 'px');
+    root.style.setProperty('--bgmy', bgy.toFixed(2) + 'px');
+    eyes.forEach(eye => moveEye(eye, px, py));
+    requestAnimationFrame(frame);
   }
-  window.addEventListener('mousemove', onMove, {passive:true});
+  window.addEventListener('mousemove', ev => { tx = ev.clientX; ty = ev.clientY; }, {passive:true});
+  requestAnimationFrame(frame);
 })();
-</script>
-
-</body></html>
+</script></body></html>

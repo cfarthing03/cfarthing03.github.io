@@ -1,6 +1,7 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Chastity · The Seven Virtues · Sinners</title><link rel="stylesheet" href="/styles.css">
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Chastity · The Seven Virtues · Sinners</title><link href="/styles.css" rel="stylesheet"/>
 <style>
 
 :root{--virtue-accent:#a694ff;--virtue-thread:#dad4ff;--virtue-mind:#86dbff;}
@@ -80,26 +81,43 @@ mask:radial-gradient(circle at 50% 28%, transparent 0 5%, #000 5.2%);}
 .deity-chastity .deity-article section::before,.deity-chastity .deity-facts::before{content:"";position:absolute;right:14px;top:14px;width:92px;height:92px;border-radius:50%;opacity:.40;background:repeating-conic-gradient(from 0deg,rgba(220,215,255,.16) 0 1.4deg,transparent 1.4deg 30deg),radial-gradient(circle,transparent 0 28%,rgba(220,215,255,.14) 28.4% 29%,transparent 29.2% 48%,rgba(220,215,255,.10) 48.4% 49%,transparent 49.2% 100%);mask:radial-gradient(circle,transparent 0 18%,#000 18%);} 
 @media (max-width:760px){.deity-chastity .chastity-web-core{top:110px;width:min(148vw,1100px);height:min(148vw,1100px);} .deity-chastity .strand.s4,.deity-chastity .strand.s6{display:none;}}
 
+
+
+
+/* V7 Chastity refinement */
+.deity-chastity .chastity-page-decor{z-index:0 !important;pointer-events:none;mix-blend-mode:screen;}
+.deity-chastity > *:not(.chastity-page-decor){position:relative;z-index:2;}
+.deity-chastity .chastity-page-decor > *{position:fixed;display:block;pointer-events:none;}
+.deity-chastity .cw-main,.deity-chastity .cw-secondary{border-radius:50%;}
+.deity-chastity .cw-main{right:-160px;top:40px;width:min(96vw,1180px);height:min(96vw,1180px);opacity:.18;background:repeating-radial-gradient(circle at 50% 50%, transparent 0 10%, rgba(190,204,255,.30) 10.2% 10.55%, transparent 10.8% 17%, rgba(190,204,255,.24) 17.2% 17.55%, transparent 17.8% 25%, rgba(190,204,255,.20) 25.2% 25.55%, transparent 25.8% 34%, rgba(190,204,255,.18) 34.2% 34.55%, transparent 34.8% 46%, rgba(190,204,255,.15) 46.2% 46.55%, transparent 46.8% 100%);mask:radial-gradient(circle at 50% 50%, transparent 0 4%, #000 6% 58%, transparent 58.2% 100%);} 
+.deity-chastity .cw-main::before{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from 4deg at 50% 50%, rgba(202,212,255,.54) 0 .42deg, transparent .42deg 18deg);} 
+.deity-chastity .cw-main::after{content:"";position:absolute;inset:14%;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%, transparent 0 17%, rgba(190,204,255,.18) 17.2% 17.5%, transparent 17.8% 29%, rgba(190,204,255,.14) 29.2% 29.5%, transparent 29.8% 100%);mask:radial-gradient(circle at 50% 50%, transparent 0 4%, #000 6% 62%, transparent 62.2% 100%);opacity:.7;}
+.deity-chastity .cw-secondary{left:-220px;bottom:-160px;width:720px;height:720px;opacity:.12;background:repeating-radial-gradient(circle at 50% 50%, transparent 0 11%, rgba(190,204,255,.18) 11.2% 11.45%, transparent 11.7% 20%, rgba(190,204,255,.15) 20.2% 20.45%, transparent 20.7% 100%);mask:radial-gradient(circle at 50% 50%, transparent 0 5%, #000 7% 54%, transparent 54.2% 100%);} 
+.deity-chastity .cw-secondary::before{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from 10deg at 50% 50%, rgba(202,212,255,.42) 0 .32deg, transparent .32deg 22deg);} 
+.deity-chastity .cw-corner{width:300px;height:220px;opacity:.16;}
+.deity-chastity .cw-corner.corner-a{left:0;top:100px;}
+.deity-chastity .cw-corner.corner-b{right:0;bottom:0;transform:scaleX(-1) scaleY(-1);} 
+.deity-chastity .cw-corner::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 0 0, transparent 0 22px, rgba(194,205,255,.22) 22.5px 23.5px, transparent 24px 52px, rgba(194,205,255,.16) 52.5px 53.5px, transparent 54px 100%);clip-path:polygon(0 0,100% 0,0 100%);} 
+.deity-chastity .cw-corner::after{content:"";position:absolute;inset:0;background:repeating-conic-gradient(from 0deg at 0 0, rgba(206,214,255,.45) 0 .5deg, transparent .5deg 14deg);clip-path:polygon(0 0,100% 0,0 100%);} 
+.deity-chastity .cw-node{width:8px;height:8px;border-radius:50%;background:rgba(215,229,255,.9);box-shadow:0 0 10px rgba(195,216,255,.35),0 0 0 2px rgba(135,152,190,.26);opacity:.8;}
+.deity-chastity .node-a{right:26%;top:34%;}
+.deity-chastity .node-b{left:20%;top:62%;opacity:.55;}
+.deity-chastity .node-c{right:10%;bottom:18%;opacity:.46;}
+.deity-chastity .deity-article section,.deity-chastity .deity-facts,.deity-chastity .deity-related{border-color:rgba(163,172,219,.30) !important; background:linear-gradient(180deg,rgba(110,98,160,.08),rgba(5,9,16,.10)),radial-gradient(circle at 100% 0,rgba(226,228,255,.06),transparent 32%) !important;}
+.deity-chastity .deity-article section::before{content:"";position:absolute;right:12px;top:12px;width:96px;height:96px;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%, transparent 0 16%, rgba(188,200,255,.20) 16.2% 16.55%, transparent 16.9% 24%, rgba(188,200,255,.16) 24.2% 24.55%, transparent 24.9% 100%);mask:radial-gradient(circle at 50% 50%, transparent 0 4%, #000 6% 44%, transparent 44.2% 100%);opacity:.22;}
+.deity-chastity .deity-article section::after{content:"";position:absolute;right:20px;top:20px;width:80px;height:80px;border-radius:50%;background:repeating-conic-gradient(from 8deg at 50% 50%, rgba(194,204,255,.36) 0 .35deg, transparent .35deg 20deg);mask:radial-gradient(circle at 50% 50%, transparent 0 4%, #000 6% 44%, transparent 44.2% 100%);opacity:.24;}
+@media (max-width:760px){.deity-chastity .cw-secondary,.deity-chastity .cw-corner{display:none;} .deity-chastity .cw-main{right:-240px;top:110px;opacity:.13;}}
+
 </style></head><body class="deity-body deity-chastity">
-
-
-<div class="chastity-page-decor" aria-hidden="true">
-  <span class="chastity-web-core"></span>
-  <span class="chastity-radials"></span>
-  <span class="strand s1"></span>
-  <span class="strand s2"></span>
-  <span class="strand s3"></span>
-  <span class="strand s4"></span>
-  <span class="strand s5"></span>
-  <span class="strand s6"></span>
-  <span class="silk-node n1"></span>
-  <span class="silk-node n2"></span>
-  <span class="silk-node n3"></span>
-  <span class="silk-node n4"></span>
-  <span class="silk-node n5"></span>
+<div aria-hidden="true" class="chastity-page-decor">
+<span class="cw-main"></span>
+<span class="cw-secondary"></span>
+<span class="cw-corner corner-a"></span>
+<span class="cw-corner corner-b"></span>
+<span class="cw-node node-a"></span>
+<span class="cw-node node-b"></span>
+<span class="cw-node node-c"></span>
 </div>
-
-
 <header class="site-header"><div class="nav-wrap">
 <a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>
 <nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a>
@@ -107,18 +125,18 @@ mask:radial-gradient(circle at 50% 28%, transparent 0 5%, #000 5.2%);}
 <a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav>
 </div></header>
 <section class="deity-hero">
-<div class="deity-portrait"><img src="/god-chastity.png" alt="Artistic depiction of Chastity"></div>
+<div class="deity-portrait"><img alt="Artistic depiction of Chastity" src="/god-chastity.png"/></div>
 <div class="deity-hero-copy"><a class="deity-back" href="/virtues.html">← The Seven Virtues</a>
-<div class="chastity-divider" aria-hidden="true"><span class="chastity-glyph"></span></div>
+<div aria-hidden="true" class="chastity-divider"><span class="chastity-glyph"></span></div>
 <div class="deity-kicker">The Seven Virtues</div><h1>Chastity</h1>
 <p class="deity-tagline">Devotion, boundaries, purity of intent, and the right to decide what is allowed to reach you.</p><p class="deity-summary">Chastity is a dark-winged goddess surrounded by eyes, threads, and spiderlike limbs: a divine image of boundaries that can become a cage.</p></div>
-<div class="deity-sigil"><img src="/sigil-virtue-chastity.png" alt="Sigil of Chastity"></div></section>
+<div class="deity-sigil"><img alt="Sigil of Chastity" src="/sigil-virtue-chastity.png"/></div></section>
 <main class="deity-layout"><article class="deity-article"><section><h2>More Than Abstinence</h2><p>Chastity is not limited to sex. Her broader domain is chosen boundary: what a person permits into their body, mind, relationships, vows, and identity. Devotion has meaning because it excludes what would violate the choice.</p></section>
 <section><h2>The Web</h2><p>Her imagery uses threads and webs because a boundary can connect as easily as it can divide. Every promise creates a line: this is mine, this is yours, this is shared, and this is forbidden.</p></section>
 <section><h2>Purity of Intent</h2><p>Her worship emphasizes clarity of purpose. A vow made for status is empty. A boundary enforced only when convenient is not a boundary. Chastity's strictest followers believe integrity requires consistency even when nobody is watching.</p></section>
 <section><h2>When Protection Becomes a Cage</h2><p>Her virtue turns cruel when purity is defined by someone else. Boundaries can become walls built around another person. Devotion can become isolation. A doctrine meant to defend autonomy can become a reason to police bodies, relationships, and thought.</p></section></article>
 <aside class="deity-aside"><section class="deity-facts">
-<div class="chastity-divider centered" aria-hidden="true"><span class="chastity-glyph"></span></div>
+<div aria-hidden="true" class="chastity-divider centered"><span class="chastity-glyph"></span></div>
 <h2>At a Glance</h2>
 <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Devotion, boundaries, purity of intent, self-command</span></div>
 <div class="fact"><span class="fact-label">Associated Faith</span><span class="fact-value"><a href="/faith-chastity.html">The Faith of Chastity</a></span></div>

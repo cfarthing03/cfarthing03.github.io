@@ -1,6 +1,7 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Diligence · The Seven Virtues · Sinners</title><link rel="stylesheet" href="/styles.css">
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Diligence · The Seven Virtues · Sinners</title><link href="/styles.css" rel="stylesheet"/>
 <style>
 
 :root{--virtue-accent:#9b8060;--virtue-metal:#d0be9e;--virtue-blood:#944b36;}
@@ -89,24 +90,56 @@ body.deity-body.deity-diligence > *:not(.diligence-page-decor){position:relative
 .deity-diligence .deity-article section:nth-child(3)::before{clip-path:polygon(16% 18%,58% 18%,58% 0,100% 0,100% 24%,58% 24%,58% 82%,16% 82%,16% 100%,0 100%,0 76%,16% 76%);} 
 .deity-diligence .deity-article section:nth-child(4)::before{clip-path:polygon(22% 0,78% 0,78% 62%,100% 62%,100% 78%,78% 78%,78% 100%,22% 100%,22% 78%,0 78%,0 62%,22% 62%);} 
 
+
+
+
+/* V7 Diligence refinement */
+.deity-diligence .diligence-page-decor{z-index:0 !important;pointer-events:none;overflow:hidden;}
+.deity-diligence > *:not(.diligence-page-decor){position:relative;z-index:2;}
+.deity-diligence .dgrid{position:fixed;inset:0;background:repeating-linear-gradient(135deg,rgba(227,226,216,.04) 0 1px,transparent 1px 24px);opacity:.55;}
+.deity-diligence .dghost,.deity-diligence .dcard-icon{position:absolute;display:block;}
+.deity-diligence .dghost{position:fixed;opacity:.24;filter:drop-shadow(0 0 10px rgba(255,255,255,.04));}
+.deity-diligence .dghost::before,.deity-diligence .dghost::after,.deity-diligence .dcard-icon::before,.deity-diligence .dcard-icon::after{content:"";position:absolute;display:block;}
+.deity-diligence .dghost.hammer{width:138px;height:220px;left:-16px;top:44%;transform:rotate(-24deg);} 
+.deity-diligence .dghost.hammer::before{left:46%;top:20%;width:12px;height:74%;background:rgba(214,214,214,.55);border-radius:5px;}
+.deity-diligence .dghost.hammer::after{left:10%;top:10%;width:80%;height:30px;border-radius:10px;background:rgba(214,214,214,.55);} 
+.deity-diligence .dghost.pick{width:182px;height:120px;right:-18px;top:20%;transform:rotate(18deg);} 
+.deity-diligence .dghost.pick::before{left:46%;top:18%;width:10px;height:78%;background:rgba(214,214,214,.42);border-radius:5px;}
+.deity-diligence .dghost.pick::after{left:6%;top:12%;width:88%;height:26px;border-radius:16px;background:linear-gradient(90deg,rgba(214,214,214,.46),rgba(214,214,214,.18) 26%,rgba(214,214,214,.46) 74%,rgba(214,214,214,.18));clip-path:polygon(0 50%,14% 0,44% 30%,56% 30%,86% 0,100% 50%,86% 100%,56% 70%,44% 70%,14% 100%);} 
+.deity-diligence .dghost.gear,.deity-diligence .dghost.wheel{border-radius:50%;background:radial-gradient(circle,rgba(214,214,214,.32) 0 18%,rgba(214,214,214,0) 19% 52%,rgba(214,214,214,.42) 53% 61%,rgba(214,214,214,0) 62% 100%);} 
+.deity-diligence .dghost.gear{width:136px;height:136px;right:26px;bottom:28px;} 
+.deity-diligence .dghost.wheel{width:120px;height:120px;left:24px;bottom:42px;} 
+.deity-diligence .dghost.gear::before,.deity-diligence .dghost.wheel::before{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from 0deg, rgba(214,214,214,.44) 0 8deg, transparent 8deg 30deg);mask:radial-gradient(circle, transparent 0 52%, #000 54% 74%, transparent 76% 100%);} 
+.deity-diligence .dghost.gear::after,.deity-diligence .dghost.wheel::after{content:"";position:absolute;inset:18%;border-radius:50%;border:2px solid rgba(214,214,214,.44);} 
+.deity-diligence .dchain{position:fixed;width:2px;height:170px;background:repeating-linear-gradient(180deg,rgba(230,230,230,.30) 0 6px,transparent 6px 14px);opacity:.34;}
+.deity-diligence .c1{left:18%;top:118px;} .deity-diligence .c2{right:18%;top:154px;}
+.deity-diligence .dfang{position:fixed;width:34px;height:92px;background:linear-gradient(180deg,rgba(245,245,245,.36),rgba(170,170,170,.08));clip-path:polygon(50% 0,100% 76%,72% 100%,28% 100%,0 76%);opacity:.30;}
+.deity-diligence .f1{left:12%;top:210px;transform:rotate(-10deg);} .deity-diligence .f2{left:16%;top:260px;transform:rotate(8deg);} .deity-diligence .f3{right:12%;top:260px;transform:rotate(10deg);} .deity-diligence .f4{right:16%;top:210px;transform:rotate(-8deg);} 
+.deity-diligence .deity-article section,.deity-diligence .deity-facts,.deity-diligence .deity-related{border-color:rgba(208,204,187,.26) !important;background:linear-gradient(180deg,rgba(141,130,100,.08),rgba(5,9,16,.08)),radial-gradient(circle at 100% 0,rgba(255,255,255,.04),transparent 34%) !important;}
+.deity-diligence .dcard-icon{position:absolute;right:18px;bottom:16px;width:44px;height:44px;opacity:.68;}
+.deity-diligence .dcard-icon.hammer::before{left:45%;top:18%;width:5px;height:62%;background:rgba(255,255,255,.84);border-radius:4px;} 
+.deity-diligence .dcard-icon.hammer::after{left:18%;top:10%;width:64%;height:12px;border-radius:6px;background:rgba(255,255,255,.84);} 
+.deity-diligence .dcard-icon.pick::before{left:45%;top:16%;width:5px;height:66%;background:rgba(255,255,255,.82);border-radius:4px;} 
+.deity-diligence .dcard-icon.pick::after{left:8%;top:8%;width:84%;height:12px;border-radius:12px;background:linear-gradient(90deg,rgba(255,255,255,.82),rgba(255,255,255,.24) 26%,rgba(255,255,255,.82) 74%,rgba(255,255,255,.24));clip-path:polygon(0 50%,14% 0,44% 30%,56% 30%,86% 0,100% 50%,86% 100%,56% 70%,44% 70%,14% 100%);} 
+.deity-diligence .dcard-icon.gear,.deity-diligence .dcard-icon.wheel{border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.66) 0 18%,rgba(255,255,255,0) 19% 50%,rgba(255,255,255,.62) 51% 58%,rgba(255,255,255,0) 59% 100%);} 
+.deity-diligence .dcard-icon.gear::before,.deity-diligence .dcard-icon.wheel::before{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from 0deg, rgba(255,255,255,.78) 0 12deg, transparent 12deg 32deg);mask:radial-gradient(circle, transparent 0 50%, #000 52% 76%, transparent 78% 100%);} 
+.deity-diligence .dcard-icon.gear::after,.deity-diligence .dcard-icon.wheel::after{content:"";position:absolute;inset:26%;border-radius:50%;border:2px solid rgba(255,255,255,.72);} 
+@media (max-width:760px){.deity-diligence .dchain,.deity-diligence .dfang{display:none;} .deity-diligence .dghost.hammer,.deity-diligence .dghost.pick{opacity:.16;}}
+
 </style></head><body class="deity-body deity-diligence">
-
-
-<div class="diligence-page-decor" aria-hidden="true">
-  <span class="diligence-grid"></span>
-  <span class="tool-outline hammer-outline"></span>
-  <span class="tool-outline pick-outline"></span>
-  <span class="tool-outline gear-outline"></span>
-  <span class="tool-outline spike-wheel"></span>
-  <span class="diligence-chain c1"></span>
-  <span class="diligence-chain c2"></span>
-  <span class="diligence-fang f1"></span>
-  <span class="diligence-fang f2"></span>
-  <span class="diligence-fang f3"></span>
-  <span class="diligence-fang f4"></span>
+<div aria-hidden="true" class="diligence-page-decor">
+<span class="dgrid"></span>
+<span class="dghost hammer g1"></span>
+<span class="dghost pick g2"></span>
+<span class="dghost gear g3"></span>
+<span class="dghost wheel g4"></span>
+<span class="dchain c1"></span>
+<span class="dchain c2"></span>
+<span class="dfang f1"></span>
+<span class="dfang f2"></span>
+<span class="dfang f3"></span>
+<span class="dfang f4"></span>
 </div>
-
-
 <header class="site-header"><div class="nav-wrap">
 <a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>
 <nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a>
@@ -114,18 +147,18 @@ body.deity-body.deity-diligence > *:not(.diligence-page-decor){position:relative
 <a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav>
 </div></header>
 <section class="deity-hero">
-<div class="deity-portrait"><img src="/god-diligence.png" alt="Artistic depiction of Diligence"></div>
+<div class="deity-portrait"><img alt="Artistic depiction of Diligence" src="/god-diligence.png"/></div>
 <div class="deity-hero-copy"><a class="deity-back" href="/virtues.html">← The Seven Virtues</a>
-<div class="diligence-divider" aria-hidden="true"><span class="diligence-glyph"></span></div>
+<div aria-hidden="true" class="diligence-divider"><span class="diligence-glyph"></span></div>
 <div class="deity-kicker">The Seven Virtues</div><h1>Diligence</h1>
 <p class="deity-tagline">Labor, persistence, discipline, and the refusal to stop simply because the work is ugly.</p><p class="deity-summary">Diligence is a lycanthropic god of relentless effort: a hulking, scarred, fully furred monster wrapped in only enough ritual ornament to mark him as divine.</p></div>
-<div class="deity-sigil"><img src="/sigil-virtue-diligence.png" alt="Sigil of Diligence"></div></section>
-<main class="deity-layout"><article class="deity-article"><section><h2>Work Without Glamour</h2><p>Diligence is not a god of effortless mastery. His domain is repetition: the hundredth attempt, the task no one applauds, the wound reopened because the work still is not finished. Progress matters precisely because it costs something.</p></section>
-<section><h2>The Beast Beneath the Halo</h2><p>His god form rejects elegance. Diligence remains unmistakably lycanthropic—furred, scarred, oversized, and predatory. Chains, ritual cloth, metalwork, and a halo do not civilize the monster. They make it holy.</p></section>
-<section><h2>The Promise of Effort</h2><p>Followers commonly teach that ability is less sacred than willingness. Talent may open a door, but work decides what survives on the other side. Training, craftsmanship, rebuilding, and long projects are natural acts of devotion.</p></section>
-<section><h2>When Effort Devours Everything</h2><p>Diligence can become merciless when effort is treated as the answer to every problem. Rest becomes weakness. Injury becomes an excuse. People become valuable only for what they produce. His religion is most frightening when it cannot recognize that stopping can also be necessary.</p></section></article>
+<div class="deity-sigil"><img alt="Sigil of Diligence" src="/sigil-virtue-diligence.png"/></div></section>
+<main class="deity-layout"><article class="deity-article"><section><span class="dcard-icon hammer"></span><h2>Work Without Glamour</h2><p>Diligence is not a god of effortless mastery. His domain is repetition: the hundredth attempt, the task no one applauds, the wound reopened because the work still is not finished. Progress matters precisely because it costs something.</p></section>
+<section><span class="dcard-icon pick"></span><h2>The Beast Beneath the Halo</h2><p>His god form rejects elegance. Diligence remains unmistakably lycanthropic—furred, scarred, oversized, and predatory. Chains, ritual cloth, metalwork, and a halo do not civilize the monster. They make it holy.</p></section>
+<section><span class="dcard-icon gear"></span><h2>The Promise of Effort</h2><p>Followers commonly teach that ability is less sacred than willingness. Talent may open a door, but work decides what survives on the other side. Training, craftsmanship, rebuilding, and long projects are natural acts of devotion.</p></section>
+<section><span class="dcard-icon wheel"></span><h2>When Effort Devours Everything</h2><p>Diligence can become merciless when effort is treated as the answer to every problem. Rest becomes weakness. Injury becomes an excuse. People become valuable only for what they produce. His religion is most frightening when it cannot recognize that stopping can also be necessary.</p></section></article>
 <aside class="deity-aside"><section class="deity-facts">
-<div class="diligence-divider centered" aria-hidden="true"><span class="diligence-glyph"></span></div>
+<div aria-hidden="true" class="diligence-divider centered"><span class="diligence-glyph"></span></div>
 <h2>At a Glance</h2>
 <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Work, discipline, persistence, effort</span></div>
 <div class="fact"><span class="fact-label">Associated Faith</span><span class="fact-value"><a href="/faith-diligence.html">The Faith of Diligence</a></span></div>

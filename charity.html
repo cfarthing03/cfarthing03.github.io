@@ -1,6 +1,7 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Charity · The Seven Virtues · Sinners</title><link rel="stylesheet" href="/styles.css">
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Charity · The Seven Virtues · Sinners</title><link href="/styles.css" rel="stylesheet"/>
 <style>
 
 :root{--virtue-accent:#8a5a49;--virtue-warn:#d48b63;--virtue-deep:#371f18;}
@@ -79,42 +80,48 @@ radial-gradient(circle at 0 0,rgba(255,255,255,.05),transparent 40%);}
 .deity-charity .charity-article section,.deity-charity .deity-facts,.deity-charity .deity-related{background:linear-gradient(180deg,rgba(201,127,90,.08),rgba(5,9,16,.05)),radial-gradient(circle at 100% 0,rgba(255,190,134,.05),transparent 38%) !important;}
 .deity-charity .deity-article section::before{content:"";position:absolute;right:18px;bottom:18px;width:64px;height:64px;opacity:.22;background:linear-gradient(135deg,rgba(255,190,134,.20),rgba(255,166,116,.08));border:1px solid rgba(244,175,132,.22);transform:rotate(8deg);} 
 
-</style></head><body class="deity-body deity-charity">
 
-<div class="charity-page-decor" aria-hidden="true">
-  <span class="gift-fall g1"><span class="string"></span><span class="lid"></span></span>
-  <span class="gift-fall g2"><span class="string"></span><span class="lid"></span></span>
-  <span class="gift-fall g3"><span class="string"></span><span class="lid"></span></span>
-  <span class="gift-fall g4"><span class="string"></span><span class="lid"></span></span>
-  <span class="gift-fall g5"><span class="string"></span><span class="lid"></span></span>
-  <span class="gift-fall g6"><span class="string"></span><span class="lid"></span></span>
-</div>
-  <span class="charity-gift twisted g1"><span class="bow"></span></span>
-  <span class="charity-gift twisted g2"><span class="bow"></span></span>
-  <span class="charity-gift twisted g3"><span class="bow"></span></span>
-  <span class="charity-claw c1"></span>
-  <span class="charity-claw c2"></span>
-</div>
 
-<header class="site-header"><div class="nav-wrap">
+
+/* V7 Charity cleanup */
+.deity-charity .charity-page-decor{z-index:0 !important;pointer-events:none;overflow:hidden;}
+.deity-charity > *:not(.charity-page-decor){position:relative;z-index:2;}
+.deity-charity .cpresent{position:fixed;display:block;width:96px;height:96px;opacity:.30;transform-origin:center;animation:cpresentFloat 16s ease-in-out infinite;}
+.deity-charity .cpresent::before{content:"";position:absolute;inset:20px;background:linear-gradient(180deg,rgba(255,221,201,.12),rgba(201,127,90,.16));border:1px solid rgba(244,175,132,.30);box-shadow:0 0 0 1px rgba(255,255,255,.03) inset;}
+.deity-charity .cpresent::after{content:"";position:absolute;left:47px;top:20px;bottom:20px;width:4px;background:rgba(244,175,132,.34);box-shadow:-16px 0 0 rgba(244,175,132,.14),16px 0 0 rgba(244,175,132,.14);} 
+.deity-charity .cpresent .lid{position:absolute;left:14px;top:8px;width:68px;height:20px;background:linear-gradient(180deg,rgba(255,220,198,.14),rgba(201,127,90,.18));border:1px solid rgba(244,175,132,.28);transform:rotate(-16deg);transform-origin:left bottom;display:block;}
+.deity-charity .cpresent.ajar{overflow:visible;}
+.deity-charity .cpresent.closed .lid{display:none;}
+.deity-charity .cpresent.g1{left:-10px;top:30px;} .deity-charity .cpresent.g2{right:52px;top:40px;} .deity-charity .cpresent.g3{left:26px;top:56%;} .deity-charity .cpresent.g4{right:30px;top:52%;} .deity-charity .cpresent.g5{left:-16px;bottom:22px;} .deity-charity .cpresent.g6{right:120px;bottom:42px;} .deity-charity .cpresent.g7{left:72%;top:22%;} .deity-charity .cpresent.g8{left:10%;top:18%;} 
+@keyframes cpresentFloat{0%,100%{transform:translateY(0) rotate(var(--r));}50%{transform:translateY(-12px) rotate(calc(var(--r) + 2deg));}}
+.deity-charity .deity-article section,.deity-charity .deity-facts,.deity-charity .deity-related{border-color:rgba(244,175,132,.24) !important;background:linear-gradient(180deg,rgba(201,127,90,.08),rgba(5,9,16,.08)),radial-gradient(circle at 100% 0,rgba(255,255,255,.04),transparent 34%) !important;}
+
+</style></head><body class="deity-body deity-charity"><div aria-hidden="true" class="charity-page-decor">
+<span class="cpresent g1 closed" style="--r:-16deg;"></span>
+<span class="cpresent g2 closed" style="--r:14deg;"></span>
+<span class="cpresent g3 closed" style="--r:22deg;"></span>
+<span class="cpresent g4 ajar" style="--r:-16deg;"><span class="lid"></span></span>
+<span class="cpresent g5 closed" style="--r:-18deg;"></span>
+<span class="cpresent g6 closed" style="--r:18deg;"></span>
+<span class="cpresent g7 ajar" style="--r:12deg;"><span class="lid"></span></span>
+<span class="cpresent g8 closed" style="--r:-10deg;"></span>
+</div><header class="site-header"><div class="nav-wrap">
 <a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>
 <nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a>
 <a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a>
 <a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav>
-</div></header>
-<section class="deity-hero">
-<div class="deity-portrait"><img src="/god-charity.png" alt="Artistic depiction of Charity"></div>
+</div></header><section class="deity-hero">
+<div class="deity-portrait"><img alt="Artistic depiction of Charity" src="/god-charity.png"/></div>
 <div class="deity-hero-copy"><a class="deity-back" href="/virtues.html">← The Seven Virtues</a>
-<div class="charity-divider" aria-hidden="true"><span class="charity-glyph"></span></div>
+<div aria-hidden="true" class="charity-divider"><span class="charity-glyph"></span></div>
 <div class="deity-kicker">The Seven Virtues</div><h1>Charity</h1>
 <p class="deity-tagline">Giving, sacrifice, generosity, and the belief that what you hold has meaning when it can help another.</p><p class="deity-summary">Charity appears as a radiant winged goddess surrounded by gifts, keys, reliquaries, and hanging offerings: generosity rendered as ceremony.</p></div>
-<div class="deity-sigil"><img src="/sigil-virtue-charity.png" alt="Sigil of Charity"></div></section>
-<main class="deity-layout"><article class="deity-article"><section><h2>The Open Hand</h2><p>Charity is the virtue of giving without demanding equal return. Food, money, shelter, knowledge, time, and protection can all become offerings. A gift is sacred because the giver accepts having less so another person may have more.</p></section>
+<div class="deity-sigil"><img alt="Sigil of Charity" src="/sigil-virtue-charity.png"/></div></section><main class="deity-layout"><article class="deity-article"><section><h2>The Open Hand</h2><p>Charity is the virtue of giving without demanding equal return. Food, money, shelter, knowledge, time, and protection can all become offerings. A gift is sacred because the giver accepts having less so another person may have more.</p></section>
 <section><h2>Gifts as Divine Language</h2><p>Her imagery is crowded with presents, keys, reliquaries, suspended treasures, and open hands. Her worship often treats objects symbolically: not as proof of wealth, but as proof that possession can be relinquished.</p></section>
 <section><h2>Sacrifice</h2><p>Charity's followers often distinguish generosity from convenience. Giving what is easy is kind. Giving something that genuinely costs you is sacred. That doctrine makes her church capable of extraordinary mercy—and extraordinary pressure.</p></section>
 <section><h2>When Giving Becomes Ownership</h2><p>The darkest version of Charity appears when a gift becomes a claim. Sacrifice can become martyrdom demanded by others. Help can become control. A person who is constantly told to give may eventually discover there is nothing left of them that was not promised away.</p></section></article>
 <aside class="deity-aside"><section class="deity-facts">
-<div class="charity-divider centered" aria-hidden="true"><span class="charity-glyph"></span></div>
+<div aria-hidden="true" class="charity-divider centered"><span class="charity-glyph"></span></div>
 <h2>At a Glance</h2>
 <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Generosity, sacrifice, giving, aid</span></div>
 <div class="fact"><span class="fact-label">Associated Faith</span><span class="fact-value"><a href="/faith-charity.html">The Faith of Charity</a></span></div>
@@ -129,6 +136,4 @@ radial-gradient(circle at 0 0,rgba(255,255,255,.05),transparent 40%);}
 <a href="/virtues.html">The Seven Virtues</a>
 <a href="/gods.html">Gods &amp; Religion</a>
 <a href="/world.html">The World</a>
-</section></aside></main>
-<footer>Sinners World Archive · Built as a player-facing lore guide</footer><script src="/script.js"></script>
-</body></html>
+</section></aside></main><footer>Sinners World Archive · Built as a player-facing lore guide</footer><script src="/script.js"></script></body></html>

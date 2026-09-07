@@ -1,6 +1,7 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kindness · The Seven Virtues · Sinners</title><link rel="stylesheet" href="/styles.css">
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Kindness · The Seven Virtues · Sinners</title><link href="/styles.css" rel="stylesheet"/>
 <style>
 
 :root{--virtue-accent:#c52b31;--virtue-soft:#ff9ca4;--virtue-ice:#8be0ff;--virtue-amber:#dd9a50;--virtue-violet:#a68aff;}
@@ -102,19 +103,47 @@ body.deity-body.deity-kindness > *:not(.kindness-page-decor){position:relative;z
 @keyframes kindGlow{0%,100%{filter:drop-shadow(0 0 0 rgba(197,43,49,0));}50%{filter:drop-shadow(0 0 16px rgba(197,43,49,.68)) drop-shadow(0 0 34px rgba(197,43,49,.34));}}
 @media (max-width:760px){.deity-kindness .k3,.deity-kindness .k6{display:none;}}
 
+
+
+
+/* V7 Kindness refinement */
+.deity-kindness .kindness-page-decor{z-index:0 !important;pointer-events:none;overflow:hidden;}
+.deity-kindness > *:not(.kindness-page-decor){position:relative;z-index:2;}
+.deity-kindness .kindness-page-decor::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 14% 18%,rgba(197,43,49,.15),transparent 18rem),radial-gradient(circle at 86% 72%,rgba(197,43,49,.12),transparent 24rem);pointer-events:none;}
+.deity-kindness .kshard{position:fixed;display:block;pointer-events:none;border-radius:6px;opacity:.96;border:1px solid rgba(255,255,255,.28);box-shadow:0 0 0 1px rgba(255,255,255,.05) inset,0 0 26px rgba(0,0,0,.08);}
+.deity-kindness .kshard::before{content:"";position:absolute;left:10%;top:8%;width:18%;height:66%;background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,0));transform:skewX(-16deg);opacity:.9;}
+.deity-kindness .kshard::after{content:"";position:absolute;inset:10% 16% 10% 56%;border-left:1px solid rgba(255,255,255,.16);transform:skewY(18deg);opacity:.55;}
+.deity-kindness .kshard.red{background:linear-gradient(180deg,rgba(255,255,255,.28) 0,rgba(255,173,186,.16) 10%,rgba(232,44,58,.92) 46%,rgba(121,11,19,.96) 100%);} 
+.deity-kindness .kshard.cyan{background:linear-gradient(180deg,rgba(255,255,255,.26) 0,rgba(190,246,255,.18) 12%,rgba(78,196,232,.88) 48%,rgba(17,74,102,.90) 100%);} 
+.deity-kindness .kshard.violet{background:linear-gradient(180deg,rgba(255,255,255,.24) 0,rgba(216,197,255,.20) 14%,rgba(133,96,234,.84) 48%,rgba(54,26,116,.88) 100%);} 
+.deity-kindness .kshard.amber{background:linear-gradient(180deg,rgba(255,255,255,.24) 0,rgba(255,221,180,.18) 14%,rgba(212,141,57,.86) 46%,rgba(95,51,14,.92) 100%);} 
+.deity-kindness .kshard.ice{background:linear-gradient(180deg,rgba(255,255,255,.26) 0,rgba(210,240,255,.18) 14%,rgba(132,168,210,.78) 44%,rgba(50,66,96,.86) 100%);} 
+.deity-kindness .kshard.pulse{animation:kindnessPulseV7 5.4s ease-in-out infinite;}
+.deity-kindness .s1{width:220px;height:420px;left:-98px;top:84px;clip-path:polygon(40% 0,100% 16%,76% 100%,0 84%,8% 20%);transform:rotate(-8deg);} 
+.deity-kindness .s2{width:154px;height:292px;left:-46px;top:56%;clip-path:polygon(54% 0,100% 28%,70% 100%,14% 84%,0 24%);transform:rotate(14deg);} 
+.deity-kindness .s3{width:140px;height:258px;left:18px;bottom:44px;clip-path:polygon(50% 0,92% 18%,100% 52%,62% 100%,4% 86%,0 18%);transform:rotate(-18deg);} 
+.deity-kindness .s4{width:250px;height:430px;right:-108px;top:112px;clip-path:polygon(52% 0,100% 24%,84% 100%,20% 90%,0 18%);transform:rotate(8deg);} 
+.deity-kindness .s5{width:142px;height:252px;right:-36px;top:54%;clip-path:polygon(46% 0,100% 20%,82% 100%,18% 84%,0 26%);transform:rotate(-10deg);} 
+.deity-kindness .s6{width:156px;height:286px;right:24px;bottom:56px;clip-path:polygon(42% 0,100% 34%,72% 100%,0 78%,10% 18%);transform:rotate(16deg);} 
+.deity-kindness .s7{width:112px;height:206px;left:6px;top:208px;clip-path:polygon(48% 0,100% 34%,80% 100%,18% 84%,0 30%);transform:rotate(10deg);} 
+.deity-kindness .s8{width:120px;height:218px;right:124px;bottom:128px;clip-path:polygon(44% 0,100% 26%,78% 100%,8% 82%,0 24%);transform:rotate(-20deg);} 
+@keyframes kindnessPulseV7{0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.05) inset,0 0 24px rgba(167,19,30,.24),0 0 40px rgba(83,10,18,.12);}50%{box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 0 34px rgba(235,50,66,.66),0 0 72px rgba(116,13,22,.28);}}
+.deity-kindness .deity-article section,.deity-kindness .deity-facts,.deity-kindness .deity-related{background:linear-gradient(180deg,rgba(197,43,49,.10),rgba(5,9,16,.08)),radial-gradient(circle at 100% 0,rgba(255,255,255,.04),transparent 35%) !important;}
+.deity-kindness .deity-article section::before{content:"";position:absolute;right:16px;top:12px;width:80px;height:112px;clip-path:polygon(44% 0,100% 22%,82% 100%,18% 88%,0 28%);background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(197,43,49,.18) 34%,rgba(96,7,16,.08));border:1px solid rgba(255,255,255,.08);opacity:.44;transform:rotate(10deg);} 
+.deity-kindness .deity-article section::after{content:"";position:absolute;left:18px;bottom:16px;width:90px;height:1px;background:linear-gradient(90deg,rgba(139,224,255,.18),rgba(197,43,49,.52),transparent);} 
+@media (max-width:760px){.deity-kindness .s2,.deity-kindness .s5,.deity-kindness .s8{display:none;} .deity-kindness .s1,.deity-kindness .s4{opacity:.84;}}
+
 </style></head><body class="deity-body deity-kindness">
-
-
-<div class="kindness-page-decor" aria-hidden="true">
-  <span class="kindness-crystal red glow k1"></span>
-  <span class="kindness-crystal red k2"></span>
-  <span class="kindness-crystal alt1 k3"></span>
-  <span class="kindness-crystal red glow k4"></span>
-  <span class="kindness-crystal alt2 k5"></span>
-  <span class="kindness-crystal alt3 k6"></span>
+<div aria-hidden="true" class="kindness-page-decor">
+<span class="kshard red s1"></span>
+<span class="kshard red pulse s2"></span>
+<span class="kshard cyan s3"></span>
+<span class="kshard red s4"></span>
+<span class="kshard amber s5"></span>
+<span class="kshard violet s6"></span>
+<span class="kshard red pulse s7"></span>
+<span class="kshard ice s8"></span>
 </div>
-
-
 <header class="site-header"><div class="nav-wrap">
 <a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>
 <nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a>
@@ -122,18 +151,18 @@ body.deity-body.deity-kindness > *:not(.kindness-page-decor){position:relative;z
 <a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav>
 </div></header>
 <section class="deity-hero">
-<div class="deity-portrait"><img src="/god-kindness.png" alt="Artistic depiction of Kindness"></div>
+<div class="deity-portrait"><img alt="Artistic depiction of Kindness" src="/god-kindness.png"/></div>
 <div class="deity-hero-copy"><a class="deity-back" href="/virtues.html">← The Seven Virtues</a>
-<div class="kindness-divider" aria-hidden="true"><span class="kindness-glyph"></span></div>
+<div aria-hidden="true" class="kindness-divider"><span class="kindness-glyph"></span></div>
 <div class="deity-kicker">The Seven Virtues</div><h1>Kindness</h1>
 <p class="deity-tagline">Mercy, unity, preservation, and the terrifying promise that no one will ever have to be alone again.</p><p class="deity-summary">Kindness is the red crystal god: an elegant white-and-black figure whose head has become a jagged eruption of crystal surrounding a screaming skull.</p></div>
-<div class="deity-sigil"><img src="/sigil-virtue-kindness.png" alt="Sigil of Kindness"></div></section>
+<div class="deity-sigil"><img alt="Sigil of Kindness" src="/sigil-virtue-kindness.png"/></div></section>
 <main class="deity-layout"><article class="deity-article"><section><h2>The Promise of Kindness</h2><p>Kindness begins with an argument almost everyone can understand: people suffer because they are divided. Nations fight. Families starve while others hoard. Fear becomes hatred because one person can never fully understand another.</p></section>
 <section><h2>The Crystals</h2><p>According to the scriptures of the Messengers of the Chosen, Kindness created the red crystals that appeared thousands of years ago. Their purpose is not merely to heal or empower. They spread his influence and bring separate people closer to one shared existence.</p></section>
 <section><h2>One Collective Body</h2><p>The cult's final promise is unity. If every person can be joined into one collective body, war, famine, loneliness, and misunderstanding can be ended at the source. Individuality is treated not as sacred, but as the wound from which cruelty grows.</p></section>
 <section><h2>Mercy Without Separation</h2><p>That philosophy is why Kindness is so disturbing. His followers can sincerely speak about love, preservation, family, and peace while participating in the destruction of individual autonomy. In their theology, becoming part of the whole is not death. It is rescue.</p></section></article>
 <aside class="deity-aside"><section class="deity-facts">
-<div class="kindness-divider centered" aria-hidden="true"><span class="kindness-glyph"></span></div>
+<div aria-hidden="true" class="kindness-divider centered"><span class="kindness-glyph"></span></div>
 <h2>At a Glance</h2>
 <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Kindness, mercy, unity, preservation</span></div>
 <div class="fact"><span class="fact-label">Associated Faith</span><span class="fact-value"><a href="/messengers-of-the-chosen.html">Messengers of the Chosen</a></span></div>
