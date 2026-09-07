@@ -1,20 +1,26 @@
-Sinners Interactive World Map Pack V3
-======================================
+Sinners Interactive World Map Pack V4
+=====================================
 
-Fixes in this revision:
-- City/location dots are much smaller and less visually intrusive.
-- The Isle marker is placed on the small western island.
-- The Calamity marker is moved to the large coastal hole in Rushinghan.
-- Great Tree Village is hidden at the base of the Great Tree:
-  hovering/focusing the base opens a much larger animated purple portal and reveals its name.
-- Distance readout now shows only approximate miles and kilometers.
-- Distance-help panel stays hidden until the measurement tool is selected.
-- Native image dragging is disabled so panning no longer tries to drag/save the JPG.
-- Toolbar controls now show hover/focus labels:
-  Zoom In, Zoom Out, Recenter Map, Measurement Tool.
-- Existing city pages and placeholder pages are preserved.
+This revision fixes the issues from V3:
 
-Calibration note:
-The measurement conversion still uses the canonical scale supplied by the user
-(top of Hilnem to bottom of Palin ≈ 22 continental-USA widths), but that internal calibration
-is no longer displayed to players.
+- Marker dots are moved above the place names instead of overlapping them.
+- Marker styling returns to the more decorative ringed look.
+- The Great Tree Village hover trigger is on the BASE of the Great Tree.
+- Hovering the base opens a larger, circular magical portal with a label.
+- The measurement tool now draws from the actual mouse position.
+- The measurement panel only appears when the ruler tool is active.
+- Browser image dragging is disabled so panning no longer tries to drag/save the map image.
+
+Files included:
+- world.html
+- etro.html
+- hilnem.html
+- hus.html
+- oro.html
+- palin.html
+- rushinghan.html
+- sol.html
+- the-isle.html
+- the-calamity.html
+- great-tree-village.html
+- continent-of-sin-map-large.jpg
