@@ -30,16 +30,74 @@ body.deity-body.deity-diligence>*{position:relative;z-index:1;}
 @media(max-width:760px){.diligence-tool.t1,.diligence-tool.t3,.diligence-tool.t5,.diligence-chain.c2{display:none;}}
 @media(max-width:650px){.diligence-page-decor{display:none;}}
 
+
+
+/* V5 Diligence amplification */
+.diligence-page-decor{z-index:1;}
+body.deity-body.deity-diligence > *:not(.diligence-page-decor){position:relative;z-index:2;}
+.diligence-tool{font-size:86px;color:rgba(208,190,158,.24);}
+.diligence-page-decor::before{
+  content:"";position:absolute;left:0;right:0;top:32%;height:190px;opacity:.16;
+  background:
+    linear-gradient(90deg,transparent 0 6%,rgba(208,190,158,.22) 6% 6.4%,transparent 6.4% 18%,rgba(208,190,158,.18) 18% 18.4%,transparent 18.4% 100%),
+    repeating-linear-gradient(180deg,transparent 0 32px,rgba(208,190,158,.08) 32px 33px,transparent 33px 66px);
+}
+.diligence-page-decor::after{
+  content:"";position:absolute;left:50%;bottom:-20px;transform:translateX(-50%);
+  width:min(92vw,1120px);height:180px;opacity:.13;
+  background:
+    linear-gradient(90deg,transparent 0 4%,rgba(208,190,158,.20) 4% 4.5%,transparent 4.5% 14%,rgba(208,190,158,.20) 14% 14.5%,transparent 14.5% 100%),
+    repeating-linear-gradient(90deg,transparent 0 76px,rgba(208,190,158,.10) 76px 77px,transparent 77px 154px);
+  border-top:1px solid rgba(208,190,158,.14);
+}
+.diligence-saw,.diligence-rake,.diligence-hammerbig{position:absolute;opacity:.18;filter:drop-shadow(0 0 10px rgba(0,0,0,.18));}
+.diligence-saw{width:210px;height:34px;right:10%;top:30%;transform:rotate(-18deg);
+  background:linear-gradient(180deg,rgba(208,190,158,.42),rgba(92,70,50,.28));
+  clip-path:polygon(0 0,100% 0,95% 100%,88% 38%,82% 100%,74% 38%,68% 100%,60% 38%,54% 100%,46% 38%,40% 100%,32% 38%,26% 100%,18% 38%,12% 100%,0 100%);
+}
+.diligence-rake{left:8%;bottom:22%;width:220px;height:12px;background:rgba(208,190,158,.34);transform:rotate(18deg);}
+.diligence-rake::after{content:"";position:absolute;right:0;top:-34px;width:50px;height:80px;
+  background:repeating-linear-gradient(90deg,rgba(208,190,158,.32) 0 4px,transparent 4px 12px);}
+.diligence-hammerbig{right:-16px;bottom:20%;width:44px;height:210px;background:rgba(208,190,158,.24);transform:rotate(-14deg);}
+.diligence-hammerbig::after{content:"";position:absolute;left:-48px;top:0;width:120px;height:36px;background:rgba(208,190,158,.30);}
+
+
+
+/* V6 Diligence overhaul */
+.deity-diligence .diligence-page-decor{z-index:0 !important;pointer-events:none;}
+.deity-diligence > *:not(.diligence-page-decor){position:relative;z-index:2;}
+.deity-diligence .diligence-tool,.deity-diligence .diligence-saw,.deity-diligence .diligence-rake,.deity-diligence .diligence-hammerbig{display:none !important;}
+.deity-diligence .diligence-grid{position:fixed;inset:0;opacity:.10;background:repeating-linear-gradient(135deg,transparent 0 44px,rgba(231,227,213,.06) 44px 45px,transparent 45px 90px),repeating-linear-gradient(90deg,transparent 0 110px,rgba(231,227,213,.04) 110px 111px,transparent 111px 220px);} 
+.deity-diligence .tool-outline{position:fixed;display:block;opacity:.24;filter:drop-shadow(0 0 10px rgba(0,0,0,.22));}
+.deity-diligence .tool-outline::before,.deity-diligence .tool-outline::after{content:"";position:absolute;background:rgba(236,232,220,.82);} 
+.deity-diligence .hammer-outline{left:26px;top:82px;width:150px;height:260px;transform:rotate(-18deg);} 
+.deity-diligence .hammer-outline::before{left:62px;top:28px;width:22px;height:220px;border-radius:12px;} 
+.deity-diligence .hammer-outline::after{left:18px;top:0;width:110px;height:32px;border-radius:8px;} 
+.deity-diligence .pick-outline{right:34px;top:128px;width:190px;height:270px;transform:rotate(14deg);} 
+.deity-diligence .pick-outline::before{left:82px;top:24px;width:20px;height:222px;border-radius:12px;} 
+.deity-diligence .pick-outline::after{left:18px;top:0;width:156px;height:16px;border-radius:12px;box-shadow:-24px 12px 0 0 rgba(236,232,220,.82), 24px -10px 0 0 rgba(236,232,220,.82);} 
+.deity-diligence .gear-outline{left:36px;bottom:120px;width:156px;height:156px;border-radius:50%;border:8px solid rgba(236,232,220,.72);box-shadow:0 0 0 28px rgba(0,0,0,0);} 
+.deity-diligence .gear-outline::before{inset:-18px;border-radius:50%;background:repeating-conic-gradient(rgba(236,232,220,.74) 0 9deg,transparent 9deg 30deg);-webkit-mask:radial-gradient(circle,transparent 0 58%,#000 58%);mask:radial-gradient(circle,transparent 0 58%,#000 58%);} 
+.deity-diligence .gear-outline::after{left:50%;top:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:rgba(236,232,220,.72);} 
+.deity-diligence .spike-wheel{right:46px;bottom:86px;width:164px;height:164px;border-radius:50%;border:7px solid rgba(236,232,220,.62);} 
+.deity-diligence .spike-wheel::before{inset:-12px;border-radius:50%;background:repeating-conic-gradient(rgba(236,232,220,.68) 0 8deg,transparent 8deg 22deg);-webkit-mask:radial-gradient(circle,transparent 0 60%,#000 60%);mask:radial-gradient(circle,transparent 0 60%,#000 60%);} 
+.deity-diligence .spike-wheel::after{left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;border:6px solid rgba(236,232,220,.62);background:transparent;} 
+.deity-diligence .deity-article section::after{content:"" !important;display:none !important;}
+.deity-diligence .deity-article section::before{content:"";position:absolute;right:14px;bottom:14px;width:86px;height:86px;opacity:.28;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 56%);border:1px solid rgba(236,232,220,.18);}
+.deity-diligence .deity-article section:nth-child(1)::before{clip-path:polygon(20% 0,80% 0,80% 26%,100% 26%,100% 48%,80% 48%,80% 100%,20% 100%,20% 48%,0 48%,0 26%,20% 26%);} 
+.deity-diligence .deity-article section:nth-child(2)::before{clip-path:polygon(48% 0,60% 12%,100% 12%,100% 28%,72% 28%,72% 46%,88% 64%,74% 78%,58% 62%,42% 62%,26% 78%,12% 64%,28% 46%,28% 28%,0 28%,0 12%,40% 12%);} 
+.deity-diligence .deity-article section:nth-child(3)::before{clip-path:polygon(16% 18%,58% 18%,58% 0,100% 0,100% 24%,58% 24%,58% 82%,16% 82%,16% 100%,0 100%,0 76%,16% 76%);} 
+.deity-diligence .deity-article section:nth-child(4)::before{clip-path:polygon(22% 0,78% 0,78% 62%,100% 62%,100% 78%,78% 78%,78% 100%,22% 100%,22% 78%,0 78%,0 62%,22% 62%);} 
+
 </style></head><body class="deity-body deity-diligence">
 
 
 <div class="diligence-page-decor" aria-hidden="true">
   <span class="diligence-grid"></span>
-  <span class="diligence-tool t1">⚒</span>
-  <span class="diligence-tool t2">⛏</span>
-  <span class="diligence-tool t3">⚙</span>
-  <span class="diligence-tool t4">🔨</span>
-  <span class="diligence-tool t5">🪛</span>
+  <span class="tool-outline hammer-outline"></span>
+  <span class="tool-outline pick-outline"></span>
+  <span class="tool-outline gear-outline"></span>
+  <span class="tool-outline spike-wheel"></span>
   <span class="diligence-chain c1"></span>
   <span class="diligence-chain c2"></span>
   <span class="diligence-fang f1"></span>

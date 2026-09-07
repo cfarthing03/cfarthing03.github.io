@@ -38,10 +38,62 @@ body.deity-body.deity-temperance>*{position:relative;z-index:1;}
 @media(max-width:780px){.temperance-eclipse{width:300px;height:300px;top:104px;} .temperance-scales{width:420px;height:260px;top:170px;} .temperance-hourglass,.temperance-orbit.o2{display:none;} .temperance-chain.left{left:102px;} .temperance-chain.right{right:102px;} .temperance-pan.left{left:44px;} .temperance-pan.right{right:44px;} }
 @media(max-width:650px){.temperance-page-decor{display:none;}}
 
+
+
+/* V5 Temperance amplification */
+.temperance-page-decor{z-index:1;}
+body.deity-body.deity-temperance > *:not(.temperance-page-decor){position:relative;z-index:2;}
+.temperance-eclipse{width:520px;height:520px;top:26px;opacity:.66;}
+.temperance-scales{width:min(92vw,980px);height:520px;top:92px;opacity:.46;}
+.temperance-scales::before{height:350px;width:6px;}
+.temperance-scales::after{width:520px;top:120px;height:3px;}
+.temperance-chain{top:122px;height:150px;width:3px;}
+.temperance-chain.left{left:230px}.temperance-chain.right{right:230px}
+.temperance-pan{top:272px;width:210px;height:90px;}
+.temperance-pan.left{left:120px}.temperance-pan.right{right:120px}
+.temperance-page-decor::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:50%;
+  background:linear-gradient(90deg,rgba(236,220,182,.05),transparent 70%);
+  border-right:1px solid rgba(236,220,182,.08);
+}
+.temperance-page-decor::after{
+  content:"";position:absolute;right:0;top:0;bottom:0;width:50%;
+  background:linear-gradient(270deg,rgba(88,74,49,.10),transparent 70%);
+}
+.temperance-mark{position:absolute;border:1px solid rgba(236,220,182,.16);border-radius:50%;opacity:.36;}
+.temperance-mark.m1{width:180px;height:180px;left:4%;top:24%;}
+.temperance-mark.m2{width:110px;height:110px;right:7%;top:44%;}
+.temperance-mark.m3{width:230px;height:230px;left:12%;bottom:2%;}
+.temperance-mark::before{content:"";position:absolute;left:50%;top:-26px;width:1px;height:calc(100% + 52px);background:rgba(236,220,182,.10);}
+.temperance-mark::after{content:"";position:absolute;top:50%;left:-26px;height:1px;width:calc(100% + 52px);background:rgba(236,220,182,.10);}
+.temperance-tick{position:absolute;width:1px;height:100%;left:50%;top:0;
+  background:repeating-linear-gradient(180deg,rgba(236,220,182,.18) 0 1px,transparent 1px 18px);opacity:.35;}
+
+
+
+/* V6 Temperance overhaul */
+.deity-temperance .temperance-page-decor{z-index:0 !important;pointer-events:none;}
+.deity-temperance > *:not(.temperance-page-decor){position:relative;z-index:2;}
+.deity-temperance .deity-hero::before{display:block !important;left:50%;top:-160px;transform:translateX(-50%);width:1040px;height:520px;opacity:.74;background:radial-gradient(circle at 50% 58%,rgba(5,7,11,.86) 0 10%,rgba(236,220,182,.28) 10.4% 17%,transparent 17.4%),linear-gradient(180deg,rgba(255,255,255,.08),transparent 74%);} 
+.deity-temperance .temperance-page-decor::before{content:"";position:fixed;left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%);background:linear-gradient(180deg,transparent,rgba(236,220,182,.18),transparent);} 
+.deity-temperance .temperance-eclipse{width:620px;height:620px;top:20px;opacity:.74;} 
+.deity-temperance .temperance-scales{position:fixed !important;left:50%;top:102px;transform:translateX(-50%);width:min(96vw,1100px);height:560px;opacity:.54;} 
+.deity-temperance .temperance-scales::before{height:380px;width:8px;} .deity-temperance .temperance-scales::after{width:620px;top:132px;height:3px;} 
+.deity-temperance .temperance-chain{top:134px;height:168px;width:3px;} .deity-temperance .temperance-chain.left{left:242px;} .deity-temperance .temperance-chain.right{right:242px;} 
+.deity-temperance .temperance-pan{top:302px;width:220px;height:94px;background:linear-gradient(180deg,rgba(236,220,182,.08),rgba(88,74,49,.15));} .deity-temperance .temperance-pan.left{left:118px;} .deity-temperance .temperance-pan.right{right:118px;} 
+.deity-temperance .temperance-hourglass{position:fixed;left:50%;top:162px;transform:translateX(-50%);width:150px;height:220px;opacity:.34;} 
+.deity-temperance .temperance-orbit.o1{width:720px;height:270px;top:236px;opacity:.42;} .deity-temperance .temperance-orbit.o2{width:620px;height:220px;top:262px;opacity:.34;} 
+.deity-temperance .temperance-mark{opacity:.48;} .deity-temperance .temperance-tick{opacity:.46;} 
+.deity-temperance .deity-article section,.deity-temperance .deity-facts,.deity-temperance .deity-related{background:linear-gradient(180deg,rgba(185,155,106,.10),rgba(5,9,16,.06)),radial-gradient(circle at 50% 0,rgba(236,220,182,.08),transparent 42%) !important;border-color:rgba(185,155,106,.34) !important;} 
+
 </style></head><body class="deity-body deity-temperance">
 
 
 <div class="temperance-page-decor" aria-hidden="true">
+  <span class="temperance-mark m1"></span>
+  <span class="temperance-mark m2"></span>
+  <span class="temperance-mark m3"></span>
+  <span class="temperance-tick"></span>
   <span class="temperance-eclipse"></span>
   <div class="temperance-scales">
     <span class="temperance-chain left"></span>
@@ -49,6 +101,10 @@ body.deity-body.deity-temperance>*{position:relative;z-index:1;}
     <span class="temperance-pan left"></span>
     <span class="temperance-pan right"></span>
   </div>
+  <span class="temperance-orbit o1"></span>
+  <span class="temperance-orbit o2"></span>
+  <div class="temperance-hourglass"><span class="waist"></span><span class="sand"></span></div>
+</div>
   <span class="temperance-orbit o1"></span>
   <span class="temperance-orbit o2"></span>
   <div class="temperance-hourglass"><span class="waist"></span><span class="sand"></span></div>

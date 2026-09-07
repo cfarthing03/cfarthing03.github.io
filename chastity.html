@@ -29,19 +29,74 @@ body.deity-body.deity-chastity>*{position:relative;z-index:1;}
 @media(max-width:760px){.chastity-thread.t2,.chastity-thread.t3,.chastity-thread.t4,.chastity-web.w4{display:none;} .chastity-megaweb{top:84px;width:min(100vw,860px);height:min(100vw,860px);} .deity-chastity .deity-hero::before{width:500px;height:280px;top:-40px;}}
 @media(max-width:650px){.chastity-page-decor{display:none;}}
 
+
+
+/* V5 Chastity amplification */
+.chastity-page-decor{z-index:1;}
+body.deity-body.deity-chastity > *:not(.chastity-page-decor){position:relative;z-index:2;}
+.chastity-megaweb{width:min(120vw,1500px);height:min(120vw,1500px);top:-180px;opacity:.36;}
+.chastity-megaweb::after{
+  content:"";position:absolute;inset:8%;border-radius:50%;
+  background:
+    repeating-conic-gradient(from 15deg,rgba(218,212,255,.20) 0 1deg,transparent 1deg 20deg),
+    radial-gradient(circle,transparent 0 18%,rgba(134,219,255,.14) 18.3% 18.8%,transparent 19% 36%,rgba(218,212,255,.14) 36.3% 36.8%,transparent 37% 56%,rgba(218,212,255,.10) 56.3% 56.8%,transparent 57% 100%);
+}
+.chastity-web.w1{width:320px;height:320px;opacity:.34;}
+.chastity-web.w2{width:330px;height:330px;opacity:.30;}
+.chastity-web.w3{width:300px;height:300px;opacity:.28;}
+.chastity-web.w4{width:280px;height:280px;opacity:.24;}
+.chastity-link-node{position:absolute;width:18px;height:18px;border-radius:50%;
+  background:radial-gradient(circle,#fff 0 12%,rgba(134,219,255,.82) 16%,rgba(166,148,255,.24) 58%,transparent 62%);
+  box-shadow:0 0 18px rgba(134,219,255,.42),0 0 34px rgba(166,148,255,.22);
+}
+.chastity-link-node.n1{left:22%;top:24%}.chastity-link-node.n2{right:24%;top:34%}.chastity-link-node.n3{left:34%;bottom:20%}.chastity-link-node.n4{right:16%;bottom:28%}
+.chastity-psych-line{position:absolute;height:1px;background:linear-gradient(90deg,rgba(134,219,255,.08),rgba(134,219,255,.58),rgba(166,148,255,.32),rgba(134,219,255,.08));transform-origin:left center;opacity:.62;}
+.chastity-psych-line.p1{left:22%;top:24%;width:50%;transform:rotate(10deg)}
+.chastity-psych-line.p2{left:34%;bottom:20%;width:44%;transform:rotate(-26deg)}
+.chastity-psych-line.p3{left:22%;top:24%;width:58%;transform:rotate(40deg)}
+
+
+
+/* V6 Chastity overhaul */
+.deity-chastity .chastity-page-decor{z-index:0 !important;pointer-events:none;mix-blend-mode:screen;}
+.deity-chastity > *:not(.chastity-page-decor){position:relative;z-index:2;}
+.deity-chastity .deity-hero::before{display:none !important;content:none !important;}
+.deity-chastity .chastity-page-decor::before{content:"";position:fixed;inset:-16vmax;opacity:.30;background:
+repeating-conic-gradient(from 0deg at 50% 28%, rgba(220,215,255,.22) 0 .9deg, transparent .9deg 18deg),
+radial-gradient(circle at 50% 28%, transparent 0 8%, rgba(220,215,255,.22) 8.2% 8.6%, transparent 8.8% 18%, rgba(220,215,255,.18) 18.2% 18.6%, transparent 18.8% 30%, rgba(220,215,255,.15) 30.2% 30.6%, transparent 30.8% 44%, rgba(220,215,255,.12) 44.2% 44.6%, transparent 44.8% 58%, rgba(220,215,255,.08) 58.2% 58.6%, transparent 58.8% 100%);
+mask:radial-gradient(circle at 50% 28%, transparent 0 5%, #000 5.2%);}
+.deity-chastity .chastity-web-core{position:fixed;left:50%;top:68px;transform:translateX(-50%);width:min(120vw,1500px);height:min(120vw,1500px);border-radius:50%;opacity:.32;background:radial-gradient(circle at center,transparent 0 10%,rgba(218,212,255,.20) 10.2% 10.5%,transparent 10.7% 20%,rgba(218,212,255,.15) 20.3% 20.6%,transparent 20.8% 34%,rgba(218,212,255,.14) 34.2% 34.5%,transparent 34.7% 50%,rgba(218,212,255,.10) 50.2% 50.5%,transparent 50.7% 64%,rgba(218,212,255,.08) 64.2% 64.5%,transparent 64.7% 100%);} 
+.deity-chastity .chastity-radials{position:fixed;inset:0;opacity:.34;background:repeating-conic-gradient(from 0deg at 50% 28%,rgba(220,215,255,.12) 0 1deg,transparent 1deg 18deg);} 
+.deity-chastity .strand{position:fixed;height:1px;background:linear-gradient(90deg,rgba(166,148,255,.04),rgba(220,215,255,.72),rgba(134,219,255,.22),rgba(166,148,255,.04));transform-origin:left center;opacity:.72;}
+.deity-chastity .strand.s1{left:6%;top:16%;width:52%;transform:rotate(12deg);} 
+.deity-chastity .strand.s2{right:6%;top:22%;width:42%;transform:rotate(170deg);} 
+.deity-chastity .strand.s3{left:14%;top:42%;width:38%;transform:rotate(-22deg);} 
+.deity-chastity .strand.s4{right:12%;top:54%;width:34%;transform:rotate(26deg);} 
+.deity-chastity .strand.s5{left:20%;bottom:18%;width:44%;transform:rotate(4deg);} 
+.deity-chastity .strand.s6{right:8%;bottom:14%;width:40%;transform:rotate(-20deg);} 
+.deity-chastity .silk-node{position:fixed;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle,#fff 0 20%,rgba(134,219,255,.78) 28%,rgba(166,148,255,.20) 58%,transparent 64%);box-shadow:0 0 20px rgba(134,219,255,.28),0 0 38px rgba(166,148,255,.18);} 
+.deity-chastity .silk-node.n1{left:20%;top:18%;}.deity-chastity .silk-node.n2{right:20%;top:24%;}.deity-chastity .silk-node.n3{left:32%;top:48%;}.deity-chastity .silk-node.n4{right:17%;top:56%;}.deity-chastity .silk-node.n5{left:40%;bottom:16%;}
+.deity-chastity .deity-article section,.deity-chastity .deity-facts,.deity-chastity .deity-related{background:linear-gradient(180deg,rgba(166,148,255,.08),rgba(5,9,16,.05)),radial-gradient(circle at 100% 0,rgba(134,219,255,.06),transparent 38%) !important;}
+.deity-chastity .deity-article section::before,.deity-chastity .deity-facts::before{content:"";position:absolute;right:14px;top:14px;width:92px;height:92px;border-radius:50%;opacity:.40;background:repeating-conic-gradient(from 0deg,rgba(220,215,255,.16) 0 1.4deg,transparent 1.4deg 30deg),radial-gradient(circle,transparent 0 28%,rgba(220,215,255,.14) 28.4% 29%,transparent 29.2% 48%,rgba(220,215,255,.10) 48.4% 49%,transparent 49.2% 100%);mask:radial-gradient(circle,transparent 0 18%,#000 18%);} 
+@media (max-width:760px){.deity-chastity .chastity-web-core{top:110px;width:min(148vw,1100px);height:min(148vw,1100px);} .deity-chastity .strand.s4,.deity-chastity .strand.s6{display:none;}}
+
 </style></head><body class="deity-body deity-chastity">
 
 
 <div class="chastity-page-decor" aria-hidden="true">
-  <span class="chastity-megaweb"></span>
-  <span class="chastity-web w1"></span>
-  <span class="chastity-web w2"></span>
-  <span class="chastity-web w3"></span>
-  <span class="chastity-web w4"></span>
-  <span class="chastity-thread t1"></span>
-  <span class="chastity-thread t2"></span>
-  <span class="chastity-thread t3"></span>
-  <span class="chastity-thread t4"></span>
+  <span class="chastity-web-core"></span>
+  <span class="chastity-radials"></span>
+  <span class="strand s1"></span>
+  <span class="strand s2"></span>
+  <span class="strand s3"></span>
+  <span class="strand s4"></span>
+  <span class="strand s5"></span>
+  <span class="strand s6"></span>
+  <span class="silk-node n1"></span>
+  <span class="silk-node n2"></span>
+  <span class="silk-node n3"></span>
+  <span class="silk-node n4"></span>
+  <span class="silk-node n5"></span>
 </div>
 
 

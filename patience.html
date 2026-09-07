@@ -40,14 +40,76 @@ box-shadow:0 0 0 1px rgba(216,199,166,.22) inset,0 0 44px rgba(216,199,166,.12);
 @media(max-width:760px){.patience-eye-shell{top:84px;width:min(96vw,980px);height:min(48vw,420px);} .patience-eye{top:102px;width:min(90vw,860px);height:min(42vw,360px);} .patience-stare,.patience-iris-line{display:none;}.deity-patience .deity-hero::before{width:420px;height:220px;top:-44px;}}
 @media(max-width:650px){.patience-page-decor{display:none;}}
 
+
+
+/* V5 Patience amplification */
+.patience-page-decor{z-index:1;}
+body.deity-body.deity-patience > *:not(.patience-page-decor){position:relative;z-index:2;}
+.patience-eye-shell{
+  width:min(140vw,1850px);height:min(72vw,950px);top:-80px;opacity:.42;
+}
+.patience-eye{
+  width:min(126vw,1650px);height:min(62vw,820px);top:-22px;opacity:.72;
+}
+.patience-eye::before{
+  background:
+    radial-gradient(ellipse at 50% 50%,rgba(4,5,8,1) 0 8%,rgba(205,189,152,.98) 8.5% 17%,rgba(102,83,52,.74) 17.3% 18.6%,rgba(255,255,255,.14) 18.8% 19.8%,transparent 20%),
+    radial-gradient(ellipse at 50% 50%,transparent 0 58%,rgba(216,199,166,.36) 58.5% 60%,transparent 60.3% 100%),
+    linear-gradient(180deg,rgba(255,255,255,.28),transparent 22%),
+    linear-gradient(180deg,rgba(17,14,10,.14),rgba(17,14,10,.44));
+  box-shadow:0 0 0 1px rgba(216,199,166,.28) inset,0 0 60px rgba(216,199,166,.16);
+}
+.patience-stare{width:220px;height:220px;top:162px;opacity:.34;}
+.patience-iris-line{top:282px;width:min(120vw,1600px);opacity:.92;}
+.deity-patience .deity-hero::before{
+  width:920px;height:430px;top:-168px;opacity:.72;
+}
+
+
+
+/* V6 Patience overhaul */
+body.deity-body.deity-patience{--mx:0px;--my:0px;}
+.deity-patience .deity-hero::before,
+.deity-patience .deity-article section::before,
+.deity-patience .deity-article section::after,
+.deity-patience .patience-iris-line,
+.deity-patience .patience-stare{display:none !important;content:none !important;}
+.deity-patience .patience-page-decor{z-index:0 !important;pointer-events:none;}
+.deity-patience > *:not(.patience-page-decor){position:relative;z-index:2;}
+.deity-patience .watch-socket{position:fixed;left:50%;top:64px;transform:translateX(-50%);width:min(132vw,1700px);height:min(62vw,780px);opacity:.58;filter:drop-shadow(0 0 28px rgba(222,204,170,.11));}
+.deity-patience .watch-socket::before{content:"";position:absolute;inset:0;border-radius:50%/58%;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,0) 20%),linear-gradient(180deg,rgba(20,20,23,.10),rgba(5,7,12,.24));border:1px solid rgba(224,210,182,.14);box-shadow:0 0 0 1px rgba(255,255,255,.04) inset;}
+.deity-patience .watch-socket::after{content:"";position:absolute;inset:16% 5%;border-radius:50%/58%;border-top:1px solid rgba(224,210,182,.12);border-bottom:1px solid rgba(224,210,182,.08);}
+.deity-patience .watch-eye{position:fixed;left:50%;top:106px;transform:translateX(-50%);width:min(118vw,1500px);height:min(54vw,660px);opacity:.94;}
+.deity-patience .watch-eye::before{content:"";position:absolute;inset:0;border-radius:50%/58%;background:linear-gradient(180deg,rgba(255,255,255,.20),transparent 18%),linear-gradient(180deg,rgba(10,12,18,.10),rgba(10,12,18,.32));box-shadow:0 0 0 1px rgba(224,210,182,.10) inset;}
+.deity-patience .watch-eye::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:50%;height:50%;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(5,6,8,1) 0 13%,rgba(116,94,52,.92) 13.6% 28%,rgba(225,211,183,.95) 28.4% 35%,rgba(81,65,38,.82) 35.3% 40%,rgba(255,255,255,.14) 41% 42.4%,transparent 42.8%), radial-gradient(circle at calc(50% + var(--mx)) calc(50% + var(--my)), rgba(5,6,8,0) 0 100%); box-shadow:0 0 42px rgba(222,204,170,.10),0 0 0 1px rgba(222,204,170,.12) inset;}
+.deity-patience .watch-pupil-bg{position:fixed;left:50%;top:106px;transform:translateX(-50%);width:min(118vw,1500px);height:min(54vw,660px);}
+.deity-patience .watch-pupil-bg::before{content:"";position:absolute;left:50%;top:50%;transform:translate(calc(-50% + var(--mx)*0.9), calc(-50% + var(--my)*0.9));width:138px;height:138px;border-radius:50%;background:radial-gradient(circle at 36% 34%,rgba(255,255,255,.16),rgba(5,6,8,0) 26%),radial-gradient(circle,rgba(3,4,5,1) 0 55%,rgba(2,3,4,.96) 56% 100%);box-shadow:0 0 0 2px rgba(30,23,13,.54);}
+.deity-patience .watch-glint{position:fixed;left:50%;top:106px;transform:translateX(-50%);width:min(118vw,1500px);height:min(54vw,660px);opacity:.55;}
+.deity-patience .watch-glint::before{content:"";position:absolute;left:36%;top:32%;width:28%;height:15%;border-radius:50%;background:linear-gradient(180deg,rgba(255,255,255,.34),transparent);filter:blur(3px);} 
+.deity-patience .deity-hero{background:linear-gradient(180deg,rgba(3,7,17,.88),rgba(3,7,17,.76)) !important;}
+.deity-patience .deity-hero-copy h1{position:relative;display:inline-block;padding-right:92px;}
+.deity-patience .tracking-eye{position:absolute;display:block;width:54px;height:30px;border-radius:50%/58%;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.04) 22%),linear-gradient(180deg,rgba(18,18,22,.14),rgba(6,7,10,.32));border:1px solid rgba(222,204,170,.22);box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 0 18px rgba(0,0,0,.12);}
+.deity-patience .tracking-eye .eye-iris{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;border-radius:50%;background:radial-gradient(circle,rgba(160,130,76,.92) 0 34%,rgba(217,205,176,.94) 34.6% 52%,rgba(95,74,41,.86) 52.6% 72%,rgba(255,255,255,.12) 73% 75%,transparent 76%);}
+.deity-patience .tracking-eye .eye-pupil{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:50%;background:rgba(4,4,5,1);} 
+.deity-patience .tracking-eye .eye-glint{position:absolute;left:55%;top:34%;width:11px;height:5px;border-radius:50%;background:linear-gradient(180deg,rgba(255,255,255,.35),transparent);filter:blur(.5px);}
+.deity-patience .heading-eye{right:6px;top:52%;transform:translateY(-50%);}
+.deity-patience .deity-facts{position:relative;overflow:hidden;}
+.deity-patience .facts-eye{position:absolute;right:26px;top:20px;}
+.deity-patience .deity-article section{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(216,199,166,.06),rgba(5,9,16,.06)),radial-gradient(circle at 100% 0,rgba(255,255,255,.05),transparent 40%) !important;}
+.deity-patience .deity-article section .card-eye{right:20px;top:18px;}
+.deity-patience .deity-article section:nth-child(2) .card-eye{top:auto;bottom:20px;}
+.deity-patience .deity-article section:nth-child(3) .card-eye{right:auto;left:20px;top:18px;}
+.deity-patience .deity-article section:nth-child(4) .card-eye{right:18px;top:50%;transform:translateY(-50%);}
+@media (max-width:760px){.deity-patience .watch-socket{top:110px;width:min(150vw,1200px);height:min(72vw,500px);} .deity-patience .watch-eye,.deity-patience .watch-pupil-bg,.deity-patience .watch-glint{top:136px;width:min(132vw,1050px);height:min(62vw,420px);} .deity-patience .heading-eye{display:none;}}
+
 </style></head><body class="deity-body deity-patience">
 
 
 <div class="patience-page-decor" aria-hidden="true">
-  <span class="patience-eye-shell"></span>
-  <span class="patience-eye"></span>
-  <span class="patience-iris-line"></span>
-  <span class="patience-stare"></span>
+  <span class="watch-socket"></span>
+  <span class="watch-eye"></span>
+  <span class="watch-pupil-bg"></span>
+  <span class="watch-glint"></span>
 </div>
 
 
@@ -61,16 +123,16 @@ box-shadow:0 0 0 1px rgba(216,199,166,.22) inset,0 0 44px rgba(216,199,166,.12);
 <div class="deity-portrait"><img src="/god-patience.png" alt="Artistic depiction of Patience"></div>
 <div class="deity-hero-copy"><a class="deity-back" href="/virtues.html">← The Seven Virtues</a>
 <div class="patience-divider" aria-hidden="true"><span class="patience-glyph"></span></div>
-<div class="deity-kicker">The Seven Virtues</div><h1>Patience</h1>
+<div class="deity-kicker">The Seven Virtues</div><h1>Patience<span class="tracking-eye heading-eye"><span class="eye-iris"></span><span class="eye-pupil"></span><span class="eye-glint"></span></span></h1>
 <p class="deity-tagline">Endurance, waiting, forgiveness, and the strength to survive what cannot be hurried.</p><p class="deity-summary">Patience is the most overtly celestial of the Virtues: a blinding, many-winged god whose presence feels less like a person entering a room and more like heaven opening above it.</p></div>
 <div class="deity-sigil"><img src="/sigil-virtue-patience.png" alt="Sigil of Patience"></div></section>
-<main class="deity-layout"><article class="deity-article"><section><h2>The Virtue of Waiting</h2><p>Patience does not teach passivity. His ideal is the ability to endure pain, uncertainty, anger, and fear without letting the moment decide who you become. To wait is to refuse to be ruled by panic.</p></section>
-<section><h2>From Eustace to Patience</h2><p>Before his godhood, Patience was known by other names, including Eustace and Abram. He was slain in the final battle, but his soul did not simply vanish. In death he went on to rescue his comrades and raise them into divinity, creating the opposing pantheon now known as the Seven Virtues.</p></section>
-<section><h2>A God Almost Too Angelic</h2><p>Modern depictions push his divinity to excess: layered wings, impossible halos, radiant eyes, veils and masks, and enough light to make looking directly at him uncomfortable. The design is deliberate. Patience should feel holy in a way that is beautiful, severe, and slightly frightening.</p></section>
-<section><h2>When Patience Becomes Control</h2><p>The danger in Patience is easy to miss. Endurance can become obedience. Forgiveness can become pressure to accept what should not be accepted. Waiting can become an excuse for never acting at all. His faith lives in that uncomfortable space between perseverance and surrender.</p></section></article>
+<main class="deity-layout"><article class="deity-article"><section><span class="tracking-eye card-eye"><span class="eye-iris"></span><span class="eye-pupil"></span><span class="eye-glint"></span></span><h2>The Virtue of Waiting</h2><p>Patience does not teach passivity. His ideal is the ability to endure pain, uncertainty, anger, and fear without letting the moment decide who you become. To wait is to refuse to be ruled by panic.</p></section>
+<section><span class="tracking-eye card-eye"><span class="eye-iris"></span><span class="eye-pupil"></span><span class="eye-glint"></span></span><h2>From Eustace to Patience</h2><p>Before his godhood, Patience was known by other names, including Eustace and Abram. He was slain in the final battle, but his soul did not simply vanish. In death he went on to rescue his comrades and raise them into divinity, creating the opposing pantheon now known as the Seven Virtues.</p></section>
+<section><span class="tracking-eye card-eye"><span class="eye-iris"></span><span class="eye-pupil"></span><span class="eye-glint"></span></span><h2>A God Almost Too Angelic</h2><p>Modern depictions push his divinity to excess: layered wings, impossible halos, radiant eyes, veils and masks, and enough light to make looking directly at him uncomfortable. The design is deliberate. Patience should feel holy in a way that is beautiful, severe, and slightly frightening.</p></section>
+<section><span class="tracking-eye card-eye"><span class="eye-iris"></span><span class="eye-pupil"></span><span class="eye-glint"></span></span><h2>When Patience Becomes Control</h2><p>The danger in Patience is easy to miss. Endurance can become obedience. Forgiveness can become pressure to accept what should not be accepted. Waiting can become an excuse for never acting at all. His faith lives in that uncomfortable space between perseverance and surrender.</p></section></article>
 <aside class="deity-aside"><section class="deity-facts">
 <div class="patience-divider centered" aria-hidden="true"><span class="patience-glyph"></span></div>
-<h2>At a Glance</h2>
+<span class="tracking-eye facts-eye"><span class="eye-iris"></span><span class="eye-pupil"></span><span class="eye-glint"></span></span><h2>At a Glance</h2>
 <div class="fact"><span class="fact-label">Domain</span><span class="fact-value">Endurance, waiting, perseverance, forgiveness</span></div>
 <div class="fact"><span class="fact-label">Associated Faith</span><span class="fact-value"><a href="/faith-patience.html">The Faith of Patience</a></span></div>
 <div class="fact"><span class="fact-label">Divine Form</span><span class="fact-value">A many-winged, masked seraph</span></div>
@@ -86,4 +148,32 @@ box-shadow:0 0 0 1px rgba(216,199,166,.22) inset,0 0 44px rgba(216,199,166,.12);
 <a href="/world.html">The World</a>
 </section></aside></main>
 <footer>Sinners World Archive · Built as a player-facing lore guide</footer><script src="/script.js"></script>
+
+<script>
+(function(){
+  const root = document.body;
+  const eyes = Array.from(document.querySelectorAll('.deity-patience .tracking-eye'));
+  function moveEye(eye, x, y){
+    const pupil = eye.querySelector('.eye-pupil');
+    const iris = eye.querySelector('.eye-iris');
+    const rect = eye.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = Math.max(-1, Math.min(1, (x - cx) / (rect.width * 1.8)));
+    const dy = Math.max(-1, Math.min(1, (y - cy) / (rect.height * 1.8)));
+    pupil.style.transform = `translate(calc(-50% + ${dx * 7}px), calc(-50% + ${dy * 5}px))`;
+    iris.style.transform = `translate(calc(-50% + ${dx * 3}px), calc(-50% + ${dy * 2}px))`;
+  }
+  function onMove(ev){
+    const x = ev.clientX, y = ev.clientY;
+    const dx = ((x / window.innerWidth) - 0.5) * 42;
+    const dy = ((y / window.innerHeight) - 0.5) * 22;
+    root.style.setProperty('--mx', dx + 'px');
+    root.style.setProperty('--my', dy + 'px');
+    eyes.forEach(eye => moveEye(eye, x, y));
+  }
+  window.addEventListener('mousemove', onMove, {passive:true});
+})();
+</script>
+
 </body></html>

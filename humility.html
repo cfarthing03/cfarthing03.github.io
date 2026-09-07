@@ -30,17 +30,64 @@ body.deity-body.deity-humility>*{position:relative;z-index:1;}
 @media(max-width:760px){.humility-weapon.w1,.humility-weapon.w3,.humility-weapon.w5,.humility-burst.b4,.humility-burst.b5,.humility-rift.r3{display:none;}}
 @media(max-width:650px){.humility-page-decor{display:none;}}
 
+
+
+/* V5 Humility amplification */
+.humility-page-decor{z-index:1;}
+body.deity-body.deity-humility > *:not(.humility-page-decor){position:relative;z-index:2;}
+.humility-collage{opacity:.48;}
+.humility-weapon{font-size:92px;color:rgba(207,214,204,.28);}
+.humility-weapon.w1{top:42px;left:16px}.humility-weapon.w2{top:118px;right:14px}.humility-weapon.w3{top:38%;left:10px}.humility-weapon.w4{bottom:62px;right:26px}.humility-weapon.w5{bottom:10px;left:72px}.humility-weapon.w6{top:52%;right:10%}
+.humility-burst{width:130px;height:130px;opacity:.48;}
+.humility-rift{height:3px;opacity:.68;}
+.humility-rune{position:absolute;width:120px;height:120px;border:1px solid currentColor;opacity:.26;transform:rotate(var(--rot));}
+.humility-rune::before{content:"";position:absolute;inset:18px;border:1px solid currentColor;transform:rotate(45deg);}
+.humility-rune::after{content:"";position:absolute;left:50%;top:-18px;width:1px;height:calc(100% + 36px);background:currentColor;}
+.humility-rune.rn1{left:8%;top:26%;color:rgba(106,178,255,.56);--rot:14deg}
+.humility-rune.rn2{right:9%;top:34%;color:rgba(176,110,255,.60);--rot:-18deg}
+.humility-rune.rn3{left:32%;bottom:6%;color:rgba(255,140,109,.48);--rot:28deg}
+.humility-gunline{position:absolute;left:0;right:0;top:64%;height:1px;background:linear-gradient(90deg,transparent,rgba(207,214,204,.18),rgba(106,178,255,.28),rgba(176,110,255,.28),rgba(255,140,109,.28),transparent);opacity:.6;}
+.humility-page-decor::before{content:"";position:absolute;left:50%;top:16%;transform:translateX(-50%) rotate(7deg);width:420px;height:180px;border:1px solid rgba(207,214,204,.10);
+  background:linear-gradient(120deg,rgba(106,178,255,.06),transparent 30%,rgba(176,110,255,.08) 44%,transparent 58%,rgba(255,140,109,.06) 72%,transparent 84%,rgba(109,224,188,.05));}
+
+
+
+/* V6 Humility overhaul */
+.deity-humility .humility-page-decor{z-index:0 !important;pointer-events:none;}
+.deity-humility > *:not(.humility-page-decor){position:relative;z-index:2;}
+.deity-humility .humility-collage{opacity:.95;}
+.deity-humility .humility-weapon{display:none !important;}
+.deity-humility .humility-arsenal{position:fixed;inset:0;opacity:.56;}
+.deity-humility .weapon-shape{position:fixed;display:block;filter:drop-shadow(0 0 12px rgba(0,0,0,.20));}
+.deity-humility .weapon-shape::before,.deity-humility .weapon-shape::after{content:"";position:absolute;background:rgba(229,232,228,.78);} 
+.deity-humility .sword-shape{left:26px;top:98px;width:120px;height:360px;transform:rotate(-20deg);} 
+.deity-humility .sword-shape::before{left:56px;top:12px;width:10px;height:258px;} .deity-humility .sword-shape::after{left:34px;top:258px;width:54px;height:8px;box-shadow:0 22px 0 0 rgba(229,232,228,.78);} 
+.deity-humility .bow-shape{right:18px;top:150px;width:190px;height:270px;transform:rotate(12deg);} 
+.deity-humility .bow-shape::before{left:86px;top:16px;width:14px;height:238px;border-radius:120px;background:transparent;border:6px solid rgba(229,232,228,.72);border-left-color:transparent;border-right-color:transparent;} 
+.deity-humility .bow-shape::after{left:94px;top:0;width:1px;height:270px;background:rgba(229,232,228,.70);} 
+.deity-humility .pike-shape{left:72px;bottom:62px;width:120px;height:320px;transform:rotate(18deg);} 
+.deity-humility .pike-shape::before{left:58px;top:24px;width:8px;height:260px;} .deity-humility .pike-shape::after{left:44px;top:0;width:36px;height:52px;clip-path:polygon(50% 0,100% 100%,0 100%);} 
+.deity-humility .gun-shape{right:44px;bottom:90px;width:220px;height:120px;transform:rotate(-12deg);} 
+.deity-humility .gun-shape::before{left:18px;top:40px;width:130px;height:18px;} .deity-humility .gun-shape::after{left:126px;top:28px;width:70px;height:14px;box-shadow:-64px 22px 0 0 rgba(229,232,228,.78), -24px 44px 0 0 rgba(229,232,228,.78);} 
+.deity-humility .humility-burst{width:170px;height:170px;opacity:.60;filter:blur(0);} 
+.deity-humility .humility-rift{height:4px;opacity:.82;} 
+.deity-humility .humility-rune{opacity:.44;} 
+.deity-humility .deity-hero::before{content:"";position:absolute;left:6%;top:16px;width:220px;height:220px;background:linear-gradient(38deg,rgba(106,178,255,.16),transparent 34%),linear-gradient(-14deg,rgba(176,110,255,.16),transparent 44%),linear-gradient(70deg,rgba(255,140,109,.16),transparent 52%),linear-gradient(120deg,rgba(109,224,188,.14),transparent 60%);border:1px solid rgba(207,214,204,.18);transform:rotate(-8deg);} 
+.deity-humility .deity-article section,.deity-humility .deity-facts,.deity-humility .deity-related{background:linear-gradient(180deg,rgba(148,153,143,.08),rgba(5,9,16,.06)),linear-gradient(130deg,rgba(106,178,255,.05),transparent 24%,rgba(176,110,255,.06) 42%,transparent 54%,rgba(255,140,109,.06) 72%,transparent 82%,rgba(109,224,188,.04) 96%,transparent 100%) !important;}
+
 </style></head><body class="deity-body deity-humility">
 
 
 <div class="humility-page-decor" aria-hidden="true">
+  <span class="humility-rune rn1"></span>
+  <span class="humility-rune rn2"></span>
+  <span class="humility-rune rn3"></span>
+  <span class="humility-gunline"></span>
+  <span class="weapon-shape sword-shape"></span>
+  <span class="weapon-shape bow-shape"></span>
+  <span class="weapon-shape pike-shape"></span>
+  <span class="weapon-shape gun-shape"></span>
   <div class="humility-collage">
-    <span class="humility-weapon w1">⚔</span>
-    <span class="humility-weapon w2">🪓</span>
-    <span class="humility-weapon w3">🏹</span>
-    <span class="humility-weapon w4">🛡</span>
-    <span class="humility-weapon w5">🔱</span>
-    <span class="humility-weapon w6">🗡</span>
     <span class="humility-burst b1"></span>
     <span class="humility-burst b2"></span>
     <span class="humility-burst b3"></span>
@@ -50,6 +97,7 @@ body.deity-body.deity-humility>*{position:relative;z-index:1;}
     <span class="humility-rift r2"></span>
     <span class="humility-rift r3"></span>
   </div>
+</div>
 </div>
 
 

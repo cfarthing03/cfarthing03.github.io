@@ -63,12 +63,32 @@ radial-gradient(circle at 0 0,rgba(255,255,255,.05),transparent 40%);}
 @media(max-width:700px){.charity-paw,.charity-gift.g2,.charity-gift.g3{display:none;}}
 @media(max-width:650px){.charity-page-decor{display:none;}}
 
+
+
+/* V6 Charity overhaul */
+.deity-charity .charity-page-decor{z-index:0 !important;pointer-events:none;}
+.deity-charity > *:not(.charity-page-decor){position:relative;z-index:2;}
+.deity-charity .charity-page-decor::before{content:"";position:fixed;right:6%;top:90px;width:420px;height:520px;opacity:.18;filter:blur(8px);background:radial-gradient(circle at 50% 20%,rgba(255,255,255,.18),transparent 20%), radial-gradient(circle at 40% 44%,rgba(255,214,180,.10),transparent 18%), linear-gradient(180deg,rgba(201,127,90,.18),rgba(35,22,20,.04));clip-path:polygon(46% 0,60% 18%,72% 32%,86% 58%,74% 100%,54% 80%,40% 62%,28% 78%,16% 54%,24% 32%,34% 18%);} 
+.deity-charity .gift-fall{position:fixed;width:86px;height:86px;transform:rotate(var(--rot));opacity:.82;filter:drop-shadow(0 0 10px rgba(0,0,0,.18));}
+.deity-charity .gift-fall::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,190,134,.18),rgba(255,166,116,.08) 38%,rgba(8,12,18,.26) 100%);border:1px solid rgba(244,175,132,.36);box-shadow:0 0 0 1px rgba(255,255,255,.04) inset;}
+.deity-charity .gift-fall::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:8px;transform:translateX(-50%);background:rgba(244,175,132,.42);box-shadow:-39px 39px 0 -34px rgba(244,175,132,.42), 39px 39px 0 -34px rgba(244,175,132,.42);} 
+.deity-charity .gift-fall .lid{position:absolute;left:-3px;right:-3px;top:-10px;height:14px;border:1px solid rgba(244,175,132,.32);background:rgba(255,190,134,.08);transform:rotate(var(--lid));transform-origin:center bottom;} 
+.deity-charity .gift-fall .string{position:absolute;left:50%;top:-90px;width:1px;height:90px;background:linear-gradient(180deg,rgba(244,175,132,.02),rgba(244,175,132,.34));transform:translateX(-50%);} 
+.deity-charity .gift-fall.g1{left:4%;top:110px;--rot:-18deg;} .deity-charity .gift-fall.g2{left:14%;top:340px;--rot:14deg;} .deity-charity .gift-fall.g3{right:9%;top:150px;--rot:18deg;} .deity-charity .gift-fall.g4{right:16%;top:430px;--rot:-12deg;} .deity-charity .gift-fall.g5{left:10%;bottom:120px;--rot:8deg;} .deity-charity .gift-fall.g6{right:6%;bottom:110px;--rot:-22deg;} 
+.deity-charity .gift-fall.g1 .lid{--lid:-14deg;} .deity-charity .gift-fall.g2 .lid{--lid:10deg;} .deity-charity .gift-fall.g3 .lid{--lid:18deg;} .deity-charity .gift-fall.g4 .lid{--lid:-10deg;} .deity-charity .gift-fall.g5 .lid{--lid:14deg;} .deity-charity .gift-fall.g6 .lid{--lid:-18deg;} 
+.deity-charity .charity-article section,.deity-charity .deity-facts,.deity-charity .deity-related{background:linear-gradient(180deg,rgba(201,127,90,.08),rgba(5,9,16,.05)),radial-gradient(circle at 100% 0,rgba(255,190,134,.05),transparent 38%) !important;}
+.deity-charity .deity-article section::before{content:"";position:absolute;right:18px;bottom:18px;width:64px;height:64px;opacity:.22;background:linear-gradient(135deg,rgba(255,190,134,.20),rgba(255,166,116,.08));border:1px solid rgba(244,175,132,.22);transform:rotate(8deg);} 
+
 </style></head><body class="deity-body deity-charity">
 
 <div class="charity-page-decor" aria-hidden="true">
-  <div class="charity-paw">
-    <span class="toe t1"></span><span class="toe t2"></span><span class="toe t3"></span><span class="toe t4"></span><span class="pad"></span>
-  </div>
+  <span class="gift-fall g1"><span class="string"></span><span class="lid"></span></span>
+  <span class="gift-fall g2"><span class="string"></span><span class="lid"></span></span>
+  <span class="gift-fall g3"><span class="string"></span><span class="lid"></span></span>
+  <span class="gift-fall g4"><span class="string"></span><span class="lid"></span></span>
+  <span class="gift-fall g5"><span class="string"></span><span class="lid"></span></span>
+  <span class="gift-fall g6"><span class="string"></span><span class="lid"></span></span>
+</div>
   <span class="charity-gift twisted g1"><span class="bow"></span></span>
   <span class="charity-gift twisted g2"><span class="bow"></span></span>
   <span class="charity-gift twisted g3"><span class="bow"></span></span>

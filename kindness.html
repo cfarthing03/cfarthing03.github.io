@@ -46,18 +46,72 @@ border:1px solid rgba(255,255,255,.34);box-shadow:0 0 0 1px rgba(255,255,255,.08
 @media(max-width:820px){.kindness-crystal.c2,.kindness-crystal.c4,.kindness-crystal.c6,.kindness-crystal.c8{display:none;}}
 @media(max-width:650px){.kindness-page-decor{display:none;}.deity-kindness .deity-hero::before{display:none;}}
 
+
+
+/* V5 Kindness amplification */
+.kindness-page-decor{z-index:1;mix-blend-mode:normal;}
+body.deity-body.deity-kindness > *:not(.kindness-page-decor){position:relative;z-index:2;}
+.kindness-crystal{opacity:1;filter:saturate(1.08);}
+.kindness-crystal.c1{width:250px;height:350px;left:-76px;top:76px;transform:rotate(-10deg);}
+.kindness-crystal.c2{width:150px;height:220px;left:-34px;top:420px;transform:rotate(14deg);}
+.kindness-crystal.c3{width:190px;height:270px;left:-62px;top:64%;transform:rotate(-5deg);}
+.kindness-crystal.c4{width:125px;height:184px;left:32px;bottom:24px;transform:rotate(12deg);}
+.kindness-crystal.c5{width:260px;height:360px;right:-84px;top:104px;transform:rotate(10deg);}
+.kindness-crystal.c6{width:156px;height:226px;right:-28px;top:44%;transform:rotate(-14deg);}
+.kindness-crystal.c7{width:190px;height:280px;right:-48px;bottom:-18px;transform:rotate(7deg);}
+.kindness-crystal.c8{width:120px;height:176px;right:60px;bottom:130px;transform:rotate(-18deg);}
+.kindness-page-decor::before,.kindness-page-decor::after{
+  content:"";position:absolute;width:170px;height:250px;
+  clip-path:polygon(48% 0,92% 30%,78% 100%,20% 92%,0 34%);
+  background:linear-gradient(180deg,rgba(255,255,255,.64),rgba(255,255,255,.08) 18%,rgba(197,43,49,.88) 18%,rgba(70,8,13,.30) 86%);
+  border:1px solid rgba(255,255,255,.24);
+  box-shadow:0 0 34px rgba(197,43,49,.40);
+}
+.kindness-page-decor::before{left:-92px;top:30%;transform:rotate(24deg);}
+.kindness-page-decor::after{right:-92px;top:68%;transform:rotate(-18deg);}
+
+
+
+/* V6 Kindness overhaul */
+.deity-kindness .kindness-page-decor{z-index:0 !important;pointer-events:none;}
+.deity-kindness > *:not(.kindness-page-decor){position:relative;z-index:2;}
+.deity-kindness .deity-hero::before,
+.deity-kindness .deity-hero::after,
+.deity-kindness .deity-article section::before,
+.deity-kindness .deity-article section::after{display:none !important;content:none !important;}
+.deity-kindness .kindness-page-decor::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 15% 16%,rgba(197,43,49,.14),transparent 20rem),radial-gradient(circle at 82% 72%,rgba(197,43,49,.10),transparent 26rem);}
+.deity-kindness .kindness-crystal{position:fixed;display:block;pointer-events:none;border:1px solid rgba(255,255,255,.24);background:linear-gradient(180deg,rgba(255,255,255,.58),rgba(255,255,255,.10) 16%,currentColor 17%,rgba(54,10,18,.28) 84%);box-shadow:0 0 0 1px rgba(255,255,255,.05) inset,0 0 20px color-mix(in srgb, currentColor 60%, transparent),0 0 48px color-mix(in srgb, currentColor 25%, transparent);opacity:.98;}
+.deity-kindness .kindness-crystal::before{content:"";position:absolute;left:12%;top:10%;width:24%;height:64%;background:linear-gradient(180deg,rgba(255,255,255,.82),transparent);transform:skewX(-18deg);opacity:.75;} 
+.deity-kindness .kindness-crystal.red{color:rgba(200,38,47,.92);} .deity-kindness .kindness-crystal.alt1{color:rgba(120,214,255,.42);} .deity-kindness .kindness-crystal.alt2{color:rgba(189,146,255,.32);} .deity-kindness .kindness-crystal.alt3{color:rgba(242,173,96,.28);} 
+.deity-kindness .kindness-crystal.glow{animation:kindGlow 4.5s ease-in-out infinite;}
+.deity-kindness .k1{width:260px;height:420px;left:-118px;top:86px;clip-path:polygon(46% 0,100% 20%,78% 100%,10% 88%,0 26%);transform:rotate(-7deg);} 
+.deity-kindness .k2{width:168px;height:300px;left:-70px;top:54%;clip-path:polygon(56% 0,100% 30%,72% 100%,18% 80%,0 24%);transform:rotate(12deg);} 
+.deity-kindness .k3{width:146px;height:236px;left:32px;bottom:62px;clip-path:polygon(50% 0,92% 18%,100% 52%,64% 100%,10% 84%,0 22%);transform:rotate(-18deg);} 
+.deity-kindness .k4{width:286px;height:450px;right:-126px;top:124px;clip-path:polygon(54% 0,98% 24%,86% 100%,26% 90%,0 18%);transform:rotate(8deg);} 
+.deity-kindness .k5{width:172px;height:310px;right:-62px;top:50%;clip-path:polygon(48% 0,100% 22%,82% 100%,18% 88%,0 30%);transform:rotate(-10deg);} 
+.deity-kindness .k6{width:150px;height:246px;right:36px;bottom:88px;clip-path:polygon(44% 0,100% 34%,74% 100%,0 80%,8% 18%);transform:rotate(18deg);} 
+.deity-kindness .deity-article section{overflow:visible;}
+.deity-kindness .deity-article section:nth-child(1)::before,
+.deity-kindness .deity-article section:nth-child(2)::before,
+.deity-kindness .deity-article section:nth-child(3)::before,
+.deity-kindness .deity-article section:nth-child(4)::before{display:block !important;content:"";position:absolute;width:58px;height:86px;background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,.08) 16%,rgba(197,43,49,.52) 17%,rgba(54,10,18,.12) 84%);border:1px solid rgba(255,255,255,.18);box-shadow:0 0 18px rgba(197,43,49,.24);}
+.deity-kindness .deity-article section:nth-child(1)::before{left:-18px;top:22px;clip-path:polygon(44% 0,96% 22%,80% 100%,16% 90%,0 26%);transform:rotate(-10deg);} 
+.deity-kindness .deity-article section:nth-child(2)::before{right:-14px;top:34px;clip-path:polygon(48% 0,100% 30%,78% 100%,12% 86%,0 18%);transform:rotate(12deg);} 
+.deity-kindness .deity-article section:nth-child(3)::before{left:-16px;bottom:20px;clip-path:polygon(52% 0,100% 20%,70% 100%,0 76%,8% 18%);transform:rotate(8deg);} 
+.deity-kindness .deity-article section:nth-child(4)::before{right:-14px;bottom:18px;clip-path:polygon(42% 0,100% 26%,82% 100%,22% 86%,0 20%);transform:rotate(-14deg);} 
+@keyframes kindGlow{0%,100%{filter:drop-shadow(0 0 0 rgba(197,43,49,0));}50%{filter:drop-shadow(0 0 16px rgba(197,43,49,.68)) drop-shadow(0 0 34px rgba(197,43,49,.34));}}
+@media (max-width:760px){.deity-kindness .k3,.deity-kindness .k6{display:none;}}
+
 </style></head><body class="deity-body deity-kindness">
 
 
 <div class="kindness-page-decor" aria-hidden="true">
-  <span class="kindness-crystal red pulse c1"></span>
-  <span class="kindness-crystal red c2"></span>
-  <span class="kindness-crystal ice c3"></span>
-  <span class="kindness-crystal red pulse c4"></span>
-  <span class="kindness-crystal red pulse c5"></span>
-  <span class="kindness-crystal amber c6"></span>
-  <span class="kindness-crystal red c7"></span>
-  <span class="kindness-crystal violet c8"></span>
+  <span class="kindness-crystal red glow k1"></span>
+  <span class="kindness-crystal red k2"></span>
+  <span class="kindness-crystal alt1 k3"></span>
+  <span class="kindness-crystal red glow k4"></span>
+  <span class="kindness-crystal alt2 k5"></span>
+  <span class="kindness-crystal alt3 k6"></span>
 </div>
 
 
