@@ -423,7 +423,7 @@ body.world-map-body{
   <section class="measure-card" id="measureCard">
     <div class="kicker">Ruler Active</div>
     <h2>Distance</h2>
-    <p>Click two points, or click and drag, to measure the distance across the continent.</p>
+    <p>Click two points to measure. Left-drag still pans the map while the ruler is active; hold Shift and drag to draw the ruler directly.</p>
     <div class="measure-output"><strong id="measureMiles">—</strong><span id="measureKm">Select two points</span></div>
   </section>
 
@@ -449,19 +449,37 @@ body.world-map-body{
 
   let scale=1, panX=0, panY=0;
   let minScale=.35, maxScale=3.5;
-  let panning=false, panStart=null, panOrigin=null;
-  let measureMode=false, measuring=false, measureStart=null, clickStart=null, moved=false;
+
+  let pointerDown=false;
+  let pointerStart=null;
+  let panOrigin=null;
+  let didPan=false;
+
+  let measureMode=false;
+
+  // Measurement is now stored in MAP coordinates rather than screen coordinates.
+  // This keeps the ruler anchored to the same locations while panning and zooming.
+  let measureA=null;
+  let measureB=null;
+  let liveMeasureB=null;
+
+  // Shift + left-drag draws a ruler while the measurement tool is active.
+  let shiftMeasuring=false;
 
   // Internal scale only: top of Hilnem -> bottom of Palin = 22 continental-US widths.
   const CALIBRATION_MAP_PX=1210;
   const CALIBRATION_MILES=22*2800;
 
-  function apply(){stage.style.transform=`translate(${panX}px,${panY}px) scale(${scale})`;}
+  function apply(){
+    stage.style.transform=`translate(${panX}px,${panY}px) scale(${scale})`;
+    redrawMeasurement();
+  }
 
   function initialView(){
     const vw=viewport.clientWidth, vh=viewport.clientHeight;
     const iw=img.naturalWidth, ih=img.naturalHeight;
-    // Fill most of the WIDTH so the map is large; vertical overflow is intentional and pannable.
+
+    // Fill most of the width; vertical overflow is intentional and pannable.
     scale=Math.max(vw/iw*.90, vh/ih*.92);
     scale=Math.max(minScale,Math.min(1.25,scale));
     panX=(vw-iw*scale)/2;
@@ -472,8 +490,10 @@ body.world-map-body{
   function clampPan(){
     const vw=viewport.clientWidth, vh=viewport.clientHeight;
     const iw=img.naturalWidth*scale, ih=img.naturalHeight*scale;
+
     if(iw<=vw) panX=(vw-iw)/2;
     else panX=Math.min(30,Math.max(vw-iw-30,panX));
+
     if(ih<=vh) panY=(vh-ih)/2;
     else panY=Math.min(30,Math.max(vh-ih-30,panY));
   }
@@ -481,113 +501,266 @@ body.world-map-body{
   function zoomAt(cx,cy,factor){
     const rect=viewport.getBoundingClientRect();
     const sx=cx-rect.left, sy=cy-rect.top;
-    const mapX=(sx-panX)/scale, mapY=(sy-panY)/scale;
-    const old=scale;
+
+    const mapX=(sx-panX)/scale;
+    const mapY=(sy-panY)/scale;
+
     scale=Math.max(minScale,Math.min(maxScale,scale*factor));
+
     panX=sx-mapX*scale;
     panY=sy-mapY*scale;
-    clampPan();apply();
+
+    clampPan();
+    apply();
   }
 
-  function screenPoint(e){
+  function eventScreenPoint(e){
     const r=viewport.getBoundingClientRect();
     return {x:e.clientX-r.left,y:e.clientY-r.top};
   }
-  function mapPoint(e){
-    const p=screenPoint(e);
-    return {x:(p.x-panX)/scale,y:(p.y-panY)/scale};
+
+  function screenToMap(screen){
+    return {
+      x:(screen.x-panX)/scale,
+      y:(screen.y-panY)/scale
+    };
   }
 
-  function drawMeasurement(aScreen,bScreen,aMap,bMap){
-    const dx=bScreen.x-aScreen.x, dy=bScreen.y-aScreen.y;
-    const len=Math.hypot(dx,dy), ang=Math.atan2(dy,dx)*180/Math.PI;
-    measureLine.style.opacity='1';
-    measureLine.style.left=`${aScreen.x}px`;
-    measureLine.style.top=`${aScreen.y}px`;
-    measureLine.style.width=`${len}px`;
-    measureLine.style.transform=`rotate(${ang}deg)`;
-    for(const [el,p] of [[measureStartPoint,aScreen],[measureEndPoint,bScreen]]){
-      el.style.opacity='1';el.style.left=`${p.x}px`;el.style.top=`${p.y}px`;
-    }
-    const mx=(aScreen.x+bScreen.x)/2, my=(aScreen.y+bScreen.y)/2;
-    measureTag.style.opacity='1';measureTag.style.left=`${mx}px`;measureTag.style.top=`${my}px`;
+  function mapToScreen(map){
+    return {
+      x:map.x*scale+panX,
+      y:map.y*scale+panY
+    };
+  }
+
+  function distanceText(aMap,bMap){
     const mapDist=Math.hypot(bMap.x-aMap.x,bMap.y-aMap.y);
     const miles=(mapDist/CALIBRATION_MAP_PX)*CALIBRATION_MILES;
     const km=miles*1.60934;
-    const miText=`${Math.round(miles).toLocaleString()} miles`;
-    const kmText=`${Math.round(km).toLocaleString()} km`;
-    measureTag.querySelector('strong').textContent=miText;
-    measureTag.querySelector('span').textContent=kmText;
-    measureMiles.textContent=miText;measureKm.textContent=kmText;
-  }
-  function clearMeasure(){
-    measureLine.style.opacity='0';measureTag.style.opacity='0';
-    measureStartPoint.style.opacity='0';measureEndPoint.style.opacity='0';
-    clickStart=null;measureMiles.textContent='—';measureKm.textContent='Select two points';
-  }
-  function setMeasure(on){
-    measureMode=on;measureToggle.classList.toggle('active',on);
-    viewport.classList.toggle('measuring',on);measureCard.classList.toggle('visible',on);
-    if(!on)clearMeasure();
+    return {
+      miles,
+      km,
+      milesText:`${Math.round(miles).toLocaleString()} miles`,
+      kmText:`${Math.round(km).toLocaleString()} km`
+    };
   }
 
-  zoomIn.addEventListener('click',()=>{const r=viewport.getBoundingClientRect();zoomAt(r.left+r.width/2,r.top+r.height/2,1.16)});
-  zoomOut.addEventListener('click',()=>{const r=viewport.getBoundingClientRect();zoomAt(r.left+r.width/2,r.top+r.height/2,1/1.16)});
+  function hideMeasurementVisuals(){
+    measureLine.style.opacity='0';
+    measureTag.style.opacity='0';
+    measureStartPoint.style.opacity='0';
+    measureEndPoint.style.opacity='0';
+  }
+
+  function redrawMeasurement(){
+    if(!measureA){
+      hideMeasurementVisuals();
+      return;
+    }
+
+    const a=mapToScreen(measureA);
+
+    measureStartPoint.style.opacity='1';
+    measureStartPoint.style.left=`${a.x}px`;
+    measureStartPoint.style.top=`${a.y}px`;
+
+    const second=liveMeasureB || measureB;
+    if(!second){
+      measureLine.style.opacity='0';
+      measureEndPoint.style.opacity='0';
+      measureTag.style.opacity='0';
+      return;
+    }
+
+    const b=mapToScreen(second);
+    const dx=b.x-a.x;
+    const dy=b.y-a.y;
+    const len=Math.hypot(dx,dy);
+    const ang=Math.atan2(dy,dx)*180/Math.PI;
+
+    measureLine.style.opacity='1';
+    measureLine.style.left=`${a.x}px`;
+    measureLine.style.top=`${a.y}px`;
+    measureLine.style.width=`${len}px`;
+    measureLine.style.transform=`rotate(${ang}deg)`;
+
+    measureEndPoint.style.opacity='1';
+    measureEndPoint.style.left=`${b.x}px`;
+    measureEndPoint.style.top=`${b.y}px`;
+
+    const mx=(a.x+b.x)/2;
+    const my=(a.y+b.y)/2;
+    measureTag.style.opacity='1';
+    measureTag.style.left=`${mx}px`;
+    measureTag.style.top=`${my}px`;
+
+    const d=distanceText(measureA,second);
+    measureTag.querySelector('strong').textContent=d.milesText;
+    measureTag.querySelector('span').textContent=d.kmText;
+    measureMiles.textContent=d.milesText;
+    measureKm.textContent=d.kmText;
+  }
+
+  function clearMeasure(){
+    measureA=null;
+    measureB=null;
+    liveMeasureB=null;
+    shiftMeasuring=false;
+    hideMeasurementVisuals();
+    measureMiles.textContent='—';
+    measureKm.textContent='Select two points';
+  }
+
+  function setMeasure(on){
+    measureMode=on;
+    measureToggle.classList.toggle('active',on);
+    viewport.classList.toggle('measuring',on);
+    measureCard.classList.toggle('visible',on);
+    if(!on) clearMeasure();
+  }
+
+  function placeMeasurePoint(mapPoint){
+    if(!measureA || measureB){
+      measureA=mapPoint;
+      measureB=null;
+      liveMeasureB=null;
+      measureMiles.textContent='Start set';
+      measureKm.textContent='Choose the second point';
+    }else{
+      measureB=mapPoint;
+      liveMeasureB=null;
+    }
+    redrawMeasurement();
+  }
+
+  zoomIn.addEventListener('click',()=>{
+    const r=viewport.getBoundingClientRect();
+    zoomAt(r.left+r.width/2,r.top+r.height/2,1.16);
+  });
+
+  zoomOut.addEventListener('click',()=>{
+    const r=viewport.getBoundingClientRect();
+    zoomAt(r.left+r.width/2,r.top+r.height/2,1/1.16);
+  });
+
   resetMap.addEventListener('click',initialView);
   measureToggle.addEventListener('click',()=>setMeasure(!measureMode));
 
-  viewport.addEventListener('wheel',e=>{e.preventDefault();zoomAt(e.clientX,e.clientY,e.deltaY<0?1.12:1/1.12)},{passive:false});
+  viewport.addEventListener('wheel',e=>{
+    e.preventDefault();
+    zoomAt(e.clientX,e.clientY,e.deltaY<0?1.12:1/1.12);
+  },{passive:false});
+
   viewport.addEventListener('dragstart',e=>e.preventDefault());
   img.addEventListener('dragstart',e=>e.preventDefault());
 
   viewport.addEventListener('pointerdown',e=>{
+    if(e.button!==0) return;
+
     const interactive=e.target.closest('.marker,.great-tree-secret');
-    if(measureMode){
-      measuring=true;moved=false;
-      measureStart={screen:screenPoint(e),map:mapPoint(e)};
-      viewport.setPointerCapture(e.pointerId);
-      clearMeasure();
-      return;
+    if(interactive && !measureMode) return;
+
+    pointerDown=true;
+    didPan=false;
+    pointerStart={
+      clientX:e.clientX,
+      clientY:e.clientY,
+      screen:eventScreenPoint(e)
+    };
+    panOrigin={x:panX,y:panY};
+
+    // Measurement-mode behavior:
+    // - normal left drag = pan
+    // - normal left click = place a ruler point
+    // - Shift + left drag = live ruler drag
+    shiftMeasuring=measureMode && e.shiftKey;
+
+    if(shiftMeasuring){
+      const startMap=screenToMap(pointerStart.screen);
+      measureA=startMap;
+      measureB=null;
+      liveMeasureB=startMap;
+      measureMiles.textContent='Measuring…';
+      measureKm.textContent='Release to set distance';
+      redrawMeasurement();
+    }else{
+      viewport.classList.add('grabbing');
     }
-    if(interactive)return;
-    panning=true;viewport.classList.add('grabbing');
-    panStart={x:e.clientX,y:e.clientY};panOrigin={x:panX,y:panY};
+
     viewport.setPointerCapture(e.pointerId);
   });
 
   viewport.addEventListener('pointermove',e=>{
-    if(panning){
-      panX=panOrigin.x+(e.clientX-panStart.x);panY=panOrigin.y+(e.clientY-panStart.y);
-      clampPan();apply();return;
+    if(!pointerDown) return;
+
+    const dx=e.clientX-pointerStart.clientX;
+    const dy=e.clientY-pointerStart.clientY;
+    const moved=Math.hypot(dx,dy);
+
+    if(shiftMeasuring){
+      liveMeasureB=screenToMap(eventScreenPoint(e));
+      redrawMeasurement();
+      return;
     }
-    if(measureMode&&measuring&&measureStart){
-      const bS=screenPoint(e),bM=mapPoint(e);
-      moved=moved||Math.hypot(bS.x-measureStart.screen.x,bS.y-measureStart.screen.y)>4;
-      drawMeasurement(measureStart.screen,bS,measureStart.map,bM);
+
+    // Normal left-drag pans even while measurement mode is active.
+    if(moved>3){
+      didPan=true;
+      panX=panOrigin.x+dx;
+      panY=panOrigin.y+dy;
+      clampPan();
+      apply();
     }
   });
 
   viewport.addEventListener('pointerup',e=>{
-    if(panning){panning=false;viewport.classList.remove('grabbing');try{viewport.releasePointerCapture(e.pointerId)}catch(_){};return;}
-    if(measureMode&&measuring){
-      const end={screen:screenPoint(e),map:mapPoint(e)};
-      if(moved){drawMeasurement(measureStart.screen,end.screen,measureStart.map,end.map);clickStart=null;}
-      else if(!clickStart){
-        clickStart=end;clearMeasure();clickStart=end;
-        measureStartPoint.style.opacity='1';measureStartPoint.style.left=`${end.screen.x}px`;measureStartPoint.style.top=`${end.screen.y}px`;
-        measureMiles.textContent='Start set';measureKm.textContent='Choose the second point';
-      }else{drawMeasurement(clickStart.screen,end.screen,clickStart.map,end.map);clickStart=null;}
-      measuring=false;try{viewport.releasePointerCapture(e.pointerId)}catch(_){};
+    if(!pointerDown) return;
+
+    const releaseScreen=eventScreenPoint(e);
+
+    if(shiftMeasuring){
+      liveMeasureB=null;
+      measureB=screenToMap(releaseScreen);
+      redrawMeasurement();
+    }else if(measureMode && !didPan){
+      // A click without dragging places a measurement point.
+      placeMeasurePoint(screenToMap(releaseScreen));
     }
+
+    pointerDown=false;
+    shiftMeasuring=false;
+    viewport.classList.remove('grabbing');
+
+    try{ viewport.releasePointerCapture(e.pointerId); }catch(_){}
   });
 
-  document.querySelectorAll('.marker,.great-tree-secret').forEach(el=>el.addEventListener('click',e=>{
-    if(measureMode)return;
-    const href=el.dataset.href;if(href)location.href=href;
-  }));
+  viewport.addEventListener('pointercancel',e=>{
+    pointerDown=false;
+    shiftMeasuring=false;
+    liveMeasureB=null;
+    viewport.classList.remove('grabbing');
+    redrawMeasurement();
+  });
 
-  window.addEventListener('resize',initialView);
-  if(img.complete)initialView();else img.addEventListener('load',initialView);
+  // Normal map/location navigation still works when the ruler is off.
+  document.querySelectorAll('.marker,.great-tree-secret').forEach(el=>{
+    el.addEventListener('click',()=>{
+      if(measureMode) return;
+      const href=el.dataset.href;
+      if(href) location.href=href;
+    });
+  });
+
+  // Prevent the browser context menu from interfering with map interaction.
+  viewport.addEventListener('contextmenu',e=>e.preventDefault());
+
+  window.addEventListener('resize',()=>{
+    clampPan();
+    apply();
+  });
+
+  if(img.complete) initialView();
+  else img.addEventListener('load',initialView);
 })();
 </script>
 </body>
