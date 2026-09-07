@@ -1,104 +1,34 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Faith of Patience · Sinners</title>
-<link rel="stylesheet" href="/styles.css">
-<style>
-:root{
-  --faith-accent:#e8cc86;
-  --faith-bright:#fff4c8;
-  --faith-dark:#17130b;
-}
-body.faith-body{
-  min-height:100vh;position:relative;overflow-x:hidden;background:
-  radial-gradient(circle at 50% 14%,color-mix(in srgb,var(--faith-accent) 12%,transparent),transparent 28rem),
-  linear-gradient(180deg,#05080d,#07090e 50%,#040609);
-}
-body.faith-body::before{
- content:"";position:fixed;inset:0;pointer-events:none;opacity:.3;
- background:
-   repeating-linear-gradient(90deg,transparent 0 74px,color-mix(in srgb,var(--faith-accent) 10%,transparent) 75px 76px,transparent 77px 150px),
-   repeating-radial-gradient(circle at 50% 38%,transparent 0 120px,color-mix(in srgb,var(--faith-accent) 15%,transparent) 121px 122px,transparent 123px 205px);
- -webkit-mask-image:linear-gradient(to bottom,transparent,black 12%,black 92%);
- mask-image:linear-gradient(to bottom,transparent,black 12%,black 92%);
-}
-.faith-hero{width:min(1050px,calc(100% - 32px));margin:34px auto 20px;text-align:center}
-.faith-sigil img{width:132px;max-width:30vw;filter:drop-shadow(0 0 22px color-mix(in srgb,var(--faith-accent) 30%,transparent))}
-.faith-kicker{margin-top:10px;text-transform:uppercase;letter-spacing:.25em;color:var(--faith-accent);font-size:.75rem}
-.faith-hero h1{font-size:clamp(2.7rem,6vw,5.8rem);line-height:.95;margin:.12em 0;color:#f4eee2}
-.faith-subtitle{max-width:800px;margin:10px auto;color:#c7beb1;font-size:1.08rem}
-.faith-shell{width:min(1120px,calc(100% - 32px));margin:28px auto 52px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:start}
-.faith-main section,.faith-aside section{
- position:relative;margin-bottom:18px;padding:24px 27px;border:1px solid color-mix(in srgb,var(--faith-accent) 28%,transparent);
- background:linear-gradient(180deg,color-mix(in srgb,var(--faith-dark) 72%,rgba(8,11,16,.95)),rgba(5,8,12,.96));
-}
-.faith-main section::before{content:"";position:absolute;left:0;top:0;width:74px;height:1px;background:var(--faith-accent)}
-.faith-main h2,.faith-aside h2{margin-top:0;color:#f0e7d6}
-.faith-main p{color:#c8bfb3;line-height:1.76}
-.faith-quote{font-size:1.28rem;color:var(--faith-bright)!important;font-style:italic;text-align:center;padding:10px 4vw}
-.faith-aside .fact{padding:11px 0;border-top:1px solid color-mix(in srgb,var(--faith-accent) 16%,transparent)}
-.faith-aside .fact:first-of-type{border-top:0}
-.fact-label{display:block;color:var(--faith-accent);text-transform:uppercase;letter-spacing:.13em;font-size:.68rem;margin-bottom:3px}
-.fact-value{color:#e9dfcf}
-.faith-links a{display:block;padding:8px 0;border-top:1px solid rgba(255,255,255,.06)}
-.faith-links a:first-of-type{border-top:0}
-footer{text-align:center;padding:24px;color:#7f786f}
-@media(max-width:820px){.faith-shell{grid-template-columns:1fr}}
-</style>
-</head>
-<body class="faith-body faith-patience">
-<header class="site-header">
-  <div class="nav-wrap">
-    <a class="brand" href="/">SINNERS</a>
-    <button class="nav-toggle" type="button">Menu</button>
-    <nav class="main-nav">
-      <a href="/world.html">The World</a>
-      <a href="/gods.html">Gods &amp; Religion</a>
-      <a href="/history.html">History</a>
-      <a href="/people.html">People &amp; Legends</a>
-      <a href="/factions.html">Factions</a>
-      <a href="/creatures.html">Creatures</a>
-      <a href="/tales.html">Tales</a>
-    </nav>
-  </div>
-</header>
-<section class="faith-hero">
-  <a class="deity-back" href="/patience.html">← Patience</a>
-  <div class="faith-sigil"><img src="/sigil-virtue-patience.png" alt="Sigil of Patience"></div>
-  <div class="faith-kicker">Religion of Patience</div>
-  <h1>The Faith of Patience</h1>
-  <p class="faith-subtitle">The organized worship of Patience, built around endurance, waiting, perseverance, forgiveness.</p>
-</section>
-<main class="faith-shell">
-  <article class="faith-main">
-    <section><p class="faith-quote">“The moment will pass. Decide who you are when it does.”</p></section>
-    <section><h2>Core Teaching</h2><p>Followers train themselves to endure fear, grief, anger, delay, and uncertainty without allowing those emotions to choose their actions for them.</p></section>
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>The Faith of Patience · Sinners</title>
+<link rel="stylesheet" href="/styles.css"><style>
+:root{--faith-accent:#e8cc86;}
+body.faith-body.faith-patience{position:relative;overflow-x:hidden;}
+body.faith-body.faith-patience::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+background:radial-gradient(circle at 12% 20%,rgba(232,204,134,.055),transparent 24rem),
+radial-gradient(circle at 88% 68%,rgba(232,204,134,.04),transparent 26rem);}
+body.faith-body.faith-patience>*{position:relative;z-index:1;}
+.faith-patience .faith-hero{border-bottom-color:rgba(232,204,134,.34);}
+.faith-patience .faith-sigil img{filter:drop-shadow(0 0 18px rgba(232,204,134,.18));}
+.faith-patience .faith-article section,.faith-patience .faith-card{border-color:rgba(232,204,134,.25);
+background:linear-gradient(180deg,rgba(232,204,134,.045),rgba(5,9,16,.05));}
+.faith-patience .faith-article h2{color:var(--faith-accent);}
+</style></head>
+<body class="faith-body faith-patience"><header class="site-header"><div class="nav-wrap">
+<a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>
+<nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a>
+<a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a>
+<a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav>
+</div></header>
+<section class="faith-hero"><div class="faith-hero-inner"><div class="faith-hero-copy">
+<div class="kicker">Religion of Patience</div><h1>The Faith of Patience</h1><p>The organized worship of Patience, built around endurance, waiting, perseverance, forgiveness.</p></div>
+<div class="faith-sigil"><img src="/sigil-virtue-patience.png" alt="Sigil of Patience"></div></div></section>
+<main class="faith-layout"><article class="faith-article">
+<section><h2>Core Teaching</h2><p>Followers train themselves to endure fear, grief, anger, delay, and uncertainty without allowing those emotions to choose their actions for them.</p></section>
 <section><h2>Ordinary Worship</h2><p>The faith does not require every follower to become clergy. Common devotion is expressed through silence, vigils, delayed judgment, acts of forgiveness. The act matters most when it reflects deliberate commitment rather than public performance.</p></section>
 <section><h2>Temples and Clergy</h2><p>Temples of Patience use the same visual language seen in the god's iconography: halos, eyes, white wings, and radiant gold. Clergy are expected to embody the virtue publicly, which makes failures of doctrine especially politically and spiritually significant.</p></section>
 <section><h2>Miracles and Divine Favor</h2><p>Miracles attributed to Patience tend to be interpreted through the virtue itself. A believer does not merely ask for power; they ask for the ability to become more completely aligned with Patience's ideal.</p></section>
-<section><h2>The Dangerous Edge</h2><p>Its harshest sects can transform endurance into obedience, teaching people to remain in situations that should be challenged.</p></section>
-  </article>
-  <aside class="faith-aside">
-    <section>
-      <h2>At a Glance</h2>
-      <div class="fact"><span class="fact-label">Patron</span><span class="fact-value"><a href="/patience.html">Patience</a></span></div>
-      <div class="fact"><span class="fact-label">Core Ideal</span><span class="fact-value">Endure before acting</span></div>
-      <div class="fact"><span class="fact-label">Common Practice</span><span class="fact-value">Silence, vigils, delayed judgment, acts of forgiveness</span></div>
-      <div class="fact"><span class="fact-label">Common Imagery</span><span class="fact-value">halos, eyes, white wings, and radiant gold</span></div>
-      <div class="fact"><span class="fact-label">Sacred Mark</span><span class="fact-value">The radiant eye and halo</span></div>
-    </section>
-    <section class="faith-links">
-      <h2>Keep Exploring</h2>
-      <a href="/patience.html">Patience</a>
-      <a href="/virtues.html">The Seven Virtues</a>
-      <a href="/gods.html">Gods &amp; Religion</a>
-      <a href="/world.html">The World</a>
-    </section>
-  </aside>
-</main>
-<footer>Sinners World Archive · Built as a player-facing lore guide</footer>
-<script src="/script.js"></script>
-</body>
-</html>
+<section><h2>The Dangerous Edge</h2><p>Its harshest sects can transform endurance into obedience, teaching people to remain in situations that should be challenged.</p></section></article>
+<aside class="faith-aside"><section class="faith-card"><h2>At a Glance</h2><div class="faith-fact"><span class="faith-fact-label">Patron</span><span class="faith-fact-value"><a href="/patience.html">Patience</a></span></div><div class="faith-fact"><span class="faith-fact-label">Core Ideal</span><span class="faith-fact-value">Endure before acting</span></div><div class="faith-fact"><span class="faith-fact-label">Common Practice</span><span class="faith-fact-value">Silence, vigils, delayed judgment, acts of forgiveness</span></div><div class="faith-fact"><span class="faith-fact-label">Common Imagery</span><span class="faith-fact-value">halos, eyes, white wings, and radiant gold</span></div><div class="faith-fact"><span class="faith-fact-label">Sacred Mark</span><span class="faith-fact-value">The radiant eye and halo</span></div></section>
+<section class="faith-card"><h2>Keep Exploring</h2><a href="/patience.html">Patience</a><a href="/virtues.html">The Seven Virtues</a><a href="/gods.html">Gods &amp; Religion</a><a href="/world.html">The World</a></section></aside></main>
+<footer>Sinners World Archive · Built as a player-facing lore guide</footer><script src="/script.js"></script>
+</body></html>
