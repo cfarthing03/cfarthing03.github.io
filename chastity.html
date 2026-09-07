@@ -3,64 +3,37 @@
 <title>Chastity · The Seven Virtues · Sinners</title><link rel="stylesheet" href="/styles.css">
 <style>
 
-:root{--virtue-accent:#9f8cff;--virtue-thread:#cfc7ff;--virtue-mind:#79d5ff;}
+:root{--virtue-accent:#a694ff;--virtue-thread:#dad4ff;--virtue-mind:#86dbff;}
 body.deity-body.deity-chastity{position:relative;overflow-x:hidden;isolation:isolate;}
-body.deity-body.deity-chastity::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-background:
-radial-gradient(circle at 20% 16%,rgba(159,140,255,.14),transparent 20rem),
-radial-gradient(circle at 76% 72%,rgba(121,213,255,.11),transparent 24rem);}
+body.deity-body.deity-chastity::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 20% 16%,rgba(166,148,255,.16),transparent 20rem),radial-gradient(circle at 76% 72%,rgba(134,219,255,.12),transparent 24rem);} 
 body.deity-body.deity-chastity>*{position:relative;z-index:1;}
 .chastity-page-decor{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
-.chastity-web{position:absolute;width:240px;height:240px;border-radius:50%;opacity:.26;}
-.chastity-web::before,.chastity-web::after{content:"";position:absolute;inset:0;border-radius:50%;}
-.chastity-web::before{
-background:
-repeating-conic-gradient(from 0deg,rgba(207,199,255,.42) 0 1.2deg,transparent 1.2deg 45deg),
-radial-gradient(circle,transparent 0 26%,rgba(207,199,255,.40) 26.4% 27%,transparent 27.2% 44%,rgba(207,199,255,.34) 44.4% 45%,transparent 45.2% 61%,rgba(207,199,255,.26) 61.3% 62%,transparent 62.2% 100%);
--webkit-mask:radial-gradient(circle,transparent 0 10%,#000 10%);
-mask:radial-gradient(circle,transparent 0 10%,#000 10%);
-}
-.chastity-web.w1{top:-40px;left:-40px;}
-.chastity-web.w2{top:90px;right:-44px;transform:scale(1.14);}
-.chastity-web.w3{bottom:-50px;left:8%;transform:scale(.9);}
-.chastity-web.w4{bottom:26px;right:2%;transform:scale(.72);}
-.chastity-thread{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(121,213,255,.52),transparent);transform:rotate(var(--rot));opacity:.45;}
-.chastity-thread::before,.chastity-thread::after{content:"";position:absolute;top:-5px;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.75),rgba(121,213,255,.24));box-shadow:0 0 10px rgba(121,213,255,.4);}
-.chastity-thread::before{left:0;}
-.chastity-thread::after{right:0;}
-.chastity-thread.t1{width:320px;top:25%;left:16%;--rot:9deg;}
-.chastity-thread.t2{width:260px;top:56%;right:14%;--rot:-18deg;}
-.chastity-thread.t3{width:240px;bottom:20%;left:34%;--rot:5deg;}
-.chastity-divider{display:flex;align-items:center;gap:11px;width:min(320px,84%);margin:.45rem 0 1rem;}
-.chastity-divider.centered{margin:0 auto 1rem;}
-.chastity-divider::before,.chastity-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(207,199,255,.58));}
-.chastity-divider::after{transform:scaleX(-1);}
-.chastity-glyph{position:relative;width:16px;height:16px;border-radius:50%;box-shadow:0 0 0 1px rgba(207,199,255,.72) inset,0 0 8px rgba(121,213,255,.25);}
-.chastity-glyph::before,.chastity-glyph::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(207,199,255,.72);}
-.chastity-glyph::before{width:16px;height:1px;}
-.chastity-glyph::after{width:1px;height:16px;}
-.deity-chastity .deity-hero,.deity-chastity .deity-article section,.deity-chastity .deity-facts,.deity-chastity .deity-related{
-position:relative;overflow:hidden;}
-.deity-chastity .deity-article section,.deity-chastity .deity-facts,.deity-chastity .deity-related{
-border:1px solid rgba(159,140,255,.28);
-background:
-linear-gradient(180deg,rgba(159,140,255,.075),rgba(5,9,16,.05)),
-radial-gradient(circle at 100% 0,rgba(121,213,255,.04),transparent 38%);}
-.deity-chastity .deity-article h2,.deity-chastity .deity-facts h2,.deity-chastity .deity-related h2{color:var(--virtue-thread);}
-.deity-chastity .deity-article h2{position:relative;padding-bottom:.7rem;}
-.deity-chastity .deity-article h2::after{content:"";position:absolute;left:0;bottom:0;width:min(255px,60%);height:1px;background:linear-gradient(90deg,rgba(207,199,255,.58),transparent);}
-.deity-chastity .deity-article section::before{content:"";position:absolute;right:18px;top:18px;width:60px;height:60px;border-radius:50%;
-background:
-repeating-conic-gradient(from 0deg,rgba(207,199,255,.18) 0 2deg,transparent 2deg 45deg);
-mask:radial-gradient(circle,transparent 0 25%,#000 25%);
-opacity:.56;}
-.deity-chastity .deity-hero::after{content:"";position:absolute;inset:auto auto 14px 52%;width:220px;height:1px;background:linear-gradient(90deg,transparent,rgba(121,213,255,.42),transparent);opacity:.6;}
-@media(max-width:760px){.chastity-thread.t2,.chastity-thread.t3,.chastity-web.w4{display:none;}}
+.chastity-megaweb{position:absolute;left:50%;top:12px;transform:translateX(-50%);width:min(92vw,1180px);height:min(92vw,1180px);border-radius:50%;opacity:.24;}
+.chastity-megaweb::before{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(218,212,255,.36) 0 1.2deg,transparent 1.2deg 30deg),radial-gradient(circle,transparent 0 12%,rgba(218,212,255,.34) 12.4% 13%,transparent 13.2% 24%,rgba(218,212,255,.30) 24.4% 25%,transparent 25.2% 37%,rgba(218,212,255,.24) 37.3% 38%,transparent 38.2% 50%,rgba(218,212,255,.18) 50.2% 51%,transparent 51.2% 100%);mask:radial-gradient(circle,transparent 0 6%,#000 6%);} 
+.chastity-web{position:absolute;width:240px;height:240px;border-radius:50%;opacity:.24;} 
+.chastity-web::before{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(218,212,255,.36) 0 1.2deg,transparent 1.2deg 45deg),radial-gradient(circle,transparent 0 26%,rgba(218,212,255,.34) 26.4% 27%,transparent 27.2% 44%,rgba(218,212,255,.28) 44.4% 45%,transparent 45.2% 61%,rgba(218,212,255,.22) 61.3% 62%,transparent 62.2% 100%);mask:radial-gradient(circle,transparent 0 10%,#000 10%);} 
+.chastity-web.w1{top:-40px;left:-40px;} .chastity-web.w2{top:110px;right:-44px;transform:scale(1.14);} .chastity-web.w3{bottom:-50px;left:8%;transform:scale(.9);} .chastity-web.w4{bottom:26px;right:2%;transform:scale(.72);} 
+.chastity-node{position:absolute;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.82),rgba(134,219,255,.28));box-shadow:0 0 14px rgba(134,219,255,.42);} 
+.chastity-thread{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(134,219,255,.58),transparent);transform:rotate(var(--rot));opacity:.56;} 
+.chastity-thread::before,.chastity-thread::after{content:"";position:absolute;top:-5px;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.74),rgba(134,219,255,.24));box-shadow:0 0 10px rgba(134,219,255,.36);} 
+.chastity-thread::before{left:0;} .chastity-thread::after{right:0;} 
+.chastity-thread.t1{width:360px;top:28%;left:13%;--rot:10deg;} .chastity-thread.t2{width:280px;top:56%;right:12%;--rot:-18deg;} .chastity-thread.t3{width:260px;bottom:18%;left:34%;--rot:4deg;} .chastity-thread.t4{width:220px;top:36%;right:28%;--rot:28deg;} 
+.chastity-divider{display:flex;align-items:center;gap:11px;width:min(320px,84%);margin:.45rem 0 1rem;} .chastity-divider.centered{margin:0 auto 1rem;} .chastity-divider::before,.chastity-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(218,212,255,.58));} .chastity-divider::after{transform:scaleX(-1);} 
+.chastity-glyph{position:relative;width:16px;height:16px;border-radius:50%;box-shadow:0 0 0 1px rgba(218,212,255,.72) inset,0 0 8px rgba(134,219,255,.25);} .chastity-glyph::before,.chastity-glyph::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(218,212,255,.72);} .chastity-glyph::before{width:16px;height:1px;} .chastity-glyph::after{width:1px;height:16px;} 
+.deity-chastity .deity-hero,.deity-chastity .deity-article section,.deity-chastity .deity-facts,.deity-chastity .deity-related{position:relative;overflow:hidden;} 
+.deity-chastity .deity-hero::before{content:"";position:absolute;left:50%;top:-120px;transform:translateX(-50%);width:760px;height:420px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(218,212,255,.18) 0 1deg,transparent 1deg 30deg),radial-gradient(circle,transparent 0 12%,rgba(218,212,255,.16) 12.5% 13%,transparent 13.2% 24%,rgba(218,212,255,.12) 24.4% 25%,transparent 25.2% 40%,rgba(134,219,255,.08) 40.3% 41%,transparent 41.2% 100%);mask:radial-gradient(circle,transparent 0 8%,#000 8%);opacity:.6;} 
+.deity-chastity .deity-article section,.deity-chastity .deity-facts,.deity-chastity .deity-related{border:1px solid rgba(166,148,255,.30);background:linear-gradient(180deg,rgba(166,148,255,.08),rgba(5,9,16,.05)),radial-gradient(circle at 100% 0,rgba(134,219,255,.05),transparent 38%);} 
+.deity-chastity .deity-article h2,.deity-chastity .deity-facts h2,.deity-chastity .deity-related h2{color:var(--virtue-thread);} .deity-chastity .deity-article h2{position:relative;padding-bottom:.7rem;} .deity-chastity .deity-article h2::after{content:"";position:absolute;left:0;bottom:0;width:min(255px,60%);height:1px;background:linear-gradient(90deg,rgba(218,212,255,.60),transparent);} 
+.deity-chastity .deity-article section::before{content:"";position:absolute;right:14px;top:14px;width:88px;height:88px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(218,212,255,.18) 0 2deg,transparent 2deg 30deg);mask:radial-gradient(circle,transparent 0 22%,#000 22%);opacity:.54;} 
+.deity-chastity .deity-article section::after{content:"";position:absolute;left:18px;bottom:16px;width:120px;height:1px;background:linear-gradient(90deg,rgba(134,219,255,.40),transparent);} 
+@media(max-width:760px){.chastity-thread.t2,.chastity-thread.t3,.chastity-thread.t4,.chastity-web.w4{display:none;} .chastity-megaweb{top:84px;width:min(100vw,860px);height:min(100vw,860px);} .deity-chastity .deity-hero::before{width:500px;height:280px;top:-40px;}}
 @media(max-width:650px){.chastity-page-decor{display:none;}}
 
 </style></head><body class="deity-body deity-chastity">
 
+
 <div class="chastity-page-decor" aria-hidden="true">
+  <span class="chastity-megaweb"></span>
   <span class="chastity-web w1"></span>
   <span class="chastity-web w2"></span>
   <span class="chastity-web w3"></span>
@@ -68,7 +41,9 @@ opacity:.56;}
   <span class="chastity-thread t1"></span>
   <span class="chastity-thread t2"></span>
   <span class="chastity-thread t3"></span>
+  <span class="chastity-thread t4"></span>
 </div>
+
 
 <header class="site-header"><div class="nav-wrap">
 <a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>

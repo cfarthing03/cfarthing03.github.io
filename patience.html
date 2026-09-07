@@ -3,52 +3,53 @@
 <title>Patience · The Seven Virtues · Sinners</title><link rel="stylesheet" href="/styles.css">
 <style>
 
-:root{--virtue-accent:#d0c1a2;--virtue-iris:#bfb393;--virtue-pupil:#0d1018;}
+:root{--virtue-accent:#d8c7a6;--virtue-iris:#c8b997;--virtue-dark:#0f121a;}
 body.deity-body.deity-patience{position:relative;overflow-x:hidden;isolation:isolate;}
 body.deity-body.deity-patience::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-background:
-radial-gradient(circle at 50% 28%,rgba(208,193,162,.10),transparent 22rem),
-radial-gradient(circle at 50% 85%,rgba(40,30,20,.18),transparent 28rem);}
+background:radial-gradient(circle at 50% 24%,rgba(216,199,166,.14),transparent 24rem),radial-gradient(circle at 50% 78%,rgba(25,23,19,.18),transparent 28rem);} 
 body.deity-body.deity-patience>*{position:relative;z-index:1;}
 .patience-page-decor{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
-.patience-eye{position:absolute;left:50%;top:90px;transform:translateX(-50%);width:min(78vw,980px);height:min(42vw,520px);opacity:.24;filter:drop-shadow(0 0 22px rgba(208,193,162,.12));}
-.patience-eye::before{content:"";position:absolute;inset:0;border-radius:50% / 60%;
-background:
-radial-gradient(ellipse at 50% 50%,rgba(13,16,24,.96) 0 6%,rgba(191,179,147,.94) 6.4% 14%,rgba(110,96,70,.52) 14.2% 15.2%,rgba(255,255,255,.07) 15.4% 17%,transparent 17.2%),
-radial-gradient(ellipse at 50% 50%,transparent 0 60%,rgba(208,193,162,.22) 60.2% 61.4%,transparent 61.6% 100%),
-linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,0) 26%),
-linear-gradient(180deg,rgba(20,18,14,.08),rgba(20,18,14,.32));
-border:1px solid rgba(208,193,162,.20);}
-.patience-eye::after{content:"";position:absolute;left:18%;right:18%;top:24%;height:18%;border-radius:50%;background:linear-gradient(180deg,rgba(255,255,255,.24),transparent);filter:blur(2px);}
-.patience-lid{position:absolute;left:50%;top:102px;transform:translateX(-50%);width:min(82vw,1040px);height:min(44vw,560px);border-top:1px solid rgba(208,193,162,.13);border-bottom:1px solid rgba(208,193,162,.08);border-radius:50%/58%;opacity:.26;}
+.patience-eye-shell{position:absolute;left:50%;top:28px;transform:translateX(-50%);width:min(92vw,1380px);height:min(48vw,700px);opacity:.36;filter:drop-shadow(0 0 28px rgba(216,199,166,.14));}
+.patience-eye-shell::before{content:"";position:absolute;inset:0;border-radius:50%/60%;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0) 24%),linear-gradient(180deg,rgba(30,22,15,.06),rgba(16,12,8,.24));border:1px solid rgba(216,199,166,.22);} 
+.patience-eye-shell::after{content:"";position:absolute;left:6%;right:6%;top:26%;bottom:26%;border-top:1px solid rgba(216,199,166,.18);border-bottom:1px solid rgba(216,199,166,.08);border-radius:50%/60%;}
+.patience-eye{position:absolute;left:50%;top:52px;transform:translateX(-50%);width:min(84vw,1200px);height:min(40vw,560px);opacity:.58;}
+.patience-eye::before{content:"";position:absolute;inset:0;border-radius:50%/60%;background:
+radial-gradient(ellipse at 50% 50%,rgba(12,14,20,.98) 0 7%,rgba(200,185,151,.95) 7.4% 15%,rgba(115,99,72,.62) 15.2% 16.2%,rgba(255,255,255,.12) 16.4% 17.4%,transparent 17.6%),
+radial-gradient(ellipse at 50% 50%,transparent 0 59%,rgba(216,199,166,.30) 59.4% 60.6%,transparent 60.8% 100%),
+linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,0) 20%),
+linear-gradient(180deg,rgba(17,14,10,.12),rgba(17,14,10,.38));
+box-shadow:0 0 0 1px rgba(216,199,166,.22) inset,0 0 44px rgba(216,199,166,.12);} 
+.patience-eye::after{content:"";position:absolute;left:20%;right:20%;top:22%;height:18%;border-radius:50%;background:linear-gradient(180deg,rgba(255,255,255,.34),transparent);filter:blur(2px);} 
+.patience-iris-line{position:absolute;left:50%;top:234px;transform:translateX(-50%);width:min(82vw,1160px);height:1px;background:linear-gradient(90deg,transparent,rgba(216,199,166,.16),transparent);opacity:.76;} 
+.patience-stare{position:absolute;left:50%;top:148px;transform:translateX(-50%);width:148px;height:148px;border-radius:50%;box-shadow:0 0 0 1px rgba(216,199,166,.14),0 0 22px rgba(216,199,166,.08) inset;opacity:.26;}
 .patience-divider{display:flex;align-items:center;gap:11px;width:min(320px,84%);margin:.45rem 0 1rem;}
 .patience-divider.centered{margin:0 auto 1rem;}
-.patience-divider::before,.patience-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(208,193,162,.58));}
-.patience-divider::after{transform:scaleX(-1);}
-.patience-glyph{position:relative;width:18px;height:18px;border-radius:50%;box-shadow:0 0 0 1px rgba(208,193,162,.6) inset;}
-.patience-glyph::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:50%;background:rgba(208,193,162,.68);}
-.deity-patience .deity-hero,.deity-patience .deity-article section,.deity-patience .deity-facts,.deity-patience .deity-related{
-position:relative;overflow:hidden;}
-.deity-patience .deity-article section,.deity-patience .deity-facts,.deity-patience .deity-related{
-border:1px solid rgba(208,193,162,.28);
-background:
-linear-gradient(180deg,rgba(208,193,162,.07),rgba(5,9,16,.05)),
-radial-gradient(circle at 50% 0,rgba(255,255,255,.05),transparent 38%);}
-.deity-patience .deity-article h2,.deity-patience .deity-facts h2,.deity-patience .deity-related h2{color:var(--virtue-accent);}
-.deity-patience .deity-article h2{position:relative;padding-bottom:.7rem;}
-.deity-patience .deity-article h2::after{content:"";position:absolute;left:0;bottom:0;width:min(255px,60%);height:1px;background:linear-gradient(90deg,rgba(208,193,162,.58),transparent);}
-.deity-patience .deity-hero::before{content:"";position:absolute;inset:auto 0 18px 0;margin:auto;width:210px;height:1px;background:linear-gradient(90deg,transparent,rgba(208,193,162,.48),transparent);}
-.deity-patience .deity-article section::before{content:"";position:absolute;right:18px;top:18px;width:56px;height:28px;border:1px solid rgba(208,193,162,.14);border-radius:50%/58%;}
-.deity-patience .deity-article section::after{content:"";position:absolute;right:42px;top:28px;width:8px;height:8px;border-radius:50%;background:rgba(208,193,162,.26);}
-@media(max-width:760px){.patience-eye{top:120px;width:min(90vw,760px);height:min(50vw,360px);}}
+.patience-divider::before,.patience-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(216,199,166,.62));}
+.patience-divider::after{transform:scaleX(-1);} 
+.patience-glyph{position:relative;width:18px;height:18px;border-radius:50%;box-shadow:0 0 0 1px rgba(216,199,166,.66) inset;} 
+.patience-glyph::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:50%;background:rgba(216,199,166,.68);} 
+.deity-patience .deity-hero,.deity-patience .deity-article section,.deity-patience .deity-facts,.deity-patience .deity-related{position:relative;overflow:hidden;} 
+.deity-patience .deity-hero::before{content:"";position:absolute;left:50%;top:-88px;transform:translateX(-50%);width:620px;height:300px;border-radius:50%/60%;background:radial-gradient(ellipse at 50% 56%,rgba(15,18,26,.68) 0 10%,rgba(200,185,151,.32) 10.4% 18%,rgba(255,255,255,.08) 18.2% 19%,transparent 19.2%),linear-gradient(180deg,rgba(255,255,255,.08),transparent 70%);opacity:.6;pointer-events:none;} 
+.deity-patience .deity-hero::after{content:"";position:absolute;inset:auto 0 14px 0;margin:auto;width:260px;height:1px;background:linear-gradient(90deg,transparent,rgba(216,199,166,.5),transparent);} 
+.deity-patience .deity-article section,.deity-patience .deity-facts,.deity-patience .deity-related{border:1px solid rgba(216,199,166,.28);background:linear-gradient(180deg,rgba(216,199,166,.08),rgba(5,9,16,.06)),radial-gradient(circle at 50% 0,rgba(255,255,255,.06),transparent 38%);} 
+.deity-patience .deity-article h2,.deity-patience .deity-facts h2,.deity-patience .deity-related h2{color:var(--virtue-accent);} 
+.deity-patience .deity-article h2{position:relative;padding-bottom:.7rem;} 
+.deity-patience .deity-article h2::after{content:"";position:absolute;left:0;bottom:0;width:min(255px,60%);height:1px;background:linear-gradient(90deg,rgba(216,199,166,.64),transparent);} 
+.deity-patience .deity-article section::before{content:"";position:absolute;right:18px;top:14px;width:76px;height:38px;border:1px solid rgba(216,199,166,.16);border-radius:50%/60%;opacity:.85;} 
+.deity-patience .deity-article section::after{content:"";position:absolute;right:48px;top:28px;width:10px;height:10px;border-radius:50%;background:rgba(216,199,166,.26);} 
+@media(max-width:760px){.patience-eye-shell{top:84px;width:min(96vw,980px);height:min(48vw,420px);} .patience-eye{top:102px;width:min(90vw,860px);height:min(42vw,360px);} .patience-stare,.patience-iris-line{display:none;}.deity-patience .deity-hero::before{width:420px;height:220px;top:-44px;}}
 @media(max-width:650px){.patience-page-decor{display:none;}}
 
 </style></head><body class="deity-body deity-patience">
 
+
 <div class="patience-page-decor" aria-hidden="true">
-  <span class="patience-lid"></span>
+  <span class="patience-eye-shell"></span>
   <span class="patience-eye"></span>
+  <span class="patience-iris-line"></span>
+  <span class="patience-stare"></span>
 </div>
+
 
 <header class="site-header"><div class="nav-wrap">
 <a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>

@@ -3,73 +3,57 @@
 <title>Temperance · The Seven Virtues · Sinners</title><link rel="stylesheet" href="/styles.css">
 <style>
 
-:root{--virtue-accent:#b99b6a;--virtue-light:#e2cfaa;--virtue-dark:#5f4f35;}
+:root{--virtue-accent:#d9c59b;--virtue-gold:#ecdcb6;--virtue-shadow:#584a31;}
 body.deity-body.deity-temperance{position:relative;overflow-x:hidden;isolation:isolate;}
-body.deity-body.deity-temperance::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-background:
-radial-gradient(circle at 18% 18%,rgba(226,207,170,.10),transparent 20rem),
-radial-gradient(circle at 84% 68%,rgba(95,79,53,.18),transparent 22rem),
-linear-gradient(180deg,rgba(185,155,106,.04),transparent 24rem);}
+body.deity-body.deity-temperance::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(236,220,182,.04),transparent 35%,transparent 65%,rgba(88,74,49,.10)),radial-gradient(circle at 50% 18%,rgba(236,220,182,.10),transparent 20rem),radial-gradient(circle at 84% 74%,rgba(88,74,49,.18),transparent 22rem);} 
 body.deity-body.deity-temperance>*{position:relative;z-index:1;}
 .temperance-page-decor{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
-.temperance-eclipse{position:absolute;left:50%;top:110px;transform:translateX(-50%);width:380px;height:380px;border-radius:50%;
-background:
-radial-gradient(circle at 50% 50%,rgba(0,0,0,.84) 0 24%,rgba(226,207,170,.34) 24.4% 25.4%,rgba(0,0,0,0) 25.6% 31%,rgba(226,207,170,.18) 31.2% 31.8%,transparent 32%),
-radial-gradient(circle at 50% 50%,rgba(226,207,170,.04),transparent 64%);
-opacity:.42;filter:drop-shadow(0 0 24px rgba(226,207,170,.15));}
-.temperance-orbit{position:absolute;border:1px solid rgba(226,207,170,.18);border-radius:50%;}
-.temperance-orbit::after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:rgba(226,207,170,.62);box-shadow:0 0 12px rgba(226,207,170,.18);}
-.temperance-orbit.o1{width:500px;height:220px;left:50%;top:202px;transform:translateX(-50%) rotate(8deg);}
-.temperance-orbit.o1::after{right:72px;top:18px;}
-.temperance-orbit.o2{width:470px;height:180px;left:50%;top:222px;transform:translateX(-50%) rotate(-12deg);}
-.temperance-orbit.o2::after{left:58px;bottom:22px;}
-.temperance-scale{position:absolute;width:220px;height:190px;opacity:.24;}
-.temperance-scale::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:4px;height:116px;background:linear-gradient(180deg,rgba(226,207,170,.72),rgba(185,155,106,.05));}
-.temperance-scale .beam{position:absolute;left:50%;top:48px;transform:translateX(-50%);width:166px;height:2px;background:rgba(226,207,170,.55);}
-.temperance-scale .beam::before,.temperance-scale .beam::after{content:"";position:absolute;top:1px;width:2px;height:42px;background:rgba(226,207,170,.42);}
-.temperance-scale .beam::before{left:12px;}
-.temperance-scale .beam::after{right:12px;}
-.temperance-scale .pan{position:absolute;top:92px;width:60px;height:28px;border:1px solid rgba(226,207,170,.42);border-radius:0 0 48px 48px;}
-.temperance-scale .pan.left{left:0;}
-.temperance-scale .pan.right{right:0;}
-.temperance-scale.s1{left:26px;top:180px;transform:rotate(-8deg);}
-.temperance-scale.s2{right:12px;bottom:72px;transform:rotate(8deg);}
-.temperance-hourglass{position:absolute;right:42px;top:104px;width:112px;height:168px;opacity:.22;}
-.temperance-hourglass::before,.temperance-hourglass::after{content:"";position:absolute;left:50%;transform:translateX(-50%);width:78px;height:52px;border:1px solid rgba(226,207,170,.36);clip-path:polygon(0 0,100% 0,56% 100%,44% 100%);}
-.temperance-hourglass::before{top:0;}
-.temperance-hourglass::after{bottom:0;transform:translateX(-50%) rotate(180deg);}
-.temperance-hourglass .waist{position:absolute;left:50%;top:42px;transform:translateX(-50%);width:3px;height:84px;background:linear-gradient(180deg,rgba(226,207,170,.44),rgba(185,155,106,.15));}
-.temperance-hourglass .sand{position:absolute;left:50%;top:42px;transform:translateX(-50%);width:2px;height:84px;background:linear-gradient(180deg,transparent 0 28%,rgba(226,207,170,.46) 30% 48%,transparent 50% 100%);}
-.temperance-divider{display:flex;align-items:center;gap:11px;width:min(320px,84%);margin:.45rem 0 1rem;}
-.temperance-divider.centered{margin:0 auto 1rem;}
-.temperance-divider::before,.temperance-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(226,207,170,.52));}
-.temperance-divider::after{transform:scaleX(-1);}
-.temperance-glyph{position:relative;width:18px;height:18px;border-radius:50%;box-shadow:0 0 0 1px rgba(226,207,170,.62) inset;}
-.temperance-glyph::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:50%;background:rgba(226,207,170,.58);}
-.deity-temperance .deity-hero,.deity-temperance .deity-article section,.deity-temperance .deity-facts,.deity-temperance .deity-related{
-position:relative;overflow:hidden;}
-.deity-temperance .deity-article section,.deity-temperance .deity-facts,.deity-temperance .deity-related{
-border:1px solid rgba(185,155,106,.28);
-background:
-linear-gradient(180deg,rgba(185,155,106,.08),rgba(5,9,16,.06)),
-radial-gradient(circle at 50% 0,rgba(226,207,170,.04),transparent 42%);}
-.deity-temperance .deity-article h2,.deity-temperance .deity-facts h2,.deity-temperance .deity-related h2{color:var(--virtue-light);}
-.deity-temperance .deity-article h2{position:relative;padding-bottom:.7rem;}
-.deity-temperance .deity-article h2::after{content:"";position:absolute;left:0;bottom:0;width:min(255px,60%);height:1px;background:linear-gradient(90deg,rgba(226,207,170,.58),transparent);}
-.deity-temperance .deity-article section::before{content:"";position:absolute;right:22px;top:18px;width:80px;height:80px;border-radius:50%;
-background:radial-gradient(circle at 50% 50%,rgba(0,0,0,.65) 0 28%,rgba(226,207,170,.22) 28.5% 29.8%,transparent 30%);
-opacity:.46;}
-.deity-temperance .deity-article section::after{content:"";position:absolute;left:18px;bottom:18px;width:120px;height:1px;background:linear-gradient(90deg,rgba(226,207,170,.38),transparent);}
-@media(max-width:780px){.temperance-eclipse{width:260px;height:260px;top:130px;}.temperance-scale.s2,.temperance-hourglass{display:none;}}
+.temperance-eclipse{position:absolute;left:50%;top:70px;transform:translateX(-50%);width:420px;height:420px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(10,12,17,.88) 0 24%,rgba(236,220,182,.36) 24.5% 26.2%,rgba(10,12,17,0) 26.6% 33%,rgba(236,220,182,.18) 33.3% 34.2%,transparent 34.4%),radial-gradient(circle at 50% 50%,rgba(236,220,182,.05),transparent 64%);opacity:.56;filter:drop-shadow(0 0 28px rgba(236,220,182,.14));}
+.temperance-scales{position:absolute;left:50%;top:118px;transform:translateX(-50%);width:640px;height:360px;opacity:.32;}
+.temperance-scales::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:5px;height:210px;background:linear-gradient(180deg,rgba(236,220,182,.72),rgba(185,155,106,.06));}
+.temperance-scales::after{content:"";position:absolute;left:50%;top:78px;transform:translateX(-50%);width:320px;height:2px;background:rgba(236,220,182,.60);} 
+.temperance-chain{position:absolute;top:80px;width:2px;height:92px;background:linear-gradient(180deg,rgba(236,220,182,.52),rgba(236,220,182,.12));}
+.temperance-chain.left{left:160px;} .temperance-chain.right{right:160px;}
+.temperance-pan{position:absolute;top:170px;width:138px;height:64px;border:1px solid rgba(236,220,182,.40);border-radius:0 0 90px 90px;background:linear-gradient(180deg,rgba(236,220,182,.06),rgba(88,74,49,.10));box-shadow:0 -1px 0 rgba(236,220,182,.18) inset;}
+.temperance-pan.left{left:92px;} .temperance-pan.right{right:92px;}
+.temperance-pan::before{content:"";position:absolute;left:18px;right:18px;top:-1px;height:1px;background:rgba(236,220,182,.32);} 
+.temperance-hourglass{position:absolute;right:38px;top:116px;width:130px;height:192px;opacity:.26;}
+.temperance-hourglass::before,.temperance-hourglass::after{content:"";position:absolute;left:50%;transform:translateX(-50%);width:90px;height:62px;border:1px solid rgba(236,220,182,.34);clip-path:polygon(0 0,100% 0,56% 100%,44% 100%);} 
+.temperance-hourglass::before{top:0;} .temperance-hourglass::after{bottom:0;transform:translateX(-50%) rotate(180deg);} 
+.temperance-hourglass .waist{position:absolute;left:50%;top:48px;transform:translateX(-50%);width:4px;height:96px;background:linear-gradient(180deg,rgba(236,220,182,.42),rgba(185,155,106,.12));} 
+.temperance-hourglass .sand{position:absolute;left:50%;top:48px;transform:translateX(-50%);width:3px;height:96px;background:linear-gradient(180deg,transparent 0 24%,rgba(236,220,182,.52) 24.4% 48%,transparent 48.4% 100%);} 
+.temperance-orbit{position:absolute;border:1px solid rgba(236,220,182,.18);border-radius:50%;opacity:.46;} 
+.temperance-orbit.o1{width:560px;height:220px;left:50%;top:206px;transform:translateX(-50%) rotate(10deg);} .temperance-orbit.o2{width:520px;height:190px;left:50%;top:222px;transform:translateX(-50%) rotate(-12deg);} 
+.temperance-orbit::after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:rgba(236,220,182,.64);box-shadow:0 0 12px rgba(236,220,182,.16);} .temperance-orbit.o1::after{right:74px;top:22px;} .temperance-orbit.o2::after{left:68px;bottom:18px;} 
+.temperance-divider{display:flex;align-items:center;gap:11px;width:min(320px,84%);margin:.45rem 0 1rem;} .temperance-divider.centered{margin:0 auto 1rem;} .temperance-divider::before,.temperance-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(236,220,182,.54));} .temperance-divider::after{transform:scaleX(-1);} 
+.temperance-glyph{position:relative;width:18px;height:18px;border-radius:50%;box-shadow:0 0 0 1px rgba(236,220,182,.62) inset;} .temperance-glyph::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:50%;background:rgba(236,220,182,.58);} 
+.deity-temperance .deity-hero,.deity-temperance .deity-article section,.deity-temperance .deity-facts,.deity-temperance .deity-related{position:relative;overflow:hidden;} 
+.deity-temperance .deity-hero::before{content:"";position:absolute;left:50%;top:-96px;transform:translateX(-50%);width:620px;height:320px;border-radius:50%;background:radial-gradient(circle at 50% 58%,rgba(10,12,17,.76) 0 10%,rgba(236,220,182,.26) 10.4% 18%,transparent 18.4%),linear-gradient(180deg,rgba(255,255,255,.07),transparent 74%);opacity:.62;} 
+.deity-temperance .deity-hero::after{content:"";position:absolute;right:30px;bottom:20px;width:170px;height:80px;border:1px solid rgba(236,220,182,.18);border-radius:0 0 90px 90px;opacity:.66;} 
+.deity-temperance .deity-article section,.deity-temperance .deity-facts,.deity-temperance .deity-related{border:1px solid rgba(185,155,106,.30);background:linear-gradient(180deg,rgba(185,155,106,.10),rgba(5,9,16,.06)),radial-gradient(circle at 50% 0,rgba(236,220,182,.06),transparent 42%);} 
+.deity-temperance .deity-article h2,.deity-temperance .deity-facts h2,.deity-temperance .deity-related h2{color:var(--virtue-gold);} 
+.deity-temperance .deity-article h2{position:relative;padding-bottom:.7rem;} .deity-temperance .deity-article h2::after{content:"";position:absolute;left:0;bottom:0;width:min(255px,60%);height:1px;background:linear-gradient(90deg,rgba(236,220,182,.60),transparent);} 
+.deity-temperance .deity-article section::before{content:"";position:absolute;right:18px;top:18px;width:84px;height:84px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(0,0,0,.66) 0 28%,rgba(236,220,182,.22) 28.6% 30%,transparent 30.2%);opacity:.56;} 
+.deity-temperance .deity-article section::after{content:"";position:absolute;left:18px;bottom:18px;width:120px;height:1px;background:linear-gradient(90deg,rgba(236,220,182,.40),transparent);} 
+@media(max-width:780px){.temperance-eclipse{width:300px;height:300px;top:104px;} .temperance-scales{width:420px;height:260px;top:170px;} .temperance-hourglass,.temperance-orbit.o2{display:none;} .temperance-chain.left{left:102px;} .temperance-chain.right{right:102px;} .temperance-pan.left{left:44px;} .temperance-pan.right{right:44px;} }
 @media(max-width:650px){.temperance-page-decor{display:none;}}
 
 </style></head><body class="deity-body deity-temperance">
 
+
 <div class="temperance-page-decor" aria-hidden="true">
   <span class="temperance-eclipse"></span>
+  <div class="temperance-scales">
+    <span class="temperance-chain left"></span>
+    <span class="temperance-chain right"></span>
+    <span class="temperance-pan left"></span>
+    <span class="temperance-pan right"></span>
+  </div>
   <span class="temperance-orbit o1"></span>
   <span class="temperance-orbit o2"></span>
-  <div class="temperance-scale s1"><span class="beam"></span><span class="pan left"></span><span class="pan right"></span></div>
+  <div class="temperance-hourglass"><span class="waist"></span><span class="sand"></span></div>
+</div>
+
   <div class="temperance-scale s2"><span class="beam"></span><span class="pan left"></span><span class="pan right"></span></div>
   <div class="temperance-hourglass"><span class="waist"></span><span class="sand"></span></div>
 </div>

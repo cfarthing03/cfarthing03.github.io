@@ -3,55 +3,51 @@
 <title>Kindness · The Seven Virtues · Sinners</title><link rel="stylesheet" href="/styles.css">
 <style>
 
-:root{--virtue-accent:#c52b31;--virtue-accent-soft:rgba(197,43,49,.22);--virtue-ice:#93d8ff;--virtue-amber:#d8944d;--virtue-violet:#9a7bff;}
+:root{--virtue-accent:#c52b31;--virtue-soft:#ff9ca4;--virtue-ice:#8be0ff;--virtue-amber:#dd9a50;--virtue-violet:#a68aff;}
 body.deity-body.deity-kindness{position:relative;overflow-x:hidden;isolation:isolate;}
 body.deity-body.deity-kindness::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 background:
-radial-gradient(circle at 12% 18%,rgba(197,43,49,.16),transparent 22rem),
-radial-gradient(circle at 88% 72%,rgba(197,43,49,.10),transparent 24rem),
-linear-gradient(180deg,rgba(197,43,49,.04),transparent 24rem);}
+radial-gradient(circle at 14% 18%,rgba(197,43,49,.18),transparent 20rem),
+radial-gradient(circle at 84% 74%,rgba(197,43,49,.10),transparent 24rem),
+linear-gradient(180deg,rgba(197,43,49,.05),transparent 26rem);}
 body.deity-body.deity-kindness>*{position:relative;z-index:1;}
 .kindness-page-decor{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
-.kindness-crystal{position:absolute;display:block;clip-path:polygon(50% 0,92% 32%,80% 100%,22% 92%,0 34%);
-background:linear-gradient(180deg,rgba(255,255,255,.58),rgba(255,255,255,.06) 18%,currentColor 18%,rgba(0,0,0,.12) 82%);
-border:1px solid rgba(255,255,255,.22);box-shadow:0 0 0 1px rgba(255,255,255,.06) inset,0 0 22px currentColor;}
-.kindness-crystal::after{content:"";position:absolute;inset:10% 58% 22% 16%;background:linear-gradient(180deg,rgba(255,255,255,.65),transparent);transform:skewX(-16deg);opacity:.55;}
-.kindness-crystal.red{color:rgba(197,43,49,.82);}
-.kindness-crystal.red.pulse{animation:kindnessPulse 4.8s ease-in-out infinite;}
-.kindness-crystal.ice{color:rgba(147,216,255,.42);}
-.kindness-crystal.amber{color:rgba(216,148,77,.34);}
-.kindness-crystal.violet{color:rgba(154,123,255,.26);}
-.kindness-crystal.c1{width:180px;height:245px;top:-35px;left:-32px;transform:rotate(-12deg);}
-.kindness-crystal.c2{width:110px;height:165px;top:120px;left:70px;transform:rotate(16deg);}
-.kindness-crystal.c3{width:138px;height:198px;top:44%;left:-26px;transform:rotate(-7deg);}
-.kindness-crystal.c4{width:94px;height:146px;bottom:48px;left:48px;transform:rotate(10deg);}
-.kindness-crystal.c5{width:188px;height:255px;top:18px;right:-30px;transform:rotate(11deg);}
-.kindness-crystal.c6{width:124px;height:176px;top:34%;right:55px;transform:rotate(-14deg);}
-.kindness-crystal.c7{width:150px;height:220px;bottom:-35px;right:8px;transform:rotate(4deg);}
-.kindness-crystal.c8{width:100px;height:150px;bottom:120px;right:140px;transform:rotate(-19deg);}
+.kindness-crystal{position:absolute;display:block;clip-path:polygon(50% 0,93% 28%,81% 100%,18% 92%,0 34%);
+background:linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,255,255,.16) 14%,currentColor 15%,rgba(0,0,0,.18) 82%);
+border:1px solid rgba(255,255,255,.34);box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 0 26px currentColor,0 0 56px rgba(0,0,0,.08);opacity:.92;}
+.kindness-crystal::before{content:"";position:absolute;inset:10% 62% 18% 14%;background:linear-gradient(180deg,rgba(255,255,255,.88),transparent);transform:skewX(-18deg);opacity:.8;}
+.kindness-crystal::after{content:"";position:absolute;left:0;right:0;bottom:0;height:38%;background:linear-gradient(180deg,transparent,rgba(0,0,0,.18));}
+.kindness-crystal.red{color:rgba(197,43,49,.92);} .kindness-crystal.red.pulse{animation:kindnessPulse 5s ease-in-out infinite;}
+.kindness-crystal.ice{color:rgba(139,224,255,.58);} .kindness-crystal.amber{color:rgba(221,154,80,.42);} .kindness-crystal.violet{color:rgba(166,138,255,.40);}
+.kindness-crystal.c1{width:220px;height:310px;top:24px;left:-28px;transform:rotate(-8deg);} 
+.kindness-crystal.c2{width:120px;height:170px;top:200px;left:118px;transform:rotate(16deg);} 
+.kindness-crystal.c3{width:160px;height:230px;top:54%;left:-26px;transform:rotate(-4deg);} 
+.kindness-crystal.c4{width:110px;height:150px;bottom:60px;left:52px;transform:rotate(12deg);} 
+.kindness-crystal.c5{width:230px;height:320px;top:18px;right:-30px;transform:rotate(10deg);} 
+.kindness-crystal.c6{width:132px;height:192px;top:36%;right:82px;transform:rotate(-14deg);} 
+.kindness-crystal.c7{width:174px;height:246px;bottom:-30px;right:8px;transform:rotate(6deg);} 
+.kindness-crystal.c8{width:106px;height:152px;bottom:116px;right:170px;transform:rotate(-18deg);} 
 .kindness-divider{display:flex;align-items:center;gap:11px;width:min(320px,84%);margin:.45rem 0 1rem;}
 .kindness-divider.centered{margin:0 auto 1rem;}
-.kindness-divider::before,.kindness-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(197,43,49,.58));}
+.kindness-divider::before,.kindness-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(197,43,49,.64));}
 .kindness-divider::after{transform:scaleX(-1);}
-.kindness-glyph{width:16px;height:16px;transform:rotate(45deg);background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(197,43,49,.85));border:1px solid rgba(255,255,255,.55);box-shadow:0 0 10px rgba(197,43,49,.5);}
-.deity-kindness .deity-hero{position:relative;overflow:hidden;}
-.deity-kindness .deity-hero::after{content:"";position:absolute;inset:auto 8% 6% auto;width:150px;height:150px;clip-path:polygon(50% 0,92% 32%,80% 100%,22% 92%,0 34%);background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(197,43,49,.16));filter:blur(.2px);opacity:.7;}
-.deity-kindness .deity-article section,.deity-kindness .deity-facts,.deity-kindness .deity-related{
-position:relative;overflow:hidden;border:1px solid rgba(197,43,49,.30);
-background:
-linear-gradient(180deg,rgba(197,43,49,.085),rgba(5,9,16,.07)),
-radial-gradient(circle at 100% 0,rgba(255,255,255,.05),transparent 35%);}
-.deity-kindness .deity-article h2,.deity-kindness .deity-facts h2,.deity-kindness .deity-related h2{color:var(--virtue-accent);}
-.deity-kindness .deity-article h2{position:relative;padding-bottom:.7rem;}
-.deity-kindness .deity-article h2::after{content:"";position:absolute;left:0;bottom:0;width:min(255px,60%);height:1px;background:linear-gradient(90deg,rgba(197,43,49,.66),transparent);}
-.deity-kindness .deity-article section::before{content:"";position:absolute;top:-1px;right:16px;width:58px;height:58px;clip-path:polygon(50% 0,92% 32%,80% 100%,22% 92%,0 34%);border:1px solid rgba(197,43,49,.18);background:linear-gradient(180deg,rgba(255,255,255,.12),transparent 50%);opacity:.55;}
-.deity-kindness .deity-article section::after{content:"";position:absolute;right:28px;bottom:18px;width:80px;height:1px;background:linear-gradient(90deg,rgba(147,216,255,.18),rgba(197,43,49,.46),transparent);}
-body.deity-kindness::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.17;background:linear-gradient(127deg,transparent 0 12%,rgba(197,43,49,.24) 12.2% 12.4%,transparent 12.6% 100%);}
-@keyframes kindnessPulse{0%,100%{filter:drop-shadow(0 0 0 rgba(197,43,49,0));opacity:.92;}50%{filter:drop-shadow(0 0 16px rgba(197,43,49,.68)) drop-shadow(0 0 28px rgba(197,43,49,.38));opacity:1;}}
+.kindness-glyph{width:16px;height:16px;transform:rotate(45deg);background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(197,43,49,.9));border:1px solid rgba(255,255,255,.55);box-shadow:0 0 10px rgba(197,43,49,.6);}
+.deity-kindness .deity-hero,.deity-kindness .deity-article section,.deity-kindness .deity-facts,.deity-kindness .deity-related{position:relative;overflow:hidden;}
+.deity-kindness .deity-hero{border-color:rgba(197,43,49,.3);} 
+.deity-kindness .deity-hero::before{content:"";position:absolute;left:-30px;bottom:-20px;width:180px;height:220px;clip-path:polygon(50% 0,93% 28%,81% 100%,18% 92%,0 34%);background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(197,43,49,.18));border:1px solid rgba(255,255,255,.16);opacity:.88;transform:rotate(8deg);} 
+.deity-kindness .deity-hero::after{content:"";position:absolute;right:26px;top:22px;width:120px;height:120px;clip-path:polygon(50% 0,93% 28%,81% 100%,18% 92%,0 34%);background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(197,43,49,.48));box-shadow:0 0 18px rgba(197,43,49,.34);opacity:.92;}
+.deity-kindness .deity-article section,.deity-kindness .deity-facts,.deity-kindness .deity-related{border:1px solid rgba(197,43,49,.32);background:linear-gradient(180deg,rgba(197,43,49,.10),rgba(5,9,16,.08)),radial-gradient(circle at 100% 0,rgba(255,255,255,.06),transparent 35%);} 
+.deity-kindness .deity-article h2,.deity-kindness .deity-facts h2,.deity-kindness .deity-related h2{color:var(--virtue-accent);} 
+.deity-kindness .deity-article h2{position:relative;padding-bottom:.7rem;} 
+.deity-kindness .deity-article h2::after{content:"";position:absolute;left:0;bottom:0;width:min(255px,60%);height:1px;background:linear-gradient(90deg,rgba(197,43,49,.7),transparent);} 
+.deity-kindness .deity-article section::before{content:"";position:absolute;right:-8px;top:-8px;width:82px;height:110px;clip-path:polygon(50% 0,93% 28%,81% 100%,18% 92%,0 34%);background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(197,43,49,.08));border:1px solid rgba(255,255,255,.1);opacity:.86;transform:rotate(11deg);} 
+.deity-kindness .deity-article section::after{content:"";position:absolute;left:16px;bottom:14px;width:88px;height:1px;background:linear-gradient(90deg,rgba(139,224,255,.18),rgba(197,43,49,.52),transparent);} 
+@keyframes kindnessPulse{0%,100%{filter:drop-shadow(0 0 0 rgba(197,43,49,0));opacity:.9;}50%{filter:drop-shadow(0 0 18px rgba(197,43,49,.75)) drop-shadow(0 0 40px rgba(197,43,49,.4));opacity:1;}}
 @media(max-width:820px){.kindness-crystal.c2,.kindness-crystal.c4,.kindness-crystal.c6,.kindness-crystal.c8{display:none;}}
-@media(max-width:650px){.kindness-page-decor{display:none;}}
+@media(max-width:650px){.kindness-page-decor{display:none;}.deity-kindness .deity-hero::before{display:none;}}
 
 </style></head><body class="deity-body deity-kindness">
+
 
 <div class="kindness-page-decor" aria-hidden="true">
   <span class="kindness-crystal red pulse c1"></span>
@@ -63,6 +59,7 @@ body.deity-kindness::after{content:'';position:fixed;inset:0;pointer-events:none
   <span class="kindness-crystal red c7"></span>
   <span class="kindness-crystal violet c8"></span>
 </div>
+
 
 <header class="site-header"><div class="nav-wrap">
 <a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>
