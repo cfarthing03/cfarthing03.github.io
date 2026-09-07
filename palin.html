@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Palin · City of Warriors · Sinners</title>
+<link rel="stylesheet" href="/styles.css">
+
+<style>
+body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
+.city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
+.city-copy{padding:26px 0}
+.city-back{display:inline-block;margin-bottom:12px;color:#c97f5f}
+.city-kicker{text-transform:uppercase;letter-spacing:.19em;color:#c7563c;font-size:.76rem}
+.city-copy h1{font-size:clamp(3rem,7vw,6rem);line-height:.92;margin:.15em 0;color:#f3ebdf}
+.city-title{font-size:1.2rem;color:#d9c9b9;margin-bottom:1rem}
+.city-lead{color:#bfb5aa;line-height:1.7;max-width:800px}
+.city-map-card{border:1px solid rgba(180,73,45,.25);background:rgba(7,10,15,.78);padding:8px}
+.city-map-card img{display:block;width:100%;height:auto}
+.city-layout{width:min(1180px,calc(100% - 32px));margin:0 auto 46px;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px;align-items:start}
+.city-article section,.city-aside section{margin-bottom:18px;padding:24px 26px;border:1px solid rgba(180,73,45,.22);background:linear-gradient(180deg,rgba(67,26,20,.10),rgba(5,9,16,.05))}
+.city-article h2,.city-aside h2{margin-top:0;color:#efe5d8}
+.city-article p{color:#c6bcb0;line-height:1.76}
+.city-fact{padding:11px 0;border-top:1px solid rgba(255,255,255,.06)}
+.city-fact:first-of-type{border-top:0}
+.city-fact-label{display:block;color:#c9553f;text-transform:uppercase;letter-spacing:.13em;font-size:.68rem}
+.city-fact-value{color:#eadfce}
+.city-links a{display:block;padding:8px 0;border-top:1px solid rgba(255,255,255,.06)}
+.city-links a:first-of-type{border-top:0}
+@media(max-width:850px){.city-hero,.city-layout{grid-template-columns:1fr}.city-map-card{max-width:420px}.city-copy{padding-bottom:0}}
+</style>
+
+</head>
+<body class="city-body city-palin">
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="/">SINNERS</a>
+    <button class="nav-toggle" type="button">Menu</button>
+    <nav class="main-nav">
+      <a href="/world.html">The World</a>
+      <a href="/gods.html">Gods &amp; Religion</a>
+      <a href="/history.html">History</a>
+      <a href="/people.html">People &amp; Legends</a>
+      <a href="/factions.html">Factions</a>
+      <a href="/creatures.html">Creatures</a>
+      <a href="/tales.html">Tales</a>
+    </nav>
+  </div>
+</header>
+<section class="city-hero">
+  <div class="city-copy">
+    <a class="city-back" href="/world.html">← The World</a>
+    <div class="city-kicker">The Continent of Sin</div>
+    <h1>Palin</h1>
+    <div class="city-title">City of Warriors</div>
+    <p class="city-lead">Wrath's desert city, where strength is public, combat is ritual, and citizenship is something many people literally fight to earn.</p>
+  </div>
+  <div class="city-map-card"><img src="/continent-of-sin-map.jpg" alt="Map of the Continent of Sin"></div>
+</section>
+<main class="city-layout">
+  <article class="city-article"><section><h2>The Colosseum</h2><p>Palin is organized around its enormous Colosseum. The arena is simultaneously a civic institution, religious space, training ground, entertainment venue, and place where disputes can be resolved.</p></section><section><h2>Citizenship Through Combat</h2><p>A person seeking full citizenship may be required to prove themselves in the arena. These fights are dangerous, but not usually intended to be fatal. Arena staff intervene when necessary, and surviving the test is meant to demonstrate resolve rather than suicidal recklessness.</p></section><section><h2>Wrath's Blessing</h2><p>Those who fight in Wrath's name while within Palin can be sustained without ordinary food or water. In a desert environment, that blessing shapes daily life as much as religion does.</p></section><section><h2>More Than Brutes</h2><p>Outsiders often assume Palin is populated by simple-minded fighters. In reality, the city is disciplined, structured, and politically sophisticated. Strength is respected, but so are control, judgment, and the ability to use force for a reason.</p></section><section><h2>Justice Through Strength</h2><p>Wrath's influence gives combat a moral dimension. Palin's ideal warrior is not someone who attacks the weak. It is someone strong enough to confront injustice and disciplined enough to know when force is actually necessary.</p></section></article>
+  <aside class="city-aside">
+    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">City of Warriors</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Wrath</span></div><div class="city-fact"><span class="city-fact-label">Central Landmark</span><span class="city-fact-value">The Colosseum</span></div><div class="city-fact"><span class="city-fact-label">Citizenship</span><span class="city-fact-value">Often earned through arena combat</span></div><div class="city-fact"><span class="city-fact-label">Divine Blessing</span><span class="city-fact-value">Fighting in Wrath's name provides sustenance</span></div></section>
+    <section class="city-links">
+      <h2>Keep Exploring</h2>
+      <a href="/world.html">The World Map</a>
+      <a href="/gods.html">Gods &amp; Religion</a>
+      <a href="/history.html">History</a>
+    </section>
+  </aside>
+</main>
+<footer>Sinners World Archive · Built as a player-facing lore guide</footer>
+<script src="/script.js"></script>
+</body>
+</html>

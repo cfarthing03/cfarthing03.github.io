@@ -1,61 +1,293 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The World · Sinners</title><link rel="stylesheet" href="/styles.css"><style>
-.archive-status{
-  position:relative;
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The World · Sinners</title>
+<link rel="stylesheet" href="/styles.css">
+<style>
+body.world-map-body {
+  background:#05080d;
   overflow:hidden;
-  padding:clamp(28px,4vw,46px);
-  border:1px solid rgba(154,105,54,.34);
-  background:linear-gradient(180deg,rgba(22,17,13,.34),rgba(6,9,14,.66));
-  box-shadow:inset 0 0 48px rgba(0,0,0,.22);
 }
-.archive-status::before{
-  content:"ARCHIVE NOTICE";
-  display:block;
-  margin-bottom:.8rem;
-  color:#b78342;
-  font-size:.72rem;
-  letter-spacing:.28em;
+.world-map-shell {
+  position:relative;
+  height:calc(100vh - 72px);
+  min-height:520px;
+  background:
+    radial-gradient(circle at 50% 45%,rgba(120,58,36,.07),transparent 38rem),
+    #05080d;
+}
+.world-toolbar {
+  position:absolute;
+  z-index:20;
+  top:18px;
+  left:18px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.world-toolbar button {
+  width:44px;
+  height:44px;
+  border:1px solid rgba(194,87,54,.36);
+  background:rgba(7,10,15,.86);
+  color:#f1e7d6;
+  font-size:1.15rem;
+  cursor:pointer;
+  border-radius:8px;
+}
+.world-toolbar button:hover { border-color:rgba(225,116,75,.65); }
+.world-title-card {
+  position:absolute;
+  z-index:20;
+  top:18px;
+  right:18px;
+  width:min(360px,calc(100% - 36px));
+  padding:16px 18px;
+  border:1px solid rgba(179,69,42,.30);
+  background:linear-gradient(180deg,rgba(16,10,12,.90),rgba(6,9,14,.88));
+  backdrop-filter:blur(8px);
+}
+.world-title-card .kicker {
+  color:#cf4e37;
   text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:.72rem;
 }
-.archive-status h2{margin-top:0;}
-.archive-status p:last-child{
-  margin-bottom:0;
-  color:rgba(231,220,201,.74);
-  font-style:italic;
+.world-title-card h1 {
+  margin:.2rem 0 .35rem;
+  color:#f2eadc;
+  font-size:2rem;
+}
+.world-title-card p { color:#c6bcad; margin:0; line-height:1.5; }
+.world-viewport {
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  touch-action:none;
+  cursor:grab;
+}
+.world-viewport.dragging { cursor:grabbing; }
+.world-stage {
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:min(1400px,95vw);
+  aspect-ratio: 1400 / 1050;
+  transform-origin:50% 50%;
+  will-change:transform;
+}
+.world-stage img {
+  width:100%;
+  height:100%;
+  display:block;
+  user-select:none;
+  -webkit-user-drag:none;
+  box-shadow:0 0 0 1px rgba(185,77,45,.18),0 0 50px rgba(0,0,0,.45);
+}
+.city-marker {
+  position:absolute;
+  transform:translate(-50%,-50%);
+  z-index:5;
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  border:2px solid rgba(255,245,230,.92);
+  background:var(--marker);
+  box-shadow:
+    0 0 0 5px rgba(6,9,14,.72),
+    0 0 0 6px color-mix(in srgb,var(--marker) 45%,transparent),
+    0 0 18px color-mix(in srgb,var(--marker) 60%,transparent);
+  cursor:pointer;
+}
+.city-marker::after {
+  content:"";
+  position:absolute;
+  inset:5px;
+  border-radius:50%;
+  background:#071016;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.15);
+}
+.city-tooltip {
+  position:absolute;
+  left:50%;
+  bottom:calc(100% + 14px);
+  transform:translateX(-50%) translateY(5px);
+  width:240px;
+  opacity:0;
+  pointer-events:none;
+  transition:.16s ease;
+  padding:11px 12px;
+  border:1px solid color-mix(in srgb,var(--marker) 42%,transparent);
+  background:rgba(8,10,14,.96);
+  color:#e8dece;
+  text-align:left;
+  box-shadow:0 10px 26px rgba(0,0,0,.30);
+}
+.city-tooltip strong { display:block; font-size:1.02rem; color:#fff5e6; }
+.city-tooltip em { display:block; color:var(--marker); margin:.15rem 0 .35rem; font-style:normal; }
+.city-tooltip span { display:block; color:#bfb5a6; font-size:.8rem; line-height:1.35; }
+.city-marker:hover .city-tooltip,
+.city-marker:focus-visible .city-tooltip,
+.city-marker.active .city-tooltip {
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+.world-hint {
+  position:absolute;
+  left:18px;
+  bottom:18px;
+  z-index:20;
+  padding:10px 12px;
+  border:1px solid rgba(170,75,49,.24);
+  background:rgba(6,9,14,.78);
+  color:#b8aea1;
+  font-size:.8rem;
+}
+@media(max-width:800px) {
+  .world-title-card {
+    top:auto;
+    bottom:18px;
+    right:18px;
+    max-width:280px;
+  }
+  .world-title-card h1 { font-size:1.45rem; }
+  .world-title-card p { display:none; }
+  .world-hint { display:none; }
+  .city-tooltip { width:205px; }
 }
 </style>
 </head>
-<body>
+<body class="world-map-body">
 <header class="site-header">
   <div class="nav-wrap">
     <a class="brand" href="/">SINNERS</a>
     <button class="nav-toggle" type="button">Menu</button>
     <nav class="main-nav">
       <a href="/world.html">The World</a>
-      <a href="/gods.html">Gods & Religion</a>
+      <a href="/gods.html">Gods &amp; Religion</a>
       <a href="/history.html">History</a>
-      <a href="/people.html">People & Legends</a>
+      <a href="/people.html">People &amp; Legends</a>
       <a href="/factions.html">Factions</a>
       <a href="/creatures.html">Creatures</a>
       <a href="/tales.html">Tales</a>
     </nav>
   </div>
 </header>
-
-<main class="article-shell">
-  <div class="breadcrumbs"><a href="/">Home</a> / The World</div>
-  <h1 class="article-title">The World</h1>
-  <p class="article-subtitle">Nations, cities, regions, landmarks, and the places that define everyday life.</p>
-  <section class="article archive-status">
-    <h2>World Archive Currently Being Catalogued</h2>
-    <p>The World Archive is currently being organized for public access. Records on cities, regions, landmarks, travel, cultures, and the smaller details that make the continent feel lived in are being gathered and sorted here.</p>
-    <p>The archive is open. Some shelves are simply still being filled.</p>
+<main class="world-map-shell">
+  <div class="world-toolbar" aria-label="Map controls">
+    <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
+    <button type="button" id="zoomOut" aria-label="Zoom out">−</button>
+    <button type="button" id="resetMap" aria-label="Reset map">⌂</button>
+  </div>
+  <section class="world-title-card">
+    <div class="kicker">The Continent of Sin</div>
+    <h1>The World</h1>
+    <p>Drag to explore, scroll or use the controls to zoom, and select a city marker to open its lore page.</p>
   </section>
+  <div class="world-viewport" id="worldViewport" aria-label="Interactive map of the Continent of Sin">
+    <div class="world-stage" id="worldStage">
+      <img src="/continent-of-sin-map.jpg" alt="Map of the Continent of Sin">
+      <button class="city-marker" type="button" style="left:26.0%;top:18.5%;--marker:#7fb4d6" data-href="/etro.html" aria-label="Etro, City of Dreams">
+          <span class="city-tooltip"><strong>Etro</strong><em>City of Dreams</em><span>A glittering city of performance and entertainment, where the Ratio Tower's twelve songs never truly stop.</span></span>
+        </button><button class="city-marker" type="button" style="left:61.0%;top:18.3%;--marker:#b58c5a" data-href="/hilnem.html" aria-label="Hilnem, Greed's Ever-Lasting Contract">
+          <span class="city-tooltip"><strong>Hilnem</strong><em>Greed's Ever-Lasting Contract</em><span>The continent's great commercial city, governed by contracts powerful enough to keep even treachery in check.</span></span>
+        </button><button class="city-marker" type="button" style="left:74.2%;top:31.0%;--marker:#d7c98f" data-href="/sol.html" aria-label="Sol, The Sleeping City">
+          <span class="city-tooltip"><strong>Sol</strong><em>The Sleeping City</em><span>A nocturnal city rebuilding from catastrophe, with old ruins now sharing space with advancing dwarven technology.</span></span>
+        </button><button class="city-marker" type="button" style="left:34.2%;top:39.5%;--marker:#68b791" data-href="/rushinghan.html" aria-label="Rushinghan, City of Lust">
+          <span class="city-tooltip"><strong>Rushinghan</strong><em>City of Lust</em><span>The jewel of the continent: art, love, worship, rebellion, and one of the grandest centers of culture anywhere.</span></span>
+        </button><button class="city-marker" type="button" style="left:52.4%;top:41.7%;--marker:#b49a72" data-href="/oro.html" aria-label="Oro, City of Innovation">
+          <span class="city-tooltip"><strong>Oro</strong><em>City of Innovation</em><span>Once the Dead Zone, now a technological powerhouse reached only by train or airship.</span></span>
+        </button><button class="city-marker" type="button" style="left:73.8%;top:63.0%;--marker:#8c5f48" data-href="/hus.html" aria-label="Hus, The One Stop Dinner">
+          <span class="city-tooltip"><strong>Hus</strong><em>The One Stop Dinner</em><span>The continent's densest city, where food is culture, power, religion—and crime is never far behind.</span></span>
+        </button><button class="city-marker" type="button" style="left:48.4%;top:78.0%;--marker:#cf8a4a" data-href="/palin.html" aria-label="Palin, City of Warriors">
+          <span class="city-tooltip"><strong>Palin</strong><em>City of Warriors</em><span>Wrath's desert city, built around the Colosseum, disciplined combat, justice, and earned citizenship.</span></span>
+        </button>
+    </div>
+  </div>
+  <div class="world-hint">Drag to pan · Scroll to zoom · Click a city marker to visit</div>
 </main>
-
-<footer>
-  Sinners World Archive · Built as a player-facing lore guide
-</footer>
 <script src="/script.js"></script>
-</body></html>
+<script>
+(() => {
+  const viewport = document.getElementById('worldViewport');
+  const stage = document.getElementById('worldStage');
+  const markers = [...document.querySelectorAll('.city-marker')];
+  let scale = 1;
+  let x = 0, y = 0;
+  let dragging = false;
+  let startX = 0, startY = 0, baseX = 0, baseY = 0;
+  const minScale = .72, maxScale = 3.6;
+
+  function apply() {
+    stage.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(${scale})`;
+  }
+
+  function zoomBy(delta, cx = viewport.clientWidth / 2, cy = viewport.clientHeight / 2) {
+    const old = scale;
+    scale = Math.min(maxScale, Math.max(minScale, scale * delta));
+    const ratio = scale / old;
+    x = (x - (cx - viewport.clientWidth / 2)) * ratio + (cx - viewport.clientWidth / 2);
+    y = (y - (cy - viewport.clientHeight / 2)) * ratio + (cy - viewport.clientHeight / 2);
+    apply();
+  }
+
+  viewport.addEventListener('wheel', e => {
+    e.preventDefault();
+    const r = viewport.getBoundingClientRect();
+    zoomBy(e.deltaY < 0 ? 1.12 : .89, e.clientX - r.left, e.clientY - r.top);
+  }, { passive:false });
+
+  viewport.addEventListener('pointerdown', e => {
+    if (e.target.closest('.city-marker')) return;
+    dragging = true;
+    viewport.classList.add('dragging');
+    viewport.setPointerCapture(e.pointerId);
+    startX = e.clientX; startY = e.clientY; baseX = x; baseY = y;
+  });
+
+  viewport.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    x = baseX + (e.clientX - startX);
+    y = baseY + (e.clientY - startY);
+    apply();
+  });
+
+  viewport.addEventListener('pointerup', e => {
+    dragging = false;
+    viewport.classList.remove('dragging');
+    try { viewport.releasePointerCapture(e.pointerId); } catch(_) {}
+  });
+  viewport.addEventListener('pointercancel', () => {
+    dragging = false; viewport.classList.remove('dragging');
+  });
+
+  document.getElementById('zoomIn').addEventListener('click', () => zoomBy(1.18));
+  document.getElementById('zoomOut').addEventListener('click', () => zoomBy(.85));
+  document.getElementById('resetMap').addEventListener('click', () => {
+    scale = 1; x = 0; y = 0; apply();
+  });
+
+  markers.forEach(m => {
+    let armed = false;
+    m.addEventListener('click', e => {
+      if (matchMedia('(hover:hover)').matches) {
+        location.href = m.dataset.href;
+        return;
+      }
+      if (!armed) {
+        markers.forEach(o => { o.classList.remove('active'); o._armed = false; });
+        m.classList.add('active'); armed = true; m._armed = true;
+        e.preventDefault();
+      } else {
+        location.href = m.dataset.href;
+      }
+    });
+  });
+  apply();
+})();
+</script>
+</body>
+</html>
