@@ -2,33 +2,67 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Diligence · The Seven Virtues · Sinners</title><link rel="stylesheet" href="/styles.css">
 <style>
-:root{--virtue-accent:#b88a55;}
+
+:root{--virtue-accent:#9b8060;--virtue-metal:#bdad91;--virtue-blood:#ac5d43;}
 body.deity-body.deity-diligence{position:relative;overflow-x:hidden;isolation:isolate;}
 body.deity-body.deity-diligence::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-background:radial-gradient(circle at 12% 22%,rgba(184,138,85,.07),transparent 25rem),
-radial-gradient(circle at 88% 68%,rgba(184,138,85,.05),transparent 27rem);}
+background:
+radial-gradient(circle at 14% 18%,rgba(155,128,96,.18),transparent 22rem),
+radial-gradient(circle at 88% 78%,rgba(172,93,67,.10),transparent 24rem);}
 body.deity-body.deity-diligence>*{position:relative;z-index:1;}
 .diligence-page-decor{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
-.diligence-ring{position:absolute;border:1px solid rgba(184,138,85,.10);border-radius:50%;}
-.diligence-ring.r1{width:420px;height:420px;top:150px;left:-220px;}
-.diligence-ring.r2{width:310px;height:310px;top:720px;right:-160px;opacity:.62;}
-.diligence-divider{display:flex;align-items:center;gap:11px;width:min(300px,84%);margin:.45rem 0 1rem;}
+.diligence-tool{position:absolute;font-size:64px;line-height:1;color:rgba(189,173,145,.17);text-shadow:0 0 10px rgba(0,0,0,.22),0 0 28px rgba(155,128,96,.12);transform:rotate(var(--rot));}
+.diligence-tool.t1{top:66px;left:32px;--rot:-18deg;}
+.diligence-tool.t2{top:210px;right:40px;--rot:12deg;}
+.diligence-tool.t3{top:48%;left:28px;--rot:10deg;}
+.diligence-tool.t4{bottom:88px;right:66px;--rot:-10deg;}
+.diligence-tool.t5{bottom:18px;left:120px;--rot:18deg;}
+.diligence-fang{position:absolute;width:38px;height:56px;clip-path:polygon(50% 100%,0 0,100% 0);background:linear-gradient(180deg,rgba(255,255,255,.46),rgba(189,173,145,.22) 22%,rgba(50,32,24,.84));box-shadow:0 0 0 1px rgba(189,173,145,.18) inset;}
+.diligence-fang.f1{top:112px;right:18%;transform:rotate(8deg);}
+.diligence-fang.f2{top:112px;right:calc(18% + 44px);transform:rotate(-6deg);}
+.diligence-fang.f3{bottom:86px;left:18%;transform:rotate(-8deg);}
+.diligence-fang.f4{bottom:86px;left:calc(18% + 42px);transform:rotate(8deg);}
+.diligence-divider{display:flex;align-items:center;gap:11px;width:min(320px,84%);margin:.45rem 0 1rem;}
 .diligence-divider.centered{margin:0 auto 1rem;}
-.diligence-divider::before,.diligence-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(184,138,85,.42));}
+.diligence-divider::before,.diligence-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(189,173,145,.48));}
 .diligence-divider::after{transform:scaleX(-1);}
-.diligence-glyph{width:14px;height:14px;border:1px solid rgba(184,138,85,.85);transform:rotate(45deg);}
+.diligence-glyph{position:relative;width:22px;height:14px;}
+.diligence-glyph::before,.diligence-glyph::after{content:"";position:absolute;bottom:0;width:9px;height:14px;clip-path:polygon(50% 100%,0 0,100% 0);background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(155,128,96,.92));}
+.diligence-glyph::before{left:0;transform:rotate(-4deg);}
+.diligence-glyph::after{right:0;transform:rotate(4deg);}
+.deity-diligence .deity-hero,.deity-diligence .deity-article section,.deity-diligence .deity-facts,.deity-diligence .deity-related{
+position:relative;overflow:hidden;}
 .deity-diligence .deity-article section,.deity-diligence .deity-facts,.deity-diligence .deity-related{
-position:relative;overflow:hidden;border-color:rgba(184,138,85,.28);
-background:linear-gradient(180deg,rgba(184,138,85,.055),rgba(5,9,16,.06));}
-.deity-diligence .deity-article h2{position:relative;padding-bottom:.65rem;color:var(--virtue-accent);}
-.deity-diligence .deity-article h2::after{content:"";position:absolute;left:0;bottom:0;width:min(255px,60%);height:1px;
-background:linear-gradient(90deg,rgba(184,138,85,.50),transparent);}
-.deity-diligence .deity-article section::after{content:"";position:absolute;right:18px;bottom:16px;width:26px;height:26px;
-border:1px solid rgba(184,138,85,.18);transform:rotate(45deg);}
-.deity-diligence .deity-article section::after{height:10px;border-width:2px 0;transform:skewX(-22deg);}
+border:1px solid rgba(155,128,96,.28);
+background:
+linear-gradient(180deg,rgba(155,128,96,.08),rgba(5,9,16,.05)),
+repeating-linear-gradient(135deg,transparent 0 18px,rgba(255,255,255,.012) 18px 19px,transparent 19px 36px);}
+.deity-diligence .deity-hero::after{content:"";position:absolute;right:6%;top:22px;font-size:72px;color:rgba(189,173,145,.12);text-shadow:0 0 18px rgba(0,0,0,.22);transform:rotate(8deg);content:"⚒";}
+.deity-diligence .deity-article h2,.deity-diligence .deity-facts h2,.deity-diligence .deity-related h2{color:var(--virtue-metal);}
+.deity-diligence .deity-article h2{position:relative;padding-bottom:.7rem;}
+.deity-diligence .deity-article h2::after{content:"";position:absolute;left:0;bottom:0;width:min(255px,60%);height:1px;background:linear-gradient(90deg,rgba(189,173,145,.56),transparent);}
+.deity-diligence .deity-article section::after{content:"";position:absolute;right:18px;bottom:14px;font-size:34px;opacity:.14;}
+.deity-diligence .deity-article section:nth-child(1)::after{content:"⛏";}
+.deity-diligence .deity-article section:nth-child(2)::after{content:"⚒";}
+.deity-diligence .deity-article section:nth-child(3)::after{content:"⚙";}
+.deity-diligence .deity-article section:nth-child(4)::after{content:"🪓";}
+@media(max-width:760px){.diligence-tool.t1,.diligence-tool.t3,.diligence-tool.t5{display:none;}}
 @media(max-width:650px){.diligence-page-decor{display:none;}}
+
 </style></head><body class="deity-body deity-diligence">
-<div class="diligence-page-decor" aria-hidden="true"><span class="diligence-ring r1"></span><span class="diligence-ring r2"></span></div>
+
+<div class="diligence-page-decor" aria-hidden="true">
+  <span class="diligence-tool t1">⚒</span>
+  <span class="diligence-tool t2">⛏</span>
+  <span class="diligence-tool t3">⚙</span>
+  <span class="diligence-tool t4">🪓</span>
+  <span class="diligence-tool t5">🔧</span>
+  <span class="diligence-fang f1"></span>
+  <span class="diligence-fang f2"></span>
+  <span class="diligence-fang f3"></span>
+  <span class="diligence-fang f4"></span>
+</div>
+
 <header class="site-header"><div class="nav-wrap">
 <a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>
 <nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a>

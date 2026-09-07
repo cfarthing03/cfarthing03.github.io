@@ -2,33 +2,69 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Humility · The Seven Virtues · Sinners</title><link rel="stylesheet" href="/styles.css">
 <style>
-:root{--virtue-accent:#c5a875;}
+
+:root{--virtue-accent:#8e938a;--virtue-steel:#c2c9bf;--virtue-magic1:#6ab2ff;--virtue-magic2:#b06eff;--virtue-magic3:#ff8c6d;--virtue-magic4:#6de0bc;}
 body.deity-body.deity-humility{position:relative;overflow-x:hidden;isolation:isolate;}
 body.deity-body.deity-humility::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-background:radial-gradient(circle at 12% 22%,rgba(197,168,117,.07),transparent 25rem),
-radial-gradient(circle at 88% 68%,rgba(197,168,117,.05),transparent 27rem);}
+background:
+radial-gradient(circle at 16% 18%,rgba(194,201,191,.08),transparent 18rem),
+radial-gradient(circle at 80% 76%,rgba(176,110,255,.08),transparent 22rem);}
 body.deity-body.deity-humility>*{position:relative;z-index:1;}
 .humility-page-decor{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
-.humility-ring{position:absolute;border:1px solid rgba(197,168,117,.10);border-radius:50%;}
-.humility-ring.r1{width:420px;height:420px;top:150px;left:-220px;}
-.humility-ring.r2{width:310px;height:310px;top:720px;right:-160px;opacity:.62;}
-.humility-divider{display:flex;align-items:center;gap:11px;width:min(300px,84%);margin:.45rem 0 1rem;}
+.humility-weapon{position:absolute;font-size:64px;line-height:1;color:rgba(194,201,191,.17);text-shadow:0 0 12px rgba(0,0,0,.24);transform:rotate(var(--rot));}
+.humility-weapon.w1{top:84px;left:36px;--rot:-16deg;}
+.humility-weapon.w2{top:220px;right:44px;--rot:14deg;}
+.humility-weapon.w3{bottom:110px;left:70px;--rot:8deg;}
+.humility-weapon.w4{bottom:44px;right:90px;--rot:-12deg;}
+.humility-burst{position:absolute;width:88px;height:88px;border-radius:50%;opacity:.22;filter:blur(.2px);}
+.humility-burst::before,.humility-burst::after{content:"";position:absolute;inset:0;border-radius:50%;}
+.humility-burst::before{background:radial-gradient(circle,rgba(255,255,255,.75),transparent 28%);}
+.humility-burst::after{background:conic-gradient(from 0deg,currentColor 0 12deg,transparent 12deg 24deg,currentColor 24deg 36deg,transparent 36deg 360deg);mask:radial-gradient(circle,transparent 0 22%,#000 22%);}
+.humility-burst.b1{top:140px;left:22%;color:rgba(106,178,255,.6);transform:rotate(12deg);}
+.humility-burst.b2{top:52%;right:18%;color:rgba(176,110,255,.66);transform:rotate(-16deg);}
+.humility-burst.b3{bottom:120px;left:36%;color:rgba(255,140,109,.54);transform:rotate(28deg);}
+.humility-burst.b4{bottom:34px;right:28%;color:rgba(109,224,188,.54);transform:rotate(-8deg);}
+.humility-divider{display:flex;align-items:center;gap:11px;width:min(320px,84%);margin:.45rem 0 1rem;}
 .humility-divider.centered{margin:0 auto 1rem;}
-.humility-divider::before,.humility-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(197,168,117,.42));}
+.humility-divider::before,.humility-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(194,201,191,.46));}
 .humility-divider::after{transform:scaleX(-1);}
-.humility-glyph{width:14px;height:14px;border:1px solid rgba(197,168,117,.85);transform:rotate(45deg);}
+.humility-glyph{position:relative;width:20px;height:20px;}
+.humility-glyph::before,.humility-glyph::after{content:"";position:absolute;left:50%;top:50%;transform-origin:center;background:rgba(194,201,191,.85);}
+.humility-glyph::before{width:18px;height:2px;transform:translate(-50%,-50%) rotate(36deg);}
+.humility-glyph::after{width:2px;height:18px;transform:translate(-50%,-50%) rotate(36deg);}
+.deity-humility .deity-hero,.deity-humility .deity-article section,.deity-humility .deity-facts,.deity-humility .deity-related{
+position:relative;overflow:hidden;}
 .deity-humility .deity-article section,.deity-humility .deity-facts,.deity-humility .deity-related{
-position:relative;overflow:hidden;border-color:rgba(197,168,117,.28);
-background:linear-gradient(180deg,rgba(197,168,117,.055),rgba(5,9,16,.06));}
-.deity-humility .deity-article h2{position:relative;padding-bottom:.65rem;color:var(--virtue-accent);}
-.deity-humility .deity-article h2::after{content:"";position:absolute;left:0;bottom:0;width:min(255px,60%);height:1px;
-background:linear-gradient(90deg,rgba(197,168,117,.50),transparent);}
-.deity-humility .deity-article section::after{content:"";position:absolute;right:18px;bottom:16px;width:26px;height:26px;
-border:1px solid rgba(197,168,117,.18);transform:rotate(45deg);}
-.deity-humility .deity-article section::after{border-radius:50% 50% 0 0;transform:none;border-bottom:0;height:14px;}
+border:1px solid rgba(142,147,138,.28);
+background:
+linear-gradient(180deg,rgba(142,147,138,.08),rgba(5,9,16,.06)),
+linear-gradient(130deg,rgba(106,178,255,.02),transparent 28%,rgba(176,110,255,.03) 45%,transparent 60%,rgba(255,140,109,.03) 82%,transparent 100%);
+}
+.deity-humility .deity-article h2,.deity-humility .deity-facts h2,.deity-humility .deity-related h2{color:var(--virtue-steel);}
+.deity-humility .deity-article h2{position:relative;padding-bottom:.7rem;}
+.deity-humility .deity-article h2::after{content:"";position:absolute;left:0;bottom:0;width:min(255px,60%);height:1px;background:linear-gradient(90deg,rgba(194,201,191,.56),transparent);}
+.deity-humility .deity-hero::before{content:"";position:absolute;right:6%;top:24px;width:150px;height:150px;background:
+linear-gradient(45deg,rgba(106,178,255,.06),transparent 38%),
+linear-gradient(-12deg,rgba(176,110,255,.08),transparent 42%),
+linear-gradient(70deg,rgba(255,140,109,.06),transparent 48%);border:1px solid rgba(194,201,191,.12);transform:rotate(9deg);}
+.deity-humility .deity-article section::before{content:"";position:absolute;right:18px;bottom:18px;width:72px;height:2px;background:linear-gradient(90deg,rgba(106,178,255,.48),rgba(176,110,255,.48),rgba(255,140,109,.48),rgba(109,224,188,.48));opacity:.5;transform:rotate(-8deg);}
+.deity-humility .deity-article section::after{content:"";position:absolute;left:18px;top:16px;width:24px;height:24px;border-top:2px solid rgba(194,201,191,.14);border-left:2px solid rgba(176,110,255,.18);transform:rotate(-12deg);}
+@media(max-width:760px){.humility-weapon.w1,.humility-weapon.w3,.humility-burst.b3,.humility-burst.b4{display:none;}}
 @media(max-width:650px){.humility-page-decor{display:none;}}
+
 </style></head><body class="deity-body deity-humility">
-<div class="humility-page-decor" aria-hidden="true"><span class="humility-ring r1"></span><span class="humility-ring r2"></span></div>
+
+<div class="humility-page-decor" aria-hidden="true">
+  <span class="humility-weapon w1">⚔</span>
+  <span class="humility-weapon w2">🪓</span>
+  <span class="humility-weapon w3">🏹</span>
+  <span class="humility-weapon w4">🛡</span>
+  <span class="humility-burst b1"></span>
+  <span class="humility-burst b2"></span>
+  <span class="humility-burst b3"></span>
+  <span class="humility-burst b4"></span>
+</div>
+
 <header class="site-header"><div class="nav-wrap">
 <a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>
 <nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a>

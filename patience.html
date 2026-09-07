@@ -2,33 +2,54 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Patience · The Seven Virtues · Sinners</title><link rel="stylesheet" href="/styles.css">
 <style>
-:root{--virtue-accent:#e8cc86;}
+
+:root{--virtue-accent:#d0c1a2;--virtue-iris:#bfb393;--virtue-pupil:#0d1018;}
 body.deity-body.deity-patience{position:relative;overflow-x:hidden;isolation:isolate;}
 body.deity-body.deity-patience::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-background:radial-gradient(circle at 12% 22%,rgba(232,204,134,.07),transparent 25rem),
-radial-gradient(circle at 88% 68%,rgba(232,204,134,.05),transparent 27rem);}
+background:
+radial-gradient(circle at 50% 28%,rgba(208,193,162,.10),transparent 22rem),
+radial-gradient(circle at 50% 85%,rgba(40,30,20,.18),transparent 28rem);}
 body.deity-body.deity-patience>*{position:relative;z-index:1;}
 .patience-page-decor{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
-.patience-ring{position:absolute;border:1px solid rgba(232,204,134,.10);border-radius:50%;}
-.patience-ring.r1{width:420px;height:420px;top:150px;left:-220px;}
-.patience-ring.r2{width:310px;height:310px;top:720px;right:-160px;opacity:.62;}
-.patience-divider{display:flex;align-items:center;gap:11px;width:min(300px,84%);margin:.45rem 0 1rem;}
+.patience-eye{position:absolute;left:50%;top:90px;transform:translateX(-50%);width:min(78vw,980px);height:min(42vw,520px);opacity:.24;filter:drop-shadow(0 0 22px rgba(208,193,162,.12));}
+.patience-eye::before{content:"";position:absolute;inset:0;border-radius:50% / 60%;
+background:
+radial-gradient(ellipse at 50% 50%,rgba(13,16,24,.96) 0 6%,rgba(191,179,147,.94) 6.4% 14%,rgba(110,96,70,.52) 14.2% 15.2%,rgba(255,255,255,.07) 15.4% 17%,transparent 17.2%),
+radial-gradient(ellipse at 50% 50%,transparent 0 60%,rgba(208,193,162,.22) 60.2% 61.4%,transparent 61.6% 100%),
+linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,0) 26%),
+linear-gradient(180deg,rgba(20,18,14,.08),rgba(20,18,14,.32));
+border:1px solid rgba(208,193,162,.20);}
+.patience-eye::after{content:"";position:absolute;left:18%;right:18%;top:24%;height:18%;border-radius:50%;background:linear-gradient(180deg,rgba(255,255,255,.24),transparent);filter:blur(2px);}
+.patience-lid{position:absolute;left:50%;top:102px;transform:translateX(-50%);width:min(82vw,1040px);height:min(44vw,560px);border-top:1px solid rgba(208,193,162,.13);border-bottom:1px solid rgba(208,193,162,.08);border-radius:50%/58%;opacity:.26;}
+.patience-divider{display:flex;align-items:center;gap:11px;width:min(320px,84%);margin:.45rem 0 1rem;}
 .patience-divider.centered{margin:0 auto 1rem;}
-.patience-divider::before,.patience-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(232,204,134,.42));}
+.patience-divider::before,.patience-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(208,193,162,.58));}
 .patience-divider::after{transform:scaleX(-1);}
-.patience-glyph{width:14px;height:14px;border:1px solid rgba(232,204,134,.85);transform:rotate(45deg);}
+.patience-glyph{position:relative;width:18px;height:18px;border-radius:50%;box-shadow:0 0 0 1px rgba(208,193,162,.6) inset;}
+.patience-glyph::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:50%;background:rgba(208,193,162,.68);}
+.deity-patience .deity-hero,.deity-patience .deity-article section,.deity-patience .deity-facts,.deity-patience .deity-related{
+position:relative;overflow:hidden;}
 .deity-patience .deity-article section,.deity-patience .deity-facts,.deity-patience .deity-related{
-position:relative;overflow:hidden;border-color:rgba(232,204,134,.28);
-background:linear-gradient(180deg,rgba(232,204,134,.055),rgba(5,9,16,.06));}
-.deity-patience .deity-article h2{position:relative;padding-bottom:.65rem;color:var(--virtue-accent);}
-.deity-patience .deity-article h2::after{content:"";position:absolute;left:0;bottom:0;width:min(255px,60%);height:1px;
-background:linear-gradient(90deg,rgba(232,204,134,.50),transparent);}
-.deity-patience .deity-article section::after{content:"";position:absolute;right:18px;bottom:16px;width:26px;height:26px;
-border:1px solid rgba(232,204,134,.18);transform:rotate(45deg);}
-.deity-patience .deity-article section::after{border-radius:50%;transform:none;box-shadow:0 0 0 5px rgba(232,204,134,.035),0 0 0 10px rgba(232,204,134,.018);}
+border:1px solid rgba(208,193,162,.28);
+background:
+linear-gradient(180deg,rgba(208,193,162,.07),rgba(5,9,16,.05)),
+radial-gradient(circle at 50% 0,rgba(255,255,255,.05),transparent 38%);}
+.deity-patience .deity-article h2,.deity-patience .deity-facts h2,.deity-patience .deity-related h2{color:var(--virtue-accent);}
+.deity-patience .deity-article h2{position:relative;padding-bottom:.7rem;}
+.deity-patience .deity-article h2::after{content:"";position:absolute;left:0;bottom:0;width:min(255px,60%);height:1px;background:linear-gradient(90deg,rgba(208,193,162,.58),transparent);}
+.deity-patience .deity-hero::before{content:"";position:absolute;inset:auto 0 18px 0;margin:auto;width:210px;height:1px;background:linear-gradient(90deg,transparent,rgba(208,193,162,.48),transparent);}
+.deity-patience .deity-article section::before{content:"";position:absolute;right:18px;top:18px;width:56px;height:28px;border:1px solid rgba(208,193,162,.14);border-radius:50%/58%;}
+.deity-patience .deity-article section::after{content:"";position:absolute;right:42px;top:28px;width:8px;height:8px;border-radius:50%;background:rgba(208,193,162,.26);}
+@media(max-width:760px){.patience-eye{top:120px;width:min(90vw,760px);height:min(50vw,360px);}}
 @media(max-width:650px){.patience-page-decor{display:none;}}
+
 </style></head><body class="deity-body deity-patience">
-<div class="patience-page-decor" aria-hidden="true"><span class="patience-ring r1"></span><span class="patience-ring r2"></span></div>
+
+<div class="patience-page-decor" aria-hidden="true">
+  <span class="patience-lid"></span>
+  <span class="patience-eye"></span>
+</div>
+
 <header class="site-header"><div class="nav-wrap">
 <a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>
 <nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a>

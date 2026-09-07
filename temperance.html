@@ -2,33 +2,78 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Temperance · The Seven Virtues · Sinners</title><link rel="stylesheet" href="/styles.css">
 <style>
-:root{--virtue-accent:#b99b6a;}
+
+:root{--virtue-accent:#b99b6a;--virtue-light:#e2cfaa;--virtue-dark:#5f4f35;}
 body.deity-body.deity-temperance{position:relative;overflow-x:hidden;isolation:isolate;}
 body.deity-body.deity-temperance::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-background:radial-gradient(circle at 12% 22%,rgba(185,155,106,.07),transparent 25rem),
-radial-gradient(circle at 88% 68%,rgba(185,155,106,.05),transparent 27rem);}
+background:
+radial-gradient(circle at 18% 18%,rgba(226,207,170,.10),transparent 20rem),
+radial-gradient(circle at 84% 68%,rgba(95,79,53,.18),transparent 22rem),
+linear-gradient(180deg,rgba(185,155,106,.04),transparent 24rem);}
 body.deity-body.deity-temperance>*{position:relative;z-index:1;}
 .temperance-page-decor{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
-.temperance-ring{position:absolute;border:1px solid rgba(185,155,106,.10);border-radius:50%;}
-.temperance-ring.r1{width:420px;height:420px;top:150px;left:-220px;}
-.temperance-ring.r2{width:310px;height:310px;top:720px;right:-160px;opacity:.62;}
-.temperance-divider{display:flex;align-items:center;gap:11px;width:min(300px,84%);margin:.45rem 0 1rem;}
+.temperance-eclipse{position:absolute;left:50%;top:110px;transform:translateX(-50%);width:380px;height:380px;border-radius:50%;
+background:
+radial-gradient(circle at 50% 50%,rgba(0,0,0,.84) 0 24%,rgba(226,207,170,.34) 24.4% 25.4%,rgba(0,0,0,0) 25.6% 31%,rgba(226,207,170,.18) 31.2% 31.8%,transparent 32%),
+radial-gradient(circle at 50% 50%,rgba(226,207,170,.04),transparent 64%);
+opacity:.42;filter:drop-shadow(0 0 24px rgba(226,207,170,.15));}
+.temperance-orbit{position:absolute;border:1px solid rgba(226,207,170,.18);border-radius:50%;}
+.temperance-orbit::after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:rgba(226,207,170,.62);box-shadow:0 0 12px rgba(226,207,170,.18);}
+.temperance-orbit.o1{width:500px;height:220px;left:50%;top:202px;transform:translateX(-50%) rotate(8deg);}
+.temperance-orbit.o1::after{right:72px;top:18px;}
+.temperance-orbit.o2{width:470px;height:180px;left:50%;top:222px;transform:translateX(-50%) rotate(-12deg);}
+.temperance-orbit.o2::after{left:58px;bottom:22px;}
+.temperance-scale{position:absolute;width:220px;height:190px;opacity:.24;}
+.temperance-scale::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:4px;height:116px;background:linear-gradient(180deg,rgba(226,207,170,.72),rgba(185,155,106,.05));}
+.temperance-scale .beam{position:absolute;left:50%;top:48px;transform:translateX(-50%);width:166px;height:2px;background:rgba(226,207,170,.55);}
+.temperance-scale .beam::before,.temperance-scale .beam::after{content:"";position:absolute;top:1px;width:2px;height:42px;background:rgba(226,207,170,.42);}
+.temperance-scale .beam::before{left:12px;}
+.temperance-scale .beam::after{right:12px;}
+.temperance-scale .pan{position:absolute;top:92px;width:60px;height:28px;border:1px solid rgba(226,207,170,.42);border-radius:0 0 48px 48px;}
+.temperance-scale .pan.left{left:0;}
+.temperance-scale .pan.right{right:0;}
+.temperance-scale.s1{left:26px;top:180px;transform:rotate(-8deg);}
+.temperance-scale.s2{right:12px;bottom:72px;transform:rotate(8deg);}
+.temperance-hourglass{position:absolute;right:42px;top:104px;width:112px;height:168px;opacity:.22;}
+.temperance-hourglass::before,.temperance-hourglass::after{content:"";position:absolute;left:50%;transform:translateX(-50%);width:78px;height:52px;border:1px solid rgba(226,207,170,.36);clip-path:polygon(0 0,100% 0,56% 100%,44% 100%);}
+.temperance-hourglass::before{top:0;}
+.temperance-hourglass::after{bottom:0;transform:translateX(-50%) rotate(180deg);}
+.temperance-hourglass .waist{position:absolute;left:50%;top:42px;transform:translateX(-50%);width:3px;height:84px;background:linear-gradient(180deg,rgba(226,207,170,.44),rgba(185,155,106,.15));}
+.temperance-hourglass .sand{position:absolute;left:50%;top:42px;transform:translateX(-50%);width:2px;height:84px;background:linear-gradient(180deg,transparent 0 28%,rgba(226,207,170,.46) 30% 48%,transparent 50% 100%);}
+.temperance-divider{display:flex;align-items:center;gap:11px;width:min(320px,84%);margin:.45rem 0 1rem;}
 .temperance-divider.centered{margin:0 auto 1rem;}
-.temperance-divider::before,.temperance-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(185,155,106,.42));}
+.temperance-divider::before,.temperance-divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(226,207,170,.52));}
 .temperance-divider::after{transform:scaleX(-1);}
-.temperance-glyph{width:14px;height:14px;border:1px solid rgba(185,155,106,.85);transform:rotate(45deg);}
+.temperance-glyph{position:relative;width:18px;height:18px;border-radius:50%;box-shadow:0 0 0 1px rgba(226,207,170,.62) inset;}
+.temperance-glyph::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:50%;background:rgba(226,207,170,.58);}
+.deity-temperance .deity-hero,.deity-temperance .deity-article section,.deity-temperance .deity-facts,.deity-temperance .deity-related{
+position:relative;overflow:hidden;}
 .deity-temperance .deity-article section,.deity-temperance .deity-facts,.deity-temperance .deity-related{
-position:relative;overflow:hidden;border-color:rgba(185,155,106,.28);
-background:linear-gradient(180deg,rgba(185,155,106,.055),rgba(5,9,16,.06));}
-.deity-temperance .deity-article h2{position:relative;padding-bottom:.65rem;color:var(--virtue-accent);}
-.deity-temperance .deity-article h2::after{content:"";position:absolute;left:0;bottom:0;width:min(255px,60%);height:1px;
-background:linear-gradient(90deg,rgba(185,155,106,.50),transparent);}
-.deity-temperance .deity-article section::after{content:"";position:absolute;right:18px;bottom:16px;width:26px;height:26px;
-border:1px solid rgba(185,155,106,.18);transform:rotate(45deg);}
-.deity-temperance .deity-article section::after{border-radius:50%;transform:none;box-shadow:inset 0 0 0 7px rgba(0,0,0,.55);}
+border:1px solid rgba(185,155,106,.28);
+background:
+linear-gradient(180deg,rgba(185,155,106,.08),rgba(5,9,16,.06)),
+radial-gradient(circle at 50% 0,rgba(226,207,170,.04),transparent 42%);}
+.deity-temperance .deity-article h2,.deity-temperance .deity-facts h2,.deity-temperance .deity-related h2{color:var(--virtue-light);}
+.deity-temperance .deity-article h2{position:relative;padding-bottom:.7rem;}
+.deity-temperance .deity-article h2::after{content:"";position:absolute;left:0;bottom:0;width:min(255px,60%);height:1px;background:linear-gradient(90deg,rgba(226,207,170,.58),transparent);}
+.deity-temperance .deity-article section::before{content:"";position:absolute;right:22px;top:18px;width:80px;height:80px;border-radius:50%;
+background:radial-gradient(circle at 50% 50%,rgba(0,0,0,.65) 0 28%,rgba(226,207,170,.22) 28.5% 29.8%,transparent 30%);
+opacity:.46;}
+.deity-temperance .deity-article section::after{content:"";position:absolute;left:18px;bottom:18px;width:120px;height:1px;background:linear-gradient(90deg,rgba(226,207,170,.38),transparent);}
+@media(max-width:780px){.temperance-eclipse{width:260px;height:260px;top:130px;}.temperance-scale.s2,.temperance-hourglass{display:none;}}
 @media(max-width:650px){.temperance-page-decor{display:none;}}
+
 </style></head><body class="deity-body deity-temperance">
-<div class="temperance-page-decor" aria-hidden="true"><span class="temperance-ring r1"></span><span class="temperance-ring r2"></span></div>
+
+<div class="temperance-page-decor" aria-hidden="true">
+  <span class="temperance-eclipse"></span>
+  <span class="temperance-orbit o1"></span>
+  <span class="temperance-orbit o2"></span>
+  <div class="temperance-scale s1"><span class="beam"></span><span class="pan left"></span><span class="pan right"></span></div>
+  <div class="temperance-scale s2"><span class="beam"></span><span class="pan left"></span><span class="pan right"></span></div>
+  <div class="temperance-hourglass"><span class="waist"></span><span class="sand"></span></div>
+</div>
+
 <header class="site-header"><div class="nav-wrap">
 <a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>
 <nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a>
