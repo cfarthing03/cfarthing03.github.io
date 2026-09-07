@@ -190,6 +190,37 @@ body.deity-body.deity-kindness > *:not(.kindness-page-decor){position:relative;z
   50%{filter:brightness(1.22) drop-shadow(0 0 20px rgba(255,70,88,.50)) drop-shadow(0 0 62px rgba(170,16,30,.36));opacity:1;}
 }
 
+
+
+/* V12 KINDNESS smooth crystal breathing */
+.deity-kindness .kindness-page-decor::before{animation:kindnessAmbientBreathV12 10s ease-in-out infinite !important;}
+.deity-kindness .s2,.deity-kindness .s7{animation:kindnessGlowSmoothRedV12 6.2s cubic-bezier(.42,0,.18,1) infinite !important;}
+.deity-kindness .s8{animation:kindnessGlowSmoothCoolV12 7.2s cubic-bezier(.42,0,.18,1) infinite !important;}
+.deity-kindness .s4{animation:kindnessGlowSmoothSoftV12 8.6s cubic-bezier(.42,0,.18,1) infinite !important;}
+.deity-kindness .s7{animation-delay:1.8s !important;}
+.deity-kindness .s8{animation-delay:.9s !important;}
+@keyframes kindnessAmbientBreathV12{
+  0%,100%{background:radial-gradient(circle at 14% 18%,rgba(210,52,60,.18),transparent 18rem),radial-gradient(circle at 86% 72%,rgba(210,52,60,.14),transparent 24rem);} 
+  50%{background:radial-gradient(circle at 14% 18%,rgba(255,78,88,.30),transparent 21rem),radial-gradient(circle at 86% 72%,rgba(255,78,88,.24),transparent 27rem);} }
+@keyframes kindnessGlowSmoothRedV12{
+  0%{filter:brightness(1.10) saturate(1.08) drop-shadow(0 0 14px rgba(214,30,42,.40)) drop-shadow(0 0 36px rgba(120,14,24,.18));box-shadow:0 0 0 1px rgba(255,255,255,.07) inset,0 0 38px rgba(190,24,36,.36),0 0 76px rgba(110,12,22,.20);opacity:.96;}
+  22%{filter:brightness(1.20) saturate(1.12) drop-shadow(0 0 18px rgba(230,52,66,.56)) drop-shadow(0 0 48px rgba(140,18,28,.26));box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 0 46px rgba(214,34,48,.48),0 0 88px rgba(126,16,26,.28);opacity:.985;}
+  42%{filter:brightness(1.38) saturate(1.18) drop-shadow(0 0 26px rgba(255,84,100,.84)) drop-shadow(0 0 72px rgba(192,24,38,.56));box-shadow:0 0 0 1px rgba(255,255,255,.10) inset,0 0 56px rgba(255,88,104,.72),0 0 110px rgba(170,18,32,.42);opacity:1;}
+  56%{filter:brightness(1.55) saturate(1.22) drop-shadow(0 0 30px rgba(255,92,108,.98)) drop-shadow(0 0 92px rgba(204,26,40,.74));box-shadow:0 0 0 1px rgba(255,255,255,.12) inset,0 0 66px rgba(255,98,114,.94),0 0 126px rgba(184,20,34,.56);opacity:1;}
+  72%{filter:brightness(1.34) saturate(1.16) drop-shadow(0 0 22px rgba(255,76,94,.72)) drop-shadow(0 0 64px rgba(184,22,36,.46));box-shadow:0 0 0 1px rgba(255,255,255,.10) inset,0 0 52px rgba(248,74,92,.62),0 0 104px rgba(156,18,30,.36);opacity:.995;}
+  100%{filter:brightness(1.10) saturate(1.08) drop-shadow(0 0 14px rgba(214,30,42,.40)) drop-shadow(0 0 36px rgba(120,14,24,.18));box-shadow:0 0 0 1px rgba(255,255,255,.07) inset,0 0 38px rgba(190,24,36,.36),0 0 76px rgba(110,12,22,.20);opacity:.96;}
+}
+@keyframes kindnessGlowSmoothCoolV12{
+  0%,100%{filter:brightness(1.08) saturate(1.05) drop-shadow(0 0 12px rgba(96,164,210,.28));box-shadow:0 0 0 1px rgba(255,255,255,.06) inset,0 0 26px rgba(96,164,210,.24),0 0 52px rgba(30,52,86,.12);opacity:.95;}
+  30%{filter:brightness(1.18) saturate(1.10) drop-shadow(0 0 16px rgba(132,204,236,.44)) drop-shadow(0 0 44px rgba(70,136,210,.24));box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 0 34px rgba(132,204,236,.42),0 0 68px rgba(70,136,210,.18);opacity:.98;}
+  55%{filter:brightness(1.34) saturate(1.18) drop-shadow(0 0 22px rgba(180,236,255,.90)) drop-shadow(0 0 76px rgba(88,156,230,.42));box-shadow:0 0 0 1px rgba(255,255,255,.10) inset,0 0 42px rgba(180,236,255,.76),0 0 96px rgba(88,156,230,.30);opacity:1;}
+  78%{filter:brightness(1.16) saturate(1.08) drop-shadow(0 0 15px rgba(140,214,244,.50)) drop-shadow(0 0 48px rgba(76,144,222,.22));box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 0 30px rgba(140,214,244,.48),0 0 72px rgba(76,144,222,.16);opacity:.98;}
+}
+@keyframes kindnessGlowSmoothSoftV12{
+  0%,100%{filter:brightness(1.05) drop-shadow(0 0 10px rgba(186,24,34,.18));opacity:.96;}
+  50%{filter:brightness(1.24) drop-shadow(0 0 18px rgba(255,78,96,.44)) drop-shadow(0 0 60px rgba(168,18,30,.28));opacity:1;}
+}
+
 </style></head><body class="deity-body deity-kindness">
 <div aria-hidden="true" class="kindness-page-decor">
 <span class="kshard red s1"></span>

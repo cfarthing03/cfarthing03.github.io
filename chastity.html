@@ -162,6 +162,19 @@ mask:radial-gradient(circle at 50% 28%, transparent 0 5%, #000 5.2%);}
 .deity-chastity .cw-corner.corner-b{right:-14px !important;bottom:-8px !important;transform:scaleX(-1) scaleY(-1) !important;}
 @media(max-width:760px){.deity-chastity .cw-main{width:min(126vw,960px) !important;height:min(126vw,960px) !important;left:50% !important;top:96px !important;opacity:.14 !important;}.deity-chastity .cw-corner{opacity:.08 !important;}}
 
+
+
+/* V12 CHASTITY new full-screen web */
+.deity-chastity .cw-main,.deity-chastity .cw-corner,.deity-chastity .cw-node{display:none !important;}
+.deity-chastity .cw-v12{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.92;mix-blend-mode:screen;}
+.deity-chastity .cw-v12 svg{width:100%;height:100%;display:block;overflow:visible;}
+.deity-chastity .cw-v12 .thread-heavy{stroke:rgba(202,212,255,.22);stroke-width:1.8;fill:none;stroke-linecap:round;}
+.deity-chastity .cw-v12 .thread{stroke:rgba(202,212,255,.18);stroke-width:1.2;fill:none;stroke-linecap:round;}
+.deity-chastity .cw-v12 .thread-fine{stroke:rgba(202,212,255,.10);stroke-width:.8;fill:none;stroke-linecap:round;}
+.deity-chastity .cw-v12 .ring{stroke:rgba(202,212,255,.12);stroke-width:1.1;fill:none;}
+.deity-chastity .cw-v12 .hub{stroke:rgba(214,220,255,.32);stroke-width:1.4;fill:rgba(214,220,255,.05);}
+@media(max-width:760px){.deity-chastity .cw-v12{opacity:.66;}}
+
 </style></head><body class="deity-body deity-chastity">
 <div aria-hidden="true" class="chastity-page-decor">
 <span class="cw-main"></span>
@@ -171,6 +184,28 @@ mask:radial-gradient(circle at 50% 28%, transparent 0 5%, #000 5.2%);}
 <span class="cw-node node-a"></span>
 <span class="cw-node node-b"></span>
 <span class="cw-node node-c"></span>
+<span class="cw-v12"><svg viewBox="0 0 1600 1100" preserveAspectRatio="none" aria-hidden="true">
+  <circle class="hub" cx="800" cy="92" r="36"></circle>
+  <path class="thread-heavy" d="M0 148 L545 148"></path>
+  <path class="thread-heavy" d="M1015 148 L1600 222"></path>
+  <path class="thread" d="M800 92 L98 1095"></path>
+  <path class="thread-heavy" d="M800 92 L800 1095"></path>
+  <path class="thread" d="M800 92 L1265 1095"></path>
+  <path class="thread" d="M800 92 L248 692"></path>
+  <path class="thread" d="M800 92 L1162 786"></path>
+  <path class="thread-fine" d="M800 92 L161 236"></path>
+  <path class="thread-fine" d="M800 92 L1408 360"></path>
+  <path class="thread-fine" d="M800 92 L600 320"></path>
+  <path class="thread-fine" d="M800 92 L975 365"></path>
+  <path class="ring" d="M212 150 C468 90, 1118 84, 1418 150"></path>
+  <path class="ring" d="M302 258 C500 188, 1065 180, 1326 260"></path>
+  <path class="ring" d="M418 392 C602 322, 1020 316, 1204 402"></path>
+  <path class="ring" d="M530 574 C702 508, 922 508, 1118 598"></path>
+  <path class="thread-fine" d="M72 176 L232 254"></path>
+  <path class="thread-fine" d="M1304 182 L1528 272"></path>
+  <path class="thread-fine" d="M0 1020 L176 982"></path>
+  <path class="thread-fine" d="M1404 998 L1600 972"></path>
+</svg></span>
 </div>
 <header class="site-header"><div class="nav-wrap">
 <a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button>

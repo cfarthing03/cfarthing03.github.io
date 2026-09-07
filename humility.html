@@ -177,6 +177,36 @@ body.deity-body.deity-humility > *:not(.humility-page-decor){position:relative;z
 .deity-humility .hcollage{right:240px;top:330px;width:86px;height:86px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(205,214,232,.01));border:1px solid rgba(205,214,232,.12);transform:rotate(12deg);opacity:.08;}
 @media(max-width:760px){.deity-humility .fe,.deity-humility .ra,.deity-humility .rb{display:none !important;}}
 
+
+
+/* V12 HUMILITY junk-drawer backdrop */
+.deity-humility .hfrag,.deity-humility .hrune,.deity-humility .hcollage,.deity-humility .hmark{display:none !important;}
+.deity-humility .humility-junk{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;mix-blend-mode:screen;}
+.deity-humility .humility-junk .piece{position:absolute;display:block;opacity:.12;border:1px solid rgba(205,214,232,.16);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(150,170,220,.02));box-shadow:0 0 0 1px rgba(255,255,255,.02) inset;}
+.deity-humility .humility-junk .line{border:none;background:rgba(205,214,232,.14);box-shadow:none;border-radius:999px;opacity:.10;}
+.deity-humility .humility-junk .ring{background:none;border-radius:50%;box-shadow:0 0 0 1px rgba(205,214,232,.14) inset,0 0 0 14px rgba(205,214,232,.035) inset;opacity:.09;}
+.deity-humility .humility-junk .j1{left:3%;top:16%;width:68px;height:162px;clip-path:polygon(52% 0,82% 18%,100% 70%,58% 100%,0 80%,12% 24%);transform:rotate(7deg);} 
+.deity-humility .humility-junk .j2{left:18%;top:6%;width:62px;height:92px;border-radius:6px;transform:rotate(-8deg);} 
+.deity-humility .humility-junk .j3{left:31%;top:24%;width:10px;height:172px;transform:rotate(16deg);} 
+.deity-humility .humility-junk .j4{left:47%;top:12%;width:122px;height:20px;transform:rotate(-13deg);} 
+.deity-humility .humility-junk .j5{left:63%;top:28%;width:64px;height:126px;clip-path:polygon(50% 0,100% 100%,0 100%);transform:rotate(10deg);} 
+.deity-humility .humility-junk .j6{right:6%;top:16%;width:110px;height:30px;border-radius:999px;transform:rotate(-17deg);} 
+.deity-humility .humility-junk .j7{left:7%;top:58%;width:88px;height:88px;} 
+.deity-humility .humility-junk .j8{left:15%;top:72%;width:18px;height:220px;transform:rotate(-22deg);} 
+.deity-humility .humility-junk .j9{left:23%;top:80%;width:72px;height:72px;clip-path:polygon(24% 0,76% 0,100% 22%,100% 78%,74% 100%,26% 100%,0 78%,0 22%);} 
+.deity-humility .humility-junk .j10{left:39%;top:62%;width:74px;height:116px;clip-path:polygon(50% 0,90% 22%,80% 100%,20% 100%,0 20%);transform:rotate(-11deg);} 
+.deity-humility .humility-junk .j11{left:54%;top:76%;width:146px;height:18px;transform:rotate(9deg);} 
+.deity-humility .humility-junk .j12{left:71%;top:64%;width:82px;height:82px;border-radius:18px;transform:rotate(12deg);} 
+.deity-humility .humility-junk .j13{right:11%;top:48%;width:132px;height:22px;transform:rotate(-18deg);} 
+.deity-humility .humility-junk .j14{right:4%;bottom:6%;width:126px;height:126px;} 
+.deity-humility .humility-junk .j15{right:21%;bottom:12%;width:98px;height:98px;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);transform:rotate(6deg);} 
+.deity-humility .humility-junk .j16{right:33%;top:10%;width:14px;height:144px;transform:rotate(-12deg);} 
+.deity-humility .humility-junk .j17{left:58%;top:44%;width:48px;height:48px;border-radius:50%;box-shadow:0 0 0 1px rgba(205,214,232,.16) inset,0 0 0 10px rgba(205,214,232,.03) inset;} 
+.deity-humility .humility-junk .j18{left:78%;top:83%;width:56px;height:132px;clip-path:polygon(50% 0,100% 100%,0 100%);transform:rotate(-7deg);} 
+.deity-humility .humility-junk .j19{left:42%;top:37%;width:94px;height:94px;border-radius:50%;box-shadow:0 0 0 1px rgba(205,214,232,.12) inset,0 0 0 12px rgba(205,214,232,.025) inset;background:none;opacity:.08;} 
+.deity-humility .humility-junk .j20{right:26%;top:34%;width:96px;height:68px;border-radius:8px;transform:rotate(-21deg);} 
+@media(max-width:760px){.deity-humility .humility-junk .j3,.deity-humility .humility-junk .j8,.deity-humility .humility-junk .j16,.deity-humility .humility-junk .j18{display:none;}}
+
 </style></head><body class="deity-body deity-humility">
 <div aria-hidden="true" class="humility-page-decor">
 <span class="hfrag sword fa"></span>
@@ -189,6 +219,11 @@ body.deity-body.deity-humility > *:not(.humility-page-decor){position:relative;z
 <span class="hrune rb"></span>
 <span class="hrune rc"></span>
 <div class="hcollage"><span class="rift r1"></span><span class="rift r2"></span><span class="rift r3"></span></div>
+<div class="humility-junk" aria-hidden="true">
+<span class="piece j1"></span><span class="piece j2"></span><span class="piece line j3"></span><span class="piece line j4"></span><span class="piece j5"></span><span class="piece line j6"></span>
+<span class="piece ring j7"></span><span class="piece line j8"></span><span class="piece j9"></span><span class="piece j10"></span><span class="piece line j11"></span><span class="piece j12"></span>
+<span class="piece line j13"></span><span class="piece ring j14"></span><span class="piece j15"></span><span class="piece line j16"></span><span class="piece j17"></span><span class="piece j18"></span><span class="piece j19"></span><span class="piece j20"></span>
+</div>
 </div>
 
 <header class="site-header"><div class="nav-wrap">
