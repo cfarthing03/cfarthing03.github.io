@@ -1,41 +1,36 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Hilnem · Greed's Ever-Lasting Contract · Sinners</title>
 <link rel="stylesheet" href="/styles.css">
-
 <style>
 body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
-body.city-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(circle at 18% 18%, rgba(141,55,35,.08), transparent 22rem),
-    radial-gradient(circle at 80% 78%, rgba(141,55,35,.05), transparent 24rem);
-}
-body.city-body > *{position:relative;z-index:1;}
-.city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
-.city-copy{padding:26px 0}
-.city-back{display:inline-block;margin-bottom:12px;color:#c97f5f}
-.city-kicker{text-transform:uppercase;letter-spacing:.19em;color:#c7563c;font-size:.76rem}
-.city-copy h1{font-size:clamp(3rem,7vw,6rem);line-height:.92;margin:.15em 0;color:#f3ebdf}
-.city-title{font-size:1.2rem;color:#d9c9b9;margin-bottom:1rem}
-.city-lead{color:#bfb5aa;line-height:1.7;max-width:800px}
-.city-map-card{border:1px solid rgba(180,73,45,.25);background:rgba(7,10,15,.78);padding:8px}
-.city-map-card img{display:block;width:100%;height:auto}
-.city-layout{width:min(1180px,calc(100% - 32px));margin:0 auto 46px;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px;align-items:start}
-.city-article section,.city-aside section{margin-bottom:18px;padding:24px 26px;border:1px solid rgba(180,73,45,.22);background:linear-gradient(180deg,rgba(67,26,20,.10),rgba(5,9,16,.05))}
+body.city-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+radial-gradient(circle at 15% 18%,rgba(141,55,35,.08),transparent 24rem),
+radial-gradient(circle at 85% 72%,rgba(141,55,35,.05),transparent 26rem);}
+body.city-body>*{position:relative;z-index:1}
+.city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:30px;align-items:start}
+.city-copy{padding:30px 0}
+.city-back{display:inline-block;margin-bottom:14px;color:#ca765a}
+.city-kicker{text-transform:uppercase;letter-spacing:.18em;color:#c65d40;font-size:.74rem}
+.city-copy h1{font-size:clamp(3.2rem,7vw,6.2rem);line-height:.9;margin:.14em 0;color:#f4ecdf}
+.city-title{font-size:1.2rem;color:#dcc9b8;margin-bottom:1rem}
+.city-subtitle{max-width:780px;color:#beb2a6;line-height:1.7}
+.city-map{padding:8px;border:1px solid rgba(180,73,45,.25);background:rgba(7,10,15,.8)}
+.city-map img{display:block;width:100%;height:auto}
+.city-layout{width:min(1180px,calc(100% - 32px));margin:0 auto 48px;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px;align-items:start}
+.city-article section,.city-aside section{position:relative;margin-bottom:18px;padding:24px 26px;border:1px solid rgba(180,73,45,.22);background:linear-gradient(180deg,rgba(67,26,20,.10),rgba(5,9,16,.05))}
 .city-article h2,.city-aside h2{margin-top:0;color:#efe5d8}
-.city-article p{color:#c6bcb0;line-height:1.76}
+.city-article h2{padding-bottom:.6rem;border-bottom:1px solid rgba(186,75,44,.22)}
+.city-article p{margin-bottom:0;color:#c7bdb1;line-height:1.78}
 .city-fact{padding:11px 0;border-top:1px solid rgba(255,255,255,.06)}
 .city-fact:first-of-type{border-top:0}
-.city-fact-label{display:block;color:#c9553f;text-transform:uppercase;letter-spacing:.13em;font-size:.68rem}
+.city-fact-label{display:block;color:#c9553f;text-transform:uppercase;letter-spacing:.13em;font-size:.67rem;margin-bottom:2px}
 .city-fact-value{color:#eadfce}
 .city-links a{display:block;padding:8px 0;border-top:1px solid rgba(255,255,255,.06)}
 .city-links a:first-of-type{border-top:0}
-@media(max-width:850px){.city-hero,.city-layout{grid-template-columns:1fr}.city-map-card{max-width:420px}.city-copy{padding-bottom:0}}
+@media(max-width:860px){.city-hero,.city-layout{grid-template-columns:1fr}.city-map{max-width:440px}.city-copy{padding-bottom:0}}
 </style>
-
 </head>
 <body class="city-body city-hilnem">
 <header class="site-header">
@@ -59,23 +54,19 @@ body.city-body > *{position:relative;z-index:1;}
     <div class="city-kicker">The Continent of Sin</div>
     <h1>Hilnem</h1>
     <div class="city-title">Greed's Ever-Lasting Contract</div>
-    <p class="city-lead">The continent's great commercial city, where almost every meaningful interaction can become binding.</p>
+    <p class="city-subtitle">The continent's great commercial center, protected and imprisoned by the same system of divine contracts.</p>
   </div>
-  <div class="city-map-card"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
+  <div class="city-map"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
 </section>
 <main class="city-layout">
-  <article class="city-article"><section><h2>A City Built on Contracts</h2><p>Hilnem's society revolves around Contract Magic. Merchants, businesses, institutions, and private citizens use formal agreements constantly.</p></section><section><h2>Entering Hilnem</h2><p>Entry itself is treated as acceptance of Hilnem's civic contract. Many buildings and services carry their own additional agreements.</p></section><section><h2>Greed in the Mortal Realm</h2><p>Greed has returned to the mortal realm and currently resides within Hilnem, making the city more intense than ever.</p></section></article>
+  <article class="city-article"><section><h2>A City Made of Agreements</h2><p>Hilnem is the commercial heart of the Continent of Sin. Merchants travel enormous distances to trade here because agreements in Hilnem are not merely promises. Contract Magic can bind terms with supernatural force, making fraud and betrayal significantly more dangerous than they are anywhere else.</p></section><section><h2>Contracts of Greed</h2><p>The most famous agreements are Contracts of Greed. Their power is tied to the old arrangement between Greed and Wrath: Greed provides the binding contract, while Wrath supplies the consequence. Breaking a valid Contract of Greed can turn a private dispute into a divine death sentence.</p></section><section><h2>The Contract You Sign by Entering</h2><p>Visitors agree to Hilnem's laws the moment they enter. The city itself functions like a contract, and individual buildings, businesses, services, and institutions may impose additional terms. Experienced travelers learn quickly to read what they are agreeing to before crossing a threshold.</p></section><section><h2>Safety Through Severity</h2><p>Hilnem is frequently described as one of the strictest cities on the continent, and not without reason. The same rules that irritate visitors also make many crimes remarkably difficult to sustain. A person can walk through Hilnem carrying extraordinary wealth with a level of confidence that would be suicidal in Hus.</p></section><section><h2>Greed's Return</h2><p>During the events surrounding the Revolution of Pride, Greed returned from the divine realm to the mortal world. He now resides in Hilnem and continues to provide Contracts of Greed while observing the city's development. Gods rarely live openly among mortals, making Hilnem one of the few places where divine authority is not an abstraction.</p></section><section><h2>Ambition Under Rules</h2><p>Hilnem does not discourage ambition. It encourages ambition with terms attached. Wealth, power, influence, and opportunity are everywhere, but so are consequences. The city's philosophy is simple: want as much as you like—just understand what you agreed to in order to get it.</p></section></article>
   <aside class="city-aside">
-    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">Greed's Ever-Lasting Contract</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Greed</span></div><div class="city-fact"><span class="city-fact-label">Major Practice</span><span class="city-fact-value">Contract Magic</span></div></section>
-    <section class="city-links">
-      <h2>Keep Exploring</h2>
-      <a href="/world.html">The World Map</a>
-      <a href="/gods.html">Gods &amp; Religion</a>
-      <a href="/history.html">History</a>
+    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Greed</span></div><div class="city-fact"><span class="city-fact-label">Major Practice</span><span class="city-fact-value">Contract Magic</span></div><div class="city-fact"><span class="city-fact-label">Primary Industry</span><span class="city-fact-value">Commerce</span></div><div class="city-fact"><span class="city-fact-label">Reputation</span><span class="city-fact-value">Extremely strict and unusually safe</span></div><div class="city-fact"><span class="city-fact-label">Current Divine Presence</span><span class="city-fact-value">Greed resides within the city</span></div></section>
+    <section class="city-links"><h2>Keep Exploring</h2>
+      <a href="/world.html">The World Map</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a>
     </section>
   </aside>
 </main>
 <footer>Sinners World Archive · Built as a player-facing lore guide</footer>
 <script src="/script.js"></script>
-</body>
-</html>
+</body></html>

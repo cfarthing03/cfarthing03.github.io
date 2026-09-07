@@ -1,41 +1,36 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Sol · The Sleeping City · Sinners</title>
 <link rel="stylesheet" href="/styles.css">
-
 <style>
 body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
-body.city-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(circle at 18% 18%, rgba(141,55,35,.08), transparent 22rem),
-    radial-gradient(circle at 80% 78%, rgba(141,55,35,.05), transparent 24rem);
-}
-body.city-body > *{position:relative;z-index:1;}
-.city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
-.city-copy{padding:26px 0}
-.city-back{display:inline-block;margin-bottom:12px;color:#c97f5f}
-.city-kicker{text-transform:uppercase;letter-spacing:.19em;color:#c7563c;font-size:.76rem}
-.city-copy h1{font-size:clamp(3rem,7vw,6rem);line-height:.92;margin:.15em 0;color:#f3ebdf}
-.city-title{font-size:1.2rem;color:#d9c9b9;margin-bottom:1rem}
-.city-lead{color:#bfb5aa;line-height:1.7;max-width:800px}
-.city-map-card{border:1px solid rgba(180,73,45,.25);background:rgba(7,10,15,.78);padding:8px}
-.city-map-card img{display:block;width:100%;height:auto}
-.city-layout{width:min(1180px,calc(100% - 32px));margin:0 auto 46px;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px;align-items:start}
-.city-article section,.city-aside section{margin-bottom:18px;padding:24px 26px;border:1px solid rgba(180,73,45,.22);background:linear-gradient(180deg,rgba(67,26,20,.10),rgba(5,9,16,.05))}
+body.city-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+radial-gradient(circle at 15% 18%,rgba(141,55,35,.08),transparent 24rem),
+radial-gradient(circle at 85% 72%,rgba(141,55,35,.05),transparent 26rem);}
+body.city-body>*{position:relative;z-index:1}
+.city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:30px;align-items:start}
+.city-copy{padding:30px 0}
+.city-back{display:inline-block;margin-bottom:14px;color:#ca765a}
+.city-kicker{text-transform:uppercase;letter-spacing:.18em;color:#c65d40;font-size:.74rem}
+.city-copy h1{font-size:clamp(3.2rem,7vw,6.2rem);line-height:.9;margin:.14em 0;color:#f4ecdf}
+.city-title{font-size:1.2rem;color:#dcc9b8;margin-bottom:1rem}
+.city-subtitle{max-width:780px;color:#beb2a6;line-height:1.7}
+.city-map{padding:8px;border:1px solid rgba(180,73,45,.25);background:rgba(7,10,15,.8)}
+.city-map img{display:block;width:100%;height:auto}
+.city-layout{width:min(1180px,calc(100% - 32px));margin:0 auto 48px;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px;align-items:start}
+.city-article section,.city-aside section{position:relative;margin-bottom:18px;padding:24px 26px;border:1px solid rgba(180,73,45,.22);background:linear-gradient(180deg,rgba(67,26,20,.10),rgba(5,9,16,.05))}
 .city-article h2,.city-aside h2{margin-top:0;color:#efe5d8}
-.city-article p{color:#c6bcb0;line-height:1.76}
+.city-article h2{padding-bottom:.6rem;border-bottom:1px solid rgba(186,75,44,.22)}
+.city-article p{margin-bottom:0;color:#c7bdb1;line-height:1.78}
 .city-fact{padding:11px 0;border-top:1px solid rgba(255,255,255,.06)}
 .city-fact:first-of-type{border-top:0}
-.city-fact-label{display:block;color:#c9553f;text-transform:uppercase;letter-spacing:.13em;font-size:.68rem}
+.city-fact-label{display:block;color:#c9553f;text-transform:uppercase;letter-spacing:.13em;font-size:.67rem;margin-bottom:2px}
 .city-fact-value{color:#eadfce}
 .city-links a{display:block;padding:8px 0;border-top:1px solid rgba(255,255,255,.06)}
 .city-links a:first-of-type{border-top:0}
-@media(max-width:850px){.city-hero,.city-layout{grid-template-columns:1fr}.city-map-card{max-width:420px}.city-copy{padding-bottom:0}}
+@media(max-width:860px){.city-hero,.city-layout{grid-template-columns:1fr}.city-map{max-width:440px}.city-copy{padding-bottom:0}}
 </style>
-
 </head>
 <body class="city-body city-sol">
 <header class="site-header">
@@ -59,23 +54,19 @@ body.city-body > *{position:relative;z-index:1;}
     <div class="city-kicker">The Continent of Sin</div>
     <h1>Sol</h1>
     <div class="city-title">The Sleeping City</div>
-    <p class="city-lead">A nocturnal city rebuilding itself from devastation while old Sloth traditions and new dwarven technology collide.</p>
+    <p class="city-subtitle">A nocturnal city recovering from annihilation while Sloth's old culture and new dwarven technology grow together.</p>
   </div>
-  <div class="city-map-card"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
+  <div class="city-map"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
 </section>
 <main class="city-layout">
-  <article class="city-article"><section><h2>Life After Sunset</h2><p>Sol's social rhythm is reversed. The city sleeps through much of the day and becomes active after dark.</p></section><section><h2>The Serpent</h2><p>A colossal serpent erupted from the heart of the city and claimed to act in Pride's name, devastating Sol before being petrified.</p></section><section><h2>Rebuilding</h2><p>Modern Sol is slowly being rebuilt, with dwarven-controlled districts introducing advanced technology.</p></section></article>
+  <article class="city-article"><section><h2>The Sleeping City</h2><p>Sol's daily rhythm is the reverse of most civilizations. Daylight is quiet. Doors close, streets empty, and much of the population sleeps. As the sun disappears, the city wakes.</p></section><section><h2>Nightlife as Daily Life</h2><p>Festivals, markets, gatherings, meals, parties, and ordinary work happen beneath the moon. Visitors often describe Sol as a city that never sleeps, which is technically the opposite of the truth. Sol sleeps plenty. It simply does so while everyone else is awake.</p></section><section><h2>A Culture of Rest</h2><p>Sloth's influence made recovery and rest part of civic philosophy. Sleep is not treated as laziness by default. Sol historically valued affection, comfort, companionship, and the belief that a person should not need to destroy themselves simply to prove they are useful.</p></section><section><h2>The Serpent of Pride</h2><p>Sol was nearly erased when a colossal serpent erupted from the city and declared itself an instrument of Pride. The creature devastated entire districts before the Pantheon stopped it and transformed it into stone. Its remains became a monument to the city's destruction.</p></section><section><h2>The Dwarven Presence</h2><p>After the catastrophe, dwarves established control over portions of the ruined city. Their technology is among the most advanced in the world and now shares space with Sol's older architecture and traditions. Only Oro rivals or exceeds what can be found in these districts.</p></section><section><h2>Rebuilding Sol</h2><p>Sol is no longer a dead city. Reconstruction continues slowly, neighborhood by neighborhood. Old residents are returning, new communities are forming, and the city is becoming something neither its pre-destruction inhabitants nor the dwarves could have predicted.</p></section></article>
   <aside class="city-aside">
-    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">The Sleeping City</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Sloth</span></div><div class="city-fact"><span class="city-fact-label">Current Development</span><span class="city-fact-value">Rebuilding with a dwarven presence</span></div></section>
-    <section class="city-links">
-      <h2>Keep Exploring</h2>
-      <a href="/world.html">The World Map</a>
-      <a href="/gods.html">Gods &amp; Religion</a>
-      <a href="/history.html">History</a>
+    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Sloth</span></div><div class="city-fact"><span class="city-fact-label">Daily Rhythm</span><span class="city-fact-value">Awake by night, sleeping by day</span></div><div class="city-fact"><span class="city-fact-label">Historic Disaster</span><span class="city-fact-value">The Serpent of Pride</span></div><div class="city-fact"><span class="city-fact-label">Current Status</span><span class="city-fact-value">Actively rebuilding</span></div><div class="city-fact"><span class="city-fact-label">Modern Influence</span><span class="city-fact-value">Dwarven-controlled districts</span></div></section>
+    <section class="city-links"><h2>Keep Exploring</h2>
+      <a href="/world.html">The World Map</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a>
     </section>
   </aside>
 </main>
 <footer>Sinners World Archive · Built as a player-facing lore guide</footer>
 <script src="/script.js"></script>
-</body>
-</html>
+</body></html>

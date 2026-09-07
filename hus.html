@@ -1,41 +1,36 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Hus · The One Stop Dinner · Sinners</title>
 <link rel="stylesheet" href="/styles.css">
-
 <style>
 body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
-body.city-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(circle at 18% 18%, rgba(141,55,35,.08), transparent 22rem),
-    radial-gradient(circle at 80% 78%, rgba(141,55,35,.05), transparent 24rem);
-}
-body.city-body > *{position:relative;z-index:1;}
-.city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
-.city-copy{padding:26px 0}
-.city-back{display:inline-block;margin-bottom:12px;color:#c97f5f}
-.city-kicker{text-transform:uppercase;letter-spacing:.19em;color:#c7563c;font-size:.76rem}
-.city-copy h1{font-size:clamp(3rem,7vw,6rem);line-height:.92;margin:.15em 0;color:#f3ebdf}
-.city-title{font-size:1.2rem;color:#d9c9b9;margin-bottom:1rem}
-.city-lead{color:#bfb5aa;line-height:1.7;max-width:800px}
-.city-map-card{border:1px solid rgba(180,73,45,.25);background:rgba(7,10,15,.78);padding:8px}
-.city-map-card img{display:block;width:100%;height:auto}
-.city-layout{width:min(1180px,calc(100% - 32px));margin:0 auto 46px;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px;align-items:start}
-.city-article section,.city-aside section{margin-bottom:18px;padding:24px 26px;border:1px solid rgba(180,73,45,.22);background:linear-gradient(180deg,rgba(67,26,20,.10),rgba(5,9,16,.05))}
+body.city-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+radial-gradient(circle at 15% 18%,rgba(141,55,35,.08),transparent 24rem),
+radial-gradient(circle at 85% 72%,rgba(141,55,35,.05),transparent 26rem);}
+body.city-body>*{position:relative;z-index:1}
+.city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:30px;align-items:start}
+.city-copy{padding:30px 0}
+.city-back{display:inline-block;margin-bottom:14px;color:#ca765a}
+.city-kicker{text-transform:uppercase;letter-spacing:.18em;color:#c65d40;font-size:.74rem}
+.city-copy h1{font-size:clamp(3.2rem,7vw,6.2rem);line-height:.9;margin:.14em 0;color:#f4ecdf}
+.city-title{font-size:1.2rem;color:#dcc9b8;margin-bottom:1rem}
+.city-subtitle{max-width:780px;color:#beb2a6;line-height:1.7}
+.city-map{padding:8px;border:1px solid rgba(180,73,45,.25);background:rgba(7,10,15,.8)}
+.city-map img{display:block;width:100%;height:auto}
+.city-layout{width:min(1180px,calc(100% - 32px));margin:0 auto 48px;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px;align-items:start}
+.city-article section,.city-aside section{position:relative;margin-bottom:18px;padding:24px 26px;border:1px solid rgba(180,73,45,.22);background:linear-gradient(180deg,rgba(67,26,20,.10),rgba(5,9,16,.05))}
 .city-article h2,.city-aside h2{margin-top:0;color:#efe5d8}
-.city-article p{color:#c6bcb0;line-height:1.76}
+.city-article h2{padding-bottom:.6rem;border-bottom:1px solid rgba(186,75,44,.22)}
+.city-article p{margin-bottom:0;color:#c7bdb1;line-height:1.78}
 .city-fact{padding:11px 0;border-top:1px solid rgba(255,255,255,.06)}
 .city-fact:first-of-type{border-top:0}
-.city-fact-label{display:block;color:#c9553f;text-transform:uppercase;letter-spacing:.13em;font-size:.68rem}
+.city-fact-label{display:block;color:#c9553f;text-transform:uppercase;letter-spacing:.13em;font-size:.67rem;margin-bottom:2px}
 .city-fact-value{color:#eadfce}
 .city-links a{display:block;padding:8px 0;border-top:1px solid rgba(255,255,255,.06)}
 .city-links a:first-of-type{border-top:0}
-@media(max-width:850px){.city-hero,.city-layout{grid-template-columns:1fr}.city-map-card{max-width:420px}.city-copy{padding-bottom:0}}
+@media(max-width:860px){.city-hero,.city-layout{grid-template-columns:1fr}.city-map{max-width:440px}.city-copy{padding-bottom:0}}
 </style>
-
 </head>
 <body class="city-body city-hus">
 <header class="site-header">
@@ -59,23 +54,19 @@ body.city-body > *{position:relative;z-index:1;}
     <div class="city-kicker">The Continent of Sin</div>
     <h1>Hus</h1>
     <div class="city-title">The One Stop Dinner</div>
-    <p class="city-lead">The largest concentration of people on the continent, held together by food, appetite, trade, and more crime than anyone likes to admit.</p>
+    <p class="city-subtitle">The continent's largest population center: culinary paradise above, crime capital below.</p>
   </div>
-  <div class="city-map-card"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
+  <div class="city-map"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
 </section>
 <main class="city-layout">
-  <article class="city-article"><section><h2>Food as a Way of Life</h2><p>In Hus, food is not simply a necessity. It is culture, status, religion, work, celebration, and political power.</p></section><section><h2>The Church and the Table</h2><p>The Church of Gluttony has historically taken an unusually direct interest in the city's food supply.</p></section><section><h2>Crime Capital</h2><p>The same density that makes Hus a culinary powerhouse also makes it the center of organized crime and drug activity.</p></section></article>
+  <article class="city-article"><section><h2>The One Stop Dinner</h2><p>Hus is the most densely populated city on the Continent of Sin, and food is the center of nearly everything. Meals are not treated as background necessities. They are entertainment, status, family tradition, business, religion, and civic identity.</p></section><section><h2>The Church of Gluttony</h2><p>Unlike many cities where a religious order remains partly separate from government, the Church of Gluttony has historically held enormous influence over Hus's food supply. Ingredient quality, distribution, preparation, and culinary standards are all considered matters worthy of religious oversight.</p></section><section><h2>A Standard of Excess</h2><p>The city's best kitchens are famous throughout the continent. Ingredients arrive from every region, and chefs compete to create food capable of drawing visitors across oceans. Gluttony's influence does not simply encourage eating more. It encourages experiencing more—better flavor, stranger ingredients, larger celebrations, and relentless culinary experimentation.</p></section><section><h2>When the Supply Failed</h2><p>Hus has already learned what happens when its food systems collapse. A crisis in Church leadership once caused disciples to abandon their posts, leaving an inexperienced successor struggling to keep food moving through the city. Shortages and prices escalated until the Pantheon and surviving Church leadership intervened.</p></section><section><h2>Crime Beneath the Markets</h2><p>Hus's population density and immense flow of goods make it perfect territory for organized crime. The city is widely regarded as the crime and drug capital of the world, and Life's Blood found a particularly strong market here. The same alleys that lead to extraordinary restaurants can lead just as easily to people selling things that should never have reached the street.</p></section><section><h2>Modern Hus</h2><p>Hus is rebuilding religious stability, but it has never stopped being Hus. The city remains crowded, loud, delicious, dangerous, and relentlessly hungry. There is almost nothing a person cannot find here if they know whom to ask—and almost nothing that does not come with a price.</p></section></article>
   <aside class="city-aside">
-    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">The One Stop Dinner</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Gluttony</span></div><div class="city-fact"><span class="city-fact-label">Population</span><span class="city-fact-value">Largest on the continent</span></div></section>
-    <section class="city-links">
-      <h2>Keep Exploring</h2>
-      <a href="/world.html">The World Map</a>
-      <a href="/gods.html">Gods &amp; Religion</a>
-      <a href="/history.html">History</a>
+    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Gluttony</span></div><div class="city-fact"><span class="city-fact-label">Population</span><span class="city-fact-value">Largest on the continent</span></div><div class="city-fact"><span class="city-fact-label">Cultural Focus</span><span class="city-fact-value">Food and culinary excellence</span></div><div class="city-fact"><span class="city-fact-label">Religious Influence</span><span class="city-fact-value">Church heavily involved in food supply</span></div><div class="city-fact"><span class="city-fact-label">Reputation</span><span class="city-fact-value">Crime and drug capital</span></div></section>
+    <section class="city-links"><h2>Keep Exploring</h2>
+      <a href="/world.html">The World Map</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a>
     </section>
   </aside>
 </main>
 <footer>Sinners World Archive · Built as a player-facing lore guide</footer>
 <script src="/script.js"></script>
-</body>
-</html>
+</body></html>

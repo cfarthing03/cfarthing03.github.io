@@ -1,41 +1,36 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rushinghan · City of Lust · Sinners</title>
 <link rel="stylesheet" href="/styles.css">
-
 <style>
 body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
-body.city-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(circle at 18% 18%, rgba(141,55,35,.08), transparent 22rem),
-    radial-gradient(circle at 80% 78%, rgba(141,55,35,.05), transparent 24rem);
-}
-body.city-body > *{position:relative;z-index:1;}
-.city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
-.city-copy{padding:26px 0}
-.city-back{display:inline-block;margin-bottom:12px;color:#c97f5f}
-.city-kicker{text-transform:uppercase;letter-spacing:.19em;color:#c7563c;font-size:.76rem}
-.city-copy h1{font-size:clamp(3rem,7vw,6rem);line-height:.92;margin:.15em 0;color:#f3ebdf}
-.city-title{font-size:1.2rem;color:#d9c9b9;margin-bottom:1rem}
-.city-lead{color:#bfb5aa;line-height:1.7;max-width:800px}
-.city-map-card{border:1px solid rgba(180,73,45,.25);background:rgba(7,10,15,.78);padding:8px}
-.city-map-card img{display:block;width:100%;height:auto}
-.city-layout{width:min(1180px,calc(100% - 32px));margin:0 auto 46px;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px;align-items:start}
-.city-article section,.city-aside section{margin-bottom:18px;padding:24px 26px;border:1px solid rgba(180,73,45,.22);background:linear-gradient(180deg,rgba(67,26,20,.10),rgba(5,9,16,.05))}
+body.city-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+radial-gradient(circle at 15% 18%,rgba(141,55,35,.08),transparent 24rem),
+radial-gradient(circle at 85% 72%,rgba(141,55,35,.05),transparent 26rem);}
+body.city-body>*{position:relative;z-index:1}
+.city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:30px;align-items:start}
+.city-copy{padding:30px 0}
+.city-back{display:inline-block;margin-bottom:14px;color:#ca765a}
+.city-kicker{text-transform:uppercase;letter-spacing:.18em;color:#c65d40;font-size:.74rem}
+.city-copy h1{font-size:clamp(3.2rem,7vw,6.2rem);line-height:.9;margin:.14em 0;color:#f4ecdf}
+.city-title{font-size:1.2rem;color:#dcc9b8;margin-bottom:1rem}
+.city-subtitle{max-width:780px;color:#beb2a6;line-height:1.7}
+.city-map{padding:8px;border:1px solid rgba(180,73,45,.25);background:rgba(7,10,15,.8)}
+.city-map img{display:block;width:100%;height:auto}
+.city-layout{width:min(1180px,calc(100% - 32px));margin:0 auto 48px;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px;align-items:start}
+.city-article section,.city-aside section{position:relative;margin-bottom:18px;padding:24px 26px;border:1px solid rgba(180,73,45,.22);background:linear-gradient(180deg,rgba(67,26,20,.10),rgba(5,9,16,.05))}
 .city-article h2,.city-aside h2{margin-top:0;color:#efe5d8}
-.city-article p{color:#c6bcb0;line-height:1.76}
+.city-article h2{padding-bottom:.6rem;border-bottom:1px solid rgba(186,75,44,.22)}
+.city-article p{margin-bottom:0;color:#c7bdb1;line-height:1.78}
 .city-fact{padding:11px 0;border-top:1px solid rgba(255,255,255,.06)}
 .city-fact:first-of-type{border-top:0}
-.city-fact-label{display:block;color:#c9553f;text-transform:uppercase;letter-spacing:.13em;font-size:.68rem}
+.city-fact-label{display:block;color:#c9553f;text-transform:uppercase;letter-spacing:.13em;font-size:.67rem;margin-bottom:2px}
 .city-fact-value{color:#eadfce}
 .city-links a{display:block;padding:8px 0;border-top:1px solid rgba(255,255,255,.06)}
 .city-links a:first-of-type{border-top:0}
-@media(max-width:850px){.city-hero,.city-layout{grid-template-columns:1fr}.city-map-card{max-width:420px}.city-copy{padding-bottom:0}}
+@media(max-width:860px){.city-hero,.city-layout{grid-template-columns:1fr}.city-map{max-width:440px}.city-copy{padding-bottom:0}}
 </style>
-
 </head>
 <body class="city-body city-rushinghan">
 <header class="site-header">
@@ -59,23 +54,19 @@ body.city-body > *{position:relative;z-index:1;}
     <div class="city-kicker">The Continent of Sin</div>
     <h1>Rushinghan</h1>
     <div class="city-title">City of Lust</div>
-    <p class="city-lead">The jewel of the Continent of Sin: a city of temples, art, relationships, rebellion, and people who care loudly.</p>
+    <p class="city-subtitle">The jewel of the continent: temples, art, relationships, rebellion, and a culture built around caring without apology.</p>
   </div>
-  <div class="city-map-card"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
+  <div class="city-map"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
 </section>
 <main class="city-layout">
-  <article class="city-article"><section><h2>The Jewel of the Continent</h2><p>Rushinghan is one of the continent's great cultural centers. Art, music, relationships, worship, nightlife, and public celebration are woven into daily life.</p></section><section><h2>Temples of Every Sin</h2><p>The city is famous for enormous temples dedicated to many gods, with Lust's temple remaining the most important.</p></section><section><h2>The Rebellion</h2><p>Rushinghan became one of the most important centers of resistance during the rebellion against Pride.</p></section></article>
+  <article class="city-article"><section><h2>The Jewel of the Continent</h2><p>Rushinghan is one of the largest cultural centers on the Continent of Sin. Its streets are defined by art, music, relationships, nightlife, religious celebration, and a willingness to care about things loudly rather than pretending detachment is sophistication.</p></section><section><h2>A City of Temples</h2><p>Rushinghan is unusual because its skyline contains major temples dedicated to many of the Sins, not only Lust. These structures are among the most elaborate churches on the continent. Even among them, Lust's great temple remains the city's religious centerpiece.</p></section><section><h2>The Passions</h2><p>Followers of Lust are commonly known as the Passions. Their religion emphasizes love in every form: romantic, familial, communal, artistic, platonic, and personal. Choice and consent are central to their theology, especially because Lust's own history includes the creation of the Rixel Virus.</p></section><section><h2>Love Beyond the City</h2><p>Passions frequently travel outside Rushinghan, spreading aid, kindness, affection, and their understanding of connection. That missionary work tends to look less like conversion and more like becoming involved in the lives of the communities they visit.</p></section><section><h2>The Rebellion Against Pride</h2><p>Rushinghan became the heart of resistance during the rebellion against Pride. Tess emerged as one of the city's most important figures and helped transform its emotional intensity into organized action. Rushinghan did not rebel because it stopped caring about the gods. It rebelled because its people cared enough to fight.</p></section><section><h2>Life in Rushinghan</h2><p>The city can be indulgent, extravagant, chaotic, and exhausting. It can also be extraordinarily warm. Rushinghan's deepest cultural assumption is that attachment is not weakness. If something matters to you, you are expected to admit it.</p></section></article>
   <aside class="city-aside">
-    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">City of Lust</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Lust</span></div><div class="city-fact"><span class="city-fact-label">Major Faith</span><span class="city-fact-value">The Passions</span></div></section>
-    <section class="city-links">
-      <h2>Keep Exploring</h2>
-      <a href="/world.html">The World Map</a>
-      <a href="/gods.html">Gods &amp; Religion</a>
-      <a href="/history.html">History</a>
+    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Lust</span></div><div class="city-fact"><span class="city-fact-label">Major Faith</span><span class="city-fact-value">The Passions</span></div><div class="city-fact"><span class="city-fact-label">Reputation</span><span class="city-fact-value">Jewel of the Continent of Sin</span></div><div class="city-fact"><span class="city-fact-label">Historic Role</span><span class="city-fact-value">Heart of the rebellion against Pride</span></div><div class="city-fact"><span class="city-fact-label">Cultural Focus</span><span class="city-fact-value">Love, art, connection, nightlife</span></div></section>
+    <section class="city-links"><h2>Keep Exploring</h2>
+      <a href="/world.html">The World Map</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a>
     </section>
   </aside>
 </main>
 <footer>Sinners World Archive · Built as a player-facing lore guide</footer>
 <script src="/script.js"></script>
-</body>
-</html>
+</body></html>

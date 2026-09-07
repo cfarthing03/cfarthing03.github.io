@@ -1,26 +1,13 @@
-Sinners Interactive World Map Pack V4
+Sinners Interactive World Map Pack V5
 =====================================
-
-This revision fixes the issues from V3:
-
-- Marker dots are moved above the place names instead of overlapping them.
-- Marker styling returns to the more decorative ringed look.
-- The Great Tree Village hover trigger is on the BASE of the Great Tree.
-- Hovering the base opens a larger, circular magical portal with a label.
-- The measurement tool now draws from the actual mouse position.
-- The measurement panel only appears when the ruler tool is active.
-- Browser image dragging is disabled so panning no longer tries to drag/save the map image.
-
-Files included:
-- world.html
-- etro.html
-- hilnem.html
-- hus.html
-- oro.html
-- palin.html
-- rushinghan.html
-- sol.html
-- the-isle.html
-- the-calamity.html
-- great-tree-village.html
-- continent-of-sin-map-large.jpg
+Changes:
+- Restored the full Sinners website navigation/header.
+- The map now fills almost the entire available page and the info panels overlay it instead of stealing width.
+- Initial zoom is intentionally larger; vertical overflow is pannable.
+- City markers were repositioned to the horizontal center of each printed city name and just above the text.
+- The Isle marker is centered on the island.
+- The Calamity marker is now centered in the large sea-carved hole southwest of Rushinghan.
+- Great Tree Village trigger is placed on the base/trunk of the Great Tree.
+- Great Tree secret now opens a tall layered Feywild-style portal with depth, internal color, rotating energy, glow and a label.
+- Measurement tool remains mouse-accurate.
+- Etro, Hilnem, Hus, Palin, Rushinghan, Sol and Oro pages now contain full lore rewrites rather than abbreviated placeholders.

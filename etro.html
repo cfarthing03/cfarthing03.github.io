@@ -1,41 +1,36 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Etro · City of Dreams · Sinners</title>
 <link rel="stylesheet" href="/styles.css">
-
 <style>
 body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
-body.city-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(circle at 18% 18%, rgba(141,55,35,.08), transparent 22rem),
-    radial-gradient(circle at 80% 78%, rgba(141,55,35,.05), transparent 24rem);
-}
-body.city-body > *{position:relative;z-index:1;}
-.city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
-.city-copy{padding:26px 0}
-.city-back{display:inline-block;margin-bottom:12px;color:#c97f5f}
-.city-kicker{text-transform:uppercase;letter-spacing:.19em;color:#c7563c;font-size:.76rem}
-.city-copy h1{font-size:clamp(3rem,7vw,6rem);line-height:.92;margin:.15em 0;color:#f3ebdf}
-.city-title{font-size:1.2rem;color:#d9c9b9;margin-bottom:1rem}
-.city-lead{color:#bfb5aa;line-height:1.7;max-width:800px}
-.city-map-card{border:1px solid rgba(180,73,45,.25);background:rgba(7,10,15,.78);padding:8px}
-.city-map-card img{display:block;width:100%;height:auto}
-.city-layout{width:min(1180px,calc(100% - 32px));margin:0 auto 46px;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px;align-items:start}
-.city-article section,.city-aside section{margin-bottom:18px;padding:24px 26px;border:1px solid rgba(180,73,45,.22);background:linear-gradient(180deg,rgba(67,26,20,.10),rgba(5,9,16,.05))}
+body.city-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+radial-gradient(circle at 15% 18%,rgba(141,55,35,.08),transparent 24rem),
+radial-gradient(circle at 85% 72%,rgba(141,55,35,.05),transparent 26rem);}
+body.city-body>*{position:relative;z-index:1}
+.city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:30px;align-items:start}
+.city-copy{padding:30px 0}
+.city-back{display:inline-block;margin-bottom:14px;color:#ca765a}
+.city-kicker{text-transform:uppercase;letter-spacing:.18em;color:#c65d40;font-size:.74rem}
+.city-copy h1{font-size:clamp(3.2rem,7vw,6.2rem);line-height:.9;margin:.14em 0;color:#f4ecdf}
+.city-title{font-size:1.2rem;color:#dcc9b8;margin-bottom:1rem}
+.city-subtitle{max-width:780px;color:#beb2a6;line-height:1.7}
+.city-map{padding:8px;border:1px solid rgba(180,73,45,.25);background:rgba(7,10,15,.8)}
+.city-map img{display:block;width:100%;height:auto}
+.city-layout{width:min(1180px,calc(100% - 32px));margin:0 auto 48px;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px;align-items:start}
+.city-article section,.city-aside section{position:relative;margin-bottom:18px;padding:24px 26px;border:1px solid rgba(180,73,45,.22);background:linear-gradient(180deg,rgba(67,26,20,.10),rgba(5,9,16,.05))}
 .city-article h2,.city-aside h2{margin-top:0;color:#efe5d8}
-.city-article p{color:#c6bcb0;line-height:1.76}
+.city-article h2{padding-bottom:.6rem;border-bottom:1px solid rgba(186,75,44,.22)}
+.city-article p{margin-bottom:0;color:#c7bdb1;line-height:1.78}
 .city-fact{padding:11px 0;border-top:1px solid rgba(255,255,255,.06)}
 .city-fact:first-of-type{border-top:0}
-.city-fact-label{display:block;color:#c9553f;text-transform:uppercase;letter-spacing:.13em;font-size:.68rem}
+.city-fact-label{display:block;color:#c9553f;text-transform:uppercase;letter-spacing:.13em;font-size:.67rem;margin-bottom:2px}
 .city-fact-value{color:#eadfce}
 .city-links a{display:block;padding:8px 0;border-top:1px solid rgba(255,255,255,.06)}
 .city-links a:first-of-type{border-top:0}
-@media(max-width:850px){.city-hero,.city-layout{grid-template-columns:1fr}.city-map-card{max-width:420px}.city-copy{padding-bottom:0}}
+@media(max-width:860px){.city-hero,.city-layout{grid-template-columns:1fr}.city-map{max-width:440px}.city-copy{padding-bottom:0}}
 </style>
-
 </head>
 <body class="city-body city-etro">
 <header class="site-header">
@@ -59,23 +54,19 @@ body.city-body > *{position:relative;z-index:1;}
     <div class="city-kicker">The Continent of Sin</div>
     <h1>Etro</h1>
     <div class="city-title">City of Dreams</div>
-    <p class="city-lead">A city of performance, spectacle, and carefully maintained fantasy—bright enough that its shadows are easy to miss.</p>
+    <p class="city-subtitle">Entertainment, illusion, music, and a criminal history hiding beneath a spotless surface.</p>
   </div>
-  <div class="city-map-card"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
+  <div class="city-map"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
 </section>
 <main class="city-layout">
-  <article class="city-article"><section><h2>A City Built on Performance</h2><p>Etro is geographically separated from most of the Continent of Sin, but culturally it has never been distant. Once associated directly with Envy, the city became one of the continent's great centers of entertainment, performance, and public spectacle.</p></section><section><h2>The Ratio Tower</h2><p>At the heart of Etro stands the Ratio Tower, an enormous radio structure that broadcasts the same twelve songs throughout the city. Residents are expected to carry their city pins, allowing the music to remain a constant part of daily life.</p></section><section><h2>The Underworld</h2><p>Beneath the spectacle is a serious criminal history. Etro was once deeply involved in the trade of Life's Blood, and its entertainment industry created opportunities for exploitation as easily as fame.</p></section></article>
+  <article class="city-article"><section><h2>The City of Dreams</h2><p>Etro sits apart from the rest of the Continent of Sin, but its isolation has never kept it from influencing the wider world. The city is built around entertainment, performance, spectacle, and the promise that anyone can step into a life more exciting than the one they arrived with. It was once closely associated with Envy, and that history still lingers in the way Etro encourages people to look at what others have, imagine something greater, and then become it.</p></section><section><h2>The Ratio Tower</h2><p>The Ratio Tower dominates both the skyline and the city's daily rhythm. Twelve songs are broadcast from the tower again and again, filling streets, businesses, homes, and public spaces. Citizens are expected to carry city-issued pins that keep them connected to the broadcast. Over time the music becomes so ordinary that many residents barely notice it, even as visitors immediately feel as though they have stepped into a musical already in progress.</p></section><section><h2>A City That Performs</h2><p>Etro's streets are exceptionally clean, its public spaces carefully maintained, and spontaneous entertainment is common. Dancing, theater, live music, public acts, and elaborate venues make the city one of the continent's most popular destinations. Residents often seem impossibly cheerful to outsiders. Whether that happiness is entirely natural, socially expected, or simply practiced well enough to become real depends on who you ask.</p></section><section><h2>The Life's Blood Trade</h2><p>Etro's brightness has always had a shadow. The city was once deeply connected to the trade of Life's Blood, an extraordinarily dangerous substance that attracted criminals, performers, and people desperate for an advantage. Fame and fortune were sometimes tied to brutal initiations and organizations that blurred entertainment, exploitation, and crime.</p></section><section><h2>Behind the Curtain</h2><p>Modern Etro remains a beautiful place, but its reputation is built on contradiction. It is genuinely joyful, genuinely artistic, and genuinely capable of making visitors feel like anything is possible. It is also a city that became very good at making ugly things look beautiful. Knowing which version of Etro you are seeing is part of surviving it.</p></section></article>
   <aside class="city-aside">
-    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Known As</span><span class="city-fact-value">City of Dreams</span></div><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Envy</span></div><div class="city-fact"><span class="city-fact-label">Landmark</span><span class="city-fact-value">Ratio Tower</span></div></section>
-    <section class="city-links">
-      <h2>Keep Exploring</h2>
-      <a href="/world.html">The World Map</a>
-      <a href="/gods.html">Gods &amp; Religion</a>
-      <a href="/history.html">History</a>
+    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Associated Sin</span><span class="city-fact-value">Envy</span></div><div class="city-fact"><span class="city-fact-label">Major Landmark</span><span class="city-fact-value">Ratio Tower</span></div><div class="city-fact"><span class="city-fact-label">Known For</span><span class="city-fact-value">Performance and entertainment</span></div><div class="city-fact"><span class="city-fact-label">Historic Underworld</span><span class="city-fact-value">Life's Blood trade</span></div><div class="city-fact"><span class="city-fact-label">Geography</span><span class="city-fact-value">Separated from the mainland</span></div></section>
+    <section class="city-links"><h2>Keep Exploring</h2>
+      <a href="/world.html">The World Map</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a>
     </section>
   </aside>
 </main>
 <footer>Sinners World Archive · Built as a player-facing lore guide</footer>
 <script src="/script.js"></script>
-</body>
-</html>
+</body></html>
