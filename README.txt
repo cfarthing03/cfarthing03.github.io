@@ -1,13 +1,11 @@
-Sinners Interactive World Map Pack V6
+Sinners Interactive World Map Pack V7
 =====================================
 
-Fine-placement pass only.
+Minor marker-placement update from V6:
 
-Adjusted the remaining city markers:
-- Etro: shifted slightly left
-- Hilnem: shifted slightly left
-- Rushinghan: shifted left and slightly upward
-- Hus: shifted slightly right and upward
+- Etro moved a tiny bit left and slightly down
+- Hilnem moved further left
+- Rushinghan moved down
+- Hus moved down
 
-Palin, Sol, Oro, The Isle, The Calamity, the Great Tree portal,
-measurement tool, navigation, city pages, and map behavior are unchanged from V5.
+All other files and features remain unchanged from V6.
