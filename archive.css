@@ -216,3 +216,22 @@ border:2px solid #9e7546;box-shadow:-12px 18px 45px rgba(0,0,0,.6);display:flex;
   .archive-body .book:hover .book-cover,.archive-body .book.open .book-cover{transform:rotateY(-178deg)!important;}
   .archive-body .barrel-row{margin-top:150px;}
 }
+
+/* V9 barrel layering fix: keep parchment physically inside the barrel opening. */
+.archive-body .barrel .scroll-bundle{
+  z-index:4;
+}
+.archive-body .barrel .barrel-rim{
+  z-index:10;
+}
+.archive-body .barrel .barrel-rim::after{
+  top:28px;
+  height:74px;
+  z-index:11;
+}
+.archive-body .barrel::before{
+  z-index:12;
+}
+.archive-body .barrel .barrel-label{
+  z-index:13;
+}
