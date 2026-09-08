@@ -362,6 +362,8 @@ body.world-map-body{
   .map-toolbar{left:28px;top:28px}
   .map-hint{display:none}
 }
+
+.oro-choice{position:absolute;left:53%;top:39.4%;transform:translate(-50%,24px) scale(.96);width:210px;padding:8px;border:1px solid rgba(180,192,218,.38);border-radius:12px;background:rgba(7,10,16,.96);box-shadow:0 18px 40px rgba(0,0,0,.46);opacity:0;visibility:hidden;pointer-events:none;transition:.18s ease;z-index:18}.oro-choice.visible{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,20px) scale(1)}.oro-choice a{display:block;text-decoration:none;color:#e8edf7;padding:9px 10px;border-radius:8px}.oro-choice a:hover{background:rgba(136,146,166,.18)}.oro-choice strong,.oro-choice span{display:block}.oro-choice span{font-size:.73rem;color:#aeb6c7;margin-top:2px}.oro-marker{z-index:19}
 </style>
 </head>
 <body class="world-map-body">
@@ -389,7 +391,7 @@ body.world-map-body{
 <button class="marker" style="left:61.0%;top:14.8%;--mcolor:#d7a56d" data-name="Hilnem" data-title="Greed's Ever-Lasting Contract" data-href="hilnem.html" aria-label="Hilnem, Greed's Ever-Lasting Contract"></button>
 <button class="marker" style="left:74.5%;top:27.6%;--mcolor:#e3d3a3" data-name="Sol" data-title="The Sleeping City" data-href="sol.html" aria-label="Sol, The Sleeping City"></button>
 <button class="marker" style="left:34.5%;top:36.2%;--mcolor:#6ec6aa" data-name="Rushinghan" data-title="The City of Lust" data-href="rushinghan.html" aria-label="Rushinghan, The City of Lust"></button>
-<button class="marker" style="left:53.0%;top:39.4%;--mcolor:#8892a6" data-name="Oro" data-title="The City of Innovation" data-href="oro.html" aria-label="Oro, The City of Innovation"></button>
+<button class="marker oro-marker" id="oroMarker" style="left:53.0%;top:39.4%;--mcolor:#8892a6" data-name="Oro" data-title="The City of Innovation" aria-label="Oro, The City of Innovation or The Ruins"></button><div class="oro-choice" id="oroChoice" aria-label="Choose Oro or The Ruins"><a href="/oro.html"><strong>Oro</strong><span>The City of Innovation</span></a><a href="/the-ruins.html"><strong>The Ruins</strong><span>What stood here before</span></a></div>
 <button class="marker" style="left:72.3%;top:61.3%;--mcolor:#8e7155" data-name="Hus" data-title="The One Stop Dinner" data-href="hus.html" aria-label="Hus, The One Stop Dinner"></button>
 <button class="marker" style="left:49.8%;top:77.2%;--mcolor:#dcab72" data-name="Palin" data-title="The City of Warriors" data-href="palin.html" aria-label="Palin, The City of Warriors"></button>
 <button class="marker" style="left:10.9%;top:39.2%;--mcolor:#7ab488" data-name="The Isle" data-title="Western Island" data-href="the-isle.html" aria-label="The Isle, Western Island"></button>
@@ -446,6 +448,8 @@ body.world-map-body{
   const measureTag=document.getElementById('measureTag');
   const measureMiles=document.getElementById('measureMiles');
   const measureKm=document.getElementById('measureKm');
+  const oroMarker=document.getElementById('oroMarker');
+  const oroChoice=document.getElementById('oroChoice');
 
   let scale=1, panX=0, panY=0;
   let minScale=.35, maxScale=3.5;
