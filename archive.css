@@ -26,16 +26,74 @@ body.archive-body{background:radial-gradient(circle at 50% -10%,rgba(111,86,48,.
 .book-page h3{font-family:Georgia,serif;margin:0 0 14px;font-size:1.35rem}
 .book-page a{color:#3b2717;text-decoration:none;display:block;padding:5px 0}
 .book-page a:hover{text-decoration:underline}
-.book-cover{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:left center;transform:rotateY(0deg);transition:transform .72s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease;border-radius:6px 18px 18px 6px;z-index:40;display:flex!important;opacity:1!important;visibility:visible!important;background:
+.book-cover{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:left center;transform:rotateY(0deg);transition:transform .72s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease;border-radius:6px 18px 18px 6px;z-index:4;background:
 linear-gradient(90deg,rgba(0,0,0,.42) 0 6%,rgba(255,255,255,.06) 6% 8%,transparent 8% 100%),
 linear-gradient(135deg,#2b1316,#6d3037 56%,#261015);
-border:2px solid #9e7546;box-shadow:-12px 18px 45px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;text-align:center;padding:25px;color:#f0dcae!important;font-family:Georgia,serif;font-size:1.65rem;backface-visibility:hidden}
+border:2px solid #9e7546;box-shadow:-12px 18px 45px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;text-align:center;padding:25px;color:#f0dcae;font-family:Georgia,serif;font-size:1.65rem}
 .book-cover:before{content:"";position:absolute;inset:17px;border:1px solid rgba(224,187,114,.5);border-radius:8px}
 .book-cover:after{content:"";position:absolute;right:-8px;top:8px;bottom:8px;width:14px;border-radius:0 14px 14px 0;background:repeating-linear-gradient(180deg,#e7d9b3 0 6px,#d8c79f 6px 12px);box-shadow:inset 2px 0 4px rgba(0,0,0,.12)}
 .book:hover .book-cover,.book:focus-within .book-cover,.book.open .book-cover{transform:rotateY(-168deg);pointer-events:none;box-shadow:-22px 22px 55px rgba(0,0,0,.65)}
 .campaign-link{margin-top:18px!important;padding:11px!important;border:1px solid rgba(59,39,23,.35);text-align:center;border-radius:8px}
 .book-note{font-size:.88rem;line-height:1.5;color:#463a2c}
-.book:not(:hover):not(.open) .book-cover{transform:rotateY(0deg)!important;opacity:1!important;visibility:visible!important;}
+
+/* V7 safety layer: preserve the V2 opening animation, guarantee a visible closed cover, and stop text reflow. */
+.tales-stage .book{isolation:isolate;}
+.tales-stage .book .book-spread{
+  width:540px;
+  left:50%;
+  right:auto;
+  top:15px;
+  bottom:10px;
+  transform:translateX(-50%) scaleX(.72);
+}
+.tales-stage .book:hover .book-spread,
+.tales-stage .book:focus-within .book-spread,
+.tales-stage .book.open .book-spread{
+  transform:translateX(-50%) scaleX(1);
+}
+/* Independent closed-cover face. It does not participate in the opening animation. */
+.tales-stage .book::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  border-radius:6px 18px 18px 6px;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.42) 0 6%,rgba(255,255,255,.06) 6% 8%,transparent 8% 100%),
+    linear-gradient(135deg,#2b1316,#6d3037 56%,#261015);
+  border:2px solid #9e7546;
+  box-shadow:-12px 18px 45px rgba(0,0,0,.6);
+  opacity:1;
+  visibility:visible;
+}
+.tales-stage .book::after{
+  position:absolute;
+  inset:17px;
+  z-index:5;
+  pointer-events:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:18px;
+  border:1px solid rgba(224,187,114,.5);
+  border-radius:8px;
+  color:#f0dcae;
+  font:1.65rem Georgia,serif;
+  opacity:1;
+  visibility:visible;
+}
+.tales-stage .book:nth-child(1)::after{content:"Tales of the Old Six";}
+.tales-stage .book:nth-child(2)::after{content:"Clockwork Resurgence";}
+.tales-stage .book:nth-child(3)::after{content:"Overgod's Revenge";}
+.tales-stage .book:nth-child(4)::after{content:"Echoes of the Velvet City";}
+.tales-stage .book:hover::before,.tales-stage .book:hover::after,
+.tales-stage .book:focus-within::before,.tales-stage .book:focus-within::after,
+.tales-stage .book.open::before,.tales-stage .book.open::after{
+  opacity:0;
+  visibility:hidden;
+}
 /* barrels and scrolls */
 .barrel-row{display:grid;grid-template-columns:repeat(2,minmax(280px,340px));justify-content:center;gap:90px;margin:72px auto 54px;max-width:920px;align-items:end}
 .barrel{border:0;width:330px;height:360px;position:relative;cursor:pointer;color:#f1d7a4;background:repeating-linear-gradient(90deg,#5a321b 0 34px,#7d4927 34px 38px,#6b3c20 38px 72px);border-radius:24% 24% 36% 36%/12% 12% 18% 18%;box-shadow:inset 18px 0 24px rgba(0,0,0,.28),inset -18px 0 24px rgba(0,0,0,.24),inset 0 -32px 24px rgba(0,0,0,.23),0 30px 60px rgba(0,0,0,.46);overflow:visible;transform:translateZ(0);transition:transform .22s ease,filter .22s ease}
