@@ -125,6 +125,12 @@ body.deity-body.deity-temperance > *:not(.temperance-page-decor){position:relati
 .deity-temperance .temperance-glyph{position:relative;width:18px !important;height:20px !important;border:none !important;border-radius:0 !important;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(185,155,106,.88)) !important;clip-path:polygon(22% 0,78% 0,60% 46%,78% 100%,22% 100%,40% 46%) !important;box-shadow:0 0 0 1px rgba(236,220,182,.38) inset,0 0 8px rgba(236,220,182,.08) !important;}
 .deity-temperance .temperance-glyph::before,.deity-temperance .temperance-glyph::after{display:none !important;content:none !important;}
 
+
+
+
+/* V10 portrait crop adjustment: keep layout the same, shift visible crop downward so heads are not cut off. */
+.deity-temperance .deity-portrait img { object-position: center 8% !important; }
+
 </style></head><body class="deity-body deity-temperance"><div aria-hidden="true" class="temperance-page-decor">
 <span class="taxis"></span>
 <span class="teclipse"></span>
