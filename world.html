@@ -451,6 +451,36 @@ body.world-map-body{
   const oroMarker=document.getElementById('oroMarker');
   const oroChoice=document.getElementById('oroChoice');
 
+  // Oro shares its map point with the ruins of Evorburn. Hovering or focusing
+  // the marker reveals a choice instead of immediately navigating away.
+  let oroHideTimer=null;
+  function showOroChoice(){
+    if(!oroChoice) return;
+    if(oroHideTimer){ clearTimeout(oroHideTimer); oroHideTimer=null; }
+    oroChoice.classList.add('visible');
+  }
+  function scheduleHideOroChoice(){
+    if(!oroChoice) return;
+    if(oroHideTimer) clearTimeout(oroHideTimer);
+    oroHideTimer=setTimeout(()=>oroChoice.classList.remove('visible'),180);
+  }
+  if(oroMarker && oroChoice){
+    oroMarker.addEventListener('mouseenter',showOroChoice);
+    oroMarker.addEventListener('mouseleave',scheduleHideOroChoice);
+    oroMarker.addEventListener('focus',showOroChoice);
+    oroMarker.addEventListener('blur',scheduleHideOroChoice);
+    oroMarker.addEventListener('click',e=>{
+      if(measureMode) return;
+      e.preventDefault();
+      e.stopPropagation();
+      oroChoice.classList.toggle('visible');
+    });
+    oroChoice.addEventListener('mouseenter',showOroChoice);
+    oroChoice.addEventListener('mouseleave',scheduleHideOroChoice);
+    oroChoice.addEventListener('focusin',showOroChoice);
+    oroChoice.addEventListener('focusout',scheduleHideOroChoice);
+  }
+
   let scale=1, panX=0, panY=0;
   let minScale=.35, maxScale=3.5;
 
