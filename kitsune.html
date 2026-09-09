@@ -19,17 +19,36 @@
 }
 .creature-portrait img{display:block;width:100%;height:auto;max-height:760px;object-fit:contain;filter:drop-shadow(0 20px 24px rgba(42,27,18,.18))}
 .eye-hotspot,.secret-mark{
-  position:absolute;left:57%;top:14%;transform:translate(-50%,-50%);
-  width:18%;height:10%;border:0;background:transparent;cursor:pointer;
+  position:absolute;border:0;background:transparent;cursor:pointer;padding:0;
 }
-.eye-hotspot{z-index:4}
-.secret-mark{display:none;z-index:5;color:#b10000;font-size:5rem;font-weight:900;line-height:1;background:none}
+.eye-hotspot{
+  z-index:4;
+  left:55.4%;
+  top:15.9%;
+  transform:translate(-50%,-50%);
+  width:17%;
+  height:9%;
+}
+.secret-mark{
+  display:none;
+  z-index:5;
+  left:55.2%;
+  top:15.6%;
+  transform:translate(-50%,-50%);
+  width:24%;
+  aspect-ratio:1/1;
+}
+.secret-mark img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;filter:drop-shadow(0 10px 14px rgba(100,0,0,.28))}
 .creature-portrait.secret-open .eye-hotspot{display:none}
-.creature-portrait.secret-open .secret-mark{display:flex;align-items:center;justify-content:center}
-.creature-note{margin-top:10px;color:#896754;font-size:.9rem;line-height:1.55}
+.creature-portrait.secret-open .secret-mark{display:block;animation:markReveal .28s ease-out both}
 .meta-pills{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 0}
 .meta-pills span{padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(193,77,47,.17);color:#dbcbbc}
-@media(max-width:920px){.creature-hero{grid-template-columns:1fr}.creature-portrait{min-height:auto}.secret-mark{font-size:4rem}}
+@keyframes markReveal{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.55) rotate(-14deg)}
+  70%{opacity:1;transform:translate(-50%,-50%) scale(1.08) rotate(2deg)}
+  100%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0deg)}
+}
+@media(max-width:920px){.creature-hero{grid-template-columns:1fr}.creature-portrait{min-height:auto}.eye-hotspot{left:55.1%;top:15.5%;width:17.5%;height:9.5%}.secret-mark{left:55.1%;top:15.5%;width:24.5%}}
 </style>
 </head>
 <body class="archive-body">
@@ -40,8 +59,7 @@
     <div class="creature-portrait" id="kitsunePortrait">
       <img src="/creature-kitsune.png" alt="Kitsune example illustration">
       <button class="eye-hotspot" id="kitsuneSecret" type="button" aria-label="Inspect the kitsune's eyes"></button>
-      <button class="secret-mark" id="kitsuneMark" type="button" aria-label="Follow the hidden record">✕</button>
-      <p class="creature-note">Field note: some readers scribble markings over the eyes in this portrait. Nobody agrees on why.</p>
+      <button class="secret-mark" id="kitsuneMark" type="button" aria-label="Follow the hidden record"><img src="/kitsune-eye-mark.png" alt=""></button>
     </div>
     <div>
       <div class="archive-kicker">Playable Creature</div>
@@ -81,7 +99,20 @@
   const firstClick = document.getElementById('kitsuneSecret');
   const secondClick = document.getElementById('kitsuneMark');
   if(!portrait || !firstClick || !secondClick) return;
-  firstClick.addEventListener('click', function(){ portrait.classList.add('secret-open'); });
+
+  const soundOne = new Audio('/kitsune-mark-appear-1.mp3');
+  const soundTwo = new Audio('/kitsune-mark-appear-2.mp3');
+  soundOne.volume = 0.14;
+  soundTwo.volume = 0.10;
+
+  firstClick.addEventListener('click', function(){
+    portrait.classList.add('secret-open');
+    soundOne.currentTime = 0;
+    soundTwo.currentTime = 0;
+    soundOne.play().catch(function(){});
+    setTimeout(function(){ soundTwo.play().catch(function(){}); }, 70);
+  }, { once:true });
+
   secondClick.addEventListener('click', function(){ window.location.href = '/yokai.html'; });
 })();
 </script>
