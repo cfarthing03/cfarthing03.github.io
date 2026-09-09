@@ -1,61 +1,168 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>History · Sinners</title><link rel="stylesheet" href="/styles.css"><style>
-.archive-status{
-  position:relative;
-  overflow:hidden;
-  padding:clamp(28px,4vw,46px);
-  border:1px solid rgba(154,105,54,.34);
-  background:linear-gradient(180deg,rgba(22,17,13,.34),rgba(6,9,14,.66));
-  box-shadow:inset 0 0 48px rgba(0,0,0,.22);
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>History · Sinners</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/archive.css">
+<style>
+.history-shell{
+  max-width:1280px;
+  margin:0 auto;
+  padding:34px 24px 72px;
 }
-.archive-status::before{
-  content:"ARCHIVE NOTICE";
-  display:block;
-  margin-bottom:.8rem;
-  color:#b78342;
-  font-size:.72rem;
-  letter-spacing:.28em;
+.history-intro{max-width:860px;margin-bottom:30px}
+.history-intro p{line-height:1.7}
+.museum-hall{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:26px;
+  align-items:stretch;
+}
+.painting-card,
+.placeholder-frame{
+  position:relative;
+  min-height:420px;
+  padding:18px;
+  border-radius:22px;
+  background:linear-gradient(180deg,rgba(9,12,19,.96),rgba(5,8,12,.98));
+  border:1px solid rgba(196,92,59,.25);
+  box-shadow:0 24px 48px rgba(0,0,0,.34), inset 0 0 0 1px rgba(255,255,255,.03);
+}
+.painting-card{text-decoration:none;color:inherit;display:flex;flex-direction:column}
+.painting-card:hover{transform:translateY(-4px);border-color:rgba(212,122,86,.45)}
+.painting-frame{
+  flex:1;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:280px;
+  padding:22px;
+  border-radius:16px;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(255,214,157,.18),transparent 45%),
+    linear-gradient(160deg,rgba(88,37,25,.55),rgba(28,20,18,.84));
+  border:10px solid #715237;
+  box-shadow:inset 0 0 0 2px rgba(240,213,167,.3), inset 0 0 32px rgba(0,0,0,.35);
+  overflow:hidden;
+}
+.painting-frame::before{
+  content:"";
+  position:absolute;
+  inset:12px;
+  border:1px solid rgba(247,223,185,.25);
+}
+.painting-art{
+  width:100%;
+  height:100%;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+  color:#f4eadb;
+  font-weight:600;
+  letter-spacing:.06em;
   text-transform:uppercase;
 }
-.archive-status h2{margin-top:0;}
-.archive-status p:last-child{
-  margin-bottom:0;
-  color:rgba(231,220,201,.74);
-  font-style:italic;
+.art-old-six{
+  background:
+    radial-gradient(circle at 50% 25%,rgba(211,82,49,.26),transparent 35%),
+    linear-gradient(180deg,rgba(88,24,20,.6),rgba(31,19,22,.92));
+}
+.art-first-sin{
+  background:
+    radial-gradient(circle at 50% 30%,rgba(223,171,88,.26),transparent 40%),
+    linear-gradient(180deg,rgba(71,45,25,.62),rgba(21,18,18,.94));
+}
+.art-71{
+  background:
+    radial-gradient(circle at 50% 25%,rgba(164,38,31,.35),transparent 38%),
+    linear-gradient(180deg,rgba(70,18,19,.7),rgba(20,13,16,.94));
+}
+.frame-title{margin:18px 2px 8px;font-size:1.55rem;color:#f5ecdf}
+.frame-blurb{margin:0;color:#cbbcae;line-height:1.65}
+.frame-note{
+  margin-top:14px;
+  color:#d56a49;
+  font-size:.86rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.placeholder-frame{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+  border-style:dashed;
+}
+.placeholder-frame .painting-frame{opacity:.6}
+.placeholder-frame .frame-title{font-size:1.35rem}
+.timeline-strip{
+  margin-top:30px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.timeline-pill{
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(196,92,59,.25);
+  color:#d9cbbb;
+  background:rgba(255,255,255,.02);
 }
 </style>
 </head>
-<body>
-<header class="site-header">
-  <div class="nav-wrap">
-    <a class="brand" href="/">SINNERS</a>
-    <button class="nav-toggle" type="button">Menu</button>
-    <nav class="main-nav">
-      <a href="/world.html">The World</a>
-      <a href="/gods.html">Gods & Religion</a>
-      <a href="/history.html">History</a>
-      <a href="/people.html">People & Legends</a>
-      <a href="/factions.html">Factions</a>
-      <a href="/creatures.html">Creatures</a>
-      <a href="/tales.html">Tales</a>
-    </nav>
-  </div>
-</header>
+<body class="archive-body">
+<header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header>
+<main class="history-shell">
+  <section class="history-intro">
+    <div class="archive-kicker">The Recorded Past</div>
+    <h1 class="archive-title">History</h1>
+    <p class="archive-lede">Step into a gallery of remembered moments. Each frame holds a story large enough to bend the world around it, whether it is a battle, a myth, or the first act that set everything else in motion.</p>
+    <div class="timeline-strip">
+      <span class="timeline-pill">Mythic origins</span>
+      <span class="timeline-pill">Great battles</span>
+      <span class="timeline-pill">Living records</span>
+      <span class="timeline-pill">Space for future exhibits</span>
+    </div>
+  </section>
 
-<main class="article-shell">
-  <div class="breadcrumbs"><a href="/">Home</a> / History</div>
-  <h1 class="article-title">History</h1>
-  <p class="article-subtitle">Wars, relics, disasters, ancient conflicts, and the events people refuse to let disappear.</p>
-  <section class="article archive-status">
-    <h2>Historical Records Under Review</h2>
-    <p>The historical archive is currently being prepared for public access. Wars, disasters, relics, forgotten eras, and the decisions that reshaped the world are being sorted into a record that can actually be trusted.</p>
-    <p>History matters here. Some records simply demand a little more care before they are placed on the shelf.</p>
+  <section class="museum-hall">
+    <a class="painting-card" href="/the-first-sin.html">
+      <div class="painting-frame"><div class="painting-art art-first-sin">The First Sin</div></div>
+      <h2 class="frame-title">The First Sin</h2>
+      <p class="frame-blurb">The old story of Pride, the forging of the relics, and the earliest spark that would one day awaken the Sins.</p>
+      <div class="frame-note">View exhibit</div>
+    </a>
+
+    <a class="painting-card" href="/battle-of-the-old-six.html">
+      <div class="painting-frame"><div class="painting-art art-old-six">Battle of the Old Six</div></div>
+      <h2 class="frame-title">Battle of the Old Six</h2>
+      <p class="frame-blurb">A battle remembered less as a clean historical record and more as a legend strong enough to survive every retelling.</p>
+      <div class="frame-note">View exhibit</div>
+    </a>
+
+    <a class="painting-card" href="/battle-of-71.html">
+      <div class="painting-frame"><div class="painting-art art-71">The Battle of 71</div></div>
+      <h2 class="frame-title">The Battle of 71</h2>
+      <p class="frame-blurb">Seventy-one challengers, a hill, a blood-red moon, and a warning that turned into a massacre.</p>
+      <div class="frame-note">View exhibit</div>
+    </a>
+
+    <div class="placeholder-frame">
+      <div class="painting-frame"><div class="painting-art">Awaiting the next record</div></div>
+      <h2 class="frame-title">Future Exhibit Space</h2>
+      <p class="frame-blurb">Not every turning point has been hung on the wall yet. This room is reserved for the next piece of history worth remembering.</p>
+      <div class="frame-note">More stories to come</div>
+    </div>
   </section>
 </main>
-
-<footer>
-  Sinners World Archive · Built as a player-facing lore guide
-</footer>
+<footer>Sinners World Archive · Built as a player-facing lore guide</footer>
 <script src="/script.js"></script>
-</body></html>
+<script src="/archive.js"></script>
+</body>
+</html>

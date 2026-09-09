@@ -1,61 +1,157 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Creatures & Phenomena · Sinners</title><link rel="stylesheet" href="/styles.css"><style>
-.archive-status{
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Creatures · Sinners</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/archive.css">
+<style>
+.creatures-shell{max-width:1320px;margin:0 auto;padding:34px 22px 80px}
+.creatures-lede{max-width:900px;margin-bottom:26px}
+.bestiary-book{
+  display:grid;
+  grid-template-columns:minmax(220px,290px) minmax(0,1fr);
+  gap:24px;
+  align-items:start;
+}
+.bestiary-tabs,.bestiary-page{
+  border-radius:24px;
+  border:1px solid rgba(145,102,60,.3);
+  box-shadow:0 26px 52px rgba(0,0,0,.36), inset 0 0 0 1px rgba(255,255,255,.02);
+}
+.bestiary-tabs{
+  background:linear-gradient(180deg,rgba(41,28,18,.98),rgba(20,15,11,.98));
+  padding:20px 18px;
+  position:sticky;
+  top:24px;
+}
+.bestiary-tabs h2{margin:4px 0 14px;color:#f2e7d7;font-size:1.4rem}
+.bestiary-menu{display:grid;gap:12px}
+.bestiary-menu a,.locked-entry{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 16px;border-radius:14px;text-decoration:none;
+  color:#eadbca;background:rgba(255,255,255,.03);border:1px solid rgba(195,145,85,.16);
+}
+.bestiary-menu a:hover{transform:translateX(4px);border-color:rgba(211,159,93,.4)}
+.locked-entry{opacity:.55;font-style:italic}
+.bestiary-small{margin-top:18px;color:#baa792;line-height:1.65;font-size:.94rem}
+.bestiary-page{
+  background:
+    linear-gradient(90deg,rgba(78,55,34,.28),transparent 20%,transparent 80%,rgba(78,55,34,.22)),
+    linear-gradient(180deg,#e3d4bb,#cfbb9d 18%,#c9b390 100%);
+  padding:28px;
+}
+.page-spread{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;
+}
+.entry-sheet{
   position:relative;
+  min-height:620px;
+  padding:20px 20px 24px;
+  border-radius:18px;
+  background:rgba(247,240,229,.72);
+  border:1px solid rgba(103,73,45,.16);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.35), 0 14px 26px rgba(96,70,47,.12);
   overflow:hidden;
-  padding:clamp(28px,4vw,46px);
-  border:1px solid rgba(154,105,54,.34);
-  background:linear-gradient(180deg,rgba(22,17,13,.34),rgba(6,9,14,.66));
-  box-shadow:inset 0 0 48px rgba(0,0,0,.22);
+  text-decoration:none;
 }
-.archive-status::before{
-  content:"ARCHIVE NOTICE";
-  display:block;
-  margin-bottom:.8rem;
-  color:#b78342;
-  font-size:.72rem;
-  letter-spacing:.28em;
+.entry-sheet:hover{transform:translateY(-5px)}
+.entry-sheet h2{margin:10px 0 10px;color:#2a1d16;font-size:1.75rem}
+.entry-sheet p{margin:0;color:#4f4035;line-height:1.68}
+.entry-tag{
+  display:inline-block;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(54,35,22,.08);
+  color:#6b523f;
+  font-size:.78rem;
   text-transform:uppercase;
+  letter-spacing:.12em;
 }
-.archive-status h2{margin-top:0;}
-.archive-status p:last-child{
-  margin-bottom:0;
-  color:rgba(231,220,201,.74);
-  font-style:italic;
+.entry-art{
+  position:relative;
+  height:380px;
+  margin:6px 0 6px;
+}
+.entry-art img{
+  position:absolute;
+  left:50%;bottom:-4px;
+  transform:translateX(-50%);
+  width:auto;
+  height:100%;
+  max-width:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 18px 20px rgba(33,20,12,.18));
+}
+.entry-footer{
+  margin-top:16px;
+  color:#8c5c3d;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:.82rem;
+}
+@media(max-width:900px){
+  .bestiary-book{grid-template-columns:1fr}
+  .bestiary-tabs{position:static}
 }
 </style>
 </head>
-<body>
-<header class="site-header">
-  <div class="nav-wrap">
-    <a class="brand" href="/">SINNERS</a>
-    <button class="nav-toggle" type="button">Menu</button>
-    <nav class="main-nav">
-      <a href="/world.html">The World</a>
-      <a href="/gods.html">Gods & Religion</a>
-      <a href="/history.html">History</a>
-      <a href="/people.html">People & Legends</a>
-      <a href="/factions.html">Factions</a>
-      <a href="/creatures.html">Creatures</a>
-      <a href="/tales.html">Tales</a>
-    </nav>
-  </div>
-</header>
+<body class="archive-body">
+<header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header>
+<main class="creatures-shell">
+  <section class="creatures-lede">
+    <div class="archive-kicker">Bestiary and Lineages</div>
+    <h1 class="archive-title">Creatures</h1>
+    <p class="archive-lede">This bestiary is built like a field encyclopedia left open on a reading stand. Some entries are common enough to be studied openly. Others are missing, damaged, or locked behind knowledge the average traveler was never meant to carry.</p>
+  </section>
 
-<main class="article-shell">
-  <div class="breadcrumbs"><a href="/">Home</a> / Creatures & Phenomena</div>
-  <h1 class="article-title">Creatures & Phenomena</h1>
-  <p class="article-subtitle">Creatures, diseases, supernatural events, and other things best approached carefully.</p>
-  <section class="article archive-status">
-    <h2>Field Reports Being Catalogued</h2>
-    <p>Reports concerning unusual creatures, supernatural phenomena, diseases, anomalies, and the many things that should probably not be touched are currently being gathered into the archive.</p>
-    <p>Documentation is ongoing. Survival is strongly encouraged.</p>
+  <section class="bestiary-book">
+    <aside class="bestiary-tabs">
+      <div class="archive-kicker">Index</div>
+      <h2>Jump to an Entry</h2>
+      <nav class="bestiary-menu">
+        <a href="/kitsune.html"><span>Kitsune</span><span>→</span></a>
+        <a href="/tiefling.html"><span>Tiefling</span><span>→</span></a>
+        <a href="/aasimar.html"><span>Aasimar</span><span>→</span></a>
+        <div class="locked-entry"><span>Additional classified entries</span><span>✦</span></div>
+      </nav>
+      <p class="bestiary-small">Use the entries on the right as quick pages from the book, or open the full records for deeper notes and related lore.</p>
+    </aside>
+
+    <div class="bestiary-page">
+      <div class="page-spread">
+        <a class="entry-sheet" href="/kitsune.html">
+          <span class="entry-tag">Playable Lineage</span>
+          <div class="entry-art"><img src="/creature-kitsune.png" alt="A stylized kitsune example"></div>
+          <h2>Kitsune</h2>
+          <p>Fox spirits and shapechangers tied to The Great Tree and the Fey Wild. Their tails are more than decoration. They are status, power, and a warning all at once.</p>
+          <div class="entry-footer">Open full entry</div>
+        </a>
+
+        <a class="entry-sheet" href="/tiefling.html">
+          <span class="entry-tag">Playable Lineage</span>
+          <div class="entry-art"><img src="/creature-tiefling.png" alt="A stylized tiefling example"></div>
+          <h2>Tiefling</h2>
+          <p>In Sinners, infernal blood does not earn automatic fear. Tieflings are often received as omens of luck, charm, and protection on the road ahead.</p>
+          <div class="entry-footer">Open full entry</div>
+        </a>
+
+        <a class="entry-sheet" href="/aasimar.html">
+          <span class="entry-tag">Playable Lineage</span>
+          <div class="entry-art"><img src="/creature-aasimar.png" alt="A stylized aasimar example"></div>
+          <h2>Aasimar</h2>
+          <p>Angel-touched and deeply unsettling to much of the world. Their beauty, grace, and celestial lineage place them under suspicion before they speak a single word.</p>
+          <div class="entry-footer">Open full entry</div>
+        </a>
+      </div>
+    </div>
   </section>
 </main>
-
-<footer>
-  Sinners World Archive · Built as a player-facing lore guide
-</footer>
+<footer>Sinners World Archive · Built as a player-facing lore guide</footer>
 <script src="/script.js"></script>
-</body></html>
+<script src="/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kitsune · Sinners</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/archive.css">
+<style>
+.creature-hero{display:grid;grid-template-columns:minmax(300px,460px) minmax(0,1fr);gap:24px;align-items:center;margin-bottom:24px}
+.creature-portrait{
+  position:relative;
+  min-height:680px;
+  padding:18px;
+  border-radius:24px;
+  background:linear-gradient(180deg,rgba(247,239,228,.72),rgba(225,211,191,.72));
+  border:1px solid rgba(122,94,67,.18);
+  box-shadow:0 22px 46px rgba(0,0,0,.24);
+}
+.creature-portrait img{display:block;width:100%;height:auto;max-height:760px;object-fit:contain;filter:drop-shadow(0 20px 24px rgba(42,27,18,.18))}
+.eye-hotspot,.secret-mark{
+  position:absolute;left:57%;top:14%;transform:translate(-50%,-50%);
+  width:18%;height:10%;border:0;background:transparent;cursor:pointer;
+}
+.eye-hotspot{z-index:4}
+.secret-mark{display:none;z-index:5;color:#b10000;font-size:5rem;font-weight:900;line-height:1;background:none}
+.creature-portrait.secret-open .eye-hotspot{display:none}
+.creature-portrait.secret-open .secret-mark{display:flex;align-items:center;justify-content:center}
+.creature-note{margin-top:10px;color:#896754;font-size:.9rem;line-height:1.55}
+.meta-pills{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 0}
+.meta-pills span{padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(193,77,47,.17);color:#dbcbbc}
+@media(max-width:920px){.creature-hero{grid-template-columns:1fr}.creature-portrait{min-height:auto}.secret-mark{font-size:4rem}}
+</style>
+</head>
+<body class="archive-body">
+<header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header>
+<main class="archive-shell">
+  <a class="archive-back" href="/creatures.html">← Return to Creatures</a>
+  <section class="creature-hero">
+    <div class="creature-portrait" id="kitsunePortrait">
+      <img src="/creature-kitsune.png" alt="Kitsune example illustration">
+      <button class="eye-hotspot" id="kitsuneSecret" type="button" aria-label="Inspect the kitsune's eyes"></button>
+      <button class="secret-mark" id="kitsuneMark" type="button" aria-label="Follow the hidden record">✕</button>
+      <p class="creature-note">Field note: some readers scribble markings over the eyes in this portrait. Nobody agrees on why.</p>
+    </div>
+    <div>
+      <div class="archive-kicker">Playable Creature</div>
+      <h1 class="archive-title">Kitsune</h1>
+      <p class="archive-lede">Kitsune are fox-born shapeshifters with deep ties to <a href="/great-tree-village.html">The Great Tree</a> and the Fey Wild. Some look nearly human save for ears and tails. Others lean far harder into their fox nature, walking upright with a more openly beastlike form.</p>
+      <div class="meta-pills"><span>Shapechangers</span><span>Fey-linked</span><span>Tail hierarchy</span></div>
+    </div>
+  </section>
+
+  <div class="archive-grid">
+    <article class="archive-article">
+      <h2>Forms and Transformation</h2>
+      <p>A kitsune can move between forms, most commonly a full fox guise and a true kitsune form. Because of that, many outsiders mistake them for a trick of the woods until the creature decides to stay still long enough to be studied. There is no single standard appearance. A kitsune might pass for a person with subtle features, or look unmistakably like a fox spirit walking on two legs.</p>
+      <h2>Tails and Status</h2>
+      <p>Every kitsune is born with one tail. As their power grows, more tails can follow, with nine being the highest and rarest expression of that power. The number of tails naturally affects how other kitsune treat one another. One-tail, two-tail, and three-tail kitsune often move as near equals, but the tone changes quickly once higher numbers appear. A four-tail or five-tail kitsune receives instinctive respect. A nine-tail does not request obedience. It simply gets it.</p>
+      <h2>Culture</h2>
+      <p>Kitsune culture blends mischief, grace, pride, and caution. Their society understands power in a very visible way, yet it is not mindless groveling. Lower-tailed kitsune can still joke with one another, argue, and wander freely. What changes is the depth of instinctive deference when truly ancient power enters the room.</p>
+      <h2>The Great Tree and the Fey Wild</h2>
+      <p>Kitsune are strongly associated with The Great Tree and whatever old pathways run from it into the Fey Wild. This connection makes them feel slightly out of step with the rest of the world. Even when standing in plain view, a kitsune often gives the impression that part of them is listening to another forest entirely.</p>
+    </article>
+    <aside class="archive-aside">
+      <div class="archive-kicker">Related Records</div>
+      <div class="archive-meta">
+        <a href="/creatures.html">Creatures</a>
+        <a href="/great-tree-village.html">Great Tree Village</a>
+        <a href="/the-isle.html">The Isle</a>
+      </div>
+    </aside>
+  </div>
+</main>
+<footer>Sinners World Archive · Built as a player-facing lore guide</footer>
+<script src="/script.js"></script>
+<script src="/archive.js"></script>
+<script>
+(function(){
+  const portrait = document.getElementById('kitsunePortrait');
+  const firstClick = document.getElementById('kitsuneSecret');
+  const secondClick = document.getElementById('kitsuneMark');
+  if(!portrait || !firstClick || !secondClick) return;
+  firstClick.addEventListener('click', function(){ portrait.classList.add('secret-open'); });
+  secondClick.addEventListener('click', function(){ window.location.href = '/yokai.html'; });
+})();
+</script>
+</body>
+</html>
