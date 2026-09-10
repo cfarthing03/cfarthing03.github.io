@@ -1,1 +1,156 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Overgod · Sinners</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/archive.css"></head><body class="archive-body secret-body"><header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header><main class="archive-shell"><a class="archive-back" href="javascript:history.back()">← Leave this record</a><div class="secret-warning">Restricted Archive Record</div><div class="archive-kicker">Classified Divine Record</div><h1 class="archive-title">The Overgod</h1><p class="archive-lede">Some truths about the gods are dangerous. Others are dangerous because they reveal that the gods are not the highest thing in the room.</p><div class="archive-grid"><article class="archive-article"><h2>The Office Above Divinity</h2><p>An Overgod is not simply another god within the pantheon. The role exists above the ordinary divine order and is bound to the continued stability of the realm itself.</p><h2>A Vacancy That Could Not Remain Empty</h2><p>When an Overgod was slain, the world could not simply continue without a replacement. Odin was forced to choose who would take the vacant place. He chose his wife.</p><p>She became the new Overgod and has endured the burden of holding the realm together ever since. Odin spends much of his remaining life beside her, waiting for the possibility that another being may someday be able to take her place.</p><div class="secret-rule"></div><p class="secret-warning">This record is not indexed in the public Gods archive.</p></article><aside class="archive-aside"><div class="archive-kicker">Related Records</div><div class="archive-meta"><span>No public cross-references.</span></div></aside></div></main><footer>Sinners World Archive · Built as a player-facing lore guide</footer><script src="/script.js"></script><script src="/archive.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Overgod · Sinners</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/archive.css">
+<style>
+:root{--void:#010503;--deep:#03120a;--green:#65ff9a;--green-soft:#a8ffc4;--green-dim:#2baa61;--ink:#dff7e6}
+html{background:#000}
+body.overgod-body{position:relative;min-height:100vh;overflow-x:hidden;background:#010503;color:#d9efe0}
+body.overgod-body>*{position:relative;z-index:3}
+.cosmic-universe{position:fixed!important;inset:0!important;z-index:0!important;overflow:hidden;pointer-events:none;background:
+ radial-gradient(ellipse at 48% 38%,rgba(55,255,123,.12),transparent 24%),
+ radial-gradient(ellipse at 14% 72%,rgba(28,122,74,.16),transparent 30%),
+ radial-gradient(ellipse at 82% 18%,rgba(58,183,110,.13),transparent 26%),
+ radial-gradient(ellipse at center,#04140b 0,#010603 52%,#000 100%)}
+.cosmic-universe::before{content:"";position:absolute;inset:-30%;background:
+ repeating-radial-gradient(circle at 50% 50%,transparent 0 92px,rgba(94,255,151,.025) 93px 94px,transparent 95px 150px);
+ transform:rotate(8deg) scale(1.12);animation:depthTurn 34s linear infinite}
+.cosmic-universe::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 12%,rgba(69,255,137,.035) 36%,transparent 53%,rgba(48,170,101,.04) 76%,transparent 91%);filter:blur(22px);animation:nebulaDrift 13s ease-in-out infinite alternate}
+.cosmic-stars{position:absolute;inset:0;opacity:.9}
+.cosmic-star{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);border-radius:50%;background:rgba(174,255,203,var(--a));box-shadow:0 0 calc(var(--s)*4) rgba(79,255,137,.62);animation:starPulse var(--d) ease-in-out var(--delay) infinite}
+.cosmic-orbit{position:absolute;left:50%;top:47%;border:1px solid rgba(90,255,146,.095);border-radius:50%;transform:translate(-50%,-50%) rotate(var(--r));box-shadow:0 0 32px rgba(40,255,116,.025) inset}
+.cosmic-orbit.o1{width:72vw;height:28vw;--r:14deg;animation:orbitShift 24s linear infinite}
+.cosmic-orbit.o2{width:104vw;height:39vw;--r:-19deg;animation:orbitShift 37s linear infinite reverse}
+.cosmic-orbit.o3{width:138vw;height:54vw;--r:34deg;animation:orbitShift 51s linear infinite}
+.cosmic-thread{position:absolute;height:1px;width:54vw;left:-9vw;top:27%;background:linear-gradient(90deg,transparent,rgba(82,255,142,.42),transparent);transform:rotate(17deg);filter:drop-shadow(0 0 7px rgba(82,255,142,.45));opacity:.35;animation:threadGhost 8s ease-in-out infinite}
+.cosmic-thread.t2{left:auto;right:-14vw;top:68%;width:67vw;transform:rotate(-24deg);animation-delay:-3.2s;opacity:.24}
+.cosmic-thread.t3{left:11vw;top:88%;width:82vw;transform:rotate(4deg);animation-delay:-5.4s;opacity:.18}
+@keyframes depthTurn{to{transform:rotate(368deg) scale(1.12)}}
+@keyframes nebulaDrift{from{transform:translate3d(-2%,-1%,0) scale(1)}to{transform:translate3d(3%,2%,0) scale(1.08)}}
+@keyframes starPulse{0%,100%{opacity:.18;transform:scale(.7)}50%{opacity:1;transform:scale(1.45)}}
+@keyframes orbitShift{to{transform:translate(-50%,-50%) rotate(calc(var(--r) + 360deg))}}
+@keyframes threadGhost{0%,100%{opacity:.08;filter:blur(.2px) drop-shadow(0 0 5px rgba(82,255,142,.25))}50%{opacity:.42;filter:blur(0) drop-shadow(0 0 12px rgba(82,255,142,.72))}}
+
+.overgod-body .site-header{background:rgba(0,8,4,.78);border-bottom-color:rgba(82,255,142,.16);backdrop-filter:blur(10px)}
+.overgod-body .brand,.overgod-body .main-nav a{color:#dff7e6}
+.overgod-body .main-nav a:hover{color:#83ffab}
+.overgod-shell{width:min(1180px,calc(100% - 34px));margin:0 auto;padding:52px 0 82px}
+.overgod-back{display:inline-flex;align-items:center;gap:8px;margin-bottom:34px;color:#75ff9f;text-decoration:none;letter-spacing:.04em;text-shadow:0 0 14px rgba(92,255,150,.28)}
+.overgod-warning{display:inline-block;padding:8px 12px;border:1px solid rgba(101,255,154,.28);background:rgba(7,37,18,.45);color:#86ffac;text-transform:uppercase;letter-spacing:.18em;font-size:.7rem;box-shadow:0 0 22px rgba(42,255,113,.08)}
+.overgod-kicker{margin-top:17px;color:#56dc84;text-transform:uppercase;letter-spacing:.2em;font-size:.72rem}
+.overgod-title{font-size:clamp(4rem,11vw,9rem);line-height:.82;margin:.11em 0 .22em;color:#effff3;text-shadow:0 0 20px rgba(91,255,149,.22),0 0 70px rgba(44,255,121,.13);letter-spacing:-.055em}
+.overgod-lede{max-width:790px;font-size:clamp(1.13rem,2vw,1.4rem);line-height:1.78;color:#bddac6}
+.overgod-gate{margin:42px 0 34px;height:1px;background:linear-gradient(90deg,transparent,rgba(104,255,158,.5),transparent);box-shadow:0 0 16px rgba(87,255,148,.28)}
+.overgod-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:26px;align-items:start}
+.overgod-record,.overgod-aside{position:relative;border:1px solid rgba(94,255,151,.16);background:linear-gradient(180deg,rgba(4,25,12,.68),rgba(1,8,4,.52));box-shadow:0 28px 70px rgba(0,0,0,.34),0 0 60px rgba(26,255,101,.035) inset;backdrop-filter:blur(5px)}
+.overgod-record{padding:30px clamp(24px,4vw,42px)}
+.overgod-record::before{content:"";position:absolute;inset:10px;border:1px solid rgba(98,255,153,.035);pointer-events:none}
+.overgod-record h2{margin:1.5rem 0 .55rem;color:#e8fff0;font-size:1.55rem;letter-spacing:.015em}
+.overgod-record h2:first-child{margin-top:0}
+.overgod-record p{color:#bfd7c7;line-height:1.82}
+.overgod-record strong{color:#e8fff0}
+.overgod-aside{padding:22px;overflow:hidden}
+.overgod-aside::after{content:"";position:absolute;width:190px;height:190px;right:-110px;bottom:-110px;border-radius:50%;border:1px solid rgba(101,255,154,.12);box-shadow:0 0 30px rgba(74,255,135,.07) inset}
+.overgod-aside .label{color:#58d981;text-transform:uppercase;letter-spacing:.18em;font-size:.67rem;margin-bottom:10px}
+.overgod-aside p{margin:0;color:#89a995;line-height:1.68}
+.permitted-glimpse{margin-top:22px;padding:16px 18px;border-left:2px solid rgba(104,255,158,.58);background:rgba(20,72,38,.12);color:#9bc9aa;font-style:italic;line-height:1.7}
+.overgod-footer{padding:28px 20px;text-align:center;color:#52705c;border-top:1px solid rgba(82,255,142,.08);background:rgba(0,5,2,.5)}
+
+.realm-transition{position:fixed!important;inset:0!important;z-index:999999!important;pointer-events:none;opacity:0;background:#000;overflow:hidden}
+.realm-transition .realm-portal{position:absolute;left:50%;top:50%;width:14vmin;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%) scale(24);background:radial-gradient(circle,#000 0 21%,rgba(2,18,8,.98) 22% 30%,#65ff9a 31% 33%,rgba(49,224,111,.48) 40%,rgba(53,255,123,.09) 56%,transparent 70%);box-shadow:0 0 35px rgba(83,255,145,.8),0 0 120px rgba(40,255,119,.36)}
+.realm-transition .realm-portal::before,.realm-transition .realm-portal::after{content:"";position:absolute;inset:-22%;border:2px solid rgba(114,255,165,.3);border-radius:50%;border-left-color:transparent;animation:realmSpin 2.2s linear infinite}
+.realm-transition .realm-portal::after{inset:-40%;border-color:rgba(79,255,139,.14);border-right-color:transparent;animation-duration:3.4s;animation-direction:reverse}
+.realm-transition.arriving{opacity:1;animation:realmClear 1.05s ease-out forwards}
+.realm-transition.arriving .realm-portal{animation:realmArrival 1.08s cubic-bezier(.2,.72,.15,1) forwards}
+.realm-transition.leaving{opacity:1;animation:realmDarken .78s ease-in forwards}
+.realm-transition.leaving .realm-portal{animation:realmLeave .82s cubic-bezier(.35,0,.75,.35) forwards}
+@keyframes realmSpin{to{transform:rotate(360deg)}}
+@keyframes realmClear{0%,25%{background:#000}100%{background:transparent}}
+@keyframes realmArrival{0%{opacity:1;transform:translate(-50%,-50%) scale(24) rotate(70deg)}64%{opacity:1;transform:translate(-50%,-50%) scale(1.1) rotate(10deg)}100%{opacity:0;transform:translate(-50%,-50%) scale(.02) rotate(-8deg)}}
+@keyframes realmDarken{0%{background:transparent}64%,100%{background:#000}}
+@keyframes realmLeave{0%{opacity:0;transform:translate(-50%,-50%) scale(.02) rotate(-8deg)}18%{opacity:1}58%{transform:translate(-50%,-50%) scale(1.05) rotate(13deg)}100%{opacity:1;transform:translate(-50%,-50%) scale(24) rotate(84deg)}}
+@media(max-width:820px){.overgod-grid{grid-template-columns:1fr}.overgod-title{font-size:clamp(3.5rem,20vw,6.5rem)}}
+@media(prefers-reduced-motion:reduce){.cosmic-universe::before,.cosmic-universe::after,.cosmic-star,.cosmic-orbit,.cosmic-thread,.realm-transition .realm-portal::before,.realm-transition .realm-portal::after{animation:none}.realm-transition.arriving,.realm-transition.leaving,.realm-transition.arriving .realm-portal,.realm-transition.leaving .realm-portal{animation-duration:.28s}}
+</style>
+</head>
+<body class="overgod-body secret-body">
+<div class="cosmic-universe" aria-hidden="true">
+  <div class="cosmic-stars" id="cosmicStars"></div>
+  <div class="cosmic-orbit o1"></div><div class="cosmic-orbit o2"></div><div class="cosmic-orbit o3"></div>
+  <div class="cosmic-thread"></div><div class="cosmic-thread t2"></div><div class="cosmic-thread t3"></div>
+</div>
+<header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header>
+<main class="overgod-shell">
+  <a class="overgod-back" id="overgodLeave" href="/world.html#threads">← Leave this record</a>
+  <div class="overgod-warning">Restricted Archive Record</div>
+  <div class="overgod-kicker">Classified Divine Record</div>
+  <h1 class="overgod-title">The Overgod</h1>
+  <p class="overgod-lede">Some truths about the gods are dangerous. Others are dangerous because they reveal that the gods are not the highest thing in the room.</p>
+  <div class="overgod-gate"></div>
+  <div class="overgod-grid">
+    <article class="overgod-record">
+      <h2>The Office Above Divinity</h2>
+      <p>An Overgod is not simply another god within The Pantheon. The role exists above the ordinary divine order and is bound to the continued stability of the realm itself. Even describing it as a throne is misleading. A throne can be abandoned. This cannot.</p>
+
+      <h2>A Vacancy That Could Not Remain Empty</h2>
+      <p>When an Overgod was slain, the world could not simply continue without a replacement. Odin was forced to choose who would take the vacant place. He chose his wife.</p>
+      <p>She became the new Overgod and has endured the burden of holding the realm together ever since. Odin spends much of his remaining life beside her, waiting for the possibility that another being may someday be able to take her place.</p>
+
+      <h2>What This Record Allows You to See</h2>
+      <p>The archive can describe the office. It can preserve names, consequences, and fragments of succession. It cannot make the scale of the thing comfortable. The further the record is followed, the less the world resembles a collection of cities and gods, and the more it resembles something suspended inside a structure too large to perceive all at once.</p>
+      <div class="permitted-glimpse">You are not seeing the whole truth. You are seeing the amount of it that has been permitted to remain visible.</div>
+
+      <h2>Public Index Status</h2>
+      <p><strong>This record is not indexed in the public Gods archive.</strong> Its absence is deliberate.</p>
+    </article>
+    <aside class="overgod-aside">
+      <div class="label">Related Records</div>
+      <p>No public cross-references. No official path into this record. The archive behaves as though this page does not exist.</p>
+    </aside>
+  </div>
+</main>
+<footer class="overgod-footer">The record continues beyond what is visible.</footer>
+<div class="realm-transition" id="realmTransition" aria-hidden="true"><div class="realm-portal"></div></div>
+<script src="/script.js"></script>
+<script src="/archive.js"></script>
+<script>
+(()=>{
+  const stars=document.getElementById('cosmicStars');
+  if(stars){
+    const points=[[4,9,2,.45,6,-2],[11,38,1,.7,5,-1],[17,73,2,.35,8,-4],[22,19,1,.55,7,-3],[28,58,2,.42,6,-5],[34,86,1,.62,5,-2],[39,31,2,.32,9,-6],[45,69,1,.7,4,-1],[51,12,2,.4,7,-4],[57,49,1,.6,6,-3],[63,82,2,.36,8,-2],[68,24,1,.7,5,-4],[73,61,2,.42,7,-5],[79,8,1,.66,6,-1],[84,44,2,.34,8,-6],[89,77,1,.72,5,-3],[95,28,2,.38,7,-2],[7,91,1,.62,6,-4],[31,7,1,.58,5,-3],[54,91,1,.64,8,-5],[92,94,2,.32,7,-1],[2,52,1,.68,5,-4],[76,91,1,.58,6,-2],[48,42,2,.34,9,-5]];
+    points.forEach(([x,y,size,a,d,delay])=>{
+      const s=document.createElement('span');s.className='cosmic-star';
+      s.style.setProperty('--x',x+'%');s.style.setProperty('--y',y+'%');s.style.setProperty('--s',size+'px');s.style.setProperty('--a',a);s.style.setProperty('--d',d+'s');s.style.setProperty('--delay',delay+'s');stars.appendChild(s);
+    });
+  }
+
+  const transition=document.getElementById('realmTransition');
+  let arriving=false;
+  try{arriving=sessionStorage.getItem('sinnersOvergodPortalEntry')==='1';sessionStorage.removeItem('sinnersOvergodPortalEntry')}catch(_){}
+  if(arriving && transition){
+    transition.classList.add('arriving');
+    setTimeout(()=>transition.classList.remove('arriving'),1120);
+  }
+
+  function leaveThroughPortal(href){
+    if(!transition){location.href=href;return;}
+    try{if(href.includes('/world.html'))sessionStorage.setItem('sinnersOvergodPortalExit','1')}catch(_){}
+    transition.classList.remove('arriving');
+    transition.classList.add('leaving');
+    document.documentElement.style.overflow='hidden';
+    setTimeout(()=>{location.href=href},790);
+  }
+
+  document.querySelectorAll('a[href]').forEach(link=>{
+    const href=link.getAttribute('href');
+    if(!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('http'))return;
+    link.addEventListener('click',e=>{e.preventDefault();leaveThroughPortal(href)});
+  });
+})();
+</script>
+</body>
+</html>

@@ -367,6 +367,40 @@ body.world-map-body{
 
 /* V16 Overgod thread reveal */
 .overgod-threads{position:absolute;inset:0;width:100%;height:100%;z-index:16;pointer-events:none;opacity:0;transition:opacity .9s ease}.overgod-threads.visible{opacity:1}.overgod-threads .thread{fill:none;stroke:#63ff9a;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#threadGlow);opacity:.68;stroke-dasharray:18 13;animation:threadFlow 8s linear infinite,threadBreathe 4.8s ease-in-out infinite}.overgod-threads .thread:nth-of-type(2n){animation-duration:10s,5.7s;opacity:.5}.overgod-threads .thread:nth-of-type(3n){animation-duration:7s,4.1s;opacity:.77}.overgod-threads .ambient-thread{stroke-width:2.1;opacity:.28;stroke-dasharray:11 17;animation-duration:13s,7.5s}.overgod-threads .ambient-thread:nth-of-type(2n){opacity:.22;animation-duration:16s,9s}.overgod-threads .oro-thread-link{pointer-events:stroke;cursor:pointer}.overgod-threads .oro-thread-link .thread{stroke-width:5.2;opacity:.92}.overgod-knot{position:absolute;left:53%;top:35.7%;z-index:20;width:44px;height:44px;transform:translate(-50%,-50%);border:0;border-radius:50%;background:radial-gradient(circle,rgba(190,255,210,.86) 0 8%,rgba(83,255,139,.34) 18%,rgba(55,255,121,.08) 46%,transparent 67%);box-shadow:0 0 18px rgba(80,255,139,.46),0 0 45px rgba(65,255,129,.22);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .8s ease;animation:knotPulse 3.6s ease-in-out infinite}.overgod-knot.visible{opacity:1;pointer-events:auto}.overgod-knot::after{content:"";position:absolute;left:50%;top:50%;width:3px;height:96px;transform:translate(-50%,-4px);background:linear-gradient(180deg,rgba(99,255,154,.95),rgba(99,255,154,.08));box-shadow:0 0 11px rgba(99,255,154,.6);opacity:.7}@keyframes threadFlow{to{stroke-dashoffset:-186}}@keyframes threadBreathe{0%,100%{opacity:.34}50%{opacity:.94}}@keyframes knotPulse{0%,100%{filter:brightness(.8);transform:translate(-50%,-50%) scale(.9)}50%{filter:brightness(1.35);transform:translate(-50%,-50%) scale(1.08)}}
+
+
+/* V18 Overgod portal transition */
+.overgod-portal-transition{position:fixed;inset:0;z-index:999999;pointer-events:none;opacity:0;overflow:hidden;--portal-x:50vw;--portal-y:50vh}
+.overgod-portal-transition.active{opacity:1}
+.overgod-portal-veil{position:absolute;inset:0;background:radial-gradient(circle at var(--portal-x) var(--portal-y),rgba(21,83,43,.08),rgba(0,5,2,.5) 38%,rgba(0,0,0,.88) 88%);opacity:0}
+.overgod-portal-core{position:absolute;left:var(--portal-x);top:var(--portal-y);width:18vmin;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%) scale(.02);opacity:0;background:
+  radial-gradient(circle at 50% 50%,#000 0 20%,rgba(0,8,3,.98) 21% 29%,rgba(72,255,135,.96) 31% 33%,rgba(21,160,77,.5) 38%,rgba(29,255,105,.12) 52%,transparent 69%);
+box-shadow:0 0 28px rgba(72,255,135,.85),0 0 90px rgba(33,255,105,.48),0 0 180px rgba(26,255,95,.22)}
+.overgod-portal-core::before,.overgod-portal-core::after{content:"";position:absolute;inset:-19%;border-radius:50%;border:2px solid rgba(101,255,157,.38);filter:drop-shadow(0 0 12px rgba(83,255,145,.55))}
+.overgod-portal-core::before{animation:portalRingSpin 1.9s linear infinite;border-left-color:transparent;border-bottom-color:transparent}
+.overgod-portal-core::after{inset:-36%;border-color:rgba(66,255,129,.18);border-right-color:transparent;border-top-color:transparent;animation:portalRingSpin 3.1s linear infinite reverse}
+.overgod-portal-sparks{position:absolute;left:var(--portal-x);top:var(--portal-y);width:1px;height:1px;box-shadow:0 -90px 4px #67ff9b,78px -45px 3px #4dff87,86px 42px 3px #78ffab,28px 96px 4px #52ff8a,-65px 73px 3px #5dff91,-96px -10px 4px #76ffa6,-52px -73px 3px #42ff7c;opacity:0}
+.overgod-portal-transition.ripping .overgod-portal-veil{animation:portalVeilIn 1.18s ease-in forwards}
+.overgod-portal-transition.ripping .overgod-portal-core{animation:portalOpenConsume 1.28s cubic-bezier(.18,.72,.18,1) forwards}
+.overgod-portal-transition.ripping .overgod-portal-sparks{animation:portalSparks 1.05s ease-out .18s forwards}
+body.overgod-ripping .world-shell{animation:worldQuake .085s linear 12,worldPull 1.25s cubic-bezier(.2,.7,.1,1) forwards;transform-origin:var(--portal-x,50%) var(--portal-y,50%)}
+.overgod-portal-transition.spitting{opacity:1}
+.overgod-portal-transition.spitting .overgod-portal-veil{animation:portalVeilOut 1.05s ease-out forwards}
+.overgod-portal-transition.spitting .overgod-portal-core{animation:portalSpitOut 1.08s cubic-bezier(.2,.75,.15,1) forwards}
+.overgod-portal-transition.spitting .overgod-portal-sparks{animation:portalSparksBack .82s ease-out forwards}
+body.overgod-returning .world-shell{animation:returnQuake .095s linear 8}
+@keyframes portalRingSpin{to{transform:rotate(360deg)}}
+@keyframes portalVeilIn{0%{opacity:0}52%{opacity:.45}100%{opacity:1;background:#000}}
+@keyframes portalOpenConsume{0%{opacity:0;transform:translate(-50%,-50%) scale(.02) rotate(-10deg)}15%{opacity:1;transform:translate(-50%,-50%) scale(.5) rotate(2deg)}48%{transform:translate(-50%,-50%) scale(1.4) rotate(18deg)}100%{opacity:1;transform:translate(-50%,-50%) scale(24) rotate(95deg)}}
+@keyframes portalSparks{0%{opacity:0;transform:scale(.2) rotate(0)}28%{opacity:1}100%{opacity:0;transform:scale(4) rotate(160deg)}}
+@keyframes worldQuake{0%{transform:translate(0,0) rotate(0)}25%{transform:translate(-5px,3px) rotate(-.18deg)}50%{transform:translate(5px,-4px) rotate(.2deg)}75%{transform:translate(-3px,-3px) rotate(-.12deg)}100%{transform:translate(3px,4px) rotate(.1deg)}}
+@keyframes worldPull{0%,70%{filter:none}100%{filter:blur(5px) brightness(.55)}}
+@keyframes portalVeilOut{0%{opacity:1;background:#000}48%{opacity:.55}100%{opacity:0}}
+@keyframes portalSpitOut{0%{opacity:1;transform:translate(-50%,-50%) scale(24) rotate(85deg)}54%{transform:translate(-50%,-50%) scale(1.25) rotate(16deg)}82%{opacity:1;transform:translate(-50%,-50%) scale(.52) rotate(-4deg)}100%{opacity:0;transform:translate(-50%,-50%) scale(.02) rotate(-12deg)}}
+@keyframes portalSparksBack{0%{opacity:0;transform:scale(4) rotate(150deg)}35%{opacity:1}100%{opacity:0;transform:scale(.2) rotate(0)}}
+@keyframes returnQuake{0%{transform:translate(0,0)}20%{transform:translate(4px,-3px)}40%{transform:translate(-5px,2px)}60%{transform:translate(3px,4px)}80%{transform:translate(-2px,-3px)}100%{transform:translate(0,0)}}
+@media(prefers-reduced-motion:reduce){body.overgod-ripping .world-shell,body.overgod-returning .world-shell{animation:none}.overgod-portal-transition.ripping .overgod-portal-core,.overgod-portal-transition.spitting .overgod-portal-core{animation-duration:.35s}.overgod-portal-core::before,.overgod-portal-core::after{animation:none}}
+
 </style>
 </head>
 <body class="world-map-body">
@@ -451,6 +485,8 @@ body.world-map-body{
 
   <div class="map-hint">Drag to pan · Scroll to zoom · Hover markers for details</div>
 </main>
+
+<div class="overgod-portal-transition" id="overgodPortalTransition" aria-hidden="true"><div class="overgod-portal-veil"></div><div class="overgod-portal-core"></div><div class="overgod-portal-sparks"></div></div>
 <script src="/script.js"></script>
 <script>
 (() => {
@@ -472,6 +508,7 @@ body.world-map-body{
   const oroChoice=document.getElementById('oroChoice');
   const overgodThreads=document.getElementById('overgodThreads');
   const overgodKnot=document.getElementById('overgodKnot');
+  const overgodPortal=document.getElementById('overgodPortalTransition');
 
   // Oro shares its map point with the ruins of Evorburn. Hovering or focusing
   // the marker reveals a choice instead of immediately navigating away.
@@ -506,9 +543,42 @@ body.world-map-body{
   // Secret path unlocked from Etro.
   let overgodUnlocked=false;
   try{overgodUnlocked=sessionStorage.getItem('sinnersOvergodThreads')==='unlocked';}catch(_){}
+  function setPortalOrigin(){
+    if(!overgodPortal)return;
+    const target=overgodKnot || oroMarker;
+    if(!target)return;
+    const r=target.getBoundingClientRect();
+    overgodPortal.style.setProperty('--portal-x',(r.left+r.width/2)+'px');
+    overgodPortal.style.setProperty('--portal-y',(r.top+r.height/2)+'px');
+    document.body.style.setProperty('--portal-x',(r.left+r.width/2)+'px');
+    document.body.style.setProperty('--portal-y',(r.top+r.height/2)+'px');
+  }
+
+  function enterOvergod(e){
+    if(e){e.preventDefault();e.stopPropagation();}
+    if(!overgodPortal)return location.href='/the-overgod.html';
+    setPortalOrigin();
+    try{sessionStorage.setItem('sinnersOvergodPortalEntry','1')}catch(_){}
+    document.body.classList.add('overgod-ripping');
+    overgodPortal.classList.add('active','ripping');
+    setTimeout(()=>{location.href='/the-overgod.html';},1260);
+  }
+
   if(overgodUnlocked){
     if(overgodThreads) requestAnimationFrame(()=>overgodThreads.classList.add('visible'));
-    if(overgodKnot){requestAnimationFrame(()=>overgodKnot.classList.add('visible'));overgodKnot.addEventListener('click',e=>{e.stopPropagation();location.href='/the-overgod.html';});}
+    if(overgodKnot){requestAnimationFrame(()=>overgodKnot.classList.add('visible'));overgodKnot.addEventListener('click',enterOvergod);}
+    document.querySelectorAll('.oro-thread-link').forEach(link=>link.addEventListener('click',enterOvergod));
+  }
+
+  let returningFromOvergod=false;
+  try{returningFromOvergod=sessionStorage.getItem('sinnersOvergodPortalExit')==='1';sessionStorage.removeItem('sinnersOvergodPortalExit')}catch(_){}
+  if(returningFromOvergod && overgodPortal){
+    requestAnimationFrame(()=>{
+      setPortalOrigin();
+      document.body.classList.add('overgod-returning');
+      overgodPortal.classList.add('active','spitting');
+      setTimeout(()=>{overgodPortal.classList.remove('active','spitting');document.body.classList.remove('overgod-returning')},1120);
+    });
   }
 
   let scale=1, panX=0, panY=0;
