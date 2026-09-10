@@ -16,26 +16,30 @@ body.overgod-body>*{position:relative;z-index:3}
  radial-gradient(ellipse at 14% 72%,rgba(28,122,74,.16),transparent 30%),
  radial-gradient(ellipse at 82% 18%,rgba(58,183,110,.13),transparent 26%),
  radial-gradient(ellipse at center,#04140b 0,#010603 52%,#000 100%)}
-.cosmic-universe::before{content:"";position:absolute;inset:-30%;background:
+.cosmic-universe::before{content:"";position:absolute;inset:-8%;background:
  repeating-radial-gradient(circle at 50% 50%,transparent 0 92px,rgba(94,255,151,.025) 93px 94px,transparent 95px 150px);
- transform:translateZ(0) rotate(8deg) scale(1.12);animation:depthTurn 34s linear infinite;will-change:transform;backface-visibility:hidden}
-.cosmic-universe::after{content:"";position:absolute;inset:-3%;background:linear-gradient(115deg,transparent 12%,rgba(69,255,137,.035) 36%,transparent 53%,rgba(48,170,101,.04) 76%,transparent 91%);filter:blur(22px);animation:nebulaDrift 13s ease-in-out infinite alternate;will-change:transform;transform:translateZ(0);backface-visibility:hidden}
+ transform:translateZ(0) rotate(8deg) scale(1.04);animation:depthPulse 10s ease-in-out infinite alternate;will-change:opacity;backface-visibility:hidden}
+.cosmic-universe::after{content:"";position:absolute;inset:0;background:
+ radial-gradient(ellipse at 30% 42%,rgba(69,255,137,.035),transparent 34%),
+ radial-gradient(ellipse at 72% 58%,rgba(48,170,101,.04),transparent 38%),
+ linear-gradient(115deg,transparent 12%,rgba(69,255,137,.022) 36%,transparent 53%,rgba(48,170,101,.026) 76%,transparent 91%);
+ animation:nebulaPulse 13s ease-in-out infinite alternate;will-change:opacity;backface-visibility:hidden}
 .cosmic-stars{position:absolute;inset:0;opacity:.9}
 .cosmic-star{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);border-radius:50%;background:rgba(174,255,203,var(--a));box-shadow:0 0 calc(var(--s)*4) rgba(79,255,137,.62);animation:starPulse var(--d) ease-in-out var(--delay) infinite;will-change:transform,opacity;backface-visibility:hidden}
 .cosmic-orbit{position:absolute;left:50%;top:47%;border:1px solid rgba(90,255,146,.095);border-radius:50%;transform:translate3d(-50%,-50%,0) rotate(var(--r));box-shadow:0 0 32px rgba(40,255,116,.025) inset;will-change:transform;backface-visibility:hidden}
 .cosmic-orbit.o1{width:72vw;height:28vw;--r:14deg;animation:orbitShift 24s linear infinite}
-.cosmic-orbit.o2{width:104vw;height:39vw;--r:-19deg;animation:orbitShift 37s linear infinite reverse}
-.cosmic-orbit.o3{width:138vw;height:54vw;--r:34deg;animation:orbitShift 51s linear infinite}
-.cosmic-thread{position:absolute;height:1px;width:54vw;left:-9vw;top:27%;background:linear-gradient(90deg,transparent,rgba(82,255,142,.42),transparent);transform:translateZ(0) rotate(17deg);filter:drop-shadow(0 0 7px rgba(82,255,142,.45));opacity:.35;animation:threadGhost 8s ease-in-out infinite;will-change:opacity;backface-visibility:hidden}
+.cosmic-orbit.o2{width:104vw;height:39vw;--r:-19deg}
+.cosmic-orbit.o3{width:138vw;height:54vw;--r:34deg}
+.cosmic-thread{position:absolute;height:1px;width:54vw;left:-9vw;top:27%;background:linear-gradient(90deg,transparent,rgba(82,255,142,.42),transparent);transform:translateZ(0) rotate(17deg);box-shadow:0 0 7px rgba(82,255,142,.28);opacity:.35;animation:threadGhost 8s ease-in-out infinite;will-change:opacity;backface-visibility:hidden}
 .cosmic-thread.t2{left:auto;right:-14vw;top:68%;width:67vw;transform:rotate(-24deg);animation-delay:-3.2s;opacity:.24}
 .cosmic-thread.t3{left:11vw;top:88%;width:82vw;transform:rotate(4deg);animation-delay:-5.4s;opacity:.18}
-@keyframes depthTurn{to{transform:rotate(368deg) scale(1.12)}}
-@keyframes nebulaDrift{from{transform:translate3d(-2%,-1%,0) scale(1)}to{transform:translate3d(3%,2%,0) scale(1.08)}}
+@keyframes depthPulse{from{opacity:.72}to{opacity:1}}
+@keyframes nebulaPulse{from{opacity:.72}to{opacity:1}}
 @keyframes starPulse{0%,100%{opacity:.18;transform:scale(.7)}50%{opacity:1;transform:scale(1.45)}}
 @keyframes orbitShift{to{transform:translate3d(-50%,-50%,0) rotate(calc(var(--r) + 360deg))}}
 @keyframes threadGhost{0%,100%{opacity:.08}50%{opacity:.42}}
 
-.overgod-body .site-header{background:rgba(0,8,4,.78);border-bottom-color:rgba(82,255,142,.16);backdrop-filter:blur(10px)}
+.overgod-body .site-header{background:rgba(0,8,4,.92);border-bottom-color:rgba(82,255,142,.16)}
 .overgod-body .brand,.overgod-body .main-nav a{color:#dff7e6}
 .overgod-body .main-nav a:hover{color:#83ffab}
 .overgod-shell{width:min(1180px,calc(100% - 34px));margin:0 auto;padding:52px 0 82px}
@@ -61,7 +65,7 @@ body.overgod-body>*{position:relative;z-index:3}
 .overgod-footer{padding:28px 20px;text-align:center;color:#52705c;border-top:1px solid rgba(82,255,142,.08);background:rgba(0,5,2,.5)}
 
 .realm-transition{position:fixed!important;inset:0!important;z-index:999999!important;pointer-events:none;opacity:0;background:#000;overflow:hidden;contain:strict;transform:translateZ(0);backface-visibility:hidden}
-.realm-transition .realm-portal{position:absolute;left:50%;top:50%;width:14vmin;aspect-ratio:1;border-radius:50%;transform:translate3d(-50%,-50%,0) scale(24);will-change:transform,opacity;backface-visibility:hidden;background:radial-gradient(circle,#000 0 21%,rgba(2,18,8,.98) 22% 30%,#65ff9a 31% 33%,rgba(49,224,111,.48) 40%,rgba(53,255,123,.09) 56%,transparent 70%);box-shadow:0 0 35px rgba(83,255,145,.8),0 0 120px rgba(40,255,119,.36)}
+.realm-transition .realm-portal{position:absolute;left:50%;top:50%;width:150vmax;aspect-ratio:1;border-radius:50%;transform:translate3d(-50%,-50%,0) scale(1.06);will-change:transform,opacity;backface-visibility:hidden;background:radial-gradient(circle,#000 0 21%,rgba(2,18,8,.98) 22% 30%,#65ff9a 31% 33%,rgba(49,224,111,.48) 40%,rgba(53,255,123,.09) 56%,transparent 70%);box-shadow:0 0 35px rgba(83,255,145,.8),0 0 120px rgba(40,255,119,.36)}
 .realm-transition .realm-portal::before,.realm-transition .realm-portal::after{content:"";position:absolute;inset:-22%;border:2px solid rgba(114,255,165,.3);border-radius:50%;border-left-color:transparent;animation:realmSpin 2.2s linear infinite;will-change:transform;backface-visibility:hidden}
 .realm-transition .realm-portal::after{inset:-40%;border-color:rgba(79,255,139,.14);border-right-color:transparent;animation-duration:3.4s;animation-direction:reverse}
 .realm-transition.arriving{opacity:1;animation:realmClear 1.05s ease-out forwards}
@@ -70,9 +74,10 @@ body.overgod-body>*{position:relative;z-index:3}
 .realm-transition.leaving .realm-portal{animation:realmLeave .82s cubic-bezier(.35,0,.75,.35) forwards}
 @keyframes realmSpin{to{transform:rotate(360deg)}}
 @keyframes realmClear{0%,25%{background:#000}100%{background:transparent}}
-@keyframes realmArrival{0%{opacity:1;transform:translate3d(-50%,-50%,0) scale(24) rotate(70deg)}64%{opacity:1;transform:translate3d(-50%,-50%,0) scale(1.1) rotate(10deg)}100%{opacity:0;transform:translate3d(-50%,-50%,0) scale(.02) rotate(-8deg)}}
+@keyframes realmArrival{0%{opacity:1;transform:translate3d(-50%,-50%,0) scale(1.06) rotate(70deg)}64%{opacity:1;transform:translate3d(-50%,-50%,0) scale(.10) rotate(10deg)}100%{opacity:0;transform:translate3d(-50%,-50%,0) scale(.008) rotate(-8deg)}}
 @keyframes realmDarken{0%{background:transparent}64%,100%{background:#000}}
-@keyframes realmLeave{0%{opacity:0;transform:translate3d(-50%,-50%,0) scale(.02) rotate(-8deg)}18%{opacity:1}58%{transform:translate3d(-50%,-50%,0) scale(1.05) rotate(13deg)}100%{opacity:1;transform:translate3d(-50%,-50%,0) scale(24) rotate(84deg)}}
+@keyframes realmLeave{0%{opacity:0;transform:translate3d(-50%,-50%,0) scale(.008) rotate(-8deg)}18%{opacity:1}58%{transform:translate3d(-50%,-50%,0) scale(.10) rotate(13deg)}100%{opacity:1;transform:translate3d(-50%,-50%,0) scale(1.06) rotate(84deg)}}
+body.portal-busy .cosmic-universe *,body.portal-busy .cosmic-universe::before,body.portal-busy .cosmic-universe::after{animation-play-state:paused!important}
 @media(max-width:820px){.overgod-grid{grid-template-columns:1fr}.overgod-title{font-size:clamp(3.5rem,20vw,6.5rem)}}
 @media(prefers-reduced-motion:reduce){.cosmic-universe::before,.cosmic-universe::after,.cosmic-star,.cosmic-orbit,.cosmic-thread,.realm-transition .realm-portal::before,.realm-transition .realm-portal::after{animation:none}.realm-transition.arriving,.realm-transition.leaving,.realm-transition.arriving .realm-portal,.realm-transition.leaving .realm-portal{animation-duration:.28s}}
 </style>
@@ -132,13 +137,15 @@ body.overgod-body>*{position:relative;z-index:3}
   let arriving=false;
   try{arriving=sessionStorage.getItem('sinnersOvergodPortalEntry')==='1';sessionStorage.removeItem('sinnersOvergodPortalEntry')}catch(_){}
   if(arriving && transition){
+    document.body.classList.add('portal-busy');
     transition.classList.add('arriving');
-    setTimeout(()=>transition.classList.remove('arriving'),1120);
+    setTimeout(()=>{transition.classList.remove('arriving');document.body.classList.remove('portal-busy')},1120);
   }
 
   function leaveThroughPortal(href){
     if(!transition){location.href=href;return;}
     try{if(href.includes('/world.html'))sessionStorage.setItem('sinnersOvergodPortalExit','1')}catch(_){}
+    document.body.classList.add('portal-busy');
     transition.classList.remove('arriving');
     transition.classList.add('leaving');
     document.documentElement.style.overflow='hidden';

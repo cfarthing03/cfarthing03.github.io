@@ -373,10 +373,10 @@ body.world-map-body{
 .overgod-portal-transition{position:fixed;inset:0;z-index:999999;pointer-events:none;opacity:0;overflow:hidden;--portal-x:50vw;--portal-y:50vh;contain:strict;transform:translateZ(0);backface-visibility:hidden}
 .overgod-portal-transition.active{opacity:1}
 .overgod-portal-veil{position:absolute;inset:0;background:radial-gradient(circle at var(--portal-x) var(--portal-y),rgba(21,83,43,.08),rgba(0,5,2,.5) 38%,rgba(0,0,0,.88) 88%);opacity:0;will-change:opacity;transform:translateZ(0)}
-.overgod-portal-core{position:absolute;left:var(--portal-x);top:var(--portal-y);width:18vmin;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%) scale(.02);opacity:0;background:
+.overgod-portal-core{position:absolute;left:var(--portal-x);top:var(--portal-y);width:150vmax;aspect-ratio:1;border-radius:50%;transform:translate3d(-50%,-50%,0) scale(.008);opacity:0;background:
   radial-gradient(circle at 50% 50%,#000 0 20%,rgba(0,8,3,.98) 21% 29%,rgba(72,255,135,.96) 31% 33%,rgba(21,160,77,.5) 38%,rgba(29,255,105,.12) 52%,transparent 69%);
 box-shadow:0 0 28px rgba(72,255,135,.85),0 0 90px rgba(33,255,105,.48),0 0 180px rgba(26,255,95,.22);will-change:transform,opacity;backface-visibility:hidden;contain:layout paint style}
-.overgod-portal-core::before,.overgod-portal-core::after{content:"";position:absolute;inset:-19%;border-radius:50%;border:2px solid rgba(101,255,157,.38);filter:drop-shadow(0 0 12px rgba(83,255,145,.55));will-change:transform;backface-visibility:hidden}
+.overgod-portal-core::before,.overgod-portal-core::after{content:"";position:absolute;inset:-19%;border-radius:50%;border:2px solid rgba(101,255,157,.38);box-shadow:0 0 12px rgba(83,255,145,.34);will-change:transform;backface-visibility:hidden}
 .overgod-portal-core::before{animation:portalRingSpin 1.9s linear infinite;border-left-color:transparent;border-bottom-color:transparent}
 .overgod-portal-core::after{inset:-36%;border-color:rgba(66,255,129,.18);border-right-color:transparent;border-top-color:transparent;animation:portalRingSpin 3.1s linear infinite reverse}
 .overgod-portal-sparks{position:absolute;left:var(--portal-x);top:var(--portal-y);width:1px;height:1px;box-shadow:0 -90px 4px #67ff9b,78px -45px 3px #4dff87,86px 42px 3px #78ffab,28px 96px 4px #52ff8a,-65px 73px 3px #5dff91,-96px -10px 4px #76ffa6,-52px -73px 3px #42ff7c;opacity:0}
@@ -389,14 +389,15 @@ body.overgod-ripping .world-shell{animation:worldQuake .085s linear 12;transform
 .overgod-portal-transition.spitting .overgod-portal-core{animation:portalSpitOut 1.08s cubic-bezier(.2,.75,.15,1) forwards}
 .overgod-portal-transition.spitting .overgod-portal-sparks{animation:portalSparksBack .82s ease-out forwards}
 body.overgod-returning .world-shell{animation:returnQuake .095s linear 8;will-change:transform;backface-visibility:hidden}
+body.overgod-ripping .map-stage *,body.overgod-returning .map-stage *{animation-play-state:paused!important}
 @keyframes portalRingSpin{to{transform:rotate(360deg)}}
 @keyframes portalVeilIn{0%{opacity:0}52%{opacity:.45}100%{opacity:1;background:#000}}
-@keyframes portalOpenConsume{0%{opacity:0;transform:translate(-50%,-50%) scale(.02) rotate(-10deg)}15%{opacity:1;transform:translate(-50%,-50%) scale(.5) rotate(2deg)}48%{transform:translate(-50%,-50%) scale(1.4) rotate(18deg)}100%{opacity:1;transform:translate(-50%,-50%) scale(24) rotate(95deg)}}
+@keyframes portalOpenConsume{0%{opacity:0;transform:translate3d(-50%,-50%,0) scale(.008) rotate(-10deg)}15%{opacity:1;transform:translate3d(-50%,-50%,0) scale(.045) rotate(2deg)}48%{transform:translate3d(-50%,-50%,0) scale(.12) rotate(18deg)}100%{opacity:1;transform:translate3d(-50%,-50%,0) scale(1.08) rotate(95deg)}}
 @keyframes portalSparks{0%{opacity:0;transform:scale(.2) rotate(0)}28%{opacity:1}100%{opacity:0;transform:scale(4) rotate(160deg)}}
 @keyframes worldQuake{0%{transform:translate(0,0) rotate(0)}25%{transform:translate(-5px,3px) rotate(-.18deg)}50%{transform:translate(5px,-4px) rotate(.2deg)}75%{transform:translate(-3px,-3px) rotate(-.12deg)}100%{transform:translate(3px,4px) rotate(.1deg)}}
 @keyframes worldPull{0%,70%{filter:none}100%{filter:blur(5px) brightness(.55)}}
 @keyframes portalVeilOut{0%{opacity:1;background:#000}48%{opacity:.55}100%{opacity:0}}
-@keyframes portalSpitOut{0%{opacity:1;transform:translate(-50%,-50%) scale(24) rotate(85deg)}54%{transform:translate(-50%,-50%) scale(1.25) rotate(16deg)}82%{opacity:1;transform:translate(-50%,-50%) scale(.52) rotate(-4deg)}100%{opacity:0;transform:translate(-50%,-50%) scale(.02) rotate(-12deg)}}
+@keyframes portalSpitOut{0%{opacity:1;transform:translate3d(-50%,-50%,0) scale(1.08) rotate(85deg)}54%{transform:translate3d(-50%,-50%,0) scale(.11) rotate(16deg)}82%{opacity:1;transform:translate3d(-50%,-50%,0) scale(.045) rotate(-4deg)}100%{opacity:0;transform:translate3d(-50%,-50%,0) scale(.008) rotate(-12deg)}}
 @keyframes portalSparksBack{0%{opacity:0;transform:scale(4) rotate(150deg)}35%{opacity:1}100%{opacity:0;transform:scale(.2) rotate(0)}}
 @keyframes returnQuake{0%{transform:translate(0,0)}20%{transform:translate(4px,-3px)}40%{transform:translate(-5px,2px)}60%{transform:translate(3px,4px)}80%{transform:translate(-2px,-3px)}100%{transform:translate(0,0)}}
 @media(prefers-reduced-motion:reduce){body.overgod-ripping .world-shell,body.overgod-returning .world-shell{animation:none}.overgod-portal-transition.ripping .overgod-portal-core,.overgod-portal-transition.spitting .overgod-portal-core{animation-duration:.35s}.overgod-portal-core::before,.overgod-portal-core::after{animation:none}}
