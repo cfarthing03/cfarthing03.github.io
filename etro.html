@@ -46,7 +46,8 @@ body.city-body>*{position:relative;z-index:1}
 .crt-boot{position:fixed;left:50%;top:50%;z-index:50;width:3px;height:3px;transform:translate(-50%,-50%);background:#caffd7;box-shadow:0 0 14px #72ff9a,0 0 42px rgba(77,255,132,.72);opacity:0;pointer-events:none}
 .radio-secret-overlay.booting .crt-boot{animation:crtBoot .9s cubic-bezier(.2,.75,.2,1) both}
 @keyframes crtBoot{0%{opacity:1;width:3px;height:3px}18%{opacity:1;width:3px;height:3px}42%{opacity:1;width:84vw;height:3px}63%{opacity:1;width:100vw;height:5px}82%{opacity:.82;width:100vw;height:100vh}100%{opacity:0;width:100vw;height:100vh}}
-.radio-secret-overlay.closing .radio-secret-panel{opacity:0;transform:scaleY(.028) scaleX(.86);transition:opacity .14s ease .12s,transform .34s cubic-bezier(.55,0,.9,.45)}
+.radio-secret-overlay.closing .radio-secret-panel{opacity:0;transform:scaleY(.028) scaleX(.86);transition:opacity .14s ease .12s,transform .34s cubic-bezier(.55,0,.9,.45);overflow:hidden}
+.radio-secret-overlay.closing .radio-secret-panel > *{opacity:0!important;visibility:hidden!important;transition:none!important;animation:none!important}
 .radio-secret-overlay.closing .crt-boot{animation:crtShutdown .72s cubic-bezier(.5,0,.8,.35) both}
 @keyframes crtShutdown{0%{opacity:0;width:100vw;height:100vh}18%{opacity:.28;width:100vw;height:100vh}40%{opacity:1;width:100vw;height:5px}72%{opacity:1;width:82vw;height:3px}92%{opacity:1;width:3px;height:3px}100%{opacity:0;width:3px;height:3px}}
 
