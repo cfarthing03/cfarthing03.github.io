@@ -19,24 +19,25 @@ body.overgod-body>*{position:relative;z-index:3}
 .cosmic-universe::before{content:"";position:absolute;inset:-8%;background:
  repeating-radial-gradient(circle at 50% 50%,transparent 0 92px,rgba(94,255,151,.025) 93px 94px,transparent 95px 150px);
  transform:translateZ(0) rotate(8deg) scale(1.04);animation:depthPulse 10s ease-in-out infinite alternate;will-change:opacity;backface-visibility:hidden}
-.cosmic-universe::after{content:"";position:absolute;inset:0;background:
+.cosmic-universe::after{content:"";position:absolute;inset:-4%;background:
  radial-gradient(ellipse at 30% 42%,rgba(69,255,137,.035),transparent 34%),
  radial-gradient(ellipse at 72% 58%,rgba(48,170,101,.04),transparent 38%),
  linear-gradient(115deg,transparent 12%,rgba(69,255,137,.022) 36%,transparent 53%,rgba(48,170,101,.026) 76%,transparent 91%);
- animation:nebulaPulse 13s ease-in-out infinite alternate;will-change:opacity;backface-visibility:hidden}
+ transform:translate3d(-1.5%,-1%,0) scale(1.02);animation:nebulaDrift 18s ease-in-out infinite alternate;will-change:transform,opacity;backface-visibility:hidden}
 .cosmic-stars{position:absolute;inset:0;opacity:.9}
 .cosmic-star{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);border-radius:50%;background:rgba(174,255,203,var(--a));box-shadow:0 0 calc(var(--s)*4) rgba(79,255,137,.62);animation:starPulse var(--d) ease-in-out var(--delay) infinite;will-change:transform,opacity;backface-visibility:hidden}
 .cosmic-orbit{position:absolute;left:50%;top:47%;border:1px solid rgba(90,255,146,.095);border-radius:50%;transform:translate3d(-50%,-50%,0) rotate(var(--r));box-shadow:0 0 32px rgba(40,255,116,.025) inset;will-change:transform;backface-visibility:hidden}
 .cosmic-orbit.o1{width:72vw;height:28vw;--r:14deg;animation:orbitShift 24s linear infinite}
-.cosmic-orbit.o2{width:104vw;height:39vw;--r:-19deg}
-.cosmic-orbit.o3{width:138vw;height:54vw;--r:34deg}
+.cosmic-orbit.o2{width:104vw;height:39vw;--r:-19deg;animation:orbitShiftReverse 39s linear infinite}
+.cosmic-orbit.o3{width:138vw;height:54vw;--r:34deg;animation:orbitShift 58s linear infinite}
 .cosmic-thread{position:absolute;height:1px;width:54vw;left:-9vw;top:27%;background:linear-gradient(90deg,transparent,rgba(82,255,142,.42),transparent);transform:translateZ(0) rotate(17deg);box-shadow:0 0 7px rgba(82,255,142,.28);opacity:.35;animation:threadGhost 8s ease-in-out infinite;will-change:opacity;backface-visibility:hidden}
 .cosmic-thread.t2{left:auto;right:-14vw;top:68%;width:67vw;transform:rotate(-24deg);animation-delay:-3.2s;opacity:.24}
 .cosmic-thread.t3{left:11vw;top:88%;width:82vw;transform:rotate(4deg);animation-delay:-5.4s;opacity:.18}
 @keyframes depthPulse{from{opacity:.72}to{opacity:1}}
-@keyframes nebulaPulse{from{opacity:.72}to{opacity:1}}
+@keyframes nebulaDrift{0%{opacity:.72;transform:translate3d(-1.5%,-1%,0) scale(1.02)}50%{opacity:.92;transform:translate3d(1.2%,.7%,0) scale(1.035)}100%{opacity:1;transform:translate3d(-.4%,1.4%,0) scale(1.025)}}
 @keyframes starPulse{0%,100%{opacity:.18;transform:scale(.7)}50%{opacity:1;transform:scale(1.45)}}
 @keyframes orbitShift{to{transform:translate3d(-50%,-50%,0) rotate(calc(var(--r) + 360deg))}}
+@keyframes orbitShiftReverse{to{transform:translate3d(-50%,-50%,0) rotate(calc(var(--r) - 360deg))}}
 @keyframes threadGhost{0%,100%{opacity:.08}50%{opacity:.42}}
 
 .overgod-body .site-header{background:rgba(0,8,4,.92);border-bottom-color:rgba(82,255,142,.16)}
