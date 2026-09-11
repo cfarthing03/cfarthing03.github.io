@@ -79,8 +79,8 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
 .yellow-sign path,.yellow-sign circle{vector-effect:non-scaling-stroke}
 .nogard-o:hover .yellow-sign,.yellow-sign:focus-visible{
   opacity:.96;
-  filter:drop-shadow(0 0 5px rgba(255,228,92,.92)) drop-shadow(0 0 18px rgba(230,204,87,.82));
-  transform:translate(-50%,-50%) scale(1.85) rotate(0deg);
+  filter:drop-shadow(0 0 3px rgba(255,228,92,.72)) drop-shadow(0 0 10px rgba(230,204,87,.5));
+  transform:translate(-50%,-50%) scale(1.62) rotate(0deg);
 }
 .yellow-sign:focus-visible{outline:none}
 
@@ -92,142 +92,102 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
   opacity:0;
   overflow:hidden;
 }
-.truth-halves,
-.truth-half,
-.truth-crack,
-.truth-crack::before,
-.truth-crack::after,
-.truth-break,
-.truth-seal{
-  position:absolute;
-  pointer-events:none;
-}
+.truth-halves,.truth-half,.truth-crack-svg,.truth-break,.truth-seal{position:absolute;pointer-events:none}
 .truth-halves{inset:0}
 .truth-half{
-  top:0;
-  width:52%;
-  height:100%;
-  background:rgba(0,0,0,.965);
-  opacity:0;
+  top:0;width:52%;height:100%;background:rgba(0,0,0,.975);opacity:0;
 }
 .truth-half.left{
   left:0;
-  clip-path:polygon(0 0,100% 0,88% 13%,92% 27%,84% 41%,91% 57%,83% 74%,88% 100%,0 100%);
-  transform:translateX(0);
+  clip-path:polygon(0 0,100% 0,91% 9%,95% 18%,86% 27%,93% 37%,84% 47%,90% 58%,82% 70%,89% 82%,84% 100%,0 100%);
 }
 .truth-half.right{
   right:0;
-  clip-path:polygon(12% 0,100% 0,100% 100%,12% 100%,8% 74%,17% 57%,10% 41%,18% 27%,12% 13%);
-  transform:translateX(0);
+  clip-path:polygon(9% 0,100% 0,100% 100%,16% 100%,11% 82%,18% 70%,10% 58%,16% 47%,7% 37%,14% 27%,5% 18%,9% 9%);
 }
-.truth-crack{
-  left:50%;
-  top:7%;
-  width:10px;
-  height:86%;
-  transform:translateX(-50%) scaleY(.02);
-  transform-origin:50% 0%;
-  opacity:0;
-  background:linear-gradient(180deg,rgba(255,247,187,.98),rgba(230,204,87,.92));
-  box-shadow:0 0 12px rgba(255,235,120,.95),0 0 34px rgba(230,204,87,.55);
-  clip-path:polygon(47% 0,61% 8%,39% 14%,64% 23%,43% 32%,58% 40%,35% 49%,62% 58%,41% 66%,55% 74%,38% 83%,57% 92%,49% 100%,32% 92%,44% 83%,25% 74%,41% 66%,22% 58%,47% 49%,28% 40%,52% 32%,33% 23%,56% 14%,39% 8%);
+.truth-crack-svg{inset:0;width:100%;height:100%;overflow:visible;opacity:0}
+.truth-crack-svg path{
+  fill:none;
+  stroke:rgba(255,240,163,.96);
+  stroke-width:3.2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-dasharray:1400;
+  stroke-dashoffset:1400;
+  vector-effect:non-scaling-stroke;
+  filter:drop-shadow(0 0 4px rgba(255,235,120,.75)) drop-shadow(0 0 10px rgba(230,204,87,.35));
 }
-.truth-crack::before,
-.truth-crack::after{
-  content:"";
-  left:50%;
-  width:7px;
-  background:linear-gradient(180deg,rgba(255,247,187,.85),rgba(230,204,87,.75));
-  box-shadow:0 0 10px rgba(255,235,120,.72);
-}
-.truth-crack::before{
-  top:21%;
-  height:22%;
-  transform:translateX(-50%) rotate(-52deg);
-  clip-path:polygon(50% 0,67% 12%,38% 33%,61% 54%,40% 76%,55% 100%,31% 75%,49% 54%,26% 33%,45% 12%);
-}
-.truth-crack::after{
-  top:52%;
-  height:20%;
-  transform:translateX(-50%) rotate(46deg);
-  clip-path:polygon(49% 0,63% 12%,35% 35%,59% 56%,41% 77%,54% 100%,29% 77%,47% 56%,22% 35%,42% 12%);
-}
+.truth-crack-svg .branch{stroke:rgba(230,204,87,.82);stroke-width:2.1;stroke-dasharray:600;stroke-dashoffset:600}
 .truth-break{
-  left:50%;
-  top:50%;
-  width:16vmin;
-  height:16vmin;
-  border-radius:50%;
-  opacity:0;
-  transform:translate(-50%,-50%) scale(.12);
-  background:radial-gradient(circle,rgba(255,248,194,1) 0 8%,rgba(255,239,145,.9) 13%,rgba(230,204,87,.42) 34%,rgba(230,204,87,.1) 55%,transparent 72%);
-  box-shadow:0 0 60px rgba(255,235,120,.4);
+  left:50%;top:52%;width:18vmin;height:8vmin;opacity:0;transform:translate(-50%,-50%) scaleX(.08);
+  background:radial-gradient(ellipse at center,rgba(255,247,187,.9) 0 3%,rgba(230,204,87,.42) 18%,rgba(230,204,87,.11) 42%,transparent 70%);
+  filter:blur(.2px);
 }
 .truth-seal{
-  left:50%;
-  top:50%;
-  width:42vmin;
-  max-width:440px;
-  min-width:200px;
-  aspect-ratio:1/1;
-  transform:translate(-50%,-50%) scale(2.35) rotate(8deg);
-  opacity:0;
-  filter:drop-shadow(0 0 8px rgba(255,235,120,.78)) drop-shadow(0 0 28px rgba(230,204,87,.44));
+  left:50%;top:50%;width:31vmin;max-width:330px;min-width:170px;aspect-ratio:1/1;
+  transform:translate(-50%,-50%) scale(1.95) rotate(8deg);opacity:0;
+  filter:drop-shadow(0 0 4px rgba(255,235,120,.52)) drop-shadow(0 0 13px rgba(230,204,87,.24));
 }
 .truth-seal svg{width:100%;height:100%}
-.truth-seal .seal-ring{fill:none;stroke:rgba(230,204,87,.92);stroke-width:2.6}
-.truth-seal .seal-ring.secondary{stroke:rgba(255,240,163,.82);stroke-width:1.5;stroke-dasharray:4 7}
-.truth-seal .seal-core{fill:none;stroke:rgba(255,240,163,.98);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
-.truth-seal .seal-core-soft{fill:none;stroke:rgba(230,204,87,.82);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.truth-seal .seal-dot{fill:rgba(255,240,163,.98)}
+.truth-seal .seal-core,.truth-seal .seal-core-soft{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.truth-seal .seal-core{stroke:rgba(255,240,163,.92);stroke-width:5.1}
+.truth-seal .seal-core-soft{stroke:rgba(230,204,87,.72);stroke-width:3.6}
+.truth-seal .seal-knot{fill:none;stroke:rgba(255,240,163,.9);stroke-width:4.5}
 
-.nogard-page.cracking .truth-veil{animation:veilCrack .96s ease both}
-.nogard-page.cracking .truth-half{animation:crackPanels .96s ease both}
-.nogard-page.cracking .truth-crack{animation:crackDraw .96s cubic-bezier(.2,.74,.16,1) both}
-.nogard-page.cracking .truth-break{animation:crackBurst .96s ease-out both}
-
+.nogard-page.cracking .truth-veil{animation:veilCrack 1.28s ease both}
+.nogard-page.cracking .truth-crack-svg{animation:crackVisible 1.28s ease both}
+.nogard-page.cracking .truth-crack-svg .main-crack{animation:drawMain 1.28s cubic-bezier(.22,.72,.18,1) both}
+.nogard-page.cracking .truth-crack-svg .branch{animation:drawBranch 1.28s cubic-bezier(.22,.72,.18,1) both}
+.nogard-page.cracking .truth-half{animation:crackPanels 1.28s cubic-bezier(.15,.72,.18,1) both}
+.nogard-page.cracking .truth-break{animation:crackBurst 1.28s ease-out both}
 @keyframes veilCrack{
   0%{opacity:0;background:rgba(0,0,0,0)}
-  10%{opacity:1;background:rgba(0,0,0,.35)}
-  62%{opacity:1;background:rgba(0,0,0,.93)}
-  100%{opacity:0;background:rgba(0,0,0,.93)}
+  8%{opacity:1;background:rgba(0,0,0,.18)}
+  58%{opacity:1;background:rgba(0,0,0,.72)}
+  74%{opacity:1;background:rgba(0,0,0,.96)}
+  100%{opacity:0;background:rgba(0,0,0,.96)}
+}
+@keyframes crackVisible{0%{opacity:0}8%{opacity:1}82%{opacity:1}100%{opacity:0}}
+@keyframes drawMain{
+  0%{stroke-dashoffset:1400}
+  58%{stroke-dashoffset:0}
+  76%,100%{stroke-dashoffset:0}
+}
+@keyframes drawBranch{
+  0%,24%{stroke-dashoffset:600}
+  64%{stroke-dashoffset:0}
+  100%{stroke-dashoffset:0}
 }
 @keyframes crackPanels{
-  0%,57%{opacity:0;transform:translateX(0)}
-  58%{opacity:1;transform:translateX(0)}
-  70%{opacity:1}
+  0%,66%{opacity:0;transform:translateX(0)}
+  67%{opacity:1;transform:translateX(0)}
+  79%{opacity:1}
   100%{opacity:0;transform:translateX(var(--split,0))}
 }
-.nogard-page.cracking .truth-half.left{--split:-16vw}
-.nogard-page.cracking .truth-half.right{--split:16vw}
-@keyframes crackDraw{
-  0%{opacity:0;transform:translateX(-50%) scaleY(.02)}
-  14%{opacity:.95}
-  56%{opacity:1;transform:translateX(-50%) scaleY(1)}
-  68%{opacity:1;transform:translateX(-50%) scaleY(1.02)}
-  100%{opacity:0;transform:translateX(-50%) scaleY(1.02)}
-}
+.nogard-page.cracking .truth-half.left{--split:-20vw}
+.nogard-page.cracking .truth-half.right{--split:20vw}
 @keyframes crackBurst{
-  0%,52%{opacity:0;transform:translate(-50%,-50%) scale(.12)}
-  64%{opacity:.9;transform:translate(-50%,-50%) scale(1.25)}
-  100%{opacity:0;transform:translate(-50%,-50%) scale(3.3)}
+  0%,62%{opacity:0;transform:translate(-50%,-50%) scaleX(.08)}
+  72%{opacity:.92;transform:translate(-50%,-50%) scaleX(1.15)}
+  84%{opacity:.48;transform:translate(-50%,-50%) scaleX(2.1)}
+  100%{opacity:0;transform:translate(-50%,-50%) scaleX(3.2)}
 }
 
-/* Closing effect: the record is sealed shut with a matching hidden sign */
-.nogard-page.sealing .truth-veil{animation:sealVeil .96s ease both}
-.nogard-page.sealing .truth-seal{animation:sealDrop .96s cubic-bezier(.2,.82,.18,1) both}
+.nogard-page.sealing .truth-veil{animation:sealVeil 1.05s ease both}
+.nogard-page.sealing .truth-seal{animation:sealDrop 1.05s cubic-bezier(.2,.82,.18,1) both}
 @keyframes sealVeil{
   0%{opacity:0;background:rgba(0,0,0,0)}
-  24%{opacity:1;background:rgba(0,0,0,.24)}
-  70%{opacity:1;background:rgba(0,0,0,.92)}
+  20%{opacity:1;background:rgba(0,0,0,.2)}
+  72%{opacity:1;background:rgba(0,0,0,.92)}
   100%{opacity:0;background:rgba(0,0,0,.92)}
 }
 @keyframes sealDrop{
-  0%{opacity:0;transform:translate(-50%,-50%) scale(2.35) rotate(8deg)}
-  20%{opacity:1}
-  68%{opacity:1;transform:translate(-50%,-50%) scale(.86) rotate(-3deg)}
-  82%{opacity:1;transform:translate(-50%,-50%) scale(.72) rotate(0deg)}
-  100%{opacity:0;transform:translate(-50%,-50%) scale(.64) rotate(0deg)}
+  0%{opacity:0;transform:translate(-50%,-50%) scale(1.95) rotate(8deg)}
+  18%{opacity:.72}
+  62%{opacity:.96;transform:translate(-50%,-50%) scale(.94) rotate(-2deg)}
+  78%{opacity:1;transform:translate(-50%,-50%) scale(.82) rotate(0deg)}
+  88%{opacity:.95;transform:translate(-50%,-50%) scale(.78) rotate(0deg)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(.7) rotate(0deg)}
 }
 .nogard-page.sealing .nogard-truth{animation:truthSealOut .82s ease both}
 @keyframes truthSealOut{
@@ -290,20 +250,29 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
 
 <div class="truth-veil" aria-hidden="true">
   <div class="truth-halves"><div class="truth-half left"></div><div class="truth-half right"></div></div>
-  <div class="truth-crack"></div>
+  <svg class="truth-crack-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+    <path class="main-crack" d="M517 18 L486 108 L531 176 L474 247 L521 315 L459 397 L512 474 L452 555 L506 625 L468 701 L515 776 L477 849 L507 982"/>
+    <path class="branch" d="M486 108 L422 150 L389 214"/>
+    <path class="branch" d="M531 176 L592 222 L637 270"/>
+    <path class="branch" d="M474 247 L407 298 L365 351"/>
+    <path class="branch" d="M521 315 L584 354 L628 420"/>
+    <path class="branch" d="M459 397 L394 449 L355 504"/>
+    <path class="branch" d="M512 474 L587 512 L645 570"/>
+    <path class="branch" d="M452 555 L389 603 L344 651"/>
+    <path class="branch" d="M506 625 L567 668 L620 736"/>
+    <path class="branch" d="M468 701 L401 748 L360 812"/>
+    <path class="branch" d="M515 776 L576 822 L624 891"/>
+  </svg>
   <div class="truth-break"></div>
   <div class="truth-seal" aria-hidden="true">
     <svg viewBox="0 0 100 100" aria-hidden="true">
-      <circle class="seal-ring" cx="50" cy="50" r="43"></circle>
-      <circle class="seal-ring secondary" cx="50" cy="50" r="36"></circle>
-      <path class="seal-core" d="M24 18 C34 6,57 7,64 20 C71 33,63 47,48 52"></path>
-      <path class="seal-core-soft" d="M25 17 C38 6,61 10,65 26 C67 35,61 45,50 50 C42 53,40 60,41 69"></path>
-      <circle class="seal-core" cx="49.5" cy="52" r="8.5"></circle>
-      <circle class="seal-ring secondary" cx="49.5" cy="52" r="13"></circle>
-      <path class="seal-core" d="M31 66 C19 75,17 91,29 95 C39 98,51 92,58 79 C64 68,76 64,86 68"></path>
-      <path class="seal-core-soft" d="M29 66 C20 77,21 91,36 94"></path>
-      <path class="seal-core-soft" d="M85 67 C92 73,91 86,82 90"></path>
-      <circle class="seal-dot" cx="50" cy="50" r="1.9"></circle>
+      <path class="seal-core" d="M22 20 C31 7,56 7,65 20 C72 31,66 44,51 50 C44 53,40 59,42 68"/>
+      <path class="seal-core-soft" d="M25 17 C40 5,63 10,68 26 C71 36,64 47,52 52"/>
+      <path class="seal-knot" d="M41 52 C43 43,56 42,61 49 C66 57,59 66,50 66 C41 66,35 59,41 52 Z"/>
+      <path class="seal-core" d="M29 66 C18 75,17 91,29 95 C40 98,53 91,60 79 C66 69,76 64,88 69"/>
+      <path class="seal-core-soft" d="M29 67 C22 77,24 88,36 92"/>
+      <path class="seal-core-soft" d="M86 69 C92 76,91 87,82 91"/>
+      <path class="seal-core-soft" d="M57 78 C61 82,64 88,63 95"/>
     </svg>
   </div>
 </div>
@@ -314,7 +283,7 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
 
     <section class="shop-card">
       <div class="shop-kicker">Person of Note · Proprietor of Nogard's Treasure Trove</div>
-      <h1 class="shop-title">N<span class="nogard-o">o<button class="yellow-sign" id="yellowSign" type="button" aria-label="An unseen mark"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M24 18 C34 6,57 7,64 20 C71 33,63 47,48 52" fill="none" stroke="#fff0a3" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 17 C38 6,61 10,65 26 C67 35,61 45,50 50 C42 53,40 60,41 69" fill="none" stroke="#e6cc57" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="49.5" cy="52" r="9" fill="none" stroke="#fff0a3" stroke-width="4.5"/><circle cx="49.5" cy="52" r="13.5" fill="none" stroke="#e6cc57" stroke-width="3.2" stroke-dasharray="22 14" stroke-linecap="round"/><path d="M29 66 C20 77,21 91,36 94" fill="none" stroke="#fff0a3" stroke-width="4.5" stroke-linecap="round"/><path d="M31 66 C19 75,17 91,29 95 C39 98,51 92,58 79 C64 68,76 64,86 68" fill="none" stroke="#e6cc57" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M85 67 C92 73,91 86,82 90" fill="none" stroke="#fff0a3" stroke-width="4.5" stroke-linecap="round"/></svg></button></span>gard</h1>
+      <h1 class="shop-title">N<span class="nogard-o">o<button class="yellow-sign" id="yellowSign" type="button" aria-label="An unseen mark"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M22 20 C31 7,56 7,65 20 C72 31,66 44,51 50 C44 53,40 59,42 68" fill="none" stroke="#fff0a3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 17 C40 5,63 10,68 26 C71 36,64 47,52 52" fill="none" stroke="#e6cc57" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M41 52 C43 43,56 42,61 49 C66 57,59 66,50 66 C41 66,35 59,41 52 Z" fill="none" stroke="#fff0a3" stroke-width="4.2" stroke-linejoin="round"/><path d="M29 66 C18 75,17 91,29 95 C40 98,53 91,60 79 C66 69,76 64,88 69" fill="none" stroke="#e6cc57" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M29 67 C22 77,24 88,36 92 M86 69 C92 76,91 87,82 91 M57 78 C61 82,64 88,63 95" fill="none" stroke="#fff0a3" stroke-width="3.2" stroke-linecap="round"/></svg></button></span>gard</h1>
       <p class="shop-subtitle">Some merchants wait for customers to find them. Nogard's shop does not. Open the wrong door at the right moment and you may find yourself standing inside a store that was never on the other side. Shelves stretch with magical objects, impossible curiosities, and exactly the sort of thing you did not know you needed until the old man behind the counter starts naming his price.</p>
       <div class="shop-rules">
         <div class="shop-rule"><strong>Everything Has a Price</strong><span>Nogard loves a bargain almost as much as he loves winning one. Haggling with him is less a transaction and more a contest he fully expects to enjoy.</span></div>
@@ -437,8 +406,8 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
       truth.setAttribute('aria-hidden','false');
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
-    },610);
-    window.setTimeout(function(){ page.classList.remove('cracking'); },980);
+    },810);
+    window.setTimeout(function(){ page.classList.remove('cracking'); },1300);
   }
 
   function closeTruth(){
@@ -449,10 +418,10 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
       truth.setAttribute('aria-hidden','true');
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
-    },650);
+    },720);
     window.setTimeout(function(){
       page.classList.remove('sealing');
-    },980);
+    },1060);
   }
 
   sign.addEventListener('click',openTruth);
