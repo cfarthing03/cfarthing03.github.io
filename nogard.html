@@ -1,2 +1,282 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nogard · Sinners</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/archive.css"></head><body class="archive-body"><header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header><main class="archive-shell"><a class="archive-back" href="/people.html">← Return to the Archive</a><div class="archive-kicker">Person of Note</div><h1 class="archive-title">Nogard</h1><p class="archive-lede">An old merchant whose little shop becomes stranger the longer anyone remains inside it.</p><div class="archive-grid"><article class="archive-article"><h2>Archive Record</h2><p>A simple weapons seller who loves to trick unsuspecting customers into poor deals. A great Hagler and an even better salesman. To challenge him is certainly a battle of wits and muscle one will certainly lose. Not that he&#x27;d let you know that.</p>
-<p>An old man that knows more than he lets on. Runs a simple magic item store known as Nogards Treasure Trove and is ready and willing to do business with anyone that has coin. However the longer you remain in his shop the more and more bizarre things get.</p></article><aside class="archive-aside"><div class="archive-kicker">Related Records</div><div class="archive-meta"><a href="/people.html">People &amp; Legends</a></div></aside></div></main><footer>Sinners World Archive · Built as a player-facing lore guide</footer><script src="/script.js"></script><script src="/archive.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nogard · Sinners</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/archive.css">
+<style>
+:root{
+  --nogard-yellow:#e6cc57;
+  --nogard-yellow-soft:rgba(230,204,87,.18);
+  --nogard-yellow-hot:#fff0a3;
+  --nogard-ink:#17120b;
+}
+body.nogard-page{overflow-x:hidden;background:#08090b}
+.nogard-shell{position:relative;max-width:1180px;margin:0 auto;padding:34px 24px 84px}
+.nogard-public,.nogard-truth{position:relative;z-index:2}
+.nogard-public{transition:opacity .55s ease,transform .75s cubic-bezier(.2,.8,.2,1),filter .55s ease}
+.nogard-page.truth-open .nogard-public{opacity:0;transform:scale(.985);filter:brightness(.45);pointer-events:none}
+
+.shop-card{
+  position:relative;
+  overflow:hidden;
+  padding:30px;
+  margin:18px 0 26px;
+  border-radius:24px;
+  border:1px solid rgba(194,150,79,.25);
+  background:
+    radial-gradient(circle at 84% 18%,rgba(214,165,72,.12),transparent 22rem),
+    linear-gradient(180deg,rgba(33,25,20,.96),rgba(13,12,13,.98));
+  box-shadow:0 30px 70px rgba(0,0,0,.36),inset 0 0 0 1px rgba(255,255,255,.025);
+}
+.shop-card::after{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;
+  background:repeating-linear-gradient(90deg,transparent 0 46px,rgba(255,226,151,.025) 47px 48px);
+}
+.shop-kicker{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:#c99d64;margin-bottom:8px}
+.shop-title{margin:0 0 12px;font-size:clamp(2.4rem,5vw,5.4rem);line-height:.95;color:#f4e8d3}
+.shop-subtitle{max-width:760px;color:#d6c6b6;line-height:1.75;font-size:1.06rem}
+.shop-rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px}
+.shop-rule{padding:17px 18px;border-radius:16px;background:rgba(255,255,255,.025);border:1px solid rgba(202,158,87,.15)}
+.shop-rule strong{display:block;color:#f2d693;margin-bottom:6px}
+.shop-rule span{color:#baa99b;line-height:1.5}
+
+.nogard-grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:24px}
+.nogard-article,.nogard-aside{border:1px solid rgba(194,150,79,.18);border-radius:20px;background:rgba(14,14,16,.86);box-shadow:0 24px 50px rgba(0,0,0,.25)}
+.nogard-article{padding:26px 28px}
+.nogard-article h2{color:#f0d7a7;margin-top:1.8rem}
+.nogard-article h2:first-child{margin-top:0}
+.nogard-article p{line-height:1.8;color:#d0c3b6}
+.nogard-aside{padding:22px;height:max-content;position:sticky;top:20px}
+.nogard-aside .archive-meta{display:grid;gap:9px}
+
+/* deliberately easy to miss */
+.yellow-sign{
+  position:absolute;
+  z-index:8;
+  right:-3px;
+  top:61%;
+  width:22px;
+  height:30px;
+  padding:0;
+  border:0;
+  background:transparent;
+  opacity:.32;
+  cursor:pointer;
+  transform:rotate(7deg);
+  transition:opacity .22s ease,filter .22s ease,transform .22s ease;
+}
+.yellow-sign svg{width:100%;height:100%;overflow:visible}
+.yellow-sign:hover,.yellow-sign:focus-visible{opacity:1;filter:drop-shadow(0 0 5px #e6cc57) drop-shadow(0 0 14px rgba(230,204,87,.62));transform:rotate(2deg) scale(1.12)}
+.yellow-sign:focus-visible{outline:1px solid rgba(230,204,87,.7);outline-offset:4px}
+
+.truth-veil{position:fixed;inset:0;z-index:40;pointer-events:none;opacity:0;background:rgba(0,0,0,.92)}
+.truth-veil::before,.truth-veil::after{
+  content:"";position:absolute;left:50%;top:50%;width:3px;height:0;background:var(--nogard-yellow-hot);
+  box-shadow:0 0 9px var(--nogard-yellow),0 0 26px rgba(230,204,87,.85),0 0 70px rgba(230,204,87,.55);
+  transform-origin:50% 0;
+}
+.truth-veil::before{transform:translate(-50%,-50%) rotate(38deg)}
+.truth-veil::after{transform:translate(-50%,-50%) rotate(-47deg)}
+.nogard-page.cracking .truth-veil{opacity:1;animation:veilFlash .9s ease both}
+.nogard-page.cracking .truth-veil::before{animation:crackGrow .55s cubic-bezier(.1,.8,.2,1) both}
+.nogard-page.cracking .truth-veil::after{animation:crackGrow .7s .08s cubic-bezier(.1,.8,.2,1) both}
+@keyframes crackGrow{0%{height:0}65%{height:145vh}100%{height:170vh}}
+@keyframes veilFlash{0%{opacity:0}18%{opacity:.92}68%{opacity:1}100%{opacity:0}}
+
+.nogard-truth{
+  display:none;
+  opacity:0;
+  transform:translateY(14px);
+  min-height:70vh;
+}
+.nogard-page.truth-open .nogard-truth{display:block;animation:truthIn .7s ease .06s both}
+@keyframes truthIn{to{opacity:1;transform:none}}
+.truth-header{
+  position:relative;
+  overflow:hidden;
+  padding:32px 30px;
+  border:1px solid rgba(230,204,87,.35);
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 20% 10%,rgba(230,204,87,.12),transparent 22rem),
+    linear-gradient(180deg,rgba(16,15,8,.98),rgba(7,8,7,.98));
+  box-shadow:0 0 60px rgba(230,204,87,.07),inset 0 0 70px rgba(230,204,87,.025);
+}
+.truth-header::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.14;background:repeating-linear-gradient(0deg,transparent 0 5px,rgba(247,224,116,.08) 6px)}
+.truth-label{font-size:.75rem;letter-spacing:.24em;color:#d6be4f;text-transform:uppercase}
+.truth-title{margin:.35rem 0 .7rem;font-size:clamp(2.3rem,5vw,5rem);color:#fff0a3}
+.truth-lede{max-width:820px;color:#d8d2ad;line-height:1.75}
+.truth-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;margin-top:24px}
+.truth-file,.truth-sidebar{border:1px solid rgba(230,204,87,.2);border-radius:18px;background:rgba(8,9,7,.9)}
+.truth-file{padding:28px}
+.truth-sidebar{padding:22px;height:max-content;position:sticky;top:20px}
+.truth-file h2{color:#e9d666;margin-top:1.9rem}
+.truth-file h2:first-child{margin-top:0}
+.truth-file p{color:#c9c6ac;line-height:1.8}
+.redacted{display:inline-block;background:#050505;color:#050505;border-radius:2px;box-shadow:0 0 0 1px rgba(230,204,87,.06);user-select:none}
+.redacted.block{display:block;height:1.05em;margin:.35rem 0;width:92%}
+.redacted.short{width:8.5em}
+.redacted.medium{width:14em}
+.fragment{padding:16px 18px;margin:16px 0;border-left:2px solid rgba(230,204,87,.5);background:rgba(230,204,87,.035);color:#ddd6a8;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.75}
+.margin-mark{display:flex;align-items:center;gap:10px;color:#9f9247;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;margin:14px 0}
+.margin-mark::before{content:"";width:18px;height:18px;border:1px solid #b5a341;transform:rotate(45deg);box-shadow:inset 0 0 0 4px #080907,0 0 10px rgba(230,204,87,.12)}
+.truth-exit{width:100%;margin-top:15px;padding:12px 14px;border:1px solid rgba(230,204,87,.28);background:rgba(230,204,87,.04);color:#dfcf77;border-radius:12px;cursor:pointer}
+.truth-exit:hover{background:rgba(230,204,87,.08)}
+
+@media(max-width:900px){
+  .nogard-grid,.truth-grid{grid-template-columns:1fr}
+  .nogard-aside,.truth-sidebar{position:relative;top:auto}
+  .shop-rules{grid-template-columns:1fr}
+  .yellow-sign{right:8px;top:58%}
+}
+</style>
+</head>
+<body class="archive-body nogard-page" id="nogardPage">
+<header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header>
+
+<div class="truth-veil" aria-hidden="true"></div>
+
+<main class="nogard-shell">
+  <section class="nogard-public" id="nogardPublic">
+    <a class="archive-back" href="/people.html">← Return to the Archive</a>
+
+    <section class="shop-card">
+      <div class="shop-kicker">Person of Note · Proprietor of Nogard's Treasure Trove</div>
+      <h1 class="shop-title">Nogard</h1>
+      <p class="shop-subtitle">Some merchants wait for customers to find them. Nogard's shop does not. Open the wrong door at the right moment and you may find yourself standing inside a store that was never on the other side. Shelves stretch with magical objects, impossible curiosities, and exactly the sort of thing you did not know you needed until the old man behind the counter starts naming his price.</p>
+      <div class="shop-rules">
+        <div class="shop-rule"><strong>Everything Has a Price</strong><span>Nogard loves a bargain almost as much as he loves winning one. Haggling with him is less a transaction and more a contest he fully expects to enjoy.</span></div>
+        <div class="shop-rule"><strong>The Door Chooses When</strong><span>There is no reliable road to the Treasure Trove. Any ordinary door may become the entrance when the shop wishes to be found.</span></div>
+        <div class="shop-rule"><strong>He Knows What You Need</strong><span>Nogard has an irritating habit of pointing visitors toward the path they actually need, whether or not they understand why yet.</span></div>
+      </div>
+    </section>
+
+    <div class="nogard-grid">
+      <article class="nogard-article">
+        <h2>The Merchant</h2>
+        <p>At first glance Nogard is easy to dismiss as a deranged old shopkeeper with an excellent inventory and an even better instinct for separating adventurers from their gold. He bargains relentlessly, pushes prices as far as he can, and treats every negotiation like a private sport. Trying to out-haggle him can become a battle of wits all its own, and Nogard is usually having far more fun than the person on the other side of the counter.</p>
+        <p>That performance is convincing because so much of it is genuine. Nogard truly does love the sale. He truly does enjoy the argument. Gold matters to him, or at least he is very committed to making everyone believe that it does. Yet the longer someone spends around him, the harder it becomes to believe that profit is the whole reason he keeps opening the door.</p>
+
+        <h2>Nogard's Treasure Trove</h2>
+        <p>The shop itself is as famous as the man. It is not reached by a street, district, or road. Instead, people find it by accident, by need, or by whatever strange rule governs Nogard's willingness to receive them. A bedroom door, tavern entrance, cellar hatch, or doorway in a place that should lead somewhere completely ordinary may instead open into the Treasure Trove.</p>
+        <p>Inside, the distinction between rare and impossible becomes difficult to maintain. Magical items fill the shelves in quantities that should make collectors, monarchs, and churches deeply uncomfortable. Nogard seems to possess almost anything, and when he does not immediately produce what a visitor asks for, there is often the unsettling sense that he could.</p>
+
+        <h2>An Unreliable Fool Who Is Almost Never Wrong</h2>
+        <p>Nogard's behavior makes him easy to underestimate. He rambles, jokes, bargains, and often presents himself like an old man whose greatest concern is squeezing a few more coins from a customer. Then, somewhere in the middle of an otherwise ridiculous conversation, he says exactly the thing someone needed to hear.</p>
+        <p>Again and again, Nogard has pointed adventurers in the direction they needed to go. Sometimes his advice is direct. Sometimes it only becomes meaningful much later. He rarely explains how he knows what he knows, and trying to force a clear answer out of him is usually less productive than surviving one of his sales pitches.</p>
+
+        <h2>The Longer You Stay</h2>
+        <p>The strange parts are easiest to notice when a visit lasts too long. Nogard refers casually to details he should not know. He mentions events he was never present for. He talks about possibilities as though he has already watched them happen, including things that have not happened yet and things that may never happen at all.</p>
+        <p>Visitors who notice this tend to leave with more questions than answers. Nogard, naturally, is happy to sell them something before they go.</p>
+
+        <h2>When He Actually Intervenes</h2>
+        <p>Nogard prefers guidance to action. He nudges, redirects, equips, warns, and waits. Direct intervention is rare enough to be noteworthy, but it has happened when circumstances became desperate enough. Even then, Nogard has spoken as though helping is not simply a matter of whether he wants to. There are rules. There is an order that must remain where it is. What those rules are, who established them, and what happens if Nogard ignores them are questions he does not answer.</p>
+      </article>
+      <aside class="nogard-aside">
+        <div class="archive-kicker">At a Glance</div>
+        <div class="archive-meta">
+          <span>Merchant</span>
+          <span>Nogard's Treasure Trove</span>
+          <span>Magical Items</span>
+          <span>Unreliable Access</span>
+          <span>Habitual Haggle</span>
+        </div>
+        <div class="archive-kicker" style="margin-top:22px">Related Records</div>
+        <div class="archive-meta"><a href="/people.html">People &amp; Legends</a></div>
+      </aside>
+    </div>
+
+    <button class="yellow-sign" id="yellowSign" type="button" aria-label="A small yellow mark">
+      <svg viewBox="0 0 30 40" aria-hidden="true">
+        <path d="M15 2 L26 10 L22 24 L15 38 L8 24 L4 10 Z" fill="none" stroke="#e6cc57" stroke-width="1.4"/>
+        <path d="M8 12 C12 8,18 8,22 12 M10 18 L20 18 M12 23 L18 23" fill="none" stroke="#e6cc57" stroke-width="1.1" opacity=".85"/>
+        <circle cx="15" cy="14" r="2.2" fill="#e6cc57" opacity=".9"/>
+      </svg>
+    </button>
+  </section>
+
+  <section class="nogard-truth" id="nogardTruth" aria-hidden="true">
+    <div class="truth-header">
+      <div class="truth-label">Restricted Archive // Classification Unstable</div>
+      <h1 class="truth-title">NOGARD</h1>
+      <p class="truth-lede">The public record is useful because Nogard appears to prefer it that way. The following material survives in fragments, corrections, sealed observations, and notes written by people who noticed that the shopkeeper's performance stops making sense when examined too closely.</p>
+    </div>
+
+    <div class="truth-grid">
+      <article class="truth-file">
+        <h2>The Shop Is Not Here</h2>
+        <p>Nogard's Treasure Trove does not merely hide somewhere in the world. Evidence indicates that the shop exists in a dimension entirely separate from it. The doors are not entrances in the ordinary sense. They are temporary points of contact, opened when Nogard permits the connection.</p>
+        <p>Inside that space, divine authority appears to fail. The gods hold no meaningful sway there. More troublingly, neither does the Overgod. Whatever laws govern the Treasure Trove, they are not the laws that govern the world outside its doors.</p>
+        <div class="fragment">LOCATION: <span class="redacted medium">unavailable</span><br>DIVINE ACCESS: NONE OBSERVED<br>OVERGOD ACCESS: NONE OBSERVED<br>OWNER: NOGARD<br>AUTHORITY: <span class="redacted short">REDACTED</span></div>
+
+        <h2>Power Without the Title</h2>
+        <p>Nogard wields power of the same order associated with an Overgod, yet he is not one. The distinction is not rhetorical. Records that recognize the scale of his power are unusually consistent on this point, even when almost everything else surrounding him is censored, contradicted, or missing.</p>
+        <p>Why a being capable of such things spends so much of his existence arguing over gold from behind a counter is unknown. The simplest answer is that he enjoys it. The less comfortable answer is that the shopkeeper everyone meets is only the portion of Nogard he chooses to make understandable.</p>
+
+        <h2>Knowledge He Should Not Possess</h2>
+        <p>The incidents dismissed publicly as intuition become much harder to dismiss when collected together. Nogard has spoken about events he did not witness, private information never shared with him, futures that had not yet occurred, and possibilities that later failed to happen at all.</p>
+        <p>This suggests more than prediction. Nogard does not always speak as though he is guessing what comes next. Sometimes he speaks as though several versions of what comes next are already familiar to him.</p>
+        <div class="fragment">OBSERVATION 12: Subject referenced an event before its occurrence.<br>OBSERVATION 13: Event did not occur.<br>OBSERVATION 14: Subject later referred to the abandoned outcome as though remembering it.</div>
+
+        <h2>The Rules</h2>
+        <p>Despite his apparent freedom, Nogard has repeatedly alluded to restrictions on direct intervention. His wording changes, but the principle does not. There is an order to things, and there are rules he must follow if that order is to remain where it is.</p>
+        <p>That phrasing has never been satisfactorily explained. It may describe balance, hierarchy, containment, or something for which the archive has no surviving vocabulary. Nogard has broken from his usual distance when circumstances became desperate, but even those interventions appear measured, limited, and deliberate.</p>
+        <p><span class="redacted block">REDACTED REDACTED REDACTED REDACTED REDACTED</span><span class="redacted block" style="width:76%">REDACTED REDACTED REDACTED</span></p>
+
+        <h2>The Man Behind the Counter</h2>
+        <p>The loud merchant, the impossible shop, the obsession with gold, and the theatrical haggling are all real. They are also useful. People underestimate a fool. They argue with a salesman. They complain about a bad deal instead of asking why the person who sold it to them knew they would need it three days later.</p>
+        <p>The deeper record does not claim the merchant is false. It suggests that he is incomplete. Nogard lets people see the version of him that can be laughed at, bargained with, and understood. The rest remains behind the counter.</p>
+
+        <div class="margin-mark">Unverified recurring mark found in unrelated copies</div>
+        <p>Several damaged versions of this record contain the same yellow mark in the margins. No author identifies it. No curator admits adding it. Attempts to remove it from one copy have occasionally resulted in its appearance elsewhere.</p>
+        <p class="fragment">DO NOT ASSUME THE SIGN BELONGS TO THE SHOPKEEPER.<br><span class="redacted medium">██████████████</span> WATCHES THE SAME DOOR.</p>
+      </article>
+
+      <aside class="truth-sidebar">
+        <div class="truth-label">Recovered Notes</div>
+        <p class="fragment">HE IS NOT AN OVERGOD.</p>
+        <p class="fragment">THAT DOES NOT MAKE HIM LESS DANGEROUS.</p>
+        <p class="fragment">The shop is safe because the powers outside it cannot reach inside.</p>
+        <p class="fragment"><span class="redacted block"></span><span class="redacted block" style="width:65%"></span></p>
+        <button class="truth-exit" id="sealRecord" type="button">Seal Record</button>
+      </aside>
+    </div>
+  </section>
+</main>
+<footer>Sinners World Archive · Built as a player-facing lore guide</footer>
+<script src="/script.js"></script>
+<script src="/archive.js"></script>
+<script>
+(function(){
+  const page = document.getElementById('nogardPage');
+  const sign = document.getElementById('yellowSign');
+  const truth = document.getElementById('nogardTruth');
+  const seal = document.getElementById('sealRecord');
+  if(!page || !sign || !truth || !seal) return;
+
+  function openTruth(){
+    if(page.classList.contains('cracking') || page.classList.contains('truth-open')) return;
+    page.classList.add('cracking');
+    window.setTimeout(function(){
+      page.classList.add('truth-open');
+      truth.setAttribute('aria-hidden','false');
+      window.scrollTo({top:0,behavior:'instant'});
+    },430);
+    window.setTimeout(function(){ page.classList.remove('cracking'); },940);
+  }
+
+  function closeTruth(){
+    page.classList.remove('truth-open');
+    truth.setAttribute('aria-hidden','true');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  sign.addEventListener('click',openTruth);
+  seal.addEventListener('click',closeTruth);
+})();
+</script>
+</body>
+</html>
