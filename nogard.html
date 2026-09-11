@@ -59,27 +59,28 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
   position:absolute;
   z-index:9;
   left:50%;
-  top:51%;
-  width:.82em;
-  height:.82em;
+  top:52%;
+  width:.94em;
+  height:.94em;
   padding:0;
   border:0;
   background:transparent;
   opacity:0;
   cursor:pointer;
-  transform:translate(-50%,-50%) scale(.78) rotate(-7deg);
+  transform:translate(-50%,-50%) scale(.7) rotate(-8deg);
   transition:opacity .24s ease,filter .24s ease,transform .24s ease;
 }
 .yellow-sign::before{
   content:"";
   position:absolute;
-  inset:-.35em;
+  inset:-.42em;
 }
 .yellow-sign svg{width:100%;height:100%;overflow:visible;pointer-events:none}
+.yellow-sign path,.yellow-sign circle{vector-effect:non-scaling-stroke}
 .nogard-o:hover .yellow-sign,.yellow-sign:focus-visible{
-  opacity:.92;
-  filter:drop-shadow(0 0 4px rgba(255,228,92,.9)) drop-shadow(0 0 12px rgba(230,204,87,.65));
-  transform:translate(-50%,-50%) scale(1.28) rotate(0deg);
+  opacity:.96;
+  filter:drop-shadow(0 0 5px rgba(255,228,92,.92)) drop-shadow(0 0 18px rgba(230,204,87,.82));
+  transform:translate(-50%,-50%) scale(1.85) rotate(0deg);
 }
 .yellow-sign:focus-visible{outline:none}
 
@@ -90,99 +91,143 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
   pointer-events:none;
   opacity:0;
   overflow:hidden;
-  background:rgba(0,0,0,.86);
 }
-.truth-veil::before,
-.truth-veil::after{
-  content:"";
+.truth-halves,
+.truth-half,
+.truth-crack,
+.truth-crack::before,
+.truth-crack::after,
+.truth-break,
+.truth-seal{
   position:absolute;
-  left:50%;
-  top:50%;
   pointer-events:none;
 }
-/* Opening effect: a compact fracture blooms outward rather than drawing two huge lines */
-.truth-veil::before{
-  width:34vmin;
-  height:34vmin;
-  transform:translate(-50%,-50%) scale(.05) rotate(0deg);
+.truth-halves{inset:0}
+.truth-half{
+  top:0;
+  width:52%;
+  height:100%;
+  background:rgba(0,0,0,.965);
   opacity:0;
-  background:
-    linear-gradient(18deg,transparent 48.8%,rgba(255,240,163,.95) 49.2% 50.2%,transparent 50.7%),
-    linear-gradient(72deg,transparent 48.8%,rgba(230,204,87,.82) 49.2% 50.0%,transparent 50.5%),
-    linear-gradient(128deg,transparent 48.8%,rgba(255,240,163,.9) 49.2% 50.1%,transparent 50.6%),
-    linear-gradient(161deg,transparent 48.8%,rgba(230,204,87,.76) 49.2% 50.0%,transparent 50.5%);
-  filter:drop-shadow(0 0 8px rgba(255,235,120,.9)) drop-shadow(0 0 22px rgba(230,204,87,.55));
 }
-.truth-veil::after{
-  width:18vmin;
-  height:18vmin;
+.truth-half.left{
+  left:0;
+  clip-path:polygon(0 0,100% 0,88% 13%,92% 27%,84% 41%,91% 57%,83% 74%,88% 100%,0 100%);
+  transform:translateX(0);
+}
+.truth-half.right{
+  right:0;
+  clip-path:polygon(12% 0,100% 0,100% 100%,12% 100%,8% 74%,17% 57%,10% 41%,18% 27%,12% 13%);
+  transform:translateX(0);
+}
+.truth-crack{
+  left:50%;
+  top:7%;
+  width:10px;
+  height:86%;
+  transform:translateX(-50%) scaleY(.02);
+  transform-origin:50% 0%;
+  opacity:0;
+  background:linear-gradient(180deg,rgba(255,247,187,.98),rgba(230,204,87,.92));
+  box-shadow:0 0 12px rgba(255,235,120,.95),0 0 34px rgba(230,204,87,.55);
+  clip-path:polygon(47% 0,61% 8%,39% 14%,64% 23%,43% 32%,58% 40%,35% 49%,62% 58%,41% 66%,55% 74%,38% 83%,57% 92%,49% 100%,32% 92%,44% 83%,25% 74%,41% 66%,22% 58%,47% 49%,28% 40%,52% 32%,33% 23%,56% 14%,39% 8%);
+}
+.truth-crack::before,
+.truth-crack::after{
+  content:"";
+  left:50%;
+  width:7px;
+  background:linear-gradient(180deg,rgba(255,247,187,.85),rgba(230,204,87,.75));
+  box-shadow:0 0 10px rgba(255,235,120,.72);
+}
+.truth-crack::before{
+  top:21%;
+  height:22%;
+  transform:translateX(-50%) rotate(-52deg);
+  clip-path:polygon(50% 0,67% 12%,38% 33%,61% 54%,40% 76%,55% 100%,31% 75%,49% 54%,26% 33%,45% 12%);
+}
+.truth-crack::after{
+  top:52%;
+  height:20%;
+  transform:translateX(-50%) rotate(46deg);
+  clip-path:polygon(49% 0,63% 12%,35% 35%,59% 56%,41% 77%,54% 100%,29% 77%,47% 56%,22% 35%,42% 12%);
+}
+.truth-break{
+  left:50%;
+  top:50%;
+  width:16vmin;
+  height:16vmin;
   border-radius:50%;
-  transform:translate(-50%,-50%) scale(.15);
   opacity:0;
-  background:radial-gradient(circle,rgba(255,247,187,.95) 0 2%,rgba(230,204,87,.55) 9%,rgba(230,204,87,.12) 28%,transparent 62%);
-  box-shadow:0 0 42px rgba(230,204,87,.45);
+  transform:translate(-50%,-50%) scale(.12);
+  background:radial-gradient(circle,rgba(255,248,194,1) 0 8%,rgba(255,239,145,.9) 13%,rgba(230,204,87,.42) 34%,rgba(230,204,87,.1) 55%,transparent 72%);
+  box-shadow:0 0 60px rgba(255,235,120,.4);
 }
-.nogard-page.cracking .truth-veil{animation:veilOpen .82s ease both}
-.nogard-page.cracking .truth-veil::before{animation:fractureBloom .72s cubic-bezier(.12,.72,.18,1) both}
-.nogard-page.cracking .truth-veil::after{animation:fractureCore .72s ease-out both}
-@keyframes veilOpen{
+.truth-seal{
+  left:50%;
+  top:50%;
+  width:42vmin;
+  max-width:440px;
+  min-width:200px;
+  aspect-ratio:1/1;
+  transform:translate(-50%,-50%) scale(2.35) rotate(8deg);
+  opacity:0;
+  filter:drop-shadow(0 0 8px rgba(255,235,120,.78)) drop-shadow(0 0 28px rgba(230,204,87,.44));
+}
+.truth-seal svg{width:100%;height:100%}
+.truth-seal .seal-ring{fill:none;stroke:rgba(230,204,87,.92);stroke-width:2.6}
+.truth-seal .seal-ring.secondary{stroke:rgba(255,240,163,.82);stroke-width:1.5;stroke-dasharray:4 7}
+.truth-seal .seal-core{fill:none;stroke:rgba(255,240,163,.98);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.truth-seal .seal-core-soft{fill:none;stroke:rgba(230,204,87,.82);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.truth-seal .seal-dot{fill:rgba(255,240,163,.98)}
+
+.nogard-page.cracking .truth-veil{animation:veilCrack .96s ease both}
+.nogard-page.cracking .truth-half{animation:crackPanels .96s ease both}
+.nogard-page.cracking .truth-crack{animation:crackDraw .96s cubic-bezier(.2,.74,.16,1) both}
+.nogard-page.cracking .truth-break{animation:crackBurst .96s ease-out both}
+
+@keyframes veilCrack{
   0%{opacity:0;background:rgba(0,0,0,0)}
-  20%{opacity:1;background:rgba(0,0,0,.42)}
-  58%{opacity:1;background:rgba(0,0,0,.94)}
-  100%{opacity:0;background:rgba(0,0,0,.94)}
+  10%{opacity:1;background:rgba(0,0,0,.35)}
+  62%{opacity:1;background:rgba(0,0,0,.93)}
+  100%{opacity:0;background:rgba(0,0,0,.93)}
 }
-@keyframes fractureBloom{
-  0%{opacity:0;transform:translate(-50%,-50%) scale(.05) rotate(-9deg)}
-  16%{opacity:1}
-  70%{opacity:1;transform:translate(-50%,-50%) scale(1.45) rotate(3deg)}
-  100%{opacity:0;transform:translate(-50%,-50%) scale(2.25) rotate(5deg)}
+@keyframes crackPanels{
+  0%,57%{opacity:0;transform:translateX(0)}
+  58%{opacity:1;transform:translateX(0)}
+  70%{opacity:1}
+  100%{opacity:0;transform:translateX(var(--split,0))}
 }
-@keyframes fractureCore{
-  0%{opacity:0;transform:translate(-50%,-50%) scale(.12)}
-  24%{opacity:1}
-  70%{opacity:.9;transform:translate(-50%,-50%) scale(2.3)}
-  100%{opacity:0;transform:translate(-50%,-50%) scale(3.4)}
+.nogard-page.cracking .truth-half.left{--split:-16vw}
+.nogard-page.cracking .truth-half.right{--split:16vw}
+@keyframes crackDraw{
+  0%{opacity:0;transform:translateX(-50%) scaleY(.02)}
+  14%{opacity:.95}
+  56%{opacity:1;transform:translateX(-50%) scaleY(1)}
+  68%{opacity:1;transform:translateX(-50%) scaleY(1.02)}
+  100%{opacity:0;transform:translateX(-50%) scaleY(1.02)}
+}
+@keyframes crackBurst{
+  0%,52%{opacity:0;transform:translate(-50%,-50%) scale(.12)}
+  64%{opacity:.9;transform:translate(-50%,-50%) scale(1.25)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(3.3)}
 }
 
-/* Closing effect: the record is stamped shut by a contracting yellow seal */
-.nogard-page.sealing .truth-veil{animation:sealVeil .9s ease both}
-.nogard-page.sealing .truth-veil::before{
-  width:52vmin;
-  height:52vmin;
-  border-radius:50%;
-  opacity:1;
-  background:
-    radial-gradient(circle,transparent 0 36%,rgba(255,240,163,.98) 36.6% 37.4%,transparent 38.2% 44%,rgba(230,204,87,.88) 44.6% 45.4%,transparent 46.2%),
-    conic-gradient(from 22deg,transparent 0 9%,rgba(230,204,87,.45) 9.5% 10.5%,transparent 11% 24%,rgba(255,240,163,.5) 24.5% 25.4%,transparent 26% 41%,rgba(230,204,87,.42) 41.5% 42.4%,transparent 43% 58%,rgba(255,240,163,.5) 58.5% 59.4%,transparent 60% 75%,rgba(230,204,87,.42) 75.5% 76.4%,transparent 77%);
-  transform:translate(-50%,-50%) scale(2.6) rotate(16deg);
-  filter:drop-shadow(0 0 10px rgba(255,235,120,.85)) drop-shadow(0 0 30px rgba(230,204,87,.42));
-  animation:sealContract .82s cubic-bezier(.2,.82,.18,1) both;
-}
-.nogard-page.sealing .truth-veil::after{
-  width:10vmin;
-  height:10vmin;
-  border-radius:50%;
-  opacity:0;
-  background:radial-gradient(circle,rgba(255,248,194,1) 0 6%,rgba(230,204,87,.8) 18%,rgba(230,204,87,.18) 52%,transparent 72%);
-  animation:sealStamp .82s ease-out both;
-}
+/* Closing effect: the record is sealed shut with a matching hidden sign */
+.nogard-page.sealing .truth-veil{animation:sealVeil .96s ease both}
+.nogard-page.sealing .truth-seal{animation:sealDrop .96s cubic-bezier(.2,.82,.18,1) both}
 @keyframes sealVeil{
   0%{opacity:0;background:rgba(0,0,0,0)}
-  28%{opacity:1;background:rgba(0,0,0,.28)}
-  72%{opacity:1;background:rgba(0,0,0,.92)}
+  24%{opacity:1;background:rgba(0,0,0,.24)}
+  70%{opacity:1;background:rgba(0,0,0,.92)}
   100%{opacity:0;background:rgba(0,0,0,.92)}
 }
-@keyframes sealContract{
-  0%{opacity:0;transform:translate(-50%,-50%) scale(2.6) rotate(16deg)}
-  16%{opacity:1}
-  70%{opacity:1;transform:translate(-50%,-50%) scale(.72) rotate(-4deg)}
-  84%{opacity:1;transform:translate(-50%,-50%) scale(.58) rotate(0deg)}
-  100%{opacity:0;transform:translate(-50%,-50%) scale(.52) rotate(0deg)}
-}
-@keyframes sealStamp{
-  0%,62%{opacity:0;transform:translate(-50%,-50%) scale(.4)}
-  76%{opacity:1;transform:translate(-50%,-50%) scale(2.4)}
-  100%{opacity:0;transform:translate(-50%,-50%) scale(4)}
+@keyframes sealDrop{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(2.35) rotate(8deg)}
+  20%{opacity:1}
+  68%{opacity:1;transform:translate(-50%,-50%) scale(.86) rotate(-3deg)}
+  82%{opacity:1;transform:translate(-50%,-50%) scale(.72) rotate(0deg)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(.64) rotate(0deg)}
 }
 .nogard-page.sealing .nogard-truth{animation:truthSealOut .82s ease both}
 @keyframes truthSealOut{
@@ -243,7 +288,25 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
 <body class="archive-body nogard-page" id="nogardPage">
 <header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header>
 
-<div class="truth-veil" aria-hidden="true"></div>
+<div class="truth-veil" aria-hidden="true">
+  <div class="truth-halves"><div class="truth-half left"></div><div class="truth-half right"></div></div>
+  <div class="truth-crack"></div>
+  <div class="truth-break"></div>
+  <div class="truth-seal" aria-hidden="true">
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <circle class="seal-ring" cx="50" cy="50" r="43"></circle>
+      <circle class="seal-ring secondary" cx="50" cy="50" r="36"></circle>
+      <path class="seal-core" d="M24 18 C34 6,57 7,64 20 C71 33,63 47,48 52"></path>
+      <path class="seal-core-soft" d="M25 17 C38 6,61 10,65 26 C67 35,61 45,50 50 C42 53,40 60,41 69"></path>
+      <circle class="seal-core" cx="49.5" cy="52" r="8.5"></circle>
+      <circle class="seal-ring secondary" cx="49.5" cy="52" r="13"></circle>
+      <path class="seal-core" d="M31 66 C19 75,17 91,29 95 C39 98,51 92,58 79 C64 68,76 64,86 68"></path>
+      <path class="seal-core-soft" d="M29 66 C20 77,21 91,36 94"></path>
+      <path class="seal-core-soft" d="M85 67 C92 73,91 86,82 90"></path>
+      <circle class="seal-dot" cx="50" cy="50" r="1.9"></circle>
+    </svg>
+  </div>
+</div>
 
 <main class="nogard-shell">
   <section class="nogard-public" id="nogardPublic">
@@ -251,7 +314,7 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
 
     <section class="shop-card">
       <div class="shop-kicker">Person of Note · Proprietor of Nogard's Treasure Trove</div>
-      <h1 class="shop-title">N<span class="nogard-o">o<button class="yellow-sign" id="yellowSign" type="button" aria-label="An unseen mark"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8 C44 22,34 28,22 26 C31 37,32 49,25 61 C39 58,46 66,50 88 C54 66,61 58,75 61 C68 49,69 37,78 26 C66 28,56 22,50 8 Z" fill="none" stroke="#e6cc57" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 35 C41 39,45 45,50 55 C55 45,59 39,66 35 M38 67 C44 63,48 61,50 53 C52 61,56 63,62 67" fill="none" stroke="#e6cc57" stroke-width="4" stroke-linecap="round"/></svg></button></span>gard</h1>
+      <h1 class="shop-title">N<span class="nogard-o">o<button class="yellow-sign" id="yellowSign" type="button" aria-label="An unseen mark"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M24 18 C34 6,57 7,64 20 C71 33,63 47,48 52" fill="none" stroke="#fff0a3" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 17 C38 6,61 10,65 26 C67 35,61 45,50 50 C42 53,40 60,41 69" fill="none" stroke="#e6cc57" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="49.5" cy="52" r="9" fill="none" stroke="#fff0a3" stroke-width="4.5"/><circle cx="49.5" cy="52" r="13.5" fill="none" stroke="#e6cc57" stroke-width="3.2" stroke-dasharray="22 14" stroke-linecap="round"/><path d="M29 66 C20 77,21 91,36 94" fill="none" stroke="#fff0a3" stroke-width="4.5" stroke-linecap="round"/><path d="M31 66 C19 75,17 91,29 95 C39 98,51 92,58 79 C64 68,76 64,86 68" fill="none" stroke="#e6cc57" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M85 67 C92 73,91 86,82 90" fill="none" stroke="#fff0a3" stroke-width="4.5" stroke-linecap="round"/></svg></button></span>gard</h1>
       <p class="shop-subtitle">Some merchants wait for customers to find them. Nogard's shop does not. Open the wrong door at the right moment and you may find yourself standing inside a store that was never on the other side. Shelves stretch with magical objects, impossible curiosities, and exactly the sort of thing you did not know you needed until the old man behind the counter starts naming his price.</p>
       <div class="shop-rules">
         <div class="shop-rule"><strong>Everything Has a Price</strong><span>Nogard loves a bargain almost as much as he loves winning one. Haggling with him is less a transaction and more a contest he fully expects to enjoy.</span></div>
@@ -374,8 +437,8 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
       truth.setAttribute('aria-hidden','false');
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
-    },470);
-    window.setTimeout(function(){ page.classList.remove('cracking'); },840);
+    },610);
+    window.setTimeout(function(){ page.classList.remove('cracking'); },980);
   }
 
   function closeTruth(){
@@ -386,10 +449,10 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
       truth.setAttribute('aria-hidden','true');
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
-    },620);
+    },650);
     window.setTimeout(function(){
       page.classList.remove('sealing');
-    },900);
+    },980);
   }
 
   sign.addEventListener('click',openTruth);
