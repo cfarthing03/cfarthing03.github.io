@@ -14,10 +14,11 @@
   --nogard-ink:#17120b;
 }
 body.nogard-page{overflow-x:hidden;background:#08090b}
-.nogard-shell{position:relative;max-width:1180px;margin:0 auto;padding:34px 24px 84px}
+.nogard-shell{position:relative;max-width:1180px;margin:0 auto;padding:34px 24px 84px;display:grid}
+.nogard-public,.nogard-truth{grid-area:1/1}
 .nogard-public,.nogard-truth{position:relative;z-index:2}
 .nogard-public{transition:opacity .55s ease,transform .75s cubic-bezier(.2,.8,.2,1),filter .55s ease}
-.nogard-page.truth-open .nogard-public{opacity:0;transform:scale(.985);filter:brightness(.45);pointer-events:none}
+.nogard-page.truth-open .nogard-public{opacity:0;transform:scale(.985);filter:brightness(.45);pointer-events:none;visibility:hidden}
 
 .shop-card{
   position:relative;
@@ -52,25 +53,35 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
 .nogard-aside{padding:22px;height:max-content;position:sticky;top:20px}
 .nogard-aside .archive-meta{display:grid;gap:9px}
 
-/* deliberately easy to miss */
+/* hidden mark inside the O of Nogard */
+.nogard-o{position:relative;display:inline-block}
 .yellow-sign{
   position:absolute;
-  z-index:8;
-  right:-3px;
-  top:61%;
-  width:22px;
-  height:30px;
+  z-index:9;
+  left:50%;
+  top:51%;
+  width:.72em;
+  height:.72em;
   padding:0;
   border:0;
   background:transparent;
-  opacity:.32;
+  opacity:0;
   cursor:pointer;
-  transform:rotate(7deg);
-  transition:opacity .22s ease,filter .22s ease,transform .22s ease;
+  transform:translate(-50%,-50%) scale(.72) rotate(-7deg);
+  transition:opacity .24s ease,filter .24s ease,transform .24s ease;
 }
-.yellow-sign svg{width:100%;height:100%;overflow:visible}
-.yellow-sign:hover,.yellow-sign:focus-visible{opacity:1;filter:drop-shadow(0 0 5px #e6cc57) drop-shadow(0 0 14px rgba(230,204,87,.62));transform:rotate(2deg) scale(1.12)}
-.yellow-sign:focus-visible{outline:1px solid rgba(230,204,87,.7);outline-offset:4px}
+.yellow-sign::before{
+  content:"";
+  position:absolute;
+  inset:-.35em;
+}
+.yellow-sign svg{width:100%;height:100%;overflow:visible;pointer-events:none}
+.nogard-o:hover .yellow-sign,.yellow-sign:focus-visible{
+  opacity:.92;
+  filter:drop-shadow(0 0 4px rgba(255,228,92,.9)) drop-shadow(0 0 12px rgba(230,204,87,.65));
+  transform:translate(-50%,-50%) scale(.86) rotate(0deg);
+}
+.yellow-sign:focus-visible{outline:none}
 
 .truth-veil{position:fixed;inset:0;z-index:40;pointer-events:none;opacity:0;background:rgba(0,0,0,.92)}
 .truth-veil::before,.truth-veil::after{
@@ -87,12 +98,15 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
 @keyframes veilFlash{0%{opacity:0}18%{opacity:.92}68%{opacity:1}100%{opacity:0}}
 
 .nogard-truth{
-  display:none;
+  display:block;
+  visibility:hidden;
   opacity:0;
-  transform:translateY(14px);
+  transform:translateY(8px) scale(.995);
+  pointer-events:none;
   min-height:70vh;
 }
-.nogard-page.truth-open .nogard-truth{display:block;animation:truthIn .7s ease .06s both}
+.nogard-page.cracking .nogard-public{opacity:.12;filter:brightness(.28)}
+.nogard-page.truth-open .nogard-truth{visibility:visible;pointer-events:auto;animation:truthIn .58s ease .02s both}
 @keyframes truthIn{to{opacity:1;transform:none}}
 .truth-header{
   position:relative;
@@ -130,7 +144,6 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
   .nogard-grid,.truth-grid{grid-template-columns:1fr}
   .nogard-aside,.truth-sidebar{position:relative;top:auto}
   .shop-rules{grid-template-columns:1fr}
-  .yellow-sign{right:8px;top:58%}
 }
 </style>
 </head>
@@ -145,7 +158,7 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
 
     <section class="shop-card">
       <div class="shop-kicker">Person of Note · Proprietor of Nogard's Treasure Trove</div>
-      <h1 class="shop-title">Nogard</h1>
+      <h1 class="shop-title">N<span class="nogard-o">o<button class="yellow-sign" id="yellowSign" type="button" aria-label="An unseen mark"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8 C44 22,34 28,22 26 C31 37,32 49,25 61 C39 58,46 66,50 88 C54 66,61 58,75 61 C68 49,69 37,78 26 C66 28,56 22,50 8 Z" fill="none" stroke="#e6cc57" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 35 C41 39,45 45,50 55 C55 45,59 39,66 35 M38 67 C44 63,48 61,50 53 C52 61,56 63,62 67" fill="none" stroke="#e6cc57" stroke-width="4" stroke-linecap="round"/></svg></button></span>gard</h1>
       <p class="shop-subtitle">Some merchants wait for customers to find them. Nogard's shop does not. Open the wrong door at the right moment and you may find yourself standing inside a store that was never on the other side. Shelves stretch with magical objects, impossible curiosities, and exactly the sort of thing you did not know you needed until the old man behind the counter starts naming his price.</p>
       <div class="shop-rules">
         <div class="shop-rule"><strong>Everything Has a Price</strong><span>Nogard loves a bargain almost as much as he loves winning one. Haggling with him is less a transaction and more a contest he fully expects to enjoy.</span></div>
@@ -189,58 +202,61 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
       </aside>
     </div>
 
-    <button class="yellow-sign" id="yellowSign" type="button" aria-label="A small yellow mark">
-      <svg viewBox="0 0 30 40" aria-hidden="true">
-        <path d="M15 2 L26 10 L22 24 L15 38 L8 24 L4 10 Z" fill="none" stroke="#e6cc57" stroke-width="1.4"/>
-        <path d="M8 12 C12 8,18 8,22 12 M10 18 L20 18 M12 23 L18 23" fill="none" stroke="#e6cc57" stroke-width="1.1" opacity=".85"/>
-        <circle cx="15" cy="14" r="2.2" fill="#e6cc57" opacity=".9"/>
-      </svg>
-    </button>
   </section>
 
   <section class="nogard-truth" id="nogardTruth" aria-hidden="true">
     <div class="truth-header">
-      <div class="truth-label">Restricted Archive // Classification Unstable</div>
+      <div class="truth-label">Recovered Observation File // Provenance Unverified</div>
       <h1 class="truth-title">NOGARD</h1>
-      <p class="truth-lede">The public record is useful because Nogard appears to prefer it that way. The following material survives in fragments, corrections, sealed observations, and notes written by people who noticed that the shopkeeper's performance stops making sense when examined too closely.</p>
+      <p class="truth-lede">There is no accession number for this file. No curator remembers cataloguing it. The paper version has never been found, yet this record continues to appear whenever the correct mark is noticed. Attempts to copy it produce incomplete text. Attempts to remove it have, so far, failed.</p>
     </div>
 
     <div class="truth-grid">
       <article class="truth-file">
-        <h2>The Shop Is Not Here</h2>
-        <p>Nogard's Treasure Trove does not merely hide somewhere in the world. Evidence indicates that the shop exists in a dimension entirely separate from it. The doors are not entrances in the ordinary sense. They are temporary points of contact, opened when Nogard permits the connection.</p>
-        <p>Inside that space, divine authority appears to fail. The gods hold no meaningful sway there. More troublingly, neither does the Overgod. Whatever laws govern the Treasure Trove, they are not the laws that govern the world outside its doors.</p>
-        <div class="fragment">LOCATION: <span class="redacted medium">unavailable</span><br>DIVINE ACCESS: NONE OBSERVED<br>OVERGOD ACCESS: NONE OBSERVED<br>OWNER: NOGARD<br>AUTHORITY: <span class="redacted short">REDACTED</span></div>
+        <h2>Initial Observation</h2>
+        <p>The public description of Nogard is not false. That may be the problem. He bargains, complains, laughs at his own jokes, and behaves with such consistency that the easiest conclusion is that there is nothing beneath the performance. Several observers reached that conclusion. Their later notes become considerably less certain.</p>
+        <p>Repeated visits suggest that Nogard knows information he could not reasonably possess. In isolation, any single incident can be dismissed as luck, rumor, or a merchant's instinct. Collected together, they become difficult to explain.</p>
+        <div class="fragment">ENTRY 04: He answered a question that had not been asked aloud.<br>ENTRY 09: He referenced a conversation conducted <span class="redacted medium">██████████████</span> away.<br>ENTRY 11: He described an event scheduled for the following week. The event never occurred.<br>ENTRY 12: He later asked why we had "chosen the other version."</div>
 
-        <h2>Power Without the Title</h2>
-        <p>Nogard wields power of the same order associated with an Overgod, yet he is not one. The distinction is not rhetorical. Records that recognize the scale of his power are unusually consistent on this point, even when almost everything else surrounding him is censored, contradicted, or missing.</p>
-        <p>Why a being capable of such things spends so much of his existence arguing over gold from behind a counter is unknown. The simplest answer is that he enjoys it. The less comfortable answer is that the shopkeeper everyone meets is only the portion of Nogard he chooses to make understandable.</p>
+        <h2>The Location Problem</h2>
+        <p>The Treasure Trove cannot be placed on any reliable map. Doors open into it from locations that share no geography, no architecture, and in several cases no plausible physical connection. Measurements taken inside the shop do not reconcile with the dimensions of any structure used to enter it.</p>
+        <p>The working hypothesis is that the shop is not hidden somewhere in the world. It is elsewhere.</p>
+        <p><span class="redacted block"></span><span class="redacted block" style="width:81%"></span></p>
+        <div class="fragment">TEST: Divine communication attempted inside premises.<br>RESULT: No response.<br><br>TEST: Secondary divine authority invoked.<br>RESULT: No response.<br><br>TEST: <span class="redacted medium">██████████████</span><br>RESULT: The shopkeeper looked toward the observer and said, "Don't."</div>
+        <p>Nothing in the available notes proves why divine influence fails inside the Trove. The more disturbing detail is that the failure does not appear limited to ordinary gods. One damaged report extends the same observation to <span class="redacted medium">██████████████</span>. The next three pages are missing.</p>
 
-        <h2>Knowledge He Should Not Possess</h2>
-        <p>The incidents dismissed publicly as intuition become much harder to dismiss when collected together. Nogard has spoken about events he did not witness, private information never shared with him, futures that had not yet occurred, and possibilities that later failed to happen at all.</p>
-        <p>This suggests more than prediction. Nogard does not always speak as though he is guessing what comes next. Sometimes he speaks as though several versions of what comes next are already familiar to him.</p>
-        <div class="fragment">OBSERVATION 12: Subject referenced an event before its occurrence.<br>OBSERVATION 13: Event did not occur.<br>OBSERVATION 14: Subject later referred to the abandoned outcome as though remembering it.</div>
+        <h2>Classification Dispute</h2>
+        <p>Several authors attempted to classify Nogard by comparing him to known divine hierarchies. None of the labels remained stable. The closest recurring comparison is to an Overgod in scale, but every surviving annotation immediately rejects the title itself.</p>
+        <div class="fragment">POWER: <span class="redacted short">████████</span><br>STATUS: NOT GOD<br>STATUS: NOT OVERGOD<br>STATUS: <span class="redacted medium">██████████████</span><br><br>NOTE IN DIFFERENT HAND: "Stop trying to name things you don't understand."</div>
+        <p>Whether the correction came from another researcher is unknown. The handwriting does not match any registered contributor to the archive.</p>
 
-        <h2>The Rules</h2>
-        <p>Despite his apparent freedom, Nogard has repeatedly alluded to restrictions on direct intervention. His wording changes, but the principle does not. There is an order to things, and there are rules he must follow if that order is to remain where it is.</p>
-        <p>That phrasing has never been satisfactorily explained. It may describe balance, hierarchy, containment, or something for which the archive has no surviving vocabulary. Nogard has broken from his usual distance when circumstances became desperate, but even those interventions appear measured, limited, and deliberate.</p>
-        <p><span class="redacted block">REDACTED REDACTED REDACTED REDACTED REDACTED</span><span class="redacted block" style="width:76%">REDACTED REDACTED REDACTED</span></p>
+        <h2>Intervention</h2>
+        <p>Nogard normally avoids direct involvement. He provides objects, information, warnings, and inconveniently precise directions, then allows events to continue without him. There are exceptions. In the few records where he intervened personally, circumstances were already described as desperate.</p>
+        <p>When questioned afterward, he referred to rules. Not laws. Not promises. Rules. He has never provided a complete list.</p>
+        <div class="fragment">"If I fix every little problem, there won't be an order left to put back."<br><br>Attribution: Nogard?<br>Confidence: <span class="redacted short">███████</span></div>
+        <p>No observer agrees on what he meant by "order." One theory assumes a cosmic hierarchy. Another assumes chronology. A third page contains only the words <span class="redacted medium">██████████████</span> repeated until the ink tears through the paper.</p>
 
-        <h2>The Man Behind the Counter</h2>
-        <p>The loud merchant, the impossible shop, the obsession with gold, and the theatrical haggling are all real. They are also useful. People underestimate a fool. They argue with a salesman. They complain about a bad deal instead of asking why the person who sold it to them knew they would need it three days later.</p>
-        <p>The deeper record does not claim the merchant is false. It suggests that he is incomplete. Nogard lets people see the version of him that can be laughed at, bargained with, and understood. The rest remains behind the counter.</p>
+        <h2>Authorship</h2>
+        <p>This section was not present in the earliest recovered copy.</p>
+        <p class="fragment">You found the mark. Good. That means you were paying attention.<br><br>Don't flatter yourself. Most people never look at the lettering.<br><br>The rest of this is close enough. Some of it is even true.</p>
+        <p>The passage above has no recorded author. It returns after deletion. On two occasions, the wording changed between readings.</p>
+        <p><span class="redacted block" style="width:95%"></span><span class="redacted block" style="width:67%"></span><span class="redacted block" style="width:88%"></span></p>
+        <p class="fragment">FINAL MARGIN NOTE: "If I didn't want you reading this, you wouldn't be."</p>
 
-        <div class="margin-mark">Unverified recurring mark found in unrelated copies</div>
-        <p>Several damaged versions of this record contain the same yellow mark in the margins. No author identifies it. No curator admits adding it. Attempts to remove it from one copy have occasionally resulted in its appearance elsewhere.</p>
-        <p class="fragment">DO NOT ASSUME THE SIGN BELONGS TO THE SHOPKEEPER.<br><span class="redacted medium">██████████████</span> WATCHES THE SAME DOOR.</p>
+        <h2>The Yellow Mark</h2>
+        <p>A recurring symbol appears throughout surviving versions of the file. It is never identical twice. The general structure remains recognizable, but small lines shift, branches change direction, and portions occasionally disappear. Researchers who attempted to standardize the mark produced a version that stopped appearing entirely.</p>
+        <p>One damaged note compares it to a symbol from an old performance tradition, then crosses the comparison out so heavily that only three words remain legible:</p>
+        <div class="fragment"><span class="redacted short">████████</span> IN YELLOW.</div>
+        <p>No explanation follows. The next page is blank except for a price written in the corner.</p>
       </article>
 
       <aside class="truth-sidebar">
-        <div class="truth-label">Recovered Notes</div>
-        <p class="fragment">HE IS NOT AN OVERGOD.</p>
-        <p class="fragment">THAT DOES NOT MAKE HIM LESS DANGEROUS.</p>
-        <p class="fragment">The shop is safe because the powers outside it cannot reach inside.</p>
-        <p class="fragment"><span class="redacted block"></span><span class="redacted block" style="width:65%"></span></p>
+        <div class="truth-label">Loose Notes</div>
+        <p class="fragment">He is not an Overgod.</p>
+        <p class="fragment">We are increasingly unsure why that distinction makes us feel better.</p>
+        <p class="fragment"><span class="redacted block"></span><span class="redacted block" style="width:72%"></span></p>
+        <p class="fragment">The shop may be inaccessible to the gods because it is outside their jurisdiction. "Outside" may be the wrong word.</p>
+        <p class="fragment">Do not ask him about the yellow mark. He offered to sell the answer.</p>
         <button class="truth-exit" id="sealRecord" type="button">Seal Record</button>
       </aside>
     </div>
@@ -263,15 +279,17 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
     window.setTimeout(function(){
       page.classList.add('truth-open');
       truth.setAttribute('aria-hidden','false');
-      window.scrollTo({top:0,behavior:'instant'});
-    },430);
-    window.setTimeout(function(){ page.classList.remove('cracking'); },940);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    },360);
+    window.setTimeout(function(){ page.classList.remove('cracking'); },900);
   }
 
   function closeTruth(){
     page.classList.remove('truth-open');
     truth.setAttribute('aria-hidden','true');
-    window.scrollTo({top:0,behavior:'smooth'});
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }
 
   sign.addEventListener('click',openTruth);
