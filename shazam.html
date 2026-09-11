@@ -14,10 +14,41 @@
   transition:text-shadow .16s ease,color .16s ease;
 }
 .shazam-name:hover,
-.shazam-name:focus-visible{
-  color:#f6ead4;
-  text-shadow:0 0 8px rgba(219,228,255,.35),0 0 18px rgba(172,198,255,.18);
+.shazam-name:focus-visible,
+.shazam-name.shazam-struck{
+  color:#fff8e8;
+  text-shadow:0 0 7px rgba(235,242,255,.72),0 0 17px rgba(174,204,255,.55),0 0 28px rgba(132,174,255,.34);
   outline:none;
+}
+.shazam-name::before,
+.shazam-name::after{
+  content:"";
+  position:absolute;
+  pointer-events:none;
+  opacity:0;
+  width:7px;
+  height:18px;
+  background:linear-gradient(to bottom,#fffbe2 0 22%,#dcecff 36% 70%,rgba(143,187,255,.08) 100%);
+  filter:drop-shadow(0 0 4px rgba(197,221,255,.95)) drop-shadow(0 0 9px rgba(121,170,255,.7));
+  clip-path:polygon(58% 0,20% 42%,51% 39%,23% 100%,82% 47%,52% 50%);
+}
+.shazam-name::before{left:-10px;top:-8px;transform:rotate(-16deg) scale(.75)}
+.shazam-name::after{right:-10px;bottom:-9px;transform:rotate(19deg) scale(.68)}
+.shazam-name.shazam-struck::before{animation:shazamNameBoltA .42s ease-out both}
+.shazam-name.shazam-struck::after{animation:shazamNameBoltB .42s .035s ease-out both}
+@keyframes shazamNameBoltA{
+  0%{opacity:0;transform:translateY(-7px) rotate(-16deg) scale(.35)}
+  16%{opacity:1}
+  32%{opacity:.12}
+  46%{opacity:.9}
+  100%{opacity:0;transform:translateY(5px) rotate(-16deg) scale(.88)}
+}
+@keyframes shazamNameBoltB{
+  0%{opacity:0;transform:translateY(-4px) rotate(19deg) scale(.3)}
+  18%{opacity:.9}
+  38%{opacity:.08}
+  53%{opacity:.72}
+  100%{opacity:0;transform:translateY(5px) rotate(19deg) scale(.8)}
 }
 .shazam-record{
   position:relative;
@@ -61,7 +92,7 @@
   <div class="archive-grid">
     <article class="archive-article">
       <h2>The Name Before the Thunder</h2>
-      <p>There are names that announce a person's arrival. <span class="shazam-name" tabindex="0">Shazam</span>'s seemed to demand the arrival of the weather itself. When his name was spoken, lightning was said to lance down from the sky while thunder rolled in anticipation. Whether the storm answered to him directly or simply followed in his wake is never satisfactorily explained in the surviving record. What matters is that those who knew him treated it not as exaggeration, but as one more ordinary fact about an otherwise extraordinary creature.</p>
+      <p>There are names that announce a person's arrival. <span class="shazam-name" tabindex="0">Shazam</span>'s demanded the arrival of the weather itself. When his name was spoken, lightning was said to lance down from the sky while thunder rolled in anticipation. Whether the storm answered to him directly or simply followed in his wake is never satisfactorily explained in the surviving record. What matters is that those who knew him treated it not as exaggeration, but as one more ordinary fact about an otherwise extraordinary creature.</p>
       <p>Even without the storm, he was impossible to mistake for an ordinary horse. <span class="shazam-name" tabindex="0">Shazam</span> was built with such size, strength, and presence that the word "horse" could feel technically correct and still somehow inadequate. Nothing about him suggested an animal meant only to carry a rider. He looked, by every surviving account, like something that had always been destined to become more.</p>
 
       <h2>A Horse Who Understood</h2>
@@ -130,13 +161,23 @@
     record.classList.remove('thunder-flash');
     void record.offsetWidth;
     record.classList.add('thunder-flash');
-    window.setTimeout(function(){ record.classList.remove('thunder-flash'); },360);
+    window.setTimeout(function(){ record.classList.remove('thunder-flash'); },420);
   }
 
-  function playThunder(){
+  function strikeName(name){
+    if(!name) return;
+    name.classList.remove('shazam-struck');
+    void name.offsetWidth;
+    name.classList.add('shazam-struck');
+    window.setTimeout(function(){ name.classList.remove('shazam-struck'); },470);
+  }
+
+  function playThunder(event){
     const now = Date.now();
     if(now - lastPlayed < 650) return;
     lastPlayed = now;
+    strikeName(event && event.currentTarget);
+    flash();
 
     let index = Math.floor(Math.random() * sounds.length);
     if(sounds.length > 1 && index === lastIndex) index = (index + 1) % sounds.length;
@@ -147,7 +188,7 @@
     });
     const chosen = sounds[index];
     chosen.currentTime = 0;
-    chosen.play().then(flash).catch(function(){});
+    chosen.play().catch(function(){});
   }
 
   names.forEach(function(name){
