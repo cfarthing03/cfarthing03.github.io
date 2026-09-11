@@ -75,12 +75,11 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
   position:absolute;
   inset:-.42em;
 }
-.yellow-sign svg{width:100%;height:100%;overflow:visible;pointer-events:none}
-.yellow-sign path,.yellow-sign circle{vector-effect:non-scaling-stroke}
+.yellow-sign img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}
 .nogard-o:hover .yellow-sign,.yellow-sign:focus-visible{
   opacity:.96;
-  filter:drop-shadow(0 0 3px rgba(255,228,92,.72)) drop-shadow(0 0 10px rgba(230,204,87,.5));
-  transform:translate(-50%,-50%) scale(1.62) rotate(0deg);
+  filter:drop-shadow(0 0 3px rgba(255,228,92,.58)) drop-shadow(0 0 9px rgba(230,204,87,.38));
+  transform:translate(-50%,-50%) scale(1.72) rotate(0deg);
 }
 .yellow-sign:focus-visible{outline:none}
 
@@ -128,11 +127,7 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
   transform:translate(-50%,-50%) scale(1.95) rotate(8deg);opacity:0;
   filter:drop-shadow(0 0 4px rgba(255,235,120,.52)) drop-shadow(0 0 13px rgba(230,204,87,.24));
 }
-.truth-seal svg{width:100%;height:100%}
-.truth-seal .seal-core,.truth-seal .seal-core-soft{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
-.truth-seal .seal-core{stroke:rgba(255,240,163,.92);stroke-width:5.1}
-.truth-seal .seal-core-soft{stroke:rgba(230,204,87,.72);stroke-width:3.6}
-.truth-seal .seal-knot{fill:none;stroke:rgba(255,240,163,.9);stroke-width:4.5}
+.truth-seal img{display:block;width:100%;height:100%;object-fit:contain}
 
 .nogard-page.cracking .truth-veil{animation:veilCrack 1.28s ease both}
 .nogard-page.cracking .truth-crack-svg{animation:crackVisible 1.28s ease both}
@@ -264,17 +259,7 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
     <path class="branch" d="M515 776 L576 822 L624 891"/>
   </svg>
   <div class="truth-break"></div>
-  <div class="truth-seal" aria-hidden="true">
-    <svg viewBox="0 0 100 100" aria-hidden="true">
-      <path class="seal-core" d="M22 20 C31 7,56 7,65 20 C72 31,66 44,51 50 C44 53,40 59,42 68"/>
-      <path class="seal-core-soft" d="M25 17 C40 5,63 10,68 26 C71 36,64 47,52 52"/>
-      <path class="seal-knot" d="M41 52 C43 43,56 42,61 49 C66 57,59 66,50 66 C41 66,35 59,41 52 Z"/>
-      <path class="seal-core" d="M29 66 C18 75,17 91,29 95 C40 98,53 91,60 79 C66 69,76 64,88 69"/>
-      <path class="seal-core-soft" d="M29 67 C22 77,24 88,36 92"/>
-      <path class="seal-core-soft" d="M86 69 C92 76,91 87,82 91"/>
-      <path class="seal-core-soft" d="M57 78 C61 82,64 88,63 95"/>
-    </svg>
-  </div>
+  <div class="truth-seal" aria-hidden="true"><img src="/nogard-yellow-sigil.png" alt=""></div>
 </div>
 
 <main class="nogard-shell">
@@ -283,7 +268,7 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
 
     <section class="shop-card">
       <div class="shop-kicker">Person of Note · Proprietor of Nogard's Treasure Trove</div>
-      <h1 class="shop-title">N<span class="nogard-o">o<button class="yellow-sign" id="yellowSign" type="button" aria-label="An unseen mark"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M22 20 C31 7,56 7,65 20 C72 31,66 44,51 50 C44 53,40 59,42 68" fill="none" stroke="#fff0a3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 17 C40 5,63 10,68 26 C71 36,64 47,52 52" fill="none" stroke="#e6cc57" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M41 52 C43 43,56 42,61 49 C66 57,59 66,50 66 C41 66,35 59,41 52 Z" fill="none" stroke="#fff0a3" stroke-width="4.2" stroke-linejoin="round"/><path d="M29 66 C18 75,17 91,29 95 C40 98,53 91,60 79 C66 69,76 64,88 69" fill="none" stroke="#e6cc57" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M29 67 C22 77,24 88,36 92 M86 69 C92 76,91 87,82 91 M57 78 C61 82,64 88,63 95" fill="none" stroke="#fff0a3" stroke-width="3.2" stroke-linecap="round"/></svg></button></span>gard</h1>
+      <h1 class="shop-title">N<span class="nogard-o">o<button class="yellow-sign" id="yellowSign" type="button" aria-label="An unseen mark"><img src="/nogard-yellow-sigil.png" alt=""></button></span>gard</h1>
       <p class="shop-subtitle">Some merchants wait for customers to find them. Nogard's shop does not. Open the wrong door at the right moment and you may find yourself standing inside a store that was never on the other side. Shelves stretch with magical objects, impossible curiosities, and exactly the sort of thing you did not know you needed until the old man behind the counter starts naming his price.</p>
       <div class="shop-rules">
         <div class="shop-rule"><strong>Everything Has a Price</strong><span>Nogard loves a bargain almost as much as he loves winning one. Haggling with him is less a transaction and more a contest he fully expects to enjoy.</span></div>
