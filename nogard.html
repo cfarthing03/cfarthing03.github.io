@@ -128,11 +128,28 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
   filter:drop-shadow(0 0 4px rgba(255,235,120,.52)) drop-shadow(0 0 13px rgba(230,204,87,.24));
 }
 .truth-seal img{display:block;width:100%;height:100%;object-fit:contain}
+.truth-seam{
+  position:absolute;
+  left:50%;
+  top:5%;
+  width:4px;
+  height:90%;
+  transform:translateX(-50%) scaleY(0);
+  transform-origin:50% 50%;
+  opacity:0;
+  background:linear-gradient(180deg,transparent,rgba(255,240,163,.9) 12%,rgba(230,204,87,.95) 50%,rgba(255,240,163,.9) 88%,transparent);
+  box-shadow:0 0 6px rgba(255,235,120,.7),0 0 18px rgba(230,204,87,.3);
+  clip-path:polygon(45% 0,70% 7%,34% 16%,68% 26%,38% 35%,63% 47%,31% 58%,66% 69%,37% 79%,61% 89%,48% 100%,32% 89%,52% 79%,27% 69%,55% 58%,29% 47%,57% 35%,31% 26%,59% 16%,35% 7%);
+}
 
 .nogard-page.cracking .truth-veil{animation:veilCrack 1.28s ease both}
 .nogard-page.cracking .truth-crack-svg{animation:crackVisible 1.28s ease both}
 .nogard-page.cracking .truth-crack-svg .main-crack{animation:drawMain 1.28s cubic-bezier(.22,.72,.18,1) both}
 .nogard-page.cracking .truth-crack-svg .branch{animation:drawBranch 1.28s cubic-bezier(.22,.72,.18,1) both}
+.nogard-page.cracking .truth-crack-svg .branch-a{animation-delay:.04s}
+.nogard-page.cracking .truth-crack-svg .branch-b{animation-delay:.13s}
+.nogard-page.cracking .truth-crack-svg .branch-c{animation-delay:.21s}
+.nogard-page.cracking .truth-crack-svg .branch-d{animation-delay:.29s}
 .nogard-page.cracking .truth-half{animation:crackPanels 1.28s cubic-bezier(.15,.72,.18,1) both}
 .nogard-page.cracking .truth-break{animation:crackBurst 1.28s ease-out both}
 @keyframes veilCrack{
@@ -168,21 +185,40 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
   100%{opacity:0;transform:translate(-50%,-50%) scaleX(3.2)}
 }
 
-.nogard-page.sealing .truth-veil{animation:sealVeil 1.05s ease both}
-.nogard-page.sealing .truth-seal{animation:sealDrop 1.05s cubic-bezier(.2,.82,.18,1) both}
+.nogard-page.sealing .truth-veil{animation:sealVeil 1.32s ease both}
+.nogard-page.sealing .truth-half{opacity:1;animation:sealPanels 1.32s cubic-bezier(.18,.72,.14,1) both}
+.nogard-page.sealing .truth-half.left{--sealFrom:-104%;--sealTo:0%}
+.nogard-page.sealing .truth-half.right{--sealFrom:104%;--sealTo:0%}
+.nogard-page.sealing .truth-seam{animation:sealSeam 1.32s ease both}
+.nogard-page.sealing .truth-seal{animation:sealDrop 1.32s cubic-bezier(.2,.82,.18,1) both}
 @keyframes sealVeil{
   0%{opacity:0;background:rgba(0,0,0,0)}
-  20%{opacity:1;background:rgba(0,0,0,.2)}
-  72%{opacity:1;background:rgba(0,0,0,.92)}
-  100%{opacity:0;background:rgba(0,0,0,.92)}
+  8%{opacity:1;background:rgba(0,0,0,.08)}
+  52%{opacity:1;background:rgba(0,0,0,.62)}
+  78%{opacity:1;background:rgba(0,0,0,.95)}
+  100%{opacity:0;background:rgba(0,0,0,.95)}
+}
+@keyframes sealPanels{
+  0%{opacity:0;transform:translateX(var(--sealFrom))}
+  10%{opacity:1}
+  52%{opacity:1;transform:translateX(var(--sealTo))}
+  82%{opacity:1;transform:translateX(var(--sealTo))}
+  100%{opacity:0;transform:translateX(var(--sealTo))}
+}
+@keyframes sealSeam{
+  0%,40%{opacity:0;transform:translateX(-50%) scaleY(0)}
+  52%{opacity:.9;transform:translateX(-50%) scaleY(.35)}
+  72%{opacity:1;transform:translateX(-50%) scaleY(1)}
+  88%{opacity:.7;transform:translateX(-50%) scaleY(1)}
+  100%{opacity:0;transform:translateX(-50%) scaleY(1)}
 }
 @keyframes sealDrop{
-  0%{opacity:0;transform:translate(-50%,-50%) scale(1.95) rotate(8deg)}
-  18%{opacity:.72}
-  62%{opacity:.96;transform:translate(-50%,-50%) scale(.94) rotate(-2deg)}
-  78%{opacity:1;transform:translate(-50%,-50%) scale(.82) rotate(0deg)}
-  88%{opacity:.95;transform:translate(-50%,-50%) scale(.78) rotate(0deg)}
-  100%{opacity:0;transform:translate(-50%,-50%) scale(.7) rotate(0deg)}
+  0%,43%{opacity:0;transform:translate(-50%,-50%) scale(1.55) rotate(6deg)}
+  54%{opacity:.5}
+  72%{opacity:1;transform:translate(-50%,-50%) scale(.94) rotate(-1deg)}
+  84%{opacity:1;transform:translate(-50%,-50%) scale(.82) rotate(0deg)}
+  92%{opacity:1;transform:translate(-50%,-50%) scale(.8) rotate(0deg)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(.76) rotate(0deg)}
 }
 .nogard-page.sealing .nogard-truth{animation:truthSealOut .82s ease both}
 @keyframes truthSealOut{
@@ -246,19 +282,14 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
 <div class="truth-veil" aria-hidden="true">
   <div class="truth-halves"><div class="truth-half left"></div><div class="truth-half right"></div></div>
   <svg class="truth-crack-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
-    <path class="main-crack" d="M517 18 L486 108 L531 176 L474 247 L521 315 L459 397 L512 474 L452 555 L506 625 L468 701 L515 776 L477 849 L507 982"/>
-    <path class="branch" d="M486 108 L422 150 L389 214"/>
-    <path class="branch" d="M531 176 L592 222 L637 270"/>
-    <path class="branch" d="M474 247 L407 298 L365 351"/>
-    <path class="branch" d="M521 315 L584 354 L628 420"/>
-    <path class="branch" d="M459 397 L394 449 L355 504"/>
-    <path class="branch" d="M512 474 L587 512 L645 570"/>
-    <path class="branch" d="M452 555 L389 603 L344 651"/>
-    <path class="branch" d="M506 625 L567 668 L620 736"/>
-    <path class="branch" d="M468 701 L401 748 L360 812"/>
-    <path class="branch" d="M515 776 L576 822 L624 891"/>
+    <path class="main-crack" d="M526 12 L488 96 L538 169 L471 255 L515 337 L454 421 L503 506 L447 603 L492 691 L462 779 L518 861 L486 990"/>
+    <path class="branch branch-a" d="M488 96 L418 137 L374 202"/>
+    <path class="branch branch-b" d="M515 337 L594 383 L646 454"/>
+    <path class="branch branch-c" d="M447 603 L384 651 L331 724"/>
+    <path class="branch branch-d" d="M518 861 L592 898 L635 947"/>
   </svg>
   <div class="truth-break"></div>
+  <div class="truth-seam" aria-hidden="true"></div>
   <div class="truth-seal" aria-hidden="true"><img src="/nogard-yellow-sigil.png" alt=""></div>
 </div>
 
@@ -403,10 +434,10 @@ body.nogard-page{overflow-x:hidden;background:#08090b}
       truth.setAttribute('aria-hidden','true');
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
-    },720);
+    },930);
     window.setTimeout(function(){
       page.classList.remove('sealing');
-    },1060);
+    },1340);
   }
 
   sign.addEventListener('click',openTruth);
