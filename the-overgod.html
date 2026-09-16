@@ -79,6 +79,22 @@ body.overgod-body>*{position:relative;z-index:3}
 @keyframes realmDarken{0%{background:transparent}64%,100%{background:#000}}
 @keyframes realmLeave{0%{opacity:0;transform:translate3d(-50%,-50%,0) scale(.008) rotate(-8deg)}18%{opacity:1}58%{transform:translate3d(-50%,-50%,0) scale(.10) rotate(13deg)}100%{opacity:1;transform:translate3d(-50%,-50%,0) scale(1.06) rotate(84deg)}}
 body.portal-busy .cosmic-universe *,body.portal-busy .cosmic-universe::before,body.portal-busy .cosmic-universe::after{animation-play-state:paused!important}
+
+.archive-redact{display:inline-block;position:relative;color:transparent;background:linear-gradient(90deg,#07120b,#132319 48%,#07120b);border-radius:2px;padding:0 .18em;user-select:none;box-shadow:0 0 8px rgba(68,255,130,.04)}
+.archive-redact::after{content:"ACCESS DENIED";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#4e765b;font:700 .52rem/1 system-ui,sans-serif;letter-spacing:.14em;white-space:nowrap;opacity:.48}
+.archive-strike{position:relative;color:#9fb8a6;text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(114,255,164,.5)}
+.archive-note{display:inline-block;margin-left:.38rem;color:#7effa6;font-family:"Courier New",monospace;font-size:.83em;font-style:italic;transform:rotate(-1deg);text-shadow:0 0 8px rgba(87,255,145,.24)}
+.archive-note.block{display:block;margin:13px 0 2px;padding-left:17px;border-left:1px solid rgba(101,255,154,.25);transform:rotate(-.35deg)}
+.record-fracture{margin:24px 0;padding:18px 20px;border:1px solid rgba(97,255,152,.12);background:linear-gradient(135deg,rgba(21,77,40,.11),rgba(0,0,0,.13));box-shadow:0 0 28px rgba(62,255,127,.035) inset}
+.record-fracture .fracture-label{margin-bottom:8px;color:#5bdd84;text-transform:uppercase;letter-spacing:.18em;font-size:.66rem}
+.record-fracture p{margin:.5rem 0;color:#a8cbb2}
+.string-definition{margin:20px 0 26px;padding:18px 20px;border-left:2px solid rgba(101,255,154,.45);background:rgba(17,58,31,.12)}
+.string-definition strong{color:#8dffae}
+.arc-marker{margin-top:2rem;color:#62db89;text-transform:uppercase;letter-spacing:.18em;font-size:.68rem}
+.overgod-record .sequence{margin:18px 0 4px;padding:0;list-style:none;counter-reset:arc}
+.overgod-record .sequence li{position:relative;margin:0 0 15px;padding:15px 16px 15px 48px;border:1px solid rgba(99,255,154,.1);background:rgba(5,31,15,.34);color:#b7d2bf;line-height:1.7;counter-increment:arc}
+.overgod-record .sequence li::before{content:counter(arc,"0");position:absolute;left:16px;top:16px;color:#58db83;font-family:monospace;font-size:.8rem;letter-spacing:.05em}
+.overgod-aside .fact-stack{display:grid;gap:10px;margin-top:12px}.overgod-aside .fact{padding:11px 12px;border:1px solid rgba(95,255,151,.1);background:rgba(4,24,12,.38);color:#9fbea8;line-height:1.45}.overgod-aside .fact strong{display:block;color:#e2f8e8;margin-bottom:2px;font-size:.9rem}
 @media(max-width:820px){.overgod-grid{grid-template-columns:1fr}.overgod-title{font-size:clamp(3.5rem,20vw,6.5rem)}}
 @media(prefers-reduced-motion:reduce){.cosmic-universe::before,.cosmic-universe::after,.cosmic-star,.cosmic-orbit,.cosmic-thread,.realm-transition .realm-portal::before,.realm-transition .realm-portal::after{animation:none}.realm-transition.arriving,.realm-transition.leaving,.realm-transition.arriving .realm-portal,.realm-transition.leaving .realm-portal{animation-duration:.28s}}
 </style>
@@ -99,23 +115,90 @@ body.portal-busy .cosmic-universe *,body.portal-busy .cosmic-universe::before,bo
   <div class="overgod-gate"></div>
   <div class="overgod-grid">
     <article class="overgod-record">
-      <h2>The Office Above Divinity</h2>
-      <p>An Overgod is not simply another god within The Pantheon. The role exists above the ordinary divine order and is bound to the continued stability of the realm itself. Even describing it as a throne is misleading. A throne can be abandoned. This cannot.</p>
+      <h2>What an Overgod Is</h2>
+      <p>Gods rule concepts, cities, faiths, and the people who place their belief in them. An Overgod exists above that order. It is not merely a stronger god. It is the authority responsible for the universe itself, the being that creates it, maintains it, and decides what reality is permitted to remain.</p>
+      <p>The universe governed by an Overgod resides within its chest. This is not a symbol used by priests or a metaphor invented by scholars. It is the closest surviving description of the relationship between the being and the reality it carries.</p>
+      <span class="archive-note block">You keep calling it a body because you need it to have one.</span>
 
-      <h2>A Vacancy That Could Not Remain Empty</h2>
-      <p>When an Overgod was slain, the world could not simply continue without a replacement. Odin was forced to choose who would take the vacant place. He chose his wife.</p>
-      <p>She became the new Overgod and has endured the burden of holding the realm together ever since. Odin spends much of his remaining life beside her, waiting for the possibility that another being may someday be able to take her place.</p>
+      <h2>The Strings</h2>
+      <p>The power most often associated with an Overgod is described as <strong>Strings</strong>. To those capable of perceiving them, the world appears bound together by threads that can be reached for, twisted, pulled, or shattered. A sufficiently powerful hand can alter what a thing is, what it was, whether it continues, or whether it ever had the right to exist at all.</p>
+      <div class="string-definition"><strong>The Strings are not literal objects.</strong> They are a visualization of the will required to take responsibility for an existence, or for its absence, and change it. They are invisible to almost everyone because, in ordinary reality, there is nothing there to see. They exist when reality needs them to exist, or when the one reaching for them needs a shape through which to exert that will.</div>
+      <p>To see a String, then, is not simply to possess better sight. It is to possess enough authority over reality that reality gives your intention something to hold.</p>
+      <span class="archive-note block">Closer. Still not quite.</span>
+
+      <h2>The Creator of This World</h2>
+      <p>The Overgod created the world recorded throughout this archive. The same being stands behind all three great arcs of its history. What changes from age to age is not his involvement, but his conclusion about what has gone wrong and how much of his creation must be sacrificed to correct it.</p>
+
+      <div class="arc-marker">First Intervention</div>
+      <h2>Tales of the Old Six</h2>
+      <p>At first, the Overgod did not seek the destruction of humanity. He tried to preserve the beauty of his creation by containing what he considered its most disgusting qualities in one place. The cycle was deliberate. The suffering was, by his reasoning, compartmentalized. The rest of creation could remain untouched while everything he rejected was kept where it belonged.</p>
+      <p>The people inside that system resisted. The Old Six broke the cycle he had so carefully arranged.</p>
+      <p>The Overgod did not immediately erase them for it. He allowed the damaged order to remain and watched.</p>
+      <span class="archive-note block">Allowed? Is that what you think happened?</span>
+
+      <div class="arc-marker">Second Intervention</div>
+      <h2>Clockwork Resurgence</h2>
+      <p>By the time of Clockwork, his conclusion had changed. The flaw was no longer a collection of ugly qualities that could be contained. The flaw was humanity itself.</p>
+      <p>His answer was Pride. Once again, Pride would become the instrument through which the world was corrected. An army of machines would wipe humanity away and give the Overgod the chance to begin again, freeing both himself and the rest of his creation from the shackles mortals had made for them.</p>
+      <p>Humanity resisted again. From his perspective, they resisted the cure while continuing to prove the disease.</p>
+      <span class="archive-note block">They always called survival virtue when it inconvenienced me.</span>
+
+      <div class="arc-marker">Final Intervention</div>
+      <h2>The Overgod's Revenge</h2>
+      <p>By the third great conflict, containment and replacement had both failed. The Overgod activated a contingency intended to end the argument entirely: the Horsemen. Their purpose was not conquest. Their purpose was deletion. The universe would be wiped clean so another could be made from scratch.</p>
+      <p>He did not intend for everyone to vanish with it. Seven mortals were selected from among those who had experienced humanity's horrors firsthand. Each was given a special gift and the promise of a place in what came next, provided they helped destroy what remained of the old world. They were called <strong>The Virtues</strong>, long before any of them became gods.</p>
+      <p>The Virtues succeeded in summoning the Four Horsemen. The party stopped the end of reality and, this time, reached the Overgod himself.</p>
+
+      <h2>The Death That Wasn't</h2>
+      <p>The common version says the Overgod was killed.</p>
+      <p><span class="archive-strike">The Overgod was killed.</span><span class="archive-note">No.</span></p>
+      <p>What actually happened was separation. He was cut off from their reality. The distinction matters because an Overgod is not merely a resident of the universe who can be removed without consequence. The universe depended on the office he occupied. Severing him from it created a vacancy that reality could not survive for long.</p>
+      <p>And this, according to the surviving record, was ultimately what he wanted.</p>
+      <div class="record-fracture">
+        <div class="fracture-label">Recovered interpretation</div>
+        <p>The Overgod had spent ages trying to force the world back into a shape he recognized as his. By the end, he knew it no longer belonged to him in any meaningful sense. He could not win without destroying the thing he wanted to control. So he arranged a final exit that would preserve the world while ensuring that the people who defeated him inherited the cost of keeping it alive.</p>
+      </div>
+      <span class="archive-note block">Now ask yourself who wrote that interpretation.</span>
+
+      <h2>Odin's Choice</h2>
+      <p>The vacancy required another Overgod. Odin could not simply take the position himself. He was an <strong>illborn Overgod</strong>, a being who obtained Overgod power artificially rather than being born with it. He could wield that power, but he could not become the true anchor of this reality.</p>
+      <p>Two viable choices remained within his family. His daughter, a <strong>half-born Overgod</strong>, born mortal and Overgod from the beginning, could take the burden. So could his mortal wife because of her Chronomancy.</p>
+      <p>The Overgod left Odin with the decision.</p>
+      <p><strong>Which life would he destroy to keep every other life in existence?</strong></p>
+      <p>Odin chose his wife.</p>
+      <p>She now holds reality together in constant agony. Her mortal body cannot naturally sustain what she has become, so Chronomancy keeps her alive as she is torn apart and reconstructed again and again. The process does not end. It cannot end while she remains the thing standing between the universe and collapse.</p>
+      <p>Odin lives with the knowledge that he made that choice.</p>
+      <p>The former Overgod <strong>delights in it.</strong></p>
+
+      <h2>Why He Did Any of It</h2>
+      <p>Calling the Overgod cruel is easy. Calling him protective is also easy. Both descriptions become inadequate at the scale on which he thinks. He created a universe and regarded himself as responsible for everything inside it. That responsibility became ownership. Ownership became control. Every rebellion against his design became further evidence that the design needed correction.</p>
+      <p>He did not believe himself to be destroying his creation for pleasure. He believed he was pruning, containing, replacing, and finally resetting something that had escaped the purpose for which he made it.</p>
+      <p>That does not make the suffering smaller.</p>
+      <span class="archive-note block">And yet you still need me to be the villain. How comforting.</span>
 
       <h2>What This Record Allows You to See</h2>
-      <p>The archive can describe the office. It can preserve names, consequences, and fragments of succession. It cannot make the scale of the thing comfortable. The further the record is followed, the less the world resembles a collection of cities and gods, and the more it resembles something suspended inside a structure too large to perceive all at once.</p>
-      <div class="permitted-glimpse">You are not seeing the whole truth. You are seeing the amount of it that has been permitted to remain visible.</div>
+      <p>Everything above is true.</p>
+      <p class="archive-redact">Everything above is true.</p>
+      <p>The archive cannot establish who preserved this record, who edited it, or why certain passages remain accessible when nearly every other direct reference to the Overgod is hidden behind the Radio Tower sequence. Several lines appear to have been altered after their original transcription. No logged editor claims responsibility.</p>
+      <p>One repeated note survives every attempt to remove it:</p>
+      <div class="permitted-glimpse">You are not seeing what was discovered. You are seeing what I decided you could keep.</div>
 
       <h2>Public Index Status</h2>
       <p><strong>This record is not indexed in the public Gods archive.</strong> Its absence is deliberate.</p>
     </article>
     <aside class="overgod-aside">
-      <div class="label">Related Records</div>
-      <p>No public cross-references. No official path into this record. The archive behaves as though this page does not exist.</p>
+      <div class="label">At a Glance</div>
+      <div class="fact-stack">
+        <div class="fact"><strong>Classification</strong>Overgod</div>
+        <div class="fact"><strong>Domain</strong>The universe itself</div>
+        <div class="fact"><strong>Reality Manipulation</strong>Strings</div>
+        <div class="fact"><strong>Creator</strong>This world and its governing reality</div>
+        <div class="fact"><strong>Final Status</strong>Severed from this reality, not conventionally slain</div>
+      </div>
+      <div class="label" style="margin-top:22px">Related Records</div>
+      <p><a href="/tales-of-the-old-six.html">Tales of the Old Six</a><br><a href="/clockwork-resurgence.html">Clockwork Resurgence</a><br><a href="/overgods-revenge.html">The Overgod's Revenge</a><br><a href="/odin.html">Odin</a></p>
+      <div class="label" style="margin-top:22px">Archive Note</div>
+      <p>No public cross-reference leads here. The path exists only because something permitted it to exist.</p>
     </aside>
   </div>
 </main>
