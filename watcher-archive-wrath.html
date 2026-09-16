@@ -27,18 +27,45 @@
 
 
 
-/* Archive title built as a two-shelf bookcase */
-.vault-title-shelf{margin:8px 0 0;padding:18px 18px 20px;border:10px solid #1b120d;border-top-width:18px;border-bottom-width:18px;background:linear-gradient(180deg,#090d12,#0e151c 54%,#090d12);box-shadow:inset 0 0 0 2px #4a3020,inset 0 0 38px rgba(0,0,0,.62),0 14px 30px rgba(0,0,0,.28);overflow:hidden;position:relative}
-.vault-title-shelf:before,.vault-title-shelf:after{content:"";position:absolute;left:0;right:0;height:12px;background:linear-gradient(180deg,#5a3823,#2d1b11 55%,#100a07);box-shadow:0 4px 0 #080504,0 7px 11px rgba(0,0,0,.55);z-index:3}
-.vault-title-shelf:before{top:0}.vault-title-shelf:after{bottom:0}
-.vault-title-tier{position:relative;display:flex;align-items:flex-end;justify-content:center;gap:6px;padding:12px 14px 19px;background:linear-gradient(180deg,rgba(255,255,255,.012),rgba(0,0,0,.08));border-left:7px solid #20150f;border-right:7px solid #20150f}
-.vault-title-tier-sin{min-height:118px}
-.vault-title-tier-sin:after{content:"";position:absolute;left:-7px;right:-7px;bottom:0;height:14px;background:linear-gradient(180deg,#5b3924,#2d1c12 58%,#0d0805);box-shadow:0 5px 0 #080504,0 9px 14px rgba(0,0,0,.55);z-index:2}
-.vault-title-tier-archive{min-height:96px;align-items:center;justify-content:flex-start;padding:18px 22px 20px;background:linear-gradient(180deg,#0c1218,#090d12);border-top:0}
-.vault-title-book{height:88px;flex:0 0 clamp(42px,5vw,54px);display:flex;align-items:center;justify-content:center;position:relative;border:1px solid color-mix(in srgb,var(--watch-accent) 38%,#1f2931);border-radius:4px 4px 1px 1px;background:linear-gradient(90deg,#101821 0,#1b2934 14%,#15212b 50%,#1d2a34 86%,#101821 100%);box-shadow:inset 0 13px 0 rgba(0,0,0,.16),inset 0 -13px 0 rgba(0,0,0,.18),3px 0 4px rgba(0,0,0,.34)}
-.vault-title-book.spacer{flex:0 0 18px;height:72px;border:0;background:transparent;box-shadow:none}.vault-title-book.spacer:before,.vault-title-book.spacer:after{display:none}.vault-title-book:nth-child(2n){height:94px}.vault-title-book:nth-child(3n){height:101px}.vault-title-book:nth-child(5n){height:91px}.vault-title-book:before,.vault-title-book:after{content:"";position:absolute;left:6px;right:6px;height:1px;background:color-mix(in srgb,var(--watch-accent) 45%,transparent)}.vault-title-book:before{top:15px}.vault-title-book:after{bottom:15px}.vault-title-book span{font-family:Georgia,serif;font-size:1.34rem;color:var(--watch-pale);text-shadow:0 0 10px color-mix(in srgb,var(--watch-accent) 48%,transparent)}
-.vault-title-tier-archive .vault-lede{margin:0;padding:14px 18px 15px;max-width:100%;width:100%;border:1px solid rgba(165,184,194,.15);border-left:3px solid color-mix(in srgb,var(--watch-accent) 55%,transparent);background:linear-gradient(90deg,rgba(255,255,255,.028),rgba(255,255,255,.012));box-shadow:inset 0 0 18px rgba(0,0,0,.24);font-size:.98rem;line-height:1.65;color:#bcc8ce}
-@media(max-width:760px){.vault-title-tier-sin{justify-content:flex-start;overflow-x:auto;min-height:100px;padding-left:8px;padding-right:8px}.vault-title-book{height:78px;flex-basis:36px}.vault-title-book:nth-child(2n),.vault-title-book:nth-child(3n),.vault-title-book:nth-child(5n){height:84px}.vault-title-book span{font-size:1rem}.vault-title-tier-archive{padding:14px 10px 16px}.vault-title-tier-archive .vault-lede{font-size:.92rem}}
+
+/* V50 polished two-level archive bookcase */
+.vault-head{grid-template-columns:minmax(0,1fr) 190px;gap:28px;padding:26px 30px 30px;background:
+linear-gradient(135deg,rgba(255,255,255,.02),rgba(0,0,0,.22)),
+repeating-linear-gradient(90deg,transparent 0 74px,rgba(120,206,238,.018) 75px 76px);
+position:relative;overflow:hidden}
+.vault-head:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 0 49.8%,rgba(116,213,247,.035) 50%,transparent 50.2%)}
+.vault-kicker{position:relative;z-index:2;text-shadow:0 0 12px color-mix(in srgb,var(--watch-accent) 32%,transparent)}
+.vault-sigil{position:relative;z-index:2}
+.vault-title-shelf{margin:8px 0 0;padding:18px 20px 20px;border:0;background:transparent;box-shadow:none;overflow:visible;position:relative}
+.vault-title-shelf:before{content:"";position:absolute;inset:0;border:9px solid #20140d;border-top-width:16px;border-bottom-width:16px;background:linear-gradient(180deg,#0a0f14,#0d141a 55%,#090d11);box-shadow:
+inset 0 0 0 2px #5a3a26,
+inset 0 0 0 4px #120b07,
+inset 0 0 42px rgba(0,0,0,.68),
+0 16px 28px rgba(0,0,0,.34);z-index:0}
+.vault-title-shelf:after{content:"";position:absolute;left:10px;right:10px;top:50%;height:16px;transform:translateY(-8px);background:linear-gradient(180deg,#684229,#3a2416 44%,#1b100a 78%,#0c0704);box-shadow:0 -2px 0 #7b5132,0 4px 0 #090503,0 8px 14px rgba(0,0,0,.55);z-index:4}
+.vault-title-tier{position:relative;z-index:2;border:0;background:transparent}
+.vault-title-tier-sin{min-height:150px;display:flex;align-items:flex-end;justify-content:center;gap:5px;padding:18px 18px 24px;border-left:8px solid #24160e;border-right:8px solid #24160e}
+.vault-title-tier-sin:before,.vault-title-tier-archive:before{content:"";position:absolute;left:8px;right:8px;top:8px;bottom:8px;border-left:1px solid rgba(155,102,60,.18);border-right:1px solid rgba(155,102,60,.18);pointer-events:none}
+.vault-title-tier-sin:after{display:none}
+.vault-title-book{height:108px;flex:1 1 0;min-width:0;max-width:58px;display:flex;align-items:center;justify-content:center;position:relative;border:1px solid color-mix(in srgb,var(--watch-accent) 34%,#1a242b);border-radius:4px 4px 1px 1px;background:
+linear-gradient(90deg,#0b1218 0 10%,#17242d 15% 46%,#1d2c36 52% 84%,#0a1117 90%),
+linear-gradient(180deg,rgba(255,255,255,.025),transparent);box-shadow:inset 0 0 0 1px rgba(255,255,255,.018),inset 5px 0 10px rgba(255,255,255,.018),inset -5px 0 9px rgba(0,0,0,.28),3px 0 4px rgba(0,0,0,.42)}
+.vault-title-book:nth-child(2n){height:116px}.vault-title-book:nth-child(3n){height:124px}.vault-title-book:nth-child(5n){height:112px}
+.vault-title-book:before,.vault-title-book:after{content:"";position:absolute;left:7px;right:7px;height:1px;background:color-mix(in srgb,var(--watch-accent) 44%,transparent)}.vault-title-book:before{top:16px}.vault-title-book:after{bottom:16px}
+.vault-title-book span{font-family:Georgia,serif;font-size:clamp(1rem,1.8vw,1.32rem);color:var(--watch-pale);text-shadow:0 0 10px color-mix(in srgb,var(--watch-accent) 45%,transparent)}
+.vault-title-book.spacer{flex:0 0 12px;min-width:12px;max-width:12px;height:92px;border:0;background:transparent;box-shadow:none}
+.vault-title-tier-archive{min-height:126px;display:flex;align-items:center;justify-content:flex-start;padding:27px 26px 18px;border-left:8px solid #24160e;border-right:8px solid #24160e;background:linear-gradient(180deg,rgba(6,13,18,.5),rgba(9,16,22,.18))}
+.vault-title-tier-archive .vault-lede{position:relative;z-index:2;margin:0;width:100%;max-width:none;padding:16px 18px 17px;border:1px solid rgba(116,210,244,.22);border-left:3px solid color-mix(in srgb,var(--watch-accent) 64%,#8fe4ff);background:linear-gradient(90deg,rgba(15,35,46,.78),rgba(6,17,24,.55));box-shadow:inset 0 0 24px rgba(55,160,204,.045),0 0 18px rgba(54,176,220,.035);color:#c5d7df;font-size:.97rem;line-height:1.65}
+.vault-title-tier-archive .vault-lede:before{content:"TRUE NAME PROTOCOL // ACCESS GRANTED";display:block;margin-bottom:8px;color:color-mix(in srgb,var(--watch-accent) 62%,#9ee9ff);font:600 .66rem/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em}
+
+.archive-placeholder{position:relative;display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:stretch;margin-top:26px}
+.placeholder-panel,.placeholder-status{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(12,24,32,.82),rgba(6,13,18,.88));border:1px solid rgba(105,193,226,.16);box-shadow:inset 0 0 26px rgba(64,174,215,.028)}
+.placeholder-panel{padding:28px 30px}.placeholder-panel:before,.placeholder-status:before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,transparent 0 7px,rgba(151,226,255,.018) 8px)}
+.placeholder-panel h2{position:relative;margin:0 0 12px;color:#edf7fa;letter-spacing:.03em}.placeholder-panel p{position:relative;color:#aebfc7;line-height:1.78;margin-bottom:0}
+.placeholder-status{padding:24px 24px 22px;border-left:2px solid var(--watch-accent);color:#aac0ca;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.82rem;line-height:1.7;letter-spacing:.025em}
+.placeholder-status strong{position:relative;display:block;color:var(--watch-pale);margin-bottom:10px;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem}.placeholder-status:after{content:"WATCHER NODE // RESTRICTED";position:absolute;right:10px;bottom:8px;color:rgba(143,215,241,.16);font:600 .58rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em}
+@media(max-width:900px){.vault-head{grid-template-columns:1fr}.vault-sigil{justify-content:center}.vault-title-shelf{padding-left:12px;padding-right:12px}.vault-title-tier-sin{padding-left:8px;padding-right:8px;gap:3px}.vault-title-book{max-width:52px}.archive-placeholder{grid-template-columns:1fr}}
+@media(max-width:620px){.vault-head{padding:20px 14px 24px}.vault-title-shelf{padding:14px 7px 16px}.vault-title-tier-sin{min-height:124px;gap:2px;padding:12px 4px 20px}.vault-title-book{height:88px;max-width:none}.vault-title-book:nth-child(2n),.vault-title-book:nth-child(3n),.vault-title-book:nth-child(5n){height:96px}.vault-title-book span{font-size:.82rem}.vault-title-book.spacer{flex-basis:6px;min-width:6px;max-width:6px}.vault-title-tier-archive{min-height:118px;padding:24px 10px 13px}.vault-title-tier-archive .vault-lede{font-size:.88rem;padding:13px 12px}.archive-gate{padding-left:12px;padding-right:12px}}
 
 </style></head>
 <body class="archive-body"><header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header>
