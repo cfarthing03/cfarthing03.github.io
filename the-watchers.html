@@ -14,6 +14,30 @@ linear-gradient(135deg,rgba(8,15,22,.96),rgba(13,19,26,.93));box-shadow:0 20px 6
 .watch-eye{width:86px;height:44px;margin:0 0 18px;border:2px solid rgba(180,210,230,.45);border-radius:50% 8% 50% 8%;transform:rotate(45deg);display:grid;place-items:center}
 .watch-eye:after{content:"";width:16px;height:16px;border-radius:50%;background:rgba(210,232,246,.8);box-shadow:0 0 18px rgba(160,210,240,.45)}
 .watch-banner{display:flex;justify-content:center;align-items:center}.watch-banner img{display:block;width:auto;height:360px;max-width:100%;object-fit:contain;filter:drop-shadow(0 18px 24px rgba(0,0,0,.48))}@media(max-width:820px){.watch-hero{grid-template-columns:1fr}.watch-banner img{height:300px}}
+
+.watch-eye{cursor:pointer;position:relative;transition:filter .22s ease,transform .22s ease,border-color .22s ease}
+.watch-eye:hover,.watch-eye:focus-visible{filter:drop-shadow(0 0 12px rgba(180,220,255,.65));border-color:rgba(215,238,255,.8);outline:none;transform:rotate(45deg) scale(1.08)}
+.watch-eye:focus-visible{box-shadow:0 0 0 3px rgba(132,190,230,.2)}
+.true-name-modal{position:fixed;inset:0;z-index:9999;display:none;place-items:center;padding:24px;background:rgba(1,5,9,.88);backdrop-filter:blur(8px)}
+.true-name-modal.open{display:grid}
+.true-name-panel{width:min(520px,92vw);border:1px solid rgba(166,206,233,.28);background:linear-gradient(180deg,rgba(7,15,23,.98),rgba(4,9,14,.99));box-shadow:0 30px 90px rgba(0,0,0,.7),0 0 35px rgba(103,169,210,.08);padding:28px 28px 24px;position:relative}
+.true-name-panel h2{margin:0 0 18px;font-size:1.15rem;letter-spacing:.08em;text-transform:uppercase;color:#d7e9f4}
+.true-name-panel p{margin:0 0 16px;color:#aebdca}
+.true-name-input-row{display:flex;gap:10px}
+.true-name-input{flex:1;min-width:0;padding:12px 14px;background:#050b10;border:1px solid rgba(174,207,229,.25);color:#edf7ff;font:inherit;letter-spacing:.04em}
+.true-name-input:focus{outline:none;border-color:rgba(204,231,247,.65);box-shadow:0 0 0 3px rgba(95,160,202,.12)}
+.true-name-submit,.true-name-close{border:1px solid rgba(174,207,229,.28);background:rgba(141,184,212,.08);color:#dceaf3;padding:11px 15px;font:inherit;cursor:pointer}
+.true-name-submit:hover,.true-name-close:hover{background:rgba(141,184,212,.15)}
+.true-name-close{position:absolute;right:12px;top:12px;padding:5px 9px;font-size:.85rem}
+.true-name-error{min-height:1.35em;margin-top:12px;color:#9caab4;font-size:.92rem}
+.true-name-unlock{display:none;text-align:center;padding:18px 0 4px}
+.true-name-unlock.active{display:block;animation:archiveReveal .55s ease both}
+@keyframes archiveReveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.true-name-sigil{width:132px;height:132px;margin:4px auto 16px;display:grid;place-items:center;position:relative;color:#e6f2fa;filter:drop-shadow(0 0 14px currentColor)}
+.true-name-sigil svg{width:100%;height:100%}
+.true-name-unlock .archive-name{font-size:1.35rem;letter-spacing:.12em;text-transform:uppercase;color:#eaf5fb;margin-bottom:6px}
+.true-name-unlock .archive-status{font-size:.86rem;letter-spacing:.1em;text-transform:uppercase;color:#8ea6b5}
+
 </style>
 
 </head>
@@ -23,7 +47,7 @@ linear-gradient(135deg,rgba(8,15,22,.96),rgba(13,19,26,.93));box-shadow:0 20px 6
 <main class="archive-shell">
 <a class="archive-back" href="/factions.html">← Return to Factions</a>
 <section class="watch-hero">
-  <div><div class="watch-eye" aria-hidden="true"></div>
+  <div><button class="watch-eye" id="watcherEye" type="button" aria-label="Open Watcher archive authentication"></button>
   <div class="archive-kicker">Faction · Secret Vigilante Network</div>
   <h1 class="archive-title">The Watchers</h1>
   <p class="archive-lede">A hidden organization founded by Lex to continue watching over the continent after he was gone, answerable to no church and no government.</p></div>
@@ -70,6 +94,81 @@ linear-gradient(135deg,rgba(8,15,22,.96),rgba(13,19,26,.93));box-shadow:0 20px 6
 </div>
 </main>
 
+<div class="true-name-modal" id="trueNameModal" aria-hidden="true">
+  <div class="true-name-panel" role="dialog" aria-modal="true" aria-labelledby="trueNamePrompt">
+    <button class="true-name-close" id="trueNameClose" type="button">Close</button>
+    <h2 id="trueNamePrompt">Speak the name that is true.</h2>
+    <div class="true-name-input-row" id="trueNameFormRow">
+      <input class="true-name-input" id="trueNameInput" type="text" autocomplete="off" spellcheck="false" aria-label="True name">
+      <button class="true-name-submit" id="trueNameSubmit" type="button">Enter</button>
+    </div>
+    <div class="true-name-error" id="trueNameError"></div>
+    <div class="true-name-unlock" id="trueNameUnlock" aria-live="polite">
+      <div class="true-name-sigil" id="trueNameSigil"></div>
+      <div class="archive-name" id="trueNameArchive"></div>
+      <div class="archive-status">Watcher archive access granted</div>
+    </div>
+  </div>
+</div>
+
 <footer>Sinners World Archive · Built as a player-facing lore guide</footer><script src="/script.js"></script><script src="/archive.js"></script>
+
+<script>
+(function(){
+  const trueNames = {
+    beelzebub:{sin:'Gluttony',symbol:'gluttony'},
+    mammon:{sin:'Greed',symbol:'greed'},
+    leviathan:{sin:'Envy',symbol:'envy'},
+    asmodeus:{sin:'Lust',symbol:'lust'},
+    lucifer:{sin:'Pride',symbol:'pride'},
+    satan:{sin:'Wrath',symbol:'wrath'},
+    belphegor:{sin:'Sloth',symbol:'sloth'}
+  };
+  const eye=document.getElementById('watcherEye');
+  const modal=document.getElementById('trueNameModal');
+  const input=document.getElementById('trueNameInput');
+  const submit=document.getElementById('trueNameSubmit');
+  const close=document.getElementById('trueNameClose');
+  const error=document.getElementById('trueNameError');
+  const unlock=document.getElementById('trueNameUnlock');
+  const sigil=document.getElementById('trueNameSigil');
+  const archive=document.getElementById('trueNameArchive');
+  const formRow=document.getElementById('trueNameFormRow');
+
+  const sigils={
+    wrath:`<svg viewBox="0 0 120 120" aria-label="Sigil of Wrath"><circle cx="60" cy="60" r="24" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="60" cy="60" r="8" fill="currentColor"/><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M60 10v18M60 92v18M10 60h18M92 60h18M25 25l13 13M82 82l13 13M95 25L82 38M38 82L25 95"/></g></svg>`,
+    sloth:`<svg viewBox="0 0 120 120" aria-label="Sigil of Sloth"><path d="M78 18c-27 5-45 27-45 52 0 20 11 36 29 44-28-2-50-25-50-53 0-31 25-56 56-56 4 0 7 .3 10 1z" fill="currentColor"/><circle cx="76" cy="46" r="5" fill="none" stroke="currentColor" stroke-width="3"/></svg>`,
+    lust:`<svg viewBox="0 0 120 120" aria-label="Sigil of Lust"><path d="M60 101S17 75 17 43c0-16 12-27 27-27 9 0 15 4 21 12 6-8 13-12 22-12 15 0 27 11 27 27 0 32-54 58-54 58z" fill="none" stroke="currentColor" stroke-width="4"/><path d="M60 28v58M38 53h44" stroke="currentColor" stroke-width="3"/></svg>`,
+    greed:`<svg viewBox="0 0 120 120" aria-label="Sigil of Greed"><circle cx="60" cy="60" r="37" fill="none" stroke="currentColor" stroke-width="4"/><path d="M72 32c-19 0-29 12-29 27 0 17 15 28 31 22 11-4 14-17 6-25-7-7-19-3-19 7 0 8 8 12 15 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M60 18v12M60 90v12" stroke="currentColor" stroke-width="4"/></svg>`,
+    envy:`<svg viewBox="0 0 120 120" aria-label="Sigil of Envy"><path d="M12 60s18-28 48-28 48 28 48 28-18 28-48 28S12 60 12 60z" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="60" cy="60" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="60" cy="60" r="5" fill="currentColor"/></svg>`,
+    gluttony:`<svg viewBox="0 0 120 120" aria-label="Sigil of Gluttony"><circle cx="60" cy="60" r="39" fill="none" stroke="currentColor" stroke-width="4"/><path d="M45 38c20-8 41 4 41 24 0 19-16 31-36 25-15-5-22-21-15-36" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="80" cy="32" r="9" fill="#050b10"/><circle cx="91" cy="43" r="7" fill="#050b10"/><circle cx="95" cy="57" r="6" fill="#050b10"/></svg>`,
+    pride:`<svg viewBox="0 0 120 120" aria-label="Sigil of Pride"><path d="M60 17l12 18 20-5-6 20 17 12-17 12 6 20-20-5-12 18-12-18-20 5 6-20-17-12 17-12-6-20 20 5z" fill="none" stroke="currentColor" stroke-width="4"/><path d="M42 71c7 11 29 11 36 0M46 48h1M73 48h1" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>`
+  };
+
+  function openModal(){
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+    input.value=''; error.textContent=''; unlock.classList.remove('active'); formRow.style.display='flex';
+    setTimeout(()=>input.focus(),60);
+  }
+  function closeModal(){modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); eye.focus();}
+  function checkName(){
+    const key=input.value.trim().toLowerCase();
+    const match=trueNames[key];
+    if(!match){error.textContent='The eye remains closed.'; return;}
+    error.textContent='';
+    sigil.innerHTML=sigils[match.symbol]||'';
+    archive.textContent=match.sin+' Archive';
+    formRow.style.display='none';
+    unlock.classList.add('active');
+    sessionStorage.setItem('watcherArchiveSin',match.sin);
+  }
+  eye.addEventListener('click',openModal);
+  close.addEventListener('click',closeModal);
+  submit.addEventListener('click',checkName);
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')checkName(); if(e.key==='Escape')closeModal();});
+  modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+})();
+</script>
+
 </body>
 </html>
