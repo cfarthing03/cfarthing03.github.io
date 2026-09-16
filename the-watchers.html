@@ -12,67 +12,83 @@
 .watch-banner{display:flex;justify-content:center;align-items:center}.watch-banner img{display:block;width:auto;height:360px;max-width:100%;object-fit:contain;filter:drop-shadow(0 18px 24px rgba(0,0,0,.48))}@media(max-width:820px){.watch-hero{grid-template-columns:1fr}.watch-banner img{height:300px}}
 
 /* Watcher archive eye */
-.watch-eye{position:relative;width:120px;height:74px;margin:0 0 22px;padding:0;border:0;background:transparent;cursor:pointer;display:block;transition:transform .2s ease,filter .2s ease}
-.watch-eye .eye-shell{position:absolute;inset:7px 10px;border:2px solid rgba(194,225,241,.82);border-radius:54% 46% 54% 46%/68% 68% 32% 32%;background:linear-gradient(180deg,#132533 0%,#071018 62%,#02070b 100%);box-shadow:inset 0 0 18px rgba(82,164,205,.12),0 0 0 1px rgba(63,106,129,.22);overflow:hidden}
-.watch-eye .eye-shell:before,.watch-eye .eye-shell:after{content:"";position:absolute;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(151,216,245,.9),transparent);opacity:.65}
-.watch-eye .eye-shell:before{top:34%}.watch-eye .eye-shell:after{top:66%}
-.watch-eye .iris{position:absolute;left:50%;top:50%;width:36px;height:36px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#e9fbff 0 12%,#7bcdf3 13% 28%,#17384d 29% 49%,#8fe0ff 50% 57%,#071018 58% 72%,transparent 73%);box-shadow:0 0 16px rgba(103,205,251,.68),0 0 28px rgba(75,173,221,.25);z-index:2}
-.watch-eye .pupil{position:absolute;left:50%;top:50%;width:9px;height:9px;transform:translate(-50%,-50%);border-radius:50%;background:#f4fdff;box-shadow:0 0 10px #dff8ff;z-index:3}
-.watch-eye .eye-line{position:absolute;left:4px;right:4px;top:50%;height:1px;background:linear-gradient(90deg,transparent,#8ed7f7 20%,#effbff 50%,#8ed7f7 80%,transparent);z-index:4;opacity:.55}
-.watch-eye:hover,.watch-eye:focus-visible{transform:scale(1.05);filter:drop-shadow(0 0 13px rgba(103,193,235,.42));outline:none}
-.watch-eye.scanning .iris{animation:irisScan .42s ease}
-.watch-eye.scanning .eye-line{animation:scanSweep .42s ease}
-@keyframes irisScan{0%,100%{transform:translate(-50%,-50%) scale(1)}45%{transform:translate(-50%,-50%) scale(.68)}70%{transform:translate(-50%,-50%) scale(1.18)}}
-@keyframes scanSweep{0%{transform:translateY(-16px);opacity:0}30%{opacity:1}100%{transform:translateY(16px);opacity:0}}
+.watch-eye{position:relative;width:126px;height:78px;margin:0 0 22px;padding:0;border:0;background:transparent;cursor:pointer;display:block;transition:transform .2s ease,filter .2s ease}
+.watch-eye .eye-shell{position:absolute;left:8px;right:8px;top:13px;bottom:13px;clip-path:polygon(0 50%,18% 16%,50% 3%,82% 16%,100% 50%,82% 84%,50% 97%,18% 84%);background:linear-gradient(180deg,rgba(121,185,214,.9),rgba(48,92,116,.92));filter:drop-shadow(0 0 6px rgba(92,187,229,.28))}
+.watch-eye .eye-shell:after{content:"";position:absolute;inset:2px;clip-path:inherit;background:linear-gradient(180deg,#08131c,#03080d 72%)}
+.watch-eye .eye-lid{position:absolute;left:18px;right:18px;top:23px;height:32px;border-top:1px solid rgba(159,220,246,.54);border-bottom:1px solid rgba(74,139,171,.44);border-radius:50%;z-index:2;opacity:.72}
+.watch-eye .iris{position:absolute;left:50%;top:50%;width:38px;height:38px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#f4fdff 0 9%,#8adcf7 10% 25%,#19455f 26% 46%,#7dd2ef 47% 53%,#07131c 54% 71%,transparent 72%);box-shadow:0 0 12px rgba(111,208,246,.55),0 0 24px rgba(53,148,191,.2);z-index:3}
+.watch-eye .pupil{position:absolute;left:50%;top:50%;width:8px;height:8px;transform:translate(-50%,-50%);border-radius:50%;background:#f4fdff;box-shadow:0 0 9px #dff8ff;z-index:4}
+.watch-eye .eye-line{position:absolute;left:13px;right:13px;top:50%;height:1px;background:linear-gradient(90deg,transparent,#8ed7f7 22%,#effbff 50%,#8ed7f7 78%,transparent);z-index:5;opacity:.45}
+.watch-eye:hover,.watch-eye:focus-visible{transform:scale(1.045);filter:drop-shadow(0 0 12px rgba(103,193,235,.34));outline:none}
+.watch-eye.scanning .iris{animation:irisScan .44s ease}
+.watch-eye.scanning .eye-line{animation:scanSweep .44s ease}
+@keyframes irisScan{0%,100%{transform:translate(-50%,-50%) scale(1)}45%{transform:translate(-50%,-50%) scale(.72)}70%{transform:translate(-50%,-50%) scale(1.12)}}
+@keyframes scanSweep{0%{transform:translateY(-13px);opacity:0}35%{opacity:1}100%{transform:translateY(13px);opacity:0}}
 
-/* Lightweight scientific hologram authentication */
-.true-name-modal{position:fixed;inset:0;z-index:9999;display:none;place-items:center;padding:24px;background:rgba(1,5,9,.76);overflow:hidden}
-.true-name-modal.open{display:grid}
-.holo-origin{position:fixed;width:10px;height:10px;border-radius:50%;background:#c8f0ff;box-shadow:0 0 16px #7fd2f6,0 0 34px rgba(93,194,240,.5);opacity:0;pointer-events:none}
+/* Scientific hologram authentication */
+.true-name-modal{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:24px;background:rgba(1,5,9,0);opacity:0;visibility:hidden;pointer-events:none;overflow:hidden;transition:opacity .26s ease,background .26s ease,visibility 0s linear .34s}
+.true-name-modal.open{opacity:1;visibility:visible;pointer-events:auto;background:rgba(1,5,9,.72);transition:opacity .22s ease,background .22s ease}
+.true-name-modal.closing{opacity:0;background:rgba(1,5,9,0);pointer-events:none}
+.holo-origin{position:fixed;width:9px;height:9px;border-radius:50%;background:#d9f7ff;box-shadow:0 0 14px #7fd2f6,0 0 28px rgba(93,194,240,.42);opacity:0;pointer-events:none;z-index:2}
 .true-name-modal.open .holo-origin{animation:originPulse .34s ease both}
-@keyframes originPulse{0%{opacity:0;transform:scale(.3)}45%{opacity:1;transform:scale(1.4)}100%{opacity:.75;transform:scale(1)}}
-.holo-beam{position:fixed;height:2px;width:0;transform-origin:left center;background:linear-gradient(90deg,#b9ecff,rgba(111,205,245,.72),transparent);box-shadow:0 0 10px rgba(102,202,246,.72);opacity:0;pointer-events:none}
-.true-name-modal.open .holo-beam{animation:beamDraw .38s ease .08s forwards}
-@keyframes beamDraw{from{width:0;opacity:0}20%{opacity:1}to{width:var(--beam-length,320px);opacity:.72}}
-.true-name-panel{width:min(620px,92vw);border:1px solid rgba(139,208,240,.38);background:linear-gradient(180deg,rgba(7,23,34,.98),rgba(3,11,18,.99));box-shadow:0 24px 70px rgba(0,0,0,.62),0 0 28px rgba(80,181,228,.1);padding:30px 30px 25px;position:relative;opacity:0;transform:translateY(12px) scale(.985)}
+.true-name-modal.closing .holo-origin{animation:originClose .25s ease both}
+@keyframes originPulse{0%{opacity:0;transform:scale(.25)}45%{opacity:1;transform:scale(1.45)}100%{opacity:.82;transform:scale(1)}}
+@keyframes originClose{to{opacity:0;transform:scale(.2)}}
+.holo-beam{position:fixed;height:1px;width:0;transform-origin:left center;background:linear-gradient(90deg,rgba(209,245,255,.95),rgba(104,202,244,.58),transparent);box-shadow:0 0 8px rgba(102,202,246,.55);opacity:0;pointer-events:none;z-index:1}
+.true-name-modal.open .holo-beam{animation:beamDraw .34s ease .05s forwards}
+.true-name-modal.closing .holo-beam{animation:beamRetract .22s ease forwards}
+@keyframes beamDraw{from{width:0;opacity:0}20%{opacity:1}to{width:var(--beam-length,320px);opacity:.58}}
+@keyframes beamRetract{from{width:var(--beam-length,320px);opacity:.58}to{width:0;opacity:0}}
+.true-name-panel{width:min(620px,92vw);min-height:150px;border:1px solid rgba(139,208,240,.38);background:linear-gradient(180deg,rgba(7,23,34,.985),rgba(3,11,18,.995));box-shadow:0 24px 70px rgba(0,0,0,.58),0 0 22px rgba(80,181,228,.08);padding:30px 30px 25px;position:relative;opacity:0;transform:scaleX(.08) scaleY(.2);transform-origin:center;will-change:transform,opacity}
 .true-name-panel:before{content:"";position:absolute;inset:8px;border:1px solid rgba(126,202,236,.11);pointer-events:none}
-.true-name-panel:after{content:"";position:absolute;left:12%;right:12%;top:0;height:1px;background:linear-gradient(90deg,transparent,#9adfff,transparent);box-shadow:0 0 10px #65c8f3;opacity:.75;pointer-events:none}
-.true-name-modal.open .true-name-panel{animation:panelProject .34s ease .18s forwards}
-@keyframes panelProject{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
+.true-name-panel:after{content:"";position:absolute;left:12%;right:12%;top:0;height:1px;background:linear-gradient(90deg,transparent,#9adfff,transparent);box-shadow:0 0 9px #65c8f3;opacity:.72;pointer-events:none}
+.true-name-modal.open .true-name-panel{animation:panelProject .38s cubic-bezier(.2,.82,.22,1) .13s forwards}
+.true-name-modal.closing .true-name-panel{animation:panelClose .28s ease forwards}
+@keyframes panelProject{0%{opacity:0;transform:scaleX(.08) scaleY(.2)}45%{opacity:1;transform:scaleX(1.03) scaleY(.22)}100%{opacity:1;transform:none}}
+@keyframes panelClose{0%{opacity:1;transform:none}55%{opacity:.9;transform:scaleX(1.02) scaleY(.18)}100%{opacity:0;transform:scaleX(.03) scaleY(.05)}}
+.true-name-panel.authorizing{animation:panelAuthorize .5s ease both!important}
+@keyframes panelAuthorize{0%{transform:none;box-shadow:0 24px 70px rgba(0,0,0,.58),0 0 22px rgba(80,181,228,.08)}42%{transform:scale(1.018);box-shadow:0 24px 70px rgba(0,0,0,.58),0 0 30px rgba(95,221,154,.22)}100%{transform:none;box-shadow:0 24px 70px rgba(0,0,0,.58),0 0 22px rgba(80,181,228,.08)}}
 .true-name-panel h2{margin:0 0 18px;font-size:1.05rem;letter-spacing:.18em;text-transform:uppercase;color:#d9f3ff;text-shadow:0 0 12px rgba(123,211,249,.2)}
-.true-name-input-row{display:flex;gap:10px}
-.true-name-input{flex:1;min-width:0;padding:12px 14px;background:#041018;border:1px solid rgba(174,220,244,.28);color:#edfaff;font:inherit;letter-spacing:.06em}
+.true-name-input-row{display:flex;gap:10px;transition:opacity .22s ease,transform .22s ease}
+.true-name-input-row.authorized-out{opacity:0;transform:translateY(-8px);pointer-events:none}
+.true-name-input{flex:1;min-width:0;padding:12px 14px;background:#041018;border:1px solid rgba(174,220,244,.28);color:#edfaff;font:inherit;letter-spacing:.06em;transition:border-color .18s ease,box-shadow .18s ease,background .18s ease}
 .true-name-input:focus{outline:none;border-color:rgba(190,233,255,.72);box-shadow:0 0 0 2px rgba(95,160,202,.09)}
+.true-name-input.accepted{border-color:#77e6a8;background:#061710;box-shadow:0 0 0 2px rgba(83,211,137,.14),0 0 22px rgba(83,211,137,.24);animation:acceptPulse .48s ease}
+@keyframes acceptPulse{0%,100%{transform:none}45%{transform:scale(1.008)}}
+.true-name-input.rejected{border-color:#f36b73;background:#19080b;box-shadow:0 0 0 2px rgba(243,107,115,.11),0 0 20px rgba(243,107,115,.18);animation:rejectShake .34s ease}
+@keyframes rejectShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
 .true-name-submit,.true-name-close{border:1px solid rgba(174,220,244,.3);background:rgba(73,158,202,.09);color:#dff4ff;padding:11px 15px;font:inherit;cursor:pointer;letter-spacing:.06em;text-transform:uppercase;font-size:.82rem}
 .true-name-submit:hover,.true-name-close:hover{background:rgba(93,188,235,.16)}
 .true-name-close{position:absolute;right:16px;top:14px;padding:5px 9px;z-index:4}
-.true-name-error{min-height:1.35em;margin-top:12px;color:#91a9b5;font-size:.9rem;letter-spacing:.04em}
+.true-name-error{min-height:1.35em;margin-top:12px;color:#91a9b5;font-size:.9rem;letter-spacing:.04em;transition:color .18s ease}
+.true-name-error.bad{color:#f28a8f}.true-name-error.good{color:#84dfaa}
 
 /* Archive unlock sequence */
-.true-name-unlock{display:none;text-align:center;padding:4px 0 0;position:relative;min-height:290px}
-.true-name-unlock.active{display:block}
+.true-name-unlock{display:none;text-align:center;padding:2px 0 0;position:relative;min-height:292px;opacity:0;transform:translateY(8px)}
+.true-name-unlock.active{display:block;animation:unlockStageIn .32s ease forwards}
+@keyframes unlockStageIn{to{opacity:1;transform:none}}
 .sigil-stage{width:210px;height:210px;margin:0 auto 8px;display:grid;place-items:center;position:relative}
 .sigil-ring,.sigil-ring-two{position:absolute;border-radius:50%;border:1px solid rgba(136,212,246,.28);opacity:0;pointer-events:none}
 .sigil-ring{inset:8px}.sigil-ring-two{inset:31px;border-style:dashed}
-.true-name-unlock.active .sigil-ring{animation:ringOpen .62s ease .06s forwards}
-.true-name-unlock.active .sigil-ring-two{animation:ringOpenReverse .62s ease .1s forwards}
-@keyframes ringOpen{from{opacity:0;transform:scale(.62) rotate(-34deg)}to{opacity:.72;transform:scale(1) rotate(0)}}
-@keyframes ringOpenReverse{from{opacity:0;transform:scale(.62) rotate(34deg)}to{opacity:.5;transform:scale(1) rotate(0)}}
+.true-name-unlock.active .sigil-ring{animation:ringOpen .58s ease .08s forwards}
+.true-name-unlock.active .sigil-ring-two{animation:ringOpenReverse .58s ease .12s forwards}
+@keyframes ringOpen{from{opacity:0;transform:scale(.62) rotate(-28deg)}to{opacity:.72;transform:scale(1) rotate(0)}}
+@keyframes ringOpenReverse{from{opacity:0;transform:scale(.62) rotate(28deg)}to{opacity:.5;transform:scale(1) rotate(0)}}
 .true-name-sigil{width:158px;height:158px;display:grid;place-items:center;opacity:0;transform:scale(.46);position:relative;z-index:2;border:0;background:transparent;padding:0;cursor:pointer}
 .true-name-sigil img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}
-.true-name-unlock.active .true-name-sigil{animation:sigilAuthorize .66s cubic-bezier(.18,.84,.24,1) .04s forwards}
+.true-name-unlock.active .true-name-sigil{animation:sigilAuthorize .66s cubic-bezier(.18,.84,.24,1) .06s forwards}
 @keyframes sigilAuthorize{0%{opacity:0;transform:scale(.46)}55%{opacity:1;transform:scale(1.11);filter:drop-shadow(0 0 24px rgba(141,220,255,.75))}72%{transform:scale(.96)}100%{opacity:1;transform:scale(1);filter:drop-shadow(0 0 12px rgba(130,215,255,.38))}}
-.true-name-sigil.ready{animation:sigilIdle 2.4s ease-in-out infinite!important}
-@keyframes sigilIdle{0%,100%{filter:drop-shadow(0 0 10px rgba(130,215,255,.34));transform:scale(1)}50%{filter:drop-shadow(0 0 18px rgba(158,228,255,.62));transform:scale(1.025)}}
+.true-name-sigil.ready{opacity:1;transform:scale(1);animation:sigilIdle 2.4s ease-in-out infinite!important}
+@keyframes sigilIdle{0%,100%{opacity:1;filter:drop-shadow(0 0 10px rgba(130,215,255,.34));transform:scale(1)}50%{opacity:1;filter:drop-shadow(0 0 18px rgba(158,228,255,.62));transform:scale(1.025)}}
 .unlock-click{position:absolute;left:50%;top:50%;width:16px;height:16px;border:1px solid rgba(219,247,255,.9);border-radius:50%;transform:translate(-50%,-50%) scale(.1);opacity:0;z-index:4;pointer-events:none}
-.true-name-unlock.active .unlock-click{animation:unlockClick .4s ease .49s both}
+.true-name-unlock.active .unlock-click{animation:unlockClick .4s ease .51s both}
 @keyframes unlockClick{0%{opacity:0;transform:translate(-50%,-50%) scale(.1)}35%{opacity:1;transform:translate(-50%,-50%) scale(.45)}100%{opacity:0;transform:translate(-50%,-50%) scale(4.8)}}
 .archive-aperture{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:3}
-.archive-aperture:before,.archive-aperture:after{content:"";position:absolute;left:0;right:0;height:50%;background:#07131d;border-color:rgba(131,205,238,.28)}
+.archive-aperture:before,.archive-aperture:after{content:"";position:absolute;left:0;right:0;height:50%;background:#07131d}
 .archive-aperture:before{top:0;border-bottom:1px solid rgba(131,205,238,.28)}
 .archive-aperture:after{bottom:0;border-top:1px solid rgba(131,205,238,.28)}
-.true-name-unlock.active .archive-aperture:before{animation:apertureTop .54s ease .56s forwards}
-.true-name-unlock.active .archive-aperture:after{animation:apertureBottom .54s ease .56s forwards}
+.true-name-unlock.active .archive-aperture:before{animation:apertureTop .54s ease .58s forwards}
+.true-name-unlock.active .archive-aperture:after{animation:apertureBottom .54s ease .58s forwards}
 @keyframes apertureTop{to{transform:translateY(-102%)}}
 @keyframes apertureBottom{to{transform:translateY(102%)}}
 .unlock-copy{opacity:0;transform:translateY(6px)}
@@ -141,7 +157,8 @@
 
 <div class="true-name-modal" id="trueNameModal" aria-hidden="true">
   <div class="holo-origin" id="holoOrigin" aria-hidden="true"></div>
-  <div class="holo-beam" id="holoBeam" aria-hidden="true"></div>
+  <div class="holo-beam" id="holoBeamA" aria-hidden="true"></div>
+  <div class="holo-beam" id="holoBeamB" aria-hidden="true"></div>
   <div class="true-name-panel" role="dialog" aria-modal="true" aria-labelledby="trueNamePrompt">
     <button class="true-name-close" id="trueNameClose" type="button">Close</button>
     <h2 id="trueNamePrompt">Speak the name that is true.</h2>
@@ -182,7 +199,8 @@
   const eye=document.getElementById('watcherEye');
   const modal=document.getElementById('trueNameModal');
   const origin=document.getElementById('holoOrigin');
-  const beam=document.getElementById('holoBeam');
+  const beamA=document.getElementById('holoBeamA');
+  const beamB=document.getElementById('holoBeamB');
   const panel=modal.querySelector('.true-name-panel');
   const input=document.getElementById('trueNameInput');
   const submit=document.getElementById('trueNameSubmit');
@@ -193,49 +211,100 @@
   const archive=document.getElementById('trueNameArchive');
   const formRow=document.getElementById('trueNameFormRow');
   let currentHref='';
+  let attempts=0;
+  let closing=false;
 
-  function placeProjection(){
-    const r=eye.getBoundingClientRect();
-    const p=panel.getBoundingClientRect();
-    const x=r.left+r.width/2, y=r.top+r.height/2;
-    const tx=p.left+18, ty=p.top+p.height/2;
-    const dx=tx-x, dy=ty-y;
-    const len=Math.hypot(dx,dy);
-    origin.style.left=(x-5)+'px'; origin.style.top=(y-5)+'px';
+  function positionBeam(beam,x,y,tx,ty){
+    const dx=tx-x, dy=ty-y, len=Math.hypot(dx,dy);
     beam.style.left=x+'px'; beam.style.top=y+'px';
     beam.style.setProperty('--beam-length',len+'px');
     beam.style.transform='rotate('+Math.atan2(dy,dx)+'rad)';
   }
+  function placeProjection(){
+    const r=eye.getBoundingClientRect();
+    const p=panel.getBoundingClientRect();
+    const x=r.left+r.width/2, y=r.top+r.height/2;
+    origin.style.left=(x-4.5)+'px'; origin.style.top=(y-4.5)+'px';
+    positionBeam(beamA,x,y,p.left+14,p.top+34);
+    positionBeam(beamB,x,y,p.left+14,p.bottom-34);
+  }
+  function resetAuth(){
+    attempts=0; currentHref='';
+    input.value=''; input.classList.remove('accepted','rejected');
+    error.textContent=''; error.className='true-name-error';
+    panel.classList.remove('authorizing');
+    unlock.classList.remove('active');
+    formRow.classList.remove('authorized-out');
+    formRow.style.display='flex';
+    sigil.classList.remove('ready'); sigil.innerHTML='';
+    archive.textContent='';
+  }
   function openModal(){
+    if(closing) return;
+    resetAuth();
     eye.classList.remove('scanning'); void eye.offsetWidth; eye.classList.add('scanning');
-    modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
-    input.value=''; error.textContent=''; currentHref='';
-    unlock.classList.remove('active'); formRow.style.display='flex'; sigil.classList.remove('ready');
-    sigil.innerHTML=''; archive.textContent='';
-    requestAnimationFrame(()=>{placeProjection(); setTimeout(()=>input.focus(),360);});
+    modal.classList.remove('closing'); modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+    requestAnimationFrame(()=>{placeProjection(); setTimeout(()=>input.focus(),500);});
   }
-  function closeModal(){
-    modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
-    eye.classList.remove('scanning'); eye.focus();
+  function closeModal(force){
+    if(closing || !modal.classList.contains('open')) return;
+    closing=true;
+    modal.classList.add('closing');
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    setTimeout(()=>{
+      modal.classList.remove('closing');
+      eye.classList.remove('scanning');
+      resetAuth();
+      closing=false;
+      if(!force) eye.focus();
+    },330);
   }
-  function checkName(){
-    const key=input.value.trim().toLowerCase();
-    const match=trueNames[key];
-    if(!match){error.textContent='Identity rejected.'; input.select(); return;}
-    error.textContent=''; currentHref=match.href;
+  function rejectName(){
+    attempts++;
+    input.classList.remove('rejected'); void input.offsetWidth; input.classList.add('rejected');
+    error.className='true-name-error bad';
+    if(attempts>=3){
+      error.textContent='ACCESS TERMINATED.';
+      submit.disabled=true;
+      setTimeout(()=>{submit.disabled=false; closeModal(true);},700);
+    }else{
+      error.textContent='Identity rejected. '+(3-attempts)+' attempt'+((3-attempts)===1?'':'s')+' remain.';
+      input.select();
+    }
+  }
+  function authorize(match){
+    error.className='true-name-error good';
+    error.textContent='Identity accepted.';
+    input.classList.remove('rejected'); input.classList.add('accepted');
+    currentHref=match.href;
     sigil.innerHTML='<img src="'+match.sigil+'" alt="Sigil of '+match.sin+'">';
     archive.textContent=match.sin+' Archive';
-    formRow.style.display='none';
-    unlock.classList.remove('active'); void unlock.offsetWidth; unlock.classList.add('active');
-    setTimeout(()=>sigil.classList.add('ready'),1200);
     sessionStorage.setItem('watcherArchiveSin',match.sin);
+    setTimeout(()=>{
+      panel.classList.remove('authorizing'); void panel.offsetWidth; panel.classList.add('authorizing');
+      formRow.classList.add('authorized-out');
+    },260);
+    setTimeout(()=>{
+      formRow.style.display='none';
+      error.textContent='';
+      unlock.classList.remove('active'); void unlock.offsetWidth; unlock.classList.add('active');
+    },520);
+    setTimeout(()=>sigil.classList.add('ready'),1280);
+  }
+  function checkName(){
+    if(currentHref || closing) return;
+    const key=input.value.trim().toLowerCase();
+    const match=trueNames[key];
+    if(!match){rejectName();return;}
+    authorize(match);
   }
   eye.addEventListener('click',openModal);
-  close.addEventListener('click',closeModal);
+  close.addEventListener('click',()=>closeModal(false));
   submit.addEventListener('click',checkName);
   sigil.addEventListener('click',()=>{if(currentHref) window.location.href=currentHref;});
-  input.addEventListener('keydown',e=>{if(e.key==='Enter')checkName(); if(e.key==='Escape')closeModal();});
-  modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')checkName(); if(e.key==='Escape')closeModal(false);});
+  modal.addEventListener('click',e=>{if(e.target===modal)closeModal(false);});
   window.addEventListener('resize',()=>{if(modal.classList.contains('open')) placeProjection();});
 })();
 </script>

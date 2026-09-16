@@ -1,41 +1,33 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Envy Archive · The Watchers · Sinners</title>
 <link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/archive.css">
 <style>
-:root{--watch-accent:#55cbd2;--watch-pale:#d8fbff}
-.watcher-archive{min-height:100vh;background:radial-gradient(circle at 50% 8%,color-mix(in srgb,var(--watch-accent) 14%,transparent),transparent 28%),linear-gradient(180deg,#050b10,#080d12 58%,#04070a);padding-bottom:70px}
+:root{--watch-accent:#63c7c6;--watch-pale:#d7ffff}
+.watcher-archive{min-height:100vh;background:radial-gradient(circle at 50% 8%,color-mix(in srgb,var(--watch-accent) 12%,transparent),transparent 28%),linear-gradient(180deg,#050b10,#080d12 58%,#04070a);padding-bottom:70px}
 .archive-gate{max-width:1120px;margin:0 auto;padding:34px 24px 0}
 .archive-return{display:inline-block;margin-bottom:22px;color:#94a6b0;text-decoration:none;letter-spacing:.04em}.archive-return:hover{color:var(--watch-pale)}
-.vault-head{display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:32px;align-items:center;padding:34px;border:1px solid color-mix(in srgb,var(--watch-accent) 28%,transparent);background:linear-gradient(135deg,rgba(255,255,255,.025),rgba(0,0,0,.18));box-shadow:0 28px 80px rgba(0,0,0,.34)}
-.vault-kicker{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--watch-accent);margin-bottom:8px}
-.vault-title{font-size:clamp(2.4rem,5vw,4.6rem);margin:0 0 12px;color:#eef5f7}
-.vault-lede{max-width:740px;color:#aeb9bf;line-height:1.7;margin:0}
-.vault-sigil{display:grid;place-items:center;min-height:180px}
-.vault-sigil img{width:170px;height:170px;object-fit:contain;filter:drop-shadow(0 0 18px color-mix(in srgb,var(--watch-accent) 55%,transparent))}
-.bookshelf-wrap{margin:34px 0 28px;padding:32px 28px 20px;border:1px solid rgba(168,184,194,.15);background:linear-gradient(180deg,#111820,#090e13);box-shadow:inset 0 0 0 1px rgba(255,255,255,.015),0 30px 70px rgba(0,0,0,.32);position:relative;overflow:hidden}
-.bookshelf-wrap:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--watch-accent) 7%,transparent),transparent);pointer-events:none}
-.bookshelf{display:flex;align-items:flex-end;justify-content:center;gap:5px;min-height:250px;padding:26px 16px 22px;border-bottom:18px solid #251c16;box-shadow:inset 0 -4px 0 #4b3829,0 8px 0 #0e0a08;position:relative;z-index:1}
-.book{width:54px;height:205px;border:1px solid color-mix(in srgb,var(--watch-accent) 30%,#151a20);border-radius:5px 5px 2px 2px;background:linear-gradient(90deg,#111820 0 12%,#19232d 15% 84%,#0c1218 88%);box-shadow:inset 0 0 0 2px rgba(255,255,255,.015),inset 0 -18px 22px rgba(0,0,0,.28),3px 0 0 rgba(0,0,0,.35);display:grid;place-items:center;position:relative}
-.book:nth-child(3n){height:222px}.book:nth-child(4n){height:194px}.book:before,.book:after{content:"";position:absolute;left:6px;right:6px;height:1px;background:color-mix(in srgb,var(--watch-accent) 38%,transparent)}.book:before{top:18px}.book:after{bottom:18px}
-.book span{font-family:Georgia,serif;font-size:1.8rem;color:var(--watch-pale);text-shadow:0 0 12px color-mix(in srgb,var(--watch-accent) 55%,transparent)}
-.book.gap{width:18px;height:176px;background:transparent;border:0;box-shadow:none}.book.gap:before,.book.gap:after{display:none}
+.vault-head{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:30px;align-items:center;padding:30px 34px;border:1px solid color-mix(in srgb,var(--watch-accent) 28%,transparent);background:linear-gradient(135deg,rgba(255,255,255,.025),rgba(0,0,0,.18));box-shadow:0 28px 80px rgba(0,0,0,.34)}
+.vault-kicker{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--watch-accent);margin-bottom:10px}
+.vault-lede{max-width:760px;color:#b3c0c7;line-height:1.75;margin:0;font-size:1.02rem}
+.vault-sigil{display:grid;place-items:center;min-height:160px}.vault-sigil img{width:150px;height:150px;object-fit:contain;filter:drop-shadow(0 0 18px color-mix(in srgb,var(--watch-accent) 55%,transparent))}
+.bookshelf-wrap{margin:34px 0 28px;padding:24px 22px 30px;border:1px solid rgba(168,184,194,.15);background:linear-gradient(180deg,#111820,#090e13);box-shadow:inset 0 0 0 1px rgba(255,255,255,.015),0 30px 70px rgba(0,0,0,.32);position:relative;overflow:hidden}
+.bookshelf-wrap:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--watch-accent) 6%,transparent),transparent);pointer-events:none}
+.watcher-shelf{position:relative;z-index:1;padding:32px 20px 26px;border:10px solid #1c1510;border-top-width:18px;border-bottom-width:22px;background:linear-gradient(180deg,#0b1015,#111821 70%,#0a0e12);box-shadow:inset 0 0 0 2px #3f2f24,inset 0 -9px 18px rgba(0,0,0,.6),0 10px 0 #070504}
+.watcher-shelf-track{display:flex;align-items:flex-end;justify-content:center;gap:6px;min-height:220px;overflow:hidden}
+.watcher-volume{flex:0 1 56px;min-width:36px;max-width:58px;height:196px;border:1px solid color-mix(in srgb,var(--watch-accent) 30%,#151a20);border-radius:5px 5px 2px 2px;background:linear-gradient(90deg,#0f161d 0 12%,#1a2631 16% 84%,#0b1117 88%);box-shadow:inset 0 0 0 2px rgba(255,255,255,.015),inset 0 -16px 22px rgba(0,0,0,.3),3px 0 0 rgba(0,0,0,.35);display:grid;place-items:center;position:relative}
+.watcher-volume:nth-child(3n){height:208px}.watcher-volume:nth-child(4n){height:188px}.watcher-volume:nth-child(5n){height:201px}
+.watcher-volume:before,.watcher-volume:after{content:"";position:absolute;left:6px;right:6px;height:1px;background:color-mix(in srgb,var(--watch-accent) 42%,transparent)}.watcher-volume:before{top:18px}.watcher-volume:after{bottom:18px}
+.watcher-volume span{font-family:Georgia,serif;font-size:1.55rem;color:var(--watch-pale);text-shadow:0 0 11px color-mix(in srgb,var(--watch-accent) 52%,transparent)}
+.watcher-volume.spacer{flex:0 0 16px;min-width:16px;height:160px;background:transparent;border:0;box-shadow:none}.watcher-volume.spacer:before,.watcher-volume.spacer:after{display:none}
 .archive-placeholder{display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start}
-.placeholder-panel{padding:26px;border:1px solid rgba(168,184,194,.15);background:rgba(255,255,255,.02)}
-.placeholder-panel h2{margin-top:0;color:#edf4f7}.placeholder-panel p{color:#aeb9bf;line-height:1.75}
-.placeholder-status{padding:22px;border-left:2px solid var(--watch-accent);background:color-mix(in srgb,var(--watch-accent) 5%,transparent);font-size:.9rem;color:#aeb9bf;letter-spacing:.03em}
-.placeholder-status strong{display:block;color:var(--watch-pale);margin-bottom:8px;letter-spacing:.12em;text-transform:uppercase;font-size:.76rem}
-@media(max-width:850px){.vault-head{grid-template-columns:1fr}.vault-sigil{justify-content:start;min-height:auto}.archive-placeholder{grid-template-columns:1fr}.bookshelf{justify-content:flex-start;overflow-x:auto}.book{flex:0 0 48px}}
-</style>
-</head>
-<body class="archive-body">
-<header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header>
-<main class="watcher-archive"><div class="archive-gate">
-<a class="archive-return" href="/the-watchers.html">← Return to The Watchers</a>
-<section class="vault-head"><div><div class="vault-kicker">Watcher Restricted Archive</div><h1 class="vault-title">Envy Archive</h1><p class="vault-lede">Access granted through the true name protocol. The files held here were gathered by Watchers across generations and remain separated from the public archive.</p></div><div class="vault-sigil"><img src="/sigil-envy.png" alt="Sigil of Envy"></div></section>
-<section class="bookshelf-wrap" aria-label="Envy archive bookshelf"><div class="bookshelf"><div class="book"><span>E</span></div><div class="book"><span>N</span></div><div class="book"><span>V</span></div><div class="book"><span>Y</span></div><div class="book gap" aria-hidden="true"></div><div class="book"><span>A</span></div><div class="book"><span>R</span></div><div class="book"><span>C</span></div><div class="book"><span>H</span></div><div class="book"><span>I</span></div><div class="book"><span>V</span></div><div class="book"><span>E</span></div></div></section>
-<section class="archive-placeholder"><div class="placeholder-panel"><h2>Archive Index Pending</h2><p>The archive has been opened, but the individual records have not yet been entered into the public build. This page is reserved for Watcher field reports, recovered documents, historical observations, contradictions, and material attached specifically to Envy.</p><p>When these records are added, this shelf will become the entry point rather than a decorative header.</p></div><aside class="placeholder-status"><strong>Access State</strong>True name accepted.<br>Envy classification unlocked.<br>Detailed records pending.</aside></section>
-</div></main><footer>Sinners World Archive · Built as a player-facing lore guide</footer><script src="/script.js"></script><script src="/archive.js"></script>
-</body></html>
+.placeholder-panel{padding:26px;border:1px solid rgba(168,184,194,.15);background:rgba(255,255,255,.02)}.placeholder-panel h2{margin-top:0;color:#edf4f7}.placeholder-panel p{color:#aeb9bf;line-height:1.75}
+.placeholder-status{padding:22px;border-left:2px solid var(--watch-accent);background:color-mix(in srgb,var(--watch-accent) 5%,transparent);font-size:.9rem;color:#aeb9bf;letter-spacing:.03em}.placeholder-status strong{display:block;color:var(--watch-pale);margin-bottom:8px;letter-spacing:.12em;text-transform:uppercase;font-size:.76rem}
+@media(max-width:850px){.vault-head{grid-template-columns:1fr}.vault-sigil{justify-content:start;min-height:auto}.archive-placeholder{grid-template-columns:1fr}.watcher-shelf-track{justify-content:flex-start;overflow-x:auto;padding-bottom:8px}.watcher-volume{flex:0 0 44px;min-width:44px}}
+</style></head>
+<body class="archive-body"><header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header>
+<main class="watcher-archive"><div class="archive-gate"><a class="archive-return" href="/the-watchers.html">← Return to The Watchers</a>
+<section class="vault-head"><div><div class="vault-kicker">Watcher Restricted Archive</div><p class="vault-lede">Access granted through the true name protocol. The files held here were gathered by Watchers across generations and remain separated from the public archive.</p></div><div class="vault-sigil"><img src="/sigil-envy.png" alt="Sigil of Envy"></div></section>
+<section class="bookshelf-wrap" aria-label="Envy archive bookshelf"><div class="watcher-shelf"><div class="watcher-shelf-track"><div class="watcher-volume"><span>E</span></div><div class="watcher-volume"><span>N</span></div><div class="watcher-volume"><span>V</span></div><div class="watcher-volume"><span>Y</span></div><div class="watcher-volume spacer" aria-hidden="true"></div><div class="watcher-volume"><span>A</span></div><div class="watcher-volume"><span>R</span></div><div class="watcher-volume"><span>C</span></div><div class="watcher-volume"><span>H</span></div><div class="watcher-volume"><span>I</span></div><div class="watcher-volume"><span>V</span></div><div class="watcher-volume"><span>E</span></div></div></div></section>
+<section class="archive-placeholder"><div class="placeholder-panel"><h2>Archive Index Pending</h2><p>The archive is open. Individual Watcher records for Envy have not yet been entered into this build. This space is reserved for field reports, recovered documents, historical observations, contradictory accounts, and material kept outside the public archive.</p></div><aside class="placeholder-status"><strong>Access State</strong>True name accepted.<br>Envy classification unlocked.<br>Detailed records pending.</aside></section>
+</div></main><footer>Sinners World Archive · Built as a player-facing lore guide</footer><script src="/script.js"></script><script src="/archive.js"></script></body></html>
