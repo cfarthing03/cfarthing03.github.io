@@ -1162,8 +1162,13 @@ body.deity-body.deity-greed::after {
 
       // Everything left of the sweep becomes the new name; everything right
       // remains the old name. Different word lengths no longer matter.
-      heroCurrent.style.clipPath = `inset(0 0 0 ${Math.max(0, x)}px)`;
-      heroNext.style.clipPath = `inset(0 ${Math.max(0, sweepWidth - x)}px 0 0)`;
+      // Both layers respond to the same physical sweep X coordinate, but
+      // each clips against its OWN measured width. This fixes long→short and
+      // short→long transitions without introducing dead space.
+      const oldCut = Math.min(oldWidth, Math.max(0, x));
+      const newRemaining = Math.max(0, newWidth - x);
+      heroCurrent.style.clipPath = `inset(0 0 0 ${oldCut}px)`;
+      heroNext.style.clipPath = `inset(0 ${newRemaining}px 0 0)`;
 
       if (heroGlow) {
         heroGlow.style.transform = `translateX(${x - glowWidth / 2}px)`;
