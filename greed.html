@@ -406,18 +406,35 @@ body.deity-body.deity-greed::after {
   text-shadow:0 0 20px color-mix(in srgb,var(--true-name-color,#e0ba6a) 42%,transparent),0 4px 24px #000;
   letter-spacing:.075em;
 }
+.deity-greed .greed-hero-name.name-sweep::before{
+  content:attr(data-reveal-name);
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:2;
+  white-space:nowrap;
+  color:var(--true-name-color,#e0ba6a);
+  text-shadow:0 0 18px color-mix(in srgb,var(--true-name-color,#e0ba6a) 62%,transparent),0 4px 24px #000;
+  clip-path:inset(0 100% 0 0);
+  animation:greedNameReveal 1.45s cubic-bezier(.2,.72,.18,1) forwards;
+}
 .deity-greed .greed-hero-name.name-sweep::after{
   content:"";
   position:absolute;
-  inset:-.08em -.12em;
+  z-index:3;
+  top:-.12em;
+  bottom:-.12em;
+  left:-.18em;
+  width:22%;
   pointer-events:none;
-  background:linear-gradient(90deg,transparent 0%,rgba(255,236,166,.1) 30%,rgba(255,228,119,.95) 49%,rgba(255,255,236,.98) 52%,rgba(255,219,90,.58) 60%,transparent 100%);
+  background:linear-gradient(90deg,transparent 0%,color-mix(in srgb,var(--true-name-color,#e0ba6a) 30%,transparent) 22%,var(--true-name-color,#e0ba6a) 52%,rgba(255,255,255,.95) 56%,color-mix(in srgb,var(--true-name-color,#e0ba6a) 58%,transparent) 72%,transparent 100%);
   filter:blur(2px);
   mix-blend-mode:screen;
-  transform:translateX(-135%);
-  animation:greedNameSweep 1.25s cubic-bezier(.18,.72,.2,1) forwards;
+  transform:translateX(-120%);
+  animation:greedNameSweep 1.45s cubic-bezier(.2,.72,.18,1) forwards;
 }
-@keyframes greedNameSweep{0%{transform:translateX(-135%);opacity:0}12%{opacity:1}88%{opacity:1}100%{transform:translateX(135%);opacity:0}}
+@keyframes greedNameReveal{0%{clip-path:inset(0 100% 0 0)}100%{clip-path:inset(0 0 0 0)}}
+@keyframes greedNameSweep{0%{transform:translateX(-120%);opacity:0}8%{opacity:1}92%{opacity:1}100%{transform:translateX(520%);opacity:0}}
 
 /* The sigil keeps its original appearance. Only its cursor/semantics change. */
 .deity-greed .greed-contract-trigger{
@@ -526,11 +543,11 @@ body.deity-body.deity-greed::after {
 }
 .signature-input::placeholder{color:#8a725b;opacity:.7;font:italic .95rem/58px Georgia,"Times New Roman",serif}
 .signature-line{position:absolute;left:14px;right:14px;bottom:22px;height:1px;background:linear-gradient(90deg,#66431f 0 72%,transparent)}
-.animated-quill{position:absolute;z-index:5;right:14px;top:8px;width:54px;height:54px;opacity:0;pointer-events:none;color:#77501e}
+.animated-quill{position:absolute;z-index:5;right:14px;top:-2px;width:54px;height:54px;opacity:0;pointer-events:none;color:#77501e}
 .animated-quill svg,.quill-button-icon{display:block;width:100%;height:100%;overflow:visible}
 .quill-feather{fill:#f1eadc;stroke:#79521e;stroke-width:2}.quill-spine{fill:none;stroke:#694315;stroke-width:2.6;stroke-linecap:round}.quill-nib{fill:#5a3913;stroke:#3f270c;stroke-width:1}
 .greed-contract-stage.signing .animated-quill{opacity:1;animation:quillWrite 1.25s cubic-bezier(.2,.65,.2,1) forwards}
-@keyframes quillWrite{0%{transform:translate(-360px,25px) rotate(-24deg);opacity:0}12%{opacity:1}35%{transform:translate(-250px,13px) rotate(-18deg)}62%{transform:translate(-130px,22px) rotate(-12deg)}88%{transform:translate(-18px,10px) rotate(-7deg);opacity:1}100%{transform:translate(6px,-2px) rotate(-3deg);opacity:0}}
+@keyframes quillWrite{0%{transform:translate(-360px,5px) rotate(-24deg);opacity:0}12%{opacity:1}35%{transform:translate(-250px,-1px) rotate(-18deg)}62%{transform:translate(-130px,4px) rotate(-12deg)}88%{transform:translate(-18px,-2px) rotate(-7deg);opacity:1}100%{transform:translate(6px,-7px) rotate(-3deg);opacity:0}}
 .signature-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;margin-top:.95rem}
 .signature-note{flex:1 1 360px;margin:0;color:#745d45;font:italic .9rem/1.45 Georgia,serif}
 .quill-sign-button,.contract-dismiss-button{appearance:none;border:1px solid rgba(103,67,26,.38);background:linear-gradient(180deg,#dfcaa0,#ceb183);color:#3d260f;padding:.66rem .9rem;cursor:pointer;font:600 .84rem/1 system-ui,sans-serif;letter-spacing:.035em;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease,opacity .16s ease}
@@ -661,7 +678,7 @@ body.deity-body.deity-greed::after {
                   <path class="quill-spine" d="M64 12C50 29 37 43 18 65"/>
                   <path class="quill-nib" d="M18 65l-7 8 10-4Z"/>
                 </svg>
-                <span class="quill-label">Execute by Quill</span>
+                <span class="quill-label">Finish Signing</span>
               </button>
               <button class="contract-dismiss-button" type="button">Decline</button>
             </div>
@@ -979,13 +996,13 @@ body.deity-body.deity-greed::after {
 <script>
 (() => {
   const trueNames = [
-    { name: 'Lucifer', color: '#d9aa6b' },
-    { name: 'Mammon', color: '#d7ad45' },
-    { name: 'Asmodeus', color: '#c76b62' },
-    { name: 'Leviathan', color: '#6fa7d0' },
-    { name: 'Beelzebub', color: '#86ad6c' },
-    { name: 'Satan', color: '#d65a49' },
-    { name: 'Belphegor', color: '#9b88cf' }
+    { name: 'Lucifer', color: '#e8e7ff' },
+    { name: 'Mammon', color: '#d9a62e' },
+    { name: 'Asmodeus', color: '#e14f91' },
+    { name: 'Leviathan', color: '#35b7c8' },
+    { name: 'Beelzebub', color: '#8dbb45' },
+    { name: 'Satan', color: '#e14535' },
+    { name: 'Belphegor', color: '#7b68d8' }
   ];
 
   const trigger = document.querySelector('.greed-contract-trigger');
@@ -1054,7 +1071,12 @@ body.deity-body.deity-greed::after {
     trigger.setAttribute('aria-expanded', 'true');
     trigger.classList.add('awakened');
     setBodyLocked(true);
-    if (viewport) viewport.scrollTop = 0;
+    if (viewport) {
+      viewport.scrollTop = 0;
+      requestAnimationFrame(() => { viewport.scrollTop = 0; });
+      setTimeout(() => { viewport.scrollTop = 0; }, 80);
+      setTimeout(() => { viewport.scrollTop = 0; }, 450);
+    }
 
     if (mode === 'full') {
       sigInput.value = state.savedSignature || '';
@@ -1065,7 +1087,6 @@ body.deity-body.deity-greed::after {
     }
     sigInput.disabled = mode === 'finished';
     updateSignButton();
-    if (mode !== 'finished' && !sigInput.value) setTimeout(() => sigInput.focus(), 950);
   };
 
   const finishClose = () => {
@@ -1088,14 +1109,16 @@ body.deity-body.deity-greed::after {
 
   const sweepHeroName = entry => {
     heroName.style.setProperty('--true-name-color', entry.color);
+    heroName.setAttribute('data-reveal-name', entry.name);
     heroName.classList.remove('name-sweep');
     void heroName.offsetWidth;
     heroName.classList.add('name-sweep');
     setTimeout(() => {
       heroName.textContent = entry.name;
       heroName.classList.add('true-name-active');
-    }, 565);
-    setTimeout(() => heroName.classList.remove('name-sweep'), 1320);
+      heroName.classList.remove('name-sweep');
+      heroName.removeAttribute('data-reveal-name');
+    }, 1470);
   };
 
   const drawNext = () => state.queue.length ? state.queue.shift() : null;
