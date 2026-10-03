@@ -401,25 +401,28 @@ body.deity-body.deity-greed::after {
   overflow:visible;
   transition:color .35s ease,text-shadow .35s ease,letter-spacing .35s ease;
 }
-.deity-greed .greed-hero-name.true-name-active{
-  color:var(--true-name-color,#e0ba6a);
-  text-shadow:0 0 20px color-mix(in srgb,var(--true-name-color,#e0ba6a) 42%,transparent),0 4px 24px #000;
-  letter-spacing:.075em;
+.deity-greed .greed-name-current,
+.deity-greed .greed-name-next{
+  display:inline-block;
+  white-space:nowrap;
 }
-.deity-greed .greed-hero-name.name-sweep::before{
-  content:attr(data-reveal-name);
+.deity-greed .greed-name-current{
+  position:relative;
+  z-index:1;
+  color:inherit;
+  text-shadow:inherit;
+}
+.deity-greed .greed-name-next{
   position:absolute;
   left:0;
   top:0;
   z-index:2;
-  white-space:nowrap;
   color:var(--true-name-color,#e0ba6a);
   text-shadow:0 0 18px color-mix(in srgb,var(--true-name-color,#e0ba6a) 62%,transparent),0 4px 24px #000;
   clip-path:inset(0 100% 0 0);
-  animation:greedNameReveal 1.45s cubic-bezier(.2,.72,.18,1) forwards;
+  pointer-events:none;
 }
-.deity-greed .greed-hero-name.name-sweep::after{
-  content:"";
+.deity-greed .greed-name-glow{
   position:absolute;
   z-index:3;
   top:-.12em;
@@ -431,8 +434,23 @@ body.deity-body.deity-greed::after {
   filter:blur(2px);
   mix-blend-mode:screen;
   transform:translateX(-120%);
+  opacity:0;
+}
+.deity-greed .greed-hero-name.true-name-active{
+  color:var(--true-name-color,#e0ba6a);
+  text-shadow:0 0 20px color-mix(in srgb,var(--true-name-color,#e0ba6a) 42%,transparent),0 4px 24px #000;
+  letter-spacing:.075em;
+}
+.deity-greed .greed-hero-name.name-sweep .greed-name-current{
+  animation:greedOldNameExit 1.45s cubic-bezier(.2,.72,.18,1) forwards;
+}
+.deity-greed .greed-hero-name.name-sweep .greed-name-next{
+  animation:greedNameReveal 1.45s cubic-bezier(.2,.72,.18,1) forwards;
+}
+.deity-greed .greed-hero-name.name-sweep .greed-name-glow{
   animation:greedNameSweep 1.45s cubic-bezier(.2,.72,.18,1) forwards;
 }
+@keyframes greedOldNameExit{0%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 0 0 100%)}}
 @keyframes greedNameReveal{0%{clip-path:inset(0 100% 0 0)}100%{clip-path:inset(0 0 0 0)}}
 @keyframes greedNameSweep{0%{transform:translateX(-120%);opacity:0}8%{opacity:1}92%{opacity:1}100%{transform:translateX(520%);opacity:0}}
 
@@ -554,7 +572,7 @@ body.deity-body.deity-greed::after {
 .quill-sign-button{display:inline-flex;align-items:center;gap:.5rem}.quill-button-icon{width:30px;height:30px}.quill-sign-button[disabled]{opacity:.42;cursor:not-allowed}.quill-sign-button:not([disabled]):hover,.contract-dismiss-button:hover{transform:translateY(-1px);border-color:#9e7135;box-shadow:0 7px 13px rgba(68,42,13,.12)}
 .finished-actions{margin-top:1.4rem}.finished-actions[hidden],.contract-copy[hidden]{display:none!important}.greed-contract-stage.finished .signature-block{display:none}
 @media(max-width:700px){.greed-contract-scroll{width:97vw}.scroll-content{padding:1.25rem 1rem 1.7rem}.signature-actions{align-items:stretch}.signature-note{flex-basis:100%}.quill-sign-button,.contract-dismiss-button{justify-content:center}.greed-contract-stage.active .scroll-paper{height:84vh}}
-@media(prefers-reduced-motion:reduce){.scroll-paper,.greed-contract-scroll,.greed-contract-backdrop{transition:none}.greed-contract-stage.signing .animated-quill,.deity-greed .greed-hero-name.name-sweep::after{animation-duration:.01ms}}
+@media(prefers-reduced-motion:reduce){.scroll-paper,.greed-contract-scroll,.greed-contract-backdrop{transition:none}.greed-contract-stage.signing .animated-quill,.deity-greed .greed-hero-name.name-sweep .greed-name-glow,.deity-greed .greed-hero-name.name-sweep .greed-name-current,.deity-greed .greed-hero-name.name-sweep .greed-name-next{animation-duration:.01ms}}
 </style>
 
 </head>
@@ -584,7 +602,7 @@ body.deity-body.deity-greed::after {
     <a class="deity-back" href="/sins.html">← The Seven Sins</a>
     <div class="greed-contract-flourish" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="deity-kicker">The Seven Sins</div>
-    <h1 class="greed-hero-name" data-default-name="Greed">Greed</h1>
+    <h1 class="greed-hero-name" data-default-name="Greed"><span class="greed-name-current">Greed</span><span class="greed-name-next" aria-hidden="true"></span><span class="greed-name-glow" aria-hidden="true"></span></h1>
     <p class="deity-tagline">Ambition, ownership, prosperity, exchange - and the refusal to let impermanence decide what must be lost.</p>
     <p class="deity-summary">Greed was the last of the relic-born Sins to awaken. Because his awakening came so late, his immortality was never complete. Rather than accept that weakness, Greed created his own answer to it.</p>
   </div>
@@ -1020,6 +1038,8 @@ body.deity-body.deity-greed::after {
   const sigButton = stage?.querySelector('.quill-sign-button');
   const finishedActions = stage?.querySelector('.finished-actions');
   const heroName = document.querySelector('.greed-hero-name');
+  const heroCurrent = heroName?.querySelector('.greed-name-current');
+  const heroNext = heroName?.querySelector('.greed-name-next');
   if (!trigger || !stage || !sigInput || !sigButton || !heroName) return;
 
   const state = {
@@ -1109,15 +1129,15 @@ body.deity-body.deity-greed::after {
 
   const sweepHeroName = entry => {
     heroName.style.setProperty('--true-name-color', entry.color);
-    heroName.setAttribute('data-reveal-name', entry.name);
+    heroNext.textContent = entry.name;
     heroName.classList.remove('name-sweep');
     void heroName.offsetWidth;
     heroName.classList.add('name-sweep');
     setTimeout(() => {
-      heroName.textContent = entry.name;
+      heroCurrent.textContent = entry.name;
+      heroNext.textContent = '';
       heroName.classList.add('true-name-active');
       heroName.classList.remove('name-sweep');
-      heroName.removeAttribute('data-reveal-name');
     }, 1470);
   };
 
