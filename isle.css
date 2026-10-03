@@ -1,0 +1,21 @@
+
+body.isle-body{background:#090c0d;color:#c4c3b7;min-height:100vh;overflow-x:hidden}
+.isle-body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 38%,transparent 15%,#020404dc 90%),repeating-conic-gradient(from 28deg at 22% 40%,#ffffff03 0deg 18deg,transparent 19deg 42deg),linear-gradient(123deg,#182020,#090d0e 47%,#232825);z-index:-1}
+.isle-shell{max-width:1050px;margin:auto;padding:70px 28px 35px;position:relative}
+.isle-back{color:#a6b3ac}.isle-kicker{margin-top:65px;letter-spacing:.3em;text-transform:uppercase;font-size:.7rem;color:#7f928a}
+.isle-shell h1{font-family:Georgia,serif;font-size:clamp(4rem,12vw,8rem);font-weight:400;line-height:1;margin:18px 0;color:#deddd0;text-shadow:0 8px 32px #000}
+.isle-sub{font-style:italic;color:#8d988f}.isle-content{display:grid;grid-template-columns:1.6fr 1fr;gap:55px;margin:65px 0 15px;align-items:start}
+.isle-note{background:linear-gradient(130deg,#292d29,#171d1b);border:1px solid #46504466;padding:30px;box-shadow:9px 16px 30px #0008;transform:rotate(-1deg);position:relative}
+.isle-note:before{content:"";position:absolute;top:-5px;left:48%;width:8px;height:8px;border-radius:50%;background:#929389;box-shadow:2px 3px 3px #000}
+.isle-note h2{font-family:Georgia,serif;font-size:1.3rem;font-weight:400;color:#d6d4c4;margin-top:0}.isle-note p{line-height:1.9;font-size:1rem}
+.isle-side{transform:rotate(2deg);margin-top:38px;background:#171c19}.isle-side dl{font-size:.85rem}.isle-side dt{color:#8a9b90;font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;margin-top:20px}.isle-side dd{margin:7px 0;color:#c8c9bd}
+.isle-floor{height:200px;position:relative;border-bottom:1px solid #36403866;margin-top:15px;background:radial-gradient(ellipse at 56% 100%,#39423b22,transparent 65%)}
+.found-object{position:absolute;display:block;transition:filter .3s,transform .3s;color:inherit;text-decoration:none}.found-object:hover{filter:brightness(1.7);transform:translateY(-3px)}.found-object:focus-visible{outline:2px solid #c5c2a1;outline-offset:10px;filter:brightness(1.8)}
+.wall-mark{right:5%;top:72px;width:80px;height:92px;color:#7b84755c}.wall-mark svg{width:100%;height:100%}.wall-mark:hover{color:#aeb7a1}
+.ledger{left:26%;bottom:28px;width:120px;height:85px;background:linear-gradient(24deg,#402829,#201a18 55%);border:1px solid #4a3e32;transform:rotate(-13deg);box-shadow:8px 8px 14px #0009}.ledger:before{content:"";position:absolute;inset:8px 8px 8px 15px;border:1px solid #685f443f;background:radial-gradient(ellipse at 80% 28%,#712b255c,transparent 48%)}.ledger:after{content:"IV";position:absolute;left:48px;top:26px;font:14px Georgia;color:#9b8a62}
+.specimen{right:23%;bottom:12px;width:72px;height:105px;transform:rotate(19deg)}.specimen:before{content:"";position:absolute;left:18px;top:0;width:26px;height:55px;background:linear-gradient(100deg,#486e6755,#7eab9770,#152d2b);clip-path:polygon(35% 0,80% 15%,100% 80%,50% 100%,0 70%);box-shadow:0 0 30px #689387}.specimen:after{content:"S. 10";position:absolute;bottom:8px;left:0;padding:8px 11px;background:#514f3a;color:#b8b296;font:10px monospace;box-shadow:4px 5px 8px #000}
+.cobweb{position:absolute;pointer-events:none;width:170px;height:170px;color:#aeb4a126;right:0;top:0}.web-bottom{top:auto;bottom:0;left:-20px;transform:rotate(180deg);width:115px}
+.isle-footer{text-align:center;color:#58675f;font-size:.75rem;padding:25px}
+.research-record{max-width:800px}.research-record section{margin:40px 0;border-top:1px solid #69796e33;padding-top:20px}.research-record p{line-height:1.9}.record-id{font:11px monospace;letter-spacing:.15em;color:#9a776b}.research-record h1{font-size:clamp(2.6rem,7vw,5rem)}.research-record h2{font-family:Georgia,serif;font-weight:400;color:#d7d7c8}.research-record a{color:#abbcaf}
+@media(max-width:650px){.isle-shell{padding:40px 22px}.isle-content{grid-template-columns:1fr;gap:16px;margin-top:40px}.isle-side{margin-top:0}.wall-mark{right:3%;top:25px;width:60px}.ledger{left:10%}.specimen{right:15%}.isle-kicker{margin-top:45px}}
+@media(prefers-reduced-motion:reduce){.found-object{transition:none}}

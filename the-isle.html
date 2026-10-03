@@ -1,44 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Isle · Outer Island Settlement · Sinners</title>
-<link rel="stylesheet" href="/styles.css">
-
-<style>
-body.city-body{position:relative;overflow-x:hidden;background:#05080d;}
-body.city-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(circle at 18% 18%, rgba(141,55,35,.08), transparent 22rem),
-    radial-gradient(circle at 80% 78%, rgba(141,55,35,.05), transparent 24rem);
-}
-body.city-body > *{position:relative;z-index:1;}
-.city-hero{width:min(1180px,calc(100% - 32px));margin:34px auto 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
-.city-copy{padding:26px 0}
-.city-back{display:inline-block;margin-bottom:12px;color:#c97f5f}
-.city-kicker{text-transform:uppercase;letter-spacing:.19em;color:#c7563c;font-size:.76rem}
-.city-copy h1{font-size:clamp(3rem,7vw,6rem);line-height:.92;margin:.15em 0;color:#f3ebdf}
-.city-title{font-size:1.2rem;color:#d9c9b9;margin-bottom:1rem}
-.city-lead{color:#bfb5aa;line-height:1.7;max-width:800px}
-.city-map-card{border:1px solid rgba(180,73,45,.25);background:rgba(7,10,15,.78);padding:8px}
-.city-map-card img{display:block;width:100%;height:auto}
-.city-layout{width:min(1180px,calc(100% - 32px));margin:0 auto 46px;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px;align-items:start}
-.city-article section,.city-aside section{margin-bottom:18px;padding:24px 26px;border:1px solid rgba(180,73,45,.22);background:linear-gradient(180deg,rgba(67,26,20,.10),rgba(5,9,16,.05))}
-.city-article h2,.city-aside h2{margin-top:0;color:#efe5d8}
-.city-article p{color:#c6bcb0;line-height:1.76}
-.city-fact{padding:11px 0;border-top:1px solid rgba(255,255,255,.06)}
-.city-fact:first-of-type{border-top:0}
-.city-fact-label{display:block;color:#c9553f;text-transform:uppercase;letter-spacing:.13em;font-size:.68rem}
-.city-fact-value{color:#eadfce}
-.city-links a{display:block;padding:8px 0;border-top:1px solid rgba(255,255,255,.06)}
-.city-links a:first-of-type{border-top:0}
-@media(max-width:850px){.city-hero,.city-layout{grid-template-columns:1fr}.city-map-card{max-width:420px}.city-copy{padding-bottom:0}}
-</style>
-
-</head>
-<body class="city-body city-the-isle">
-<header class="site-header">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Isle · Sinners</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/isle.css"></head><body class="isle-body"><header class="site-header">
   <div class="nav-wrap">
     <a class="brand" href="/">SINNERS</a>
     <button class="nav-toggle" type="button">Menu</button>
@@ -52,30 +12,4 @@ body.city-body > *{position:relative;z-index:1;}
       <a href="/tales.html">Tales</a>
     </nav>
   </div>
-</header>
-<section class="city-hero">
-  <div class="city-copy">
-    <a class="city-back" href="/world.html">← The World</a>
-    <div class="city-kicker">The Continent of Sin</div>
-    <h1>The Isle</h1>
-    <div class="city-title">Outer Island Settlement</div>
-    <p class="city-lead">A small western island marked apart from the great mainland cities. For now, this page serves as a placeholder for future lore.</p>
-  </div>
-  <div class="city-map-card"><img src="/continent-of-sin-map-large.jpg" alt="Map of the Continent of Sin"></div>
-</section>
-<main class="city-layout">
-  <article class="city-article"><section><h2>A Separate Marker</h2><p>The Isle sits apart from the central landmass and deserves its own point of interest on the map.</p></section><section><h2>Current Status</h2><p>This page is intentionally a placeholder so the interactive world map can already point somewhere meaningful.</p></section><section><h2>To Be Expanded</h2><p>When you are ready, this entry can be rewritten with proper lore, history, factions, and notable landmarks.</p></section></article>
-  <aside class="city-aside">
-    <section><h2>At a Glance</h2><div class="city-fact"><span class="city-fact-label">Type</span><span class="city-fact-value">Location</span></div><div class="city-fact"><span class="city-fact-label">Status</span><span class="city-fact-value">Placeholder</span></div><div class="city-fact"><span class="city-fact-label">Region</span><span class="city-fact-value">Western offshore island</span></div></section>
-    <section class="city-links">
-      <h2>Keep Exploring</h2>
-      <a href="/world.html">The World Map</a>
-      <a href="/gods.html">Gods &amp; Religion</a>
-      <a href="/history.html">History</a>
-    </section>
-  </aside>
-</main>
-<footer>Sinners World Archive · Built as a player-facing lore guide</footer>
-<script src="/script.js"></script>
-</body>
-</html>
+</header><main class="isle-shell"><svg class="cobweb" aria-hidden="true" viewBox="0 0 180 180"><g fill="none" stroke="currentColor" stroke-width=".8"><path d="M180 0L0 0M180 0L0 45M180 0L25 110M180 0L85 160M180 0L145 180M180 0L180 180"/><path d="M145 0Q143 10 149 18Q151 25 161 34Q168 36 180 35M110 0Q107 15 120 37Q126 49 143 65Q158 75 180 70M75 0Q78 28 90 55Q104 79 124 98Q151 111 180 105M40 0Q40 38 60 81Q80 114 106 132Q143 149 180 140M5 0Q10 48 30 109Q59 151 87 164Q133 180 180 175"/></g></svg><a class="isle-back" href="/world.html">← The World</a><div class="isle-kicker">Beyond the mainland</div><h1>The Isle</h1><p class="isle-sub">An empty shore. An uneasy crossing.</p><div class="isle-content"><section class="isle-note"><h2>A place left alone</h2><p>The Isle is abandoned. Few travel here, and fewer can explain why they turn away. As you approach its shores, unease settles in before you have found anything to fear.</p><p>Rumor holds that the island is sacred to Envy, and that the god protects it dearly. Most are content to leave that rumor untested.</p></section><aside class="isle-note isle-side"><h2>What is known</h2><dl><dt>Location</dt><dd>Off the western mainland</dd><dt>Inhabitants</dt><dd>Abandoned</dd><dt>Divine association</dt><dd>Envy, according to rumor</dd></dl></aside></div><div class="isle-floor"><svg class="cobweb web-bottom" aria-hidden="true" viewBox="0 0 180 180"><g fill="none" stroke="currentColor" stroke-width=".8"><path d="M180 0L0 0M180 0L0 45M180 0L25 110M180 0L85 160M180 0L145 180M180 0L180 180"/><path d="M145 0Q143 10 149 18Q151 25 161 34Q168 36 180 35M110 0Q107 15 120 37Q126 49 143 65Q158 75 180 70M75 0Q78 28 90 55Q104 79 124 98Q151 111 180 105M40 0Q40 38 60 81Q80 114 106 132Q143 149 180 140M5 0Q10 48 30 109Q59 151 87 164Q133 180 180 175"/></g></svg><a class="found-object wall-mark" href="/god-tongue.html" aria-label="Examine the worn inscription"><svg aria-hidden="true" viewBox="0 0 80 100"><g stroke="currentColor" stroke-width="2" fill="none"><path d="M40 8L40 90M15 30L40 13L65 30M12 66L40 85L67 66M20 45L60 45M25 35L55 65M55 35L25 65"/></g></svg></a><a class="found-object ledger" href="/blood-red-records.html" aria-label="Open the discarded ledger"></a><a class="found-object specimen" href="/crystal-research.html" aria-label="Examine the loose specimen tag"></a></div></main><footer class="isle-footer">Sinners World Archive</footer><script src="/script.js"></script></body></html>
