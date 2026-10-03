@@ -393,6 +393,346 @@ body.deity-body.deity-greed::after {
 }
 </style>
 
+
+<style id="greed-contract-magic-styles">
+.deity-greed .greed-hero-name{
+  transition: color .45s ease, text-shadow .45s ease, letter-spacing .45s ease, opacity .35s ease;
+}
+.deity-greed .greed-hero-name.true-name-active{
+  color: var(--true-name-color, #e0ba6a);
+  text-shadow: 0 0 20px color-mix(in srgb, var(--true-name-color, #e0ba6a) 35%, transparent), 0 4px 24px #000;
+  letter-spacing: .08em;
+}
+.deity-greed .greed-contract-trigger{
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  position: absolute;
+  display: inline-grid;
+  place-items: center;
+}
+.deity-greed .greed-contract-trigger img{
+  display:block;
+}
+.deity-greed .greed-contract-trigger:focus-visible{
+  outline: 2px solid rgba(230,194,96,.8);
+  outline-offset: 8px;
+  border-radius: 50%;
+}
+.sigil-pulse-ring{
+  position:absolute;
+  inset:-10px;
+  border-radius:50%;
+  border:1px solid rgba(234,194,98,0);
+  box-shadow: 0 0 0 rgba(231,191,89,0);
+  pointer-events:none;
+  transition: border-color .3s ease, box-shadow .3s ease, opacity .3s ease;
+  opacity: 0;
+}
+.greed-contract-trigger.awakened .sigil-pulse-ring{
+  opacity:1;
+  border-color: rgba(234,194,98,.45);
+  box-shadow: 0 0 18px rgba(234,194,98,.22), inset 0 0 18px rgba(234,194,98,.08);
+  animation: greedSigilPulse 3.2s ease-in-out infinite;
+}
+@keyframes greedSigilPulse{
+  0%,100%{transform:scale(1); box-shadow:0 0 18px rgba(234,194,98,.22), inset 0 0 18px rgba(234,194,98,.08)}
+  50%{transform:scale(1.05); box-shadow:0 0 26px rgba(234,194,98,.3), inset 0 0 24px rgba(234,194,98,.12)}
+}
+.greed-contract-stage{
+  position:fixed;
+  inset:0;
+  z-index:60;
+  display:grid;
+  place-items:center;
+  padding:2rem 1rem;
+  visibility:hidden;
+  pointer-events:none;
+}
+.greed-contract-stage.active{
+  visibility:visible;
+  pointer-events:auto;
+}
+.greed-contract-backdrop{
+  position:absolute;
+  inset:0;
+  background: radial-gradient(circle at 50% 25%, rgba(208,160,65,.12), transparent 30%), rgba(3,5,9,.78);
+  backdrop-filter: blur(4px);
+  opacity:0;
+  transition: opacity .4s ease;
+}
+.greed-contract-stage.active .greed-contract-backdrop{opacity:1}
+.greed-contract-scroll{
+  position:relative;
+  width:min(860px, 92vw);
+  max-width:860px;
+  transform: translateY(10px) scale(.96);
+  opacity:0;
+  transition: transform .45s cubic-bezier(.2,.75,.25,1), opacity .3s ease;
+}
+.greed-contract-stage.active .greed-contract-scroll{
+  transform: translateY(0) scale(1);
+  opacity:1;
+}
+.scroll-roller{
+  height:24px;
+  border-radius:999px;
+  background: linear-gradient(180deg, #87612f 0%, #4e2f10 45%, #2b1907 100%);
+  box-shadow: inset 0 2px 2px rgba(255,228,170,.14), inset 0 -2px 2px rgba(0,0,0,.35), 0 12px 20px rgba(0,0,0,.2);
+  position:relative;
+  z-index:2;
+}
+.scroll-roller::before,
+.scroll-roller::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  width:12px; height:12px;
+  border-radius:50%;
+  transform:translateY(-50%);
+  background: radial-gradient(circle at 35% 35%, #f0d8a1 0 20%, #9d7339 22% 62%, #45250a 64%);
+}
+.scroll-roller::before{left:10px}
+.scroll-roller::after{right:10px}
+.scroll-paper{
+  position:relative;
+  overflow:hidden;
+  max-height:0;
+  background:
+    linear-gradient(180deg, rgba(255,250,236,.92), rgba(230,211,174,.96)),
+    repeating-linear-gradient(180deg, rgba(132,99,51,.05) 0 1px, transparent 1px 28px);
+  border-inline: 1px solid rgba(103,66,27,.42);
+  box-shadow: 0 26px 46px rgba(0,0,0,.32), inset 0 0 40px rgba(135,89,30,.09);
+  transition: max-height .9s cubic-bezier(.22,.84,.18,1), opacity .25s ease;
+}
+.greed-contract-stage.active .scroll-paper{max-height:76vh}
+.greed-contract-stage.closing .scroll-paper{max-height:0; opacity:.92}
+.scroll-paper-edge{
+  height:18px;
+  background: linear-gradient(180deg, rgba(124,88,45,.16), transparent);
+}
+.edge-bottom{background: linear-gradient(0deg, rgba(124,88,45,.16), transparent)}
+.scroll-content{
+  padding:1.35rem clamp(1rem, 2vw, 2rem) 1.45rem;
+  color:#332110;
+}
+.scroll-kicker{
+  margin:0 0 .45rem;
+  color:#8e6a3b;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:.72rem;
+}
+#greed-contract-title{
+  margin:0 0 1rem;
+  font-size: clamp(1.55rem, 2.8vw, 2.3rem);
+  color:#3b2410;
+}
+.contract-copy p,
+.signature-note,
+.finished-actions,
+.signature-label,
+.result-label{
+  font-family: Georgia, "Times New Roman", serif;
+}
+.contract-copy p{
+  margin:.7rem 0;
+  line-height:1.62;
+  color:#382618;
+}
+.disclosure-result{
+  margin:1.1rem 0 1rem;
+  padding:.9rem 1rem;
+  border:1px solid rgba(126,88,38,.35);
+  background: linear-gradient(90deg, rgba(255,246,224,.45), rgba(210,169,78,.12), rgba(255,246,224,.45));
+  opacity:0;
+  transform:translateY(10px);
+  transition: opacity .35s ease, transform .35s ease;
+}
+.greed-contract-stage.revealed .disclosure-result{
+  opacity:1;
+  transform:translateY(0);
+}
+.result-label{
+  display:block;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  color:#89653c;
+  font-size:.72rem;
+  margin-bottom:.22rem;
+}
+.disclosure-name{
+  display:block;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  color: var(--reveal-color, #c99635);
+  text-shadow: 0 0 18px color-mix(in srgb, var(--reveal-color, #c99635) 25%, transparent);
+  letter-spacing:.08em;
+}
+.signature-block{
+  margin-top:1rem;
+  border-top:1px solid rgba(126,88,38,.22);
+  padding-top:1rem;
+}
+.signature-label{
+  display:block;
+  margin-bottom:.55rem;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:#7e5830;
+  font-size:.72rem;
+}
+.signature-field{
+  position:relative;
+  min-height:82px;
+  padding:1rem 1rem 1.4rem;
+  background: rgba(255,250,238,.44);
+  border:1px solid rgba(123,85,39,.26);
+}
+.signature-input{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  padding:1rem 1rem 1.4rem;
+  border:0;
+  background:transparent;
+  color: transparent;
+  caret-color:#412812;
+  font-size:1.4rem;
+  z-index:4;
+}
+.signature-input:focus{outline:none}
+.signature-preview{
+  position:relative;
+  z-index:2;
+  min-height:44px;
+  font-family: "Brush Script MT", "Lucida Handwriting", cursive;
+  font-size:2rem;
+  color:#5a3116;
+  padding-right:60px;
+  white-space:nowrap;
+  overflow:hidden;
+}
+.signature-preview.is-empty::before{
+  content:attr(data-placeholder);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style:italic;
+  font-size:1rem;
+  color:#8a725a;
+  opacity:.8;
+}
+.signature-line{
+  position:absolute;
+  left:1rem; right:1rem; bottom:18px;
+  height:1px;
+  background: linear-gradient(90deg, rgba(64,39,18,.48), rgba(64,39,18,.16));
+}
+.quill-ghost{
+  position:absolute;
+  width:42px;
+  height:16px;
+  right:18px;
+  top:18px;
+  opacity:0;
+  transform:translateX(-120px) rotate(-18deg);
+}
+.quill-ghost::before{
+  content:"";
+  position:absolute;
+  inset:0 12px 0 0;
+  border-radius: 100% 10% 100% 10%;
+  background: linear-gradient(135deg, #7a4f18, #e5d7c2 65%);
+  box-shadow: inset 0 0 0 1px rgba(85,55,21,.25);
+}
+.quill-ghost::after{
+  content:"";
+  position:absolute;
+  right:0; top:50%;
+  width:14px; height:2px;
+  background:#5e3812;
+  transform:translateY(-50%);
+}
+.greed-contract-stage.signing .quill-ghost{
+  opacity:1;
+  animation: quillWrite 1.2s ease-in-out forwards;
+}
+@keyframes quillWrite{
+  0%{transform:translateX(-170px) rotate(-22deg); opacity:0}
+  15%{opacity:1}
+  50%{transform:translateX(-55px) rotate(-12deg); opacity:1}
+  100%{transform:translateX(12px) rotate(-8deg); opacity:0}
+}
+.signature-actions{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-end;
+  gap:.8rem;
+  margin-top:.9rem;
+}
+.signature-note{
+  flex:1 1 320px;
+  margin:0;
+  color:#6d543c;
+  line-height:1.45;
+}
+.quill-sign-button,
+.contract-dismiss-button{
+  appearance:none;
+  border:1px solid rgba(112,75,31,.38);
+  background: linear-gradient(180deg, rgba(117,77,30,.12), rgba(88,61,24,.18));
+  color:#3c2711;
+  padding:.72rem .95rem;
+  font:600 .88rem/1 system-ui, sans-serif;
+  letter-spacing:.04em;
+  cursor:pointer;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, opacity .18s ease;
+}
+.quill-sign-button[disabled]{opacity:.48; cursor:not-allowed}
+.quill-sign-button:not([disabled]):hover,
+.contract-dismiss-button:hover{
+  transform: translateY(-1px);
+  border-color: rgba(181,131,53,.52);
+  box-shadow: 0 8px 16px rgba(0,0,0,.12);
+}
+.quill-sign-button{
+  display:inline-flex;
+  align-items:center;
+  gap:.65rem;
+}
+.quill-icon{
+  position:relative;
+  width:18px;height:18px;
+  display:inline-block;
+}
+.quill-icon::before{
+  content:"";
+  position:absolute;
+  inset:1px 5px 1px 0;
+  border-radius: 100% 10% 100% 10%;
+  background: linear-gradient(135deg, #9c6a24, #f2e8d5 70%);
+  box-shadow: inset 0 0 0 1px rgba(81,53,21,.25);
+}
+.quill-icon::after{
+  content:"";
+  position:absolute;
+  right:0; top:50%;
+  width:7px; height:2px;
+  background:#5e3812;
+  transform:translateY(-50%);
+}
+.finished-actions{ margin-top:1.1rem; }
+.finished-actions[hidden],
+.contract-copy[hidden]{display:none}
+.greed-contract-stage.finished .signature-block{display:none}
+@media (max-width: 700px){
+  .greed-contract-stage{padding:1rem .35rem}
+  .greed-contract-scroll{width:96vw}
+  .signature-actions{align-items:stretch}
+  .signature-preview{font-size:1.7rem}
+}
+</style>
+
 </head>
 <body class="deity-body deity-greed">
 <header class="site-header">
@@ -420,12 +760,69 @@ body.deity-body.deity-greed::after {
     <a class="deity-back" href="/sins.html">← The Seven Sins</a>
     <div class="greed-contract-flourish" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="deity-kicker">The Seven Sins</div>
-    <h1>Greed</h1>
+    <h1 class="greed-hero-name" data-default-name="Greed">Greed</h1>
     <p class="deity-tagline">Ambition, ownership, prosperity, exchange - and the refusal to let impermanence decide what must be lost.</p>
     <p class="deity-summary">Greed was the last of the relic-born Sins to awaken. Because his awakening came so late, his immortality was never complete. Rather than accept that weakness, Greed created his own answer to it.</p>
   </div>
-  <div class="deity-sigil"><img src="/sigil-greed.png" alt="Sigil of Greed"></div>
+  <button class="deity-sigil greed-contract-trigger" type="button" aria-haspopup="dialog" aria-controls="greed-contract-stage" aria-expanded="false"><img src="/sigil-greed.png" alt="Sigil of Greed"><span class="sigil-pulse-ring" aria-hidden="true"></span></button>
 </section>
+
+<div class="greed-contract-stage" id="greed-contract-stage" aria-hidden="true">
+  <div class="greed-contract-backdrop"></div>
+  <section class="greed-contract-scroll" role="dialog" aria-modal="true" aria-labelledby="greed-contract-title">
+    <div class="scroll-roller roller-top" aria-hidden="true"></div>
+    <div class="scroll-paper">
+      <div class="scroll-paper-edge edge-top" aria-hidden="true"></div>
+      <div class="scroll-content">
+        <p class="scroll-kicker">Contract Magic / restricted disclosure / Hilnem filing</p>
+        <h2 id="greed-contract-title">Confidential Divine Nomenclature Agreement</h2>
+        <div class="contract-copy contract-copy-full" data-copy="full">
+          <p>This Limited Disclosure Agreement is entered into by and between the present signatory, hereafter the <strong>Receiving Party</strong>, and the office, assets, interests, and continuing interpretive will of Greed, hereafter the <strong>Disclosing Party</strong>.</p>
+          <p>By execution of this instrument, the Receiving Party petitions for disclosure of one (1) protected divine designation from the restricted class of names commonly withheld from public archives, sermons, and campaign documents.</p>
+          <p>The Receiving Party acknowledges and agrees that any disclosed designation shall remain confidential, shall not be shared with third parties who have not independently earned access thereto, and shall not be used for out-of-character advantage, in-game invocation, or metagame inference unless such knowledge has been legitimately obtained within the lore.</p>
+          <p>Disclosure is limited to a single protected name per execution. Repeated access may require supplemental filing. Breach, attempted breach, or clever technical compliance that is obviously still breach shall constitute a violation in both spirit and language.</p>
+        </div>
+        <div class="contract-copy contract-copy-addendum" data-copy="addendum" hidden>
+          <p>Pursuant to the previously executed Confidential Divine Nomenclature Agreement, the undersigned requests access to one (1) additional protected designation from the same restricted inventory.</p>
+          <p>All prior terms remain in force, including but not limited to confidentiality, non-distribution, non-metagaming, and the general expectation that the undersigned not ruin the bit for everybody else.</p>
+        </div>
+        <div class="contract-copy contract-copy-finished" data-copy="finished" hidden>
+          <p>Notice is hereby given that all seven protected disclosures available under the present session have already been issued.</p>
+          <p>Further consideration shall require a new visit, a new contract, and Greed pretending this is all very normal and not at all vindictive.</p>
+        </div>
+
+        <div class="disclosure-result" aria-live="polite" aria-atomic="true">
+          <span class="result-label">Authorized Disclosure</span>
+          <strong class="disclosure-name">MAMMON</strong>
+        </div>
+
+        <div class="signature-block">
+          <label class="signature-label" for="greed-signature-input">Signatory Name</label>
+          <div class="signature-field">
+            <input id="greed-signature-input" class="signature-input" type="text" autocomplete="off" maxlength="34" spellcheck="false" aria-describedby="greed-signature-note">
+            <div class="signature-preview" data-placeholder="Type your name here"></div>
+            <span class="signature-line" aria-hidden="true"></span>
+            <span class="quill-ghost" aria-hidden="true"></span>
+          </div>
+          <div class="signature-actions">
+            <p class="signature-note" id="greed-signature-note">Enter a name, then execute the document by quill. Additional disclosures use a shorter addendum. Leaving the page voids the session.</p>
+            <button class="quill-sign-button" type="button" disabled>
+              <span class="quill-icon" aria-hidden="true"></span>
+              <span class="quill-label">Sign by Quill</span>
+            </button>
+            <button class="contract-dismiss-button" type="button">Decline</button>
+          </div>
+        </div>
+
+        <div class="finished-actions" hidden>
+          <button class="contract-dismiss-button final-dismiss" type="button">Acknowledge</button>
+        </div>
+      </div>
+      <div class="scroll-paper-edge edge-bottom" aria-hidden="true"></div>
+    </div>
+    <div class="scroll-roller roller-bottom" aria-hidden="true"></div>
+  </section>
+</div>
 
 <main class="deity-layout">
   <div class="greed-serpent-overlay" aria-hidden="true">
@@ -725,6 +1122,169 @@ body.deity-body.deity-greed::after {
   rerender();
 })();
 </script>
+
+<script>
+(() => {
+  const trueNames = [
+    { name: 'Lucifer', color: '#d8b06f' },
+    { name: 'Mammon', color: '#e0ba5e' },
+    { name: 'Asmodeus', color: '#c96c58' },
+    { name: 'Leviathan', color: '#6ca1c8' },
+    { name: 'Beelzebub', color: '#89b66d' },
+    { name: 'Satan', color: '#d45a48' },
+    { name: 'Belphegor', color: '#9f8dd1' }
+  ];
+
+  const trigger = document.querySelector('.greed-contract-trigger');
+  const stage = document.getElementById('greed-contract-stage');
+  const backdrop = stage?.querySelector('.greed-contract-backdrop');
+  const dismissButtons = stage?.querySelectorAll('.contract-dismiss-button');
+  const title = stage?.querySelector('#greed-contract-title');
+  const copies = {
+    full: stage?.querySelector('.contract-copy-full'),
+    addendum: stage?.querySelector('.contract-copy-addendum'),
+    finished: stage?.querySelector('.contract-copy-finished')
+  };
+  const result = stage?.querySelector('.disclosure-result');
+  const resultName = stage?.querySelector('.disclosure-name');
+  const sigInput = stage?.querySelector('.signature-input');
+  const sigPreview = stage?.querySelector('.signature-preview');
+  const sigButton = stage?.querySelector('.quill-sign-button');
+  const finishedActions = stage?.querySelector('.finished-actions');
+  const heroName = document.querySelector('.greed-hero-name');
+  if (!trigger || !stage || !sigInput || !sigPreview || !sigButton || !heroName) return;
+
+  const state = {
+    queue: [],
+    revealed: [],
+    currentMode: 'full',
+    busy: false,
+    currentName: null,
+    baseName: heroName.dataset.defaultName || 'Greed'
+  };
+
+  const shuffle = arr => {
+    const copy = [...arr];
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  };
+  const resetQueue = () => { state.queue = shuffle(trueNames); };
+  resetQueue();
+
+  const setCopyMode = mode => {
+    state.currentMode = mode;
+    stage.classList.toggle('finished', mode === 'finished');
+    Object.entries(copies).forEach(([key,node]) => { if (node) node.hidden = key !== mode; });
+    if (finishedActions) finishedActions.hidden = mode !== 'finished';
+    title.textContent = mode === 'full'
+      ? 'Confidential Divine Nomenclature Agreement'
+      : mode === 'addendum'
+      ? 'Supplemental Disclosure Addendum'
+      : 'Disclosure Limit Reached';
+    result.style.setProperty('display', mode === 'finished' ? 'none' : 'block');
+    result.classList.remove('shown');
+  };
+
+  const openStage = mode => {
+    if (state.busy) return;
+    setCopyMode(mode);
+    stage.classList.remove('closing', 'revealed', 'signing');
+    stage.classList.add('active');
+    stage.setAttribute('aria-hidden', 'false');
+    trigger.setAttribute('aria-expanded', 'true');
+    trigger.classList.add('awakened');
+    resultName.textContent = '';
+    sigInput.value = '';
+    updateSignaturePreview();
+    sigInput.disabled = mode === 'finished';
+    sigButton.disabled = mode === 'finished';
+    if (mode !== 'finished') {
+      setTimeout(() => sigInput.focus(), 420);
+    }
+  };
+
+  const closeStage = () => {
+    if (!stage.classList.contains('active')) return;
+    stage.classList.add('closing');
+    stage.classList.remove('revealed', 'signing');
+    trigger.setAttribute('aria-expanded', 'false');
+    setTimeout(() => {
+      stage.classList.remove('active', 'closing', 'finished');
+      stage.setAttribute('aria-hidden', 'true');
+      sigInput.disabled = false;
+      sigButton.disabled = false;
+    }, 720);
+  };
+
+  const updateSignaturePreview = () => {
+    const value = sigInput.value.replace(/\s+/g, ' ').trimStart();
+    sigPreview.textContent = value;
+    sigPreview.classList.toggle('is-empty', !value.trim());
+    if (state.currentMode !== 'finished') sigButton.disabled = !value.trim() || state.busy;
+  };
+  updateSignaturePreview();
+
+  const transformHeroName = entry => {
+    heroName.style.setProperty('--true-name-color', entry.color);
+    heroName.classList.add('true-name-active');
+    heroName.animate([
+      { opacity: 1, filter: 'blur(0px)', transform: 'translateY(0)' },
+      { opacity: .2, filter: 'blur(5px)', transform: 'translateY(-4px)' },
+      { opacity: 1, filter: 'blur(0px)', transform: 'translateY(0)' }
+    ], { duration: 720, easing: 'ease' });
+    setTimeout(() => { heroName.textContent = entry.name; }, 240);
+  };
+
+  const revealNextName = () => {
+    if (!state.queue.length) return null;
+    const entry = state.queue.shift();
+    state.revealed.push(entry);
+    state.currentName = entry;
+    result.style.setProperty('--reveal-color', entry.color);
+    resultName.textContent = entry.name.toUpperCase();
+    stage.classList.add('revealed');
+    transformHeroName(entry);
+    return entry;
+  };
+
+  trigger.addEventListener('click', () => {
+    if (stage.classList.contains('active') || state.busy) return;
+    if (!state.queue.length) {
+      openStage('finished');
+    } else {
+      openStage(state.revealed.length ? 'addendum' : 'full');
+    }
+  });
+
+  backdrop?.addEventListener('click', () => { if (!state.busy) closeStage(); });
+  dismissButtons?.forEach(btn => btn.addEventListener('click', () => { if (!state.busy) closeStage(); }));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && stage.classList.contains('active') && !state.busy) closeStage();
+  });
+  sigInput.addEventListener('input', updateSignaturePreview);
+
+  sigButton.addEventListener('click', () => {
+    if (sigButton.disabled || state.busy || !sigInput.value.trim()) return;
+    state.busy = true;
+    sigButton.disabled = true;
+    sigInput.disabled = true;
+    stage.classList.add('signing');
+    setTimeout(() => {
+      const entry = revealNextName();
+      if (!entry) return;
+      setTimeout(() => {
+        stage.classList.remove('signing');
+        closeStage();
+        state.busy = false;
+      }, 1700);
+    }, 1100);
+  });
+})();
+</script>
+
 <script src="/script.js"></script>
 </body>
 </html>
