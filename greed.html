@@ -441,18 +441,21 @@ body.deity-body.deity-greed::after {
   text-shadow:0 0 20px color-mix(in srgb,var(--true-name-color,#e0ba6a) 42%,transparent),0 4px 24px #000;
   letter-spacing:.075em;
 }
-.deity-greed .greed-hero-name.name-sweep .greed-name-current{
-  animation:greedOldNameExit 1.45s cubic-bezier(.2,.72,.18,1) forwards;
+.deity-greed .greed-hero-name.name-sweep{
+  transition:none;
 }
-.deity-greed .greed-hero-name.name-sweep .greed-name-next{
-  animation:greedNameReveal 1.45s cubic-bezier(.2,.72,.18,1) forwards;
+.deity-greed .greed-hero-name.name-sweep .greed-name-current,
+.deity-greed .greed-hero-name.name-sweep .greed-name-next,
+.deity-greed .greed-hero-name.name-sweep .greed-name-glow{
+  animation:none;
+  transition:none;
 }
 .deity-greed .greed-hero-name.name-sweep .greed-name-glow{
-  animation:greedNameSweep 1.45s cubic-bezier(.2,.72,.18,1) forwards;
+  width:90px;
+  left:0;
+  transform:translateX(-45px);
+  opacity:0;
 }
-@keyframes greedOldNameExit{0%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 0 0 100%)}}
-@keyframes greedNameReveal{0%{clip-path:inset(0 100% 0 0)}100%{clip-path:inset(0 0 0 0)}}
-@keyframes greedNameSweep{0%{transform:translateX(-120%);opacity:0}8%{opacity:1}92%{opacity:1}100%{transform:translateX(520%);opacity:0}}
 
 /* The sigil keeps its original appearance. Only its cursor/semantics change. */
 .deity-greed .greed-contract-trigger{
@@ -1128,17 +1131,64 @@ body.deity-body.deity-greed::after {
   };
 
   const sweepHeroName = entry => {
+    const duration = 1450;
+    const heroGlow = heroName.querySelector('.greed-name-glow');
+
     heroName.style.setProperty('--true-name-color', entry.color);
     heroNext.textContent = entry.name;
+
+    // Measure both words in pixels. The old text, new text, and glow all use
+    // one physical X coordinate so the change happens directly under the sweep.
     heroName.classList.remove('name-sweep');
-    void heroName.offsetWidth;
+    heroName.style.width = '';
+    heroCurrent.style.clipPath = '';
+    heroNext.style.clipPath = 'inset(0 100% 0 0)';
+
+    const oldWidth = heroCurrent.getBoundingClientRect().width;
+    const newWidth = heroNext.getBoundingClientRect().width;
+    const sweepWidth = Math.max(oldWidth, newWidth);
+
+    heroName.style.width = `${sweepWidth}px`;
     heroName.classList.add('name-sweep');
-    setTimeout(() => {
+
+    const glowWidth = heroGlow ? (heroGlow.getBoundingClientRect().width || 90) : 90;
+    const startTime = performance.now();
+    const ease = t => t * t * (3 - 2 * t);
+
+    const frame = now => {
+      const raw = Math.min(1, (now - startTime) / duration);
+      const p = ease(raw);
+      const x = sweepWidth * p;
+
+      // Everything left of the sweep becomes the new name; everything right
+      // remains the old name. Different word lengths no longer matter.
+      heroCurrent.style.clipPath = `inset(0 0 0 ${Math.max(0, x)}px)`;
+      heroNext.style.clipPath = `inset(0 ${Math.max(0, sweepWidth - x)}px 0 0)`;
+
+      if (heroGlow) {
+        heroGlow.style.transform = `translateX(${x - glowWidth / 2}px)`;
+        heroGlow.style.opacity = String(Math.min(1, raw * 8, (1 - raw) * 8));
+      }
+
+      if (raw < 1) {
+        requestAnimationFrame(frame);
+        return;
+      }
+
       heroCurrent.textContent = entry.name;
       heroNext.textContent = '';
+      heroCurrent.style.clipPath = '';
+      heroNext.style.clipPath = 'inset(0 100% 0 0)';
+      if (heroGlow) {
+        heroGlow.style.opacity = '0';
+        heroGlow.style.transform = 'translateX(-45px)';
+      }
       heroName.classList.add('true-name-active');
       heroName.classList.remove('name-sweep');
-    }, 1470);
+      heroName.style.width = '';
+    };
+
+    requestAnimationFrame(frame);
   };
 
   const drawNext = () => state.queue.length ? state.queue.shift() : null;
