@@ -45,27 +45,33 @@ body.tree-body{
 .tree-hero::before{
   content:"";
   position:absolute;
-  left:50%;bottom:-126px;
-  width:350px;height:470px;
+  left:50%;bottom:-62px;
+  width:min(920px,92%);height:430px;
   transform:translateX(-50%);
-  border-radius:45% 45% 9% 9%;
   background:
-    radial-gradient(ellipse at 50% 10%,rgba(255,181,245,.22),transparent 24%),
-    linear-gradient(90deg,#1d0b2e,#422052 45%,#32133f 63%,#170922);
-  opacity:.76;
-  box-shadow:0 0 72px rgba(209,112,255,.12);
+    radial-gradient(ellipse at 50% 18%,rgba(255,190,248,.25) 0 9%,transparent 10%),
+    radial-gradient(ellipse at 38% 28%,rgba(223,123,255,.22) 0 14%,transparent 15%),
+    radial-gradient(ellipse at 62% 26%,rgba(179,112,255,.22) 0 15%,transparent 16%),
+    radial-gradient(ellipse at 28% 40%,rgba(255,115,216,.16) 0 12%,transparent 13%),
+    radial-gradient(ellipse at 73% 41%,rgba(235,135,255,.16) 0 12%,transparent 13%),
+    linear-gradient(88deg,transparent 0 46%,rgba(67,24,83,.72) 47% 49%,rgba(104,42,115,.72) 50% 52%,transparent 53% 100%);
+  opacity:.9;
+  filter:drop-shadow(0 0 28px rgba(228,114,255,.12));
+  mask-image:linear-gradient(180deg,#000 0 78%,transparent 100%);
 }
 .tree-hero::after{
   content:"";
   position:absolute;
-  left:50%;bottom:32px;
-  width:760px;height:300px;
+  left:50%;bottom:-8px;
+  width:min(980px,96%);height:270px;
   transform:translateX(-50%);
   background:
-    radial-gradient(ellipse at 50% 70%,rgba(255,112,215,.13),transparent 34%),
-    radial-gradient(ellipse at 32% 58%,rgba(172,104,255,.11),transparent 28%),
-    radial-gradient(ellipse at 70% 52%,rgba(243,147,255,.10),transparent 25%);
-  filter:blur(3px);
+    radial-gradient(ellipse at 50% 76%,rgba(255,112,215,.16),transparent 34%),
+    radial-gradient(ellipse at 32% 62%,rgba(172,104,255,.13),transparent 30%),
+    radial-gradient(ellipse at 70% 58%,rgba(243,147,255,.12),transparent 28%),
+    linear-gradient(25deg,transparent 0 42%,rgba(112,42,128,.34) 43% 45%,transparent 46% 100%),
+    linear-gradient(-25deg,transparent 0 42%,rgba(112,42,128,.32) 43% 45%,transparent 46% 100%);
+  filter:blur(2px);
 }
 .tree-hero>*{position:relative;z-index:1}
 .tree-title{

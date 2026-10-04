@@ -61,8 +61,8 @@ body.automaton-body{
   stroke-linejoin:round;
   vector-effect:non-scaling-stroke;
 }
-.auto-circuit-field .trace-base{stroke:var(--core);stroke-width:1.75;opacity:.62}
-.auto-circuit-field .trace-reveal{stroke:var(--core);stroke-width:2.2;opacity:.88}
+.auto-circuit-field .trace-base{stroke:var(--core);stroke-width:1.8;opacity:.78}
+.auto-circuit-field .trace-reveal{stroke:var(--core);stroke-width:2.25;opacity:.96}
 .auto-circuit-field .trace-node{fill:var(--core);opacity:.62;filter:drop-shadow(0 0 5px currentColor)}
 .auto-circuit-field .trace-faint{opacity:.25}
 
@@ -174,13 +174,14 @@ body.automaton-body{
 .core-readout small{display:block;text-transform:uppercase;letter-spacing:.17em;color:#8f999d}
 .core-readout strong{display:block;color:var(--core);font-size:1.65rem;margin-top:.18rem;text-shadow:0 0 16px rgba(var(--core-rgb),.3);transition:color .45s ease,text-shadow .45s ease}
 .core-name{font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;color:#aab2b5;margin-top:.12rem}
-.core-palette{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:16px}
+.core-description{max-width:520px;margin:15px auto 0;color:#c2cbd0;font-size:.92rem;line-height:1.65;min-height:3.2em;transition:opacity .2s ease,transform .2s ease}.core-description.updating{opacity:0;transform:translateY(4px)}
+.core-palette{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:13px}
 .core-choice{
-  width:23px;height:23px;border-radius:50%;border:1px solid #ffffff8c;
+  width:18px;height:18px;border-radius:50%;border:1px solid #ffffff7a;
   background:var(--c);box-shadow:0 0 12px color-mix(in srgb,var(--c) 38%,transparent);
   cursor:pointer;transition:transform .18s ease,box-shadow .18s ease;
 }
-.core-choice:hover,.core-choice.active{transform:scale(1.18);box-shadow:0 0 18px var(--c)}
+.core-choice:hover,.core-choice.active{transform:scale(1.16);box-shadow:0 0 15px var(--c)}
 
 .auto-crystal-heart{
   position:relative;
@@ -224,15 +225,24 @@ body.automaton-body{
 <main class="auto-shell">
   <svg class="auto-circuit-field" viewBox="0 0 1500 1040" preserveAspectRatio="none" aria-hidden="true">
     <g class="trace-base-layer">
-      <path class="trace-base" pathLength="1" d="M750 470 L750 330 L668 330 L668 248 L520 248 L520 192 L382 192 L342 128 L210 128 L180 52"/>
-      <path class="trace-base trace-faint" pathLength="1" d="M750 470 L625 470 L625 390 L505 390 L505 328 L365 328 L340 292 L168 292 L120 238"/>
-      <path class="trace-base" pathLength="1" d="M750 470 L607 545 L520 545 L520 622 L365 622 L365 702 L210 702 L184 772 L65 772"/>
-      <path class="trace-base trace-faint" pathLength="1" d="M750 470 L750 650 L682 650 L682 735 L550 735 L550 818 L430 818 L430 900 L320 900 L300 1005"/>
-      <path class="trace-base" pathLength="1" d="M750 470 L750 318 L846 318 L846 245 L984 245 L984 185 L1130 185 L1172 120 L1328 120 L1365 64"/>
-      <path class="trace-base trace-faint" pathLength="1" d="M750 470 L888 470 L888 392 L1012 392 L1012 330 L1148 330 L1186 294 L1354 294 L1398 246"/>
-      <path class="trace-base" pathLength="1" d="M750 470 L900 550 L982 550 L982 630 L1128 630 L1128 708 L1288 708 L1312 778 L1445 778"/>
-      <path class="trace-base trace-faint" pathLength="1" d="M750 470 L750 660 L832 660 L832 742 L956 742 L956 824 L1084 824 L1084 908 L1190 908 L1215 1004"/>
-      <circle class="trace-node" cx="180" cy="52" r="4"/><circle class="trace-node" cx="65" cy="772" r="4"/><circle class="trace-node" cx="1365" cy="64" r="4"/><circle class="trace-node" cx="1445" cy="778" r="4"/>
+      <!-- Every trace begins at the crystal socket center: 750,520 -->
+      <path class="trace-base" pathLength="1" d="M750 520 L650 520 L650 430 L540 430 L540 340 L420 340 L420 250 L300 250 L260 190 L150 190"/>
+      <path class="trace-base trace-faint" pathLength="1" d="M750 520 L675 445 L675 365 L595 365 L595 285 L510 285 L510 205 L395 205 L355 120 L235 120"/>
+      <path class="trace-base" pathLength="1" d="M750 520 L630 600 L540 600 L540 680 L420 680 L420 770 L300 770 L260 850 L130 850"/>
+      <path class="trace-base trace-faint" pathLength="1" d="M750 520 L690 620 L690 725 L600 725 L600 810 L500 810 L500 900 L390 900 L350 995"/>
+
+      <path class="trace-base" pathLength="1" d="M750 520 L850 520 L850 430 L960 430 L960 340 L1080 340 L1080 250 L1200 250 L1240 190 L1350 190"/>
+      <path class="trace-base trace-faint" pathLength="1" d="M750 520 L825 445 L825 365 L905 365 L905 285 L990 285 L990 205 L1105 205 L1145 120 L1265 120"/>
+      <path class="trace-base" pathLength="1" d="M750 520 L870 600 L960 600 L960 680 L1080 680 L1080 770 L1200 770 L1240 850 L1370 850"/>
+      <path class="trace-base trace-faint" pathLength="1" d="M750 520 L810 620 L810 725 L900 725 L900 810 L1000 810 L1000 900 L1110 900 L1150 995"/>
+
+      <path class="trace-base trace-faint" pathLength="1" d="M750 520 L750 380 L720 380 L720 285 L645 285 L645 205"/>
+      <path class="trace-base trace-faint" pathLength="1" d="M750 520 L750 660 L780 660 L780 755 L855 755 L855 850"/>
+
+      <circle class="trace-node" cx="150" cy="190" r="4"/><circle class="trace-node" cx="235" cy="120" r="4"/>
+      <circle class="trace-node" cx="130" cy="850" r="4"/><circle class="trace-node" cx="350" cy="995" r="4"/>
+      <circle class="trace-node" cx="1350" cy="190" r="4"/><circle class="trace-node" cx="1265" cy="120" r="4"/>
+      <circle class="trace-node" cx="1370" cy="850" r="4"/><circle class="trace-node" cx="1150" cy="995" r="4"/>
     </g>
     <g class="trace-reveal-layer"></g>
   </svg>
@@ -257,19 +267,20 @@ body.automaton-body{
       </section>
       <div class="core-readout">
         <small>Crystal Power</small>
-        <strong id="corePower">Correction</strong>
+        <strong id="corePower">Structural Recall</strong>
         <div class="core-name" id="coreName">Pink Crystal</div>
         <div class="core-palette">
-          <button class="core-choice" style="--c:#ff79bd" data-rgb="255,121,189" data-name="Pink" data-power="Correction" aria-label="Use Pink crystal"></button>
-          <button class="core-choice" style="--c:#f3d44e" data-rgb="243,212,78" data-name="Yellow" data-power="Division" aria-label="Use Yellow crystal"></button>
-          <button class="core-choice" style="--c:#7f8798" data-rgb="127,135,152" data-name="Black" data-power="Distance Severance" aria-label="Use Black crystal"></button>
-          <button class="core-choice" style="--c:#ff963c" data-rgb="255,150,60" data-name="Orange" data-power="Mana Kindling" aria-label="Use Orange crystal"></button>
-          <button class="core-choice" style="--c:#67d4ff" data-rgb="103,212,255" data-name="Ice Blue" data-power="Winter Harvest" aria-label="Use Ice Blue crystal"></button>
-          <button class="core-choice" style="--c:#a378ff" data-rgb="163,120,255" data-name="Purple" data-power="Gravity Thinning" aria-label="Use Purple crystal"></button>
-          <button class="core-choice" style="--c:#f2f5ff" data-rgb="242,245,255" data-name="White" data-power="Temporal Shear" aria-label="Use White crystal"></button>
-          <button class="core-choice" style="--c:#8a2943" data-rgb="138,41,67" data-name="Maroon" data-power="Dominion" aria-label="Use Maroon crystal"></button>
-          <button class="core-choice" style="--c:#58d783" data-rgb="88,215,131" data-name="Green" data-power="Renewal" aria-label="Use Green crystal"></button>
+          <button class="core-choice" style="--c:#ff79bd" data-rgb="255,121,189" data-name="Pink" data-power="Structural Recall" data-description="Able to mend or repair damaged objects and their own mechanical body." aria-label="Use Pink crystal"></button>
+          <button class="core-choice" style="--c:#f3d44e" data-rgb="243,212,78" data-name="Yellow" data-power="Division" data-description="Allows the Automaton to disconnect parts of their body and operate those pieces independently." aria-label="Use Yellow crystal"></button>
+          <button class="core-choice" style="--c:#7f8798" data-rgb="127,135,152" data-name="Black" data-power="Distance Severance" data-description="Creates small, short-range portals for objects or body parts; a trained Automaton can sustain several at once." aria-label="Use Black crystal"></button>
+          <button class="core-choice" style="--c:#ff963c" data-rgb="255,150,60" data-name="Orange" data-power="Mana Kindling" data-description="Absorbs ambient mana and converts it into heat, creating a warm zone that can become open flame when enough mana is available." aria-label="Use Orange crystal"></button>
+          <button class="core-choice" style="--c:#67d4ff" data-rgb="103,212,255" data-name="Ice Blue" data-power="Winter Harvest" data-description="Absorbs ambient mana and converts it into cold, lowering the temperature around the Automaton and potentially freezing nearby material." aria-label="Use Ice Blue crystal"></button>
+          <button class="core-choice" style="--c:#a378ff" data-rgb="163,120,255" data-name="Purple" data-power="Gravity Thinning" data-description="Temporarily reduces the weight of the Automaton or an object they are touching." aria-label="Use Purple crystal"></button>
+          <button class="core-choice" style="--c:#f2f5ff" data-rgb="242,245,255" data-name="White" data-power="Temporal Shear" data-description="Temporarily accelerates the Automaton to as much as three times their normal speed, at the cost of severe exhaustion afterward." aria-label="Use White crystal"></button>
+          <button class="core-choice" style="--c:#8a2943" data-rgb="138,41,67" data-name="Maroon" data-power="Dominion" data-description="Allows the Automaton to impose commands on living creatures, with intelligent or strong-willed targets being much harder to control." aria-label="Use Maroon crystal"></button>
+          <button class="core-choice" style="--c:#58d783" data-rgb="88,215,131" data-name="Green" data-power="Renewal" data-description="Passively repairs the Automaton and gently heals chosen creatures nearby, with the effect weakening over distance." aria-label="Use Green crystal"></button>
         </div>
+        <p class="core-description" aria-live="polite"></p>
       </div>
     </div>
 
@@ -305,7 +316,8 @@ body.automaton-body{
     color:getComputedStyle(b).getPropertyValue('--c').trim() || b.style.getPropertyValue('--c'),
     rgb:b.dataset.rgb,
     name:b.dataset.name,
-    power:b.dataset.power
+    power:b.dataset.power,
+    description:b.dataset.description || ''
   });
 
   const buildRevealPaths=(color)=>{
@@ -343,6 +355,10 @@ body.automaton-body{
     body.style.setProperty('--core-rgb',data.rgb);
     power.textContent=data.power;
     name.textContent=data.name+' Crystal';
+    if(description){
+      description.classList.add('updating');
+      setTimeout(()=>{description.textContent=data.description;description.classList.remove('updating');},120);
+    }
     core.setAttribute('aria-label',data.name+' crystal core — '+data.power);
     choices.forEach((b,n)=>b.classList.toggle('active',n===i));
   };
@@ -356,7 +372,7 @@ body.automaton-body{
       {transform:'translateX(0) rotate(0deg) scale(1)',opacity:1,filter:'blur(0)'},
       {transform:'translateX(105px) rotate(8deg) scale(.96)',opacity:1,offset:.56},
       {transform:'translateX(175px) rotate(12deg) scale(.88)',opacity:0,filter:'blur(4px)'}
-    ],{duration:620,easing:'cubic-bezier(.35,.04,.48,1)',fill:'forwards'}).finished;
+    ],{duration:360,easing:'cubic-bezier(.35,.04,.48,1)',fill:'forwards'}).finished;
 
     core.style.opacity='0';
     const previousColor=getData(choices[index]).color;
@@ -371,7 +387,7 @@ body.automaton-body{
       {transform:'translateX(-175px) rotate(-12deg) scale(.88)',opacity:0,filter:'blur(4px)'},
       {transform:'translateX(-80px) rotate(-6deg) scale(.96)',opacity:1,offset:.48},
       {transform:'translateX(0) rotate(0deg) scale(1)',opacity:1,filter:'blur(0)'}
-    ],{duration:720,delay:100,easing:'cubic-bezier(.2,.82,.24,1)',fill:'forwards'}).finished;
+    ],{duration:420,delay:55,easing:'cubic-bezier(.2,.82,.24,1)',fill:'forwards'}).finished;
 
     core.style.opacity='1';
     core.style.transform='';
@@ -381,7 +397,8 @@ body.automaton-body{
       baseLayer.querySelectorAll('.trace-base').forEach(p=>p.style.stroke=data.color);
       baseLayer.querySelectorAll('.trace-node').forEach(n=>n.style.fill=data.color);
     }
-    if(revealLayer) revealLayer.innerHTML='';
+    // Keep the completed reveal layer visible so the new circuit color remains fully lit.
+    // It is cleared only when the next swap begins.
     busy=false;
   };
 
