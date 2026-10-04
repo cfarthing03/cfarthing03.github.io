@@ -42,38 +42,22 @@ body.tree-body{
   overflow:hidden;
   box-shadow:0 24px 70px #0006,inset 0 0 80px rgba(222,111,255,.035);
 }
-.tree-hero::before{
-  content:"";
+.tree-fey-art{
   position:absolute;
-  left:50%;bottom:-62px;
-  width:min(920px,92%);height:430px;
-  transform:translateX(-50%);
-  background:
-    radial-gradient(ellipse at 50% 18%,rgba(255,190,248,.25) 0 9%,transparent 10%),
-    radial-gradient(ellipse at 38% 28%,rgba(223,123,255,.22) 0 14%,transparent 15%),
-    radial-gradient(ellipse at 62% 26%,rgba(179,112,255,.22) 0 15%,transparent 16%),
-    radial-gradient(ellipse at 28% 40%,rgba(255,115,216,.16) 0 12%,transparent 13%),
-    radial-gradient(ellipse at 73% 41%,rgba(235,135,255,.16) 0 12%,transparent 13%),
-    linear-gradient(88deg,transparent 0 46%,rgba(67,24,83,.72) 47% 49%,rgba(104,42,115,.72) 50% 52%,transparent 53% 100%);
-  opacity:.9;
-  filter:drop-shadow(0 0 28px rgba(228,114,255,.12));
-  mask-image:linear-gradient(180deg,#000 0 78%,transparent 100%);
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  opacity:.42;
+  filter:drop-shadow(0 0 24px rgba(222,111,255,.2));
 }
-.tree-hero::after{
-  content:"";
-  position:absolute;
-  left:50%;bottom:-8px;
-  width:min(980px,96%);height:270px;
-  transform:translateX(-50%);
-  background:
-    radial-gradient(ellipse at 50% 76%,rgba(255,112,215,.16),transparent 34%),
-    radial-gradient(ellipse at 32% 62%,rgba(172,104,255,.13),transparent 30%),
-    radial-gradient(ellipse at 70% 58%,rgba(243,147,255,.12),transparent 28%),
-    linear-gradient(25deg,transparent 0 42%,rgba(112,42,128,.34) 43% 45%,transparent 46% 100%),
-    linear-gradient(-25deg,transparent 0 42%,rgba(112,42,128,.32) 43% 45%,transparent 46% 100%);
-  filter:blur(2px);
-}
-.tree-hero>*{position:relative;z-index:1}
+.tree-fey-art .trunk{fill:url(#treeTrunk)}
+.tree-fey-art .branch{fill:none;stroke:#a749bd;stroke-width:20;stroke-linecap:round;opacity:.52}
+.tree-fey-art .branch-thin{fill:none;stroke:#ca68dc;stroke-width:9;stroke-linecap:round;opacity:.43}
+.tree-fey-art .canopy{fill:#b254d2;opacity:.18;stroke:#e38bea;stroke-width:2}
+.tree-fey-art .rift{fill:none;stroke:#e9a7ff;stroke-width:3;opacity:.32;stroke-dasharray:10 16}
+.tree-fey-art .root{fill:none;stroke:#7f3698;stroke-width:12;stroke-linecap:round;opacity:.48}
+.tree-hero>*:not(.tree-fey-art){position:relative;z-index:1}
 .tree-title{
   font-size:clamp(3rem,8vw,6.5rem);
   line-height:.94;
@@ -105,7 +89,28 @@ body.tree-body{
 </head>
 <body class="tree-body">
 <header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header>
-<main class="tree-shell"><a class="archive-back" href="/world.html">← Leave the Village</a><section class="tree-hero"><div class="archive-kicker">Hidden Settlement · Feywild Convergence</div><h1 class="tree-title">The Great Tree Village</h1><p class="tree-lede">A settlement built around a tree that should not exist here, hidden within a forest where the border between worlds has never fully healed.</p></section><div class="tree-grid"><article>
+<main class="tree-shell"><a class="archive-back" href="/world.html">← Leave the Village</a><section class="tree-hero">
+<svg class="tree-fey-art" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="treeTrunk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4b185f"/><stop offset=".48" stop-color="#7d2b8f"/><stop offset="1" stop-color="#351047"/>
+    </linearGradient>
+  </defs>
+  <path class="rift" d="M600 58 C540 95 555 150 598 179 C645 210 655 257 600 298 C555 331 560 382 616 420"/>
+  <path class="trunk" d="M535 520 C548 432 552 370 555 310 C558 252 541 211 527 168 C569 181 595 196 610 225 C628 192 652 177 691 166 C673 213 657 254 661 312 C665 378 674 444 688 520 Z"/>
+  <path class="branch" d="M585 248 C510 214 460 170 402 118"/>
+  <path class="branch" d="M629 246 C701 210 760 169 816 109"/>
+  <path class="branch-thin" d="M531 209 C470 190 419 159 370 132"/>
+  <path class="branch-thin" d="M675 205 C739 179 797 151 852 124"/>
+  <path class="root" d="M571 456 C493 461 427 486 346 520"/>
+  <path class="root" d="M651 456 C729 461 790 488 875 520"/>
+  <path class="root" d="M607 463 C602 487 600 503 600 520"/>
+  <ellipse class="canopy" cx="390" cy="122" rx="178" ry="78" transform="rotate(-8 390 122)"/>
+  <ellipse class="canopy" cx="565" cy="92" rx="210" ry="92"/>
+  <ellipse class="canopy" cx="785" cy="117" rx="184" ry="80" transform="rotate(9 785 117)"/>
+  <ellipse class="canopy" cx="655" cy="145" rx="235" ry="88"/>
+</svg>
+<div class="archive-kicker">Hidden Settlement · Feywild Convergence</div><h1 class="tree-title">The Great Tree Village</h1><p class="tree-lede">A settlement built around a tree that should not exist here, hidden within a forest where the border between worlds has never fully healed.</p></section><div class="tree-grid"><article>
 <section class="tree-section"><h2>The Sprout</h2><p>During the era of Overgod's Revenge, a mysterious portal opened in a relatively uninhabited stretch of forest. The portal did not remain, but something was left behind: a single tree sprout.</p><p>The sprout grew with impossible speed. As its roots deepened and its canopy widened, small rifts began opening around it into the Feywild. Strange plants appeared first. Then unfamiliar animals. Eventually entire pockets of foreign ecology began spilling through and taking root in the surrounding forest.</p><p>The settlement that formed around the tree became known simply as the Great Tree Village.</p></section>
 <section class="tree-section"><h2>The Kitsune</h2><p>The Kitsune who came through those rifts regard the Great Tree as sacred. Most remain close to it for their entire lives, and leaving the village is uncommon enough that encountering a Kitsune elsewhere in the world is itself unusual.</p><p>The village does not advertise its existence. Old texts occasionally mention a hidden settlement beneath an impossible tree, but most people dismiss those accounts as folklore.</p><p>Some of those same texts speak about another people who arrived through the rifts: <span class="redacted">YOKAI</span>. Whatever they are, the oldest surviving records become strangely incomplete whenever the subject appears.</p></section>
 <section class="tree-section"><h2>The Great Hunt</h2><p>There was a time when outsiders discovered that some Kitsune could perceive things other people could not. Those creatures exerted influence on the world whether ordinary people could see them or not, but Kitsune eyes offered a way to make the invisible visible.</p><p>What followed became known within the village as <strong>The Great Hunt</strong>.</p><p>Kitsune were hunted for their eyes. Their bodies became resources. Their ability to see what others could not became something outsiders believed could be harvested, stolen, and used.</p><p>By the time the violence ended, the number of Kitsune capable of that sight had fallen dramatically. The village closed itself to visitors, and secrecy became a matter of survival rather than tradition.</p></section>

@@ -270,9 +270,9 @@ body.automaton-body{
         <strong id="corePower">Structural Recall</strong>
         <div class="core-name" id="coreName">Pink Crystal</div>
         <div class="core-palette">
-          <button class="core-choice" style="--c:#ff79bd" data-rgb="255,121,189" data-name="Pink" data-power="Structural Recall" data-description="Able to mend or repair damaged objects and their own mechanical body." aria-label="Use Pink crystal"></button>
+          <button class="core-choice" style="--c:#ff79bd" data-rgb="255,121,189" data-name="Pink" data-power="Structural Recall" data-description="Restores damaged nonliving objects toward a prior intact state, repairing breaks, deformation, missing structural pieces, and even removing flaws or defects when enough of the original remains to establish what the object should be." aria-label="Use Pink crystal"></button>
           <button class="core-choice" style="--c:#f3d44e" data-rgb="243,212,78" data-name="Yellow" data-power="Division" data-description="Allows the Automaton to disconnect parts of their body and operate those pieces independently." aria-label="Use Yellow crystal"></button>
-          <button class="core-choice" style="--c:#7f8798" data-rgb="127,135,152" data-name="Black" data-power="Distance Severance" data-description="Creates small, short-range portals for objects or body parts; a trained Automaton can sustain several at once." aria-label="Use Black crystal"></button>
+          <button class="core-choice" style="--c:#7f8798" data-rgb="127,135,152" data-name="Black" data-power="Distance Severance" data-description="Creates small, short-range portals for objects, body parts, or small willing creatures; a trained Automaton can sustain several at once." aria-label="Use Black crystal"></button>
           <button class="core-choice" style="--c:#ff963c" data-rgb="255,150,60" data-name="Orange" data-power="Mana Kindling" data-description="Absorbs ambient mana and converts it into heat, creating a warm zone that can become open flame when enough mana is available." aria-label="Use Orange crystal"></button>
           <button class="core-choice" style="--c:#67d4ff" data-rgb="103,212,255" data-name="Ice Blue" data-power="Winter Harvest" data-description="Absorbs ambient mana and converts it into cold, lowering the temperature around the Automaton and potentially freezing nearby material." aria-label="Use Ice Blue crystal"></button>
           <button class="core-choice" style="--c:#a378ff" data-rgb="163,120,255" data-name="Purple" data-power="Gravity Thinning" data-description="Temporarily reduces the weight of the Automaton or an object they are touching." aria-label="Use Purple crystal"></button>
@@ -305,6 +305,7 @@ body.automaton-body{
   const core=document.querySelector('.automaton-core');
   const power=document.getElementById('corePower');
   const name=document.getElementById('coreName');
+  const description=document.querySelector('.core-description');
   const body=document.body;
   const svg=document.querySelector('.auto-circuit-field');
   const baseLayer=svg?.querySelector('.trace-base-layer');
@@ -357,7 +358,10 @@ body.automaton-body{
     name.textContent=data.name+' Crystal';
     if(description){
       description.classList.add('updating');
-      setTimeout(()=>{description.textContent=data.description;description.classList.remove('updating');},120);
+      setTimeout(()=>{
+        description.textContent=data.description;
+        description.classList.remove('updating');
+      },90);
     }
     core.setAttribute('aria-label',data.name+' crystal core — '+data.power);
     choices.forEach((b,n)=>b.classList.toggle('active',n===i));
@@ -368,11 +372,13 @@ body.automaton-body{
     busy=true;
     const data=getData(choices[target]);
 
-    await core.animate([
+    const extractAnimation=core.animate([
       {transform:'translateX(0) rotate(0deg) scale(1)',opacity:1,filter:'blur(0)'},
-      {transform:'translateX(105px) rotate(8deg) scale(.96)',opacity:1,offset:.56},
-      {transform:'translateX(175px) rotate(12deg) scale(.88)',opacity:0,filter:'blur(4px)'}
-    ],{duration:360,easing:'cubic-bezier(.35,.04,.48,1)',fill:'forwards'}).finished;
+      {transform:'translateX(95px) rotate(8deg) scale(.96)',opacity:1,offset:.58},
+      {transform:'translateX(155px) rotate(12deg) scale(.88)',opacity:0,filter:'blur(4px)'}
+    ],{duration:230,easing:'cubic-bezier(.35,.04,.48,1)',fill:'forwards'});
+    await extractAnimation.finished;
+    extractAnimation.cancel();
 
     core.style.opacity='0';
     const previousColor=getData(choices[index]).color;
@@ -383,11 +389,13 @@ body.automaton-body{
     applyCoreData(data,target);
     const tracePromise=animateTraces(data.color);
 
-    await core.animate([
-      {transform:'translateX(-175px) rotate(-12deg) scale(.88)',opacity:0,filter:'blur(4px)'},
-      {transform:'translateX(-80px) rotate(-6deg) scale(.96)',opacity:1,offset:.48},
+    const insertAnimation=core.animate([
+      {transform:'translateX(-155px) rotate(-12deg) scale(.88)',opacity:0,filter:'blur(4px)'},
+      {transform:'translateX(-68px) rotate(-6deg) scale(.96)',opacity:1,offset:.48},
       {transform:'translateX(0) rotate(0deg) scale(1)',opacity:1,filter:'blur(0)'}
-    ],{duration:420,delay:55,easing:'cubic-bezier(.2,.82,.24,1)',fill:'forwards'}).finished;
+    ],{duration:270,delay:25,easing:'cubic-bezier(.2,.82,.24,1)',fill:'forwards'});
+    await insertAnimation.finished;
+    insertAnimation.cancel();
 
     core.style.opacity='1';
     core.style.transform='';
@@ -404,6 +412,7 @@ body.automaton-body{
 
   choices.forEach((b,i)=>b.addEventListener('click',()=>swapCore(i)));
   core.addEventListener('click',()=>swapCore((index+1)%choices.length));
+  core.style.opacity='1';
   applyCoreData(getData(choices[0]),0);
 })();
 </script>
