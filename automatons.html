@@ -1,10 +1,395 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Automatons · Sinners</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/archive.css"><style>
-body.automaton-body{--core:#ff79bd;background:#05080d;color:#dbe3e6;overflow-x:hidden}.automaton-body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 49.85%,color-mix(in srgb,var(--core) 34%,transparent) 50%,transparent 50.15%),linear-gradient(0deg,transparent 49.85%,color-mix(in srgb,var(--core) 18%,transparent) 50%,transparent 50.15%),radial-gradient(circle at 50% 43%,color-mix(in srgb,var(--core) 12%,transparent),transparent 23rem)}.auto-shell{max-width:1120px;margin:auto;padding:42px 22px 90px;position:relative}.auto-hero{text-align:center;padding:54px 20px 34px}.auto-title{font-size:clamp(3.5rem,10vw,7rem);margin:.1em 0;color:#edf3f4;text-shadow:0 0 20px color-mix(in srgb,var(--core) 30%,transparent)}.auto-lede{max-width:760px;margin:auto;color:#b7c2c5;line-height:1.8}.core-stage{position:relative;width:min(480px,90vw);aspect-ratio:1;margin:20px auto 48px;display:grid;place-items:center}.core-stage:before,.core-stage:after{content:"";position:absolute;inset:8%;border-radius:50%;border:1px solid color-mix(in srgb,var(--core) 38%,transparent);box-shadow:0 0 42px color-mix(in srgb,var(--core) 14%,transparent)}.core-stage:after{inset:22%;border-style:dashed;transform:rotate(18deg)}.automaton-core{width:128px;aspect-ratio:1;border:0;clip-path:polygon(50% 0,86% 18%,100% 58%,72% 100%,27% 94%,0 56%,13% 18%);background:linear-gradient(135deg,#fff9,color-mix(in srgb,var(--core) 90%,#000),#071015);box-shadow:0 0 28px var(--core),0 0 90px color-mix(in srgb,var(--core) 45%,transparent);cursor:pointer;transition:.35s ease;position:relative;z-index:3}.automaton-core:hover{transform:scale(1.05) rotate(2deg)}.core-lines{position:absolute;inset:0;background:conic-gradient(from 0deg,transparent 0 5%,var(--core) 5.3% 5.7%,transparent 6% 18%,var(--core) 18.3% 18.7%,transparent 19% 33%,var(--core) 33.3% 33.7%,transparent 34% 50%,var(--core) 50.3% 50.7%,transparent 51% 66%,var(--core) 66.3% 66.7%,transparent 67% 82%,var(--core) 82.3% 82.7%,transparent 83%);mask:radial-gradient(circle,transparent 0 25%,#000 26% 100%);opacity:.28;filter:drop-shadow(0 0 8px var(--core));transition:.4s ease}.core-readout{text-align:center;margin-top:-22px;margin-bottom:42px}.core-readout small{display:block;text-transform:uppercase;letter-spacing:.16em;color:#8f999d}.core-readout strong{display:block;color:var(--core);font-size:1.6rem;margin-top:.25rem;text-shadow:0 0 14px color-mix(in srgb,var(--core) 30%,transparent)}.core-palette{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:14px}.core-choice{width:23px;height:23px;border-radius:50%;border:1px solid #ffffff88;background:var(--c);box-shadow:0 0 12px color-mix(in srgb,var(--c) 40%,transparent);cursor:pointer}.auto-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.auto-card{padding:26px;border:1px solid color-mix(in srgb,var(--core) 19%,#ffffff0d);background:#ffffff05}.auto-card h2{color:#eef4f5}.auto-card p{color:#bec8cb;line-height:1.8}.auto-card.full{grid-column:1/-1}@media(max-width:760px){.auto-grid{grid-template-columns:1fr}.auto-card.full{grid-column:auto}}
-</style></head><body class="archive-body automaton-body"><header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header><main class="auto-shell"><a class="archive-back" href="/creatures.html">← Return to Creatures</a><section class="auto-hero"><div class="archive-kicker">Sentient Construct Lineage</div><h1 class="auto-title">Automatons</h1><p class="auto-lede">Sentient machines born in the aftermath of Clockwork Resurgence, each carrying a crystal heart and a stubborn desire to prove that being manufactured does not make a life less real.</p></section><section class="core-stage" aria-label="Interactive Automaton crystal core"><div class="core-lines" aria-hidden="true"></div><button class="automaton-core" type="button" aria-label="Cycle Automaton crystal"></button></section><div class="core-readout"><small>Crystal Power</small><strong id="corePower">Correction</strong><div class="core-palette"><button class="core-choice" style="--c:#ff79bd" data-name="Pink" data-power="Correction" aria-label="Use Pink crystal"></button><button class="core-choice" style="--c:#f3d44e" data-name="Yellow" data-power="Division" aria-label="Use Yellow crystal"></button><button class="core-choice" style="--c:#7f8798" data-name="Black" data-power="Distance Severance" aria-label="Use Black crystal"></button><button class="core-choice" style="--c:#ff963c" data-name="Orange" data-power="Mana Kindling" aria-label="Use Orange crystal"></button><button class="core-choice" style="--c:#67d4ff" data-name="Ice Blue" data-power="Winter Harvest" aria-label="Use Ice Blue crystal"></button><button class="core-choice" style="--c:#a378ff" data-name="Purple" data-power="Gravity Thinning" aria-label="Use Purple crystal"></button><button class="core-choice" style="--c:#f2f5ff" data-name="White" data-power="Temporal Shear" aria-label="Use White crystal"></button><button class="core-choice" style="--c:#8a2943" data-name="Maroon" data-power="Dominion" aria-label="Use Maroon crystal"></button><button class="core-choice" style="--c:#58d783" data-name="Green" data-power="Renewal" aria-label="Use Green crystal"></button></div></div><div class="auto-grid"><section class="auto-card"><h2>Born After Clockwork</h2><p>Automatons emerged after the events of Clockwork Resurgence. They are not simple machines following elaborate instructions. They are sentient beings capable of thought, loyalty, fear, ambition, and choice.</p><p>Many revere Pride as the god who gave their kind life, even when the circumstances surrounding that creation are more complicated than the stories told among Automaton communities.</p></section><section class="auto-card"><h2>A People Without Birth</h2><p>Automatons are rare because they cannot reproduce on their own. A new Automaton must be constructed by a highly skilled craftsperson and brought to life through work blessed by Pride.</p><p>This makes every new Automaton deliberate. Someone must decide to build a body, obtain the necessary materials, prepare a core, and create another member of the lineage.</p></section><section class="auto-card full"><h2>The Crystal Heart</h2><p>At the center of every Automaton is a crystal power source mounted within the chest. Nine of the ten known crystal types can serve as a core. Blood Red is the single known exception.</p><p>When the core is inserted, channels traced throughout the Automaton's body ignite with the color of the crystal. The core does more than provide energy: it grants the Automaton an ability related to that crystal's nature.</p><p>Change the crystal above to see the core network react. Detailed Automaton manifestations of each crystal are still being catalogued.</p></section><section class="auto-card"><h2>Proving Themselves</h2><p>Many Automatons work hard to establish that they are people rather than property, weapons, or curiosities. Their small population means most people have never met one, and every Automaton knows that a single encounter may become someone's entire understanding of their kind.</p></section><section class="auto-card"><h2>Legacy</h2><p>Their existence is one of Clockwork Resurgence's most permanent consequences. Armies and machines from that era eventually became history. Automatons remained, carrying the question of what happens when something built to serve learns that it can choose.</p></section></div></main><footer>Sinners World Archive · Built as a player-facing lore guide</footer><script src="/script.js"></script><script>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Automatons · Sinners</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/archive.css">
+<style>
+body.automaton-body{
+  --core:#ff79bd;
+  --core-rgb:255,121,189;
+  background:#05080d;
+  color:#dbe3e6;
+  overflow-x:hidden;
+}
+.automaton-body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 50% 46%,rgba(var(--core-rgb),.105),transparent 27rem),
+    radial-gradient(circle at 50% 46%,rgba(255,255,255,.025),transparent 42rem),
+    linear-gradient(180deg,#05080d,#03060a 72%,#04070b);
+}
+.auto-shell{
+  width:min(1500px,100%);
+  margin:auto;
+  padding:38px clamp(18px,3vw,48px) 100px;
+  position:relative;
+  isolation:isolate;
+}
+.auto-hero{text-align:center;padding:35px 20px 16px;position:relative;z-index:4}
+.auto-title{
+  font-size:clamp(3.3rem,7vw,6.7rem);
+  margin:.08em 0;
+  color:#edf3f4;
+  text-shadow:0 0 22px rgba(var(--core-rgb),.24);
+}
+.auto-lede{max-width:760px;margin:auto;color:#b7c2c5;line-height:1.8}
+
+/* Full-page circuit board. Every path begins at the core and moves outward. */
+.auto-circuit-field{
+  position:absolute;
+  z-index:0;
+  left:0;right:0;
+  top:132px;
+  height:1040px;
+  width:100%;
+  pointer-events:none;
+  overflow:visible;
+  opacity:.92;
+  filter:drop-shadow(0 0 5px rgba(var(--core-rgb),.22));
+}
+.auto-circuit-field .trace-base,
+.auto-circuit-field .trace-reveal{
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;
+}
+.auto-circuit-field .trace-base{stroke:var(--core);stroke-width:1.75;opacity:.62}
+.auto-circuit-field .trace-reveal{stroke:var(--core);stroke-width:2.2;opacity:.88}
+.auto-circuit-field .trace-node{fill:var(--core);opacity:.62;filter:drop-shadow(0 0 5px currentColor)}
+.auto-circuit-field .trace-faint{opacity:.25}
+
+.auto-orbit{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:minmax(240px,1fr) minmax(390px,520px) minmax(240px,1fr);
+  grid-template-areas:
+    "leftTop core rightTop"
+    "leftBottom core rightBottom";
+  gap:22px clamp(18px,2.3vw,34px);
+  align-items:center;
+  margin:18px 0 34px;
+  min-height:670px;
+}
+.auto-card{
+  padding:25px;
+  border:1px solid rgba(var(--core-rgb),.18);
+  background:linear-gradient(145deg,rgba(255,255,255,.042),rgba(var(--core-rgb),.018));
+  box-shadow:0 18px 40px #0004,inset 0 0 34px rgba(var(--core-rgb),.018);
+  backdrop-filter:blur(2px);
+  transition:border-color .45s ease,box-shadow .45s ease;
+}
+.auto-card h2{color:#eef4f5;margin-top:0}.auto-card p{color:#bec8cb;line-height:1.8}
+.auto-left-top{grid-area:leftTop}.auto-left-bottom{grid-area:leftBottom}.auto-right-top{grid-area:rightTop}.auto-right-bottom{grid-area:rightBottom}
+
+.core-column{grid-area:core;text-align:center;align-self:center;position:relative;z-index:4}
+.core-stage{
+  position:relative;
+  width:min(490px,92vw);
+  aspect-ratio:1;
+  margin:0 auto;
+  display:grid;
+  place-items:center;
+}
+.core-stage::before,
+.core-stage::after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+}
+.core-stage::before{
+  inset:7%;
+  border:1px solid rgba(var(--core-rgb),.28);
+  box-shadow:0 0 46px rgba(var(--core-rgb),.11),inset 0 0 52px rgba(var(--core-rgb),.04);
+}
+.core-stage::after{
+  inset:20%;
+  border:1px dashed rgba(var(--core-rgb),.24);
+  animation:coreRingTurn 28s linear infinite;
+}
+@keyframes coreRingTurn{to{transform:rotate(360deg)}}
+.core-socket{
+  position:absolute;
+  width:214px;
+  aspect-ratio:1;
+  border-radius:50%;
+  border:1px solid rgba(var(--core-rgb),.25);
+  background:
+    radial-gradient(circle at center,rgba(var(--core-rgb),.13),transparent 45%),
+    radial-gradient(circle,#091016 0 55%,#070b10 56% 67%,transparent 68%);
+  box-shadow:inset 0 0 45px #000,0 0 32px rgba(var(--core-rgb),.08);
+}
+.core-socket::before{
+  content:"";
+  position:absolute;
+  inset:-24px;
+  border-radius:50%;
+  background:repeating-conic-gradient(from 8deg,rgba(var(--core-rgb),.27) 0 1deg,transparent 1deg 29deg);
+  mask:radial-gradient(circle,transparent 0 70%,#000 71% 74%,transparent 75%);
+}
+.automaton-core{
+  width:132px;
+  aspect-ratio:1;
+  border:0;
+  clip-path:polygon(50% 0,86% 18%,100% 58%,72% 100%,27% 94%,0 56%,13% 18%);
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.72),transparent 24%),
+    linear-gradient(150deg,color-mix(in srgb,var(--core) 54%,white),var(--core) 53%,color-mix(in srgb,var(--core) 44%,#000));
+  box-shadow:0 0 30px var(--core),0 0 95px rgba(var(--core-rgb),.38);
+  cursor:pointer;
+  position:relative;
+  z-index:5;
+  transform-origin:center;
+  will-change:transform,opacity,filter;
+}
+.automaton-core::after{
+  content:"";
+  position:absolute;
+  inset:15% 30% 18% 16%;
+  background:linear-gradient(135deg,rgba(255,255,255,.8),transparent 65%);
+  clip-path:polygon(45% 0,100% 35%,52% 100%,0 62%);
+  opacity:.44;
+}
+.automaton-core:hover{filter:brightness(1.12)}
+.core-label{
+  position:absolute;
+  top:76%;left:50%;
+  transform:translateX(-50%);
+  font-size:.7rem;
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  color:#879298;
+  white-space:nowrap;
+}
+.core-readout{position:relative;margin-top:-42px;z-index:6}
+.core-readout small{display:block;text-transform:uppercase;letter-spacing:.17em;color:#8f999d}
+.core-readout strong{display:block;color:var(--core);font-size:1.65rem;margin-top:.18rem;text-shadow:0 0 16px rgba(var(--core-rgb),.3);transition:color .45s ease,text-shadow .45s ease}
+.core-name{font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;color:#aab2b5;margin-top:.12rem}
+.core-palette{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:16px}
+.core-choice{
+  width:23px;height:23px;border-radius:50%;border:1px solid #ffffff8c;
+  background:var(--c);box-shadow:0 0 12px color-mix(in srgb,var(--c) 38%,transparent);
+  cursor:pointer;transition:transform .18s ease,box-shadow .18s ease;
+}
+.core-choice:hover,.core-choice.active{transform:scale(1.18);box-shadow:0 0 18px var(--c)}
+
+.auto-crystal-heart{
+  position:relative;
+  z-index:3;
+  max-width:980px;
+  margin:12px auto 0;
+  padding:30px clamp(24px,4vw,42px);
+  border:1px solid rgba(var(--core-rgb),.22);
+  background:linear-gradient(135deg,rgba(var(--core-rgb),.045),rgba(255,255,255,.025));
+}
+.auto-crystal-heart h2{color:#f2f6f7;margin-top:0}
+.auto-crystal-heart p{color:#c0c9cc;line-height:1.85}
+.powerless-note{
+  margin-top:1.2rem!important;
+  padding:15px 18px;
+  border-left:3px solid rgba(var(--core-rgb),.56);
+  background:#0003;
+  color:#d5dcde!important;
+}
+
+@media(max-width:1050px){
+  .auto-orbit{
+    grid-template-columns:1fr 1fr;
+    grid-template-areas:"core core" "leftTop rightTop" "leftBottom rightBottom";
+    min-height:0;
+  }
+  .core-column{margin-bottom:10px}
+  .auto-circuit-field{height:1180px;top:150px;opacity:.62}
+}
+@media(max-width:720px){
+  .auto-orbit{grid-template-columns:1fr;grid-template-areas:"core" "leftTop" "rightTop" "leftBottom" "rightBottom"}
+  .core-stage{width:min(420px,92vw)}
+  .auto-circuit-field{opacity:.38;height:1460px}
+  .auto-card{padding:22px}
+}
+@media(prefers-reduced-motion:reduce){.core-stage::after{animation:none}}
+</style>
+</head>
+<body class="archive-body automaton-body">
+<header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header>
+<main class="auto-shell">
+  <svg class="auto-circuit-field" viewBox="0 0 1500 1040" preserveAspectRatio="none" aria-hidden="true">
+    <g class="trace-base-layer">
+      <path class="trace-base" pathLength="1" d="M750 470 L750 330 L668 330 L668 248 L520 248 L520 192 L382 192 L342 128 L210 128 L180 52"/>
+      <path class="trace-base trace-faint" pathLength="1" d="M750 470 L625 470 L625 390 L505 390 L505 328 L365 328 L340 292 L168 292 L120 238"/>
+      <path class="trace-base" pathLength="1" d="M750 470 L607 545 L520 545 L520 622 L365 622 L365 702 L210 702 L184 772 L65 772"/>
+      <path class="trace-base trace-faint" pathLength="1" d="M750 470 L750 650 L682 650 L682 735 L550 735 L550 818 L430 818 L430 900 L320 900 L300 1005"/>
+      <path class="trace-base" pathLength="1" d="M750 470 L750 318 L846 318 L846 245 L984 245 L984 185 L1130 185 L1172 120 L1328 120 L1365 64"/>
+      <path class="trace-base trace-faint" pathLength="1" d="M750 470 L888 470 L888 392 L1012 392 L1012 330 L1148 330 L1186 294 L1354 294 L1398 246"/>
+      <path class="trace-base" pathLength="1" d="M750 470 L900 550 L982 550 L982 630 L1128 630 L1128 708 L1288 708 L1312 778 L1445 778"/>
+      <path class="trace-base trace-faint" pathLength="1" d="M750 470 L750 660 L832 660 L832 742 L956 742 L956 824 L1084 824 L1084 908 L1190 908 L1215 1004"/>
+      <circle class="trace-node" cx="180" cy="52" r="4"/><circle class="trace-node" cx="65" cy="772" r="4"/><circle class="trace-node" cx="1365" cy="64" r="4"/><circle class="trace-node" cx="1445" cy="778" r="4"/>
+    </g>
+    <g class="trace-reveal-layer"></g>
+  </svg>
+
+  <a class="archive-back" href="/creatures.html">← Return to Creatures</a>
+  <section class="auto-hero">
+    <div class="archive-kicker">Sentient Construct Lineage</div>
+    <h1 class="auto-title">Automatons</h1>
+    <p class="auto-lede">Sentient machines born in the aftermath of Clockwork Resurgence, each carrying a crystal heart and a stubborn desire to prove that being manufactured does not make a life less real.</p>
+  </section>
+
+  <section class="auto-orbit">
+    <article class="auto-card auto-left-top"><h2>Born After Clockwork</h2><p>Automatons emerged after the events of Clockwork Resurgence. They are not simple machines following elaborate instructions. They are sentient beings capable of thought, loyalty, fear, ambition, and choice.</p><p>Many revere Pride as the god who gave their kind life, even when the circumstances surrounding that creation are more complicated than the stories told among Automaton communities.</p></article>
+
+    <article class="auto-card auto-left-bottom"><h2>A People Without Birth</h2><p>Automatons are rare because they cannot reproduce on their own. A new Automaton must be constructed by a highly skilled craftsperson and brought to life through work blessed by Pride.</p><p>Every new Automaton is deliberate. Someone must decide to build a body, obtain the necessary materials, prepare a core, and create another member of the lineage.</p></article>
+
+    <div class="core-column">
+      <section class="core-stage" aria-label="Interactive Automaton crystal core">
+        <div class="core-socket" aria-hidden="true"></div>
+        <button class="automaton-core" type="button" aria-label="Cycle Automaton crystal"></button>
+        <span class="core-label">Crystal Core</span>
+      </section>
+      <div class="core-readout">
+        <small>Crystal Power</small>
+        <strong id="corePower">Correction</strong>
+        <div class="core-name" id="coreName">Pink Crystal</div>
+        <div class="core-palette">
+          <button class="core-choice" style="--c:#ff79bd" data-rgb="255,121,189" data-name="Pink" data-power="Correction" aria-label="Use Pink crystal"></button>
+          <button class="core-choice" style="--c:#f3d44e" data-rgb="243,212,78" data-name="Yellow" data-power="Division" aria-label="Use Yellow crystal"></button>
+          <button class="core-choice" style="--c:#7f8798" data-rgb="127,135,152" data-name="Black" data-power="Distance Severance" aria-label="Use Black crystal"></button>
+          <button class="core-choice" style="--c:#ff963c" data-rgb="255,150,60" data-name="Orange" data-power="Mana Kindling" aria-label="Use Orange crystal"></button>
+          <button class="core-choice" style="--c:#67d4ff" data-rgb="103,212,255" data-name="Ice Blue" data-power="Winter Harvest" aria-label="Use Ice Blue crystal"></button>
+          <button class="core-choice" style="--c:#a378ff" data-rgb="163,120,255" data-name="Purple" data-power="Gravity Thinning" aria-label="Use Purple crystal"></button>
+          <button class="core-choice" style="--c:#f2f5ff" data-rgb="242,245,255" data-name="White" data-power="Temporal Shear" aria-label="Use White crystal"></button>
+          <button class="core-choice" style="--c:#8a2943" data-rgb="138,41,67" data-name="Maroon" data-power="Dominion" aria-label="Use Maroon crystal"></button>
+          <button class="core-choice" style="--c:#58d783" data-rgb="88,215,131" data-name="Green" data-power="Renewal" aria-label="Use Green crystal"></button>
+        </div>
+      </div>
+    </div>
+
+    <article class="auto-card auto-right-top"><h2>Proving Themselves</h2><p>Many Automatons work hard to establish that they are people rather than property, weapons, or curiosities. Their small population means most people have never met one, and every Automaton knows that a single encounter may become someone's entire understanding of their kind.</p></article>
+
+    <article class="auto-card auto-right-bottom"><h2>Legacy</h2><p>Their existence is one of Clockwork Resurgence's most permanent consequences. Armies and machines from that era eventually became history. Automatons remained, carrying the question of what happens when something built to serve learns that it can choose.</p></article>
+  </section>
+
+  <section class="auto-crystal-heart">
+    <h2>The Crystal Heart</h2>
+    <p>At the center of every Automaton is a crystal power source mounted within the chest. Nine of the ten known crystal types can serve as a core. Blood Red is the single known exception.</p>
+    <p>When the core is inserted, channels traced throughout the Automaton's body ignite with the color of the crystal. The core does more than provide energy: it grants the Automaton an ability related to that crystal's nature. Replacing the crystal changes both the color of those channels and the ability available to the Automaton.</p>
+    <p class="powerless-note"><strong>Without a crystal, an Automaton powers down.</strong> Their body becomes still and unresponsive in a catatonic-like state until a functioning core is returned to the chest. They do not die immediately, but they cannot move, speak, or meaningfully interact with the world while unpowered.</p>
+    <p>Change the crystal above to watch the core network reconfigure. Detailed Automaton manifestations of each crystal are still being catalogued.</p>
+  </section>
+</main>
+<footer>Sinners World Archive · Built as a player-facing lore guide</footer>
+<script src="/script.js"></script>
+<script>
 (() => {
- const choices=[...document.querySelectorAll('.core-choice')], core=document.querySelector('.automaton-core'), power=document.getElementById('corePower'), body=document.body;
- let index=0;
- const setCore=i=>{ index=(i+choices.length)%choices.length; const b=choices[index]; body.style.setProperty('--core',b.style.getPropertyValue('--c')); power.textContent=b.dataset.power; core.setAttribute('aria-label',b.dataset.name+' crystal core — '+b.dataset.power); };
- choices.forEach((b,i)=>b.addEventListener('click',()=>setCore(i))); core.addEventListener('click',()=>setCore(index+1)); setCore(0);
+  const choices=[...document.querySelectorAll('.core-choice')];
+  const core=document.querySelector('.automaton-core');
+  const power=document.getElementById('corePower');
+  const name=document.getElementById('coreName');
+  const body=document.body;
+  const svg=document.querySelector('.auto-circuit-field');
+  const baseLayer=svg?.querySelector('.trace-base-layer');
+  const revealLayer=svg?.querySelector('.trace-reveal-layer');
+  let index=0;
+  let busy=false;
+
+  const getData=b=>({
+    color:getComputedStyle(b).getPropertyValue('--c').trim() || b.style.getPropertyValue('--c'),
+    rgb:b.dataset.rgb,
+    name:b.dataset.name,
+    power:b.dataset.power
+  });
+
+  const buildRevealPaths=(color)=>{
+    if(!baseLayer || !revealLayer) return [];
+    revealLayer.innerHTML='';
+    const paths=[...baseLayer.querySelectorAll('path.trace-base')];
+    const clones=paths.map(p=>{
+      const c=p.cloneNode(false);
+      c.removeAttribute('class');
+      c.setAttribute('class','trace-reveal');
+      c.style.stroke=color;
+      c.style.strokeDasharray='1';
+      c.style.strokeDashoffset='1';
+      c.setAttribute('pathLength','1');
+      revealLayer.appendChild(c);
+      return c;
+    });
+    return clones;
+  };
+
+  const animateTraces=(newColor)=>{
+    const clones=buildRevealPaths(newColor);
+    clones.forEach((p,i)=>{
+      p.animate(
+        [{strokeDashoffset:1,opacity:.25},{strokeDashoffset:0,opacity:.95}],
+        {duration:920 + (i%4)*110,delay:(i%2)*45,easing:'cubic-bezier(.22,.78,.2,1)',fill:'forwards'}
+      );
+    });
+    return new Promise(resolve=>setTimeout(resolve,1420));
+  };
+
+  const applyCoreData=(data,i)=>{
+    index=i;
+    body.style.setProperty('--core',data.color);
+    body.style.setProperty('--core-rgb',data.rgb);
+    power.textContent=data.power;
+    name.textContent=data.name+' Crystal';
+    core.setAttribute('aria-label',data.name+' crystal core — '+data.power);
+    choices.forEach((b,n)=>b.classList.toggle('active',n===i));
+  };
+
+  const swapCore=async target=>{
+    if(busy || target===index) return;
+    busy=true;
+    const data=getData(choices[target]);
+
+    await core.animate([
+      {transform:'translateX(0) rotate(0deg) scale(1)',opacity:1,filter:'blur(0)'},
+      {transform:'translateX(105px) rotate(8deg) scale(.96)',opacity:1,offset:.56},
+      {transform:'translateX(175px) rotate(12deg) scale(.88)',opacity:0,filter:'blur(4px)'}
+    ],{duration:620,easing:'cubic-bezier(.35,.04,.48,1)',fill:'forwards'}).finished;
+
+    core.style.opacity='0';
+    const previousColor=getData(choices[index]).color;
+    if(baseLayer){
+      baseLayer.querySelectorAll('.trace-base').forEach(p=>p.style.stroke=previousColor);
+      baseLayer.querySelectorAll('.trace-node').forEach(n=>n.style.fill=previousColor);
+    }
+    applyCoreData(data,target);
+    const tracePromise=animateTraces(data.color);
+
+    await core.animate([
+      {transform:'translateX(-175px) rotate(-12deg) scale(.88)',opacity:0,filter:'blur(4px)'},
+      {transform:'translateX(-80px) rotate(-6deg) scale(.96)',opacity:1,offset:.48},
+      {transform:'translateX(0) rotate(0deg) scale(1)',opacity:1,filter:'blur(0)'}
+    ],{duration:720,delay:100,easing:'cubic-bezier(.2,.82,.24,1)',fill:'forwards'}).finished;
+
+    core.style.opacity='1';
+    core.style.transform='';
+    core.style.filter='';
+    await tracePromise;
+    if(baseLayer){
+      baseLayer.querySelectorAll('.trace-base').forEach(p=>p.style.stroke=data.color);
+      baseLayer.querySelectorAll('.trace-node').forEach(n=>n.style.fill=data.color);
+    }
+    if(revealLayer) revealLayer.innerHTML='';
+    busy=false;
+  };
+
+  choices.forEach((b,i)=>b.addEventListener('click',()=>swapCore(i)));
+  core.addEventListener('click',()=>swapCore((index+1)%choices.length));
+  applyCoreData(getData(choices[0]),0);
 })();
-</script><script src="/archive.js"></script></body></html>
+</script>
+<script src="/archive.js"></script>
+</body>
+</html>

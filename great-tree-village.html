@@ -1,6 +1,105 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>The Great Tree Village · Sinners</title><link rel="stylesheet" href="/styles.css"><style>
-body.tree-body{background:radial-gradient(circle at 50% 15%,#8de6a91a,transparent 24rem),radial-gradient(circle at 15% 70%,#9c65d31b,transparent 26rem),linear-gradient(#07110d,#040807);color:#d9e9dc}.tree-shell{max-width:1120px;margin:auto;padding:46px 22px 90px}.tree-hero{position:relative;padding:64px 34px;border:1px solid #81c79428;background:linear-gradient(180deg,#17332255,#08110dcc);overflow:hidden}.tree-hero:before{content:"";position:absolute;left:50%;bottom:-90px;width:260px;height:360px;transform:translateX(-50%);border-radius:50% 50% 12% 12%;background:radial-gradient(ellipse at 50% 18%,#b2ffc32c,transparent 25%),linear-gradient(90deg,#19351f,#274b2f 48%,#162d1d);opacity:.55;filter:blur(.2px)}.tree-hero>*{position:relative;z-index:1}.tree-title{font-size:clamp(3rem,8vw,6.5rem);line-height:.94;color:#e6f7e6;margin:.1em 0;text-shadow:0 0 30px #80d99d33}.tree-lede{max-width:760px;color:#bcd1c0;line-height:1.78}.tree-grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:22px;margin-top:22px}.tree-section,.tree-aside{padding:26px;border:1px solid #80bc8b22;background:linear-gradient(135deg,#ffffff08,#8f68c405);margin-bottom:18px}.tree-section h2,.tree-aside h2{color:#eef8ee;margin-top:0}.tree-section p{color:#c5d4c8;line-height:1.82}.whisper{font-style:italic;color:#a994bc!important}.redacted{display:inline-block;background:#050505;color:#050505;border-radius:2px;padding:0 .2em;box-shadow:0 0 0 1px #253328;user-select:none}.duty{border-left:3px solid #7b587d;background:linear-gradient(90deg,#331e3828,transparent)}.tree-fact{padding:10px 0;border-top:1px solid #ffffff10}.tree-fact:first-of-type{border-top:0}.tree-fact small{display:block;color:#76b487;text-transform:uppercase;letter-spacing:.13em}.tree-fact strong{color:#e1eee3}@media(max-width:800px){.tree-grid{grid-template-columns:1fr}}
-</style></head><body class="tree-body"><header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header><main class="tree-shell"><a class="archive-back" href="/world.html">← Leave the Village</a><section class="tree-hero"><div class="archive-kicker">Hidden Settlement · Feywild Convergence</div><h1 class="tree-title">The Great Tree Village</h1><p class="tree-lede">A settlement built around a tree that should not exist here, hidden within a forest where the border between worlds has never fully healed.</p></section><div class="tree-grid"><article>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The Great Tree Village · Sinners</title>
+<link rel="stylesheet" href="/styles.css">
+<style>
+body.tree-body{
+  background:
+    radial-gradient(circle at 18% 18%,rgba(255,111,220,.16),transparent 25rem),
+    radial-gradient(circle at 82% 34%,rgba(159,92,255,.18),transparent 29rem),
+    radial-gradient(circle at 48% 82%,rgba(226,126,255,.10),transparent 32rem),
+    linear-gradient(150deg,#0b0414,#10051c 42%,#07040f 100%);
+  color:#eadff0;
+  min-height:100vh;
+}
+.tree-body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.48;
+  background-image:
+    radial-gradient(circle at 9% 20%,#ffd5f4 0 1px,transparent 1.7px),
+    radial-gradient(circle at 28% 70%,#d7b8ff 0 1px,transparent 1.7px),
+    radial-gradient(circle at 76% 17%,#ff9ee0 0 1px,transparent 1.7px),
+    radial-gradient(circle at 90% 62%,#b69cff 0 1px,transparent 1.7px),
+    radial-gradient(circle at 57% 88%,#f7c6ff 0 1px,transparent 1.7px);
+  background-size:260px 240px,330px 300px,410px 370px,300px 340px,450px 430px;
+}
+.tree-shell{max-width:1160px;margin:auto;padding:46px 22px 90px}
+.tree-hero{
+  position:relative;
+  padding:76px 40px 86px;
+  border:1px solid rgba(226,150,255,.24);
+  background:
+    radial-gradient(ellipse at 50% 105%,rgba(229,123,255,.20),transparent 42%),
+    linear-gradient(180deg,rgba(44,18,66,.66),rgba(15,7,27,.9));
+  overflow:hidden;
+  box-shadow:0 24px 70px #0006,inset 0 0 80px rgba(222,111,255,.035);
+}
+.tree-hero::before{
+  content:"";
+  position:absolute;
+  left:50%;bottom:-126px;
+  width:350px;height:470px;
+  transform:translateX(-50%);
+  border-radius:45% 45% 9% 9%;
+  background:
+    radial-gradient(ellipse at 50% 10%,rgba(255,181,245,.22),transparent 24%),
+    linear-gradient(90deg,#1d0b2e,#422052 45%,#32133f 63%,#170922);
+  opacity:.76;
+  box-shadow:0 0 72px rgba(209,112,255,.12);
+}
+.tree-hero::after{
+  content:"";
+  position:absolute;
+  left:50%;bottom:32px;
+  width:760px;height:300px;
+  transform:translateX(-50%);
+  background:
+    radial-gradient(ellipse at 50% 70%,rgba(255,112,215,.13),transparent 34%),
+    radial-gradient(ellipse at 32% 58%,rgba(172,104,255,.11),transparent 28%),
+    radial-gradient(ellipse at 70% 52%,rgba(243,147,255,.10),transparent 25%);
+  filter:blur(3px);
+}
+.tree-hero>*{position:relative;z-index:1}
+.tree-title{
+  font-size:clamp(3rem,8vw,6.5rem);
+  line-height:.94;
+  color:#f7eafd;
+  margin:.1em 0;
+  text-shadow:0 0 18px rgba(255,129,222,.18),0 0 48px rgba(151,88,255,.13);
+}
+.tree-lede{max-width:760px;color:#d4c0dc;line-height:1.78}
+.tree-grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:22px;margin-top:22px}
+.tree-section,.tree-aside{
+  padding:27px;
+  border:1px solid rgba(208,142,244,.18);
+  background:linear-gradient(135deg,rgba(255,255,255,.047),rgba(172,91,221,.035));
+  box-shadow:0 14px 38px #0003,inset 0 0 42px rgba(234,131,255,.018);
+  margin-bottom:18px;
+}
+.tree-section h2,.tree-aside h2{color:#faefff;margin-top:0;text-shadow:0 0 12px rgba(232,137,255,.09)}
+.tree-section p,.tree-aside p{color:#d5c5dc;line-height:1.82}
+.whisper{font-style:italic;color:#d4a9e7!important}
+.redacted{display:inline-block;background:#050306;color:#050306;border-radius:2px;padding:0 .2em;box-shadow:0 0 0 1px #392345;user-select:none}
+.duty{border-left:3px solid #bd67c8;background:linear-gradient(90deg,rgba(91,36,104,.24),transparent)}
+.tree-fact{padding:10px 0;border-top:1px solid rgba(255,255,255,.08)}
+.tree-fact:first-of-type{border-top:0}.tree-fact small{display:block;color:#d38ae0;text-transform:uppercase;letter-spacing:.13em}.tree-fact strong{color:#f0e2f5}
+.tree-body .archive-kicker{color:#d58ce7}
+.tree-body .archive-back{color:#d8a7e6}
+.tree-body .archive-back:hover{color:#ffd2f4}
+@media(max-width:800px){.tree-grid{grid-template-columns:1fr}.tree-hero{padding:58px 26px 72px}}
+</style>
+</head>
+<body class="tree-body">
+<header class="site-header"><div class="nav-wrap"><a class="brand" href="/">SINNERS</a><button class="nav-toggle" type="button">Menu</button><nav class="main-nav"><a href="/world.html">The World</a><a href="/gods.html">Gods &amp; Religion</a><a href="/history.html">History</a><a href="/people.html">People &amp; Legends</a><a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav></div></header>
+<main class="tree-shell"><a class="archive-back" href="/world.html">← Leave the Village</a><section class="tree-hero"><div class="archive-kicker">Hidden Settlement · Feywild Convergence</div><h1 class="tree-title">The Great Tree Village</h1><p class="tree-lede">A settlement built around a tree that should not exist here, hidden within a forest where the border between worlds has never fully healed.</p></section><div class="tree-grid"><article>
 <section class="tree-section"><h2>The Sprout</h2><p>During the era of Overgod's Revenge, a mysterious portal opened in a relatively uninhabited stretch of forest. The portal did not remain, but something was left behind: a single tree sprout.</p><p>The sprout grew with impossible speed. As its roots deepened and its canopy widened, small rifts began opening around it into the Feywild. Strange plants appeared first. Then unfamiliar animals. Eventually entire pockets of foreign ecology began spilling through and taking root in the surrounding forest.</p><p>The settlement that formed around the tree became known simply as the Great Tree Village.</p></section>
 <section class="tree-section"><h2>The Kitsune</h2><p>The Kitsune who came through those rifts regard the Great Tree as sacred. Most remain close to it for their entire lives, and leaving the village is uncommon enough that encountering a Kitsune elsewhere in the world is itself unusual.</p><p>The village does not advertise its existence. Old texts occasionally mention a hidden settlement beneath an impossible tree, but most people dismiss those accounts as folklore.</p><p>Some of those same texts speak about another people who arrived through the rifts: <span class="redacted">YOKAI</span>. Whatever they are, the oldest surviving records become strangely incomplete whenever the subject appears.</p></section>
 <section class="tree-section"><h2>The Great Hunt</h2><p>There was a time when outsiders discovered that some Kitsune could perceive things other people could not. Those creatures exerted influence on the world whether ordinary people could see them or not, but Kitsune eyes offered a way to make the invisible visible.</p><p>What followed became known within the village as <strong>The Great Hunt</strong>.</p><p>Kitsune were hunted for their eyes. Their bodies became resources. Their ability to see what others could not became something outsiders believed could be harvested, stolen, and used.</p><p>By the time the violence ended, the number of Kitsune capable of that sight had fallen dramatically. The village closed itself to visitors, and secrecy became a matter of survival rather than tradition.</p></section>
