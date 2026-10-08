@@ -439,7 +439,7 @@ body.overgod-ripping .map-stage *,body.overgod-returning .map-stage *{animation-
         <path class="thread ambient-thread" d="M1275 120 C1430 180,1545 280,1660 410 C1750 510,1860 535,2025 500"/>
         <path class="thread ambient-thread" d="M1540 780 C1655 710,1770 735,1860 845 C1925 925,1970 1045,2030 1120"/>
         <path class="thread ambient-thread" d="M300 1370 C470 1280,610 1255,760 1310 C900 1360,980 1450,1125 1515"/>
-        <a class="oro-thread-link" href="/the-overgod.html" aria-label="Follow the thread over Oro"><path class="thread" d="M1085 470 C1088 520,1082 560,1085 604"/></a>
+        <a class="oro-thread-link" data-href="/the-overgod.html" aria-label="Follow the thread over Oro"><path class="thread" d="M1085 470 C1088 520,1082 560,1085 604"/></a>
       </svg>
       <button class="overgod-knot" id="overgodKnot" type="button" aria-label="Follow the green thread over Oro"></button>
       <button class="marker" style="left:26.8%;top:15.3%;--mcolor:#83bfdc" data-name="Etro" data-title="The City of Dreams" data-href="etro.html" aria-label="Etro, The City of Dreams"></button>
@@ -568,7 +568,10 @@ body.overgod-ripping .map-stage *,body.overgod-returning .map-stage *{animation-
   if(overgodUnlocked){
     if(overgodThreads) requestAnimationFrame(()=>overgodThreads.classList.add('visible'));
     if(overgodKnot){requestAnimationFrame(()=>overgodKnot.classList.add('visible'));overgodKnot.addEventListener('click',enterOvergod);}
-    document.querySelectorAll('.oro-thread-link').forEach(link=>link.addEventListener('click',enterOvergod));
+    document.querySelectorAll('.oro-thread-link').forEach(link=>{
+      link.setAttribute('href',link.dataset.href || '/the-overgod.html');
+      link.addEventListener('click',enterOvergod);
+    });
   }
 
   let returningFromOvergod=false;
