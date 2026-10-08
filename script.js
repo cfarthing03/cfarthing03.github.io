@@ -13,3 +13,16 @@ if (search) {
     });
   });
 }
+
+// Version marker — Sinners 1.0
+(() => {
+  const versionText = 'Sinners World Archive — Version 1.0';
+  const footer = document.querySelector('footer');
+  if (footer) {
+    footer.textContent = versionText;
+  } else {
+    const versionFooter = document.createElement('footer');
+    versionFooter.textContent = versionText;
+    document.body.appendChild(versionFooter);
+  }
+})();
