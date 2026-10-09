@@ -54,7 +54,19 @@
 .true-name-panel.authorized .unlock-screen{max-height:410px;opacity:1;visibility:visible;transform:none;transition:max-height .58s cubic-bezier(.2,.8,.2,1),opacity .32s ease .16s,transform .42s ease .12s,visibility 0s}
 .sigil-stage{width:220px;height:220px;margin:2px auto 4px;display:grid;place-items:center;position:relative}.sigil-ring,.sigil-ring-two{position:absolute;border-radius:50%;border:1px solid rgba(136,212,246,.31);opacity:0;pointer-events:none}.sigil-ring{inset:8px}.sigil-ring-two{inset:33px;border-style:dashed}.true-name-panel.authorized .sigil-ring{animation:ringOpen .6s ease .18s forwards}.true-name-panel.authorized .sigil-ring-two{animation:ringOpenReverse .6s ease .23s forwards}
 @keyframes ringOpen{from{opacity:0;transform:scale(.58) rotate(-32deg)}to{opacity:.76;transform:scale(1) rotate(0)}}@keyframes ringOpenReverse{from{opacity:0;transform:scale(.58) rotate(32deg)}to{opacity:.52;transform:scale(1) rotate(0)}}
-.true-name-sigil{width:166px;height:166px;display:grid;place-items:center;opacity:0;transform:scale(.46);position:relative;z-index:4;border:0;background:transparent;padding:0;cursor:pointer}.true-name-sigil img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}.true-name-panel.authorized .true-name-sigil{animation:sigilAuthorize .72s cubic-bezier(.18,.84,.24,1) .18s forwards}.true-name-sigil.ready{opacity:1;transform:scale(1);animation:sigilIdle 2.4s ease-in-out infinite!important}
+.true-name-sigil{width:166px;height:166px;display:grid;place-items:center;opacity:0;transform:scale(.46);position:relative;z-index:4;border:0;background:transparent;padding:0;cursor:pointer}.true-name-sigil img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}
+/* Optical centering for the seven sigils in the True Name access projection.
+   Several source PNGs have uneven transparent/visual weight, so geometric
+   centering makes the artwork itself appear off-center. */
+.true-name-sigil img{transform:translate(var(--sigil-x,0),var(--sigil-y,0))}
+.true-name-sigil[data-sin="pride"] img{--sigil-x:1px;--sigil-y:-3px}
+.true-name-sigil[data-sin="sloth"] img{--sigil-x:1px;--sigil-y:6px}
+.true-name-sigil[data-sin="lust"] img{--sigil-x:0px;--sigil-y:8px}
+.true-name-sigil[data-sin="wrath"] img{--sigil-x:-1px;--sigil-y:7px}
+.true-name-sigil[data-sin="envy"] img{--sigil-x:2px;--sigil-y:-4px}
+.true-name-sigil[data-sin="gluttony"] img{--sigil-x:0px;--sigil-y:2px}
+.true-name-sigil[data-sin="greed"] img{--sigil-x:-2px;--sigil-y:1px}
+.true-name-panel.authorized .true-name-sigil{animation:sigilAuthorize .72s cubic-bezier(.18,.84,.24,1) .18s forwards}.true-name-sigil.ready{opacity:1;transform:scale(1);animation:sigilIdle 2.4s ease-in-out infinite!important}
 @keyframes sigilAuthorize{0%{opacity:0;transform:scale(.46)}52%{opacity:1;transform:scale(1.12);filter:drop-shadow(0 0 26px rgba(141,220,255,.78))}72%{transform:scale(.96)}100%{opacity:1;transform:scale(1);filter:drop-shadow(0 0 12px rgba(130,215,255,.42))}}@keyframes sigilIdle{0%,100%{filter:drop-shadow(0 0 10px rgba(130,215,255,.34))}50%{filter:drop-shadow(0 0 21px rgba(150,226,255,.62))}}
 .unlock-click{position:absolute;width:26px;height:26px;border-radius:50%;border:1px solid rgba(207,245,255,.7);opacity:0;pointer-events:none}.true-name-panel.authorized .unlock-click{animation:unlockClick .42s ease .62s both}@keyframes unlockClick{0%{opacity:0;transform:scale(.2)}38%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(2.5)}}
 .unlock-copy{opacity:0;transform:translateY(7px)}.true-name-panel.authorized .unlock-copy{animation:copyReveal .34s ease .82s forwards}@keyframes copyReveal{to{opacity:1;transform:none}}.archive-name{font-size:1.35rem;letter-spacing:.14em;text-transform:uppercase;color:#eaf8ff;margin-bottom:6px}.archive-status{font-size:.82rem;letter-spacing:.13em;text-transform:uppercase;color:#84a5b5}.archive-hint{font-size:.78rem;color:#728d9b;margin-top:8px;letter-spacing:.05em}
@@ -194,7 +206,7 @@
     input.value=''; input.classList.remove('accepted','rejected');
     error.textContent=''; error.className='true-name-error';
     panel.classList.remove('authorized');
-    sigil.classList.remove('ready'); sigil.innerHTML='';
+    sigil.classList.remove('ready'); sigil.innerHTML=''; delete sigil.dataset.sin;
     archive.textContent=''; submit.disabled=false;
   }
   function openModal(){
@@ -239,6 +251,7 @@
     input.classList.remove('rejected'); input.classList.add('accepted');
     error.className='true-name-error good'; error.textContent='Identity accepted.';
     archive.textContent=match.sin+' Archive';
+    sigil.dataset.sin=match.sin.toLowerCase();
     try{sessionStorage.setItem('watcherArchiveSin',match.sin);}catch(e){}
     const img=document.createElement('img');
     img.src=match.sigil; img.alt='Sigil of '+match.sin;
