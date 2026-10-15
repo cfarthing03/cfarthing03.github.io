@@ -159,18 +159,24 @@ if (search) {
       last=index;
       const god=gods[index];
 
-      let sigil=iris.querySelector('.watcher-eye-sigil');
+      let sigil=eye.querySelector('.watcher-eye-sigil-host');
       if(!sigil){
-        sigil=document.createElement('img');
-        sigil.className='watcher-eye-sigil';
-        sigil.alt='';
+        sigil=document.createElement('span');
+        sigil.className='watcher-eye-sigil-host';
         sigil.setAttribute('aria-hidden','true');
-        iris.appendChild(sigil);
+        eye.appendChild(sigil);
+      }
+      let nameplate=eye.querySelector('.watcher-eye-god-name');
+      if(!nameplate){
+        nameplate=document.createElement('span');
+        nameplate.className='watcher-eye-god-name';
+        eye.appendChild(nameplate);
       }
 
       clearTimeout(timer);
-      sigil.src=god.src;
+      sigil.style.backgroundImage=`url("${god.src}")`;
       sigil.style.setProperty('--sigil-glow',god.color);
+      nameplate.textContent=god.name;
       frame.style.setProperty('--watcher-god-glow',god.color);
       eye.dataset.god=god.name;
       eye.classList.remove('sigil-reveal');
