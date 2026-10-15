@@ -3304,3 +3304,48 @@ html body > #watcherCompletionFrame.watcher-completion-frame{
     drop-shadow(0 0 8px #ffffff)
     drop-shadow(0 0 17px var(--watcher-god-glow,#f19db4))!important;
 }
+
+
+/* ======================== KINDNESS EYE CONTRAST FIX ======================== */
+/* Kindness is a very fine white sigil. Give it a true black plate and a larger,
+   crisp white render instead of letting the pink glow wash the linework out. */
+#watcherCompletionFrame[data-reveal-god="Kindness"].god-reveal
+.watcher-eye-mark.sigil-reveal .watcher-eye-iris{
+  opacity:1!important;
+  filter:none!important;
+  background:
+    radial-gradient(circle,
+      #000000 0 56%,
+      #090308 57% 61%,
+      #f19db4 62% 67%,
+      #020304 68% 100%)!important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.18),
+    0 0 13px #f19db4,
+    0 0 30px rgba(241,157,180,.58),
+    0 0 48px rgba(241,157,180,.24)!important;
+}
+
+#watcherCompletionFrame[data-reveal-god="Kindness"].god-reveal
+.watcher-eye-sigil-image{
+  width:43px!important;
+  height:43px!important;
+  z-index:15!important;
+  mix-blend-mode:normal!important;
+  filter:
+    brightness(1.9)
+    contrast(1.45)
+    drop-shadow(0 0 1px #ffffff)
+    drop-shadow(0 0 4px #ffffff)
+    drop-shadow(0 0 9px rgba(241,157,180,.92))!important;
+}
+
+#watcherCompletionFrame[data-reveal-god="Kindness"].god-reveal
+.watcher-eye-god-name{
+  color:#ffffff!important;
+  border-color:rgba(241,157,180,.9)!important;
+  text-shadow:
+    0 0 4px #ffffff,
+    0 0 10px #f19db4!important;
+  box-shadow:0 0 14px rgba(241,157,180,.38)!important;
+}
