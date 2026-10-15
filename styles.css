@@ -2982,184 +2982,170 @@ html body > #watcherCompletionFrame.watcher-completion-frame{
   .cult-observance::after{display:none}
 }
 
-/* ======================== V1.1 EYE + LIVING GEM FINAL FIX ======================== */
-#watcherCompletionFrame .watcher-frame-crest{
+/* ======================== V1.1 WATCHER EYE + GEM FUNCTION FIX ======================== */
+/* The existing diamond design is intentionally left alone. This block only restores movement. */
+#watcherCompletionFrame .watcher-sin-seals i{
+  animation:watcherGemOuterMotion 3.15s ease-in-out infinite!important;
+  transform-origin:center center!important;
+  will-change:scale,translate,filter;
+}
+#watcherCompletionFrame .watcher-sin-seals i::before{
+  animation:watcherGemInnerMotion 3.15s ease-in-out infinite!important;
+  transform-origin:center center!important;
+  will-change:scale,opacity;
+}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(1),
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(1)::before{animation-delay:0s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(2),
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(2)::before{animation-delay:-.45s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(3),
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(3)::before{animation-delay:-.9s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(4),
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(4)::before{animation-delay:-1.35s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(5),
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(5)::before{animation-delay:-1.8s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(6),
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(6)::before{animation-delay:-2.25s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(7),
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(7)::before{animation-delay:-2.7s!important}
+
+/* Individual transform properties animate even though the original diamond keeps its rotated transform. */
+@keyframes watcherGemOuterMotion{
+  0%,100%{scale:.86;translate:0 1px;filter:brightness(.82)}
+  42%{scale:1.18;translate:0 -2px;filter:brightness(1.34)}
+  66%{scale:1.01;translate:0 0;filter:brightness(1.05)}
+}
+@keyframes watcherGemInnerMotion{
+  0%,100%{scale:.58;opacity:.68}
+  43%{scale:1.18;opacity:1}
+  68%{scale:.88;opacity:.9}
+}
+
+/* Eye interaction. The actual image is a sibling of the iris so fading the iris cannot fade the sigil. */
+#watcherCompletionFrame .watcher-frame-crest,
+#watcherCompletionFrame .watcher-eye-mark{
   overflow:visible!important;
 }
 #watcherCompletionFrame .watcher-eye-mark{
-  overflow:visible!important;
   isolation:isolate!important;
 }
-#watcherCompletionFrame .watcher-eye-iris{
-  overflow:visible!important;
-  isolation:isolate!important;
-}
-#watcherCompletionFrame .watcher-eye-sigil-host{
+#watcherCompletionFrame .watcher-eye-sigil-image{
   position:absolute!important;
   left:50%!important;
   top:50%!important;
-  width:22px!important;
-  height:22px!important;
-  transform:translate(-50%,-50%) scale(.18) rotate(-8deg)!important;
-  transform-origin:center center!important;
-  background-repeat:no-repeat!important;
-  background-position:center!important;
-  background-size:contain!important;
-  opacity:0!important;
-  z-index:9!important;
+  width:27px!important;
+  height:27px!important;
+  object-fit:contain!important;
+  transform:translate(calc(-50% + var(--watcher-eye-x)),calc(-50% + var(--watcher-eye-y))) scale(.25)!important;
+  transform-origin:center!important;
+  opacity:0;
+  z-index:12!important;
   pointer-events:none!important;
-  mix-blend-mode:screen!important;
   filter:
     drop-shadow(0 0 4px var(--sigil-glow,#8adcf7))
     drop-shadow(0 0 10px var(--sigil-glow,#8adcf7))
-    drop-shadow(0 0 18px color-mix(in srgb,var(--sigil-glow,#8adcf7) 54%,transparent))!important;
+    drop-shadow(0 0 18px color-mix(in srgb,var(--sigil-glow,#8adcf7) 55%,transparent))!important;
 }
 #watcherCompletionFrame .watcher-eye-god-name{
   position:absolute!important;
   left:50%!important;
   top:72px!important;
-  transform:translateX(-50%) translateY(6px)!important;
-  min-width:132px!important;
+  transform:translateX(-50%) translateY(5px)!important;
+  min-width:126px!important;
   padding:4px 10px!important;
-  border:1px solid color-mix(in srgb,var(--sigil-glow,var(--watcher-god-glow,#8adcf7)) 55%,transparent)!important;
+  border:1px solid color-mix(in srgb,var(--sigil-glow,var(--watcher-god-glow,#8adcf7)) 68%,transparent)!important;
   border-radius:999px!important;
-  background:linear-gradient(180deg,rgba(4,11,17,.96),rgba(2,7,12,.92))!important;
+  background:rgba(2,8,13,.96)!important;
   color:var(--sigil-glow,var(--watcher-god-glow,#8adcf7))!important;
   font:800 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace!important;
-  letter-spacing:.14em!important;
+  letter-spacing:.15em!important;
   text-align:center!important;
   text-transform:uppercase!important;
-  text-shadow:0 0 10px currentColor!important;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.03) inset,
-    0 0 12px color-mix(in srgb,var(--sigil-glow,var(--watcher-god-glow,#8adcf7)) 26%,transparent)!important;
-  white-space:nowrap!important;
-  opacity:0!important;
+  text-shadow:0 0 9px currentColor!important;
+  box-shadow:0 0 14px color-mix(in srgb,var(--sigil-glow,var(--watcher-god-glow,#8adcf7)) 30%,transparent)!important;
+  opacity:0;
   z-index:18!important;
   pointer-events:none!important;
+  white-space:nowrap!important;
 }
-#watcherCompletionFrame .watcher-eye-mark.sigil-reveal .watcher-eye-sigil-host{
-  animation:watcherIrisSigilFinal 2.25s cubic-bezier(.2,.82,.2,1) both!important;
+#watcherCompletionFrame.god-reveal .watcher-eye-sigil-image{
+  animation:watcherEyeSigilReveal 2.3s cubic-bezier(.2,.82,.2,1) both!important;
 }
-#watcherCompletionFrame .watcher-eye-mark.sigil-reveal .watcher-eye-god-name{
-  animation:watcherIrisNameFinal 2.25s ease both!important;
+#watcherCompletionFrame.god-reveal .watcher-eye-god-name{
+  animation:watcherEyeGodNameReveal 2.3s ease both!important;
 }
-#watcherCompletionFrame .watcher-eye-mark.sigil-reveal .watcher-eye-iris{
-  opacity:.32!important;
-  filter:saturate(.52) brightness(.78)!important;
+#watcherCompletionFrame.god-reveal .watcher-frame-crest em{
+  animation:watcherArchiveCaptionDip 2.3s ease both!important;
+}
+#watcherCompletionFrame.god-reveal .watcher-eye-iris{
+  opacity:.30!important;
+  filter:saturate(.42) brightness(.72)!important;
   box-shadow:
-    0 0 13px rgba(111,208,246,.42),
-    0 0 26px var(--watcher-god-glow,#8adcf7),
-    0 0 44px color-mix(in srgb,var(--watcher-god-glow,#8adcf7) 38%,transparent)!important;
+    0 0 12px var(--watcher-god-glow,#8adcf7),
+    0 0 28px var(--watcher-god-glow,#8adcf7),
+    0 0 48px color-mix(in srgb,var(--watcher-god-glow,#8adcf7) 52%,transparent)!important;
 }
-#watcherCompletionFrame .watcher-eye-mark.sigil-reveal .watcher-eye-pupil{
-  opacity:0!important;
+#watcherCompletionFrame.god-reveal .watcher-eye-shell{
+  filter:drop-shadow(0 0 9px var(--watcher-god-glow,#8adcf7)) drop-shadow(0 0 18px color-mix(in srgb,var(--watcher-god-glow,#8adcf7) 36%,transparent))!important;
 }
-@keyframes watcherIrisSigilFinal{
-  0%{opacity:0;transform:translate(-50%,-50%) scale(.16) rotate(-10deg)}
-  14%{opacity:1;transform:translate(-50%,-50%) scale(1.15) rotate(0deg)}
-  32%{opacity:1;transform:translate(-50%,-50%) scale(1.02) rotate(0deg)}
-  74%{opacity:.96;transform:translate(-50%,-50%) scale(.95) rotate(0deg)}
-  100%{opacity:0;transform:translate(-50%,-50%) scale(.7) rotate(7deg)}
+#watcherCompletionFrame.god-reveal .watcher-eye-lid{
+  border-color:color-mix(in srgb,var(--watcher-god-glow,#8adcf7) 72%,#dffaff)!important;
 }
-@keyframes watcherIrisNameFinal{
-  0%,10%,88%,100%{opacity:0;transform:translateX(-50%) translateY(6px)}
-  18%,76%{opacity:1;transform:translateX(-50%) translateY(0)}
+#watcherCompletionFrame.god-reveal .watcher-eye-line{
+  background:linear-gradient(90deg,transparent,var(--watcher-god-glow,#8adcf7) 22%,#fff 50%,var(--watcher-god-glow,#8adcf7) 78%,transparent)!important;
+  opacity:.8!important;
 }
+#watcherCompletionFrame.god-reveal .watcher-eye-pupil{opacity:0!important}
 
-#watcherCompletionFrame .watcher-sin-seals{
-  animation:watcherSealRibbonFloatFinal 7.2s ease-in-out infinite!important;
+@keyframes watcherEyeSigilReveal{
+  0%{opacity:0;scale:.2}
+  14%{opacity:1;scale:1.12}
+  31%{opacity:1;scale:1}
+  76%{opacity:.98;scale:.96}
+  100%{opacity:0;scale:.7}
 }
-#watcherCompletionFrame .watcher-sin-seals i{
-  position:relative!important;
-  overflow:visible!important;
-  width:14px!important;
-  height:14px!important;
-  background:rgba(4,10,15,.92)!important;
-  border:1.8px solid color-mix(in srgb,var(--c) 88%,#eafcff)!important;
-  box-shadow:
-    0 0 8px color-mix(in srgb,var(--c) 92%,transparent),
-    0 0 20px color-mix(in srgb,var(--c) 46%,transparent),
-    inset 0 0 8px rgba(255,255,255,.05)!important;
-  animation:watcherLivingGemFinal 2.9s ease-in-out infinite!important;
-  transform-origin:center center!important;
+@keyframes watcherEyeGodNameReveal{
+  0%,10%,88%,100%{opacity:0;translate:0 5px}
+  19%,78%{opacity:1;translate:0 0}
 }
-#watcherCompletionFrame .watcher-sin-seals i::before{
-  content:""!important;
-  position:absolute!important;
-  inset:2.5px!important;
-  display:block!important;
-  transform:rotate(0deg) scale(.82)!important;
-  background:radial-gradient(circle at 50% 42%,#ffffff,var(--c) 48%,color-mix(in srgb,var(--c) 70%,#02060a) 82%)!important;
-  box-shadow:
-    0 0 8px var(--c),
-    0 0 16px color-mix(in srgb,var(--c) 68%,transparent)!important;
-  opacity:.96!important;
-  z-index:1!important;
-  animation:watcherLivingGemInnerFinal 2.9s ease-in-out infinite!important;
-}
-#watcherCompletionFrame .watcher-sin-seals i::after{
-  content:""!important;
-  position:absolute!important;
-  inset:-5px!important;
-  display:block!important;
-  border:1px solid color-mix(in srgb,var(--c) 88%,transparent)!important;
-  opacity:.45!important;
-  transform:scale(.72)!important;
-  box-shadow:0 0 10px color-mix(in srgb,var(--c) 42%,transparent)!important;
-  z-index:0!important;
-  animation:watcherLivingGemOuterFinal 2.9s ease-in-out infinite!important;
-}
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(1),
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(1)::before,
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(1)::after{animation-delay:0s!important}
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(2),
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(2)::before,
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(2)::after{animation-delay:-.42s!important}
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(3),
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(3)::before,
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(3)::after{animation-delay:-.84s!important}
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(4),
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(4)::before,
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(4)::after{animation-delay:-1.26s!important}
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(5),
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(5)::before,
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(5)::after{animation-delay:-1.68s!important}
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(6),
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(6)::before,
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(6)::after{animation-delay:-2.1s!important}
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(7),
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(7)::before,
-#watcherCompletionFrame .watcher-sin-seals i:nth-child(7)::after{animation-delay:-2.52s!important}
-@keyframes watcherSealRibbonFloatFinal{
-  0%,100%{transform:translateX(-50%) translateY(0)}
-  25%{transform:translateX(calc(-50% - 4px)) translateY(-1px)}
-  50%{transform:translateX(-50%) translateY(1px)}
-  75%{transform:translateX(calc(-50% + 4px)) translateY(-1px)}
-}
-@keyframes watcherLivingGemFinal{
-  0%,100%{transform:rotate(45deg) translateY(0) scale(.86);filter:brightness(.84)}
-  44%{transform:rotate(45deg) translateY(-2px) scale(1.16);filter:brightness(1.26)}
-  68%{transform:rotate(45deg) translateY(1px) scale(1.01);filter:brightness(1.04)}
-}
-@keyframes watcherLivingGemInnerFinal{
-  0%,100%{transform:scale(.68);opacity:.76}
-  45%{transform:scale(1.06);opacity:1}
-  68%{transform:scale(.9);opacity:.92}
-}
-@keyframes watcherLivingGemOuterFinal{
-  0%,100%{transform:scale(.62);opacity:.18}
-  46%{transform:scale(1.16);opacity:.58}
-  70%{transform:scale(.9);opacity:.34}
+@keyframes watcherArchiveCaptionDip{
+  0%,9%,90%,100%{opacity:1}
+  18%,80%{opacity:.12}
 }
 
 @media(prefers-reduced-motion:reduce){
-  #watcherCompletionFrame .watcher-sin-seals,
   #watcherCompletionFrame .watcher-sin-seals i,
   #watcherCompletionFrame .watcher-sin-seals i::before,
-  #watcherCompletionFrame .watcher-sin-seals i::after,
-  #watcherCompletionFrame .watcher-eye-mark.sigil-reveal .watcher-eye-sigil-host,
-  #watcherCompletionFrame .watcher-eye-mark.sigil-reveal .watcher-eye-god-name{
+  #watcherCompletionFrame.god-reveal .watcher-eye-sigil-image,
+  #watcherCompletionFrame.god-reveal .watcher-eye-god-name,
+  #watcherCompletionFrame.god-reveal .watcher-frame-crest em{
     animation:none!important;
   }
+}
+
+
+/* Verification-driven correction: animations cannot override !important opacity/scale declarations. */
+#watcherCompletionFrame .watcher-eye-sigil-image{
+  transform:translate(calc(-50% + var(--watcher-eye-x)),calc(-50% + var(--watcher-eye-y)))!important;
+  scale:.25;
+  opacity:0;
+}
+#watcherCompletionFrame .watcher-eye-god-name{
+  transform:translateX(-50%)!important;
+  translate:0 5px;
+  opacity:0;
+}
+#watcherCompletionFrame.god-reveal .watcher-eye-mark.sigil-reveal .watcher-eye-iris{
+  opacity:.25!important;
+  filter:saturate(.34) brightness(.64)!important;
+  box-shadow:
+    0 0 12px var(--watcher-god-glow,#8adcf7),
+    0 0 32px var(--watcher-god-glow,#8adcf7),
+    0 0 56px color-mix(in srgb,var(--watcher-god-glow,#8adcf7) 62%,transparent)!important;
+}
+/* Nameplate must beat the older hidden-state !important rule. */
+#watcherCompletionFrame.god-reveal .watcher-eye-god-name{
+  opacity:1!important;
+  translate:0 0!important;
+  animation:none!important;
 }

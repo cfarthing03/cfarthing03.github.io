@@ -127,9 +127,8 @@ if (search) {
 
   function activateCompletionEyeSigils(frame){
     const eye=frame.querySelector('.watcher-eye-mark');
-    const iris=frame.querySelector('.watcher-eye-iris');
     const crest=frame.querySelector('.watcher-frame-crest');
-    if(!eye||!iris||!crest)return;
+    if(!eye||!crest)return;
 
     const gods=[
       {name:'Pride',src:'/sigil-pride.png',color:'#d4d0ff'},
@@ -147,19 +146,17 @@ if (search) {
       {name:'Temperance',src:'/sigil-virtue-temperance.png',color:'#9b7ddf'},
       {name:'Kindness',src:'/sigil-virtue-kindness.png',color:'#f19db4'}
     ];
-    let last=-1;
-    let timer=0;
 
-    eye.setAttribute('role','button');
-    eye.setAttribute('tabindex','0');
-    eye.setAttribute('aria-label','Watcher eye');
+    // Preload every possible reveal so the first click does not spend the animation waiting on an image.
+    gods.forEach(god=>{const image=new Image();image.src=god.src;});
 
-    let sigil=iris.querySelector('.watcher-eye-sigil-host');
+    let sigil=eye.querySelector('.watcher-eye-sigil-image');
     if(!sigil){
-      sigil=document.createElement('span');
-      sigil.className='watcher-eye-sigil-host';
+      sigil=document.createElement('img');
+      sigil.className='watcher-eye-sigil-image';
+      sigil.alt='';
       sigil.setAttribute('aria-hidden','true');
-      iris.appendChild(sigil);
+      eye.appendChild(sigil);
     }
 
     let nameplate=crest.querySelector('.watcher-eye-god-name');
@@ -170,27 +167,49 @@ if (search) {
       crest.appendChild(nameplate);
     }
 
+    let last=-1;
+    let timer=0;
+    let revealToken=0;
+
+    eye.setAttribute('role','button');
+    eye.setAttribute('tabindex','0');
+    eye.setAttribute('aria-label','Watcher eye');
+
+    const beginReveal=(god,token)=>{
+      if(token!==revealToken)return;
+      clearTimeout(timer);
+      nameplate.textContent=god.name;
+      nameplate.style.setProperty('--sigil-glow',god.color);
+      frame.style.setProperty('--watcher-god-glow',god.color);
+      frame.dataset.revealGod=god.name;
+      frame.classList.remove('god-reveal');
+      eye.classList.remove('sigil-reveal');
+      void frame.offsetWidth;
+      frame.classList.add('god-reveal');
+      eye.classList.add('sigil-reveal');
+
+      timer=setTimeout(()=>{
+        if(token!==revealToken)return;
+        frame.classList.remove('god-reveal');
+        eye.classList.remove('sigil-reveal');
+        delete frame.dataset.revealGod;
+      },2400);
+    };
+
     const reveal=()=>{
       let index;
       do{index=Math.floor(Math.random()*gods.length)}while(gods.length>1&&index===last);
       last=index;
       const god=gods[index];
+      const token=++revealToken;
 
-      clearTimeout(timer);
-      sigil.style.backgroundImage=`url("${god.src}")`;
       sigil.style.setProperty('--sigil-glow',god.color);
-      nameplate.textContent=god.name;
-      nameplate.style.setProperty('--sigil-glow',god.color);
-      frame.style.setProperty('--watcher-god-glow',god.color);
-      eye.dataset.god=god.name;
-      eye.classList.remove('sigil-reveal');
-      void eye.offsetWidth;
-      eye.classList.add('sigil-reveal');
-
-      timer=setTimeout(()=>{
-        eye.classList.remove('sigil-reveal');
-        delete eye.dataset.god;
-      },2350);
+      sigil.onload=()=>beginReveal(god,token);
+      sigil.onerror=()=>beginReveal(god,token); // name/color still reveal even if an asset ever fails.
+      sigil.src=god.src;
+      if(sigil.complete){
+        requestAnimationFrame(()=>beginReveal(god,token));
+      }
     };
 
     eye.addEventListener('click',reveal);
