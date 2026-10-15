@@ -98,10 +98,10 @@ if (search) {
     const update=(x=window.innerWidth/2,y=window.innerHeight/2)=>{
       const nx=Math.max(-1,Math.min(1,(x/window.innerWidth-.5)*2));
       const ny=Math.max(-1,Math.min(1,(y/window.innerHeight-.5)*2));
-      frame.style.setProperty('--watcher-eye-x',`${(nx*3.4).toFixed(2)}px`);
-      frame.style.setProperty('--watcher-eye-y',`${(ny*2.2).toFixed(2)}px`);
-      frame.style.setProperty('--watcher-pupil-x',`${(nx*2.1).toFixed(2)}px`);
-      frame.style.setProperty('--watcher-pupil-y',`${(ny*1.35).toFixed(2)}px`);
+      frame.style.setProperty('--watcher-eye-x',`${(nx*2.25).toFixed(2)}px`);
+      frame.style.setProperty('--watcher-eye-y',`${(ny*1.45).toFixed(2)}px`);
+      frame.style.setProperty('--watcher-pupil-x',`${(nx*1.18).toFixed(2)}px`);
+      frame.style.setProperty('--watcher-pupil-y',`${(ny*0.78).toFixed(2)}px`);
     };
     update();
     if(reduced){
@@ -128,7 +128,8 @@ if (search) {
   function activateCompletionEyeSigils(frame){
     const eye=frame.querySelector('.watcher-eye-mark');
     const iris=frame.querySelector('.watcher-eye-iris');
-    if(!eye||!iris)return;
+    const crest=frame.querySelector('.watcher-frame-crest');
+    if(!eye||!iris||!crest)return;
 
     const gods=[
       {name:'Pride',src:'/sigil-pride.png',color:'#d4d0ff'},
@@ -153,30 +154,33 @@ if (search) {
     eye.setAttribute('tabindex','0');
     eye.setAttribute('aria-label','Watcher eye');
 
+    let sigil=iris.querySelector('.watcher-eye-sigil-host');
+    if(!sigil){
+      sigil=document.createElement('span');
+      sigil.className='watcher-eye-sigil-host';
+      sigil.setAttribute('aria-hidden','true');
+      iris.appendChild(sigil);
+    }
+
+    let nameplate=crest.querySelector('.watcher-eye-god-name');
+    if(!nameplate){
+      nameplate=document.createElement('span');
+      nameplate.className='watcher-eye-god-name';
+      nameplate.setAttribute('aria-hidden','true');
+      crest.appendChild(nameplate);
+    }
+
     const reveal=()=>{
       let index;
       do{index=Math.floor(Math.random()*gods.length)}while(gods.length>1&&index===last);
       last=index;
       const god=gods[index];
 
-      let sigil=eye.querySelector('.watcher-eye-sigil-host');
-      if(!sigil){
-        sigil=document.createElement('span');
-        sigil.className='watcher-eye-sigil-host';
-        sigil.setAttribute('aria-hidden','true');
-        eye.appendChild(sigil);
-      }
-      let nameplate=eye.querySelector('.watcher-eye-god-name');
-      if(!nameplate){
-        nameplate=document.createElement('span');
-        nameplate.className='watcher-eye-god-name';
-        eye.appendChild(nameplate);
-      }
-
       clearTimeout(timer);
       sigil.style.backgroundImage=`url("${god.src}")`;
       sigil.style.setProperty('--sigil-glow',god.color);
       nameplate.textContent=god.name;
+      nameplate.style.setProperty('--sigil-glow',god.color);
       frame.style.setProperty('--watcher-god-glow',god.color);
       eye.dataset.god=god.name;
       eye.classList.remove('sigil-reveal');
@@ -186,7 +190,7 @@ if (search) {
       timer=setTimeout(()=>{
         eye.classList.remove('sigil-reveal');
         delete eye.dataset.god;
-      },2100);
+      },2350);
     };
 
     eye.addEventListener('click',reveal);
