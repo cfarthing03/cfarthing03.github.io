@@ -1224,7 +1224,8 @@ body.deity-body.deity-greed::after {
 
     state.busy = true;
     state.savedSignature = signature;
-    window.SinnersAchievements?.unlock('greed-contract',{sound:false});
+    const unlockedAchievements = window.SinnersAchievements?.getUnlocked?.() || [];
+    const shouldUnlockGreed = !unlockedAchievements.includes('greed-contract');
     sigButton.disabled = true;
     sigInput.disabled = true;
     stage.classList.add('signing');
@@ -1237,12 +1238,15 @@ body.deity-body.deity-greed::after {
     }
     state.pendingReveal = entry;
     state.revealed.push(entry);
-    window.SinnersAchievements?.noteTrueName(entry.name);
 
     setTimeout(() => {
       closeContract(() => {
         /* Let the parchment fully disappear first, then reward the player. */
         setTimeout(() => {
+          if (shouldUnlockGreed) {
+            window.SinnersAchievements?.unlock('greed-contract',{sound:false});
+          }
+          window.SinnersAchievements?.noteTrueName(entry.name);
           sweepHeroName(entry);
           state.pendingReveal = null;
           state.busy = false;

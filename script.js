@@ -92,10 +92,42 @@ if (search) {
   function addFooterLibraryLink(){if(!libraryDiscovered())return;const f=document.querySelector('footer');if(!f||f.querySelector('.achievement-library-link'))return;const s=document.createElement('span');s.className='footer-achievement-sep';s.textContent=' · ';const a=document.createElement('a');a.className='achievement-library-link';a.href='/achievements.html';a.textContent='Archive Discoveries';f.append(s,a)}
   function updateArchiveStatus(){const n=document.getElementById('archiveStatusEasterEgg');if(!n)return;const complete=isComplete(),a=n.querySelector('[data-achievement-count]'),b=n.querySelector('[data-achievement-state]');if(a)a.textContent=String(count());if(b)b.textContent=complete?'COMPLETE':'INCOMPLETE';n.classList.toggle('complete',complete)}
 
+  function activateCompletionEye(frame){
+    window.__watcherCompletionEyeCleanup?.();
+    const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const update=(x=window.innerWidth/2,y=window.innerHeight/2)=>{
+      const nx=Math.max(-1,Math.min(1,(x/window.innerWidth-.5)*2));
+      const ny=Math.max(-1,Math.min(1,(y/window.innerHeight-.5)*2));
+      frame.style.setProperty('--watcher-eye-x',`${(nx*8).toFixed(2)}px`);
+      frame.style.setProperty('--watcher-eye-y',`${(ny*5).toFixed(2)}px`);
+      frame.style.setProperty('--watcher-pupil-x',`${(nx*5).toFixed(2)}px`);
+      frame.style.setProperty('--watcher-pupil-y',`${(ny*3).toFixed(2)}px`);
+    };
+    update();
+    if(reduced){
+      window.__watcherCompletionEyeCleanup=()=>{};
+      return;
+    }
+    let raf=0;
+    const onMove=e=>{
+      const {clientX,clientY}=e;
+      cancelAnimationFrame(raf);
+      raf=requestAnimationFrame(()=>update(clientX,clientY));
+    };
+    const onBlur=()=>update();
+    window.addEventListener('pointermove',onMove,{passive:true});
+    window.addEventListener('blur',onBlur);
+    window.__watcherCompletionEyeCleanup=()=>{
+      cancelAnimationFrame(raf);
+      window.removeEventListener('pointermove',onMove);
+      window.removeEventListener('blur',onBlur);
+    };
+  }
+
   function applyCompletionFrame(){
-    let f=document.getElementById('watcherCompletionFrame');const on=frameEnabled();document.documentElement.classList.toggle('watcher-frame-active',on);if(!on){f?.remove();return}if(f)return;
+    let f=document.getElementById('watcherCompletionFrame');const on=frameEnabled();document.documentElement.classList.toggle('watcher-frame-active',on);if(!on){window.__watcherCompletionEyeCleanup?.();f?.remove();return}if(f)return;
     f=document.createElement('div');f.id='watcherCompletionFrame';f.className='watcher-completion-frame';f.setAttribute('aria-hidden','true');
-    f.innerHTML=`<span class="watcher-frame-rail wf-top"></span><span class="watcher-frame-rail wf-bottom"></span><span class="watcher-frame-rail wf-left"></span><span class="watcher-frame-rail wf-right"></span><span class="watcher-ornament wo-tl"><i></i></span><span class="watcher-ornament wo-tr"><i></i></span><span class="watcher-ornament wo-bl"><i></i></span><span class="watcher-ornament wo-br"><i></i></span><span class="watcher-frame-crest"><i class="watcher-eye-mark"><b></b></i><em>ARCHIVE COMPLETE</em></span><span class="watcher-sin-seals"><i style="--c:#e9e8ff">◆</i><i style="--c:#7b68d8">◆</i><i style="--c:#e14f91">◆</i><i style="--c:#e14535">◆</i><i style="--c:#35b7c8">◆</i><i style="--c:#8dbb45">◆</i><i style="--c:#d9a62e">◆</i></span>`;document.body.appendChild(f);
+    f.innerHTML=`<span class="watcher-frame-rail wf-top"></span><span class="watcher-frame-rail wf-bottom"></span><span class="watcher-frame-rail wf-left"></span><span class="watcher-frame-rail wf-right"></span><span class="watcher-ornament wo-tl"><i></i></span><span class="watcher-ornament wo-tr"><i></i></span><span class="watcher-ornament wo-bl"><i></i></span><span class="watcher-ornament wo-br"><i></i></span><span class="watcher-frame-crest"><i class="watcher-eye-mark"><span class="watcher-eye-shell" aria-hidden="true"></span><span class="watcher-eye-lid" aria-hidden="true"></span><b class="watcher-eye-iris" aria-hidden="true"><span class="watcher-eye-pupil"></span></b><span class="watcher-eye-line" aria-hidden="true"></span></i><em>ARCHIVE COMPLETE</em></span><span class="watcher-sin-seals"><i style="--c:#e9e8ff"></i><i style="--c:#7b68d8"></i><i style="--c:#e14f91"></i><i style="--c:#e14535"></i><i style="--c:#35b7c8"></i><i style="--c:#8dbb45"></i><i style="--c:#d9a62e"></i></span>`;document.body.appendChild(f);activateCompletionEye(f);
   }
   function renderAchievementPage(){
     const grid=document.getElementById('achievementLibraryGrid');if(!grid)return;const unlocked=new Set(getUnlocked()),names=getTrueNames();

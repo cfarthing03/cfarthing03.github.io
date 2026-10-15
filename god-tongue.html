@@ -98,13 +98,40 @@
 <script src="/script.js"></script>
 <script>
 (() => {
-  function replayGodTongueEntry(){
-    const entry=document.querySelector('.tongue-entry');
-    if(!entry) return;
-    const fresh=entry.cloneNode(true);
-    entry.replaceWith(fresh);
+  const entryMarkup = '<div class="tongue-symbol">✣</div><div class="tongue-entry-line"></div>';
+
+  function playGodTongueEntry(){
+    document.querySelectorAll('.tongue-entry').forEach((node, index) => {
+      if (index > 0) node.remove();
+    });
+
+    let entry = document.querySelector('.tongue-entry');
+    if (!entry) {
+      entry = document.createElement('div');
+      entry.className = 'tongue-entry';
+      entry.setAttribute('aria-hidden', 'true');
+      document.body.prepend(entry);
+    }
+
+    entry.innerHTML = entryMarkup;
+    entry.classList.remove('animate');
+    void entry.offsetWidth;
+    entry.classList.add('animate');
+
+    window.setTimeout(() => {
+      entry.classList.remove('animate');
+    }, 1900);
   }
-  window.addEventListener('pageshow',replayGodTongueEntry);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', playGodTongueEntry, { once: true });
+  } else {
+    playGodTongueEntry();
+  }
+
+  window.addEventListener('pageshow', event => {
+    if (event.persisted) playGodTongueEntry();
+  });
 })();
 </script>
 </body>
