@@ -96,5 +96,16 @@
 </main>
 <footer class="isle-footer tongue-footer">Recovered transcription notes · The Isle</footer>
 <script src="/script.js"></script>
+<script>
+(() => {
+  function replayGodTongueEntry(){
+    const entry=document.querySelector('.tongue-entry');
+    if(!entry) return;
+    const fresh=entry.cloneNode(true);
+    entry.replaceWith(fresh);
+  }
+  window.addEventListener('pageshow',replayGodTongueEntry);
+})();
+</script>
 </body>
 </html>
