@@ -2565,3 +2565,161 @@ html body > #watcherCompletionFrame.watcher-completion-frame{
   .virtue-faith-directory-grid,
   .faith-practice-grid{grid-template-columns:1fr}
 }
+
+
+
+/* ======================== V1.1 WATCHER FRAME POLISH ======================== */
+
+/* Identical geometry in every corner — no inherited flips, transforms, or asymmetry. */
+#watcherCompletionFrame .watcher-ornament{
+  width:124px!important;
+  height:124px!important;
+  transform:none!important;
+}
+#watcherCompletionFrame .wo-tl{top:-39px!important;left:-39px!important;right:auto!important;bottom:auto!important}
+#watcherCompletionFrame .wo-tr{top:-39px!important;right:-39px!important;left:auto!important;bottom:auto!important}
+#watcherCompletionFrame .wo-bl{bottom:-39px!important;left:-39px!important;right:auto!important;top:auto!important}
+#watcherCompletionFrame .wo-br{bottom:-39px!important;right:-39px!important;left:auto!important;top:auto!important}
+#watcherCompletionFrame .watcher-ornament::before,
+#watcherCompletionFrame .watcher-ornament::after{
+  box-sizing:border-box!important;
+  border-radius:50%!important;
+  clip-path:none!important;
+}
+#watcherCompletionFrame .watcher-ornament::before{
+  inset:0!important;
+  border:1px solid rgba(143,229,244,.52)!important;
+  background:
+    conic-gradient(from 45deg,transparent 0 14%,rgba(130,220,239,.22) 15% 16%,transparent 17% 39%,rgba(215,179,106,.20) 40% 41%,transparent 42% 64%,rgba(130,220,239,.22) 65% 66%,transparent 67% 89%,rgba(215,179,106,.20) 90% 91%,transparent 92%)!important;
+}
+#watcherCompletionFrame .watcher-ornament::after{
+  inset:18px!important;
+  border:1px solid rgba(215,179,106,.34)!important;
+  background:radial-gradient(circle,rgba(109,210,232,.06),transparent 66%)!important;
+}
+#watcherCompletionFrame .watcher-ornament i{
+  inset:37px!important;
+  border:1px solid rgba(150,225,238,.28)!important;
+  background:rgba(3,10,15,.34)!important;
+}
+#watcherCompletionFrame .watcher-ornament b{
+  font-size:18px!important;
+  opacity:.78!important;
+}
+
+/* The eye is interactive, but only the eye — the rest of the border stays click-through. */
+#watcherCompletionFrame .watcher-frame-crest{pointer-events:none!important}
+#watcherCompletionFrame .watcher-eye-mark{
+  pointer-events:auto!important;
+  cursor:pointer!important;
+}
+#watcherCompletionFrame .watcher-eye-mark:focus-visible{
+  outline:1px solid rgba(155,235,247,.7)!important;
+  outline-offset:4px!important;
+}
+#watcherCompletionFrame .watcher-eye-iris{
+  transition:transform .13s ease-out,box-shadow .32s ease,filter .32s ease!important;
+}
+#watcherCompletionFrame .watcher-eye-pupil{
+  transition:transform .13s ease-out,opacity .2s ease!important;
+}
+
+/* Click-gimmick: a god's sigil appears inside the iris and briefly stains the eye with that color. */
+#watcherCompletionFrame .watcher-eye-sigil{
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  width:29px!important;
+  height:29px!important;
+  object-fit:contain!important;
+  transform:translate(-50%,-50%) scale(.3)!important;
+  opacity:0!important;
+  filter:drop-shadow(0 0 5px var(--sigil-glow,#8adcf7)) drop-shadow(0 0 10px var(--sigil-glow,#8adcf7))!important;
+  z-index:6!important;
+  pointer-events:none!important;
+}
+#watcherCompletionFrame .watcher-eye-mark.sigil-reveal .watcher-eye-sigil{
+  animation:watcherSigilReveal 2.05s cubic-bezier(.2,.8,.2,1) both!important;
+}
+#watcherCompletionFrame .watcher-eye-mark.sigil-reveal .watcher-eye-iris{
+  box-shadow:
+    0 0 11px rgba(111,208,246,.5),
+    0 0 26px var(--watcher-god-glow,#8adcf7),
+    0 0 44px color-mix(in srgb,var(--watcher-god-glow,#8adcf7) 42%,transparent)!important;
+}
+#watcherCompletionFrame .watcher-eye-mark.sigil-reveal .watcher-eye-pupil{
+  opacity:.12!important;
+}
+#watcherCompletionFrame .watcher-eye-mark.sigil-reveal::after{
+  content:attr(data-god);
+  position:absolute;
+  left:50%;
+  top:59px;
+  transform:translateX(-50%);
+  color:var(--watcher-god-glow,#8adcf7);
+  font:700 7px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  text-shadow:0 0 8px currentColor;
+  white-space:nowrap;
+  opacity:0;
+  animation:watcherGodName 2.05s ease both;
+}
+
+/* Restore the "alive" crystal motion while keeping the new clean faces.
+   The whole row breathes horizontally; each crystal also pulses on its own phase. */
+#watcherCompletionFrame .watcher-sin-seals{
+  animation:watcherSealDrift 6.8s ease-in-out infinite!important;
+}
+#watcherCompletionFrame .watcher-sin-seals i{
+  background:#040a0f!important;
+  box-shadow:
+    0 0 8px var(--c),
+    0 0 18px color-mix(in srgb,var(--c) 58%,transparent),
+    0 0 30px color-mix(in srgb,var(--c) 24%,transparent)!important;
+  animation:watcherCrystalPulse 3.5s ease-in-out infinite!important;
+}
+#watcherCompletionFrame .watcher-sin-seals i::before{
+  inset:3px!important;
+  background:var(--c)!important;
+  box-shadow:0 0 9px var(--c),0 0 16px var(--c)!important;
+  opacity:.92!important;
+}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(1){animation-delay:0s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(2){animation-delay:-.5s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(3){animation-delay:-1s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(4){animation-delay:-1.5s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(5){animation-delay:-2s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(6){animation-delay:-2.5s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(7){animation-delay:-3s!important}
+
+@keyframes watcherSealDrift{
+  0%,100%{transform:translateX(-50%) translateY(0)}
+  25%{transform:translateX(calc(-50% - 5px)) translateY(-2px)}
+  50%{transform:translateX(-50%) translateY(1px)}
+  75%{transform:translateX(calc(-50% + 5px)) translateY(-2px)}
+}
+@keyframes watcherCrystalPulse{
+  0%,100%{transform:rotate(45deg) translateY(0) scale(.90);filter:brightness(.82)}
+  45%{transform:rotate(45deg) translateY(-3px) scale(1.14);filter:brightness(1.38)}
+  65%{transform:rotate(45deg) translateY(1px) scale(1.02);filter:brightness(1.06)}
+}
+@keyframes watcherSigilReveal{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.2) rotate(-10deg)}
+  16%{opacity:1;transform:translate(-50%,-50%) scale(1.05) rotate(0deg)}
+  72%{opacity:.95;transform:translate(-50%,-50%) scale(.96)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(.75)}
+}
+@keyframes watcherGodName{
+  0%,10%,85%,100%{opacity:0;transform:translateX(-50%) translateY(3px)}
+  22%,72%{opacity:.88;transform:translateX(-50%) translateY(0)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #watcherCompletionFrame .watcher-sin-seals,
+  #watcherCompletionFrame .watcher-sin-seals i,
+  #watcherCompletionFrame .watcher-eye-mark.sigil-reveal .watcher-eye-sigil,
+  #watcherCompletionFrame .watcher-eye-mark.sigil-reveal::after{
+    animation:none!important;
+  }
+}

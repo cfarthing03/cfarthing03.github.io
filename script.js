@@ -98,10 +98,10 @@ if (search) {
     const update=(x=window.innerWidth/2,y=window.innerHeight/2)=>{
       const nx=Math.max(-1,Math.min(1,(x/window.innerWidth-.5)*2));
       const ny=Math.max(-1,Math.min(1,(y/window.innerHeight-.5)*2));
-      frame.style.setProperty('--watcher-eye-x',`${(nx*8).toFixed(2)}px`);
-      frame.style.setProperty('--watcher-eye-y',`${(ny*5).toFixed(2)}px`);
-      frame.style.setProperty('--watcher-pupil-x',`${(nx*5).toFixed(2)}px`);
-      frame.style.setProperty('--watcher-pupil-y',`${(ny*3).toFixed(2)}px`);
+      frame.style.setProperty('--watcher-eye-x',`${(nx*3.4).toFixed(2)}px`);
+      frame.style.setProperty('--watcher-eye-y',`${(ny*2.2).toFixed(2)}px`);
+      frame.style.setProperty('--watcher-pupil-x',`${(nx*2.1).toFixed(2)}px`);
+      frame.style.setProperty('--watcher-pupil-y',`${(ny*1.35).toFixed(2)}px`);
     };
     update();
     if(reduced){
@@ -124,6 +124,74 @@ if (search) {
     };
   }
 
+
+  function activateCompletionEyeSigils(frame){
+    const eye=frame.querySelector('.watcher-eye-mark');
+    const iris=frame.querySelector('.watcher-eye-iris');
+    if(!eye||!iris)return;
+
+    const gods=[
+      {name:'Pride',src:'/sigil-pride.png',color:'#d4d0ff'},
+      {name:'Sloth',src:'/sigil-sloth.png',color:'#7d68d9'},
+      {name:'Lust',src:'/sigil-lust.png',color:'#d83f78'},
+      {name:'Wrath',src:'/sigil-wrath.png',color:'#ef7b13'},
+      {name:'Envy',src:'/sigil-envy.png',color:'#5d8f45'},
+      {name:'Gluttony',src:'/sigil-gluttony.png',color:'#8f2c1f'},
+      {name:'Greed',src:'/sigil-greed.png',color:'#d6a625'},
+      {name:'Patience',src:'/sigil-virtue-patience.png',color:'#75d8f1'},
+      {name:'Diligence',src:'/sigil-virtue-diligence.png',color:'#d95a45'},
+      {name:'Humility',src:'/sigil-virtue-humility.png',color:'#a7b9d6'},
+      {name:'Chastity',src:'/sigil-virtue-chastity.png',color:'#e1e6f6'},
+      {name:'Charity',src:'/sigil-virtue-charity.png',color:'#f0c46e'},
+      {name:'Temperance',src:'/sigil-virtue-temperance.png',color:'#9b7ddf'},
+      {name:'Kindness',src:'/sigil-virtue-kindness.png',color:'#f19db4'}
+    ];
+    let last=-1;
+    let timer=0;
+
+    eye.setAttribute('role','button');
+    eye.setAttribute('tabindex','0');
+    eye.setAttribute('aria-label','Watcher eye');
+
+    const reveal=()=>{
+      let index;
+      do{index=Math.floor(Math.random()*gods.length)}while(gods.length>1&&index===last);
+      last=index;
+      const god=gods[index];
+
+      let sigil=iris.querySelector('.watcher-eye-sigil');
+      if(!sigil){
+        sigil=document.createElement('img');
+        sigil.className='watcher-eye-sigil';
+        sigil.alt='';
+        sigil.setAttribute('aria-hidden','true');
+        iris.appendChild(sigil);
+      }
+
+      clearTimeout(timer);
+      sigil.src=god.src;
+      sigil.style.setProperty('--sigil-glow',god.color);
+      frame.style.setProperty('--watcher-god-glow',god.color);
+      eye.dataset.god=god.name;
+      eye.classList.remove('sigil-reveal');
+      void eye.offsetWidth;
+      eye.classList.add('sigil-reveal');
+
+      timer=setTimeout(()=>{
+        eye.classList.remove('sigil-reveal');
+        delete eye.dataset.god;
+      },2100);
+    };
+
+    eye.addEventListener('click',reveal);
+    eye.addEventListener('keydown',event=>{
+      if(event.key==='Enter'||event.key===' '){
+        event.preventDefault();
+        reveal();
+      }
+    });
+  }
+
   function applyCompletionFrame(){
     let f=document.getElementById('watcherCompletionFrame');const on=frameEnabled();document.documentElement.classList.toggle('watcher-frame-active',on);if(!on){window.__watcherCompletionEyeCleanup?.();f?.remove();return}if(f)return;
     f=document.createElement('div');f.id='watcherCompletionFrame';f.className='watcher-completion-frame';f.setAttribute('aria-hidden','true');
@@ -131,7 +199,7 @@ if (search) {
     f.style.setProperty('inset','0','important');
     f.style.setProperty('z-index','2147483000','important');
     f.style.setProperty('pointer-events','none','important');
-    f.innerHTML=`<span class="watcher-frame-aura"></span><span class="watcher-frame-rail wf-top"></span><span class="watcher-frame-rail wf-bottom"></span><span class="watcher-frame-rail wf-left"></span><span class="watcher-frame-rail wf-right"></span><span class="watcher-ornament wo-tl"><i></i><b>✣</b></span><span class="watcher-ornament wo-tr"><i></i><b>◊</b></span><span class="watcher-ornament wo-bl"><i></i><b>⟁</b></span><span class="watcher-ornament wo-br"><i></i><b>✣</b></span><span class="watcher-frame-crest"><i class="watcher-eye-mark"><span class="watcher-eye-shell" aria-hidden="true"></span><span class="watcher-eye-lid" aria-hidden="true"></span><b class="watcher-eye-iris" aria-hidden="true"><span class="watcher-eye-pupil"></span></b><span class="watcher-eye-line" aria-hidden="true"></span></i><em>THE ARCHIVE RECOGNIZES YOU</em></span><span class="watcher-lore-script watcher-lore-left">✣  ◊  ⟁  VII  ✧</span><span class="watcher-lore-script watcher-lore-right">✧  VII  ⟁  ◊  ✣</span><span class="watcher-side-title watcher-side-left">WATCHER</span><span class="watcher-side-title watcher-side-right">ARCHIVE</span><span class="watcher-sin-seals"><i style="--c:#e9e8ff"></i><i style="--c:#7b68d8"></i><i style="--c:#e14f91"></i><i style="--c:#e14535"></i><i style="--c:#35b7c8"></i><i style="--c:#8dbb45"></i><i style="--c:#d9a62e"></i></span>`;document.body.appendChild(f);activateCompletionEye(f);
+    f.innerHTML=`<span class="watcher-frame-aura"></span><span class="watcher-frame-rail wf-top"></span><span class="watcher-frame-rail wf-bottom"></span><span class="watcher-frame-rail wf-left"></span><span class="watcher-frame-rail wf-right"></span><span class="watcher-ornament wo-tl"><i></i><b>✣</b></span><span class="watcher-ornament wo-tr"><i></i><b>◊</b></span><span class="watcher-ornament wo-bl"><i></i><b>⟁</b></span><span class="watcher-ornament wo-br"><i></i><b>✣</b></span><span class="watcher-frame-crest"><i class="watcher-eye-mark"><span class="watcher-eye-shell" aria-hidden="true"></span><span class="watcher-eye-lid" aria-hidden="true"></span><b class="watcher-eye-iris" aria-hidden="true"><span class="watcher-eye-pupil"></span></b><span class="watcher-eye-line" aria-hidden="true"></span></i><em>THE ARCHIVE RECOGNIZES YOU</em></span><span class="watcher-lore-script watcher-lore-left">✣  ◊  ⟁  VII  ✧</span><span class="watcher-lore-script watcher-lore-right">✧  VII  ⟁  ◊  ✣</span><span class="watcher-side-title watcher-side-left">WATCHER</span><span class="watcher-side-title watcher-side-right">ARCHIVE</span><span class="watcher-sin-seals"><i style="--c:#e9e8ff"></i><i style="--c:#7b68d8"></i><i style="--c:#e14f91"></i><i style="--c:#e14535"></i><i style="--c:#35b7c8"></i><i style="--c:#8dbb45"></i><i style="--c:#d9a62e"></i></span>`;document.body.appendChild(f);activateCompletionEye(f);activateCompletionEyeSigils(f);
   }
   function renderAchievementPage(){
     const grid=document.getElementById('achievementLibraryGrid');if(!grid)return;const unlocked=new Set(getUnlocked()),names=getTrueNames();
