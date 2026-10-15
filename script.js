@@ -168,8 +168,29 @@ if (search) {
     }
 
     let last=-1;
+    let bag=[];
     let timer=0;
     let revealToken=0;
+
+    const refillBag=()=>{
+      bag=gods.map((_,index)=>index);
+      for(let i=bag.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [bag[i],bag[j]]=[bag[j],bag[i]];
+      }
+      // Avoid the new cycle opening with the same god that ended the previous cycle.
+      if(bag.length>1 && bag[0]===last){
+        const swapIndex=1+Math.floor(Math.random()*(bag.length-1));
+        [bag[0],bag[swapIndex]]=[bag[swapIndex],bag[0]];
+      }
+    };
+
+    const drawGod=()=>{
+      if(!bag.length)refillBag();
+      const index=bag.shift();
+      last=index;
+      return gods[index];
+    };
 
     eye.setAttribute('role','button');
     eye.setAttribute('tabindex','0');
@@ -197,10 +218,7 @@ if (search) {
     };
 
     const reveal=()=>{
-      let index;
-      do{index=Math.floor(Math.random()*gods.length)}while(gods.length>1&&index===last);
-      last=index;
-      const god=gods[index];
+      const god=drawGod();
       const token=++revealToken;
 
       sigil.style.setProperty('--sigil-glow',god.color);

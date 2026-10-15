@@ -3252,3 +3252,55 @@ html body > #watcherCompletionFrame.watcher-completion-frame{
     animation:none!important;
   }
 }
+
+/* ======================== V1.1 WATCHER FINAL MICRO-TUNING ======================== */
+/* Slower, calmer breathing while preserving the approved diamond geometry. */
+#watcherCompletionFrame .watcher-sin-seals i,
+#watcherCompletionFrame .watcher-sin-seals i::before{
+  animation-duration:9.1s!important;
+}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(1),
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(1)::before{animation-delay:0s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(2),
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(2)::before{animation-delay:-1.3s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(3),
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(3)::before{animation-delay:-2.6s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(4),
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(4)::before{animation-delay:-3.9s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(5),
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(5)::before{animation-delay:-5.2s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(6),
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(6)::before{animation-delay:-6.5s!important}
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(7),
+#watcherCompletionFrame .watcher-sin-seals i:nth-child(7)::before{animation-delay:-7.8s!important}
+
+/* Mouse clicks should never produce a browser focus rectangle around the Watcher eye. */
+#watcherCompletionFrame .watcher-eye-mark,
+#watcherCompletionFrame .watcher-eye-mark:focus,
+#watcherCompletionFrame .watcher-eye-mark:focus-visible,
+#watcherCompletionFrame .watcher-eye-mark:active{
+  outline:none!important;
+  -webkit-tap-highlight-color:transparent!important;
+}
+
+/* Kindness's sigil is predominantly white, so it gets a black iris plate instead of the pale reveal used by the other gods. */
+#watcherCompletionFrame[data-reveal-god="Kindness"].god-reveal .watcher-eye-mark.sigil-reveal .watcher-eye-iris{
+  opacity:1!important;
+  filter:none!important;
+  background:
+    radial-gradient(circle,
+      #020304 0 49%,
+      #0a0b0e 50% 58%,
+      color-mix(in srgb,var(--watcher-god-glow,#f19db4) 72%,#06070a) 59% 69%,
+      #010203 70% 100%)!important;
+  box-shadow:
+    0 0 7px rgba(255,255,255,.18),
+    0 0 20px var(--watcher-god-glow,#f19db4),
+    0 0 42px color-mix(in srgb,var(--watcher-god-glow,#f19db4) 60%,transparent)!important;
+}
+#watcherCompletionFrame[data-reveal-god="Kindness"].god-reveal .watcher-eye-sigil-image{
+  filter:
+    drop-shadow(0 0 3px #ffffff)
+    drop-shadow(0 0 8px #ffffff)
+    drop-shadow(0 0 17px var(--watcher-god-glow,#f19db4))!important;
+}
