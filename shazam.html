@@ -173,6 +173,7 @@
   }
 
   function playThunder(event){
+    if(event && event.type === 'click') window.SinnersAchievements?.unlock('shazam-name');
     const now = Date.now();
     if(now - lastPlayed < 650) return;
     lastPlayed = now;

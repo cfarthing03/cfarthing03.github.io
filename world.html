@@ -446,12 +446,12 @@ body.overgod-ripping .map-stage *,body.overgod-returning .map-stage *{animation-
 <button class="marker" style="left:61.0%;top:14.8%;--mcolor:#d7a56d" data-name="Hilnem" data-title="Greed's Ever-Lasting Contract" data-href="hilnem.html" aria-label="Hilnem, Greed's Ever-Lasting Contract"></button>
 <button class="marker" style="left:74.5%;top:27.6%;--mcolor:#e3d3a3" data-name="Sol" data-title="The Sleeping City" data-href="sol.html" aria-label="Sol, The Sleeping City"></button>
 <button class="marker" style="left:34.5%;top:36.2%;--mcolor:#6ec6aa" data-name="Rushinghan" data-title="The City of Lust" data-href="rushinghan.html" aria-label="Rushinghan, The City of Lust"></button>
-<button class="marker oro-marker" id="oroMarker" style="left:53.0%;top:39.4%;--mcolor:#8892a6" data-name="Oro" data-title="The City of Innovation" aria-label="Oro, The City of Innovation or The Ruins"></button><div class="oro-choice" id="oroChoice" aria-label="Choose Oro or The Ruins"><a href="/oro.html"><strong>Oro</strong><span>The City of Innovation</span></a><a href="/the-ruins.html"><strong>The Ruins</strong><span>What stood here before</span></a></div>
-<button class="marker" style="left:72.3%;top:61.3%;--mcolor:#8e7155" data-name="Hus" data-title="The One Stop Dinner" data-href="hus.html" aria-label="Hus, The One Stop Dinner"></button>
+<button class="marker oro-marker" id="oroMarker" style="left:53.0%;top:39.4%;--mcolor:#8892a6" data-name="Oro" data-title="The City of Innovation" aria-label="Oro, The City of Innovation or The Ruins"></button><div class="oro-choice" id="oroChoice" aria-label="Choose Oro or The Ruins"><a href="/oro.html"><strong>Oro</strong><span>The City of Innovation</span></a><a href="/the-ruins.html" data-achievement="ruins-beneath-oro" data-achievement-nav><strong>The Ruins</strong><span>What stood here before</span></a></div>
+<button class="marker" style="left:72.3%;top:61.3%;--mcolor:#8e7155" data-name="Hus" data-title="The One Stop Diner" data-href="hus.html" aria-label="Hus, The One Stop Diner"></button>
 <button class="marker" style="left:49.8%;top:77.2%;--mcolor:#dcab72" data-name="Palin" data-title="The City of Warriors" data-href="palin.html" aria-label="Palin, The City of Warriors"></button>
-<button class="marker" style="left:10.9%;top:39.2%;--mcolor:#7ab488" data-name="The Isle" data-title="Western Island" data-href="the-isle.html" aria-label="The Isle, Western Island"></button>
+<button class="marker" style="left:10.9%;top:39.2%;--mcolor:#7ab488" data-name="The Isle" data-title="Western Island" data-achievement="isle-arrival" data-achievement-nav data-href="the-isle.html" aria-label="The Isle, Western Island"></button>
 <button class="marker" style="left:30.8%;top:54.6%;--mcolor:#7f8fa6" data-name="The Calamity" data-title="Historic Catastrophe" data-href="the-calamity.html" aria-label="The Calamity, Historic Catastrophe"></button>
-      <button class="great-tree-secret" id="greatTreeSecret" data-href="/great-tree-village.html" aria-label="Hidden entrance to The Great Tree Village">
+      <button class="great-tree-secret" id="greatTreeSecret" data-achievement="great-tree-village" data-achievement-nav data-href="/great-tree-village.html" aria-label="Hidden entrance to The Great Tree Village">
         <span class="fey-portal" aria-hidden="true"></span>
         <span class="fey-label">The Great Tree Village</span>
       </button>
@@ -511,7 +511,7 @@ body.overgod-ripping .map-stage *,body.overgod-returning .map-stage *{animation-
   const overgodKnot=document.getElementById('overgodKnot');
   const overgodPortal=document.getElementById('overgodPortalTransition');
 
-  // Oro shares its map point with the ruins of Evorburn. Hovering or focusing
+  // Oro shares its map point with the ruins of Evoburn. Hovering or focusing
   // the marker reveals a choice instead of immediately navigating away.
   let oroHideTimer=null;
   function showOroChoice(){

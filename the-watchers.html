@@ -253,6 +253,7 @@
     archive.textContent=match.sin+' Archive';
     sigil.dataset.sin=match.sin.toLowerCase();
     try{sessionStorage.setItem('watcherArchiveSin',match.sin);}catch(e){}
+    window.SinnersAchievements?.unlock('archive-'+match.sin.toLowerCase());
     const img=document.createElement('img');
     img.src=match.sigil; img.alt='Sigil of '+match.sin;
     sigil.replaceChildren(img);

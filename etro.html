@@ -276,6 +276,7 @@ body.city-body>*{position:relative;z-index:1}
       keypad.classList.add('success');
       status.textContent='ORDER ACCEPTED';
       try{sessionStorage.setItem('sinnersOvergodThreads','unlocked')}catch(_){}
+      window.SinnersAchievements?.unlock('overgod-hidden-record',{deferToast:true});
       setTimeout(()=>{window.location.href='/world.html#threads'},1050);
       return;
     }

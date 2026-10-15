@@ -101,6 +101,12 @@
 
   <div class="vs-mark">VS</div>
 </main>
+<section class="divinity-overview" aria-label="Understanding divinity in Sinners">
+  <article><h2>Gods Are Close</h2><p>Divinity in Sinners is not an abstract question. Gods leave marks, empower Chosen, shape cities, inspire churches, and occasionally interfere with history directly. Most people will never speak to a god, but very few can live as though the divine does not exist.</p></article>
+  <article><h2>Not Good Versus Evil</h2><p>The Sins and Virtues are opposing pantheons, but their names are not moral scorecards. Wrath can become justice. Patience can become submission. Charity can save a life or demand that someone give until nothing remains. Worship is shaped as much by interpretation as by the ideal itself.</p></article>
+  <article><h2>Faith Is Personal</h2><p>Some mortals build their lives around a god. Others offer a prayer only when they need courage, rest, luck, restraint, or help. Churches, cults, festivals, Chosen, and private devotion all coexist, and worship of one power does not automatically require hatred of another.</p></article>
+</section>
+
 
 <footer>Sinners World Archive · Built as a player-facing lore guide</footer>
 <script src="/script.js"></script>
@@ -111,8 +117,11 @@ crack.addEventListener('click', (e) => {
   if (window.matchMedia('(hover: none)').matches && !crack.classList.contains('open')) {
     e.preventDefault();
     crack.classList.add('open');
+    return;
   }
+  window.SinnersAchievements?.unlock('odins-children',{deferToast:true});
 });
+document.querySelector('.odin-reveal-link')?.addEventListener('click',()=>window.SinnersAchievements?.unlock('odins-children',{deferToast:true}));
 </script>
 </body>
 </html>
