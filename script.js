@@ -59,7 +59,7 @@ if (search) {
 
   const queue=[];let busy=false,active=null;
   function host(){let h=document.getElementById('achievementToastHost');if(!h){h=document.createElement('div');h.id='achievementToastHost';h.className='achievement-toast-host';h.setAttribute('aria-live','polite');document.body.appendChild(h)}return h}
-  function chime(){try{const a=new Audio('/achievement-chime.mp3');a.volume=.32;a.play().catch(()=>{})}catch(_){}}
+  function chime(){try{const a=new Audio('/achievement-chime.mp3');a.volume=.20;a.play().catch(()=>{})}catch(_){}}
   const serial=d=>({title:d.title||'',detail:d.detail||'',href:d.href||'',label:d.label||'',icon:d.icon||'',sound:false});
   function persist(){if(!active||active.suppress)return;const remaining=Math.max(0,active.deadline-Date.now());if(remaining<180)return;try{sessionStorage.setItem(ACTIVE_TOAST_KEY,JSON.stringify({data:serial(active.data),remaining}))}catch(_){}}
   window.addEventListener('pagehide',persist);

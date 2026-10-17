@@ -167,6 +167,20 @@ body.deity-body.deity-diligence > *:not(.diligence-page-decor){position:relative
 /* V10 portrait crop adjustment: keep layout the same, shift visible crop downward so heads are not cut off. */
 .deity-diligence .deity-portrait img { object-position: center 8% !important; }
 
+/* Diligence craving easter eggs: rare meme portraits should display uncropped. */
+.deity-diligence .deity-portrait.diligence-craving-easter {
+  background:#020407;
+}
+.deity-diligence .deity-portrait.diligence-craving-easter img {
+  object-fit:contain !important;
+  object-position:center center !important;
+}
+.deity-diligence .deity-portrait.diligence-craving-easter::after {
+  background:
+    linear-gradient(90deg,#050a12 0%,rgba(5,10,18,.62) 9%,rgba(5,10,18,.08) 30%,transparent 46%),
+    linear-gradient(0deg,rgba(3,8,18,.18),transparent 28%);
+}
+
 </style></head><body class="deity-body deity-diligence">
 <div aria-hidden="true" class="diligence-page-decor">
 <span class="dgrid"></span>
@@ -188,7 +202,7 @@ body.deity-body.deity-diligence > *:not(.diligence-page-decor){position:relative
 <a href="/factions.html">Factions</a><a href="/creatures.html">Creatures</a><a href="/tales.html">Tales</a></nav>
 </div></header>
 <section class="deity-hero">
-<div class="deity-portrait"><img alt="Artistic depiction of Diligence" src="/god-diligence.png"/></div>
+<div class="deity-portrait" id="diligencePortrait"><img alt="Artistic depiction of Diligence" id="diligencePortraitImage" src="/god-diligence.png"/></div>
 <div class="deity-hero-copy"><a class="deity-back" href="/virtues.html">← The Seven Virtues</a>
 <div aria-hidden="true" class="diligence-divider"><span class="diligence-glyph"></span></div>
 <div class="deity-kicker">The Seven Virtues</div><h1>Diligence</h1>
@@ -216,4 +230,30 @@ body.deity-body.deity-diligence > *:not(.diligence-page-decor){position:relative
 <a href="/world.html">The World</a>
 </section></aside></main>
 <footer>Sinners World Archive · Built as a player-facing lore guide</footer><script src="/script.js"></script>
+<script>
+(function(){
+  const portrait = document.getElementById('diligencePortrait');
+  const image = document.getElementById('diligencePortraitImage');
+  if (!portrait || !image) return;
+
+  // One shared 14,000-slot roll gives each easter egg its exact independent rarity:
+  // 7 slots = 1/2,000 and 20 slots = 1/700. Everything else is normal Diligence.
+  const roll = Math.floor(Math.random() * 14000);
+  let source = '';
+  let alt = '';
+
+  if (roll < 7) {
+    source = '/Diligence 2000.jpg';
+    alt = 'Diligence is craving... $2000';
+  } else if (roll < 27) {
+    source = '/diligence 700.jpg';
+    alt = 'Diligence is craving... $700';
+  }
+
+  if (!source) return;
+  portrait.classList.add('diligence-craving-easter');
+  image.src = source;
+  image.alt = alt;
+})();
+</script>
 </body></html>

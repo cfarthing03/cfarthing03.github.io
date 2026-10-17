@@ -553,6 +553,12 @@ body.odins-library-page{
 
 <footer>Sinners World Archive · Built as a player-facing lore guide</footer>
 <script src="/script.js"></script>
+<script>
+// Entering the hidden library is the authoritative Odin achievement trigger.
+// This catches every valid route into the archive, including the revealed link,
+// direct navigation after discovering it, touch navigation, and opening in a new tab.
+window.SinnersAchievements?.unlock('odins-children');
+</script>
 
 <script>
 (() => {
